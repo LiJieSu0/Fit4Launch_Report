@@ -29,4 +29,5 @@ When working on this project, the AI assistant should:
 - Pay close attention to styling to maintain a consistent look and feel.
 - Consult this `Spec.md` file for project overview and component responsibilities.
 - All code, especially related to layout and styling, must consider the final output as an A4-sized PDF report, not a web page. This includes ensuring proper pagination, print-friendly styles, and absolute positioning where necessary for PDF generation tools.
+- Each new page generated must start on a new PDF page to ensure proper document structure and readability.
 - All command-line operations and scripts should be designed and executed with Windows operating system commands in mind.

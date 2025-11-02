@@ -1,7 +1,9 @@
+import CoverPage from './CommonPage/CoverPage';
+
 function App() {
   return (
-    <div>
-      
+    <div className="App">
+      <CoverPage />
     </div>
   );
 }

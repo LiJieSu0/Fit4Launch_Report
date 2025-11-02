@@ -1,0 +1,39 @@
+.cover-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+.cover-page h1 {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+  color: #2c3e50;
+}
+
+.cover-page h2 {
+  font-size: 1.8em;
+  margin-bottom: 1em;
+  color: #34495e;
+}
+
+.cover-page .author,
+.cover-page .date {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+  color: #7f8c8d;
+}
+
+.cover-page .logo-container {
+  margin-top: 2em;
+}
+
+.cover-page .logo-container img {
+  max-width: 150px;
+  height: auto;
+}

@@ -11,6 +11,9 @@ The main application component that orchestrates the overall layout and function
 ### 2. [`Restricted_Report_Style.css`](report-generator-app/src/Restricted_Report_Style.css)
 This CSS file is intended for styling specific elements within the report content that have restricted or unique styling requirements. It should be used carefully to avoid conflicts with global styles.
 
+## Full Page Component Styling
+When generating React files based on this Spec.md, all full page components (Full Page Component) must have their main content block (main container) include `className="page-content"`. This class is used to unify page layout and style identification, facilitating global styling and layout control.
+
 ## Data Flow
 The application will read data from JSON and CSV files, process it, and then pass it down to the relevant components for rendering reports and charts. State management (e.g., using React's `useState` or `useContext`, or a state management library) will be crucial for handling data across components.
 

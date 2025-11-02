@@ -1,5 +1,6 @@
 import CoverPage from './CommonPage/CoverPage';
 import ContentsIndexPage from './CommonPage/ContentsIndexPage';
+import SummaryPage from './CommonPage/SummaryPage';
 import DeviceInfoPage from './CommonPage/DeviceInfoPage';
 import ReportHeader from './CommonPage/ReportHeader';
 import ReportFooter from './CommonPage/ReportFooter';
@@ -15,6 +16,7 @@ function App() {
       <ReportHeader />
       <DeviceInfoPage/>
       <ContentsIndexPage />
+      <SummaryPage />
       <ReportFooter />
     </div>
   );

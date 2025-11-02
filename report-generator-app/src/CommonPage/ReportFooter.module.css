@@ -1,0 +1,40 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 1in; /* Adjust padding to match page margins */
+  font-size: 10pt;
+  color: #333;
+  border-top: 1px solid #eee;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  background-color: #f8f8f8; /* Light background for visibility */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.leftContent {
+  /* Styles for the left content (e.g., "Proprietary & Confidential") */
+}
+
+.rightContent {
+  /* Styles for the right content (e.g., "spirent.com | 3") */
+}
+
+/* Print-specific styles */
+@media print {
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 5px 1in; /* Adjust padding for print */
+    background-color: #fff; /* White background for print */
+    border-top: 1px solid #eee;
+    z-index: 1000;
+  }
+}

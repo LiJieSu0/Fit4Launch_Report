@@ -6,6 +6,31 @@ const DeviceInfoPage = () => {
         <div className="page-content">
             <h1>Device Information</h1>
             <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
+            <p>This page will contain device-specific information.</p>
         </div>
     );
 };

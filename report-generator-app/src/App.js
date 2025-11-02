@@ -2,7 +2,11 @@ import CoverPage from './CommonPage/CoverPage';
 import ContentsIndexPage from './CommonPage/ContentsIndexPage';
 import DeviceInfoPage from './CommonPage/DeviceInfoPage';
 import ReportHeader from './CommonPage/ReportHeader';
-import './StyleScript/Restricted_Report_Style.css';
+import ReportFooter from './CommonPage/ReportFooter';
+
+
+// import './StyleScript/Restricted_Report_Style.css';
+
 function App() {
   return (
     <div className="App">
@@ -11,7 +15,7 @@ function App() {
       <ReportHeader />
       <DeviceInfoPage/>
       <ContentsIndexPage />
-
+      <ReportFooter />
     </div>
   );
 }

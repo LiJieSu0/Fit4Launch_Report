@@ -10,8 +10,6 @@
   body {
     font-family: "Times New Roman", Times, serif;
     font-size: 12pt;
-    margin: 0.8in 0; /* Top/Bottom margins, remove left/right body margins */
-    padding: 0;
   }
 
   /* Set page margins for printing */
@@ -19,33 +17,8 @@
     margin: 0.8in 1in 0.8in 1in; /* Top, Right, Bottom, Left - Ensures 1in left/right margin */
   }
 
-  /* Header and Footer styles */
-  .header, .footer {
-    position: fixed;
-    left: 1in; /* Align with page left margin */
-    right: 1in; /* Align with page right margin */
-    font-size: 10pt;
-    color: #333;
-    padding: 5px 0; /* Padding is now handled by left/right properties */
-    background-color: #f8f8f8;
-    border-top: 1px solid #eee;
-    z-index: 1000;
-  }
-
-  .header {
-    top: 0;
-    border-bottom: 1px solid #eee;
-    border-top: none;
-  }
-
-  .footer {
-    bottom: 0;
-  }
-
-  /* Content area to prevent overlap with fixed header/footer */
   .page-content {
     padding-top: 0.8in; /* Space for header */
-    padding-bottom: 0.8in; /* Space for footer */
     padding-left: 1in; /* Apply left margin as padding */
     padding-right: 1in; /* Apply right margin as padding */
     page-break-after: always;

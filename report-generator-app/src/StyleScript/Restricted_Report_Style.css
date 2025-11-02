@@ -71,8 +71,8 @@
 
   /* Remove any background colors or images for print */
   * {
-    background: transparent !important;
-    color: black !important;
+    background: transparent ;
+    color: black ;
     box-shadow: none !important;
     text-shadow: none !important;
   }

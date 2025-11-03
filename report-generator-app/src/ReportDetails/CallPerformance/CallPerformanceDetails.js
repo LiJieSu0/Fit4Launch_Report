@@ -211,11 +211,11 @@ const CallPerformanceDetails = () => {
             responsive: true,
             plugins: {
                 legend: {
-                    position: 'right', // Position legend to the right
-                    align: 'center', // Align legend items vertically in the center
+                    position: 'right', // Position legend to the bottom
+                    align: 'center', // Align legend items to the start (left)
                     labels: {
                         font: {
-                            size: 18, // Increase legend font size by 50% (12 * 1.5 = 18)
+                            size: 12, // Set legend font size to 12
                         },
                     },
                 },

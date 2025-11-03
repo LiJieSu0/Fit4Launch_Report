@@ -193,7 +193,7 @@ const CallPerformanceDetails = () => {
                 {
                     label: 'Init Failures Calls',
                     data: [data.DUT.total_initiation_failures, data.REF.total_initiation_failures],
-                    backgroundColor: 'rgba(255, 0, 0, 0.6)', // Red for Init Failures
+                    backgroundColor: 'rgba(255, 0, 0, 1)', // Red for Init Failures
                     borderColor: 'rgba(255, 0, 0, 1)',
                     borderWidth: 1,
                 },

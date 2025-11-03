@@ -29,6 +29,10 @@
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
   }
+  h3{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 
   p {
     page-break-inside: avoid;
@@ -40,6 +44,26 @@
 
   table {
     page-break-inside: avoid;
+  }
+
+  /* Reduce spacing for tables in print */
+  .performance-table,
+  .p-value-table-container {
+    margin-bottom: 0.5em !important; /* Reduce space below tables */
+    margin-top: 0.5em !important; /* Reduce space above tables */
+  }
+
+  .performance-table th,
+  .performance-table td {
+    padding: 4px !important; /* Reduce padding inside table cells */
+  }
+
+  .p-value-table-container {
+    padding: 5px !important; /* Reduce padding inside the p-value container */
+  }
+
+  .p-value-table-container h3 {
+    margin-bottom: 5px !important; /* Reduce margin below h3 in p-value container */
   }
 
   /* Remove any background colors or images for print */
@@ -120,8 +144,7 @@
 }
 
 .call-categories-chart-container {
-  margin-top: 20px;
-  padding: 15px;
+  margin-bottom: 10px; /* Added to reduce space after the chart */
   border-radius: 8px;
   background-color: #ffffff;
 }
@@ -129,7 +152,6 @@
 .call-categories-chart-container h3 {
   font-size: 18px;
   color: #333;
-  margin-bottom: 15px;
   text-align: left;
 }
 
@@ -195,7 +217,7 @@
 }
 
 .p-value-table-container {
-  margin-top: 20px;
+  margin-top: 10px; /* Reduced margin-top */
   padding: 15px;
   border-radius: 8px;
   background-color: #ffffff;

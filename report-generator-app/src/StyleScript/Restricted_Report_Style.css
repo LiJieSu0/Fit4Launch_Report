@@ -28,7 +28,7 @@
   /* Ensure content breaks correctly across pages */
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
-    scroll-margin-top: 50px; /* Adjust this value if there's a fixed header */
+    scroll-margin-top: 0.8in; /* Account for the padding-top on .page-content */
   }
   h3{
     margin-top: 5px;

@@ -8,7 +8,8 @@ import CallPerformanceDetails from './ReportDetails/CallPerformance/CallPerforma
 import KpiPage from './CommonPage/KpiPage';
 import AboutPage from './CommonPage/AboutPage';
 import './StyleScript/Restricted_Report_Style.css';
-import SummaryPage from './CommonPage/SummaryPage';
+import VqSummaryPage from './ReportDetails/VoiceQuality/VqSummaryPage';
+
 function App() {
   return (
     <div className="App">
@@ -17,8 +18,9 @@ function App() {
       <ReportHeader />
       <DeviceInfoPage/>
       <ContentsIndexPage />
-      <CpSummaryPage />
-      <CallPerformanceDetails />
+      {/* <CpSummaryPage />
+      <CallPerformanceDetails /> */}
+      <VqSummaryPage />
       <KpiPage />
       <AboutPage />
       <ReportFooter />

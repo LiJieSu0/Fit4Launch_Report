@@ -26,7 +26,7 @@
   }
 
   .page-content {
-    padding-top: 0.8in; /* Space for header */
+    padding-top: 50px; /* Space for header */
     padding-left: 1in; /* Apply left margin as padding */
     padding-right: 1in; /* Apply right margin as padding */
     page-break-after: always;
@@ -41,9 +41,11 @@
   h1{
     font-size: 11px;
   }
-  
 
-
+  h2{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
   h3{
     margin-top: 5px;
     margin-bottom: 5px;
@@ -115,6 +117,9 @@
 
   .back-to-top-print {
     display: inline !important; /* Show Back to Top link when printing */
+  }
+  ul{
+    margin-top: 5px;
   }
 }
 

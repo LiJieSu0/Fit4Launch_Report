@@ -152,6 +152,32 @@ const CallPerformanceDetails = () => {
             </div>
         );
     };
+
+   const PValueTable = ({ data }) => {
+       return (
+           <div className="p-value-table-container">
+               <h3>P-Value Table</h3>
+               <table className="device-info-table">
+                   <thead>
+                       <tr>
+                           <th>Metrics</th>
+                           <th>P-Value</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr>
+                           <td>Call Initiation</td>
+                           <td>{data.initiation_p_value.toFixed(3)}</td>
+                       </tr>
+                       <tr>
+                           <td>Call Retention</td>
+                           <td>{data.retention_p_value.toFixed(3)}</td>
+                       </tr>
+                   </tbody>
+               </table>
+           </div>
+       );
+   };
  
      return (
          <div>
@@ -159,6 +185,7 @@ const CallPerformanceDetails = () => {
                  <React.Fragment key={index}>
                      <div className='page-content'>
                          <CpCaseTable title={title} data={data} />
+                         <PValueTable data={data} />
                          <CallCategoriesChart title={title} data={data} />
                          <CallCategoriesTable data={data} />
                      </div>

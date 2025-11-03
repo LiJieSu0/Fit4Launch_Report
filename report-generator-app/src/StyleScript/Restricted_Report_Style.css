@@ -193,3 +193,17 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.p-value-table-container {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.p-value-table-container h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: left;
+}

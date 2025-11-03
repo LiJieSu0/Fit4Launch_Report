@@ -2,6 +2,25 @@ import React from 'react';
 import callPerformanceData from '../../DataFiles/CallPerformanceResults.json';
 import CpCaseTable from './CpCaseTable'; // Import the new component
 import '../../StyleScript/Restricted_Report_Style.css'; // Import the restricted report style
+import { Bar } from 'react-chartjs-2';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
 const CallPerformanceDetails = () => {
 
@@ -153,6 +172,95 @@ const CallPerformanceDetails = () => {
         );
     };
 
+    const CallSummaryChart = ({ title, data }) => {
+        const chartData = {
+            labels: ['DUT', 'REF'],
+            datasets: [
+                {
+                    label: 'Total Calls',
+                    data: [data.DUT.total_attempts, data.REF.total_attempts],
+                    backgroundColor: 'rgba(200, 200, 200, 0.6)', // Light grey for Total Calls
+                    borderColor: 'rgba(200, 200, 200, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'Successful Calls',
+                    data: [data.DUT.total_initiation_successes, data.REF.total_initiation_successes],
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Black for Successful Calls
+                    borderColor: 'rgba(0, 0, 0, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'Init Failures Calls',
+                    data: [data.DUT.total_initiation_failures, data.REF.total_initiation_failures],
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)', // Red for Init Failures
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'Dropped Calls',
+                    data: [data.DUT.call_result_distribution.Drop || 0, data.REF.call_result_distribution.Drop || 0],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)', // Blue for Dropped Calls
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                },
+            ],
+        };
+
+        const options = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right', // Position legend to the right
+                    align: 'center', // Align legend items vertically in the center
+                    labels: {
+                        font: {
+                            size: 18, // Increase legend font size by 50% (12 * 1.5 = 18)
+                        },
+                    },
+                },
+
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Device',
+                        font: {
+                            size: 18, // Increase x-axis title font size by 50%
+                        },
+                    },
+                    ticks: {
+                        font: {
+                            size: 18, // Increase x-axis tick font size by 50%
+                        },
+                    },
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Calls',
+                        font: {
+                            size: 18, // Increase y-axis title font size by 50%
+                        },
+                    },
+                    ticks: {
+                        font: {
+                            size: 18, // Increase y-axis tick font size by 50%
+                        },
+                    },
+                },
+            },
+        };
+
+        return (
+            <div className="chart-container">
+                <Bar data={chartData} options={options} />
+            </div>
+        );
+    };
+
    const PValueTable = ({ data }) => {
        return (
            <div className="p-value-table-container">
@@ -185,6 +293,7 @@ const CallPerformanceDetails = () => {
                  <React.Fragment key={index}>
                      <div className='page-content'>
                          <CpCaseTable title={title} data={data} />
+                         <CallSummaryChart title={title} data={data} /> 
                          <PValueTable data={data} />
                          <CallCategoriesChart title={title} data={data} />
                          <CallCategoriesTable data={data} />

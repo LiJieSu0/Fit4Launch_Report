@@ -28,6 +28,7 @@
   /* Ensure content breaks correctly across pages */
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
+    scroll-margin-top: 50px; /* Adjust this value if there's a fixed header */
   }
   h3{
     margin-top: 5px;
@@ -74,9 +75,13 @@
     text-shadow: none !important;
   }
 
-  /* Show URLs for links */
-  a[href]:after {
+  /* Show URLs for links, but hide for table of contents */
+  a[href]:not(.contents-index-page a)[href]:after {
     content: " (" attr(href) ")";
+  }
+
+  .contents-index-page a[href]:after {
+    content: none;
   }
 
   /* Hide elements not relevant for print */

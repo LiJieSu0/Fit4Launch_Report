@@ -3,7 +3,7 @@ import React from 'react';
 const KpiPage = () => {
   return (
     <div className='page-content'>
-      <h1>KPI Page</h1>
+      <h2>KPI Page</h2>
     </div>
   );
 };

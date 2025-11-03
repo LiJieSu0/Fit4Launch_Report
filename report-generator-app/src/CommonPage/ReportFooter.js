@@ -8,7 +8,7 @@ const ReportFooter = () => {
         Proprietary & Confidential
       </div>
       <div className={styles.rightContent}>
-        spirent.com | 3
+        Back to Top | pageNumber
       </div>
     </footer>
   );

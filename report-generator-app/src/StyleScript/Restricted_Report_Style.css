@@ -15,6 +15,14 @@
   /* Set page margins for printing */
   @page {
     margin: 0.8in 1in 0.8in 1in; /* Top, Right, Bottom, Left - Ensures 1in left/right margin */
+      @bottom-right {
+      content: "Page " counter(page) ""; /* Display page numbers, aligned right */
+      font-size: 10px;
+      color: #555;
+      line-height: 1;
+      margin-top: -30px;
+      margin-right: 20px; /* Adjust margin for the page number */
+    }
   }
 
   .page-content {

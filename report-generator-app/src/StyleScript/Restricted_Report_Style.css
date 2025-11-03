@@ -133,6 +133,13 @@
   }
 }
 
+:root{
+  --performance-excellent: #FF00FF;
+  --performance-pass: #299229;
+  --performance-marginal-fail: #FFFF00;
+  --performance-fail: #FF0000;
+}
+
 .back-to-top-print {
   display: none; /* Hide Back to Top link by default */
 }

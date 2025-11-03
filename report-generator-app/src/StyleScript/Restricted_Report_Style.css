@@ -8,7 +8,7 @@
 
   /* General print styles for other pages */
   body {
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Arial";
     font-size: 12pt;
   }
 
@@ -38,6 +38,12 @@
     page-break-after: avoid;
     scroll-margin-top: 0.8in; /* Account for the padding-top on .page-content */
   }
+  h1{
+    font-size: 11px;
+  }
+  
+
+
   h3{
     margin-top: 5px;
     margin-bottom: 5px;

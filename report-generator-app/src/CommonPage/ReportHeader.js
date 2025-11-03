@@ -6,11 +6,11 @@ const ReportHeader = () => {
     <div className={styles.headerContainer}>
       <div className={styles.headerContent}>
         <div>
-          <h1 className={styles.title}>Spirent <span className={styles.fit4Launch}>Fit4Launch</span></h1>
-          <p className={styles.subtitle}>T-Mobile Non-Stock Device Test Plan: 5G Auto Call Performance Report |<a href="#" className={styles.link}>Wingtech Plunkett</a></p>
+          <h1 className={styles.title}><span className={styles.fit4Launch}>ATMCL TMO Field Performance Test</span></h1>
+          <p className={styles.subtitle}>T-Mobile Test Plan: VoLTE AGPS Control Plane Report – ATMCL Pilot</p>
         </div>
         <div className={styles.logoContainer}>
-          <img src="/logo.svg" alt="Spirent Logo" className={styles.logo} />
+          <img src="/atmclogo.jpg" alt="Spirent Logo" className={styles.logo} />
         </div>
       </div>
       <div className={styles.bottomLine}></div>

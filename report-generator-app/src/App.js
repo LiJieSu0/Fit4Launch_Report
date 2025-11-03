@@ -22,7 +22,7 @@ function App() {
       <CallPerformanceDetails />
       <KpiPage />
       <AboutPage />
-      {/* <ReportFooter /> */}
+      <ReportFooter />
     </div>
   );
 }

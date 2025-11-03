@@ -14,8 +14,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 80%; /* Match the width of the bottom line */
   margin-bottom: 10px; /* Space between content and bottom line */
+  margin-left: auto; /* Center the content */
+  margin-right: auto; /* Center the content */
 }
 
 .title {
@@ -67,7 +69,8 @@
     top: 0;
     left: 0;
     right: 0;
-    padding: 15px 30px; /* Slightly reduced padding for print */
+    padding: 3px 30px; /* Slightly reduced padding for print */
+    margin-top: 5px;
     /* Removed border-bottom: none; to ensure the bottom line is visible */
     z-index: 1000; /* Ensure header is on top */
   }

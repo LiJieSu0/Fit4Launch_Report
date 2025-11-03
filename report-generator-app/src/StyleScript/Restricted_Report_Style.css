@@ -83,6 +83,11 @@
     font-size: 0 !important; /* Make font size zero */
   }
 
+  /* Remove underline from Table of Contents links when printing */
+  .contents-index-page a {
+    text-decoration: none !important;
+  }
+
   /* Optionally, if other links should show their hrefs, add a general rule here,
      but ensure it doesn't conflict with the above. For now, we prioritize hiding. */
 

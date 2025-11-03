@@ -12,7 +12,7 @@ const CpCaseTable = ({ title, data }) => {
     const refFailedInitiationsPercentage = (ref.total_initiation_failures / ref.total_attempts * 100).toFixed(2);
 
     return (
-        <div className="page-content">
+        <div className="">
             <h2>{title}</h2>
             <table className="performance-table">
                 <thead>

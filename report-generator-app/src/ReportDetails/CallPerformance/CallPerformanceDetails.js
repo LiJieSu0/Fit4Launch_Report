@@ -179,29 +179,29 @@ const CallPerformanceDetails = () => {
                 {
                     label: 'Total Calls',
                     data: [data.DUT.total_attempts, data.REF.total_attempts],
-                    backgroundColor: 'rgba(200, 200, 200, 0.6)', // Light grey for Total Calls
-                    borderColor: 'rgba(200, 200, 200, 1)',
+                    backgroundColor: 'rgba(0, 0, 255, 0.6)', // Blue for Total Calls
+                    borderColor: 'rgba(0, 0, 255, 1)',
                     borderWidth: 1,
                 },
                 {
                     label: 'Successful Calls',
                     data: [data.DUT.total_initiation_successes, data.REF.total_initiation_successes],
-                    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Black for Successful Calls
-                    borderColor: 'rgba(0, 0, 0, 1)',
+                    backgroundColor: 'rgba(0, 128, 0, 0.6)', // Green for Successful Calls
+                    borderColor: 'rgba(0, 128, 0, 1)',
                     borderWidth: 1,
                 },
                 {
                     label: 'Init Failures Calls',
                     data: [data.DUT.total_initiation_failures, data.REF.total_initiation_failures],
-                    backgroundColor: 'rgba(255, 99, 132, 0.6)', // Red for Init Failures
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 0, 0, 0.6)', // Red for Init Failures
+                    borderColor: 'rgba(255, 0, 0, 1)',
                     borderWidth: 1,
                 },
                 {
                     label: 'Dropped Calls',
                     data: [data.DUT.call_result_distribution.Drop || 0, data.REF.call_result_distribution.Drop || 0],
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)', // Blue for Dropped Calls
-                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(255, 255, 0, 0.6)', // Yellow for Dropped Calls
+                    borderColor: 'rgba(255, 255, 0, 1)',
                     borderWidth: 1,
                 },
             ],

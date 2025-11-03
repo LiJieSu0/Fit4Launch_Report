@@ -9,6 +9,7 @@ import KpiPage from './CommonPage/KpiPage';
 import AboutPage from './CommonPage/AboutPage';
 import './StyleScript/Restricted_Report_Style.css';
 import VqSummaryPage from './ReportDetails/VoiceQuality/VqSummaryPage';
+import VqDetailsPage from './ReportDetails/VoiceQuality/VqDetailsPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       {/* <CpSummaryPage />
       <CallPerformanceDetails /> */}
       <VqSummaryPage />
+      <VqDetailsPage />
       <KpiPage />
       <AboutPage />
       <ReportFooter />

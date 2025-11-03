@@ -28,7 +28,6 @@ const CallPerformanceDetails = () => {
                                     <th>Successful Initiations (%)</th>
                                     <th>Failed Initiations</th>
                                     <th>Failed Initiations (%)</th>
-                                    <th>P - Value</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +39,6 @@ const CallPerformanceDetails = () => {
                                     <td>{refSuccessfulInitiationsPercentage}%</td>
                                     <td>{ref.total_initiation_failures}</td>
                                     <td>{refFailedInitiationsPercentage}%</td>
-                                    <td rowSpan="2">{data.initiation_p_value.toFixed(3)}</td>
                                 </tr>
                                 <tr>
                                     <td>DUT</td>

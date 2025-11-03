@@ -96,15 +96,15 @@
 }
 
 .performance-table thead th {
-  background-color: #71777c; /* Darker grey for header */
-  color: white;
+  background-color: #f2f2f2; /* Light grey for header, matching device-info-table */
+  color: black; /* Black text for header, matching device-info-table */
   font-weight: bold;
   text-align: center; /* Center align header text */
   vertical-align: middle; /* Vertically align header text */
 }
 
 .performance-table tbody tr:nth-child(odd) {
-  background-color: #f8f9fa; /* Light grey for odd rows */
+  background-color: #ffffff; /* Light grey for odd rows */
 }
 
 .performance-table tbody tr:nth-child(even) {

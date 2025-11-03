@@ -75,14 +75,16 @@
     text-shadow: none !important;
   }
 
-  /* Show URLs for links, but hide for table of contents */
-  a[href]:not(.contents-index-page a)[href]:after {
-    content: " (" attr(href) ")";
+  /* Explicitly hide URLs for specific links when printing */
+  .contents-index-page a[href]:after,
+  .back-to-top-print[href]:after {
+    content: "" !important; /* Ensure content is empty */
+    color: transparent !important; /* Make text transparent */
+    font-size: 0 !important; /* Make font size zero */
   }
 
-  .contents-index-page a[href]:after {
-    content: none;
-  }
+  /* Optionally, if other links should show their hrefs, add a general rule here,
+     but ensure it doesn't conflict with the above. For now, we prioritize hiding. */
 
   /* Hide elements not relevant for print */
   .no-print {
@@ -91,6 +93,14 @@
   .page-break{
     page-break-after: always;
   }
+
+  .back-to-top-print {
+    display: inline !important; /* Show Back to Top link when printing */
+  }
+}
+
+.back-to-top-print {
+  display: none; /* Hide Back to Top link by default */
 }
 
 .device-info-table {

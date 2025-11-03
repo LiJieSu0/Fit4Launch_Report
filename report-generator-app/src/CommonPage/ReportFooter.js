@@ -8,7 +8,7 @@ const ReportFooter = () => {
         Proprietary & Confidential
       </div>
       <div className={styles.rightContent}>
-        Back to Top | pageNumber
+        <a href="#table-of-contents" className="back-to-top-print">Back to Top</a> | pageNumber
       </div>
     </footer>
   );

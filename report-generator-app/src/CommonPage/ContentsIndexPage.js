@@ -34,7 +34,7 @@ const ContentsIndexPage = () => {
   return (
     <div className="contents-index-page" ref={contentsRef}>
       <div className="page-content">
-        <h2>Table of Contents</h2>
+        <h2 id="table-of-contents">Table of Contents</h2>
         <ul>
           {headings.length > 0 ? (
             headings.map((heading) => (

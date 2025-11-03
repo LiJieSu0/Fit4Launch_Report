@@ -85,21 +85,21 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1em;
-  font-size: 10pt; /* Smaller font size for table content */
 }
 
 .performance-table th,
 .performance-table td {
-  border: 1px solid #ccc; /* Lighter border for data cells */
-  padding: 6px; /* Slightly less padding */
-  text-align: center;
+  border: 1px solid #000; /* Match device-info-table border */
+  padding: 8px; /* Match device-info-table padding */
+  text-align: left; /* Match device-info-table text-align */
+  font-size: 12pt; /* Ensure font size matches body/device-info-table */
 }
 
 .performance-table thead th {
   background-color: #f2f2f2; /* Light grey for header, matching device-info-table */
   color: black; /* Black text for header, matching device-info-table */
   font-weight: bold;
-  text-align: center; /* Center align header text */
+  text-align: left; /* Match device-info-table header text-align */
   vertical-align: middle; /* Vertically align header text */
 }
 
@@ -112,11 +112,11 @@
 }
 
 .performance-table td:first-child {
-  font-weight: bold; /* Make device names bold */
+  font-weight: normal; /* Remove bold for device names */
 }
 
 .performance-table td:last-child {
-  text-align: center; /* Center align P-Value */
+  text-align: left; /* Align P-Value to left, consistent with device-info-table */
 }
 
 .call-categories-chart-container {

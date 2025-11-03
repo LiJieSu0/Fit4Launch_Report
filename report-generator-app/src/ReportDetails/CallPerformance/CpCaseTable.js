@@ -28,15 +28,6 @@ const CpCaseTable = ({ title, data }) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>REF</td>
-                        <td>{ref.total_attempts}</td>
-                        <td>{ref.mean_setup_time.toFixed(2)}</td>
-                        <td>{ref.total_initiation_successes}</td>
-                        <td>{refSuccessfulInitiationsPercentage}%</td>
-                        <td>{ref.total_initiation_failures}</td>
-                        <td>{refFailedInitiationsPercentage}%</td>
-                    </tr>
-                    <tr>
                         <td>DUT</td>
                         <td>{dut.total_attempts}</td>
                         <td>{dut.mean_setup_time.toFixed(2)}</td>
@@ -44,6 +35,15 @@ const CpCaseTable = ({ title, data }) => {
                         <td>{dutSuccessfulInitiationsPercentage}%</td>
                         <td>{dut.total_initiation_failures}</td>
                         <td>{dutFailedInitiationsPercentage}%</td>
+                    </tr>
+                    <tr>
+                        <td>REF</td>
+                        <td>{ref.total_attempts}</td>
+                        <td>{ref.mean_setup_time.toFixed(2)}</td>
+                        <td>{ref.total_initiation_successes}</td>
+                        <td>{refSuccessfulInitiationsPercentage}%</td>
+                        <td>{ref.total_initiation_failures}</td>
+                        <td>{refFailedInitiationsPercentage}%</td>
                     </tr>
                 </tbody>
             </table>

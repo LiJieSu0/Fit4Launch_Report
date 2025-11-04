@@ -1,10 +1,12 @@
 import React from 'react';
+import CoverageSummaryTable from './CoverageSummaryTable';
+import '../../StyleScript/Restricted_Report_Style.css';
 
 function CoverageSummaryPage() {
   return (
-    <div>
+    <div className='page-content'>
       <h2>Coverage Summary Page</h2>
-      {/* Add content for Coverage Summary here */}
+      <CoverageSummaryTable />
     </div>
   );
 }

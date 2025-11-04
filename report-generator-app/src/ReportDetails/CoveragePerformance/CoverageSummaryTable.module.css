@@ -1,0 +1,27 @@
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.summary-table th,
+.summary-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.summary-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.summary-table .result-green {
+    background-color: #00ff00; /* Green */
+    width: 50px; /* Adjust as needed */
+}
+
+.summary-table .result-red {
+    background-color: #ff0000; /* Red */
+    width: 50px; /* Adjust as needed */
+}

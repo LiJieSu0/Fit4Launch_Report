@@ -3,17 +3,23 @@ import CoverPage from './CommonPage/CoverPage';
 import AboutPage from './CommonPage/AboutPage';
 import ContentsIndexPage from './CommonPage/ContentsIndexPage';
 
-import CpSummaryPage from './ReportDetails/CallPerformance/CpSummaryPage';
 import DeviceInfoPage from './CommonPage/DeviceInfoPage';
 import ReportHeader from './CommonPage/ReportHeader';
 import ReportFooter from './CommonPage/ReportFooter';
+
 import CallPerformanceDetails from './ReportDetails/CallPerformance/CallPerformanceDetails';
+import CpSummaryPage from './ReportDetails/CallPerformance/CpSummaryPage';
+import CpKpiPage from './ReportDetails/CallPerformance/CpKpiPage';
+
 import VqSummaryPage from './ReportDetails/VoiceQuality/VqSummaryPage';
 import VqDetailsPage from './ReportDetails/VoiceQuality/VqDetailsPage';
+import VqKpiPage from './ReportDetails/VoiceQuality/VqKpiPage';
 
 import CoverageSummaryPage from './ReportDetails/CoveragePerformance/CoverageSummaryPage';
 import CoverageDetails from './ReportDetails/CoveragePerformance/CoverageDetails';
 import CoverageKpiPage from './ReportDetails/CoveragePerformance/CoverageKpiPage';
+
+import DpKpiPage from './ReportDetails/DataPerformance/DpKpiPage';
 
 function App() {
   return (
@@ -32,6 +38,9 @@ function App() {
       <CoverageSummaryPage />
       <CoverageDetails />
       <CoverageKpiPage />
+      <VqKpiPage/>
+      <CpKpiPage/>
+      <DpKpiPage/>
 
       <AboutPage />
       <ReportFooter />

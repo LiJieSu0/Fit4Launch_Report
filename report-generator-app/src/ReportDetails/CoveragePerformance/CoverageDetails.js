@@ -1,6 +1,11 @@
 import React from 'react';
+import CoverageTestTable from './CoverageTestTable';
 
 function CoverageDetails() {
+  const NR25_audio=[
+            { device: 'DUT', run1: 2.15, run2: 2.40, run3: 2.42, run4: 2.46, run5: 2.32, average: 2.35 },
+            { device: 'REF', run1: 2.43, run2: 2.41, run3: 2.42, run4: 2.46, run5: 2.43, average: 2.43 },
+        ];
   return (
     <div>
         <div className='page-content'>
@@ -22,6 +27,7 @@ function CoverageDetails() {
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR25- Audio Call Drop (km)</h3>
         {/* NR25 Audio table */}
+        <CoverageTestTable tableData={NR25_audio} />
         </div>
 
         {/* ------NR41 */}

@@ -159,7 +159,17 @@
 
 .device-info-table th {
   background-color: rgb(128,128,128); 
-  color: rgb(255, 255, 255); 
+  color: rgb(255, 255, 255);
+}
+
+.red-background {
+  background-color: #FF0000;
+  color: #FFFFFF;
+}
+
+.green-background {
+  background-color: #2ab42a; /* Corresponds to --performance-pass */
+  color: #FFFFFF;
 }
 
 .performance-table {

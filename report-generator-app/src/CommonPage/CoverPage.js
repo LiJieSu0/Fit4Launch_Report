@@ -4,13 +4,39 @@ import '../StyleScript/CoverPage.css';
 const CoverPage = () => {
   return (
     <div className="cover-page">
-      <h1>Report Title</h1>
-      <h2>Subtitle or Project Name</h2>
-      <p className="author">Prepared by: [Your Name/Organization]</p>
-      <p className="date">Date: [Current Date]</p>
-      <div className="logo-container">
-        {/* Add your logo here */}
-        {/* <img src="path/to/your/logo.png" alt="Company Logo" /> */}
+      <div className="header-logo">
+        <img src="atmclogo.jpg" alt="atmcl" style={{ maxWidth: '100%', height: '30%' }} />
+      </div>
+      <div className="report-title-section">
+        <p className="report-title cover-title">T-Mobile Field Performance Report</p>
+        <span className="separator">|</span>
+        <h2 className="report-subtitle">ATMCL Pilot</h2>
+      </div>
+      <hr className="title-underline" />
+      <div className="tmobile-logo">
+        <img src="/CoverPagePic/tmobile-title-logo.png" alt="tmobile-title-logo" style={{ maxWidth: '90%', height: '90%' }} />
+      </div>
+      <div className="report-details">
+        <div className="detail-row">
+          <span className="detail-label">DATE</span>
+          <span className="detail-value">October 30, 2025</span>
+        </div>
+        <div className="detail-row">
+          <span className="detail-label">VERSION</span>
+          <span className="detail-value">1.0</span>
+        </div>
+        <div className="detail-row">
+          <span className="detail-label">CONTACT</span>
+          <span className="detail-value">Claude Li</span>
+        </div>
+        <div className="detail-row">
+          <span className="detail-label">E-MAIL</span>
+          <span className="detail-value">Claude.li@atmcl.com</span>
+        </div>
+      </div>
+      <div className="footer-logos">
+        <img src="/CoverPagePic/other-logo.png" alt="other-logo" style={{ maxWidth: '70%', height: '70%' }} />
+        <p className="footer-text">ATMCL One Stop Test Service</p>
       </div>
     </div>
   );

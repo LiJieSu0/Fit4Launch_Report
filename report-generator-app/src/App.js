@@ -26,7 +26,7 @@ function App() {
     <div className="App">
       <CoverPage />
       {/* The ReportHeader will be displayed on all pages except the CoverPage */}
-      <ReportHeader />
+      {/* <ReportHeader /> */}
       <DeviceInfoPage/>
       <ContentsIndexPage />
 
@@ -43,7 +43,7 @@ function App() {
       <CoverageKpiPage />
 
       <AboutPage />
-      <ReportFooter />
+      {/* <ReportFooter /> */}
     </div>
   );
 }

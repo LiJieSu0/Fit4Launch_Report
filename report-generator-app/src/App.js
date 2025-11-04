@@ -27,8 +27,8 @@ function App() {
       <CoverPage />
       {/* The ReportHeader will be displayed on all pages except the CoverPage */}
       {/* <ReportHeader /> */}
-      <DeviceInfoPage/>
-      <ContentsIndexPage />
+      {/* <DeviceInfoPage/>
+      <ContentsIndexPage /> */}
 
       {/* <CpSummaryPage />
       <CallPerformanceDetails /> */}

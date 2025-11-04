@@ -29,18 +29,18 @@ function App() {
       <ReportHeader />
       <DeviceInfoPage/>
       <ContentsIndexPage />
+
       {/* <CpSummaryPage />
       <CallPerformanceDetails /> */}
+      <CpKpiPage/>
 
       {/* <VqSummaryPage />
       <VqDetailsPage /> */}
+      <VqKpiPage/>
       
       <CoverageSummaryPage />
       <CoverageDetails />
       <CoverageKpiPage />
-      <VqKpiPage/>
-      <CpKpiPage/>
-      <DpKpiPage/>
 
       <AboutPage />
       <ReportFooter />

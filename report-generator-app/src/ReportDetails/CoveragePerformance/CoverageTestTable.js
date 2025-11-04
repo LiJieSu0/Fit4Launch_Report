@@ -23,11 +23,11 @@ const CoverageTestTable = ({ tableData, status }) => {
                         return (
                             <tr key={index}>
                                 <td>{row.device}</td>
-                                <td>{row.run1}</td>
-                                <td>{row.run2}</td>
-                                <td>{row.run3}</td>
-                                <td>{row.run4}</td>
-                                <td>{row.run5}</td>
+                                <td>{row.run1.toFixed(2)}</td>
+                                <td>{row.run2.toFixed(2)}</td>
+                                <td>{row.run3.toFixed(2)}</td>
+                                <td>{row.run4.toFixed(2)}</td>
+                                <td>{row.run5.toFixed(2)}</td>
                                 <td className={averageClassName}>{row.average}</td>
                             </tr>
                         );

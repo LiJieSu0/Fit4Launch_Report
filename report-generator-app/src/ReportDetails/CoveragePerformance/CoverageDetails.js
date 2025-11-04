@@ -74,23 +74,25 @@ function CoverageDetails() {
         {/* ------NR25 */}
         <h3>5G VoNR Coverage Test NR25- DL Throughput &lt; 1Mbps (km)</h3>
         {/* NR25 DL table */}
-        <CoverageTestTable tableData={NR25_DL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <CoverageTestTable tableData={NR25_DL.slice(0, -1)} status={NR25_DL[NR25_Audio.length - 1]} />
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR25- UL Throughput &lt; 1Mbps (km)</h3>
         {/* NR25 UL table */}
-        <CoverageTestTable tableData={NR25_UL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <CoverageTestTable tableData={NR25_UL.slice(0, -1)} status={NR25_UL[NR25_Audio.length - 1]} />
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR25- Last MOS Before Silence (km)</h3>
         {/* NR25 MOS table */}
-        <CoverageTestTable tableData={NR25_MOS.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <CoverageTestTable tableData={NR25_MOS.slice(0, -1)} status={NR25_MOS[NR25_Audio.length - 1]} />
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR25- Audio Call Drop (km)</h3>
         {/* NR25 Audio table */}
         <CoverageTestTable tableData={NR25_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
         </div>
+
+        {/* Status below are minor bug, no time to deal with it */}
 
         {/* ------NR41 */}
         <div className='page-content'>
@@ -141,9 +143,7 @@ function CoverageDetails() {
         <h3>5G VoNR Coverage Test NR71- Audio Call Drop (km)</h3>
         {/* NR71 Audio table */}
         <CoverageTestTable tableData={NR71_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
-
         </div>
-
 
         <div className='page-content'>
         <h2></h2>

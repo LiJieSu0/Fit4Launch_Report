@@ -1,5 +1,6 @@
 import React from 'react';
-import './CoverageSummaryTable.module.css';
+import styles from './CoverageSummaryTable.module.css';
+import '.././../StyleScript/Restricted_Report_Style.css';
 
 
 
@@ -42,7 +43,7 @@ const summaryData = [
 
 const CoverageSummaryTable = () => {
     return (
-        <table className="device-info-table summary-table">
+        <table className={`device-info-table `}>
             <thead>
                 <tr>
                     <th>Market</th>
@@ -67,7 +68,7 @@ const CoverageSummaryTable = () => {
                                     </td>
                                 )}
                                 <td>{kpiData.name}</td>
-                                <td className={kpiData.result === "green" ? "" : ""}></td>
+                                <td className={kpiData.result === "Pass" ? styles['result-pass'] : styles['result-fail']}></td>
                             </tr>
                         ))
                     ))

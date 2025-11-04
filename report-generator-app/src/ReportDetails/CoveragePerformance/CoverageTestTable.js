@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
 
-const CoverageTestTable = ({ tableData }) => {
+const CoverageTestTable = ({ tableData, status }) => {
 
     return (
             <table className="device-info-table">
@@ -17,17 +17,21 @@ const CoverageTestTable = ({ tableData }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {tableData.map((row, index) => (
-                        <tr key={index}>
-                            <td>{row.device}</td>
-                            <td>{row.run1}</td>
-                            <td>{row.run2}</td>
-                            <td>{row.run3}</td>
-                            <td>{row.run4}</td>
-                            <td>{row.run5}</td>
-                            <td>{row.average}</td>
-                        </tr>
-                    ))}
+                    {tableData.map((row, index) => {
+                        const isDUT = row.device === 'DUT';
+                        const averageClassName = isDUT ? (status === 'Pass' ? 'average-pass' : 'average-fail') : '';
+                        return (
+                            <tr key={index}>
+                                <td>{row.device}</td>
+                                <td>{row.run1}</td>
+                                <td>{row.run2}</td>
+                                <td>{row.run3}</td>
+                                <td>{row.run4}</td>
+                                <td>{row.run5}</td>
+                                <td className={averageClassName}>{row.average}</td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
     );

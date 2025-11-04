@@ -172,6 +172,16 @@
   color: #FFFFFF;
 }
 
+.average-pass {
+  background-color: var(--performance-pass);
+  color: #FFFFFF;
+}
+
+.average-fail {
+  background-color: var(--performance-fail);
+  color: #FFFFFF;
+}
+
 .performance-table {
   width: 100%;
   border-collapse: collapse;

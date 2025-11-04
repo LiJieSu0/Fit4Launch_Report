@@ -10,6 +10,8 @@ import AboutPage from './CommonPage/AboutPage';
 import './StyleScript/Restricted_Report_Style.css';
 import VqSummaryPage from './ReportDetails/VoiceQuality/VqSummaryPage';
 import VqDetailsPage from './ReportDetails/VoiceQuality/VqDetailsPage';
+import CoverageSummaryPage from './ReportDetails/CoveragePerformance/CoverageSummaryPage';
+import CoverageDetails from './ReportDetails/CoveragePerformance/CoverageDetails';
 
 function App() {
   return (
@@ -21,8 +23,12 @@ function App() {
       <ContentsIndexPage />
       {/* <CpSummaryPage />
       <CallPerformanceDetails /> */}
-      <VqSummaryPage />
-      <VqDetailsPage />
+
+      {/* <VqSummaryPage />
+      <VqDetailsPage /> */}
+      <CoverageSummaryPage />
+      <CoverageDetails />
+
       <KpiPage />
       <AboutPage />
       <ReportFooter />

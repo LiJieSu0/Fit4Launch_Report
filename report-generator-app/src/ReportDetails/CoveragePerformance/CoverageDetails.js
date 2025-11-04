@@ -75,21 +75,29 @@ function CoverageDetails() {
         <h3>5G VoNR Coverage Test NR25- DL Throughput &lt; 1Mbps (km)</h3>
         {/* NR25 DL table */}
         <CoverageTestTable tableData={NR25_DL.slice(0, -1)} status={NR25_DL[NR25_Audio.length - 1]} />
+        {/* map picture */}
+        <img src="/NR25_DL_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR25- UL Throughput &lt; 1Mbps (km)</h3>
         {/* NR25 UL table */}
         <CoverageTestTable tableData={NR25_UL.slice(0, -1)} status={NR25_UL[NR25_Audio.length - 1]} />
+        <img src="/NR25_UL_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
+
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR25- Last MOS Before Silence (km)</h3>
         {/* NR25 MOS table */}
         <CoverageTestTable tableData={NR25_MOS.slice(0, -1)} status={NR25_MOS[NR25_Audio.length - 1]} />
+        <img src="/NR25_MOS_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
+
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR25- Audio Call Drop (km)</h3>
         {/* NR25 Audio table */}
         <CoverageTestTable tableData={NR25_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <img src="/NR25_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
+
         </div>
 
         {/* Status below are minor bug, no time to deal with it */}
@@ -99,24 +107,28 @@ function CoverageDetails() {
         <h3>5G VoNR Coverage Test NR41- DL Throughput &lt; 1Mbps (km)</h3>
         {/* NR41 DL table */}
         <CoverageTestTable tableData={NR41_DL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <img src="/NR41_DL_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
 
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR41- UL Throughput &lt; 1Mbps (km)</h3>
         {/* NR41 UL table */}
         <CoverageTestTable tableData={NR41_UL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <img src="/NR41_UL_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
 
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR41- Last MOS Before Silence (km)</h3>
         {/* NR41 MOS table */}
         <CoverageTestTable tableData={NR41_MOS.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <img src="/NR41_MOS_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
 
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR41- Audio Call Drop (km)</h3>
         {/* NR41 Audio table */}
         <CoverageTestTable tableData={NR41_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <img src="/NR41_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
 
         </div>
 
@@ -125,24 +137,29 @@ function CoverageDetails() {
         <h3>5G VoNR Coverage Test NR71- DL Throughput &lt; 1Mbps (km)</h3>
         {/* NR71 DL table */}
         <CoverageTestTable tableData={NR71_DL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <img src="/NR71_DL_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
 
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR71- UL Throughput &lt; 1Mbps (km)</h3>
         {/* NR71 UL table */}
         <CoverageTestTable tableData={NR71_UL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <img src="/NR71_UL_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
 
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR71- Last MOS Before Silence (km)</h3>
         {/* NR71 MOS table */}
         <CoverageTestTable tableData={NR71_MOS.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <img src="/NR71_MOS_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
 
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR71- Audio Call Drop (km)</h3>
         {/* NR71 Audio table */}
         <CoverageTestTable tableData={NR71_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
+        <img src="/NR71_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
+
         </div>
 
         <div className='page-content'>

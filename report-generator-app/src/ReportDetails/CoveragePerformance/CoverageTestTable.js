@@ -28,7 +28,7 @@ const CoverageTestTable = ({ tableData, status }) => {
                                 <td>{row.run3.toFixed(2)}</td>
                                 <td>{row.run4.toFixed(2)}</td>
                                 <td>{row.run5.toFixed(2)}</td>
-                                <td className={averageClassName}>{row.average}</td>
+                                <td className={averageClassName}>{row.average.toFixed(2)}</td>
                             </tr>
                         );
                     })}

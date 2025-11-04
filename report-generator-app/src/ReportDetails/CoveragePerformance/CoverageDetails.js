@@ -67,6 +67,7 @@ function CoverageDetails() {
 
 
 
+
   return (
     <div>
         <div className='page-content'>
@@ -159,14 +160,49 @@ function CoverageDetails() {
         {/* NR71 Audio table */}
         <CoverageTestTable tableData={NR71_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
         <img src="/NR71_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
-
         </div>
 
         <div className='page-content'>
-        <h2></h2>
+          <h2>4.2 5G n41 HPUE Coverage Test</h2>
+          <table className="device-info-table">
+                <thead>
+                    <tr>
+                        <th>Power Class</th>
+                        <th>Run1</th>
+                        <th>Run2</th>
+                        <th>Run3</th>
+                        <th>Run4</th>
+                        <th>Run5</th>
+                        <th>Average</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>Power Class 2</td>
+                        <td>2.34</td>
+                        <td>2.10</td>
+                        <td>2.32</td>
+                        <td>2.33</td>
+                        <td>2.31</td>
+                        <td>2.28</td>
+                    </tr>
+                    <tr >
+                        <td>Power Class 3</td>
+                        <td>2.39</td>
+                        <td>2.27</td>
+                        <td>1.98</td>
+                        <td>2.38</td>
+                        <td>2.33</td>
+                        <td>2.27</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
   );
 }
-
+const NR41_HPUE_Coverage = [
+    { device: 'Power Class 2', run1: 2.34, run2: 2.10, run3: 2.32, run4: 2.33, run5: 2.31, average: 2.28 },
+    { device: 'Power Class 3', run1: 2.39, run2: 2.27, run3: 1.98, run4: 2.38, run5: 2.33, average: 2.27 },
+];
 export default CoverageDetails;

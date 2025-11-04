@@ -1,6 +1,8 @@
 import React from 'react';
 import './CoverageSummaryTable.module.css';
 
+
+
 const summaryData = [
     {
         market: "Seattle",
@@ -8,28 +10,28 @@ const summaryData = [
             {
                 name: "Samsung XCover Pro 7(NR 25)",
                 kpis: [
-                    { name: "DL Throughput < 1Mbps", result: "" },
-                    { name: "UL Throughput < 1Mbps", result: "" },
-                    { name: "Last MOS Before Silence", result: "" },
-                    { name: "Audio Call Drop", result: "" },
+                    { name: "DL Throughput < 1Mbps", result: "Fail" },
+                    { name: "UL Throughput < 1Mbps", result: "Pass" },
+                    { name: "Last MOS Before Silence", result: "Fail" },
+                    { name: "Audio Call Drop", result: "Pass" },
                 ]
             },
             {
                 name: "Samsung XCover Pro 7(NR 41)",
                 kpis: [
-                    { name: "DL Throughput < 1Mbps", result: "" },
-                    { name: "UL Throughput < 1Mbps", result: "" },
-                    { name: "Last MOS Before Silence", result: "" },
-                    { name: "Audio Call Drop", result: "" },
+                    { name: "DL Throughput < 1Mbps", result: "Pass" },
+                    { name: "UL Throughput < 1Mbps", result: "Pass" },
+                    { name: "Last MOS Before Silence", result: "Pass" },
+                    { name: "Audio Call Drop", result: "Pass" },
                 ]
             },
             {
                 name: "Samsung XCover Pro 7(NR 71)",
                 kpis: [
-                    { name: "DL Throughput < 1Mbps", result: "" },
-                    { name: "UL Throughput < 1Mbps", result: "" },
-                    { name: "Last MOS Before Silence", result: "" },
-                    { name: "Audio Call Drop", result: "" },
+                    { name: "DL Throughput < 1Mbps", result: "Pass" },
+                    { name: "UL Throughput < 1Mbps", result: "Pass" },
+                    { name: "Last MOS Before Silence", result: "Pass" },
+                    { name: "Audio Call Drop", result: "Pass" },
                 ]
             }
 
@@ -65,7 +67,7 @@ const CoverageSummaryTable = () => {
                                     </td>
                                 )}
                                 <td>{kpiData.name}</td>
-                                <td className={kpiData.result === "green" ? "result-green" : "result-red"}></td>
+                                <td className={kpiData.result === "green" ? "" : ""}></td>
                             </tr>
                         ))
                     ))

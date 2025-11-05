@@ -27,11 +27,12 @@
   }
 
   @page:first {
+    counter-reset: page 0;
     @bottom-right {
       content: none; 
     }
   }
-
+ 
   .page-content {
     padding-top: 50px; /* Space for header */
     padding-left: 1in; /* Apply left margin as padding */

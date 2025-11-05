@@ -62,7 +62,6 @@ const dataPerformanceResults = {
     labels: ['DUT', 'REF'],
     datasets: [
       {
-        label: 'Min-Max Range',
         data: [
           [dutMin, dutMax],
           [refMin, refMax],
@@ -74,7 +73,6 @@ const dataPerformanceResults = {
         barThickness: 30 //調整柱狀圖粗細的地方
       },
       {
-        label: 'Mean',
         data: [dutMean, refMean],
         borderColor: ['rgba(255, 0, 0, 1)'],
         backgroundColor:['rgba(255, 0, 0, 1)'],
@@ -90,7 +88,42 @@ const dataPerformanceResults = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        display: true,
+        labels: {
+          generateLabels: function(chart) {
+            const datasets = chart.data.datasets;
+            const dutColor = datasets[0].backgroundColor[0];
+            const refColor = datasets[0].backgroundColor[1];
+            const meanColor = datasets[1].borderColor[0];
+
+            return [
+              {
+                text: 'DUT',
+                fillStyle: dutColor,
+                strokeStyle: datasets[0].borderColor[0],
+                lineWidth: datasets[0].borderWidth,
+                hidden: false,
+                index: 0
+              },
+              {
+                text: 'REF',
+                fillStyle: refColor,
+                strokeStyle: datasets[0].borderColor[1],
+                lineWidth: datasets[0].borderWidth,
+                hidden: false,
+                index: 1
+              },
+              {
+                text: 'Mean',
+                fillStyle: meanColor,
+                strokeStyle: meanColor,
+                lineWidth: datasets[1].borderWidth,
+                hidden: false,
+                index: 2
+              }
+            ];
+          }
+        }
       },
       title: {
         display: true,

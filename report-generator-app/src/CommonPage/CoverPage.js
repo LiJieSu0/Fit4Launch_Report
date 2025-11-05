@@ -35,7 +35,7 @@ const CoverPage = () => {
         </div>
       </div>
       <div className="footer-logos">
-        <img src="/CoverPagePic/other-logo.png" alt="other-logo" style={{ maxWidth: '70%', height: '70%' }} />
+        <img src="/CoverPagePic/other-logo.png" alt="other-logo" style={{ maxWidth: '50%', height: '50%' }} />
         <p className="footer-text">ATMCL One Stop Test Service</p>
       </div>
     </div>

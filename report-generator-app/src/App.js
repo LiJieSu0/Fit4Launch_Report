@@ -28,7 +28,8 @@ function App() {
     <div className="App">
       <CoverPage />
       
-      <ReportHeader />
+      {/* <ReportHeader /> */}
+
       <DeviceInfoPage/>
       <ContentsIndexPage />
 
@@ -49,7 +50,7 @@ function App() {
       <DpKpiPage />
 
       <AboutPage />
-      <ReportFooter />
+      {/* <ReportFooter /> */}
     </div>
   );
 }

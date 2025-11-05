@@ -19,7 +19,7 @@ const CoverPage = () => {
       <div className="report-details">
         <div className="detail-row">
           <span className="detail-label">DATE</span>
-          <span className="detail-value">October 30, 2025</span>
+          <span className="detail-value">{new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
         </div>
         <div className="detail-row">
           <span className="detail-label">VERSION</span>

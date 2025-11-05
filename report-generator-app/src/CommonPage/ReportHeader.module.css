@@ -71,6 +71,7 @@
     right: 0;
     padding: 3px 30px; /* Slightly reduced padding for print */
     margin-top: 5px;
+    margin-bottom: 6px;
     /* Removed border-bottom: none; to ensure the bottom line is visible */
     z-index: 1000; /* Ensure header is on top */
   }
@@ -101,4 +102,13 @@
   .logo {
     height: 35px;
   }
+  .bottomLine {
+  width: 80%; /* Shorten the line to 80% of the container width */
+  height: 5px; /* Thickness of the blue line */
+  background-color: rgb(37,90,167); 
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Center the line horizontally */
+  transform: translateX(-50%); /* Adjust for exact centering */
+}
 }

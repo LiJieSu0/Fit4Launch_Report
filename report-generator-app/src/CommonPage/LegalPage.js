@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './LegalPage.module.css';
 
 const LegalPage = () => {
   return (
@@ -24,7 +25,7 @@ const LegalPage = () => {
         ATMCL IMMEDIATELY. UNAUTHORIZED USE, DISCLOSURE, DISTRIBUTION, COPYING,
         PRINTING, OR RELIANCE ON THIS INFORMATION IS STRICTLY PROHIBITED.
       </p>
-        <img src="/LegalPage/infoPic.png" alt="legalPic" />
+        <img src="/LegalPage/infoPic.png" alt="legalPic" className={styles.legalImage} />
 
     </div>
   );

@@ -33,21 +33,20 @@ function App() {
       <ContentsIndexPage />
 
       {/* <CpSummaryPage />
-      <CallPerformanceDetails /> */}
-      {/* <CpKpiPage/> */}
+      <CallPerformanceDetails /> 
+      <CpKpiPage/>  */}
 
-      <VqSummaryPage />
+      {/* <VqSummaryPage />
       <VqDetailsPage />
-      <VqKpiPage/>
+      <VqKpiPage/> */}
       
       {/* <CoverageSummaryPage />
       <CoverageDetails />
       <CoverageKpiPage /> */}
 
-      
-      {/* <DpSummaryPage />
+      <DpSummaryPage />
+      <DpDetailsPage /> 
       <DpKpiPage />
-      <DpDetailsPage /> */}
 
       <AboutPage />
       <ReportFooter />

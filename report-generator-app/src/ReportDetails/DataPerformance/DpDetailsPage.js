@@ -12,6 +12,8 @@ import {
   LineElement, // Add LineElement
 } from 'chart.js';
 
+
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -65,17 +67,21 @@ const dataPerformanceResults = {
           [dutMin, dutMax],
           [refMin, refMax],
         ],
-        backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(153, 102, 255, 0.6)'],
+        backgroundColor: ['rgba(20, 218, 20, 0.6)', 'rgba(153, 102, 255, 0.6)'],
         borderColor: ['rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'],
         borderWidth: 1,
+        type:'bar',
+        barThickness: 30 //調整柱狀圖粗細的地方
       },
       {
         label: 'Mean',
         data: [dutMean, refMean],
-        type: 'scatter',
-        backgroundColor: ['red', 'blue'],
-        pointRadius: 5,
+        borderColor: ['rgba(255, 0, 0, 1)'],
+        backgroundColor:['rgba(255, 0, 0, 1)'],
+        type: 'line',
+        pointRadius: 20,
         showLine: false,
+        pointStyle:'cross'
       },
     ],
   };

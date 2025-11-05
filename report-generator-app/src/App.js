@@ -2,8 +2,10 @@ import './StyleScript/Restricted_Report_Style.css';
 import CoverPage from './CommonPage/CoverPage';
 import AboutPage from './CommonPage/AboutPage';
 import ContentsIndexPage from './CommonPage/ContentsIndexPage';
-
 import DeviceInfoPage from './CommonPage/DeviceInfoPage';
+import LegalPage from './CommonPage/LegalPage';
+
+
 import ReportHeader from './CommonPage/ReportHeader';
 import ReportFooter from './CommonPage/ReportFooter';
 
@@ -26,6 +28,7 @@ import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
 function App() {
   return (
     <div className="App">
+      <LegalPage/>
       <CoverPage />
       
       {/* <ReportHeader /> */}

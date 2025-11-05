@@ -14,7 +14,8 @@
 
   /* Set page margins for printing */
   @page {
-    margin: 0.8in 1in 0.8in 1in; /* Top, Right, Bottom, Left - Ensures 1in left/right margin */
+      counter-increment: page;
+      margin: 0.8in 1in 0.8in 1in; /* Top, Right, Bottom, Left - Ensures 1in left/right margin */
       @bottom-right {
       content: "Page " counter(page) ""; /* Display page numbers, aligned right */
       font-size: 15px;
@@ -24,13 +25,18 @@
       margin-right: 40px; /* Adjust margin for the page number */
     }
   }
-  
+
+  @page:first {
+    @bottom-right {
+      content: none; 
+    }
+  }
+
   .page-content {
     padding-top: 50px; /* Space for header */
     padding-left: 1in; /* Apply left margin as padding */
     padding-right: 1in; /* Apply right margin as padding */
     page-break-after: always;
-
   }
 
   /* Ensure content breaks correctly across pages */

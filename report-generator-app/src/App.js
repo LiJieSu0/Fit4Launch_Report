@@ -20,30 +20,36 @@ import CoverageDetails from './ReportDetails/CoveragePerformance/CoverageDetails
 import CoverageKpiPage from './ReportDetails/CoveragePerformance/CoverageKpiPage';
 
 import DpKpiPage from './ReportDetails/DataPerformance/DpKpiPage';
+import DpSummaryPage from './ReportDetails/DataPerformance/DpSummaryPage';
+import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
 
 function App() {
   return (
     <div className="App">
       <CoverPage />
       {/* The ReportHeader will be displayed on all pages except the CoverPage */}
-      {/* <ReportHeader /> */}
-      {/* <DeviceInfoPage/>
-      <ContentsIndexPage /> */}
+      <ReportHeader />
+      <DeviceInfoPage/>
+      <ContentsIndexPage />
 
       {/* <CpSummaryPage />
       <CallPerformanceDetails /> */}
-      <CpKpiPage/>
+      {/* <CpKpiPage/> */}
 
-      {/* <VqSummaryPage />
-      <VqDetailsPage /> */}
+      <VqSummaryPage />
+      <VqDetailsPage />
       <VqKpiPage/>
       
-      <CoverageSummaryPage />
+      {/* <CoverageSummaryPage />
       <CoverageDetails />
-      <CoverageKpiPage />
+      <CoverageKpiPage /> */}
+      {/* 
+      <DpSummaryPage />
+      <DpKpiPage />
+      <DpDetailsPage /> */}
 
       <AboutPage />
-      {/* <ReportFooter /> */}
+      <ReportFooter />
     </div>
   );
 }

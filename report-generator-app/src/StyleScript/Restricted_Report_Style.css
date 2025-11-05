@@ -17,14 +17,14 @@
     margin: 0.8in 1in 0.8in 1in; /* Top, Right, Bottom, Left - Ensures 1in left/right margin */
       @bottom-right {
       content: "Page " counter(page) ""; /* Display page numbers, aligned right */
-      font-size: 10px;
-      color: #555;
+      font-size: 15px;
+      color: #000000;
       line-height: 1;
-      margin-top: -30px;
-      margin-right: 20px; /* Adjust margin for the page number */
+      margin-top: -25px;
+      margin-right: 40px; /* Adjust margin for the page number */
     }
   }
-
+  
   .page-content {
     padding-top: 50px; /* Space for header */
     padding-left: 1in; /* Apply left margin as padding */

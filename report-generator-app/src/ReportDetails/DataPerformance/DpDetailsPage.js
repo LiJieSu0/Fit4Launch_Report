@@ -11,7 +11,7 @@ import {
   PointElement,
   LineElement, // Add LineElement
 } from 'chart.js';
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 
 ChartJS.register(
@@ -22,7 +22,8 @@ ChartJS.register(
   Tooltip,
   Legend,
   PointElement,
-  LineElement // Register LineElement
+  LineElement, // Register LineElement
+  ChartDataLabels // Register datalabels plugin
 );
 
 function DpDetailsPage() {
@@ -67,7 +68,7 @@ const dataPerformanceResults = {
           [refMin, refMax],
         ],
         backgroundColor: ['rgba(20, 218, 20, 0.6)', 'rgba(153, 102, 255, 0.6)'],
-        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'],
+        borderColor: ['rgba(20, 218, 20, 0.6)', 'rgba(153, 102, 255, 0.6)'],
         borderWidth: 1,
         type:'bar',
         barThickness: 30 //調整柱狀圖粗細的地方
@@ -129,6 +130,47 @@ const dataPerformanceResults = {
         display: true,
         text: 'TPUT Performance (Min-Max with Mean)',
       },
+      datalabels: {
+        color: 'black',
+        font: {
+          weight: 'bold'
+        },
+        labels: {
+          min: {
+            align: 'end', // Aligns to the right of the bar
+            anchor: 'start', // Positions at the start (bottom) of the bar
+            offset: -20,
+            formatter: function(value, context) {
+              if (context.dataset.type === 'bar') {
+                return value[0].toFixed(2); // Min value
+              }
+              return null; // Hide for other datasets
+            }
+          },
+          max: {
+            align: 'end', // Aligns to the right of the bar
+            anchor: 'end', // Positions at the end (top) of the bar
+            offset: 5,
+            formatter: function(value, context) {
+              if (context.dataset.type === 'bar') {
+                return value[1].toFixed(2); // Max value
+              }
+              return null; // Hide for other datasets
+            }
+          },
+          mean: {
+            align: 'right', // Aligns to the right of the point
+            anchor: 'center', // Centers vertically with the point
+            offset:20, // Offset from the point
+            formatter: function(value, context) {
+              if (context.dataset.type === 'line') {
+                return value.toFixed(2); // Mean value
+              }
+              return null; // Hide for other datasets
+            }
+          }
+        }
+      }
     },
     scales: {
       y: {

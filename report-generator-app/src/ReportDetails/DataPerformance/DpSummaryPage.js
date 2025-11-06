@@ -56,16 +56,24 @@ function DpSummaryPage() {
     rows: [
       {
         cells: [
-          { label: "Data Throughput Average" },
-          { label: "Seattle (5G NR)" },
+          { label: "Mean Throughput" },
+          { label: "Seattle (5G NR)", rowSpan: 3 },
           {label:'Result',className:'average-fail',link:'#'},
           {label:'Result',className:'average-fail',link:'#'}
         ],
       },
       {
         cells: [
-          { label: "Error Ratio Average" },
-          { label: "Seattle (5G NR)"},
+          { label: "Mean Jitter" },
+          null, // Placeholder for the merged 'Market' cell
+          { label: "Result", className: "average-fail", link: "#" },
+          { label: "Result", className: "average-fail", link: "#" },
+        ],
+      },
+      {
+        cells: [
+          { label: "Packet Failure Rate (%)" },
+          null, // Placeholder for the merged 'Market' cell
           { label: "Result", className: "average-fail", link: "#" },
           { label: "Result", className: "average-fail", link: "#" },
         ],

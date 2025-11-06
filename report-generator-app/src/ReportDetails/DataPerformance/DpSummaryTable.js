@@ -23,9 +23,16 @@ function DpSummaryTable({ tableData }) {
           {tableData.rows.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {row.cells.map((cell, cellIndex) => (
-                <td key={cellIndex} className={cell.className}>
-                  {cell.link ? <a href={cell.link}>{cell.label}</a> : cell.label}
-                </td>
+                cell === null ? null : (
+                  <td
+                    key={cellIndex}
+                    className={cell.className}
+                    rowSpan={cell.rowSpan || 1}
+                    colSpan={cell.colSpan || 1}
+                  >
+                    {cell.link ? <a href={cell.link}>{cell.label}</a> : cell.label}
+                  </td>
+                )
               ))}
             </tr>
           ))}

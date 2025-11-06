@@ -1,0 +1,512 @@
+{
+    "Good":{
+         "UDP Download Task at 200 Mbps for 10 seconds": {
+            "dut_5G auto_UDP DL 200M 10sec_Good": {
+                "Device Type": "DUT",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 185.80255000000002,
+                    "Standard Deviation": 1.9083581952209734,
+                    "Minimum": 181.87688888888889,
+                    "Maximum": 189.73055555555553,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.068015
+                },
+                "Error Ratio": {
+                    "Mean": 8.327370515
+                }
+            },
+            "ref_5G auto_UDP DL 200M 10sec_Good": {
+                "Device Type": "REF",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 185.00699375,
+                    "Standard Deviation": 4.231471478853403,
+                    "Minimum": 176.01544444444443,
+                    "Maximum": 191.45822222222222,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.071065
+                },
+                "Error Ratio": {
+                    "Mean": 8.214285895
+                }
+            }
+        },
+        "UDP Download Task at 400 Mbps for 10 seconds": {
+            "dut_5G auto_UDP DL 400M 10sec_Good": {
+                "Device Type": "DUT",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 216.9148555555556,
+                    "Standard Deviation": 8.165432273110689,
+                    "Minimum": 203.81533333333334,
+                    "Maximum": 234.43166666666664,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.062775
+                },
+                "Error Ratio": {
+                    "Mean": 45.43014160999999
+                }
+            },
+            "ref_5G auto_UDP DL 400M 10sec_Good": {
+                "Device Type": "REF",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 228.49895555555548,
+                    "Standard Deviation": 12.757458395286747,
+                    "Minimum": 196.17355555555557,
+                    "Maximum": 247.84266666666664,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.07609500000000001
+                },
+                "Error Ratio": {
+                    "Mean": 41.063454275000005
+                }
+            }
+        },
+        "UDP Upload Task at 10 Mbps for 10 seconds": {
+            "_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test": {
+                "Device Type": "DUT",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 9.536111363636364,
+                    "Standard Deviation": 0.28398229032253647,
+                    "Minimum": 9.152545454545454,
+                    "Maximum": 10.0907,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 1.6668500000000002
+                },
+                "Error Ratio": {
+                    "Mean": 0.0
+                }
+            },
+            "_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test": {
+                "Device Type": "REF",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 9.94710090909091,
+                    "Standard Deviation": 0.35046175593647255,
+                    "Minimum": 9.416818181818183,
+                    "Maximum": 10.6024,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 1.8633
+                },
+                "Error Ratio": {
+                    "Mean": 0.0
+                }
+            }
+        },
+        "UDP Upload Task at 20 Mbps for 10 seconds": {
+            "_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test": {
+                "Device Type": "DUT",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 19.038942045454544,
+                    "Standard Deviation": 0.7013589659038122,
+                    "Minimum": 16.91725,
+                    "Maximum": 19.9531,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.9315000000000001
+                },
+                "Error Ratio": {
+                    "Mean": 0.0
+                }
+            },
+            "_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test": {
+                "Device Type": "REF",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 19.303273636363638,
+                    "Standard Deviation": 0.7343656259273809,
+                    "Minimum": 17.705090909090913,
+                    "Maximum": 20.281909090909092,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.9259499999999999
+                },
+                "Error Ratio": {
+                    "Mean": 0.0037983500000000003
+                }
+            }
+        }
+    },
+    "Moderate":{
+        "UDP Download Task at 200 Mbps for 10 seconds": {
+            "dut_5G auto_UDP Download Task at 200 Mbps for 10": {
+                "Device Type": "DUT",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 72.64230208333332,
+                    "Standard Deviation": 65.02118698744317,
+                    "Minimum": 5.021333333333334,
+                    "Maximum": 192.45911111111113,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 1.716045
+                },
+                "Error Ratio": {
+                    "Mean": 60.484747005
+                }
+            },
+            "ref_5G auto_UDP Download Task at 200 Mbps for 10": {
+                "Device Type": "REF",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 49.64996666666667,
+                    "Standard Deviation": 52.698597361185875,
+                    "Minimum": 6.745666666666668,
+                    "Maximum": 161.23455555555554,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 1.987665
+                },
+                "Error Ratio": {
+                    "Mean": 72.389166415
+                }
+            }
+        },
+        "UDP Download Task at 400 Mbps for 10 seconds": {
+            "dut_5G auto_UDP Download Task at 400 Mbps for 10 seconds": {
+                "Device Type": "DUT",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 70.82517222222222,
+                    "Standard Deviation": 62.44274798020708,
+                    "Minimum": 6.454222222222223,
+                    "Maximum": 225.93344444444443,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 1.7299200000000001
+                },
+                "Error Ratio": {
+                    "Mean": 77.380210715
+                }
+            },
+            "ref_5G auto_UDP Download Task at 400 Mbps for 10 seconds": {
+                "Device Type": "REF",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 75.84126666666667,
+                    "Standard Deviation": 56.621851762955856,
+                    "Minimum": 11.353777777777777,
+                    "Maximum": 183.90911111111112,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 12.903820000000001
+                },
+                "Error Ratio": {
+                    "Mean": 75.87847049
+                }
+            }
+        },
+        "UDP Upload Task at 10 Mbps for 10 seconds": {
+            "_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_": {
+                "Device Type": "DUT",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 7.320542727272725,
+                    "Standard Deviation": 3.8609895552265496,
+                    "Minimum": 0.6892727272727274,
+                    "Maximum": 10.8777,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 5.9156
+                },
+                "Error Ratio": {
+                    "Mean": 19.882063849999998
+                }
+            },
+            "_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_": {
+                "Device Type": "REF",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 4.2577,
+                    "Standard Deviation": 4.010502210868869,
+                    "Minimum": 0.058545454545454546,
+                    "Maximum": 10.4286,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 28.07985
+                },
+                "Error Ratio": {
+                    "Mean": 58.58955895000001
+                }
+            }
+        },
+        "UDP Upload Task at 20 Mbps for 10 seconds": {
+            "DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec": {
+                "Device Type": "DUT",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 3.749934090909092,
+                    "Standard Deviation": 4.745639492882497,
+                    "Minimum": 0.612909090909091,
+                    "Maximum": 15.908999999999997,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 17.481599999999997
+                },
+                "Error Ratio": {
+                    "Mean": 56.80739755
+                }
+            },
+            "REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec": {
+                "Device Type": "REF",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 2.4123346212121204,
+                    "Standard Deviation": 4.874638557082958,
+                    "Minimum": 0.021,
+                    "Maximum": 18.023727272727275,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 26.832136363636366
+                },
+                "Error Ratio": {
+                    "Mean": 86.14968665
+                }
+            }
+        }
+    },
+    "Poor":{
+        "UDP Download Task at 200 Mbps for 10 seconds": {
+            "dut_5G auto_UDP Download Task at 200 Mbps for 10 seconds_Poor Coverage_DA Test": {
+                "Device Type": "DUT",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 188.42239999999998,
+                    "Standard Deviation": 5.691944930069122,
+                    "Minimum": 182.29744444444447,
+                    "Maximum": 209.27744444444443,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.06282499999999999
+                },
+                "Error Ratio": {
+                    "Mean": 7.47086284
+                }
+            },
+            "ref_5G auto_UDP Download Task at 200 Mbps for 10 seconds_Poor Coverage_DA Test": {
+                "Device Type": "REF",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 173.89087222222224,
+                    "Standard Deviation": 16.724834269555167,
+                    "Minimum": 132.47522222222221,
+                    "Maximum": 192.92522222222223,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.0968
+                },
+                "Error Ratio": {
+                    "Mean": 13.52273522
+                }
+            }
+        },
+        "UDP Download Task at 400 Mbps for 10 seconds": {
+            "dut_5G auto_UDP Download Task at 400 Mbps for 10 seconds_Poor Coverage_DA Test": {
+                "Device Type": "DUT",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 234.95729444444447,
+                    "Standard Deviation": 22.239296748236164,
+                    "Minimum": 184.02588888888891,
+                    "Maximum": 288.7584444444444,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.05829000000000001
+                },
+                "Error Ratio": {
+                    "Mean": 28.245709800000004
+                }
+            },
+            "ref_5G auto_UDP Download Task at 400 Mbps for 10 seconds_Poor Coverage_DA Test": {
+                "Device Type": "REF",
+                "Analysis Direction": "DL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 192.23194166666664,
+                    "Standard Deviation": 22.49628745424456,
+                    "Minimum": 157.75244444444445,
+                    "Maximum": 223.38388888888892,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.15036
+                },
+                "Error Ratio": {
+                    "Mean": 44.972531939999996
+                }
+            }
+        },
+        "UDP Upload Task at 10 Mbps for 10 seconds": {
+            "_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test": {
+                "Device Type": "DUT",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 10.019177272727273,
+                    "Standard Deviation": 0.8459427487525556,
+                    "Minimum": 7.925272727272727,
+                    "Maximum": 10.852,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 1.5752499999999998
+                },
+                "Error Ratio": {
+                    "Mean": 0.0121584
+                }
+            },
+            "_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test": {
+                "Device Type": "REF",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 8.757004999999998,
+                    "Standard Deviation": 1.2390407505020735,
+                    "Minimum": 5.902727272727272,
+                    "Maximum": 10.5041,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 1.66735
+                },
+                "Error Ratio": {
+                    "Mean": 11.5288995
+                }
+            }
+        },
+        "UDP Upload Task at 20 Mbps for 10 seconds": {
+            "DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test": {
+                "Device Type": "DUT",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 18.11732681818182,
+                    "Standard Deviation": 2.0261394695545465,
+                    "Minimum": 12.462,
+                    "Maximum": 20.4698,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.6757
+                },
+                "Error Ratio": {
+                    "Mean": 0.0
+                }
+            },
+            "REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test": {
+                "Device Type": "REF",
+                "Analysis Direction": "UL",
+                "Protocol Type": "UDP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 17.839170454545453,
+                    "Standard Deviation": 2.8393953630325806,
+                    "Minimum": 11.906727272727272,
+                    "Maximum": 20.7847,
+                    "Number of Intervals": 20
+                },
+                "Jitter": {
+                    "Mean": 0.8088000000000001
+                },
+                "Error Ratio": {
+                    "Mean": 12.42561985
+                }
+            }
+        }
+    }
+}

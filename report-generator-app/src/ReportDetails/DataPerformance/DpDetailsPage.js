@@ -32,9 +32,6 @@ function DpDetailsPage() {
       {/* single stream ul overall table */}
 
 
-
-
-
       </div>
       <div className='page-content'>
       <h2>HTTP Multi Stream test - 5G NR</h2>

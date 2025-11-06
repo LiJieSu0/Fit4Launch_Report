@@ -1,0 +1,86 @@
+{
+    "Statonary Good":{
+        "25x64 bytes PING": {
+            "_CH01_TMO-dut_5G auto_25x64 bytes PING (ICMP)_Good Coverage_DA Test": {
+                "Device Type": "DUT",
+                "Protocol Type": "PING",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Ping RTT": {
+                    "min": 33.0,
+                    "max": 247.0,
+                    "avg": 54.758,
+                    "std_dev": 20.119966752563197
+                }
+            },
+            "_CH02_TMO-ref_5G auto_25x64 bytes PING (ICMP)_Good Coverage_DA Test": {
+                "Device Type": "REF",
+                "Protocol Type": "PING",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Ping RTT": {
+                    "min": 29.0,
+                    "max": 433.0,
+                    "avg": 42.744,
+                    "std_dev": 29.2929790434924
+                }
+            }
+        }
+    },
+    "Statonary Moderate":{
+        "25x64 bytes PING": {
+            "_CH01_TMO_5G auto_25x64 bytes PING_DUT_": {
+                "Device Type": "DUT",
+                "Protocol Type": "PING",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Ping RTT": {
+                    "min": 35.0,
+                    "max": 308.0,
+                    "avg": 87.1,
+                    "std_dev": 45.42678930292945
+                }
+            },
+            "_CH02_TMO_5G auto_25x64 bytes PING_REF_": {
+                "Device Type": "REF",
+                "Protocol Type": "PING",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Ping RTT": {
+                    "min": 30.0,
+                    "max": 642.0,
+                    "avg": 56.484,
+                    "std_dev": 50.5930138467773
+                }
+            }
+        }
+    },
+    "Statonary Poor":{
+        "25x64 bytes PING": {
+            "dut_5g auto_25x64 bytes PING (ICMP)_poor Coverage_DA Test": {
+                "Device Type": "DUT",
+                "Protocol Type": "PING",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Ping RTT": {
+                    "min": 35.0,
+                    "max": 357.0,
+                    "avg": 55.118,
+                    "std_dev": 25.52118213318008
+                }
+            },
+            "ref_5g auto_25x64 bytes PING (ICMP)_poor Coverage_DA Test": {
+                "Device Type": "REF",
+                "Protocol Type": "PING",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Ping RTT": {
+                    "min": 30.0,
+                    "max": 319.0,
+                    "avg": 41.1,
+                    "std_dev": 25.560921764343433
+                }
+            }
+        }
+    }    
+}

@@ -48,7 +48,7 @@ function DpSummaryPage() {
 
   const udpData = {
     headers: [
-      { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
+      { label: "UDP test", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -57,7 +57,7 @@ function DpSummaryPage() {
       {
         cells: [
           { label: "Data Throughput Average" },
-          { label: "Seattle (5G NR)" },
+          { label: "Seattle (5G NR)",rowSpan:3 },
           {label:'Result',className:'average-fail',link:'#'},
           {label:'Result',className:'average-fail',link:'#'}
         ],
@@ -201,7 +201,7 @@ function DpSummaryPage() {
   return (
     <div>
       <h2>Data Performance Summary Page</h2>
-      <DpSummaryTable tableData={httpMSData} />
+      <DpSummaryTable tableData={udpData} />
     </div>
   );
 }

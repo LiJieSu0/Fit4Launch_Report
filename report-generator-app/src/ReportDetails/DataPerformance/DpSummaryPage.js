@@ -83,7 +83,7 @@ function DpSummaryPage() {
 
   const pingData = {
     headers: [
-      { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
+      { label: "Ping Test", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -91,7 +91,7 @@ function DpSummaryPage() {
     rows: [
       {
         cells: [
-          { label: "Data Throughput Average" },
+          { label: "Mean Round Trip Time(ms)" },
           { label: "Seattle (5G NR)" },
           {label:'Result',className:'average-fail',link:'#'},
           {label:'Result',className:'average-fail',link:'#'}
@@ -102,7 +102,7 @@ function DpSummaryPage() {
 
   const webBrowserData = {
     headers: [
-      { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
+      { label: "Web Browser", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -110,7 +110,7 @@ function DpSummaryPage() {
     rows: [
       {
         cells: [
-          { label: "Data Throughput Average" },
+          { label: "Average Page LoadTime (s)" },
           { label: "Seattle (5G NR)" },
           {label:'Result',className:'average-fail',link:'#'},
           {label:'Result',className:'average-fail',link:'#'}
@@ -121,7 +121,7 @@ function DpSummaryPage() {
 
   const playStoreData = {
     headers: [
-      { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
+      { label: "Play Store", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -129,7 +129,7 @@ function DpSummaryPage() {
     rows: [
       {
         cells: [
-          { label: "Data Throughput Average" },
+          { label: "Mean Throughput" },
           { label: "Seattle (5G NR)" },
           {label:'Result',className:'average-fail',link:'#'},
           {label:'Result',className:'average-fail',link:'#'}
@@ -138,9 +138,10 @@ function DpSummaryPage() {
     ],
   };
 
+
   const mhsStationaryData = {
     headers: [
-      { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
+      { label: "Mobile hot spot Test", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -159,7 +160,7 @@ function DpSummaryPage() {
 
   const mobiltyData = {
     headers: [
-      { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
+      { label: "5G Auto Data Test Drive", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -178,7 +179,7 @@ function DpSummaryPage() {
 
   const mobiltyMHSData = {
     headers: [
-      { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
+      { label: "5G Auto Data Test MHS Drive", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -197,7 +198,7 @@ function DpSummaryPage() {
 
   const mrabData = {
     headers: [
-      { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
+      { label: "VoNR MRAB Stationary Test", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },

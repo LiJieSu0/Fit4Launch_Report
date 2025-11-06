@@ -57,9 +57,17 @@ function DpSummaryPage() {
       {
         cells: [
           { label: "Data Throughput Average" },
-          { label: "Seattle (5G NR)",rowSpan:3 },
+          { label: "Seattle (5G NR)" },
           {label:'Result',className:'average-fail',link:'#'},
           {label:'Result',className:'average-fail',link:'#'}
+        ],
+      },
+      {
+        cells: [
+          { label: "Error Ratio Average" },
+          { label: "Seattle (5G NR)"},
+          { label: "Result", className: "average-fail", link: "#" },
+          { label: "Result", className: "average-fail", link: "#" },
         ],
       },
     ],

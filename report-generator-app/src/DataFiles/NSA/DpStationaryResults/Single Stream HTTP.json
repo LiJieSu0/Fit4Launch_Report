@@ -1,0 +1,126 @@
+{
+    "Moderate":{
+        "Single Stream HTTP Download for 60 seconds": {
+                    "DUT_Single Stream HTTP Download for 60 seconds": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 56.61945986250661,
+                            "Standard Deviation": 10.833482089403557,
+                            "Minimum": 35.159147540983604,
+                            "Maximum": 77.20177049180326,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "REF Single Stream HTTP Download for 60 seconds": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 39.232057218402964,
+                            "Standard Deviation": 10.594259674258044,
+                            "Minimum": 20.953790322580648,
+                            "Maximum": 56.43808064516129,
+                            "Number of Intervals": 20
+                        }
+                    }
+        },
+        "5G NSA_Single Stream HTTP Upload of a 15 MB file": {
+            "_20250925_125722_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test": {
+                "Device Type": "DUT",
+                "Analysis Direction": "UL",
+                "Protocol Type": "HTTP",
+                "Network Type": "5G NSA",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 4.711623814910937,
+                    "Standard Deviation": 2.1810320792614832,
+                    "Minimum": 1.9333125,
+                    "Maximum": 10.275363636363636,
+                    "Number of Intervals": 20
+                }
+            },
+            "_20250925_125722_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test": {
+                "Device Type": "REF",
+                "Analysis Direction": "UL",
+                "Protocol Type": "HTTP",
+                "Network Type": "5G NSA",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 11.59798779339526,
+                    "Standard Deviation": 11.056164603474176,
+                    "Minimum": 1.9474107142857144,
+                    "Maximum": 34.603,
+                    "Number of Intervals": 20
+                }
+            }
+        }
+    },
+    "Poor":{
+        "Single Stream HTTP Download for 60 seconds": {
+                    "DUT HTTP DL": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 94.30404754170641,
+                            "Standard Deviation": 35.30848759188792,
+                            "Minimum": 47.43052542372881,
+                            "Maximum": 183.57752542372884,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "REF HTTP DL": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 67.68630805084744,
+                            "Standard Deviation": 25.29311124686699,
+                            "Minimum": 20.272728813559322,
+                            "Maximum": 114.59815254237289,
+                            "Number of Intervals": 20
+                        }
+                    }
+            },
+        "Single Stream HTTP Upload of a 15 MB file": {
+                    "_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 43.687641666666664,
+                            "Standard Deviation": 7.842511804724099,
+                            "Minimum": 29.709999999999997,
+                            "Maximum": 68.157,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 27.70956,
+                            "Standard Deviation": 7.450811316821231,
+                            "Minimum": 19.398750000000003,
+                            "Maximum": 46.137,
+                            "Number of Intervals": 20
+                        }
+                    }
+        }
+    }
+}

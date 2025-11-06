@@ -61,7 +61,9 @@ function DpDetailsPage() {
       <h2>VoNR MRAB Stationary test - 5G NR</h2>
       </div>
       {/* <DpRangeChart dataPerformanceResults={dataPerformanceResults} /> */}
-
+      <div className='page-content'>
+      <h2>Test drive- 5G NSA</h2>
+      </div>
 
     </div>
   );

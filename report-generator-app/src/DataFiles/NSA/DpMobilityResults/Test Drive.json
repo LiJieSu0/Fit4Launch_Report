@@ -1,0 +1,54 @@
+{
+    "UDP DL DUT1_Data Test Drive": {
+        "Device Type": "DUT",
+        "Analysis Direction": "DL",
+        "Protocol Type": "UDP",
+        "Network Type": "5G NSA",
+        "Analysis Type": "data_performance",
+        "Throughput": {
+            "Mean": 9.951026966292137,
+            "Standard Deviation": 0.21546989846233708,
+            "Minimum": 9.035617977528089,
+            "Maximum": 10.001426966292136,
+            "Number of Intervals": 20
+        },
+        "Jitter": {
+            "Mean": 1.6926885964912284
+        },
+        "Error Ratio": {
+            "Mean": 1.0425411406088754
+        },
+        "Ping RTT": {
+            "min": 38.0,
+            "max": 1052.0,
+            "avg": 115.558,
+            "std_dev": 70.44666138434384
+        }
+    },
+    "UDP DL REF1_Data Test Drive": {
+        "Device Type": "REF",
+        "Analysis Direction": "DL",
+        "Protocol Type": "UDP",
+        "Network Type": "5G NSA",
+        "Analysis Type": "data_performance",
+        "Throughput": {
+            "Mean": 9.821292307201226,
+            "Standard Deviation": 0.726941977159767,
+            "Minimum": 6.7458426966292135,
+            "Maximum": 10.00158426966292,
+            "Number of Intervals": 20
+        },
+        "Jitter": {
+            "Mean": 1.474076367389061
+        },
+        "Error Ratio": {
+            "Mean": 1.1761252791537666
+        },
+        "Ping RTT": {
+            "min": 43.0,
+            "max": 788.0,
+            "avg": 148.088,
+            "std_dev": 106.62866218422886
+        }
+    }
+}

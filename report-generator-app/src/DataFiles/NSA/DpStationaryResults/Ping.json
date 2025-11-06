@@ -1,0 +1,58 @@
+{
+    "Moderate":{
+        "5G NSA_25x64 bytes PING_moderate": {
+                    "_20250911_150928_CH01_TMO_5G NSA_Ping_DUT_": {
+                        "Device Type": "DUT",
+                        "Protocol Type": "PING",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Ping RTT": {
+                            "min": 33.0,
+                            "max": 304.0,
+                            "avg": 53.806,
+                            "std_dev": 28.717900334098218
+                        }
+                    },
+                    "_20250911_150928_CH02_TMO_5G NSA_Ping_REF_": {
+                        "Device Type": "REF",
+                        "Protocol Type": "PING",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Ping RTT": {
+                            "min": 33.0,
+                            "max": 400.0,
+                            "avg": 81.33,
+                            "std_dev": 51.18982218948981
+                        }
+                    }
+        }
+    },
+    "Poor":{
+        "25x64 bytes PING (ICMP)": {
+                    "_CH01_TMO-dut_5G NSA_25x64 bytes PING (ICMP)_Poor Coverage_DA Test": {
+                        "Device Type": "DUT",
+                        "Protocol Type": "PING",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Ping RTT": {
+                            "min": 35.0,
+                            "max": 332.0,
+                            "avg": 52.524,
+                            "std_dev": 18.02562815940355
+                        }
+                    },
+                    "_CH02_TMO-ref_5G NSA_25x64 bytes PING (ICMP)_Poor Coverage_DA Test": {
+                        "Device Type": "REF",
+                        "Protocol Type": "PING",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Ping RTT": {
+                            "min": 30.0,
+                            "max": 372.0,
+                            "avg": 54.388,
+                            "std_dev": 23.42107062237327
+                        }
+                    }
+        }
+    }
+}

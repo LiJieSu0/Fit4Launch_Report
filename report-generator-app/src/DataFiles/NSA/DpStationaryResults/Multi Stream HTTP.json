@@ -1,0 +1,126 @@
+{
+    "Moderate":{
+        "Multi Stream HTTP Download for 30 seconds": {
+                    "DUT_Multi Stream HTTP Download for 30 seconds": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 159.02188064516127,
+                            "Standard Deviation": 60.68941490931925,
+                            "Minimum": 61.676,
+                            "Maximum": 283.99206451612906,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "REF_Multi Stream HTTP Download for 30 seconds": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 291.27367424395163,
+                            "Standard Deviation": 42.5379585338141,
+                            "Minimum": 200.74958064516127,
+                            "Maximum": 372.58315625,
+                            "Number of Intervals": 20
+                        }
+                    }
+        },
+        "5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate": {
+                    "DUT 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 5.049309828629033,
+                            "Standard Deviation": 1.5695539360653787,
+                            "Minimum": 2.040032258064516,
+                            "Maximum": 7.822870967741936,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "REF 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 2.7735384576612905,
+                            "Standard Deviation": 0.7482020453081405,
+                            "Minimum": 1.2200645161290324,
+                            "Maximum": 4.359096774193548,
+                            "Number of Intervals": 20
+                        }
+                    }
+        }
+    },
+    "Poor":{
+        "Multi Stream HTTP Download for 30 seconds": {
+                    "DUT HTTP DL": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 240.59770505747127,
+                            "Standard Deviation": 56.32617782006889,
+                            "Minimum": 72.3038275862069,
+                            "Maximum": 312.21820689655164,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "REF HTTP DL": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 259.0677482635468,
+                            "Standard Deviation": 68.32747915245668,
+                            "Minimum": 158.08989285714287,
+                            "Maximum": 385.36155172413794,
+                            "Number of Intervals": 20
+                        }
+                    }
+        },
+        "Multi Stream HTTP Upload for 30 seconds": {
+                    "_CH01_TMO-dut_5G NSA_Multi Stream HTTP Upload for 30 seconds_Poor Coverage_DA Test": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 20.380662356321842,
+                            "Standard Deviation": 8.464155975292769,
+                            "Minimum": 6.038862068965518,
+                            "Maximum": 30.009551724137932,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "_CH02_TMO-ref_5G NSA_UDP UMulti Stream HTTP Upload for 30 second_Poor Coverage_DA Test": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 8.907305110837438,
+                            "Standard Deviation": 4.254148024490208,
+                            "Minimum": 4.555586206896551,
+                            "Maximum": 20.06631034482758,
+                            "Number of Intervals": 20
+                        }
+                    }
+        }
+    }
+}

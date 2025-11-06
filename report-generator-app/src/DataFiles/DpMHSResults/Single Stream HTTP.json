@@ -1,0 +1,126 @@
+{
+    "Location1":{
+        "Single Stream HTTP Download for 60 seconds": {
+                    "DUT SS HTTP DL for 60 seconds": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 73.38943336707152,
+                            "Standard Deviation": 19.970619056599492,
+                            "Minimum": 44.46282051282051,
+                            "Maximum": 104.30647368421053,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "REF SS HTTP DL for 60 seconds": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 122.9390287258913,
+                            "Standard Deviation": 35.34889987770869,
+                            "Minimum": 59.2845,
+                            "Maximum": 172.22616949152544,
+                            "Number of Intervals": 20
+                        }
+                    }
+                },
+        "Single Stream HTTP Upload of a 15 MB file": {
+            "_20250915_115630_CH01_TMO-DUT_5G MHS_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test": {
+                "Device Type": "DUT",
+                "Analysis Direction": "UL",
+                "Protocol Type": "HTTP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 25.543153095238093,
+                    "Standard Deviation": 11.45763681965303,
+                    "Minimum": 7.34,
+                    "Maximum": 49.234,
+                    "Number of Intervals": 20
+                }
+            },
+            "_20250915_115630_CH02_TMO-Ref_5G MHS_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test": {
+                "Device Type": "REF",
+                "Analysis Direction": "UL",
+                "Protocol Type": "HTTP",
+                "Network Type": "5G",
+                "Analysis Type": "data_performance",
+                "Throughput": {
+                    "Mean": 23.586333333333336,
+                    "Standard Deviation": 9.088263298220282,
+                    "Minimum": 15.713,
+                    "Maximum": 31.457,
+                    "Number of Intervals": 4
+                }
+            }
+        }
+    },
+    "Location2":{
+        "Single Stream HTTP Download for 60 seconds": {
+                    "DUT SS HTTP DL 60S": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 47.21885208942139,
+                            "Standard Deviation": 23.879159662520188,
+                            "Minimum": 1.6937288135593218,
+                            "Maximum": 82.16994915254236,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "REF SS HTTP DL 60S": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 50.38782621274108,
+                            "Standard Deviation": 44.39121848653609,
+                            "Minimum": 4.642118644067796,
+                            "Maximum": 125.74556896551725,
+                            "Number of Intervals": 20
+                        }
+                    }
+        },
+        "Single Stream HTTP Upload of a 15 MB file": {
+                    "_20250918_124924_CH01_TMO-dut_5G Auto_Single Stream HTTP Upload of a 15 MB file_Moderate Coverage_DA Test": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 2.5919795574471656,
+                            "Standard Deviation": 1.699852144780323,
+                            "Minimum": 0.6700710059171597,
+                            "Maximum": 6.581388888888889,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "_20250918_124924_CH02_TMO-ref_5G Auto_Single Stream HTTP Upload of a 15 MB file_Moderate Coverage_DA Test": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 10.238630068265069,
+                            "Standard Deviation": 2.2773730151758165,
+                            "Minimum": 5.9422,
+                            "Maximum": 14.155750000000001,
+                            "Number of Intervals": 20
+                        }
+                    }
+        }
+    }
+}

@@ -1,0 +1,126 @@
+{
+    "Location1":{
+        "Multi Stream HTTP Download for 30 seconds": {
+                    "DUT MS HTTP DL for 30 seconds": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 264.9582622807017,
+                            "Standard Deviation": 47.50807546236636,
+                            "Minimum": 180.14142105263159,
+                            "Maximum": 336.29173684210525,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "REF MS HTTP DL for 30 seconds": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 283.1882022167488,
+                            "Standard Deviation": 62.4801383586827,
+                            "Minimum": 194.13310344827588,
+                            "Maximum": 390.9726206896552,
+                            "Number of Intervals": 20
+                        }
+                    }
+        },
+        "Multi Stream HTTP Upload for 30 seconds": {
+                    "_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 69.51450394736841,
+                            "Standard Deviation": 5.875756972125129,
+                            "Minimum": 56.97255555555556,
+                            "Maximum": 79.25273684210526,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 74.55829581280787,
+                            "Standard Deviation": 10.505292902328113,
+                            "Minimum": 57.7441724137931,
+                            "Maximum": 110.50310344827585,
+                            "Number of Intervals": 20
+                        }
+                    }
+        }
+    },
+    "Location2":{
+        "Multi Stream HTTP Download for 30 seconds": {
+                    "DUT MS HTTP DL 30s": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 94.1258902930403,
+                            "Standard Deviation": 47.92948075617321,
+                            "Minimum": 1.7502857142857144,
+                            "Maximum": 154.53657142857142,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "REF MS HTTP DL 30s": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 41.178872368637116,
+                            "Standard Deviation": 52.087891166287086,
+                            "Minimum": 1.3071724137931036,
+                            "Maximum": 153.25221428571427,
+                            "Number of Intervals": 20
+                        }
+                    }
+        },
+        "Multi Stream HTTP Upload for 30 seconds": {
+                    "DUT MS HTTP UL 30S": {
+                        "Device Type": "DUT",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 2.0086181818181816,
+                            "Standard Deviation": 0.8005280248463471,
+                            "Minimum": 1.0794117647058825,
+                            "Maximum": 3.423470588235294,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "REF MS HTTP UL 30S": {
+                        "Device Type": "REF",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "HTTP",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Throughput": {
+                            "Mean": 4.841287853037768,
+                            "Standard Deviation": 1.7360279306740187,
+                            "Minimum": 0.0,
+                            "Maximum": 5.8213793103448275,
+                            "Number of Intervals": 20
+                        }
+                    }
+        }
+    }
+}

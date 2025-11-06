@@ -218,7 +218,16 @@ function DpSummaryPage() {
   return (
     <div>
       <h2>Data Performance Summary Page</h2>
+      <DpSummaryTable tableData={httpSSData} />
+      <DpSummaryTable tableData={httpMSData} />
       <DpSummaryTable tableData={udpData} />
+      <DpSummaryTable tableData={pingData} />
+      <DpSummaryTable tableData={webBrowserData} />
+      <DpSummaryTable tableData={playStoreData} />
+      <DpSummaryTable tableData={mhsStationaryData} />
+      <DpSummaryTable tableData={mobiltyData} />
+      <DpSummaryTable tableData={mobiltyMHSData} />
+      <DpSummaryTable tableData={mrabData} />
     </div>
   );
 }

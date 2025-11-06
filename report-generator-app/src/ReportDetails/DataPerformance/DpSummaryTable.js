@@ -3,7 +3,7 @@ import '../../StyleScript/Restricted_Report_Style.css';
 
 function DpSummaryTable({ tableData }) {
   return (
-    <div className="page-content">
+    <div className="">
       <table className="device-info-table">
         <thead>
           <tr>

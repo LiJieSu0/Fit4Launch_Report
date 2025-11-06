@@ -28,6 +28,13 @@ function DpDetailsPage() {
       <h2>Data Performance Details Page</h2>
       <div className='page-content'>
       <h2>HTTP Single Stream test - 5G NR</h2>
+      {/* single stream dl overall table */}
+      {/* single stream ul overall table */}
+
+
+
+
+
       </div>
       <div className='page-content'>
       <h2>HTTP Multi Stream test - 5G NR</h2>

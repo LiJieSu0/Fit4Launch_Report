@@ -1,0 +1,52 @@
+{
+    "DUT MRAB": {
+        "Device Type": "DUT",
+        "Network Type": "5G",
+        "Analysis Type": "mrab_performance",
+        "MRAB Statistics": {
+            "Pre Call": {
+                "Mean": 4.882911111111111,
+                "Maximum": 24.7571,
+                "Minimum": 1.4072999999999998,
+                "Standard Deviation": 5.543084409159013
+            },
+            "In Call": {
+                "Mean": 3.2097527203065135,
+                "Maximum": 6.742133333333333,
+                "Minimum": 1.5989333333333335,
+                "Standard Deviation": 1.27981540795501
+            },
+            "Post Call": {
+                "Mean": 3.6976074074074075,
+                "Maximum": 7.0381,
+                "Minimum": 1.5766,
+                "Standard Deviation": 1.692325914605559
+            }
+        }
+    },
+    "REF MRAB": {
+        "Device Type": "REF",
+        "Network Type": "5G",
+        "Analysis Type": "mrab_performance",
+        "MRAB Statistics": {
+            "Pre Call": {
+                "Mean": 26.241174814814816,
+                "Maximum": 143.533,
+                "Minimum": 1.1616,
+                "Standard Deviation": 43.83573310127177
+            },
+            "In Call": {
+                "Mean": 5.224466896551723,
+                "Maximum": 21.51643333333333,
+                "Minimum": 1.1007931034482759,
+                "Standard Deviation": 4.92464495414153
+            },
+            "Post Call": {
+                "Mean": 20.76726518518518,
+                "Maximum": 104.6692,
+                "Minimum": 1.1988,
+                "Standard Deviation": 32.54592431994347
+            }
+        }
+    }
+}

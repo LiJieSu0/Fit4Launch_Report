@@ -1,0 +1,28 @@
+{
+    "_CH01_TMO-dut_5G auto_ETSI Kepler web page hosted on Spirent mediaserver_Good Coverage_DA Test": {
+        "Device Type": "DUT",
+        "Protocol Type": "WEB_PAGE",
+        "Network Type": "5G",
+        "Analysis Type": "data_performance",
+        "Web Page Load Time": {
+            "Mean": 0.80199,
+            "Standard Deviation": 0.2150639789702242,
+            "Minimum": 0.453,
+            "Maximum": 1.115,
+            "Number of Intervals": 100
+        }
+    },
+    "_CH02_TMO-ref_5G auto_ETSI Kepler web page hosted on Spirent mediaserver_Good Coverage_DA Test": {
+        "Device Type": "REF",
+        "Protocol Type": "WEB_PAGE",
+        "Network Type": "5G",
+        "Analysis Type": "data_performance",
+        "Web Page Load Time": {
+            "Mean": 0.8302700000000002,
+            "Standard Deviation": 0.3350953687558456,
+            "Minimum": 0.444,
+            "Maximum": 2.003,
+            "Number of Intervals": 100
+        }
+    }
+}

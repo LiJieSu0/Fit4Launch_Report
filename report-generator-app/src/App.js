@@ -30,7 +30,7 @@ function App() {
     <div className="App">
       <CoverPage />
       
-      {/* <ReportHeader /> */}
+      <ReportHeader />
 
       <DeviceInfoPage/>
       <ContentsIndexPage />
@@ -54,7 +54,7 @@ function App() {
       
       <LegalPage/>
       <AboutPage />
-      {/* <ReportFooter /> */}
+      <ReportFooter />
     </div>
   );
 }

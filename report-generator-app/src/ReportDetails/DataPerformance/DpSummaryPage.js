@@ -104,8 +104,7 @@ function DpSummaryPage() {
     headers: [
       { label: "Web Browser", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
-      { label: "Download", rowSpan: 1 },
-      { label: "Upload", rowSpan: 1 },
+      { label: "Kelper", rowSpan: 1 },
     ],
     rows: [
       {
@@ -113,7 +112,6 @@ function DpSummaryPage() {
           { label: "Average Page LoadTime (s)" },
           { label: "Seattle (5G NR)" },
           {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'}
         ],
       },
     ],
@@ -137,7 +135,6 @@ function DpSummaryPage() {
       },
     ],
   };
-
 
   const mhsStationaryData = {
     headers: [
@@ -216,18 +213,19 @@ function DpSummaryPage() {
   };
 
   return (
-    <div>
+    <div className='page-content'>
       <h2>Data Performance Summary Page</h2>
       <DpSummaryTable tableData={httpSSData} />
       <DpSummaryTable tableData={httpMSData} />
       <DpSummaryTable tableData={udpData} />
       <DpSummaryTable tableData={pingData} />
-      <DpSummaryTable tableData={webBrowserData} />
       <DpSummaryTable tableData={playStoreData} />
       <DpSummaryTable tableData={mhsStationaryData} />
       <DpSummaryTable tableData={mobiltyData} />
       <DpSummaryTable tableData={mobiltyMHSData} />
       <DpSummaryTable tableData={mrabData} />
+      <DpSummaryTable tableData={webBrowserData} />
+
     </div>
   );
 }

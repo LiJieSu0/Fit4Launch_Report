@@ -166,6 +166,24 @@
   border: 1px solid #000;
   padding: 8px;
   text-align: left;
+  /* Default width for cells, can be overridden by specific column styles */
+  width: auto;
+}
+
+/* Specific width for the first column (Test Name) */
+.device-info-table th:first-child,
+.device-info-table td:first-child {
+  width: 40%; /* Adjust as needed */
+}
+
+/* Specific widths for Market, Download, Upload columns */
+.device-info-table th:nth-child(2),
+.device-info-table td:nth-child(2),
+.device-info-table th:nth-child(3),
+.device-info-table td:nth-child(3),
+.device-info-table th:nth-child(4),
+.device-info-table td:nth-child(4) {
+  width: 20%; /* Distribute remaining 60% among 3 columns */
 }
 
 .device-info-table th {

@@ -213,19 +213,23 @@ function DpSummaryPage() {
   };
 
   return (
-    <div className='page-content'>
-      <h2>Data Performance Summary Page</h2>
-      <DpSummaryTable tableData={httpSSData} />
-      <DpSummaryTable tableData={httpMSData} />
-      <DpSummaryTable tableData={udpData} />
-      <DpSummaryTable tableData={pingData} />
-      <DpSummaryTable tableData={playStoreData} />
-      <DpSummaryTable tableData={mhsStationaryData} />
-      <DpSummaryTable tableData={mobiltyData} />
-      <DpSummaryTable tableData={mobiltyMHSData} />
-      <DpSummaryTable tableData={mrabData} />
-      <DpSummaryTable tableData={webBrowserData} />
-
+    <div>
+      <div className='page-content'>
+        <h2>Data Performance Summary Page</h2>
+        <DpSummaryTable tableData={httpSSData} />
+        <DpSummaryTable tableData={httpMSData} />
+        <DpSummaryTable tableData={udpData} />
+        <DpSummaryTable tableData={pingData} />
+        <DpSummaryTable tableData={playStoreData} />
+      </div>
+      <div className='page-content'>
+        <div style={{ marginBottom: 10 }}></div>
+        <DpSummaryTable tableData={mhsStationaryData} />
+        <DpSummaryTable tableData={mobiltyData} />
+        <DpSummaryTable tableData={mobiltyMHSData} />
+        <DpSummaryTable tableData={mrabData} />
+        <DpSummaryTable tableData={webBrowserData} />
+      </div>
     </div>
   );
 }

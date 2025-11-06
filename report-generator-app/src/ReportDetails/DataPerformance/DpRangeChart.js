@@ -58,7 +58,7 @@ function DpRangeChart({ dataPerformanceResults }) {
         type: 'line',
         pointRadius: 20,
         showLine: false,
-        pointStyle:'cross'
+        pointStyle:'dash',
       },
     ],
   };

@@ -28,7 +28,6 @@ import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
 function App() {
   return (
     <div className="App">
-      <LegalPage/>
       <CoverPage />
       
       {/* <ReportHeader /> */}
@@ -52,6 +51,8 @@ function App() {
       <DpDetailsPage /> 
       <DpKpiPage />
 
+      
+      <LegalPage/>
       <AboutPage />
       {/* <ReportFooter /> */}
     </div>

@@ -79,9 +79,9 @@ function DpDetailsTableLoc3() {
             <th rowSpan="2">Overall</th>
           </tr>
           <tr>
-            <th>Site 1</th>
-            <th>Site 2</th>
-            <th>Site 3</th>
+            <th>Good</th>
+            <th>Moderate</th>
+            <th>Poor</th>
           </tr>
         </thead>
         <tbody>

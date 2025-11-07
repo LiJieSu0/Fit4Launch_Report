@@ -1,9 +1,9 @@
 import React from 'react';
-import DpRangeChart from './DpRangeChart';
+import DpRangeChart from './Statoinary/Table/DpRangeChart';
 import '../../StyleScript/Restricted_Report_Style.css';
-import Dp_httpSS_Component from './Dp_httpSS_Component';
-import Dp_httpMS_Component from './Dp_httpMS_Component';
-import Dp_Udp_Component from './Dp_Udp_Component';
+import Dp_httpSS_Component from './Statoinary/Dp_httpSS_Component';
+import Dp_httpMS_Component from './Statoinary/Dp_httpMS_Component';
+import Dp_Udp_Component from './Statoinary/Dp_Udp_Component';
 
 function DpDetailsPage() {
   

@@ -1,6 +1,6 @@
 import React from 'react';
-import DpDetailsTableLoc3 from './DpDetailsTableLoc3';
-import httpSS_Stationary_DL_Data from '../../DataFiles/SA/DpStationaryResults/Single Stream HTTP.json';
+import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
+import httpSS_Stationary_DL_Data from '../../../DataFiles/SA/DpStationaryResults/Single Stream HTTP.json';
 
 function Dp_httpSS_Component() {
   const httpSS_Stationary_DL = {

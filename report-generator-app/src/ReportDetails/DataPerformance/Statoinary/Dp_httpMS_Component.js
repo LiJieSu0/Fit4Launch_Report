@@ -1,6 +1,7 @@
 import React from 'react';
-import DpDetailsTableLoc3 from './DpDetailsTableLoc3';
-import httpMS_Stationary_Data from '../../DataFiles/SA/DpStationaryResults/Multi Stream HTTP.json';
+import '../../../StyleScript/Restricted_Report_Style.css';
+import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
+import httpMS_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/Multi Stream HTTP.json';
 
 const Dp_httpMS_Component = () => {
     const httpMS_Stationary_DL = {

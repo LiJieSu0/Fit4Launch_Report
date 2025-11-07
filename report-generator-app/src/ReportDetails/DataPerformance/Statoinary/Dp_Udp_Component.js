@@ -1,7 +1,7 @@
 import React from 'react';
-import DpUdpTableLoc3 from './DpUdpTableLoc3';
-import udp_Stationary_Data from '../../DataFiles/SA/DpStationaryResults/UDP.json';
-import '../../StyleScript/Restricted_Report_Style.css';
+import DpUdpTableLoc3 from './Table/DpUdpTableLoc3';
+import udp_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/UDP.json';
+import '../../../StyleScript/Restricted_Report_Style.css';
 
 function Dp_Udp_Component() {
   const udp_Stationary_DL = [

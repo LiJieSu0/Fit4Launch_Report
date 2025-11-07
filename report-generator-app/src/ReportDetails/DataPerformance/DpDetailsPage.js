@@ -1,7 +1,7 @@
 import React from 'react';
 import DpRangeChart from './DpRangeChart';
 import '../../StyleScript/Restricted_Report_Style.css';
-import DpDetailsTableLoc3 from './DpDetailsTable';
+import DpDetailsTableLoc3 from './DpDetailsTableLoc3';
 
 function DpDetailsPage() {
   const dataPerformanceResults = {

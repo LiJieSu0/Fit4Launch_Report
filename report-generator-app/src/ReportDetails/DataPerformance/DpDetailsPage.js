@@ -4,6 +4,7 @@ import '../../StyleScript/Restricted_Report_Style.css';
 import Dp_httpSS_Component from './Statoinary/Dp_httpSS_Component';
 import Dp_httpMS_Component from './Statoinary/Dp_httpMS_Component';
 import Dp_Udp_Component from './Statoinary/Dp_Udp_Component';
+import Dp_Ping_Component from './Statoinary/Dp_Ping_Component';
 
 function DpDetailsPage() {
   
@@ -15,7 +16,7 @@ function DpDetailsPage() {
       <Dp_httpSS_Component />
       <Dp_httpMS_Component />
       <Dp_Udp_Component />
-
+      <Dp_Ping_Component/>
       <div className='page-content'>
       <h2>PING test - 5G NR</h2>
       </div>

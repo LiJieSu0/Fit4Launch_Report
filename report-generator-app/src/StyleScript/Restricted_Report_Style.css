@@ -142,6 +142,9 @@
   .div-margin-bottom{
     margin-bottom: 100px;
   }
+  .margin-top-for-header{
+   margin-top: 100px !important;
+}
 }
 
 :root{
@@ -154,6 +157,9 @@
 .back-to-top-print {
   display: none; /* Hide Back to Top link by default */
 }
+
+
+
 
 .device-info-table {
   width: 100%;

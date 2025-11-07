@@ -33,7 +33,7 @@ function DpUdpTable({ data, tableName }) {
   return (
     <div className="">
       <h3>{tableName}</h3>
-      <table className="device-info-table dp-details-table">
+      <table className="device-info-table udp-stationary-details-table">
         <thead>
           <tr>
             <th rowSpan="2">Metric</th>

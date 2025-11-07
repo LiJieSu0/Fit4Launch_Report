@@ -2,8 +2,10 @@ import React from 'react';
 import DpRangeChart from './DpRangeChart';
 import '../../StyleScript/Restricted_Report_Style.css';
 import DpDetailsTableLoc3 from './DpDetailsTableLoc3';
+import DpUdpTable from './DpUdpTable';
 import httpSS_Stationary_DL_Data from '../../DataFiles/SA/DpStationaryResults/Single Stream HTTP.json';
 import httpMS_Stationary_Data from '../../DataFiles/SA/DpStationaryResults/Multi Stream HTTP.json';
+import udp_Stationary_Data from '../../DataFiles/SA/DpStationaryResults/UDP.json';
 
 function DpDetailsPage() {
   const httpSS_Stationary_DL = {
@@ -85,6 +87,7 @@ function DpDetailsPage() {
       </div>
       <div className='page-content'>
       <h2>UDP test - 5G NR</h2>
+      <DpUdpTable data={udp_Stationary_Data} tableName="UDP Test" />
       </div>
       <div className='page-content'>
       <h2>PING test - 5G NR</h2>

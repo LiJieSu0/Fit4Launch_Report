@@ -5,7 +5,7 @@ function DpDetailsTable() {
   const tableData = [
     {
       category: "Average",
-      deviceName: "Reference(5G)",
+      deviceName: "DUT",
       overall: "",
       site1: "",
       site2: "",
@@ -13,7 +13,7 @@ function DpDetailsTable() {
     },
     {
       category: "Average",
-      deviceName: "Wingtech Plunkett",
+      deviceName: "REF",
       overall: "",
       site1: "",
       site2: "",
@@ -21,7 +21,7 @@ function DpDetailsTable() {
     },
     {
       category: "Standard Deviation",
-      deviceName: "Reference(5G)",
+      deviceName: "DUT",
       overall: "",
       site1: "",
       site2: "",
@@ -29,7 +29,7 @@ function DpDetailsTable() {
     },
     {
       category: "Standard Deviation",
-      deviceName: "Wingtech Plunkett",
+      deviceName: "REF",
       overall: "",
       site1: "",
       site2: "",
@@ -37,7 +37,7 @@ function DpDetailsTable() {
     },
     {
       category: "Maximum",
-      deviceName: "Reference(5G)",
+      deviceName: "DUT",
       overall: "",
       site1: "",
       site2: "",
@@ -45,7 +45,7 @@ function DpDetailsTable() {
     },
     {
       category: "Maximum",
-      deviceName: "Wingtech Plunkett",
+      deviceName: "REF",
       overall: "",
       site1: "",
       site2: "",
@@ -53,7 +53,7 @@ function DpDetailsTable() {
     },
     {
       category: "Minimum",
-      deviceName: "Reference(5G)",
+      deviceName: "DUT",
       overall: "",
       site1: "",
       site2: "",
@@ -61,7 +61,7 @@ function DpDetailsTable() {
     },
     {
       category: "Minimum",
-      deviceName: "Wingtech Plunkett",
+      deviceName: "REF",
       overall: "",
       site1: "",
       site2: "",
@@ -70,14 +70,13 @@ function DpDetailsTable() {
   ];
 
   return (
-    <div className="page-content">
-      <table className="device-info-table">
+    <div className="">
+      <table className="device-info-table dp-details-table">
         <thead>
           <tr>
-            <th rowSpan="2">Throughput (kbps)</th>
+            <th rowSpan="2">Throughput</th>
             <th rowSpan="2">Device Name</th>
             <th rowSpan="2">Overall</th>
-            <th colSpan="3">Stationary</th>
           </tr>
           <tr>
             <th>Site 1</th>
@@ -88,7 +87,7 @@ function DpDetailsTable() {
         <tbody>
           {tableData.map((row, index) => (
             <tr key={index}>
-              {row.deviceName === "Reference(5G)" && (
+              {row.deviceName === "DUT" && (
                 <td rowSpan="2">{row.category}</td>
               )}
               <td>{row.deviceName}</td>

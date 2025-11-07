@@ -200,12 +200,15 @@
 /* 第一欄固定 200px（或百分比） */
 .dp-details-table th:first-child,
 .dp-details-table td:first-child {
-  width: 15% !important; 
+  width: 12% !important; 
 }
 
 .dp-details-table th:nth-child(2),
-.dp-details-table td:nth-child(2){
-  width: 10% !important;
+.dp-details-table td:nth-child(2),
+.dp-details-table th:nth-child(3),
+.dp-details-table td:nth-child(3)
+{
+  width: 8% !important;
 }
 
 .average-pass {

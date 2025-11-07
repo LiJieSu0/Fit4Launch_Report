@@ -31,7 +31,7 @@ function DpDetailsPage() {
       {/* single stream dl overall table */}
       {/* single stream ul overall table */}
       {/* single stream dl details table */}
-      <DpDetailsTableLoc3 data={httpSS_Stationary_DL} />
+      <DpDetailsTableLoc3 data={httpSS_Stationary_DL} tableName="Single Stream HTTP Download for 60 seconds" />
       {/* <DpDetailsTableLoc3 data={httpSS_Stationary_UL} /> */}
 
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DpDetailsTableLoc3({ data }) {
+function DpDetailsTableLoc3({ data, tableName }) {
   const tableData = [
     {
       category: "Average",
@@ -70,7 +70,7 @@ function DpDetailsTableLoc3({ data }) {
 
   return (
     <div className="">
-      <h3>Table Name here</h3>
+      <h3>{tableName}</h3>
       <table className="device-info-table dp-details-table">
         <thead>
           <tr>

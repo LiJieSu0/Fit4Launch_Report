@@ -1,7 +1,7 @@
 import React from 'react';
 import DpRangeChart from './DpRangeChart';
 import '../../StyleScript/Restricted_Report_Style.css';
-import DpDetailsTable from './DpDetailsTable';
+import DpDetailsTableLoc3 from './DpDetailsTable';
 
 function DpDetailsPage() {
   const dataPerformanceResults = {
@@ -33,7 +33,7 @@ function DpDetailsPage() {
       {/* single stream dl overall table */}
       {/* single stream ul overall table */}
       {/* single stream dl details table */}
-      <DpDetailsTable />
+      <DpDetailsTableLoc3 />
 
       </div>
       <div className='page-content'>

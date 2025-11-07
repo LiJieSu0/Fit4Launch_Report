@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DpDetailsTable() {
+function DpDetailsTableLoc3() {
   // Placeholder data for now
   const tableData = [
     {
@@ -103,4 +103,4 @@ function DpDetailsTable() {
   );
 }
 
-export default DpDetailsTable;
+export default DpDetailsTableLoc3;

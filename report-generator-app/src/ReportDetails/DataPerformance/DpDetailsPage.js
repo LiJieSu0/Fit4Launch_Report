@@ -20,8 +20,24 @@ function DpDetailsPage() {
     },
   };
 
-  const httpSS_Stationary_UL ={}
+  const httpSS_Stationary_UL = {
+    Good: {
+      DUT: httpSS_Stationary_DL_Data.Good["Single Stream HTTP Upload of a 15 MB file"]["_CH01_TMO-dut_5G auto_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput,
+      REF: httpSS_Stationary_DL_Data.Good["Single Stream HTTP Upload of a 15 MB file"]["_CH02_TMO-ref_5G auto_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput,
+    },
+    Moderate: {
+      DUT: httpSS_Stationary_DL_Data.Moderate["Single Stream HTTP Upload of a 15 MB file"]["_20250919_110731_CH01_TMO-dut_5G Auto_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput,
+      REF: httpSS_Stationary_DL_Data.Moderate["Single Stream HTTP Upload of a 15 MB file"]["_20250919_110731_CH02_TMO-ref_5G Auto_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput,
+    },
+    Poor: {
+      DUT: httpSS_Stationary_DL_Data.Poor["Single Stream HTTP Upload of a 15 MB file"]["dut_5g auto_Single Stream HTTP Upload of a 15 MB file_poor Coverage_DA Test"].Throughput,
+      REF: httpSS_Stationary_DL_Data.Poor["Single Stream HTTP Upload of a 15 MB file"]["ref_5g auto_Single Stream HTTP Upload of a 15 MB file_poor Coverage_DA Test"].Throughput,
+    },
+  };
 
+  const httpMS_Stationary_DL ={}
+
+  const httpMS_Stationary_UL={}
 
   return (
     <div>
@@ -32,11 +48,14 @@ function DpDetailsPage() {
       {/* single stream ul overall table */}
       {/* single stream dl details table */}
       <DpDetailsTableLoc3 data={httpSS_Stationary_DL} tableName="Single Stream HTTP Download for 60 seconds" />
-      {/* <DpDetailsTableLoc3 data={httpSS_Stationary_UL} /> */}
-
+      <DpDetailsTableLoc3 data={httpSS_Stationary_UL} tableName="Single Stream HTTP Upload of a 15 MB file"  />
       </div>
       <div className='page-content'>
       <h2>HTTP Multi Stream test - 5G NR</h2>
+      <DpDetailsTableLoc3 data={httpMS_Stationary_DL} tableName="Multi Stream HTTP Download for 30 seconds"  />
+      <DpDetailsTableLoc3 data={httpMS_Stationary_UL} tableName="Multi Stream HTTP Upload for 30 seconds"  />
+
+
       </div>
       <div className='page-content'>
       <h2>UDP test - 5G NR</h2>

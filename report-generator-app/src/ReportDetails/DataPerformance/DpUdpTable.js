@@ -1,6 +1,11 @@
 import React from 'react';
 
 function DpUdpTable({ data, tableName }) {
+  const calculateOverallAverage = (good, moderate, poor) => {
+    const sum = parseFloat(good) + parseFloat(moderate) + parseFloat(poor);
+    return (sum / 3).toFixed(2); // Calculate average and format to 2 decimal places
+  };
+
   // Dummy data structure for now, will be replaced with actual data
   const tableData = [
     {
@@ -227,7 +232,7 @@ function DpUdpTable({ data, tableName }) {
                   <td rowSpan={getRowSpan(row.metric, row.idealThroughput)}>{row.idealThroughput}</td>
                 )}
                 <td>{row.deviceName}</td>
-                <td></td> {/* Empty cell for Overall */}
+                <td>{calculateOverallAverage(row.location.good, row.location.moderate, row.location.poor)}</td>
                 <td>{row.location.good}</td>
                 <td>{row.location.moderate}</td>
                 <td>{row.location.poor}</td>

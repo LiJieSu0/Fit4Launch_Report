@@ -69,6 +69,10 @@ function DpDetailsPage() {
     },
   };
 
+  const udpDL_Stationary_DL={
+
+  };
+
   return (
     <div>
       <h2>Data Performance Details Page</h2>
@@ -87,7 +91,7 @@ function DpDetailsPage() {
       </div>
       <div className='page-content'>
       <h2>UDP test - 5G NR</h2>
-      <DpUdpTable data={udp_Stationary_Data} tableName="UDP Test" />
+      <DpUdpTable data={udpDL_Stationary_DL} tableName="UDP Test" />
       </div>
       <div className='page-content'>
       <h2>PING test - 5G NR</h2>

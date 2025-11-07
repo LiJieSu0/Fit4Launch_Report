@@ -2,7 +2,7 @@ import React from 'react';
 import DpRangeChart from './DpRangeChart';
 import '../../StyleScript/Restricted_Report_Style.css';
 import DpDetailsTableLoc3 from './DpDetailsTableLoc3';
-import DpUdpTable from './DpUdpTable';
+import DpUdpTableLoc3 from './DpUdpTableLoc3';
 import httpSS_Stationary_DL_Data from '../../DataFiles/SA/DpStationaryResults/Single Stream HTTP.json';
 import httpMS_Stationary_Data from '../../DataFiles/SA/DpStationaryResults/Multi Stream HTTP.json';
 import udp_Stationary_Data from '../../DataFiles/SA/DpStationaryResults/UDP.json';
@@ -266,7 +266,7 @@ function DpDetailsPage() {
       </div>
       <div className='page-content'>
       <h2>UDP test - 5G NR</h2>
-      <DpUdpTable data={udpDL_Stationary_DL} tableName="UDP Test" />
+      <DpUdpTableLoc3 data={udpDL_Stationary_DL} tableName="UDP Test" />
       </div>
       <div className='page-content'>
       <h2>PING test - 5G NR</h2>

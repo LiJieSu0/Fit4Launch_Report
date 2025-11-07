@@ -55,7 +55,7 @@
 .bottomLine {
   width: 80%; /* Shorten the line to 80% of the container width */
   height: 5px; /* Thickness of the blue line */
-  background-color: rgb(37,90,167); /* Dark blue color from the image */
+  background-color: rgb(255, 204, 0); 
   position: absolute;
   bottom: 0;
   left: 50%; /* Center the line horizontally */
@@ -86,17 +86,17 @@
   }
 
   .fit4Launch {
-    color: rgb(37,90,167) !important; /* Ensure color is preserved for print */
+    color: rgb(0, 0, 0) !important; /* Ensure color is preserved for print */
   }
 
   .subtitle {
     font-size: 8px;
-    color: rgb(37,90,167) !important; /* Ensure color is preserved */
+    color: rgb(0, 0, 0) !important; /* Ensure color is preserved */
     margin-bottom: 1px;
   }
 
   .link {
-    color: #007bff; /* Ensure color is preserved */
+    color: #000000; /* Ensure color is preserved */
   }
 
   .logo {
@@ -105,7 +105,7 @@
   .bottomLine {
   width: 80%; /* Shorten the line to 80% of the container width */
   height: 5px; /* Thickness of the blue line */
-  background-color: rgb(37,90,167); 
+  background-color: rgb(255, 204, 0); 
   position: absolute;
   bottom: 0;
   left: 50%; /* Center the line horizontally */

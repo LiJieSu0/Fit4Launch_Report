@@ -17,9 +17,7 @@ function DpDetailsPage() {
       <Dp_httpMS_Component />
       <Dp_Udp_Component />
       <Dp_Ping_Component/>
-      <div className='page-content'>
-      <h2>PING test - 5G NR</h2>
-      </div>
+      
       <div className='page-content'>
       <h2>Web browser test - 5G NR</h2>
       </div>

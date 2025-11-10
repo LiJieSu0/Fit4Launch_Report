@@ -7,6 +7,7 @@ const VqKpiPage = () => {
       <img src="/Kpi/Vq/voice_quality_criteria1.png" alt="cp" style={{ maxWidth: '100%', height: '50%' }} />
       <img src="/Kpi/Vq/voice_quality_criteria2.png" alt="cp" style={{ maxWidth: '100%', height: '50%' }} />
       <img src="/Kpi/Vq/voice_quality_criteria3.png" alt="cp" style={{ maxWidth: '100%', height: '50%' }} />
+      <img src="/Kpi/Vq/voice_quality_criteria4.png" alt="cp" style={{ maxWidth: '100%', height: '50%' }} />
     </div>
   );
 };

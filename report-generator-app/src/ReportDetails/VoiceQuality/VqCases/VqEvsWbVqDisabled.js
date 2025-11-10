@@ -150,10 +150,10 @@ const VqEvsWbVqDisabled = () => {
           ))}
         </tbody>
       </table>
-      <h3>VoNR Disabled EVS WB VQ Base</h3>
-      <VqLineChart dataSource="vonr_disabled_evs_wb_vq_base" />
-      <h3>VoNR Disabled EVS WB VQ Mobile</h3>
+      <h3>VoNR Disabled EVS WB VQ Downlink</h3>
       <VqLineChart dataSource="vonr_disabled_evs_wb_vq_mobile" />
+      <h3>VoNR Disabled EVS WB VQ Uplink</h3>
+      <VqLineChart dataSource="vonr_disabled_evs_wb_vq_base" />
     </div>
   );
 };

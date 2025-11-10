@@ -51,9 +51,8 @@ function App() {
       <DpDetailsPage /> 
       <DpKpiPage /> */}
 
-      
-      <LegalPage/>
-      <AboutPage />
+      {/* <LegalPage/>
+      <AboutPage /> */}
       <ReportFooter />
     </div>
   );

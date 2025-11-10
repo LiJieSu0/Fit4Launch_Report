@@ -79,6 +79,8 @@ const vqTableData2 = [
   }
 ];
 
+
+
 const vqTableData3 = [
   {
     metric: "MOS Average",
@@ -256,6 +258,27 @@ const vqTableData6 = [
 ];
 
 
+const vqTableDataEVStoEVS_3_3 = [
+  {
+    metric: "MOS Average",
+    downlink: "",
+    uplink: "",
+    highlight: true
+  },
+  {
+    metric: "% MOS < 3.4",
+    downlink: "",
+    uplink: "",
+    highlight: false
+  },
+  {
+    metric: "% MOS < 3.0",
+    downlink: "",
+    uplink: "",
+    highlight: true
+  }
+];
+
 const VqDetailsPage = () => {
   
 
@@ -296,8 +319,11 @@ const VqDetailsPage = () => {
         </div>
         <div className="page-content">
             <h2>3.2 5G Auto VoNR Enabled AMR WB VQ</h2>
+            <h2>Voice Quality Performance</h2>
             <table className="general-table-style vq-details-table">
               <thead>
+                <tr>
+                </tr>
                 <tr>
                   <th rowSpan="2"></th>
                   <th colSpan="3">Downlink</th>
@@ -329,6 +355,57 @@ const VqDetailsPage = () => {
         </div>
         <div className="page-content">
             <h2>3.3 5G Auto VoNR Disabled EVS WB VQ</h2>
+            <table className="general-table-style ">
+              <thead>
+                <tr>
+                  <th colspan="3" class="title">
+                    Voice Quality Performance
+                    EVS to EVS Call Scenario
+                  </th>
+                </tr>
+                <tr>
+                  <th>Metric</th>
+                  <th>Downlink</th>
+                  <th>Uplink</th>
+                </tr>
+              </thead>
+              <tbody>
+                {vqTableDataEVStoEVS_3_3.map((row, index) => (
+                  <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
+                    <td>{row.metric}</td>
+                    <td>{row.downlink}</td>
+                    <td>{row.uplink}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            <table className="general-table-style ">
+              <thead>
+                <tr>
+                  <th colspan="3" class="title">
+                    Voice Quality Performance
+                    EVS to AMR Call Scenario
+                  </th>
+                </tr>
+                <tr>
+                  <th>Metric</th>
+                  <th>Downlink</th>
+                  <th>Uplink</th>
+                </tr>
+              </thead>
+              <tbody>
+                {vqTableDataEVStoEVS_3_3.map((row, index) => (
+                  <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
+                    <td>{row.metric}</td>
+                    <td>{row.downlink}</td>
+                    <td>{row.uplink}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+
             <table className="general-table-style vq-details-table">
               <thead>
                 <tr>

@@ -100,7 +100,18 @@ def calculate_vq_statistics(directory_path, column_name="[Call Test] [Voice Qual
         print(f"Error writing JSON file: {e}")
 
 if __name__ == "__main__":
-    # Example usage based on the provided path
-    csv_directory = r"D:\ReportGenerator\report-generator-app\src\DataFiles\Vq\5G Auto VoNR Disabled EVS WB VQ\Base"
-    output_file = r"D:\ReportGenerator\report-generator-app\src\DataFiles\Vq\vq_mos_statistics.json"
-    calculate_vq_statistics(csv_directory, output_json_path=output_file)
+    base_path = r"D:\ReportGenerator\report-generator-app\src\DataFiles\Vq"
+    
+    # Define the four input directories and their corresponding output JSON file names
+    paths_to_process = {
+        "5G Auto VoNR Disabled EVS WB VQ Base": os.path.join(base_path, r"5G Auto VoNR Disabled EVS WB VQ\Base"),
+        "5G Auto VoNR Disabled EVS WB VQ Mobile": os.path.join(base_path, r"5G Auto VoNR Disabled EVS WB VQ\Mobile"),
+        "5G Auto VoNR Enabled EVS WB VQ Base": os.path.join(base_path, r"5G Auto VoNR Enabled EVS WB VQ\Base"),
+        "5G Auto VoNR Enabled EVS WB VQ Mobile": os.path.join(base_path, r"5G Auto VoNR Enabled EVS WB VQ\Mobile"),
+    }
+
+    for name, directory in paths_to_process.items():
+        output_json_filename = f"vq_mos_statistics_{name.replace(' ', '_').lower()}.json"
+        output_file_path = os.path.join(base_path, output_json_filename)
+        print(f"\nProcessing {name} from directory: {directory}")
+        calculate_vq_statistics(directory, output_json_path=output_file_path)

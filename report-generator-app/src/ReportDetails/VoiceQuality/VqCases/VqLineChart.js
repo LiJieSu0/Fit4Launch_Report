@@ -57,7 +57,7 @@ const VqLineChart = ({ dataSource }) => {
   }
 
   return (
-    <div style={{ width: '70%', height: 400 }}>
+    <div style={{ width: '60%', height: 400 }}>
       <ResponsiveContainer>
         <LineChart
           data={chartData}

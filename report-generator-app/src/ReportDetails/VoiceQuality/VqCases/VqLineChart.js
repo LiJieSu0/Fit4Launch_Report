@@ -13,10 +13,22 @@ import vqMosStatistics from '../../../DataFiles/Vq/vq_mos_statistics.json';
 
 const VqLineChart = () => {
   // Process data from vq_mos_statistics.json
-  const data = Object.keys(vqMosStatistics).map((key) => ({
-    category: key,
-    percentage: vqMosStatistics[key].percentage,
-  }));
+  const mosCategories = Object.keys(vqMosStatistics.DUT1); // Assuming all entities have the same MOS categories
+
+  const data = mosCategories.map(category => {
+    const dataPoint = { category: category };
+    Object.keys(vqMosStatistics).forEach(entity => {
+      dataPoint[entity] = vqMosStatistics[entity][category]?.percentage || 0;
+    });
+    return dataPoint;
+  });
+
+  const entities = [
+    { key: 'DUT1', color: '#8884d8' },
+    { key: 'DUT2', color: '#82ca9d' },
+    { key: 'REF1', color: '#ffc658' },
+    { key: 'REF2', color: '#ff7300' },
+  ];
 
   // Custom Y-axis tick formatter to display percentages
   const formatYAxis = (tick) => `${tick}%`;
@@ -40,15 +52,19 @@ const VqLineChart = () => {
             tickFormatter={formatYAxis}
             label={{ value: 'Percentage', angle: -90, position: 'insideLeft' }}
           />
-          <Tooltip formatter={(value) => `${value}%`} />
+          <Tooltip />
           <Legend />
-          <Line
-            type="monotone"
-            dataKey="percentage"
-            stroke="#8884d8"
-            dot={false}
-            name="MOS Percentage"
-          />
+          {entities.map((entity) => (
+            <Line
+              key={entity.key}
+              type="monotone"
+              dataKey={entity.key}
+              stroke={entity.color}
+              strokeWidth={3}
+              dot={false}
+              name={entity.key}
+            />
+          ))}
         </LineChart>
       </ResponsiveContainer>
     </div>

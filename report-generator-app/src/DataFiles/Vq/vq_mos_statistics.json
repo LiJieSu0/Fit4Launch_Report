@@ -1,5 +1,5 @@
 {
-    "vonr disable evs wb DUT1 base.csv": {
+    "DUT1": {
         "< 2.0": {
             "count": 9,
             "percentage": 1.79
@@ -109,7 +109,7 @@
             "percentage": 0.0
         }
     },
-    "vonr disable evs wb DUT2 base.csv": {
+    "DUT2": {
         "< 2.0": {
             "count": 7,
             "percentage": 1.39
@@ -219,7 +219,7 @@
             "percentage": 0.0
         }
     },
-    "vonr disable evs wb REF1 base.csv": {
+    "REF1": {
         "< 2.0": {
             "count": 4,
             "percentage": 0.79
@@ -329,7 +329,7 @@
             "percentage": 0.0
         }
     },
-    "vonr disable evs wb REF2 base.csv": {
+    "REF2": {
         "< 2.0": {
             "count": 3,
             "percentage": 0.59

@@ -17,11 +17,23 @@ def calculate_vq_statistics(directory_path, column_name="[Call Test] [Voice Qual
         return
 
     all_statistics_results = {}
+    
+    # Add re import
+    import re
 
     for filename in os.listdir(directory_path):
         if filename.endswith(".csv"):
             csv_file_path = os.path.join(directory_path, filename)
             print(f"Processing file: {csv_file_path}")
+
+            # Extract DUT/REF identifier from filename
+            match = re.search(r'(DUT[12]|REF[12])', filename, re.IGNORECASE)
+            if not match:
+                print(f"Warning: Could not find DUT1, DUT2, REF1, or REF2 in filename: {filename}. Skipping.")
+                continue
+            
+            # Use the extracted identifier as the key
+            json_key = match.group(1).upper()
 
             try:
                 df = pd.read_csv(csv_file_path)
@@ -78,7 +90,7 @@ def calculate_vq_statistics(directory_path, column_name="[Call Test] [Voice Qual
                     "count": count,
                     "percentage": round(percentage, 2)
                 }
-            all_statistics_results[filename] = file_statistics
+            all_statistics_results[json_key] = file_statistics
 
     try:
         with open(output_json_path, 'w', encoding='utf-8') as f:

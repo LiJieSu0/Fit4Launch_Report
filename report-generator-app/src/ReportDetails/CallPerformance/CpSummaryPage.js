@@ -22,7 +22,7 @@ const CpSummaryPage = () => {
   return (
     <div className="page-content">
       <h2>Summary Page</h2>
-      <table className="device-info-table" style={{ display: 'table' }}>
+      <table className="general-table-style" style={{ display: 'table' }}>
         <thead style={{ display: 'table-header-group' }}>
           <tr style={{ display: 'table-row' }}>
             <th style={{ display: 'table-cell' }}>Market</th>

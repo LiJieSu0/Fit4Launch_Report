@@ -144,7 +144,7 @@ const CallPerformanceDetails = () => {
 
         return (
             <div className="call-categories-table-container">
-                <table className="device-info-table">
+                <table className="general-table-style">
                     <thead>
                         <tr>
                             <th>Device</th>
@@ -265,7 +265,7 @@ const CallPerformanceDetails = () => {
        return (
            <div className="p-value-table-container">
                <h3>P-Value Table</h3>
-               <table className="device-info-table">
+               <table className="general-table-style">
                    <thead>
                        <tr>
                            <th>Metrics</th>

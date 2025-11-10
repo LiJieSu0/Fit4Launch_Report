@@ -8,7 +8,7 @@ const VqSummaryPage = () => {
   return (
     <div className="page-content">
       <h2>Voice Quality Summary Page</h2>
-      <table className="device-info-table">
+      <table className="general-table-style">
         <thead>
           <tr>
             <th rowspan="4">Market</th>

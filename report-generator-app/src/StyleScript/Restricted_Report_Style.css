@@ -161,25 +161,36 @@
 
 
 
-.device-info-table {
-  width: 100%;
+.general-table-style {
   border-collapse: collapse;
   margin-bottom: 1em;
 }
 
-.device-info-table th,
-.device-info-table td {
+.general-table-style th,
+.general-table-style td {
   border: 1px solid #000;
   padding: 4px;
   text-align: left;
-  /* Default width for cells, can be overridden by specific column styles */
+}
+
+.general-table-style th {
+  background-color: rgb(128,128,128);
+  color: rgb(255, 255, 255);
+}
+
+.device-info-table {
+  width: 100%;
+}
+
+.device-info-table th,
+.device-info-table td {
   width: auto;
 }
 
 /* Specific width for the first column (Test Name) */
 .device-info-table th:first-child,
 .device-info-table td:first-child {
-  width: 40%; /* Adjust as needed */
+  width: 35%; /* Adjust as needed */
 }
 
 /* Specific widths for Market, Download, Upload columns */
@@ -191,19 +202,15 @@
 .device-info-table td:nth-child(4) {
   width: 20%; /* Distribute remaining 60% among 3 columns */
 }
-
-.device-info-table th {
-  background-color: rgb(128,128,128); 
-  color: rgb(255, 255, 255);
-}
-
+/*
+DP
+*/
 .dp-details-table{
   width: 100%;
   table-layout: fixed; /* 讓 width 設定生效，而不是依內容決定寬度 */
   border-collapse: collapse;
 }
 
-/* 第一欄固定 200px（或百分比） */
 .dp-details-table th:first-child,
 .dp-details-table td:first-child {
   width: 12% !important; 
@@ -216,6 +223,24 @@
 {
   width: 8% !important;
 }
+/*
+VQ
+*/
+.vq-details-table th:nth-child(2),
+.vq-details-table td:nth-child(2),
+.vq-details-table th:nth-child(3),
+.vq-details-table td:nth-child(3),
+.vq-details-table th:nth-child(4),
+.vq-details-table td:nth-child(4),
+.vq-details-table th:nth-child(5),
+.vq-details-table td:nth-child(5),
+.vq-details-table th:nth-child(6),
+.vq-details-table td:nth-child(6)
+
+{
+  width: 10% !important;
+}
+
 /* ---UDP-- */
 .udp-stationary-details-table{
   width: 100%;

@@ -5,7 +5,7 @@ const DpPingTableLoc3 = ({ data }) => {
     if (!data || Object.keys(data).length === 0) {
         return (
             <div className="">
-                <table className="device-info-table dp-details-table">
+                <table className="general-table-style dp-details-table">
                     <thead>
                         <tr>
                             <th rowSpan="2">Ping RTT (ms)</th>
@@ -29,7 +29,7 @@ const DpPingTableLoc3 = ({ data }) => {
 
     return (
         <div className="">
-            <table className="device-info-table dp-details-table">
+            <table className="general-table-style dp-details-table">
                 <thead>
                     <tr>
                         <th rowSpan="2">Ping RTT (ms)</th>

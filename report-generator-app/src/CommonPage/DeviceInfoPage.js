@@ -32,7 +32,7 @@ const DeviceInfoPage = () => {
         <div className="page-content">
             <h2>Device Information</h2>
             
-            <table className="device-info-table">
+            <table className="device-info-table general-table-style">
                 <thead>
                     <tr>
                         <th>Market</th>

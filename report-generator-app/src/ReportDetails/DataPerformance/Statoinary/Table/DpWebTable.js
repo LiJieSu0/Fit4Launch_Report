@@ -9,7 +9,7 @@ function DpWebTable({ data }) {
 
     return (
         <div className="">
-            <table className="device-info-table dp-details-table">
+            <table className="general-table-style dp-details-table">
                 <thead>
                     <tr>
                         <th>Web Page Load Time (s)</th>

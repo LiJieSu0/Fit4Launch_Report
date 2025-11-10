@@ -14,7 +14,7 @@ const CpCaseTable = ({ title, data }) => {
     return (
         <div className="">
             <h2>{title}</h2>
-            <table className="performance-table device-info-table">
+            <table className="performance-table general-table-style">
                 <thead>
                     <tr>
                         <th>Device</th>

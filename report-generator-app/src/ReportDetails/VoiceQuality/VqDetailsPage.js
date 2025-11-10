@@ -263,7 +263,7 @@ const VqDetailsPage = () => {
     <div>
         <div className="page-content">
             <h2>3.1 5G Auto VoNR Enabled AMR NB VQ</h2>
-            <table className="device-info-table">
+            <table className="general-table-style vq-details-table">
               <thead>
                 <tr>
                   <th rowSpan="2"></th>
@@ -296,7 +296,7 @@ const VqDetailsPage = () => {
         </div>
         <div className="page-content">
             <h2>3.2 5G Auto VoNR Enabled AMR WB VQ</h2>
-            <table className="device-info-table">
+            <table className="general-table-style vq-details-table">
               <thead>
                 <tr>
                   <th rowSpan="2"></th>
@@ -329,7 +329,7 @@ const VqDetailsPage = () => {
         </div>
         <div className="page-content">
             <h2>3.3 5G Auto VoNR Disabled EVS WB VQ</h2>
-            <table className="device-info-table">
+            <table className="general-table-style vq-details-table">
               <thead>
                 <tr>
                   <th rowSpan="2"></th>
@@ -366,7 +366,7 @@ const VqDetailsPage = () => {
         </div>
         <div className="page-content">
             <h2>3.4 5G Auto VoNR Enabled EVS WB VQ</h2>
-            <table className="device-info-table">
+            <table className="general-table-style vq-details-table">
               <thead>
                 <tr>
                   <th rowSpan="2"></th>
@@ -403,7 +403,7 @@ const VqDetailsPage = () => {
         </div>
         <div className="page-content">
             <h2>3.5 KPI FOR AUDIO DELAY</h2>
-            <table className="device-info-table">
+            <table className="general-table-style vq-details-table">
               <thead>
                 <tr>
                   <th rowSpan="2"></th>
@@ -440,7 +440,7 @@ const VqDetailsPage = () => {
         </div>
         <div className="page-content">
             <h2>3.6 Auto VoNR Enabled Audio Delay</h2>
-            <table className="device-info-table">
+            <table className="general-table-style vq-details-table">
               <thead>
                 <tr>
                   <th rowSpan="2"></th>

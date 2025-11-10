@@ -71,7 +71,7 @@ function DpDetailsTableLoc3({ data, tableName }) {
   return (
     <div className="">
       <h3>{tableName}</h3>
-      <table className="device-info-table dp-details-table">
+      <table className="general-table-style dp-details-table">
         <thead>
           <tr>
             <th rowSpan="2">Throughput</th>

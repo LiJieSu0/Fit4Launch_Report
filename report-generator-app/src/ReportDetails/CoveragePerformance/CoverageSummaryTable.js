@@ -43,7 +43,7 @@ const summaryData = [
 
 const CoverageSummaryTable = () => {
     return (
-        <table className={`device-info-table `}>
+        <table className={`general-table-style `}>
             <thead>
                 <tr>
                     <th>Market</th>

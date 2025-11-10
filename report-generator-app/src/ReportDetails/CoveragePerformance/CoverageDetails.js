@@ -165,7 +165,7 @@ function CoverageDetails() {
 
         <div className='page-content'>
           <h2>4.2 5G n41 HPUE Coverage Test</h2>
-          <table className="device-info-table">
+          <table className="general-table-style">
                 <thead>
                     <tr>
                         <th>Power Class</th>

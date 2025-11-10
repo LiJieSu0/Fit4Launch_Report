@@ -4,7 +4,7 @@ import '../../StyleScript/Restricted_Report_Style.css';
 const CoverageTestTable = ({ tableData, status }) => {
 
     return (
-            <table className="device-info-table">
+            <table className="general-table-style">
                 <thead>
                     <tr>
                         <th>Device Name</th>

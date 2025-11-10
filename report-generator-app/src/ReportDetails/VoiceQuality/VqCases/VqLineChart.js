@@ -22,7 +22,7 @@ const VqLineChart = () => {
   const formatYAxis = (tick) => `${tick}%`;
 
   return (
-    <div style={{ width: '100%', height: 400 }}>
+    <div style={{ width: '50%', height: 400 }}>
       <ResponsiveContainer>
         <LineChart
           data={data}
@@ -36,7 +36,7 @@ const VqLineChart = () => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="category" />
           <YAxis
-            domain={[0, 100]}
+            domain={[0, 50]}
             tickFormatter={formatYAxis}
             label={{ value: 'Percentage', angle: -90, position: 'insideLeft' }}
           />

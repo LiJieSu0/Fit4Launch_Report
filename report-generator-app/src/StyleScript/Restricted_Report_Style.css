@@ -164,6 +164,7 @@
 .general-table-style {
   border-collapse: collapse;
   margin-bottom: 1em;
+  width: 100%;
 }
 
 .general-table-style th,
@@ -178,9 +179,7 @@
   color: rgb(255, 255, 255);
 }
 
-.device-info-table {
-  width: 100%;
-}
+
 
 .device-info-table th,
 .device-info-table td {

@@ -267,8 +267,8 @@ const VqDetailsPage = () => {
               <thead>
                 <tr>
                   <th rowSpan="2"></th>
-                  <th colSpan="3">DOWNLINK</th>
-                  <th colSpan="3">UPLINK</th>
+                  <th colSpan="3">Downlink</th>
+                  <th colSpan="3">Uplink</th>
                 </tr>
                 <tr>
                   <th>REF</th>
@@ -300,8 +300,8 @@ const VqDetailsPage = () => {
               <thead>
                 <tr>
                   <th rowSpan="2"></th>
-                  <th colSpan="3">MOBILE</th>
-                  <th colSpan="3">BASE</th>
+                  <th colSpan="3">Downlink</th>
+                  <th colSpan="3">Uplink</th>
                 </tr>
                 <tr>
                   <th>REF</th>
@@ -333,18 +333,18 @@ const VqDetailsPage = () => {
               <thead>
                 <tr>
                   <th rowSpan="2"></th>
-                  <th colSpan="4">MOBILE</th>
-                  <th colSpan="4">BASE</th>
+                  <th colSpan="4">Downlink</th>
+                  <th colSpan="4">Uplink</th>
                 </tr>
                 <tr>
-                  <th>DUT 1</th>
-                  <th>DUT 2</th>
-                  <th>REF 1</th>
-                  <th>REF 2</th>
-                  <th>DUT 1</th>
-                  <th>DUT 2</th>
-                  <th>REF 1</th>
-                  <th>REF 2</th>
+                  <th>DUT 1 (EVS to EVS)</th>
+                  <th>REF 1 (EVS to EVS)</th>
+                  <th>DUT 2 (EVS to AMR)</th>
+                  <th>REF 2 (EVS to AMR)</th>
+                  <th>DUT 1 (EVS to EVS)</th>
+                  <th>REF 1 (EVS to EVS)</th>
+                  <th>DUT 2 (EVS to AMR)</th>
+                  <th>REF 2 (EVS to AMR)</th>
                 </tr>
               </thead>
               <tbody>
@@ -352,12 +352,12 @@ const VqDetailsPage = () => {
                   <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
                     <td>{row.metric}</td>
                     <td>{row.mobile.dut1}</td>
-                    <td>{row.mobile.dut2}</td>
                     <td>{row.mobile.ref1}</td>
+                    <td>{row.mobile.dut2}</td>
                     <td>{row.mobile.ref2}</td>
                     <td>{row.base.dut1}</td>
-                    <td>{row.base.dut2}</td>
                     <td>{row.base.ref1}</td>
+                    <td>{row.base.dut2}</td>
                     <td>{row.base.ref2}</td>
                   </tr>
                 ))}
@@ -370,18 +370,18 @@ const VqDetailsPage = () => {
               <thead>
                 <tr>
                   <th rowSpan="2"></th>
-                  <th colSpan="4">MOBILE</th>
-                  <th colSpan="4">BASE</th>
+                  <th colSpan="4">Downlink</th>
+                  <th colSpan="4">Uplink</th>
                 </tr>
                 <tr>
-                  <th>DUT 1</th>
-                  <th>DUT 2</th>
-                  <th>REF 1</th>
-                  <th>REF 2</th>
-                  <th>DUT 1</th>
-                  <th>DUT 2</th>
-                  <th>REF 1</th>
-                  <th>REF 2</th>
+                  <th>DUT 1 (EVS to EVS)</th>
+                  <th>REF 1 (EVS to EVS)</th>
+                  <th>DUT 2 (EVS to AMR)</th>
+                  <th>REF 2 (EVS to AMR)</th>
+                  <th>DUT 1 (EVS to EVS)</th>
+                  <th>REF 1 (EVS to EVS)</th>
+                  <th>DUT 2 (EVS to AMR)</th>
+                  <th>REF 2 (EVS to AMR)</th>
                 </tr>
               </thead>
               <tbody>
@@ -401,7 +401,7 @@ const VqDetailsPage = () => {
               </tbody>
             </table>
         </div>
-        <div className="page-content">
+        {/* <div className="page-content">
             <h2>3.5 KPI FOR AUDIO DELAY</h2>
             <table className="general-table-style vq-details-table">
               <thead>
@@ -475,7 +475,7 @@ const VqDetailsPage = () => {
               </tbody>
             </table>
             
-        </div>
+        </div> */}
     </div>
     
   );

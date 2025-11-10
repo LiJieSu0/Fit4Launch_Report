@@ -414,3 +414,13 @@ VQ
   margin-bottom: 15px;
   text-align: left;
 }
+
+.two-column-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 2%; /* Optional: adds a small gap between the tables */
+}
+
+.half-width-table {
+  width: 49%; /* Each table takes slightly less than half to accommodate the gap */
+}

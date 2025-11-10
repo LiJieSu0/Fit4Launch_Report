@@ -355,57 +355,57 @@ const VqDetailsPage = () => {
         </div>
         <div className="page-content">
             <h2>3.3 5G Auto VoNR Disabled EVS WB VQ</h2>
-            <table className="general-table-style ">
-              <thead>
-                <tr>
-                  <th colspan="3" class="title">
-                    Voice Quality Performance
-                    EVS to EVS Call Scenario
-                  </th>
-                </tr>
-                <tr>
-                  <th>Metric</th>
-                  <th>Downlink</th>
-                  <th>Uplink</th>
-                </tr>
-              </thead>
-              <tbody>
-                {vqTableDataEVStoEVS_3_3.map((row, index) => (
-                  <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
-                    <td>{row.metric}</td>
-                    <td>{row.downlink}</td>
-                    <td>{row.uplink}</td>
+            <div className="two-column-layout">
+              <table className="general-table-style half-width-table">
+                <thead>
+                  <tr>
+                    <th colSpan="3" className="title">
+                      Voice Quality Performance
+                      EVS to EVS Call Scenario
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-
-            <table className="general-table-style ">
-              <thead>
-                <tr>
-                  <th colspan="3" class="title">
-                    Voice Quality Performance
-                    EVS to AMR Call Scenario
-                  </th>
-                </tr>
-                <tr>
-                  <th>Metric</th>
-                  <th>Downlink</th>
-                  <th>Uplink</th>
-                </tr>
-              </thead>
-              <tbody>
-                {vqTableDataEVStoEVS_3_3.map((row, index) => (
-                  <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
-                    <td>{row.metric}</td>
-                    <td>{row.downlink}</td>
-                    <td>{row.uplink}</td>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Downlink</th>
+                    <th>Uplink</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {vqTableDataEVStoEVS_3_3.map((row, index) => (
+                    <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
+                      <td>{row.metric}</td>
+                      <td>{row.downlink}</td>
+                      <td>{row.uplink}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
 
-
+              <table className="general-table-style half-width-table">
+                <thead>
+                  <tr>
+                    <th colSpan="3" className="title">
+                      Voice Quality Performance
+                      EVS to AMR Call Scenario
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Downlink</th>
+                    <th>Uplink</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {vqTableDataEVStoEVS_3_3.map((row, index) => (
+                    <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
+                      <td>{row.metric}</td>
+                      <td>{row.downlink}</td>
+                      <td>{row.uplink}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
             <table className="general-table-style vq-details-table">
               <thead>
                 <tr>
@@ -443,6 +443,57 @@ const VqDetailsPage = () => {
         </div>
         <div className="page-content">
             <h2>3.4 5G Auto VoNR Enabled EVS WB VQ</h2>
+                        <div className="two-column-layout">
+              <table className="general-table-style half-width-table">
+                <thead>
+                  <tr>
+                    <th colSpan="3" className="title">
+                      Voice Quality Performance
+                      EVS to EVS Call Scenario
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Downlink</th>
+                    <th>Uplink</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {vqTableDataEVStoEVS_3_3.map((row, index) => (
+                    <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
+                      <td>{row.metric}</td>
+                      <td>{row.downlink}</td>
+                      <td>{row.uplink}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              <table className="general-table-style half-width-table">
+                <thead>
+                  <tr>
+                    <th colSpan="3" className="title">
+                      Voice Quality Performance
+                      EVS to AMR Call Scenario
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Downlink</th>
+                    <th>Uplink</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {vqTableDataEVStoEVS_3_3.map((row, index) => (
+                    <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
+                      <td>{row.metric}</td>
+                      <td>{row.downlink}</td>
+                      <td>{row.uplink}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
             <table className="general-table-style vq-details-table">
               <thead>
                 <tr>
@@ -478,7 +529,7 @@ const VqDetailsPage = () => {
               </tbody>
             </table>
         </div>
-        {/* <div className="page-content">
+        <div className="page-content">
             <h2>3.5 KPI FOR AUDIO DELAY</h2>
             <table className="general-table-style vq-details-table">
               <thead>
@@ -552,7 +603,7 @@ const VqDetailsPage = () => {
               </tbody>
             </table>
             
-        </div> */}
+        </div>
     </div>
     
   );

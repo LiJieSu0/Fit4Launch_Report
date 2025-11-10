@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../../StyleScript/Restricted_Report_Style.css';
-
+import VqLineChart from './VqLineChart';
 const vqTableData3 = [
   {
     metric: "MOS Average",
@@ -150,6 +150,10 @@ const VqEvsWbVqDisabled = () => {
           ))}
         </tbody>
       </table>
+      <h3>VoNR Disabled EVS WB VQ Base</h3>
+      <VqLineChart dataSource="vonr_disabled_evs_wb_vq_base" />
+      <h3>VoNR Disabled EVS WB VQ Mobile</h3>
+      <VqLineChart dataSource="vonr_disabled_evs_wb_vq_mobile" />
     </div>
   );
 };

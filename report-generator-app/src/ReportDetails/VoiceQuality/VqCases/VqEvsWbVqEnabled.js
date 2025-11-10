@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../../StyleScript/Restricted_Report_Style.css';
+import VqLineChart from './VqLineChart';
 
 const vqTableData4 = [
   {
@@ -150,6 +151,10 @@ const VqEvsWbVqEnabled = () => {
           ))}
         </tbody>
       </table>
+        <h3>VoNR Enabled EVS WB VQ Base</h3>
+        <VqLineChart dataSource="vonr_enabled_evs_wb_vq_base" />
+        <h3>VoNR Enabled EVS WB VQ Mobile</h3>
+        <VqLineChart dataSource="vonr_enabled_evs_wb_vq_mobile" />
     </div>
   );
 };

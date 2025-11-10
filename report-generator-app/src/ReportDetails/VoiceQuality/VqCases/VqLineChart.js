@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   LineChart,
   Line,
@@ -9,35 +9,58 @@ import {
   Legend,
   ResponsiveContainer
 } from 'recharts';
-import vqMosStatistics from '../../../DataFiles/Vq/vq_mos_statistics.json';
 
-const VqLineChart = () => {
-  // Process data from vq_mos_statistics.json
-  const mosCategories = Object.keys(vqMosStatistics.DUT1); // Assuming all entities have the same MOS categories
+const VqLineChart = ({ dataSource }) => {
+  const [chartData, setChartData] = useState([]);
+  const [entities, setEntities] = useState([]);
 
-  const data = mosCategories.map(category => {
-    const dataPoint = { category: category };
-    Object.keys(vqMosStatistics).forEach(entity => {
-      dataPoint[entity] = vqMosStatistics[entity][category]?.percentage || 0;
-    });
-    return dataPoint;
-  });
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const dataModule = await import(`../../../DataFiles/Vq/${dataSource}.json`);
+        const vqMosStatistics = dataModule.default;
 
-  const entities = [
-    { key: 'DUT1', color: '#8884d8' },
-    { key: 'DUT2', color: '#82ca9d' },
-    { key: 'REF1', color: '#ffc658' },
-    { key: 'REF2', color: '#ff7300' },
-  ];
+        const mosCategories = Object.keys(vqMosStatistics.DUT1);
 
-  // Custom Y-axis tick formatter to display percentages
+        const processedData = mosCategories.map(category => {
+          const dataPoint = { category: category };
+          Object.keys(vqMosStatistics).forEach(entity => {
+            dataPoint[entity] = vqMosStatistics[entity][category]?.percentage || 0;
+          });
+          return dataPoint;
+        });
+
+        setChartData(processedData);
+
+        const loadedEntities = Object.keys(vqMosStatistics).map((entity, index) => {
+          const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300']; // Define colors for entities
+          return { key: entity, color: colors[index % colors.length] };
+        });
+        setEntities(loadedEntities);
+
+      } catch (error) {
+        console.error("Error loading data for VqLineChart:", error);
+        setChartData([]);
+        setEntities([]);
+      }
+    };
+
+    if (dataSource) {
+      loadData();
+    }
+  }, [dataSource]);
+
   const formatYAxis = (tick) => `${tick}%`;
 
+  if (chartData.length === 0) {
+    return <div>No data available for the selected source.</div>;
+  }
+
   return (
-    <div style={{ width: '50%', height: 400 }}>
+    <div style={{ width: '80%', height: 400 }}>
       <ResponsiveContainer>
         <LineChart
-          data={data}
+          data={chartData}
           margin={{
             top: 20,
             right: 30,

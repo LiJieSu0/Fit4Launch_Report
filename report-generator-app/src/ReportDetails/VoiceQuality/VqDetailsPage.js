@@ -7,7 +7,6 @@ import VqEvsWbVqDisabled from './VqCases/VqEvsWbVqDisabled';
 import VqEvsWbVqEnabled from './VqCases/VqEvsWbVqEnabled';
 import VqKpiAudioDelay from './VqCases/VqKpiAudioDelay';
 import VqAutoVonrAudioDelay from './VqCases/VqAutoVonrAudioDelay';
-import VqLineChart from './VqCases/VqLineChart';
 
 const VqDetailsPage = () => {
   return (
@@ -18,7 +17,7 @@ const VqDetailsPage = () => {
       <VqEvsWbVqEnabled />
       <VqKpiAudioDelay />
       <VqAutoVonrAudioDelay />
-      <VqLineChart/>
+
     </div>
   );
 };

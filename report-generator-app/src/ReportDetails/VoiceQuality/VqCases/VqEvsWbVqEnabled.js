@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import VqLineChart from './VqLineChart';
+import VqMosTable from './VqMosTable';
 
 const vqTableData4 = [
   {
@@ -153,8 +154,11 @@ const VqEvsWbVqEnabled = () => {
       </table>
         <h3>VoNR Enabled EVS WB VQ Downlink</h3>
         <VqLineChart dataSource="vonr_enabled_evs_wb_vq_mobile" />
+        <VqMosTable dataSource="vonr_enabled_evs_wb_vq_mobile" />
         <h3>VoNR Enabled EVS WB VQ Uplink</h3>
         <VqLineChart dataSource="vonr_enabled_evs_wb_vq_base" />
+        <VqMosTable dataSource="vonr_enabled_evs_wb_vq_base" />
+
     </div>
   );
 };

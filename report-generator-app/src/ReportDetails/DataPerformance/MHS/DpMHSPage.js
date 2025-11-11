@@ -7,10 +7,10 @@ import Dp_MHS_Ping_Component from "./Dp_MHS_Ping_Component";
 function Dp_MHS_Page(){
     return(
     <div className='page-content'>
-      <Dp_MHS_httpSS_Component />
-      <Dp_MHS_httpMS_Component />
+      {/* <Dp_MHS_httpSS_Component /> */}
+      {/* <Dp_MHS_httpMS_Component /> */}
       <Dp_MHS_Udp_Component />
-      <Dp_MHS_Ping_Component />
+      {/* <Dp_MHS_Ping_Component /> */}
     </div>
     );
 };

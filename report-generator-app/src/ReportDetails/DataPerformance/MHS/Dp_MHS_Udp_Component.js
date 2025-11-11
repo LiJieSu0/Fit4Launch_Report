@@ -10,6 +10,7 @@ function Dp_MHS_Udp_Component() {
   return (
     <div className='page-content'>
       <h2>MHS-UDP Component</h2>
+      <DpMHSUdpTable/>
     </div>
   );
 }

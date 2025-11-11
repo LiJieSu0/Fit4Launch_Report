@@ -1,79 +1,83 @@
 import React from 'react';
 
-function DpMHSUdpTable({ data, IdealThroughput }) {
-  const categories = ["Average", "Standard Deviation", "Maximum", "Minimum"];
+function MHSUdpTable({ data, tableName }) {
+  const calculateOverallAverage = (good, moderate) => {
+    const sum = parseFloat(good) + parseFloat(moderate);
+    return (sum / 2).toFixed(2); // Calculate average and format to 2 decimal places
+  };
 
-  const tableData = [];
+  // Dummy data structure for now, will be replaced with actual data
+  const getRowSpan = (currentMetric, currentIdealThroughput) => {
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].metric === currentMetric && data[i].idealThroughput === currentIdealThroughput) {
+        count++;
+      }
+    }
+    return count;
+  };
 
-  categories.forEach((category) => {
-    IdealThroughput.forEach((throughput) => {
-      const dutData = data.find(
-        (item) =>
-          item.Category === category &&
-          item.IdealThroughput === throughput &&
-          item.DeviceName === "DUT"
-      );
-      const refData = data.find(
-        (item) =>
-          item.Category === category &&
-          item.IdealThroughput === throughput &&
-          item.DeviceName === "REF"
-      );
+  const getMetricRowSpan = (currentMetric) => {
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].metric === currentMetric) {
+        count++;
+      }
+    }
+    return count;
+  };
 
-      tableData.push({
-        category: category,
-        idealThroughput: throughput,
-        deviceName: "DUT",
-        overall: dutData ? dutData.Overall : "",
-        site1: dutData ? dutData.Site1 : "",
-        site2: dutData ? dutData.Site2 : "",
-      });
-      tableData.push({
-        category: category,
-        idealThroughput: throughput,
-        deviceName: "REF",
-        overall: refData ? refData.Overall : "",
-        site1: refData ? refData.Site1 : "",
-        site2: refData ? refData.Site2 : "",
-      });
-    });
-  });
+  let lastMetric = null;
+  let lastIdealThroughput = null;
 
   return (
     <div className="">
-      <table className="general-table-style dp-details-table">
+      <h3>{tableName}</h3>
+      <table className="general-table-style udp-stationary-details-table">
         <thead>
           <tr>
-            <th rowSpan="2">Throughput</th>
+            <th rowSpan="2">Metric</th>
             <th rowSpan="2">Ideal Throughput</th>
             <th rowSpan="2">Device Name</th>
             <th rowSpan="2">Overall</th>
-            <th colSpan="2">Location</th>
+            <th colSpan="3">Location</th>
           </tr>
           <tr>
-            <th>Site 1</th>
-            <th>Site 2</th>
+            <th>Good</th>
+            <th>Moderate</th>
           </tr>
         </thead>
         <tbody>
-          {tableData.map((row, index) => (
-            <tr key={index}>
-              {row.deviceName === "DUT" && index % 4 === 0 && (
-                <td rowSpan="4">{row.category}</td>
-              )}
-              {row.deviceName === "DUT" && (index % 4 === 0 || index % 4 === 2) && (
-                <td rowSpan="2">{row.idealThroughput}</td>
-              )}
-              <td>{row.deviceName}</td>
-              <td>{row.overall}</td>
-              <td>{row.site1}</td>
-              <td>{row.site2}</td>
-            </tr>
-          ))}
+          {data.map((row, index) => {
+            const showMetric = row.metric !== lastMetric;
+            const showIdealThroughput = row.idealThroughput !== lastIdealThroughput || showMetric;
+
+            if (showMetric) {
+              lastMetric = row.metric;
+              lastIdealThroughput = row.idealThroughput;
+            } else if (showIdealThroughput) {
+              lastIdealThroughput = row.idealThroughput;
+            }
+
+            return (
+              <tr key={index}>
+                {showMetric && (
+                  <td rowSpan={getMetricRowSpan(row.metric)}>{row.metric}</td>
+                )}
+                {showIdealThroughput && (
+                  <td rowSpan={getRowSpan(row.metric, row.idealThroughput)}>{row.idealThroughput}</td>
+                )}
+                <td>{row.deviceName}</td>
+                <td>{calculateOverallAverage(row.location.good, row.location.moderate)}</td>
+                <td>{row.location.good.toFixed(2)}</td>
+                <td>{row.location.moderate.toFixed(2)}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
   );
 }
 
-export default DpMHSUdpTable;
+export default MHSUdpTable;

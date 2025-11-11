@@ -9,6 +9,7 @@ import Dp_Webbrowser_Component from './Statoinary/Dp_Webbrowser_Component';
 import Dp_playStore_Component from './Statoinary/Dp_playStore_Component';
 import Dp_MHS_Page from './MHS/DpMHSPage';
 import DpDriveTestDetailPage from './DriveTest/DpDriveTestDetailPage';
+import DpMrabDetailsPage from './DpMrabDetailsPage';
 function DpDetailsPage() {
   
 
@@ -24,10 +25,8 @@ function DpDetailsPage() {
       <Dp_playStore_Component/> */}
       {/* <Dp_MHS_Page/> */}
       {/* <DpDriveTestDetailPage/> */}
+      <DpMrabDetailsPage/>
 
-      <div className='page-content'>
-      <h2>VoNR MRAB Stationary test - 5G NR</h2>
-      </div>
       {/* <DpRangeChart dataPerformanceResults={dataPerformanceResults} /> */}
       <div className='page-content'>
       <h2>Test drive- 5G NSA</h2>

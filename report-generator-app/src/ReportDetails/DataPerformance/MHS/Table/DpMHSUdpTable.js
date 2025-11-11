@@ -1,31 +1,40 @@
 import React from 'react';
 
-function DpMHSUdpTable() {
-  // Placeholder data for now
-  const idealThroughputValues = [10000, 20000];
+function DpMHSUdpTable({ data, IdealThroughput }) {
   const categories = ["Average", "Standard Deviation", "Maximum", "Minimum"];
 
   const tableData = [];
 
   categories.forEach((category) => {
-    idealThroughputValues.forEach((throughput) => {
+    IdealThroughput.forEach((throughput) => {
+      const dutData = data.find(
+        (item) =>
+          item.Category === category &&
+          item.IdealThroughput === throughput &&
+          item.DeviceName === "DUT"
+      );
+      const refData = data.find(
+        (item) =>
+          item.Category === category &&
+          item.IdealThroughput === throughput &&
+          item.DeviceName === "REF"
+      );
+
       tableData.push({
         category: category,
         idealThroughput: throughput,
         deviceName: "DUT",
-        overall: "",
-        site1: "",
-        site2: "",
-        site3: ""
+        overall: dutData ? dutData.Overall : "",
+        site1: dutData ? dutData.Site1 : "",
+        site2: dutData ? dutData.Site2 : "",
       });
       tableData.push({
         category: category,
         idealThroughput: throughput,
         deviceName: "REF",
-        overall: "",
-        site1: "",
-        site2: "",
-        site3: ""
+        overall: refData ? refData.Overall : "",
+        site1: refData ? refData.Site1 : "",
+        site2: refData ? refData.Site2 : "",
       });
     });
   });

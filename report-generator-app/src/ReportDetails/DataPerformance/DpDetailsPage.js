@@ -10,10 +10,9 @@ import Dp_playStore_Component from './Statoinary/Dp_playStore_Component';
 import Dp_MHS_Page from './MHS/DpMHSPage';
 import DpDriveTestDetailPage from './DriveTest/DpDriveTestDetailPage';
 import DpMrabDetailsPage from './DpMrabDetailsPage';
+
+
 function DpDetailsPage() {
-  
-
-
   return (
     <div>
       <h2>Data Performance Details Page</h2>
@@ -25,9 +24,12 @@ function DpDetailsPage() {
       <Dp_playStore_Component/> */}
       {/* <Dp_MHS_Page/> */}
       {/* <DpDriveTestDetailPage/> */}
-      <DpMrabDetailsPage/>
+      {/* <DpMrabDetailsPage/> */}
 
       {/* <DpRangeChart dataPerformanceResults={dataPerformanceResults} /> */}
+      <div className='page-content'>
+      <h2>Test drive- 5G NSA</h2>
+      </div>
       <div className='page-content'>
       <h2>Test drive- 5G NSA</h2>
       </div>

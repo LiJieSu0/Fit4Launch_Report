@@ -7,7 +7,7 @@ import Dp_Udp_Component from './Statoinary/Dp_Udp_Component';
 import Dp_Ping_Component from './Statoinary/Dp_Ping_Component';
 import Dp_Webbrowser_Component from './Statoinary/Dp_Webbrowser_Component';
 import Dp_playStore_Component from './Statoinary/Dp_playStore_Component';
-
+import Dp_MHS_Page from './MHS/DpMHSPage';
 function DpDetailsPage() {
   
 
@@ -21,12 +21,8 @@ function DpDetailsPage() {
       <Dp_Ping_Component/>
       <Dp_Webbrowser_Component />
       <Dp_playStore_Component/>
-      <div className='page-content'>
-      <h2>Play-store app download test - 5G NR</h2>
-      </div>
-      <div className='page-content'>
-      <h2>Mobile hot spot test - Seattle only- 5G NR</h2>
-      </div>
+      <Dp_MHS_Page/>
+
       <div className='page-content'>
       <h2>Mobility test - 5G Auto Data Test Drive</h2>
       </div>      

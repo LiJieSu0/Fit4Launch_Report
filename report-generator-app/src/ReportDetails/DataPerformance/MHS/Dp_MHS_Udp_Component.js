@@ -1,55 +1,211 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DpMHSUdpTable from "./Table/DpMHSUdpTable";
+import udpDataRaw from '../../../DataFiles/SA/DpMHSResults/UDP.json'; // Direct import of JSON
 
 function Dp_MHS_Udp_Component() {
+  const [udpData, setUdpData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    try {
+      setUdpData(udpDataRaw);
+    } catch (e) {
+      setError(e);
+    }
+  }, []);
+
   const ulIdealThroughput = [10000, 20000];
   const dlIdealThroughput = [200000, 400000];
-  const ulData = [
-    // Placeholder data - replace with actual data fetching logic
-    { Category: "Average", IdealThroughput: 10000, DeviceName: "DUT", Overall: "100", Site1: "90", Site2: "110" },
-    { Category: "Average", IdealThroughput: 10000, DeviceName: "REF", Overall: "95", Site1: "85", Site2: "105" },
-    { Category: "Average", IdealThroughput: 20000, DeviceName: "DUT", Overall: "200", Site1: "190", Site2: "210" },
-    { Category: "Average", IdealThroughput: 20000, DeviceName: "REF", Overall: "195", Site1: "185", Site2: "205" },
-    { Category: "Standard Deviation", IdealThroughput: 10000, DeviceName: "DUT", Overall: "5", Site1: "4", Site2: "6" },
-    { Category: "Standard Deviation", IdealThroughput: 10000, DeviceName: "REF", Overall: "4", Site1: "3", Site2: "5" },
-    { Category: "Standard Deviation", IdealThroughput: 20000, DeviceName: "DUT", Overall: "10", Site1: "9", Site2: "11" },
-    { Category: "Standard Deviation", IdealThroughput: 20000, DeviceName: "REF", Overall: "9", Site1: "8", Site2: "10" },
-    { Category: "Maximum", IdealThroughput: 10000, DeviceName: "DUT", Overall: "120", Site1: "110", Site2: "130" },
-    { Category: "Maximum", IdealThroughput: 10000, DeviceName: "REF", Overall: "115", Site1: "105", Site2: "125" },
-    { Category: "Maximum", IdealThroughput: 20000, DeviceName: "DUT", Overall: "240", Site1: "230", Site2: "250" },
-    { Category: "Maximum", IdealThroughput: 20000, DeviceName: "REF", Overall: "235", Site1: "225", Site2: "245" },
-    { Category: "Minimum", IdealThroughput: 10000, DeviceName: "DUT", Overall: "80", Site1: "70", Site2: "90" },
-    { Category: "Minimum", IdealThroughput: 10000, DeviceName: "REF", Overall: "75", Site1: "65", Site2: "85" },
-    { Category: "Minimum", IdealThroughput: 20000, DeviceName: "DUT", Overall: "160", Site1: "150", Site2: "170" },
-    { Category: "Minimum", IdealThroughput: 20000, DeviceName: "REF", Overall: "155", Site1: "145", Site2: "165" },
-  ];
 
-  const dlData = [
-    // Placeholder data - replace with actual data fetching logic
-    { Category: "Average", IdealThroughput: 200000, DeviceName: "DUT", Overall: "100", Site1: "90", Site2: "110" },
-    { Category: "Average", IdealThroughput: 200000, DeviceName: "REF", Overall: "95", Site1: "85", Site2: "105" },
-    { Category: "Average", IdealThroughput: 400000, DeviceName: "DUT", Overall: "200", Site1: "190", Site2: "210" },
-    { Category: "Average", IdealThroughput: 400000, DeviceName: "REF", Overall: "195", Site1: "185", Site2: "205" },
-    { Category: "Standard Deviation", IdealThroughput: 200000, DeviceName: "DUT", Overall: "5", Site1: "4", Site2: "6" },
-    { Category: "Standard Deviation", IdealThroughput: 200000, DeviceName: "REF", Overall: "4", Site1: "3", Site2: "5" },
-    { Category: "Standard Deviation", IdealThroughput: 400000, DeviceName: "DUT", Overall: "10", Site1: "9", Site2: "11" },
-    { Category: "Standard Deviation", IdealThroughput: 400000, DeviceName: "REF", Overall: "9", Site1: "8", Site2: "10" },
-    { Category: "Maximum", IdealThroughput: 200000, DeviceName: "DUT", Overall: "120", Site1: "110", Site2: "130" },
-    { Category: "Maximum", IdealThroughput: 200000, DeviceName: "REF", Overall: "115", Site1: "105", Site2: "125" },
-    { Category: "Maximum", IdealThroughput: 400000, DeviceName: "DUT", Overall: "240", Site1: "230", Site2: "250" },
-    { Category: "Maximum", IdealThroughput: 400000, DeviceName: "REF", Overall: "235", Site1: "225", Site2: "245" },
-    { Category: "Minimum", IdealThroughput: 200000, DeviceName: "DUT", Overall: "80", Site1: "70", Site2: "90" },
-    { Category: "Minimum", IdealThroughput: 200000, DeviceName: "REF", Overall: "75", Site1: "65", Site2: "85" },
-    { Category: "Minimum", IdealThroughput: 400000, DeviceName: "DUT", Overall: "160", Site1: "150", Site2: "170" },
-    { Category: "Minimum", IdealThroughput: 400000, DeviceName: "REF", Overall: "155", Site1: "145", Site2: "165" },
-  ];
+  const ulData = [];
+  const dlData = [];
+
+  if (error) {
+    return <div className='page-content'>Error: {error.message}</div>;
+  }
+
+  if (!udpData) {
+    return <div className='page-content'>Loading MHS-UDP data...</div>;
+  }
+
+  // Process udpData to populate ulData and dlData
+  const location1Data = udpData.Location1;
+
+  if (location1Data) {
+    // Process UL data
+    const ul10Mbps = location1Data["UDP Upload Task at 10 Mbps for 10 seconds"];
+    const ul20Mbps = location1Data["UDP Upload Task at 20 Mbps for 10 seconds"];
+
+    if (ul10Mbps) {
+      Object.keys(ul10Mbps).forEach(key => {
+        const deviceData = ul10Mbps[key];
+        if (deviceData["Analysis Direction"] === "UL") {
+          ulData.push({
+            Category: "Average",
+            IdealThroughput: 10000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Mean.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          ulData.push({
+            Category: "Standard Deviation",
+            IdealThroughput: 10000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput["Standard Deviation"].toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          ulData.push({
+            Category: "Maximum",
+            IdealThroughput: 10000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Maximum.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          ulData.push({
+            Category: "Minimum",
+            IdealThroughput: 10000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Minimum.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+        }
+      });
+    }
+
+    if (ul20Mbps) {
+      Object.keys(ul20Mbps).forEach(key => {
+        const deviceData = ul20Mbps[key];
+        if (deviceData["Analysis Direction"] === "UL") {
+          ulData.push({
+            Category: "Average",
+            IdealThroughput: 20000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Mean.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          ulData.push({
+            Category: "Standard Deviation",
+            IdealThroughput: 20000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput["Standard Deviation"].toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          ulData.push({
+            Category: "Maximum",
+            IdealThroughput: 20000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Maximum.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          ulData.push({
+            Category: "Minimum",
+            IdealThroughput: 20000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Minimum.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+        }
+      });
+    }
+
+    // Process DL data
+    const dl200Mbps = location1Data["UDP Download Task at 200 Mbps for 10 seconds"];
+    const dl400Mbps = location1Data["UDP Download Task at 400 Mbps for 10 seconds"];
+
+    if (dl200Mbps) {
+      Object.keys(dl200Mbps).forEach(key => {
+        const deviceData = dl200Mbps[key];
+        if (deviceData["Analysis Direction"] === "DL") {
+          dlData.push({
+            Category: "Average",
+            IdealThroughput: 200000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Mean.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          dlData.push({
+            Category: "Standard Deviation",
+            IdealThroughput: 200000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput["Standard Deviation"].toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          dlData.push({
+            Category: "Maximum",
+            IdealThroughput: 200000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Maximum.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          dlData.push({
+            Category: "Minimum",
+            IdealThroughput: 200000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Minimum.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+        }
+      });
+    }
+
+    if (dl400Mbps) {
+      Object.keys(dl400Mbps).forEach(key => {
+        const deviceData = dl400Mbps[key];
+        if (deviceData["Analysis Direction"] === "DL") {
+          dlData.push({
+            Category: "Average",
+            IdealThroughput: 400000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Mean.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          dlData.push({
+            Category: "Standard Deviation",
+            IdealThroughput: 400000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput["Standard Deviation"].toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          dlData.push({
+            Category: "Maximum",
+            IdealThroughput: 400000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Maximum.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+          dlData.push({
+            Category: "Minimum",
+            IdealThroughput: 400000,
+            DeviceName: deviceData["Device Type"],
+            Overall: deviceData.Throughput.Minimum.toFixed(2),
+            Site1: "N/A",
+            Site2: "N/A"
+          });
+        }
+      });
+    }
+  }
 
   return (
     <div className='page-content'>
       <h2>MHS-UDP Component</h2>
       <DpMHSUdpTable data={ulData} IdealThroughput={ulIdealThroughput} />
       <DpMHSUdpTable data={dlData} IdealThroughput={dlIdealThroughput} />
-
     </div>
   );
 }

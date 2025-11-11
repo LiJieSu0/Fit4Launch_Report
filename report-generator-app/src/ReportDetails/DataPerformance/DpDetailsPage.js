@@ -10,7 +10,8 @@ import Dp_playStore_Component from './Statoinary/Dp_playStore_Component';
 import Dp_MHS_Page from './MHS/DpMHSPage';
 import DpDriveTestDetailPage from './DriveTest/DpDriveTestDetailPage';
 import DpMrabDetailsPage from './DpMrabDetailsPage';
-
+import DpNSAStationaryDetails from './NSA/Stationary/DpNSAStationaryDetails';
+import DpNSATestDriveDetails from './NSA/TestDrive/DpNSATestDriveDetails';
 
 function DpDetailsPage() {
   return (
@@ -22,17 +23,13 @@ function DpDetailsPage() {
       {/* <Dp_Ping_Component/>
       <Dp_Webbrowser_Component />
       <Dp_playStore_Component/> */}
-      {/* <Dp_MHS_Page/> */}
+      <Dp_MHS_Page/>
       {/* <DpDriveTestDetailPage/> */}
       {/* <DpMrabDetailsPage/> */}
 
       {/* <DpRangeChart dataPerformanceResults={dataPerformanceResults} /> */}
-      <div className='page-content'>
-      <h2>Test drive- 5G NSA</h2>
-      </div>
-      <div className='page-content'>
-      <h2>Test drive- 5G NSA</h2>
-      </div>
+      <DpNSAStationaryDetails/>
+      {/* <DpNSATestDriveDetails/> */}
 
     </div>
   );

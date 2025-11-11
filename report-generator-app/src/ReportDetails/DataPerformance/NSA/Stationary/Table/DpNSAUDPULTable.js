@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DpNSAUDPULTTable({ data, tableName }) {
+function DpNSAUDPULTable({ data, tableName }) {
   const calculateOverallAverage = (moderate, poor) => {
     const moderateVal = parseFloat(moderate);
     const poorVal = parseFloat(poor);
@@ -83,4 +83,4 @@ function DpNSAUDPULTTable({ data, tableName }) {
   );
 }
 
-export default DpNSAUDPULTTable;
+export default DpNSAUDPULTable;

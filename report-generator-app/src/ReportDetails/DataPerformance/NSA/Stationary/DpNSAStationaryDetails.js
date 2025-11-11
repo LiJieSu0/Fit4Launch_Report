@@ -3,7 +3,7 @@ import DpNSAHttpMSTable from './Table/DpNSAHttpMSTable';
 import DpNSAHttpSSTable from './Table/DpNSAHttpSSTable';
 import DpNSAPingTable from './Table/DpNSAPingTable';
 import DpNSAUDPDLTable from './Table/DpNSAUDPDLTable';
-import DpNSAUDPULTTable from './Table/DpNSAUDPULTTable';
+import DpNSAUDPULTable from './Table/DpNSAUDPULTable';
 
 import MultiStreamHTTPData from '../../../../DataFiles/NSA/DpStationaryResults/Multi Stream HTTP.json';
 import SingleStreamHTTPData from '../../../../DataFiles/NSA/DpStationaryResults/Single Stream HTTP.json';
@@ -97,11 +97,11 @@ function DpNSAStationaryDetails() {
   return (
     <div className='page-content'>
       <h2>NSA Stationary Data Performance Details</h2>
-      <DpNSAHttpMSTable data={MultiStreamHTTPData} tableName="Multi Stream HTTP Stationary" />
+      {/* <DpNSAHttpMSTable data={MultiStreamHTTPData} tableName="Multi Stream HTTP Stationary" />
       <DpNSAHttpSSTable data={SingleStreamHTTPData} tableName="Single Stream HTTP Stationary" />
-      <DpNSAPingTable data={PingData} tableName="Ping Stationary" />
+      <DpNSAPingTable data={PingData} tableName="Ping Stationary" /> */}
       <DpNSAUDPDLTable data={udp_Stationary_DL} tableName="UDP Download Stationary" />
-      <DpNSAUDPULTTable data={udp_Stationary_UL} tableName="UDP Upload Stationary" />
+      <DpNSAUDPULTable data={udp_Stationary_UL} tableName="UDP Upload Stationary" />
     </div>
   );
 }

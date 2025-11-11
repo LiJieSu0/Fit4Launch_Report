@@ -2,72 +2,33 @@ import React from 'react';
 
 function DpMHSUdpTable() {
   // Placeholder data for now
-  const tableData = [
-    {
-      category: "Average",
-      deviceName: "DUT",
-      overall: "",
-      site1: "",
-      site2: "",
-      site3: ""
-    },
-    {
-      category: "Average",
-      deviceName: "REF",
-      overall: "",
-      site1: "",
-      site2: "",
-      site3: ""
-    },
-    {
-      category: "Standard Deviation",
-      deviceName: "DUT",
-      overall: "",
-      site1: "",
-      site2: "",
-      site3: ""
-    },
-    {
-      category: "Standard Deviation",
-      deviceName: "REF",
-      overall: "",
-      site1: "",
-      site2: "",
-      site3: ""
-    },
-    {
-      category: "Maximum",
-      deviceName: "DUT",
-      overall: "",
-      site1: "",
-      site2: "",
-      site3: ""
-    },
-    {
-      category: "Maximum",
-      deviceName: "REF",
-      overall: "",
-      site1: "",
-      site2: "",
-      site3: ""
-    },
-    {
-      category: "Minimum",
-      deviceName: "DUT",
-      overall: "",
-      site1: "",
-      site2: "",
-      site3: ""
-    },
-    {
-      category: "Minimum",
-      deviceName: "REF",
-      overall: "",
-      site1: "",
-      site2: "",
-      site3: ""
-    },
-  ];
+  const idealThroughputValues = [10000, 20000];
+  const categories = ["Average", "Standard Deviation", "Maximum", "Minimum"];
+
+  const tableData = [];
+
+  categories.forEach((category) => {
+    idealThroughputValues.forEach((throughput) => {
+      tableData.push({
+        category: category,
+        idealThroughput: throughput,
+        deviceName: "DUT",
+        overall: "",
+        site1: "",
+        site2: "",
+        site3: ""
+      });
+      tableData.push({
+        category: category,
+        idealThroughput: throughput,
+        deviceName: "REF",
+        overall: "",
+        site1: "",
+        site2: "",
+        site3: ""
+      });
+    });
+  });
 
   return (
     <div className="">
@@ -75,6 +36,7 @@ function DpMHSUdpTable() {
         <thead>
           <tr>
             <th rowSpan="2">Throughput</th>
+            <th rowSpan="2">Ideal Throughput</th>
             <th rowSpan="2">Device Name</th>
             <th rowSpan="2">Overall</th>
             <th colSpan="2">Location</th>
@@ -87,8 +49,11 @@ function DpMHSUdpTable() {
         <tbody>
           {tableData.map((row, index) => (
             <tr key={index}>
-              {row.deviceName === "DUT" && (
-                <td rowSpan="2">{row.category}</td>
+              {row.deviceName === "DUT" && index % 4 === 0 && (
+                <td rowSpan="4">{row.category}</td>
+              )}
+              {row.deviceName === "DUT" && (index % 4 === 0 || index % 4 === 2) && (
+                <td rowSpan="2">{row.idealThroughput}</td>
               )}
               <td>{row.deviceName}</td>
               <td>{row.overall}</td>

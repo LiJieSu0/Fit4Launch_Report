@@ -1,9 +1,9 @@
 import React from 'react';
 
 function DpMHSUdpTable({ data, tableName }) {
-  const calculateOverallAverage = (good, moderate, poor) => {
-    const sum = parseFloat(good) + parseFloat(moderate) + parseFloat(poor);
-    return (sum / 3).toFixed(2); // Calculate average and format to 2 decimal places
+  const calculateOverallAverage = (good, moderate) => {
+    const sum = parseFloat(good) + parseFloat(moderate);
+    return (sum / 2).toFixed(2); // Calculate average and format to 2 decimal places
   };
 
   const getRowSpan = (currentMetric, currentIdealThroughput) => {
@@ -39,12 +39,11 @@ function DpMHSUdpTable({ data, tableName }) {
             <th rowSpan="2">Ideal Throughput</th>
             <th rowSpan="2">Device Name</th>
             <th rowSpan="2">Overall</th>
-            <th colSpan="3">Location</th>
+            <th colSpan="2">Location</th>
           </tr>
           <tr>
             <th>Good</th>
             <th>Moderate</th>
-            <th>Poor</th>
           </tr>
         </thead>
         <tbody>
@@ -68,10 +67,9 @@ function DpMHSUdpTable({ data, tableName }) {
                   <td rowSpan={getRowSpan(row.metric, row.idealThroughput)}>{row.idealThroughput}</td>
                 )}
                 <td>{row.deviceName}</td>
-                <td>{calculateOverallAverage(row.location.good, row.location.moderate, row.location.poor)}</td>
+                <td>{calculateOverallAverage(row.location.good, row.location.moderate)}</td>
                 <td>{row.location.good.toFixed(2)}</td>
                 <td>{row.location.moderate.toFixed(2)}</td>
-                <td>{row.location.poor.toFixed(2)}</td>
               </tr>
             );
           })}

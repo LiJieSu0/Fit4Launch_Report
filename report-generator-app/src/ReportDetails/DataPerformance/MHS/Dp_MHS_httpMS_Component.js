@@ -6,7 +6,6 @@ function Dp_MHS_httpMS_Component() {
   const data = {
     Good: { DUT: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 }, REF: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 } },
     Moderate: { DUT: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 }, REF: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 } },
-    Poor: { DUT: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 }, REF: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 } },
   };
 
   return (

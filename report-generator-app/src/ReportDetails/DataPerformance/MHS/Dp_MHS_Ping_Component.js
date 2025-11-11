@@ -4,10 +4,10 @@ import DpMHSPingTable from "./Table/DpMHSPingTable";
 function Dp_MHS_Ping_Component() {
   // Placeholder for data fetching or state management
   const data = {
-    average: { DUT: { Overall: 0, Good: 0, Moderate: 0, Poor: 0 }, REF: { Overall: 0, Good: 0, Moderate: 0, Poor: 0 } },
-    std_dev: { DUT: { Overall: 0, Good: 0, Moderate: 0, Poor: 0 }, REF: { Overall: 0, Good: 0, Moderate: 0, Poor: 0 } },
-    max: { DUT: { Overall: 0, Good: 0, Moderate: 0, Poor: 0 }, REF: { Overall: 0, Good: 0, Moderate: 0, Poor: 0 } },
-    min: { DUT: { Overall: 0, Good: 0, Moderate: 0, Poor: 0 }, REF: { Overall: 0, Good: 0, Moderate: 0, Poor: 0 } },
+    average: { DUT: { Overall: 0, Good: 0, Moderate: 0 }, REF: { Overall: 0, Good: 0, Moderate: 0 } },
+    std_dev: { DUT: { Overall: 0, Good: 0, Moderate: 0 }, REF: { Overall: 0, Good: 0, Moderate: 0 } },
+    max: { DUT: { Overall: 0, Good: 0, Moderate: 0 }, REF: { Overall: 0, Good: 0, Moderate: 0 } },
+    min: { DUT: { Overall: 0, Good: 0, Moderate: 0 }, REF: { Overall: 0, Good: 0, Moderate: 0 } },
   };
 
   return (

@@ -11,16 +11,15 @@ const DpMHSPingTable = ({ data }) => {
                             <th rowSpan="2">Ping RTT (ms)</th>
                             <th rowSpan="2">Device Name</th>
                             <th rowSpan="2">Overall</th>
-                            <th colSpan="3">Location</th>
+                            <th colSpan="2">Location</th>
                         </tr>
                         <tr>
                             <th>Good</th>
                             <th>Moderate</th>
-                            <th>Poor</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td colSpan="6">No data available</td></tr>
+                        <tr><td colSpan="5">No data available</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -35,12 +34,11 @@ const DpMHSPingTable = ({ data }) => {
                         <th rowSpan="2">Ping RTT (ms)</th>
                         <th rowSpan="2">Device Name</th>
                         <th rowSpan="2">Overall</th>
-                        <th colSpan="3">Location</th>
+                        <th colSpan="2">Location</th>
                     </tr>
                     <tr>
                         <th>Good</th>
                         <th>Moderate</th>
-                        <th>Poor</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,14 +48,12 @@ const DpMHSPingTable = ({ data }) => {
                         <td>{data.average.DUT.Overall}</td>
                         <td>{data.average.DUT.Good}</td>
                         <td>{data.average.DUT.Moderate}</td>
-                        <td>{data.average.DUT.Poor}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
                         <td>{data.average.REF.Overall}</td>
                         <td>{data.average.REF.Good}</td>
                         <td>{data.average.REF.Moderate}</td>
-                        <td>{data.average.REF.Poor}</td>
                     </tr>
                     <tr>
                         <td rowSpan="2">Standard Deviation</td>
@@ -65,14 +61,12 @@ const DpMHSPingTable = ({ data }) => {
                         <td>{data.std_dev.DUT.Overall}</td>
                         <td>{data.std_dev.DUT.Good}</td>
                         <td>{data.std_dev.DUT.Moderate}</td>
-                        <td>{data.std_dev.DUT.Poor}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
                         <td>{data.std_dev.REF.Overall}</td>
                         <td>{data.std_dev.REF.Good}</td>
                         <td>{data.std_dev.REF.Moderate}</td>
-                        <td>{data.std_dev.REF.Poor}</td>
                     </tr>
                     <tr>
                         <td rowSpan="2">Maximum</td>
@@ -80,14 +74,12 @@ const DpMHSPingTable = ({ data }) => {
                         <td>{data.max.DUT.Overall}</td>
                         <td>{data.max.DUT.Good}</td>
                         <td>{data.max.DUT.Moderate}</td>
-                        <td>{data.max.DUT.Poor}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
                         <td>{data.max.REF.Overall}</td>
                         <td>{data.max.REF.Good}</td>
                         <td>{data.max.REF.Moderate}</td>
-                        <td>{data.max.REF.Poor}</td>
                     </tr>
                     <tr>
                         <td rowSpan="2">Minimum</td>
@@ -95,14 +87,12 @@ const DpMHSPingTable = ({ data }) => {
                         <td>{data.min.DUT.Overall}</td>
                         <td>{data.min.DUT.Good}</td>
                         <td>{data.min.DUT.Moderate}</td>
-                        <td>{data.min.DUT.Poor}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
                         <td>{data.min.REF.Overall}</td>
                         <td>{data.min.REF.Good}</td>
                         <td>{data.min.REF.Moderate}</td>
-                        <td>{data.min.REF.Poor}</td>
                     </tr>
                 </tbody>
             </table>

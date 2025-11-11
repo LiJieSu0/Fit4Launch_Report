@@ -212,10 +212,124 @@ function DpSummaryPage() {
     ],
   };
 
+  // NSA DATA
+    const httpNSASSData = {
+    headers: [
+      { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
+      { label: "Market", rowSpan: 2 },
+      { label: "Download", rowSpan: 1 },
+      { label: "Upload", rowSpan: 1 },
+    ],
+    rows: [
+      {
+        cells: [
+          { label: "Data Throughput Average" },
+          { label: "Seattle (5G NSA)" },
+          {label:'Result',className:'average-fail',link:'#'},
+          {label:'Result',className:'average-fail',link:'#'}
+        ],
+      },
+    ],
+  };
+
+  const httpNSAMSData = {
+    headers: [
+      { label: "File Transfer (HTTP) Multi-Stream", rowSpan: 2 },
+      { label: "Market", rowSpan: 2 },
+      { label: "Download", rowSpan: 1 },
+      { label: "Upload", rowSpan: 1 },
+    ],
+    rows: [
+      {
+        cells: [
+          { label: "Data Throughput Average" },
+          { label: "Seattle (5G NSA)" },
+          {label:'Result',className:'average-fail',link:'#'},
+          {label:'Result',className:'average-fail',link:'#'}
+        ],
+      },
+    ],
+  };
+
+  const udpNSAData = {
+    headers: [
+      { label: "UDP test", rowSpan: 2 },
+      { label: "Market", rowSpan: 2 },
+      { label: "Download", rowSpan: 1 },
+      { label: "Upload", rowSpan: 1 },
+    ],
+    rows: [
+      {
+        cells: [
+          { label: "Mean Throughput" },
+          { label: "Seattle (5G NSA)", rowSpan: 3 },
+          {label:'Result',className:'average-fail',link:'#'},
+          {label:'Result',className:'average-fail',link:'#'}
+        ],
+      },
+      {
+        cells: [
+          { label: "Mean Jitter" },
+          null, // Placeholder for the merged 'Market' cell
+          { label: "Result", className: "average-fail", link: "#" },
+          { label: "Result", className: "average-fail", link: "#" },
+        ],
+      },
+      {
+        cells: [
+          { label: "Packet Failure Rate (%)" },
+          null, // Placeholder for the merged 'Market' cell
+          { label: "Result", className: "average-fail", link: "#" },
+          { label: "Result", className: "average-fail", link: "#" },
+        ],
+      },
+    ],
+  };
+
+  const pingNSAData = {
+    headers: [
+      { label: "Ping Test", rowSpan: 2 },
+      { label: "Market", rowSpan: 2 },
+      { label: "Download", rowSpan: 1 },
+      { label: "Upload", rowSpan: 1 },
+    ],
+    rows: [
+      {
+        cells: [
+          { label: "Mean Round Trip Time(ms)" },
+          { label: "Seattle (5G NSA)" },
+          {label:'Result',className:'average-fail',link:'#'},
+          {label:'Result',className:'average-fail',link:'#'}
+        ],
+      },
+    ],
+  };
+  const mobiltyNSAData = {
+    headers: [
+      { label: "5G NSA Auto Data Test Drive", rowSpan: 2 },
+      { label: "Market", rowSpan: 2 },
+      { label: "Download", rowSpan: 1 },
+      { label: "Upload", rowSpan: 1 },
+    ],
+    rows: [
+      {
+        cells: [
+          { label: "Data Throughput Average" },
+          { label: "Seattle (5G NSA)" },
+          {label:'Result',className:'average-fail',link:'#'},
+          {label:'Result',className:'average-fail',link:'#'}
+        ],
+      },
+    ],
+  };
+
+
+
   return (
     <div>
       <div className='page-content'>
         <h2>Data Performance Summary Page</h2>
+        <h3>5G SA</h3>
         <DpSummaryTable tableData={httpSSData} />
         <DpSummaryTable tableData={httpMSData} />
         <DpSummaryTable tableData={udpData} />
@@ -230,6 +344,16 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={mrabData} />
         <DpSummaryTable tableData={webBrowserData} />
       </div>
+      <div className='page-content'>
+        <h3>5G NSA</h3>
+        <DpSummaryTable tableData={httpNSASSData} />
+        <DpSummaryTable tableData={httpNSAMSData} />
+        <DpSummaryTable tableData={udpNSAData} />
+        <DpSummaryTable tableData={pingNSAData} />
+        <DpSummaryTable tableData={mobiltyNSAData} />
+
+      </div>
+
     </div>
   );
 }

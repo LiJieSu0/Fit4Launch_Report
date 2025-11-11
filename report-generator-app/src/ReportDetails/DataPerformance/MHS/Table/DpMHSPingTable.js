@@ -45,54 +45,54 @@ const DpMHSPingTable = ({ data }) => {
                     <tr>
                         <td rowSpan="2">Average</td>
                         <td>DUT</td>
-                        <td>{data.average.DUT.Overall}</td>
-                        <td>{data.average.DUT.Good}</td>
-                        <td>{data.average.DUT.Moderate}</td>
+                        <td>{parseFloat(data.average.DUT.Overall).toFixed(2)}</td>
+                        <td>{parseFloat(data.average.DUT.Good).toFixed(2)}</td>
+                        <td>{parseFloat(data.average.DUT.Moderate).toFixed(2)}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
-                        <td>{data.average.REF.Overall}</td>
-                        <td>{data.average.REF.Good}</td>
-                        <td>{data.average.REF.Moderate}</td>
+                        <td>{parseFloat(data.average.REF.Overall).toFixed(2)}</td>
+                        <td>{parseFloat(data.average.REF.Good).toFixed(2)}</td>
+                        <td>{parseFloat(data.average.REF.Moderate).toFixed(2)}</td>
                     </tr>
                     <tr>
                         <td rowSpan="2">Standard Deviation</td>
                         <td>DUT</td>
-                        <td>{data.std_dev.DUT.Overall}</td>
-                        <td>{data.std_dev.DUT.Good}</td>
-                        <td>{data.std_dev.DUT.Moderate}</td>
+                        <td>{parseFloat(data.std_dev.DUT.Overall).toFixed(2)}</td>
+                        <td>{parseFloat(data.std_dev.DUT.Good).toFixed(2)}</td>
+                        <td>{parseFloat(data.std_dev.DUT.Moderate).toFixed(2)}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
-                        <td>{data.std_dev.REF.Overall}</td>
-                        <td>{data.std_dev.REF.Good}</td>
-                        <td>{data.std_dev.REF.Moderate}</td>
+                        <td>{parseFloat(data.std_dev.REF.Overall).toFixed(2)}</td>
+                        <td>{parseFloat(data.std_dev.REF.Good).toFixed(2)}</td>
+                        <td>{parseFloat(data.std_dev.REF.Moderate).toFixed(2)}</td>
                     </tr>
                     <tr>
                         <td rowSpan="2">Maximum</td>
                         <td>DUT</td>
-                        <td>{data.max.DUT.Overall}</td>
-                        <td>{data.max.DUT.Good}</td>
-                        <td>{data.max.DUT.Moderate}</td>
+                        <td>{parseFloat(data.max.DUT.Overall).toFixed(2)}</td>
+                        <td>{parseFloat(data.max.DUT.Good).toFixed(2)}</td>
+                        <td>{parseFloat(data.max.DUT.Moderate).toFixed(2)}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
-                        <td>{data.max.REF.Overall}</td>
-                        <td>{data.max.REF.Good}</td>
-                        <td>{data.max.REF.Moderate}</td>
+                        <td>{parseFloat(data.max.REF.Overall).toFixed(2)}</td>
+                        <td>{parseFloat(data.max.REF.Good).toFixed(2)}</td>
+                        <td>{parseFloat(data.max.REF.Moderate).toFixed(2)}</td>
                     </tr>
                     <tr>
                         <td rowSpan="2">Minimum</td>
                         <td>DUT</td>
-                        <td>{data.min.DUT.Overall}</td>
-                        <td>{data.min.DUT.Good}</td>
-                        <td>{data.min.DUT.Moderate}</td>
+                        <td>{parseFloat(data.min.DUT.Overall).toFixed(2)}</td>
+                        <td>{parseFloat(data.min.DUT.Good).toFixed(2)}</td>
+                        <td>{parseFloat(data.min.DUT.Moderate).toFixed(2)}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
-                        <td>{data.min.REF.Overall}</td>
-                        <td>{data.min.REF.Good}</td>
-                        <td>{data.min.REF.Moderate}</td>
+                        <td>{parseFloat(data.min.REF.Overall).toFixed(2)}</td>
+                        <td>{parseFloat(data.min.REF.Good).toFixed(2)}</td>
+                        <td>{parseFloat(data.min.REF.Moderate).toFixed(2)}</td>
                     </tr>
                 </tbody>
             </table>

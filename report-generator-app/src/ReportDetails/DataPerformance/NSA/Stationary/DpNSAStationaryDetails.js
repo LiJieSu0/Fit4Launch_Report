@@ -15,8 +15,8 @@ function DpNSAStationaryDetails() {
   const udp_Stationary_DL = [
     // Mean Throughput - 200 Mbps
     {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "200 Mbps",
+      metric: "Throughput (kbps)",
+      idealThroughput: "200000",
       deviceName: "DUT",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH01_TMO-dut_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Throughput?.Mean,
@@ -24,8 +24,8 @@ function DpNSAStationaryDetails() {
       },
     },
     {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "200 Mbps",
+      metric: "Throughput (kbps)",
+      idealThroughput: "200000",
       deviceName: "REF",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH02_TMO-ref_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Throughput?.Mean,
@@ -34,8 +34,8 @@ function DpNSAStationaryDetails() {
     },
     // Mean Throughput - 400 Mbps
     {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "400 Mbps",
+      metric: "Throughput (kbps)",
+      idealThroughput: "400000",
       deviceName: "DUT",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.Throughput?.Mean,
@@ -43,8 +43,8 @@ function DpNSAStationaryDetails() {
       },
     },
     {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "400 Mbps",
+      metric: "Throughput (kbps)",
+      idealThroughput: "400000",
       deviceName: "REF",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.Throughput?.Mean,
@@ -53,8 +53,8 @@ function DpNSAStationaryDetails() {
     },
     // Max Throughput - 200 Mbps
     {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "200 Mbps",
+      metric: "Max Throughput (kbps)",
+      idealThroughput: "200000",
       deviceName: "DUT",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH01_TMO-dut_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Throughput?.Maximum,
@@ -62,8 +62,8 @@ function DpNSAStationaryDetails() {
       },
     },
     {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "200 Mbps",
+      metric: "Max Throughput (kbps)",
+      idealThroughput: "200000",
       deviceName: "REF",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH02_TMO-ref_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Throughput?.Maximum,
@@ -72,8 +72,8 @@ function DpNSAStationaryDetails() {
     },
     // Max Throughput - 400 Mbps
     {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "400 Mbps",
+      metric: "Max Throughput (kbps)",
+      idealThroughput: "400000",
       deviceName: "DUT",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.Throughput?.Maximum,
@@ -81,8 +81,8 @@ function DpNSAStationaryDetails() {
       },
     },
     {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "400 Mbps",
+      metric: "Max Throughput (kbps)",
+      idealThroughput: "400000",
       deviceName: "REF",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.Throughput?.Maximum,
@@ -91,8 +91,8 @@ function DpNSAStationaryDetails() {
     },
     // Mean Jitter - 200 Mbps
     {
-      metric: "Mean Jitter (ms)",
-      idealThroughput: "200 Mbps",
+      metric: "Mean Jitter (s)",
+      idealThroughput: "200000",
       deviceName: "DUT",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH01_TMO-dut_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Jitter?.Mean,
@@ -100,8 +100,8 @@ function DpNSAStationaryDetails() {
       },
     },
     {
-      metric: "Mean Jitter (ms)",
-      idealThroughput: "200 Mbps",
+      metric: "Mean Jitter (s)",
+      idealThroughput: "200000",
       deviceName: "REF",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH02_TMO-ref_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Jitter?.Mean,
@@ -110,8 +110,8 @@ function DpNSAStationaryDetails() {
     },
     // Mean Jitter - 400 Mbps
     {
-      metric: "Mean Jitter (ms)",
-      idealThroughput: "400 Mbps",
+      metric: "Mean Jitter (s)",
+      idealThroughput: "400000",
       deviceName: "DUT",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.Jitter?.Mean,
@@ -119,8 +119,8 @@ function DpNSAStationaryDetails() {
       },
     },
     {
-      metric: "Mean Jitter (ms)",
-      idealThroughput: "400 Mbps",
+      metric: "Mean Jitter (s)",
+      idealThroughput: "400000",
       deviceName: "REF",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.Jitter?.Mean,
@@ -130,7 +130,7 @@ function DpNSAStationaryDetails() {
     // Packet Failure Rate - 200 Mbps
     {
       metric: "Packet Failure Rate (%)",
-      idealThroughput: "200 Mbps",
+      idealThroughput: "200000",
       deviceName: "DUT",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH01_TMO-dut_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.["Error Ratio"]?.Mean,
@@ -139,7 +139,7 @@ function DpNSAStationaryDetails() {
     },
     {
       metric: "Packet Failure Rate (%)",
-      idealThroughput: "200 Mbps",
+      idealThroughput: "200000",
       deviceName: "REF",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH02_TMO-ref_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.["Error Ratio"]?.Mean,
@@ -149,7 +149,7 @@ function DpNSAStationaryDetails() {
     // Packet Failure Rate - 400 Mbps
     {
       metric: "Packet Failure Rate (%)",
-      idealThroughput: "400 Mbps",
+      idealThroughput: "400000",
       deviceName: "DUT",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.["Error Ratio"]?.Mean,
@@ -158,7 +158,7 @@ function DpNSAStationaryDetails() {
     },
     {
       metric: "Packet Failure Rate (%)",
-      idealThroughput: "400 Mbps",
+      idealThroughput: "400000",
       deviceName: "REF",
       location: {
         moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.["Error Ratio"]?.Mean,

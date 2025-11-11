@@ -8,6 +8,7 @@ import Dp_Ping_Component from './Statoinary/Dp_Ping_Component';
 import Dp_Webbrowser_Component from './Statoinary/Dp_Webbrowser_Component';
 import Dp_playStore_Component from './Statoinary/Dp_playStore_Component';
 import Dp_MHS_Page from './MHS/DpMHSPage';
+import DpDriveTestDetailPage from './DpDriveTestDetailPage';
 function DpDetailsPage() {
   
 
@@ -21,11 +22,9 @@ function DpDetailsPage() {
       {/* <Dp_Ping_Component/>
       <Dp_Webbrowser_Component />
       <Dp_playStore_Component/> */}
-      <Dp_MHS_Page/>
+      {/* <Dp_MHS_Page/> */}
+      <DpDriveTestDetailPage/>
 
-      <div className='page-content'>
-      <h2>Mobility test - 5G Auto Data Test Drive</h2>
-      </div>      
       <div className='page-content'>
       <h2>Mobility test - 5G Auto Data Test MHS Drive</h2>
       </div>

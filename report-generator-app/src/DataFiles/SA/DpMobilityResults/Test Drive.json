@@ -1,54 +1,54 @@
 {
-                "DUT UDP DL": {
-                    "Device Type": "DUT",
-                    "Analysis Direction": "DL",
-                    "Protocol Type": "UDP",
-                    "Network Type": "5G",
-                    "Analysis Type": "data_performance",
-                    "Throughput": {
-                        "Mean": 9.781204435636633,
-                        "Standard Deviation": 0.931381287195882,
-                        "Minimum": 5.826606741573033,
-                        "Maximum": 10.000303370786517,
-                        "Number of Intervals": 20
-                    },
-                    "Jitter": {
-                        "Mean": 1.9889436583483404
-                    },
-                    "Error Ratio": {
-                        "Mean": 3.9628764489323385
-                    },
-                    "Ping RTT": {
-                        "min": 38.0,
-                        "max": 1052.0,
-                        "avg": 115.558,
-                        "std_dev": 70.44666138434384
-                    }
-                },
-                "REF UDP DL": {
-                    "Device Type": "REF",
-                    "Analysis Direction": "DL",
-                    "Protocol Type": "UDP",
-                    "Network Type": "5G",
-                    "Analysis Type": "data_performance",
-                    "Throughput": {
-                        "Mean": 9.799550080256822,
-                        "Standard Deviation": 0.7161841508617297,
-                        "Minimum": 6.843808988764044,
-                        "Maximum": 10.000685393258427,
-                        "Number of Intervals": 20
-                    },
-                    "Jitter": {
-                        "Mean": 1.9068157055214725
-                    },
-                    "Error Ratio": {
-                        "Mean": 2.347114968588957
-                    },
-                    "Ping RTT": {
-                        "min": 43.0,
-                        "max": 788.0,
-                        "avg": 148.088,
-                        "std_dev": 106.62866218422886
-                    }
-                }
-            }
+    "DUT UDP DL": {
+        "Device Type": "DUT",
+        "Analysis Direction": "DL",
+        "Protocol Type": "UDP",
+        "Network Type": "5G",
+        "Analysis Type": "data_performance",
+        "Throughput": {
+            "Mean": 9.781204435636633,
+            "Standard Deviation": 0.931381287195882,
+            "Minimum": 5.826606741573033,
+            "Maximum": 10.000303370786517,
+            "Number of Intervals": 20
+        },
+        "Jitter": {
+            "Mean": 1.9889436583483404
+        },
+        "Error Ratio": {
+            "Mean": 3.9628764489323385
+        },
+        "Ping RTT": {
+            "min": 38.0,
+            "max": 1052.0,
+            "avg": 115.558,
+            "std_dev": 70.44666138434384
+        }
+    },
+    "REF UDP DL": {
+        "Device Type": "REF",
+        "Analysis Direction": "DL",
+        "Protocol Type": "UDP",
+        "Network Type": "5G",
+        "Analysis Type": "data_performance",
+        "Throughput": {
+            "Mean": 9.799550080256822,
+            "Standard Deviation": 0.7161841508617297,
+            "Minimum": 6.843808988764044,
+            "Maximum": 10.000685393258427,
+            "Number of Intervals": 20
+        },
+        "Jitter": {
+            "Mean": 1.9068157055214725
+        },
+        "Error Ratio": {
+            "Mean": 2.347114968588957
+        },
+        "Ping RTT": {
+            "min": 43.0,
+            "max": 788.0,
+            "avg": 148.088,
+            "std_dev": 106.62866218422886
+        }
+    }
+}

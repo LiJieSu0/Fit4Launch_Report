@@ -70,6 +70,14 @@
 
   table {
     page-break-inside: avoid;
+    border-collapse: collapse; /* Ensure borders collapse for all tables */
+  }
+
+  /* Explicitly set borders for general-table-style within print media */
+  .general-table-style,
+  .general-table-style th,
+  .general-table-style td {
+    border: 1px solid #000 !important; /* Ensure borders are visible */
   }
 
   /* Reduce spacing for tables in print */

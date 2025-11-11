@@ -6,6 +6,7 @@ import Dp_httpMS_Component from './Statoinary/Dp_httpMS_Component';
 import Dp_Udp_Component from './Statoinary/Dp_Udp_Component';
 import Dp_Ping_Component from './Statoinary/Dp_Ping_Component';
 import Dp_Webbrowser_Component from './Statoinary/Dp_Webbrowser_Component';
+import Dp_playStore_Component from './Statoinary/Dp_playStore_Component';
 
 function DpDetailsPage() {
   
@@ -19,7 +20,7 @@ function DpDetailsPage() {
       <Dp_Udp_Component />
       <Dp_Ping_Component/>
       <Dp_Webbrowser_Component />
-      
+      <Dp_playStore_Component/>
       <div className='page-content'>
       <h2>Play-store app download test - 5G NR</h2>
       </div>

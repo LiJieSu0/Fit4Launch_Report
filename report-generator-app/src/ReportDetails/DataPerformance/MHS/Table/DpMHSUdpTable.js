@@ -40,7 +40,7 @@ function MHSUdpTable({ data, tableName }) {
             <th rowSpan="2">Ideal Throughput</th>
             <th rowSpan="2">Device Name</th>
             <th rowSpan="2">Overall</th>
-            <th colSpan="3">Location</th>
+            <th colSpan="2">Location</th>
           </tr>
           <tr>
             <th>Good</th>

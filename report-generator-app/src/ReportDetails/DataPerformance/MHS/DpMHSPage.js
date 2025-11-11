@@ -1,13 +1,16 @@
 import React from "react";
+import Dp_MHS_httpSS_Component from "./Dp_MHS_httpSS_Component";
+import Dp_MHS_httpMS_Component from "./Dp_MHS_httpMS_Component";
+import Dp_MHS_Udp_Component from "./Dp_MHS_Udp_Component";
+import Dp_MHS_Ping_Component from "./Dp_MHS_Ping_Component";
 
 function Dp_MHS_Page(){
     return(
     <div className='page-content'>
-      <h2>Mobile hot spot test - Seattle only- 5G NR</h2>
-      <h2>MHS-httpSS</h2>
-      <h2>MHS-httpMS</h2>
-      <h2>MHS-UDP</h2>
-      <h2>MHS-Ping</h2>
+      <Dp_MHS_httpSS_Component />
+      <Dp_MHS_httpMS_Component />
+      <Dp_MHS_Udp_Component />
+      <Dp_MHS_Ping_Component />
     </div>
     );
 };

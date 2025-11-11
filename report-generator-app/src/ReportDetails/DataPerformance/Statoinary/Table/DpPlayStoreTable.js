@@ -62,9 +62,9 @@ const DpPlayStoreTable = () => {
           </tr>
           <tr>
             <th>Overall</th>
-            <th>Stationary - Site 1</th>
-            <th>Stationary - Site 2</th>
-            <th>Stationary - Site 3</th>
+            <th>Good</th>
+            <th>Moderate</th>
+            <th>Poor</th>
           </tr>
         </thead>
         <tbody>

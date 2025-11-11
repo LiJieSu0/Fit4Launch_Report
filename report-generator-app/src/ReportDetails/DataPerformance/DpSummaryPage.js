@@ -1,6 +1,7 @@
 import React from 'react';
 import DpSummaryTable from './DpSummaryTable';
 import DataPerformanceResults from '../../DataFiles/DataPerformanceResults.json';
+import DpHistogramComponent from './DpHistogramComponent';
 
 function DpSummaryPage() {
   const extractThroughput = (path, direction) => {
@@ -213,7 +214,7 @@ function DpSummaryPage() {
   };
 
   // NSA DATA
-    const httpNSASSData = {
+   const httpNSASSData = {
     headers: [
       { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
@@ -330,6 +331,8 @@ function DpSummaryPage() {
       <div className='page-content'>
         <h2>Data Performance Summary Page</h2>
         <h3>5G SA</h3>
+        <DpHistogramComponent/>
+        <div style={{marginTop:100}}></div>
         <DpSummaryTable tableData={httpSSData} />
         <DpSummaryTable tableData={httpMSData} />
         <DpSummaryTable tableData={udpData} />
@@ -351,7 +354,6 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={udpNSAData} />
         <DpSummaryTable tableData={pingNSAData} />
         <DpSummaryTable tableData={mobiltyNSAData} />
-
       </div>
 
     </div>

@@ -3,62 +3,7 @@ import DpMHSUdpTable from "./Table/DpMHSUdpTable";
 import udpDataRaw from '../../../DataFiles/SA/DpMHSResults/UDP.json'; // Direct import of JSON
 
 function Dp_MHS_Udp_Component() {
-  const dummyData = [
-    {
-      metric: "DL Throughput",
-      idealThroughput: ">= 100 Mbps",
-      deviceName: "Device 1",
-      location: {
-        good: 120.50,
-        moderate: 90.25,
-      },
-    },
-    {
-      metric: "DL Throughput",
-      idealThroughput: ">= 100 Mbps",
-      deviceName: "Device 2",
-      location: {
-        good: 110.75,
-        moderate: 85.10,
-      },
-    },
-    {
-      metric: "DL Throughput",
-      idealThroughput: ">= 50 Mbps",
-      deviceName: "Device 1",
-      location: {
-        good: 70.10,
-        moderate: 45.30,
-      },
-    },
-    {
-      metric: "DL Throughput",
-      idealThroughput: ">= 50 Mbps",
-      deviceName: "Device 2",
-      location: {
-        good: 65.80,
-        moderate: 40.90,
-      },
-    },
-    {
-      metric: "UL Throughput",
-      idealThroughput: ">= 20 Mbps",
-      deviceName: "Device 1",
-      location: {
-        good: 25.30,
-        moderate: 18.70,
-      },
-    },
-    {
-      metric: "UL Throughput",
-      idealThroughput: ">= 20 Mbps",
-      deviceName: "Device 2",
-      location: {
-        good: 22.10,
-        moderate: 15.50,
-      },
-    },
-  ];
+
   const udp_Stationary_DL = [
     // Mean Throughput - 200 Mbps
     
@@ -67,8 +12,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "200000",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"].Throughput.Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 200 Mbps for 10"].Throughput.Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["DUT UDP DL 200 Mbps for 10S"]?.Throughput?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["DUT UDP DL 200M 10s"]?.Throughput?.Mean,
       },
     },
     {
@@ -76,8 +21,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "200000",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"].Throughput.Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 200 Mbps for 10"].Throughput.Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["REF UDP DL 200 Mbps for 10S"]?.Throughput?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["REF UDP DL 200M 10s"]?.Throughput?.Mean,
       },
     },
     // Mean Throughput - 400 Mbps
@@ -87,8 +32,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "400000",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP DL 400M 10sec_Good"].Throughput.Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 400 Mbps for 10 seconds"].Throughput.Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 Mbps for 10S"]?.Throughput?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.Throughput?.Mean,
       },
     },
     {
@@ -96,8 +41,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "400000",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP DL 400M 10sec_Good"].Throughput.Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 400 Mbps for 10 seconds"].Throughput.Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 Mbps for 10S"]?.Throughput?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.Throughput?.Mean,
       },
     },
     // Max Throughput - 200 Mbps
@@ -107,8 +52,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "200000",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"].Throughput.Maximum,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 200 Mbps for 10"].Throughput.Maximum,
+        good: udpDataRaw.Good?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["DUT UDP DL 200 Mbps for 10S"]?.Throughput?.Maximum,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["DUT UDP DL 200M 10s"]?.Throughput?.Maximum,
       },
     },
     {
@@ -116,8 +61,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "200000",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"].Throughput.Maximum,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 200 Mbps for 10"].Throughput.Maximum,
+        good: udpDataRaw.Good?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["REF UDP DL 200 Mbps for 10S"]?.Throughput?.Maximum,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["REF UDP DL 200M 10s"]?.Throughput?.Maximum,
       },
     },
     // Max Throughput - 400 Mbps
@@ -127,8 +72,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "400000",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP DL 400M 10sec_Good"].Throughput.Maximum,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 400 Mbps for 10 seconds"].Throughput.Maximum,
+        good: udpDataRaw.Good?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 Mbps for 10S"]?.Throughput?.Maximum,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.Throughput?.Maximum,
       },
     },
     {
@@ -136,8 +81,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "400000",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP DL 400M 10sec_Good"].Throughput.Maximum,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 400 Mbps for 10 seconds"].Throughput.Maximum,
+        good: udpDataRaw.Good?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 Mbps for 10S"]?.Throughput?.Maximum,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.Throughput?.Maximum,
       },
     },
     // Mean Jitter - 200 Mbps
@@ -147,8 +92,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "200000",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"].Jitter.Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 200 Mbps for 10"].Jitter.Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["DUT UDP DL 200 Mbps for 10S"]?.Jitter?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["DUT UDP DL 200M 10s"]?.Jitter?.Mean,
       },
     },
     {
@@ -156,8 +101,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "200000",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"].Jitter.Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 200 Mbps for 10"].Jitter.Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["REF UDP DL 200 Mbps for 10S"]?.Jitter?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["REF UDP DL 200M 10s"]?.Jitter?.Mean,
       },
     },
     // Mean Jitter - 400 Mbps
@@ -167,8 +112,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "400000",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP DL 400M 10sec_Good"].Jitter.Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 400 Mbps for 10 seconds"].Jitter.Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 Mbps for 10S"]?.Jitter?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.Jitter?.Mean,
       },
     },
     {
@@ -176,8 +121,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "400000",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP DL 400M 10sec_Good"].Jitter.Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 400 Mbps for 10 seconds"].Jitter.Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 Mbps for 10S"]?.Jitter?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.Jitter?.Mean,
       },
     },
     // Packet Failure Rate - 200 Mbps
@@ -187,8 +132,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "200000",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"]["Error Ratio"].Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 200 Mbps for 10"]["Error Ratio"].Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["DUT UDP DL 200 Mbps for 10S"]?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["DUT UDP DL 200M 10s"]?.["Error Ratio"]?.Mean,
       },
     },
     {
@@ -196,8 +141,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "200000",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"]["Error Ratio"].Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 200 Mbps for 10"]["Error Ratio"].Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["REF UDP DL 200 Mbps for 10S"]?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["REF UDP DL 200M 10s"]?.["Error Ratio"]?.Mean,
       },
     },
     // Packet Failure Rate - 400 Mbps
@@ -207,8 +152,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "400000",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP DL 400M 10sec_Good"]["Error Ratio"].Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 400 Mbps for 10 seconds"]["Error Ratio"].Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 Mbps for 10S"]?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.["Error Ratio"]?.Mean,
       },
     },
     {
@@ -216,8 +161,8 @@ function Dp_MHS_Udp_Component() {
       idealThroughput: "400000",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.Good["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP DL 400M 10sec_Good"]["Error Ratio"].Mean,
-        moderate: udpDataRaw.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 400 Mbps for 10 seconds"]["Error Ratio"].Mean,
+        good: udpDataRaw.Good?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 Mbps for 10S"]?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.["Error Ratio"]?.Mean,
       },
     }
   ];
@@ -225,7 +170,7 @@ function Dp_MHS_Udp_Component() {
     <div className='page-content'>
       <h2>MHS-UDP Component</h2>
       {/* MHS UDP DL Table  */}
-      <DpMHSUdpTable data={dummyData} tableName="MHS UDP DL Table" />
+      <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP DL Table" />
       {/* MHS UDP UL Table  */}
 
     </div>

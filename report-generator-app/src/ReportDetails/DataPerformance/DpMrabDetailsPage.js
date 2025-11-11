@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import MrabData from '../../DataFiles/SA/DpMrabResults/Mrab.json';
 import '../../StyleScript/Restricted_Report_Style.css';
 
 const DpMrabDetailsPage = () => {
+  const [mrabData, setMrabData] = useState(null);
+
+  useEffect(() => {
+    setMrabData(MrabData);
+  }, []);
+
+  if (!mrabData) {
+    return <div>Loading MRAB data...</div>;
+  }
   return (
     <div className="page-content">
       <h2>VoNR MRAB Stationary test - 5G NR</h2>
@@ -20,65 +30,65 @@ const DpMrabDetailsPage = () => {
           <tr>
             <td rowSpan="4">Pre Call</td>
             <td>Mean</td>
-            <td >4.88 Mbps</td>
-            <td >26.24 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"].toFixed(2)}</td>
           </tr>
           <tr>
             <td>Maximum</td>
-            <td>24.76 Mbps</td>
-            <td>143.53 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["Pre Call"]["Maximum"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Pre Call"]["Maximum"].toFixed(2)}</td>
           </tr>
           <tr>
             <td>Minimum</td>
-            <td>1.41 Mbps</td>
-            <td>1.16 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["Pre Call"]["Minimum"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Pre Call"]["Minimum"].toFixed(2)}</td>
           </tr>
           <tr>
             <td>Standard Deviation</td>
-            <td>5.54 Mbps</td>
-            <td>43.84 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["Pre Call"]["Standard Deviation"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Pre Call"]["Standard Deviation"].toFixed(2)}</td>
           </tr>
           <tr>
             <td rowSpan="4">In Call</td>
             <td>Mean</td>
-            <td >3.21 Mbps</td>
-            <td >5.22 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["In Call"]["Mean"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["In Call"]["Mean"].toFixed(2)}</td>
           </tr>
           <tr>
             <td>Maximum</td>
-            <td>6.74 Mbps</td>
-            <td>21.52 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["In Call"]["Maximum"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["In Call"]["Maximum"].toFixed(2)}</td>
           </tr>
           <tr>
             <td>Minimum</td>
-            <td>1.60 Mbps</td>
-            <td>1.10 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["In Call"]["Minimum"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["In Call"]["Minimum"].toFixed(2)}</td>
           </tr>
           <tr>
             <td>Standard Deviation</td>
-            <td>1.28 Mbps</td>
-            <td>4.92 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["In Call"]["Standard Deviation"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["In Call"]["Standard Deviation"].toFixed(2)}</td>
           </tr>
           <tr>
             <td rowSpan="4">Post Call</td>
             <td>Mean</td>
-            <td >3.70 Mbps</td>
-            <td >20.77 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["Post Call"]["Mean"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Post Call"]["Mean"].toFixed(2)}</td>
           </tr>
           <tr>
             <td>Maximum</td>
-            <td>7.04 Mbps</td>
-            <td>104.67 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["Post Call"]["Maximum"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Post Call"]["Maximum"].toFixed(2)}</td>
           </tr>
           <tr>
             <td>Minimum</td>
-            <td>1.58 Mbps</td>
-            <td>1.20 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["Post Call"]["Minimum"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Post Call"]["Minimum"].toFixed(2)}</td>
           </tr>
           <tr>
             <td>Standard Deviation</td>
-            <td>1.69 Mbps</td>
-            <td>32.55 Mbps</td>
+            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["Post Call"]["Standard Deviation"].toFixed(2)}</td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Post Call"]["Standard Deviation"].toFixed(2)}</td>
           </tr>
         </tbody>
       </table>

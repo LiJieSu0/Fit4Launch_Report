@@ -1,11 +1,20 @@
 import React from "react";
 import DpMHSHttpSSTable from "./Table/DpMHSHttpSSTable";
+import SingleStreamHTTPData from "../../../DataFiles/SA/DpMHSResults/Single Stream HTTP.json";
 
 function Dp_MHS_httpSS_Component() {
-  // Placeholder for data fetching or state management
+  const goodData = SingleStreamHTTPData.Good["Single Stream HTTP Download for 60 seconds"];
+  const moderateData = SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"];
+
   const data = {
-    Good: { DUT: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 }, REF: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 } },
-    Moderate: { DUT: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 }, REF: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 } },
+    Good: {
+      DUT: goodData["DUT SS HTTP DL for 60 seconds"].Throughput,
+      REF: goodData["REF SS HTTP DL for 60 seconds"].Throughput,
+    },
+    Moderate: {
+      DUT: moderateData["DUT SS HTTP DL 60S"].Throughput,
+      REF: moderateData["REF SS HTTP DL 60S"].Throughput,
+    },
   };
 
   return (

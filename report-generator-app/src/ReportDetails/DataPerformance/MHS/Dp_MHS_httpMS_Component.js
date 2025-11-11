@@ -1,11 +1,20 @@
 import React from "react";
 import DpMHSHttpMSTable from "./Table/DpMHSHttpMSTable";
+import MultiStreamHTTPData from "../../../DataFiles/SA/DpMHSResults/Multi Stream HTTP.json";
 
 function Dp_MHS_httpMS_Component() {
-  // Placeholder for data fetching or state management
+  const goodDownloadData = MultiStreamHTTPData.Good["Multi Stream HTTP Download for 30 seconds"];
+  const moderateDownloadData = MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"];
+
   const data = {
-    Good: { DUT: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 }, REF: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 } },
-    Moderate: { DUT: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 }, REF: { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 } },
+    Good: {
+      DUT: goodDownloadData["DUT MS HTTP DL for 30 seconds"].Throughput,
+      REF: goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput,
+    },
+    Moderate: {
+      DUT: moderateDownloadData["DUT MS HTTP DL 30s"].Throughput,
+      REF: moderateDownloadData["REF MS HTTP DL 30s"].Throughput,
+    },
   };
 
   return (

@@ -166,12 +166,15 @@ function Dp_MHS_Udp_Component() {
       },
     }
   ];
+  const udp_Stationary_UL = [
+    
+  ];
   return (
     <div className='page-content'>
       <h2>MHS-UDP Component</h2>
       {/* MHS UDP DL Table  */}
       <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP DL Table" />
-      {/* MHS UDP UL Table  */}
+      <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP UL Table" />
 
     </div>
   );

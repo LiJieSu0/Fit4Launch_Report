@@ -19,7 +19,7 @@ function DpNSATestDriveTable({ data, tableName }) {
         ],
       },
       {
-        name: "Jitter (ms)",
+        name: "Jitter (s)",
         subMetrics: [
           { key: "Jitter.Mean", label: "Mean" },
         ],

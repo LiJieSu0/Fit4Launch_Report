@@ -29,32 +29,10 @@ function DpDetailsPage() {
 
       {/* <DpRangeChart dataPerformanceResults={dataPerformanceResults} /> */}
       <DpNSAStationaryDetails/>
-      {/* <DpNSATestDriveDetails/> */}
+      <DpNSATestDriveDetails/>
 
     </div>
   );
 }
 
 export default DpDetailsPage;
-
-
-// const dataPerformanceResults = { //DO NOT TOUCH THIS SECTOIN
-//     "5G AUTO DP": {
-//       "2.1.1 5G Auto Data Test Drive": {
-//         "DUT UDP DL": {
-//           "Throughput": {
-//             "Mean": 9.781204435636633,
-//             "Minimum": 5.826606741573033,
-//             "Maximum": 10.000303370786517
-//           }
-//         },
-//         "REF UDP DL": {
-//           "Throughput": {
-//             "Mean": 7.4,
-//             "Minimum": 6.843808988764044,
-//             "Maximum": 10.000685393258427
-//           }
-//         }
-//       }
-//     }
-//   };

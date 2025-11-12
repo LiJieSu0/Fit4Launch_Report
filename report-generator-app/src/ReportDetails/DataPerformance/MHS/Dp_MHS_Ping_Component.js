@@ -73,6 +73,7 @@ function Dp_MHS_Ping_Component() {
     <div className='page-content'>
       <h2>MHS-Ping Component</h2>
       <DpMHSPingTable data={data} />
+      {/* average histogram with constants histogram color */}
     </div>
   );
 }

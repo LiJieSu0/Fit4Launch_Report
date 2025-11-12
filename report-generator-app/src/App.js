@@ -32,11 +32,11 @@ function App() {
       
       <ReportHeader />
 
-      <DeviceInfoPage/>
-      <ContentsIndexPage />
+      {/* <DeviceInfoPage/>
+      <ContentsIndexPage /> */}
 
       {/* <CpSummaryPage />
-      <CallPerformanceDetails /> 
+      <CallPerformanceDetails />
       <CpKpiPage/>  */}
 
       {/* <VqSummaryPage />
@@ -47,12 +47,12 @@ function App() {
       <CoverageDetails />
       <CoverageKpiPage /> */}
 
-      <DpSummaryPage />
-      <DpDetailsPage /> 
+      {/* <DpSummaryPage /> */}
+      <DpDetailsPage />
       <DpKpiPage />
 
-      {/* <LegalPage/>
-      <AboutPage /> */}
+      <LegalPage/>
+      <AboutPage />
       <ReportFooter />
     </div>
   );

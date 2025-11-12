@@ -1,7 +1,6 @@
 import React from 'react';
 import DpSummaryTable from './DpSummaryTable';
 import DataPerformanceResults from '../../DataFiles/DataPerformanceResults.json';
-import DpHistogramComponent from './DpHistogramComponent';
 
 function DpSummaryPage() {
   const extractThroughput = (path, direction) => {
@@ -331,8 +330,6 @@ function DpSummaryPage() {
       <div className='page-content'>
         <h2>Data Performance Summary Page</h2>
         <h3>5G SA</h3>
-        <DpHistogramComponent/>
-        <div style={{marginTop:100}}></div>
         <DpSummaryTable tableData={httpSSData} />
         <DpSummaryTable tableData={httpMSData} />
         <DpSummaryTable tableData={udpData} />

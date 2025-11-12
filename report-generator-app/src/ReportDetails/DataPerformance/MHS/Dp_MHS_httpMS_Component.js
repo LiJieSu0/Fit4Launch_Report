@@ -19,6 +19,10 @@ function Dp_MHS_httpMS_Component() {
       REF: moderateDownloadData["REF MS HTTP DL 30s"].Throughput,
     },
   };
+
+  const overallDownloadDUTMean = (data.Good.DUT["Mean"] + data.Moderate.DUT["Mean"]) / 2;
+  const overallDownloadREFMean = (data.Good.REF["Mean"] + data.Moderate.REF["Mean"]) / 2;
+
   const uploadGoodData = MultiStreamHTTPData.Good["Multi Stream HTTP Upload for 30 seconds"];
   const uploadModerateData = MultiStreamHTTPData.Moderate["Multi Stream HTTP Upload for 30 seconds"];
 
@@ -32,6 +36,10 @@ function Dp_MHS_httpMS_Component() {
       REF: uploadModerateData["REF MS HTTP UL 30S"].Throughput,
     },
   };
+
+  const overallUploadDUTMean = (dataUL.Good.DUT["Mean"] + dataUL.Moderate.DUT["Mean"]) / 2;
+  const overallUploadREFMean = (dataUL.Good.REF["Mean"] + dataUL.Moderate.REF["Mean"]) / 2;
+
   return (
     <div className='page-content'>
       <h2>MHS-httpMS Component</h2>
@@ -40,6 +48,7 @@ function Dp_MHS_httpMS_Component() {
         data={[
           { name: 'Good', DUT: data.Good.DUT["Mean"], REF: data.Good.REF["Mean"] },
           { name: 'Moderate', DUT: data.Moderate.DUT["Mean"], REF: data.Moderate.REF["Mean"] },
+          { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
         ]}
         title="MHS Multi Stream HTTP Download Throughput Histogram"
         yAxisLabel="Throughput"
@@ -50,6 +59,7 @@ function Dp_MHS_httpMS_Component() {
         data={[
           { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },
           { name: 'Moderate', DUT: dataUL.Moderate.DUT["Mean"], REF: dataUL.Moderate.REF["Mean"] },
+          { name: 'Overall', DUT: overallUploadDUTMean, REF: overallUploadREFMean },
         ]}
         title="MHS Multi Stream HTTP Upload Throughput Histogram"
         yAxisLabel="Throughput"

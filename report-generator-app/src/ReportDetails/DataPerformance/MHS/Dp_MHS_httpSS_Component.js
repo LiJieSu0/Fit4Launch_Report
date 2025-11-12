@@ -6,7 +6,7 @@ function Dp_MHS_httpSS_Component() {
   const goodData = SingleStreamHTTPData.Good["Single Stream HTTP Download for 60 seconds"];
   const moderateData = SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"];
 
-  const data = {
+  const dataDL = {
     Good: {
       DUT: goodData["DUT SS HTTP DL for 60 seconds"].Throughput,
       REF: goodData["REF SS HTTP DL for 60 seconds"].Throughput,
@@ -17,10 +17,16 @@ function Dp_MHS_httpSS_Component() {
     },
   };
 
+  const dataUL = {
+    
+  };
+
   return (
     <div className='page-content'>
       <h2>MHS-httpSS Component</h2>
-      <DpMHSHttpSSTable data={data} tableName="MHS Single Stream HTTP Throughput" />
+      <DpMHSHttpSSTable data={dataDL} tableName="MHS Single Stream HTTP Download Throughput" />
+      <DpMHSHttpSSTable data={dataUL} tableName="MHS Single Stream HTTP Upload Throughput" />
+
     </div>
   );
 }

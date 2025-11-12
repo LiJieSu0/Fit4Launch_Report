@@ -10,10 +10,12 @@ const DpDriveTestDetailPage = () => {
       <div className='page-content'>
       <h2>Mobility test - 5G Auto Data Test Drive</h2>
        <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Data" />
+       {/* test drive histogram */}
       </div>      
       <div className='page-content'>
       <h2>Mobility test - 5G Auto Data Test MHS Drive</h2>
       <DpMHSTestDriveTable data={TestDriveMHSData} tableName="MHS Test Drive Data" />
+      {/* mhs test drive histogram */}
       </div>
 
     </div>

@@ -325,11 +325,14 @@ function DpNSAStationaryDetails() {
   return (
     <div className='page-content'>
       <h2>NSA Stationary Data Performance Details</h2>
-      {/* <DpNSAHttpMSTable data={MultiStreamHTTPData} tableName="Multi Stream HTTP Stationary" />
-      <DpNSAHttpSSTable data={SingleStreamHTTPData} tableName="Single Stream HTTP Stationary" />
-      <DpNSAPingTable data={PingData} tableName="Ping Stationary" /> */}
+
       <DpNSAUDPDLTable data={udp_Stationary_DL} tableName="UDP Download Stationary" />
+      {/* NSA dl histogram 200000 */}
+      {/* NSA dl histogram 400000 */}
+
       <DpNSAUDPULTable data={udp_Stationary_UL} tableName="UDP Upload Stationary" />
+      {/* NSA ul histogram 200000 */}
+      {/* NSA ul histogram 400000 */}
     </div>
   );
 }

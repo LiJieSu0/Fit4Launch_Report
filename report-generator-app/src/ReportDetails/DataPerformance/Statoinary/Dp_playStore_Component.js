@@ -1,5 +1,7 @@
 import React from 'react';
 import DpPlayStoreTable from './Table/DpPlayStoreTable';
+import DpHistogramComponent from '../DpHistogramComponent';
+import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import playStoreData from '../../../DataFiles/SA/DpPlayStoreResults/Play Store.json';
 
 const Dp_playStore_Component = () => {
@@ -51,10 +53,52 @@ const Dp_playStore_Component = () => {
 
   const tableData = processData();
 
+  const getHistogramData = (throughputCategory) => {
+    const dutData = tableData.find(d => d.throughput === throughputCategory && d.deviceName === 'DUT');
+    const refData = tableData.find(d => d.throughput === throughputCategory && d.deviceName === 'REF');
+
+    const histogramData = [
+      { name: 'Location 1', DUT: parseFloat(dutData?.site1), REF: parseFloat(refData?.site1) },
+      { name: 'Location 2', DUT: parseFloat(dutData?.site2), REF: parseFloat(refData?.site2) },
+      { name: 'Location 3', DUT: parseFloat(dutData?.site3), REF: parseFloat(refData?.site3) },
+      { name: 'Overall', DUT: parseFloat(dutData?.overall), REF: parseFloat(refData?.overall) },
+    ].filter(item => !isNaN(item.DUT) || !isNaN(item.REF)); // Filter out rows with no valid data
+
+    return histogramData;
+  };
+
+  const histogramData30M = getHistogramData('30M');
+  const histogramData60M = getHistogramData('60M');
+  const histogramData100M = getHistogramData('100M');
+
+  const barKeys = [
+    { key: 'DUT', fill: CHART_COLOR_DUT },
+    { key: 'REF', fill: CHART_COLOR_REF },
+  ];
+
   return (
       <div className='page-content'>
         <h2>Play-store app download test - 5G NR</h2>
         <DpPlayStoreTable tableData={tableData} />
+        <DpHistogramComponent
+          data={histogramData30M}
+          title="Play Store 30M Download Throughput"
+          yAxisLabel="Throughput (Mbps)"
+          barKeys={barKeys}
+        />
+        <DpHistogramComponent
+          data={histogramData60M}
+          title="Play Store 60M Download Throughput"
+          yAxisLabel="Throughput (Mbps)"
+          barKeys={barKeys}
+        />
+        <DpHistogramComponent
+          data={histogramData100M}
+          title="Play Store 100M Download Throughput"
+          yAxisLabel="Throughput (Mbps)"
+          barKeys={barKeys}
+        />
+
       </div>
   );
 };

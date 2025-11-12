@@ -17,22 +17,17 @@ import DpHistogramComponent from './DpHistogramComponent';
 function DpDetailsPage() {
   const histogramData = [
     {
-      name: 'Drive',
-      'DUT': 100,
-      'REF': 29,
-    },
-    {
-      name: 'Stationary - Overall',
+      name: 'Overall',
       'DUT': 21,
       'REF': 27,
     },
     {
-      name: 'Stationary - Site 1',
+      name: 'Good',
       'DUT': 23,
       'REF': 28,
     },
     {
-      name: 'Stationary - Site 2',
+      name: 'Moderate',
       'DUT': 19,
       'REF': 25,
     },
@@ -45,7 +40,6 @@ function DpDetailsPage() {
 
   return (
     <div>
-      <h2>Data Performance Details Page</h2>
       <DpHistogramComponent
         data={histogramData}
         title="Seattle (5G NR) Ping Results"

@@ -42,6 +42,74 @@ function Dp_Udp_Component() {
     },
   ];
 
+  // Extract DL Mean Jitter data
+  const dlMeanJitter200_DUT = udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"].Jitter.Mean;
+  const dlMeanJitter200_REF = udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"].Jitter.Mean;
+  const dlMeanJitter400_DUT = udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP DL 400M 10sec_Good"].Jitter.Mean;
+  const dlMeanJitter400_REF = udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP DL 400M 10sec_Good"].Jitter.Mean;
+
+  const dlMeanJitter200_DUT_Moderate = udp_Stationary_Data.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 200 Mbps for 10"].Jitter.Mean;
+  const dlMeanJitter200_REF_Moderate = udp_Stationary_Data.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 200 Mbps for 10"].Jitter.Mean;
+  const dlMeanJitter400_DUT_Moderate = udp_Stationary_Data.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 400 Mbps for 10 seconds"].Jitter.Mean;
+  const dlMeanJitter400_REF_Moderate = udp_Stationary_Data.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 400 Mbps for 10 seconds"].Jitter.Mean;
+
+  const dlMeanJitter200_DUT_Poor = udp_Stationary_Data.Poor["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 200 Mbps for 10 seconds_Poor Coverage_DA Test"].Jitter.Mean;
+  const dlMeanJitter200_REF_Poor = udp_Stationary_Data.Poor["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 200 Mbps for 10 seconds_Poor Coverage_DA Test"].Jitter.Mean;
+  const dlMeanJitter400_DUT_Poor = udp_Stationary_Data.Poor["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 400 Mbps for 10 seconds_Poor Coverage_DA Test"].Jitter.Mean;
+  const dlMeanJitter400_REF_Poor = udp_Stationary_Data.Poor["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 400 Mbps for 10 seconds_Poor Coverage_DA Test"].Jitter.Mean;
+
+  const dlJitterGoodDUT = (dlMeanJitter200_DUT + dlMeanJitter400_DUT) / 2;
+  const dlJitterModerateDUT = (dlMeanJitter200_DUT_Moderate + dlMeanJitter400_DUT_Moderate) / 2;
+  const dlJitterPoorDUT = (dlMeanJitter200_DUT_Poor + dlMeanJitter400_DUT_Poor) / 2;
+
+  const dlJitterGoodREF = (dlMeanJitter200_REF + dlMeanJitter400_REF) / 2;
+  const dlJitterModerateREF = (dlMeanJitter200_REF_Moderate + dlMeanJitter400_REF_Moderate) / 2;
+  const dlJitterPoorREF = (dlMeanJitter200_REF_Poor + dlMeanJitter400_REF_Poor) / 2;
+
+  const dlJitterHistogramData = [
+    { name: 'Good', DUT: dlJitterGoodDUT, REF: dlJitterGoodREF },
+    { name: 'Moderate', DUT: dlJitterModerateDUT, REF: dlJitterModerateREF },
+    { name: 'Poor', DUT: dlJitterPoorDUT, REF: dlJitterPoorREF },
+    { name: 'Overall',
+      DUT: (dlJitterGoodDUT + dlJitterModerateDUT + dlJitterPoorDUT) / 3,
+      REF: (dlJitterGoodREF + dlJitterModerateREF + dlJitterPoorREF) / 3
+    },
+  ];
+
+  // Extract DL Packet Failure Rate data
+  const dlPFR200_DUT = udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"]["Error Ratio"].Mean;
+  const dlPFR200_REF = udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"]["Error Ratio"].Mean;
+  const dlPFR400_DUT = udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP DL 400M 10sec_Good"]["Error Ratio"].Mean;
+  const dlPFR400_REF = udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP DL 400M 10sec_Good"]["Error Ratio"].Mean;
+
+  const dlPFR200_DUT_Moderate = udp_Stationary_Data.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 200 Mbps for 10"]["Error Ratio"].Mean;
+  const dlPFR200_REF_Moderate = udp_Stationary_Data.Moderate["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 200 Mbps for 10"]["Error Ratio"].Mean;
+  const dlPFR400_DUT_Moderate = udp_Stationary_Data.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 400 Mbps for 10 seconds"]["Error Ratio"].Mean;
+  const dlPFR400_REF_Moderate = udp_Stationary_Data.Moderate["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 400 Mbps for 10 seconds"]["Error Ratio"].Mean;
+
+  const dlPFR200_DUT_Poor = udp_Stationary_Data.Poor["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 200 Mbps for 10 seconds_Poor Coverage_DA Test"]["Error Ratio"].Mean;
+  const dlPFR200_REF_Poor = udp_Stationary_Data.Poor["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 200 Mbps for 10 seconds_Poor Coverage_DA Test"]["Error Ratio"].Mean;
+  const dlPFR400_DUT_Poor = udp_Stationary_Data.Poor["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP Download Task at 400 Mbps for 10 seconds_Poor Coverage_DA Test"]["Error Ratio"].Mean;
+  const dlPFR400_REF_Poor = udp_Stationary_Data.Poor["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 400 Mbps for 10 seconds_Poor Coverage_DA Test"]["Error Ratio"].Mean;
+
+  const dlPFRGoodDUT = (dlPFR200_DUT + dlPFR400_DUT) / 2;
+  const dlPFRModerateDUT = (dlPFR200_DUT_Moderate + dlPFR400_DUT_Moderate) / 2;
+  const dlPFRPoorDUT = (dlPFR200_DUT_Poor + dlPFR400_DUT_Poor) / 2;
+
+  const dlPFRGoodREF = (dlPFR200_REF + dlPFR400_REF) / 2;
+  const dlPFRModerateREF = (dlPFR200_REF_Moderate + dlPFR400_REF_Moderate) / 2;
+  const dlPFRPoorREF = (dlPFR200_REF_Poor + dlPFR400_REF_Poor) / 2;
+
+  const dlPFRHistogramData = [
+    { name: 'Good', DUT: dlPFRGoodDUT, REF: dlPFRGoodREF },
+    { name: 'Moderate', DUT: dlPFRModerateDUT, REF: dlPFRModerateREF },
+    { name: 'Poor', DUT: dlPFRPoorDUT, REF: dlPFRPoorREF },
+    { name: 'Overall',
+      DUT: (dlPFRGoodDUT + dlPFRModerateDUT + dlPFRPoorDUT) / 3,
+      REF: (dlPFRGoodREF + dlPFRModerateREF + dlPFRPoorREF) / 3
+    },
+  ];
+
   // Extract UL Throughput data
   const ulThroughput10_DUT = udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean;
   const ulThroughput10_REF = udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean;
@@ -75,6 +143,74 @@ function Dp_Udp_Component() {
     { name: 'Overall',
       DUT: (ulGoodDUT + ulModerateDUT + ulPoorDUT) / 3,
       REF: (ulGoodREF + ulModerateREF + ulPoorREF) / 3
+    },
+  ];
+
+  // Extract UL Mean Jitter data
+  const ulMeanJitter10_DUT = udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean;
+  const ulMeanJitter10_REF = udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean;
+  const ulMeanJitter20_DUT = udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean;
+  const ulMeanJitter20_REF = udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean;
+
+  const ulMeanJitter10_DUT_Moderate = udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"].Jitter.Mean;
+  const ulMeanJitter10_REF_Moderate = udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"].Jitter.Mean;
+  const ulMeanJitter20_DUT_Moderate = udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Jitter.Mean;
+  const ulMeanJitter20_REF_Moderate = udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Jitter.Mean;
+
+  const ulMeanJitter10_DUT_Poor = udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Jitter.Mean;
+  const ulMeanJitter10_REF_Poor = udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Jitter.Mean;
+  const ulMeanJitter20_DUT_Poor = udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Jitter.Mean;
+  const ulMeanJitter20_REF_Poor = udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Jitter.Mean;
+
+  const ulJitterGoodDUT = (ulMeanJitter10_DUT + ulMeanJitter20_DUT) / 2;
+  const ulJitterModerateDUT = (ulMeanJitter10_DUT_Moderate + ulMeanJitter20_DUT_Moderate) / 2;
+  const ulJitterPoorDUT = (ulMeanJitter10_DUT_Poor + ulMeanJitter20_DUT_Poor) / 2;
+
+  const ulJitterGoodREF = (ulMeanJitter10_REF + ulMeanJitter20_REF) / 2;
+  const ulJitterModerateREF = (ulMeanJitter10_REF_Moderate + ulMeanJitter20_REF_Moderate) / 2;
+  const ulJitterPoorREF = (ulMeanJitter10_REF_Poor + ulMeanJitter20_REF_Poor) / 2;
+
+  const ulJitterHistogramData = [
+    { name: 'Good', DUT: ulJitterGoodDUT, REF: ulJitterGoodREF },
+    { name: 'Moderate', DUT: ulJitterModerateDUT, REF: ulJitterModerateREF },
+    { name: 'Poor', DUT: ulJitterPoorDUT, REF: ulJitterPoorREF },
+    { name: 'Overall',
+      DUT: (ulJitterGoodDUT + ulJitterModerateDUT + ulJitterPoorDUT) / 3,
+      REF: (ulJitterGoodREF + ulJitterModerateREF + ulJitterPoorREF) / 3
+    },
+  ];
+
+  // Extract UL Packet Failure Rate data
+  const ulPFR10_DUT = udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean;
+  const ulPFR10_REF = udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean;
+  const ulPFR20_DUT = udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean;
+  const ulPFR20_REF = udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean;
+
+  const ulPFR10_DUT_Moderate = udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"]["Error Ratio"].Mean;
+  const ulPFR10_REF_Moderate = udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"]["Error Ratio"].Mean;
+  const ulPFR20_DUT_Moderate = udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"]["Error Ratio"].Mean;
+  const ulPFR20_REF_Moderate = udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"]["Error Ratio"].Mean;
+
+  const ulPFR10_DUT_Poor = udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"]["Error Ratio"].Mean;
+  const ulPFR10_REF_Poor = udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"]["Error Ratio"].Mean;
+  const ulPFR20_DUT_Poor = udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"]["Error Ratio"].Mean;
+  const ulPFR20_REF_Poor = udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"]["Error Ratio"].Mean;
+
+  const ulPFRGoodDUT = (ulPFR10_DUT + ulPFR20_DUT) / 2;
+  const ulPFRModerateDUT = (ulPFR10_DUT_Moderate + ulPFR20_DUT_Moderate) / 2;
+  const ulPFRPoorDUT = (ulPFR10_DUT_Poor + ulPFR20_DUT_Poor) / 2;
+
+  const ulPFRGoodREF = (ulPFR10_REF + ulPFR20_REF) / 2;
+  const ulPFRModerateREF = (ulPFR10_REF_Moderate + ulPFR20_REF_Moderate) / 2;
+  const ulPFRPoorREF = (ulPFR10_REF_Poor + ulPFR20_REF_Poor) / 2;
+
+  const ulPFRHistogramData = [
+    { name: 'Good', DUT: ulPFRGoodDUT, REF: ulPFRGoodREF },
+    { name: 'Moderate', DUT: ulPFRModerateDUT, REF: ulPFRModerateREF },
+    { name: 'Poor', DUT: ulPFRPoorDUT, REF: ulPFRPoorREF },
+    { name: 'Overall',
+      DUT: (ulPFRGoodDUT + ulPFRModerateDUT + ulPFRPoorDUT) / 3,
+      REF: (ulPFRGoodREF + ulPFRModerateREF + ulPFRPoorREF) / 3
     },
   ];
 
@@ -261,6 +397,7 @@ function Dp_Udp_Component() {
       },
     }
   ];
+
   const udp_Stationary_UL = [
     {
         metric: "Throughput",
@@ -435,8 +572,18 @@ function Dp_Udp_Component() {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
-        {/* dl mean jitter histgoram with constnats histogram color */}
-        {/* dl Packet Failure Rate histgoram with constnats histogram color */}
+        <DpHistogramComponent
+          data={dlJitterHistogramData}
+          title="UDP Download Mean Jitter"
+          yAxisLabel="Jitter (s)"
+          barKeys={barKeys}
+        />
+        <DpHistogramComponent
+          data={dlPFRHistogramData}
+          title="UDP Download Packet Failure Rate"
+          yAxisLabel="Packet Failure Rate (%)"
+          barKeys={barKeys}
+        />
 
       </div>
       <div className='page-content'>
@@ -447,8 +594,18 @@ function Dp_Udp_Component() {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
-        {/* ul mean jitter histgoram with constnats histogram color */}
-        {/* ul Packet Failure Rate histgoram with constnats histogram color */}
+        <DpHistogramComponent
+          data={ulJitterHistogramData}
+          title="UDP Upload Mean Jitter"
+          yAxisLabel="Jitter (ms)"
+          barKeys={barKeys}
+        />
+        <DpHistogramComponent
+          data={ulPFRHistogramData}
+          title="UDP Upload Packet Failure Rate"
+          yAxisLabel="Packet Failure Rate (%)"
+          barKeys={barKeys}
+        />
       </div>
     </>
   );

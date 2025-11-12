@@ -2,6 +2,7 @@ import React from 'react';
 import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
 import DpHistogramComponent from '../DpHistogramComponent';
 import httpSS_Stationary_DL_Data from '../../../DataFiles/SA/DpStationaryResults/Single Stream HTTP.json';
+import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 
 function Dp_httpSS_Component() {
   const httpSS_Stationary_DL = {
@@ -55,8 +56,8 @@ function Dp_httpSS_Component() {
   ];
 
   const barKeys = [
-    { key: 'DUT', fill: '#4267B2' },
-    { key: 'REF', fill: '#6AA84F' },
+    { key: 'DUT', fill: CHART_COLOR_DUT },
+    { key: 'REF', fill: CHART_COLOR_REF },
   ];
   console.log("DUT value"+httpSS_Stationary_DL.Good.DUT);
   return (

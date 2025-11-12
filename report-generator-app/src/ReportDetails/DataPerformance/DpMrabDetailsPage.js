@@ -13,6 +13,7 @@ const DpMrabDetailsPage = () => {
     return <div>Loading MRAB data...</div>;
   }
   return (
+    //TODO add overall data
     <div className="page-content">
       <h2>VoNR MRAB Stationary test - 5G NR</h2>
 
@@ -92,6 +93,8 @@ const DpMrabDetailsPage = () => {
           </tr>
         </tbody>
       </table>
+
+      {/* Mrab histogram, pre call, in call, post call, overall */}
     </div>
   );
 };

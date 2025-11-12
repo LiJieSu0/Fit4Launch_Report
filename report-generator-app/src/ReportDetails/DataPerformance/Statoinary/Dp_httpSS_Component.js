@@ -64,23 +64,25 @@ function Dp_httpSS_Component() {
     <div className='page-content'>
       
       <h2>HTTP Single Stream test - 5G NR</h2>
+      
+      
+      {/* single stream dl overall table */}
+      {/* single stream ul overall table */}
+
+      <DpDetailsTableLoc3 data={httpSS_Stationary_DL} tableName="Single Stream HTTP Download for 60 seconds" />
       <DpHistogramComponent
         data={dlHistogramData}
         title="Single Stream HTTP Download Throughput"
         yAxisLabel="Throughput (Mbps)"
         barKeys={barKeys}
       />
+      <DpDetailsTableLoc3 data={httpSS_Stationary_UL} tableName="Single Stream HTTP Upload of a 15 MB file"  />
       <DpHistogramComponent
         data={ulHistogramData}
         title="Single Stream HTTP Upload Throughput"
         yAxisLabel="Throughput (Mbps)"
         barKeys={barKeys}
       />
-      {/* single stream dl overall table */}
-      {/* single stream ul overall table */}
-
-      <DpDetailsTableLoc3 data={httpSS_Stationary_DL} tableName="Single Stream HTTP Download for 60 seconds" />
-      <DpDetailsTableLoc3 data={httpSS_Stationary_UL} tableName="Single Stream HTTP Upload of a 15 MB file"  />
     </div>
   );
 }

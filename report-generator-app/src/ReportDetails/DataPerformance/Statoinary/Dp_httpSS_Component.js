@@ -38,12 +38,20 @@ function Dp_httpSS_Component() {
     { name: 'Good', DUT: httpSS_Stationary_DL.Good.DUT.Mean, REF: httpSS_Stationary_DL.Good.REF.Mean },
     { name: 'Moderate', DUT: httpSS_Stationary_DL.Moderate.DUT.Mean, REF: httpSS_Stationary_DL.Moderate.REF.Mean },
     { name: 'Poor', DUT: httpSS_Stationary_DL.Poor.DUT.Mean, REF: httpSS_Stationary_DL.Poor.REF.Mean },
+    { name: 'Overall',
+      DUT: (httpSS_Stationary_DL.Good.DUT.Mean + httpSS_Stationary_DL.Moderate.DUT.Mean + httpSS_Stationary_DL.Poor.DUT.Mean) / 3,
+      REF: (httpSS_Stationary_DL.Good.REF.Mean + httpSS_Stationary_DL.Moderate.REF.Mean + httpSS_Stationary_DL.Poor.REF.Mean) / 3
+    },
   ];
 
   const ulHistogramData = [
     { name: 'Good', DUT: httpSS_Stationary_UL.Good.DUT.Mean, REF: httpSS_Stationary_UL.Good.REF.Mean },
     { name: 'Moderate', DUT: httpSS_Stationary_UL.Moderate.DUT.Mean, REF: httpSS_Stationary_UL.Moderate.REF.Mean },
     { name: 'Poor', DUT: httpSS_Stationary_UL.Poor.DUT.Mean, REF: httpSS_Stationary_UL.Poor.REF.Mean },
+    { name: 'Overall',
+      DUT: (httpSS_Stationary_UL.Good.DUT.Mean + httpSS_Stationary_UL.Moderate.DUT.Mean + httpSS_Stationary_UL.Poor.DUT.Mean) / 3,
+      REF: (httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3
+    },
   ];
 
   const barKeys = [

@@ -8,7 +8,6 @@ const DpDriveTestDetailPage = () => {
     return (
     <div>
       <div className='page-content'>
-      <h2>Mobility test - 5G Auto Data Test Drive</h2>
        <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Data" />
        {/* test drive histogram */}
       </div>      

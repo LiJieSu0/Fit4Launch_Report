@@ -1,6 +1,8 @@
 import React from 'react';
 import DpPingTableLoc3 from './Table/DpPingTableLoc3';
+import DpHistogramComponent from '../DpHistogramComponent';
 import PingData from '../../../DataFiles/SA/DpStationaryResults/Ping.json';
+import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 
 function Dp_Ping_Component() {
     const Dp_Ping_Data = PingData;
@@ -63,11 +65,28 @@ function Dp_Ping_Component() {
         }
     });
 
+    const pingHistogramData = [...locations, "Overall"].map(location => ({
+        name: location,
+        DUT: parseFloat(processedPingData.average.DUT[location]),
+        REF: parseFloat(processedPingData.average.REF[location]),
+    }));
+
+    const barKeys = [
+        { key: 'DUT', fill: CHART_COLOR_DUT },
+        { key: 'REF', fill: CHART_COLOR_REF },
+    ];
+ 
     return(
         <div>
             <div className='page-content'>
-            <h2>PING test - 5G NR</h2>
-            <DpPingTableLoc3 data={processedPingData} />
+                <h2>PING test - 5G NR</h2>
+                <DpPingTableLoc3 data={processedPingData} />
+                <DpHistogramComponent
+                    data={pingHistogramData}
+                    title="Average Ping RTT by Location"
+                    yAxisLabel="Ping RTT (ms)"
+                    barKeys={barKeys}
+                />
             </div>
         </div>
     )

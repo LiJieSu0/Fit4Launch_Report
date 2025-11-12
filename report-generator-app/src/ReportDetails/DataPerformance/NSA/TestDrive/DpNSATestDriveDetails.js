@@ -7,6 +7,7 @@ function DpNSATestDriveDetails() {
     <div>
       <h2>NSA Test Drive Data Performance Details</h2>
       <DpNSATestDriveTable data={TestDriveData} tableName="Test Drive" />
+      {/* NSA test drive histogram */}
     </div>
   );
 }

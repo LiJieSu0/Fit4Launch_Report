@@ -1,6 +1,9 @@
 import React from "react";
 import DpMHSHttpMSTable from "./Table/DpMHSHttpMSTable";
+import DpHistogramComponent from "../DpHistogramComponent";
 import MultiStreamHTTPData from "../../../DataFiles/SA/DpMHSResults/Multi Stream HTTP.json";
+import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
+
 
 function Dp_MHS_httpMS_Component() {
   const goodDownloadData = MultiStreamHTTPData.Good["Multi Stream HTTP Download for 30 seconds"];
@@ -16,30 +19,46 @@ function Dp_MHS_httpMS_Component() {
       REF: moderateDownloadData["REF MS HTTP DL 30s"].Throughput,
     },
   };
+  const uploadGoodData = MultiStreamHTTPData.Good["Multi Stream HTTP Upload for 30 seconds"];
+  const uploadModerateData = MultiStreamHTTPData.Moderate["Multi Stream HTTP Upload for 30 seconds"];
 
+  const dataUL = {
+    Good: {
+      DUT: uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput,
+      REF: uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput,
+    },
+    Moderate: {
+      DUT: uploadModerateData["DUT MS HTTP UL 30S"].Throughput,
+      REF: uploadModerateData["REF MS HTTP UL 30S"].Throughput,
+    },
+  };
   return (
     <div className='page-content'>
       <h2>MHS-httpMS Component</h2>
       <DpMHSHttpMSTable data={data} tableName="MHS Multi Stream HTTP Download Throughput" />
-      {/* dl histogram */}
+      <DpHistogramComponent
+        data={[
+          { name: 'Good', DUT: data.Good.DUT["Mean"], REF: data.Good.REF["Mean"] },
+          { name: 'Moderate', DUT: data.Moderate.DUT["Mean"], REF: data.Moderate.REF["Mean"] },
+        ]}
+        title="MHS Multi Stream HTTP Download Throughput Histogram"
+        yAxisLabel="Throughput"
+        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+      />
       <DpMHSHttpMSTable data={dataUL} tableName="MHS Multi Stream HTTP Upload Throughput" />
-      {/* ul histogram */}
+      <DpHistogramComponent
+        data={[
+          { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },
+          { name: 'Moderate', DUT: dataUL.Moderate.DUT["Mean"], REF: dataUL.Moderate.REF["Mean"] },
+        ]}
+        title="MHS Multi Stream HTTP Upload Throughput Histogram"
+        yAxisLabel="Throughput"
+        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+      />
     </div>
   );
 }
 
-const uploadGoodData = MultiStreamHTTPData.Good["Multi Stream HTTP Upload for 30 seconds"];
-const uploadModerateData = MultiStreamHTTPData.Moderate["Multi Stream HTTP Upload for 30 seconds"];
 
-const dataUL = {
-  Good: {
-    DUT: uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput,
-    REF: uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput,
-  },
-  Moderate: {
-    DUT: uploadModerateData["DUT MS HTTP UL 30S"].Throughput,
-    REF: uploadModerateData["REF MS HTTP UL 30S"].Throughput,
-  },
-};
 
 export default Dp_MHS_httpMS_Component;

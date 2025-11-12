@@ -1,6 +1,8 @@
 import React from "react";
 import DpMHSPingTable from "./Table/DpMHSPingTable";
 import PingData from "../../../DataFiles/SA/DpMHSResults/Ping.json";
+import DpHistogramComponent from "../DpHistogramComponent";
+import { CHART_COLOR_DUT, CHART_COLOR_REF } from "../../../Constants/ChartColors";
 
 function Dp_MHS_Ping_Component() {
   const goodPingData = PingData.Good["25x64 bytes PING (ICMP)"];
@@ -69,11 +71,27 @@ function Dp_MHS_Ping_Component() {
     },
   };
 
+  const histogramData = [
+    { name: "Good", DUT: data.average.DUT.Good, REF: data.average.REF.Good },
+    { name: "Moderate", DUT: data.average.DUT.Moderate, REF: data.average.REF.Moderate },
+    { name: "Overall", DUT: data.average.DUT.Overall, REF: data.average.REF.Overall },
+  ];
+
+  const barKeys = [
+    { key: "DUT", fill: CHART_COLOR_DUT },
+    { key: "REF", fill: CHART_COLOR_REF },
+  ];
+
   return (
     <div className='page-content'>
       <h2>MHS-Ping Component</h2>
       <DpMHSPingTable data={data} />
-      {/* average histogram with constants histogram color */}
+      <DpHistogramComponent
+        data={histogramData}
+        title="Average Ping RTT"
+        yAxisLabel="Latency (ms)"
+        barKeys={barKeys}
+      />
     </div>
   );
 }

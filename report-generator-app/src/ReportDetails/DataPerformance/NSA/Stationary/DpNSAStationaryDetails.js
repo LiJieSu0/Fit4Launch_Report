@@ -14,8 +14,6 @@ function DpNSAStationaryDetails() {
   return (
     <div className='page-content'>
       <h2>NSA Stationary Data Performance Details</h2>
-      {/* Data processing and table rendering for HTTP and Ping */}
-      {/* Single Stream HTTP Download Table */}
       <DpNSAHttpSSTable
         data={{
           Moderate: {
@@ -29,8 +27,8 @@ function DpNSAStationaryDetails() {
         }}
         tableName="Single Stream HTTP Download"
       />
+      {/* NSA http SS DL histogram */}
 
-      {/* Single Stream HTTP Upload Table */}
       <DpNSAHttpSSTable
         data={{
           Moderate: {
@@ -44,8 +42,8 @@ function DpNSAStationaryDetails() {
         }}
         tableName="Single Stream HTTP Upload"
       />
+      {/* NSA http SS UL histogram */}
 
-      {/* Multi Stream HTTP Download Table */}
       <DpNSAHttpMSTable
         data={{
           Moderate: {
@@ -59,8 +57,8 @@ function DpNSAStationaryDetails() {
         }}
         tableName="Multi Stream HTTP Download"
       />
+      {/* NSA http MS DL histogram */}
 
-      {/* Multi Stream HTTP Upload Table */}
       <DpNSAHttpMSTable
         data={{
           Moderate: {
@@ -74,7 +72,10 @@ function DpNSAStationaryDetails() {
         }}
         tableName="Multi Stream HTTP Upload"
       />
+      {/* NSA http MS UL histogram */}
+
       <DpNSAPingTable data={pingData} tableName="Ping RTT" />
+      {/* NSA Ping histogram */}
       <DpNSAUDPComponent />
     </div>
   );

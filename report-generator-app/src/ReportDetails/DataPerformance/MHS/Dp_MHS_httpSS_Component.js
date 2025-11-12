@@ -1,6 +1,8 @@
 import React from "react";
 import DpMHSHttpSSTable from "./Table/DpMHSHttpSSTable";
+import DpHistogramComponent from "../DpHistogramComponent";
 import SingleStreamHTTPData from "../../../DataFiles/SA/DpMHSResults/Single Stream HTTP.json";
+import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 
 function Dp_MHS_httpSS_Component() {
   const goodData = SingleStreamHTTPData.Good["Single Stream HTTP Download for 60 seconds"];
@@ -17,6 +19,9 @@ function Dp_MHS_httpSS_Component() {
     },
   };
 
+  const overallDownloadDUTMean = (dataDL.Good.DUT["Mean"] + dataDL.Moderate.DUT["Mean"]) / 2;
+  const overallDownloadREFMean = (dataDL.Good.REF["Mean"] + dataDL.Moderate.REF["Mean"]) / 2;
+
   const uploadGoodData = SingleStreamHTTPData.Good["Single Stream HTTP Upload of a 15 MB file"];
   const uploadModerateData = SingleStreamHTTPData.Moderate["Single Stream HTTP Upload of a 15 MB file"];
 
@@ -31,13 +36,34 @@ function Dp_MHS_httpSS_Component() {
     },
   };
 
+  const overallUploadDUTMean = (dataUL.Good.DUT["Mean"] + dataUL.Moderate.DUT["Mean"]) / 2;
+  const overallUploadREFMean = (dataUL.Good.REF["Mean"] + dataUL.Moderate.REF["Mean"]) / 2;
+
   return (
     <div className='page-content'>
       <h2>MHS-httpSS Component</h2>
       <DpMHSHttpSSTable data={dataDL} tableName="MHS Single Stream HTTP Download Throughput" />
-      {/* dl histogram */}
+      <DpHistogramComponent
+        data={[
+          { name: 'Good', DUT: dataDL.Good.DUT["Mean"], REF: dataDL.Good.REF["Mean"] },
+          { name: 'Moderate', DUT: dataDL.Moderate.DUT["Mean"], REF: dataDL.Moderate.REF["Mean"] },
+          { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
+        ]}
+        title="MHS Single Stream HTTP Download Throughput Histogram"
+        yAxisLabel="Throughput"
+        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+      />
       <DpMHSHttpSSTable data={dataUL} tableName="MHS Single Stream HTTP Upload Throughput" />
-      {/* ul histogram  */}
+      <DpHistogramComponent
+        data={[
+          { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },
+          { name: 'Moderate', DUT: dataUL.Moderate.DUT["Mean"], REF: dataUL.Moderate.REF["Mean"] },
+          { name: 'Overall', DUT: overallUploadDUTMean, REF: overallUploadREFMean },
+        ]}
+        title="MHS Single Stream HTTP Upload Throughput Histogram"
+        yAxisLabel="Throughput"
+        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+      />
     </div>
   );
 }

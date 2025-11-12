@@ -13,10 +13,12 @@ import {
 
 const DpHistogramComponent = ({ data, title, yAxisLabel, barKeys }) => {
   return (
+    <div>
+
+    <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>{title}</h3>
     <div style={{ width: '100%', height: '400px', minHeight: '300px' }}>
-      <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>{title}</h3>
       <BarChart
-        width={700}
+        width={600}
         height={350}
         data={data}
         margin={{
@@ -33,11 +35,12 @@ const DpHistogramComponent = ({ data, title, yAxisLabel, barKeys }) => {
         <Legend />
         {Array.isArray(barKeys) && barKeys.map((bar, index) => (
           <Bar key={index} dataKey={bar.key} fill={bar.fill}>
-            <LabelList dataKey={bar.key} position="top" />
           </Bar>
         ))}
       </BarChart>
     </div>
+    </div>
+
   );
 };
 

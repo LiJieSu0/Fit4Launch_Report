@@ -179,8 +179,12 @@ function Dp_MHS_Udp_Component() {
 
   const downloadHistogramData = [];
   const downloadMetrics = [
-    { metric: "Mean Throughput", idealThroughput: "200000", title: "MHS UDP Download Mean Throughput (200 Mbps)" },
-    { metric: "Mean Throughput", idealThroughput: "400000", title: "MHS UDP Download Mean Throughput (400 Mbps)" },
+    { metric: "Mean Throughput", idealThroughput: "200000", title: "MHS UDP Download Mean Throughput (200 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Throughput", idealThroughput: "400000", title: "MHS UDP Download Mean Throughput (400 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Jitter", idealThroughput: "200000", title: "MHS UDP Download Mean Jitter (200 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Mean Jitter", idealThroughput: "400000", title: "MHS UDP Download Mean Jitter (400 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Packet Failure Rate", idealThroughput: "200000", title: "MHS UDP Download Packet Failure Rate (200 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
+    { metric: "Packet Failure Rate", idealThroughput: "400000", title: "MHS UDP Download Packet Failure Rate (400 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
   ];
 
   downloadMetrics.forEach(({ metric, idealThroughput, title }) => {
@@ -361,8 +365,12 @@ function Dp_MHS_Udp_Component() {
   // Calculate Overall for Upload Metrics
   const uploadHistogramData = [];
   const uploadMetrics = [
-    { metric: "Mean Throughput", idealThroughput: "10000", title: "MHS UDP Upload Mean Throughput (10 Mbps)" },
-    { metric: "Mean Throughput", idealThroughput: "20000", title: "MHS UDP Upload Mean Throughput (20 Mbps)" },
+    { metric: "Mean Throughput", idealThroughput: "10000", title: "MHS UDP Upload Mean Throughput (10 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Throughput", idealThroughput: "20000", title: "MHS UDP Upload Mean Throughput (20 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Jitter", idealThroughput: "10000", title: "MHS UDP Upload Mean Jitter (10 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Mean Jitter", idealThroughput: "20000", title: "MHS UDP Upload Mean Jitter (20 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Packet Failure Rate", idealThroughput: "10000", title: "MHS UDP Upload Packet Failure Rate (10 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
+    { metric: "Packet Failure Rate", idealThroughput: "20000", title: "MHS UDP Upload Packet Failure Rate (20 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
   ];
 
   uploadMetrics.forEach(({ metric, idealThroughput, title }) => {
@@ -394,7 +402,7 @@ function Dp_MHS_Udp_Component() {
           key={index}
           data={histogram.data}
           title={histogram.title}
-          yAxisLabel={histogram.metric.includes("Throughput") ? "Throughput" : histogram.metric.includes("Jitter") ? "Jitter" : "Error Ratio"}
+          yAxisLabel={histogram.yAxisLabel}
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
         />
       ))}
@@ -404,7 +412,7 @@ function Dp_MHS_Udp_Component() {
           key={index}
           data={histogram.data}
           title={histogram.title}
-          yAxisLabel={histogram.metric.includes("Throughput") ? "Throughput" : histogram.metric.includes("Jitter") ? "Jitter" : "Error Ratio"}
+          yAxisLabel={histogram.yAxisLabel}
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
         />
       ))}

@@ -40,12 +40,12 @@ function DpDetailsPage() {
 
   return (
     <div>
-      <DpHistogramComponent
+      {/* <DpHistogramComponent
         data={histogramData}
         title="Seattle (5G NR) Ping Results"
         yAxisLabel="Throughput (kbps)"
         barKeys={barKeys}
-      />
+      /> */}
       <Dp_httpSS_Component />
       <Dp_httpMS_Component />
       <Dp_Udp_Component />

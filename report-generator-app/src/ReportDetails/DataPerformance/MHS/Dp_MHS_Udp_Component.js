@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import DpMHSUdpTable from "./Table/DpMHSUdpTable";
+import DpHistogramComponent from "../DpHistogramComponent";
 import udpDataRaw from '../../../DataFiles/SA/DpMHSResults/UDP.json'; // Direct import of JSON
+import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 
 function Dp_MHS_Udp_Component() {
 
@@ -166,6 +168,41 @@ function Dp_MHS_Udp_Component() {
       },
     }
   ];
+
+  // Calculate Overall for Download Metrics
+  const getOverallMean = (goodValue, moderateValue) => {
+    if (goodValue !== undefined && moderateValue !== undefined) {
+      return (goodValue + moderateValue) / 2;
+    }
+    return undefined;
+  };
+
+  const downloadHistogramData = [];
+  const downloadMetrics = [
+    { metric: "Mean Throughput", idealThroughput: "200000", title: "MHS UDP Download Mean Throughput (200 Mbps)" },
+    { metric: "Mean Throughput", idealThroughput: "400000", title: "MHS UDP Download Mean Throughput (400 Mbps)" },
+  ];
+
+  downloadMetrics.forEach(({ metric, idealThroughput, title }) => {
+    const dutGood = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "DUT")?.location?.good;
+    const dutModerate = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "DUT")?.location?.moderate;
+    const refGood = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "REF")?.location?.good;
+    const refModerate = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "REF")?.location?.moderate;
+
+    const overallDUT = getOverallMean(dutGood, dutModerate);
+    const overallREF = getOverallMean(refGood, refModerate);
+
+    downloadHistogramData.push({
+      title: title,
+      metric: metric,
+      data: [
+        { name: 'Good', DUT: dutGood, REF: refGood },
+        { name: 'Moderate', DUT: dutModerate, REF: refModerate },
+        { name: 'Overall', DUT: overallDUT, REF: overallREF },
+      ]
+    });
+  });
+
   const udp_Stationary_UL = [
     // Mean Throughput - 10 Mbps
     {
@@ -320,13 +357,57 @@ function Dp_MHS_Udp_Component() {
       },
     }
   ];
+
+  // Calculate Overall for Upload Metrics
+  const uploadHistogramData = [];
+  const uploadMetrics = [
+    { metric: "Mean Throughput", idealThroughput: "10000", title: "MHS UDP Upload Mean Throughput (10 Mbps)" },
+    { metric: "Mean Throughput", idealThroughput: "20000", title: "MHS UDP Upload Mean Throughput (20 Mbps)" },
+  ];
+
+  uploadMetrics.forEach(({ metric, idealThroughput, title }) => {
+    const dutGood = udp_Stationary_UL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "DUT")?.location?.good;
+    const dutModerate = udp_Stationary_UL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "DUT")?.location?.moderate;
+    const refGood = udp_Stationary_UL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "REF")?.location?.good;
+    const refModerate = udp_Stationary_UL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "REF")?.location?.moderate;
+
+    const overallDUT = getOverallMean(dutGood, dutModerate);
+    const overallREF = getOverallMean(refGood, refModerate);
+
+    uploadHistogramData.push({
+      title: title,
+      metric: metric,
+      data: [
+        { name: 'Good', DUT: dutGood, REF: refGood },
+        { name: 'Moderate', DUT: dutModerate, REF: refModerate },
+        { name: 'Overall', DUT: overallDUT, REF: overallREF },
+      ]
+    });
+  });
+
   return (
     <div className='page-content'>
       <h2>MHS-UDP Component</h2>
-      {/* MHS UDP DL Table  */}
       <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP DL Table" />
+      {downloadHistogramData.map((histogram, index) => (
+        <DpHistogramComponent
+          key={index}
+          data={histogram.data}
+          title={histogram.title}
+          yAxisLabel={histogram.metric.includes("Throughput") ? "Throughput" : histogram.metric.includes("Jitter") ? "Jitter" : "Error Ratio"}
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+      ))}
       <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP UL Table" />
-
+      {uploadHistogramData.map((histogram, index) => (
+        <DpHistogramComponent
+          key={index}
+          data={histogram.data}
+          title={histogram.title}
+          yAxisLabel={histogram.metric.includes("Throughput") ? "Throughput" : histogram.metric.includes("Jitter") ? "Jitter" : "Error Ratio"}
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+      ))}
     </div>
   );
 }

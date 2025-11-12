@@ -1,5 +1,6 @@
 import React from 'react';
 import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
+import DpHistogramComponent from '../DpHistogramComponent';
 import httpSS_Stationary_DL_Data from '../../../DataFiles/SA/DpStationaryResults/Single Stream HTTP.json';
 
 function Dp_httpSS_Component() {
@@ -33,12 +34,42 @@ function Dp_httpSS_Component() {
     },
   };
 
+  const dlHistogramData = [
+    { name: 'Good', DUT: httpSS_Stationary_DL.Good.DUT.Mean, REF: httpSS_Stationary_DL.Good.REF.Mean },
+    { name: 'Moderate', DUT: httpSS_Stationary_DL.Moderate.DUT.Mean, REF: httpSS_Stationary_DL.Moderate.REF.Mean },
+    { name: 'Poor', DUT: httpSS_Stationary_DL.Poor.DUT.Mean, REF: httpSS_Stationary_DL.Poor.REF.Mean },
+  ];
+
+  const ulHistogramData = [
+    { name: 'Good', DUT: httpSS_Stationary_UL.Good.DUT.Mean, REF: httpSS_Stationary_UL.Good.REF.Mean },
+    { name: 'Moderate', DUT: httpSS_Stationary_UL.Moderate.DUT.Mean, REF: httpSS_Stationary_UL.Moderate.REF.Mean },
+    { name: 'Poor', DUT: httpSS_Stationary_UL.Poor.DUT.Mean, REF: httpSS_Stationary_UL.Poor.REF.Mean },
+  ];
+
+  const barKeys = [
+    { key: 'DUT', fill: '#4267B2' },
+    { key: 'REF', fill: '#6AA84F' },
+  ];
+  console.log("DUT value"+httpSS_Stationary_DL.Good.DUT);
   return (
     <div className='page-content'>
+      
       <h2>HTTP Single Stream test - 5G NR</h2>
+      <DpHistogramComponent
+        data={dlHistogramData}
+        title="Single Stream HTTP Download Throughput"
+        yAxisLabel="Throughput (Mbps)"
+        barKeys={barKeys}
+      />
+      <DpHistogramComponent
+        data={ulHistogramData}
+        title="Single Stream HTTP Upload Throughput"
+        yAxisLabel="Throughput (Mbps)"
+        barKeys={barKeys}
+      />
       {/* single stream dl overall table */}
       {/* single stream ul overall table */}
-      {/* single stream dl details table */}
+
       <DpDetailsTableLoc3 data={httpSS_Stationary_DL} tableName="Single Stream HTTP Download for 60 seconds" />
       <DpDetailsTableLoc3 data={httpSS_Stationary_UL} tableName="Single Stream HTTP Upload of a 15 MB file"  />
     </div>

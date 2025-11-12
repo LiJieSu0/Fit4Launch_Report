@@ -435,6 +435,9 @@ function Dp_Udp_Component() {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
+        {/* dl mean jitter histgoram with constnats histogram color */}
+        {/* dl Packet Failure Rate histgoram with constnats histogram color */}
+
       </div>
       <div className='page-content'>
         <DpUdpTableLoc3 data={udp_Stationary_UL} tableName="UDP UL" />
@@ -444,6 +447,8 @@ function Dp_Udp_Component() {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
+        {/* ul mean jitter histgoram with constnats histogram color */}
+        {/* ul Packet Failure Rate histgoram with constnats histogram color */}
       </div>
     </>
   );

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import MrabData from '../../DataFiles/SA/DpMrabResults/Mrab.json';
 import '../../StyleScript/Restricted_Report_Style.css';
+import DpHistogramComponent from './DpHistogramComponent';
+import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../Constants/ChartColors';
 
 const DpMrabDetailsPage = () => {
   const [mrabData, setMrabData] = useState(null);
@@ -95,6 +97,16 @@ const DpMrabDetailsPage = () => {
       </table>
 
       {/* Mrab histogram, pre call, in call, post call, overall */}
+      <DpHistogramComponent
+        data={[
+          { name: 'Pre Call', DUT: mrabData["DUT MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"], REF: mrabData["REF MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"] },
+          { name: 'In Call', DUT: mrabData["DUT MRAB"]["MRAB Statistics"]["In Call"]["Mean"], REF: mrabData["REF MRAB"]["MRAB Statistics"]["In Call"]["Mean"] },
+          { name: 'Post Call', DUT: mrabData["DUT MRAB"]["MRAB Statistics"]["Post Call"]["Mean"], REF: mrabData["REF MRAB"]["MRAB Statistics"]["Post Call"]["Mean"] },
+        ]}
+        title="MRAB Mean Statistics"
+        yAxisLabel="Mean Value (Mbps)"
+        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+      />
     </div>
   );
 };

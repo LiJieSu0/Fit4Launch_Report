@@ -1,5 +1,6 @@
 import React from "react";
 import '../../../../StyleScript/Restricted_Report_Style.css';
+import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
 function DpWebTable({ data }) {
     // 'data' prop is expected to be an array of objects, each representing a row.
@@ -23,7 +24,15 @@ function DpWebTable({ data }) {
                             <tr>
                                 <td rowSpan="2">{row.category}</td>
                                 <td>{row.dut.device}</td>
-                                <td>{row.dut.overall}</td>
+                                <td style={row.category === "Average" ? {
+                                    backgroundColor: getKpiCellColor(
+                                        'WebpageLoadTime',
+                                        parseFloat(row.dut.overall),
+                                        parseFloat(row.ref.overall)
+                                    )
+                                } : {}}>
+                                    {row.dut.overall}
+                                </td>
                             </tr>
                             <tr>
                                 <td>{row.ref.device}</td>

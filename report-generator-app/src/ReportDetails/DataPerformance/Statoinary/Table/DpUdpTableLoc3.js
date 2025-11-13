@@ -1,4 +1,5 @@
 import React from 'react';
+import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
 function DpUdpTableLoc3({ data, tableName }) {
   const calculateOverallAverage = (good, moderate, poor) => {
@@ -60,6 +61,16 @@ function DpUdpTableLoc3({ data, tableName }) {
               lastIdealThroughput = row.idealThroughput;
             }
 
+            const refRow = data.find(
+              (item) =>
+                item.metric === row.metric &&
+                item.idealThroughput === row.idealThroughput &&
+                item.deviceName === 'REF'
+            );
+
+            const refOverallValue = refRow ? calculateOverallAverage(refRow.location.good, refRow.location.moderate, refRow.location.poor) : null;
+            const currentOverallValue = calculateOverallAverage(row.location.good, row.location.moderate, row.location.poor);
+
             return (
               <tr key={index}>
                 {showMetric && (
@@ -69,7 +80,19 @@ function DpUdpTableLoc3({ data, tableName }) {
                   <td rowSpan={getRowSpan(row.metric, row.idealThroughput)}>{row.idealThroughput}</td>
                 )}
                 <td>{row.deviceName}</td>
-                <td>{calculateOverallAverage(row.location.good, row.location.moderate, row.location.poor)}</td>
+                <td style={{
+                  backgroundColor: row.deviceName === 'DUT' && refOverallValue !== null && row.metric !== 'Max Throughput'
+                    ? getKpiCellColor(
+                        row.metric === 'Mean Jitter' ? 'Jitter' :
+                        row.metric === 'Packet Failure Rate' ? 'ErrorRatio' :
+                        'Throughput',
+                        parseFloat(currentOverallValue),
+                        parseFloat(refOverallValue)
+                      )
+                    : 'inherit'
+                }}>
+                  {currentOverallValue}
+                </td>
                 <td>{row.location.good.toFixed(2)}</td>
                 <td>{row.location.moderate.toFixed(2)}</td>
                 <td>{row.location.poor.toFixed(2)}</td>

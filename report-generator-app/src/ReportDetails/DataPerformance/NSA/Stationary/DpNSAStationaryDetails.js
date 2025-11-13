@@ -2,6 +2,7 @@ import React from 'react';
 import DpNSAHttpMSTable from './Table/DpNSAHttpMSTable';
 import DpNSAHttpSSTable from './Table/DpNSAHttpSSTable';
 import DpNSAPingTable from './Table/DpNSAPingTable';
+import DpNSAPingOverallTable from './Table/DpNSAPingOverallTable';
 import DpThroughputOverallTable from '../../DpThroughputOverallTable';
 import processPingData from './NSAPingData';
 import DpHistogramComponent from '../../DpHistogramComponent';
@@ -236,7 +237,8 @@ function DpNSAStationaryDetails() {
         yAxisLabel="Throughput"
         barKeys={barKeys}
       />
-
+      <h3>Overall Ping</h3>
+      <DpNSAPingOverallTable data={pingData} />
       <DpNSAPingTable data={pingData} tableName="Ping RTT" />
       <DpHistogramComponent
         data={pingHistogramData}

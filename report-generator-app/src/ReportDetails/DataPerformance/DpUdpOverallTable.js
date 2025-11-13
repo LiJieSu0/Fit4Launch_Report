@@ -47,42 +47,35 @@ const DpUdpOverallTable = ({ data, headers }) => {
   }
 
   return (
-    <table className="general-table-style">
-      <thead>
-        <tr>
-          {headers.map((header, index) => (
-            <th key={index}>{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {processedData.map((row, pRowIndex) => (
-          <tr key={pRowIndex}>
-            {headers.map((header, colIndex) => {
-              if (header === 'Metric' && !row.isFirstInMetricGroup) {
-                return null;
-              }
-              if (header === 'Ideal Throughput' && !row.isFirstInIdealThroughputGroup) {
-                return null;
-              }
-
-              let rowSpan = 1;
-              if (header === 'Metric' && row.isFirstInMetricGroup) {
-                rowSpan = row.metricRowSpan;
-              } else if (header === 'Ideal Throughput' && row.isFirstInIdealThroughputGroup) {
-                rowSpan = row.idealThroughputRowSpan;
-              }
-
-              return (
-                <td key={colIndex} rowSpan={rowSpan}>
-                  {row[header]}
-                </td>
-              );
-            })}
+    <div>
+      <table className="general-table-style">
+        <thead>
+          <tr>
+            <th rowSpan="2">Metric</th>
+            <th rowSpan="2">Ideal Throughput</th>
+            <th rowSpan="2">Device Name</th>
+            <th>Seattle (5G NR)</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+          <tr>
+            <th>Overall</th>
+          </tr>
+        </thead>
+        <tbody>
+          {processedData.map((row, pRowIndex) => (
+            <tr key={pRowIndex}>
+              {row.isFirstInMetricGroup && (
+                <td rowSpan={row.metricRowSpan}>{row['Metric']}</td>
+              )}
+              {row.isFirstInIdealThroughputGroup && (
+                <td rowSpan={row.idealThroughputRowSpan}>{row['Ideal Throughput']}</td>
+              )}
+              <td>{row['Device Name']}</td>
+              <td>{row['Overall']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

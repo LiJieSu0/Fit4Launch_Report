@@ -1,6 +1,7 @@
 import React from 'react';
 import DpUdpTableLoc3 from './Table/DpUdpTableLoc3';
 import DpHistogramComponent from '../DpHistogramComponent';
+import DpUdpOverallTable from '../DpUdpOverallTable';
 import udp_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/UDP.json';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import '../../../StyleScript/Restricted_Report_Style.css';
@@ -299,6 +300,18 @@ function Dp_Udp_Component() {
     }
   ];
 
+  const dlOverallTableData = udp_Stationary_DL.map(item => {
+    const overallValue = ((item.location.good + item.location.moderate + item.location.poor) / 3).toFixed(2);
+    return {
+      Metric: item.metric,
+      "Ideal Throughput": item.idealThroughput,
+      "Device Name": item.deviceName,
+      Overall: overallValue,
+    };
+  });
+
+  const dlOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
+
   const udp_Stationary_UL = [
     {
         metric: "Mean Throughput",
@@ -574,6 +587,7 @@ function Dp_Udp_Component() {
     <>
       <div className='page-content'>
         <h2>UDP test - 5G NR</h2>
+        <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
         <DpUdpTableLoc3 data={udp_Stationary_DL} tableName="UDP DL" />
         <DpHistogramComponent
           data={dlMeanThroughput200HistogramData}

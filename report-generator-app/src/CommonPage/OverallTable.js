@@ -1,9 +1,40 @@
 import React from 'react';
-import './OverallTable.module.css'; // Assuming a CSS module for styling
 
 const OverallTable = ({ tableHeader, tableData }) => {
   if (!tableHeader || tableHeader.length === 0 || !tableData) {
     return <p>No table data available.</p>;
+  }
+
+  const processedTableData = [];
+  for (let i = 0; i < tableData.length; i++) {
+    const currentRow = tableData[i];
+    const firstColumnValue = currentRow[0];
+    let rowSpan = 1;
+
+    // Check for duplicate values in the first column
+    for (let j = i + 1; j < tableData.length; j++) {
+      if (tableData[j][0] === firstColumnValue) {
+        rowSpan++;
+      } else {
+        break;
+      }
+    }
+
+    processedTableData.push({
+      row: currentRow,
+      rowSpan: rowSpan,
+      isMerged: false, // Flag to indicate if this row's first cell has been merged
+    });
+
+    // Mark subsequent duplicate rows as merged
+    for (let k = i + 1; k < i + rowSpan; k++) {
+      processedTableData[k] = {
+        row: tableData[k],
+        rowSpan: 0, // Set rowSpan to 0 for merged cells
+        isMerged: true,
+      };
+    }
+    i += rowSpan - 1; // Skip the merged rows
   }
 
   return (
@@ -16,11 +47,21 @@ const OverallTable = ({ tableHeader, tableData }) => {
         </tr>
       </thead>
       <tbody>
-        {tableData.map((row, rowIndex) => (
+        {processedTableData.map((processedRow, rowIndex) => (
           <tr key={rowIndex}>
-            {row.map((cell, cellIndex) => (
-              <td key={cellIndex}>{cell}</td>
-            ))}
+            {processedRow.row.map((cell, cellIndex) => {
+              if (cellIndex === 0) {
+                if (!processedRow.isMerged) {
+                  return (
+                    <td key={cellIndex} rowSpan={processedRow.rowSpan}>
+                      {cell}
+                    </td>
+                  );
+                }
+                return null; // Don't render merged cells
+              }
+              return <td key={cellIndex}>{cell}</td>;
+            })}
           </tr>
         ))}
       </tbody>

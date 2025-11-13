@@ -1,4 +1,5 @@
 import React from 'react';
+import { getKpiCellColor } from '../../../../../Utils/KpiRules';
 
 function DpNSAUDPDLTable({ data, tableName }) {
   const calculateOverallAverage = (moderate, poor) => {
@@ -62,6 +63,16 @@ function DpNSAUDPDLTable({ data, tableName }) {
               lastIdealThroughput = row.idealThroughput;
             }
 
+            const refRow = data.find(
+              (item) =>
+                item.metric === row.metric &&
+                item.idealThroughput === row.idealThroughput &&
+                item.deviceName === 'REF'
+            );
+
+            const refOverallValue = refRow ? calculateOverallAverage(refRow.location.moderate, refRow.location.poor) : null;
+            const currentOverallValue = calculateOverallAverage(row.location.moderate, row.location.poor);
+
             return (
               <tr key={index}>
                 {showMetric && (
@@ -71,7 +82,19 @@ function DpNSAUDPDLTable({ data, tableName }) {
                   <td rowSpan={getRowSpan(row.metric, row.idealThroughput)}>{row.idealThroughput}</td>
                 )}
                 <td>{row.deviceName}</td>
-                <td>{calculateOverallAverage(row.location.moderate, row.location.poor)}</td>
+                <td style={{
+                  backgroundColor: row.deviceName === 'DUT' && refOverallValue !== null && row.metric !== 'Max Throughput (kbps)'
+                    ? getKpiCellColor(
+                        row.metric === 'Mean Jitter (s)' ? 'Jitter' :
+                        row.metric === 'Packet Failure Rate (%)' ? 'ErrorRatio' :
+                        'Throughput',
+                        parseFloat(currentOverallValue),
+                        parseFloat(refOverallValue)
+                      )
+                    : 'inherit'
+                }}>
+                  {currentOverallValue}
+                </td>
                 <td>{row.location.moderate.toFixed(2)}</td>
                 <td>{row.location.poor.toFixed(2)}</td>
               </tr>

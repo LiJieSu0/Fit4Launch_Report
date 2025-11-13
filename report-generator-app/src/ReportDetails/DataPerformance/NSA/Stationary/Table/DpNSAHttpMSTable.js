@@ -1,4 +1,5 @@
 import React from 'react';
+import { getKpiCellColor } from '../../../../../Utils/KpiRules';
 
 function DpNSAHttpMSTable({ data, tableName }) {
   const tableData = [
@@ -83,7 +84,16 @@ function DpNSAHttpMSTable({ data, tableName }) {
                 <td rowSpan="2">{row.category}</td>
               )}
               <td>{row.deviceName}</td>
-              <td>{row.overall}</td>
+              <td style={{
+                backgroundColor:
+                  row.category === "Average" && row.deviceName === "DUT"
+                    ? getKpiCellColor(
+                      "Throughput",
+                      parseFloat(row.overall),
+                      parseFloat(tableData[index + 1].overall)
+                    )
+                    : "inherit",
+              }}>{row.overall}</td>
               <td>{row.site1}</td>
               <td>{row.site2}</td>
             </tr>

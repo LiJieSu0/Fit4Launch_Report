@@ -1,4 +1,5 @@
 import React from 'react';
+import { getKpiCellColor } from '../../../../Utils/KpiRules';
 import '../../../../StyleScript/Restricted_Report_Style.css';
 
 const DpPingTableLoc3 = ({ data }) => {
@@ -47,7 +48,7 @@ const DpPingTableLoc3 = ({ data }) => {
                     <tr>
                         <td rowSpan="2">Average</td>
                         <td>DUT</td>
-                        <td>{data.average.DUT.Overall}</td>
+                        <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(data.average.DUT.Overall), parseFloat(data.average.REF.Overall)) }}>{data.average.DUT.Overall}</td>
                         <td>{data.average.DUT.Good}</td>
                         <td>{data.average.DUT.Moderate}</td>
                         <td>{data.average.DUT.Poor}</td>

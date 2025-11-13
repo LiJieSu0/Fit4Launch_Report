@@ -1,4 +1,5 @@
 import React from 'react';
+import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const DpUdpOverallTable = ({ data, headers }) => {
   if (!data || data.length === 0 || !headers || headers.length === 0) {
@@ -33,12 +34,21 @@ const DpUdpOverallTable = ({ data, headers }) => {
       const idealThroughputRowSpan = idealThroughputGroupEnd - idealThroughputGroupStart;
 
       for (let k = idealThroughputGroupStart; k < idealThroughputGroupEnd; k++) {
+        const refRow = data.find(
+          (item) =>
+            item['Metric'] === currentMetric &&
+            item['Ideal Throughput'] === currentIdealThroughput &&
+            item['Device Name'] === 'REF'
+        );
+        const refOverallValue = refRow ? parseFloat(refRow['Overall']) : null;
+
         processedData.push({
           ...data[k],
           metricRowSpan: metricRowSpan,
           isFirstInMetricGroup: k === metricGroupStart,
           idealThroughputRowSpan: idealThroughputRowSpan,
           isFirstInIdealThroughputGroup: k === idealThroughputGroupStart,
+          refOverallValue: refOverallValue,
         });
       }
       j = idealThroughputGroupEnd;
@@ -70,7 +80,19 @@ const DpUdpOverallTable = ({ data, headers }) => {
                 <td rowSpan={row.idealThroughputRowSpan}>{row['Ideal Throughput']}</td>
               )}
               <td>{row['Device Name']}</td>
-              <td>{row['Overall']}</td>
+              <td style={{
+                backgroundColor: row['Device Name'] === 'DUT' && row.refOverallValue !== null && row['Metric'] !== 'Max Throughput'
+                  ? getKpiCellColor(
+                      row['Metric'] === 'Mean Jitter' ? 'Jitter' :
+                      row['Metric'] === 'Packet Failure Rate' ? 'ErrorRatio' :
+                      'Throughput',
+                      parseFloat(row['Overall']),
+                      row.refOverallValue
+                    )
+                  : 'inherit'
+              }}>
+                {row['Overall']}
+              </td>
             </tr>
           ))}
         </tbody>

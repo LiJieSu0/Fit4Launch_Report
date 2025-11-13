@@ -347,7 +347,7 @@ function DpNSAUDPComponent() {
     <>
       <DpNSAUDPDLTable data={udp_Stationary_DL} tableName="UDP Download Stationary" />
 
-      {/* Throughput (kbps) - UDP Download Stationary */}
+      {/* UDP DL overall  */}
       {["200000", "400000"].map((idealThroughput) => (
         <DpHistogramComponent
           key={`dl-throughput-${idealThroughput}`}
@@ -381,8 +381,7 @@ function DpNSAUDPComponent() {
       ))}
 
       <DpNSAUDPULTable data={udp_Stationary_UL} tableName="UDP Upload Stationary" />
-
-      {/* Throughput (kbps) - UDP Upload Stationary */}
+      {/* UDP UL overall  */}
       {["10000", "20000"].map((idealThroughput) => (
         <DpHistogramComponent
           key={`ul-throughput-${idealThroughput}`}

@@ -1,5 +1,6 @@
 import React from 'react';
 import DpPingTableLoc3 from './Table/DpPingTableLoc3';
+import DpPingOverallTable from './Table/DpPingOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
 import PingData from '../../../DataFiles/SA/DpStationaryResults/Ping.json';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
@@ -80,6 +81,7 @@ function Dp_Ping_Component() {
         <div>
             <div className='page-content'>
                 <h2>PING test - 5G NR</h2>
+                <DpPingOverallTable data={processedPingData} />
                 <DpPingTableLoc3 data={processedPingData} />
                 <DpHistogramComponent
                     data={pingHistogramData}

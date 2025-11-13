@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
-import OverallTable from '../../../CommonPage/OverallTable';
+import DpThroughputOverallTable from '../DpThroughputOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import httpMS_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/Multi Stream HTTP.json';
@@ -80,7 +80,7 @@ function Dp_httpMS_Component() {
         <div className='page-content'>
             <h2>HTTP Multi Stream test - 5G NR</h2>
             <h3>Overall Multi Stream HTTP</h3>
-            <OverallTable
+            <DpThroughputOverallTable
                 tableHeader={overallTableHeader}
                 tableData={combinedOverallTableData}
                 kpiRule="Throughput"

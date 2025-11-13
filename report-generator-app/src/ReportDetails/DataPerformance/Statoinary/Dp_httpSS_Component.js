@@ -1,6 +1,6 @@
 import React from 'react';
 import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
-import OverallTable from '../../../CommonPage/OverallTable';
+import DpThroughputOverallTable from '../DpThroughputOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
 import httpSS_Stationary_DL_Data from '../../../DataFiles/SA/DpStationaryResults/Single Stream HTTP.json';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
@@ -79,7 +79,7 @@ function Dp_httpSS_Component() {
       
       <h2>HTTP Single Stream test - 5G NR</h2>
       <h3>Overall Single Stream HTTP</h3>
-      <OverallTable
+      <DpThroughputOverallTable
         tableHeader={overallTableHeader}
         tableData={combinedOverallTableData}
         kpiRule="Throughput"

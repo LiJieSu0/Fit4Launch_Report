@@ -1,7 +1,7 @@
 import React from 'react';
-import { getKpiCellColor } from '../Utils/KpiRules';
+import { getKpiCellColor } from '../../Utils/KpiRules';
 
-const OverallTable = ({ tableHeader, tableData, kpiRule, kpiTargetCells }) => {
+const DpThroughputOverallTable = ({ tableHeader, tableData, kpiRule, kpiTargetCells }) => {
   if (!tableHeader || tableHeader.length === 0 || !tableData) {
     return <p>No table data available.</p>;
   }
@@ -87,4 +87,4 @@ const OverallTable = ({ tableHeader, tableData, kpiRule, kpiTargetCells }) => {
   );
 };
 
-export default OverallTable;
+export default DpThroughputOverallTable;

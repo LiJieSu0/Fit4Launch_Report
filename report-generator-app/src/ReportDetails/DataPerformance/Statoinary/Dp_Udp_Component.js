@@ -300,18 +300,6 @@ function Dp_Udp_Component() {
     }
   ];
 
-  const dlOverallTableData = udp_Stationary_DL.map(item => {
-    const overallValue = ((item.location.good + item.location.moderate + item.location.poor) / 3).toFixed(2);
-    return {
-      Metric: item.metric,
-      "Ideal Throughput": item.idealThroughput,
-      "Device Name": item.deviceName,
-      Overall: overallValue,
-    };
-  });
-
-  const dlOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
-
   const udp_Stationary_UL = [
     {
         metric: "Mean Throughput",
@@ -475,6 +463,30 @@ function Dp_Udp_Component() {
     },
   ];
 
+  const dlOverallTableData = udp_Stationary_DL.map(item => {
+    const overallValue = ((item.location.good + item.location.moderate + item.location.poor) / 3).toFixed(2);
+    return {
+      Metric: item.metric,
+      "Ideal Throughput": item.idealThroughput,
+      "Device Name": item.deviceName,
+      Overall: overallValue,
+    };
+  });
+
+  const dlOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
+
+  const ulOverallTableData = udp_Stationary_UL.map(item => {
+    const overallValue = ((item.location.good + item.location.moderate + item.location.poor) / 3).toFixed(2);
+    return {
+      Metric: item.metric,
+      "Ideal Throughput": item.idealThroughput,
+      "Device Name": item.deviceName,
+      Overall: overallValue,
+    };
+  });
+
+  const ulOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
+
   // UL Mean Throughput for 10 Mbps
   const ulMeanThroughput10_DUT_Good = udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean;
   const ulMeanThroughput10_REF_Good = udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean;
@@ -588,6 +600,7 @@ function Dp_Udp_Component() {
       <div className='page-content'>
         <h2>UDP test - 5G NR</h2>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
+        <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
         {/* dp udp ul overall table */}
         <DpUdpTableLoc3 data={udp_Stationary_DL} tableName="UDP DL" />
         <DpHistogramComponent

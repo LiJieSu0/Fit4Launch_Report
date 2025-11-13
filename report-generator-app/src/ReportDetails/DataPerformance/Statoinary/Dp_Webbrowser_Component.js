@@ -1,5 +1,6 @@
 import React from "react";
 import DpWebTable from "./Table/DpWebTable";
+import DpWebOverallTable from "./Table/DpWebOverallTable";
 import DpHistogramComponent from "../DpHistogramComponent";
 import WebBrowserData from '../../../DataFiles/SA/DpWebResults/Web Browser.json';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
@@ -18,6 +19,13 @@ function Dp_Webbrowser_Component(){
         { category: "Minimum", dut: { device: "DUT", overall: dutData["Web Page Load Time"]["Minimum"].toFixed(3) }, ref: { device: "REF", overall: refData["Web Page Load Time"]["Minimum"].toFixed(3) } },
     ];
 
+    const overallTableData = {
+        average: { DUT: { Overall: dutData["Web Page Load Time"]["Mean"].toFixed(3) }, REF: { Overall: refData["Web Page Load Time"]["Mean"].toFixed(3) } },
+        std_dev: { DUT: { Overall: dutData["Web Page Load Time"]["Standard Deviation"].toFixed(3) }, REF: { Overall: refData["Web Page Load Time"]["Standard Deviation"].toFixed(3) } },
+        max: { DUT: { Overall: dutData["Web Page Load Time"]["Maximum"].toFixed(3) }, REF: { Overall: refData["Web Page Load Time"]["Maximum"].toFixed(3) } },
+        min: { DUT: { Overall: dutData["Web Page Load Time"]["Minimum"].toFixed(3) }, REF: { Overall: refData["Web Page Load Time"]["Minimum"].toFixed(3) } },
+    };
+
     const histogramData = [
         { name: "Mean", DUT: dutData["Web Page Load Time"]["Mean"], REF: refData["Web Page Load Time"]["Mean"] },
     ];
@@ -30,6 +38,7 @@ function Dp_Webbrowser_Component(){
     return(
         <div className='page-content'>
             <h2>Web browser test - 5G NR</h2>
+            <DpWebOverallTable data={overallTableData} />
             <DpWebTable data={Dp_WebData} />
             <DpHistogramComponent
                 data={histogramData}

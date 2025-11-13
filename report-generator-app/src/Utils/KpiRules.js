@@ -51,7 +51,7 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => { // only
         return 'var(--performance-fail)';
       }
       break;
-    case 'WebpageLoadTime':
+case 'WebPageLoadTime':
       if (dutValue < 0.9 * refValue) {
         return 'var(--performance-excellent)';
       } else if ((dutValue >= 0.9 * refValue && dutValue <= 1.1 * refValue) || dutValue < 2) {

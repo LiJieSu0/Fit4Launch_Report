@@ -26,7 +26,7 @@ function DpWebTable({ data }) {
                                 <td>{row.dut.device}</td>
                                 <td style={row.category === "Average" ? {
                                     backgroundColor: getKpiCellColor(
-                                        'WebpageLoadTime',
+                                        'WebPageLoadTime',
                                         parseFloat(row.dut.overall),
                                         parseFloat(row.ref.overall)
                                     )

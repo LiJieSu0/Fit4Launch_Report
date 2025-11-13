@@ -1,6 +1,7 @@
 import React from 'react';
+import { getKpiCellColor } from '../Utils/KpiRules';
 
-const OverallTable = ({ tableHeader, tableData }) => {
+const OverallTable = ({ tableHeader, tableData, kpiRule, kpiTargetCells }) => {
   if (!tableHeader || tableHeader.length === 0 || !tableData) {
     return <p>No table data available.</p>;
   }
@@ -64,7 +65,20 @@ const OverallTable = ({ tableHeader, tableData }) => {
                 }
                 return null; // Don't render merged cells
               }
-              return <td key={cellIndex}>{cell}</td>;
+
+              let cellStyle = {};
+              if (kpiRule && kpiTargetCells) {
+                const targetCell = kpiTargetCells.find(
+                  (target) => target.rowIndex === rowIndex && target.colIndex === cellIndex
+                );
+                if (targetCell) {
+                  const color = getKpiCellColor(kpiRule, parseFloat(targetCell.dutValue), parseFloat(targetCell.refValue));
+                  if (color) {
+                    cellStyle = { backgroundColor: color };
+                  }
+                }
+              }
+              return <td key={cellIndex} style={cellStyle}>{cell}</td>;
             })}
           </tr>
         ))}

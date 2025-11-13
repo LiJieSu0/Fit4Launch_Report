@@ -79,15 +79,53 @@ function Dp_httpSS_Component() {
       
       <h2>HTTP Single Stream test - 5G NR</h2>
       <h3>Overall Single Stream HTTP</h3>
-      <OverallTable tableHeader={overallTableHeader} tableData={combinedOverallTableData} />
-      <DpDetailsTableLoc3 data={httpSS_Stationary_DL} tableName="Single Stream HTTP Download for 60 seconds" />
+      <OverallTable
+        tableHeader={overallTableHeader}
+        tableData={combinedOverallTableData}
+        kpiRule="Throughput"
+        kpiTargetCells={[
+          {
+            rowIndex: 0,
+            colIndex: 2,
+            dutValue: ((httpSS_Stationary_DL.Good.DUT.Mean + httpSS_Stationary_DL.Moderate.DUT.Mean + httpSS_Stationary_DL.Poor.DUT.Mean) / 3).toFixed(2),
+            refValue: ((httpSS_Stationary_DL.Good.REF.Mean + httpSS_Stationary_DL.Moderate.REF.Mean + httpSS_Stationary_DL.Poor.REF.Mean) / 3).toFixed(2),
+          },
+          {
+            rowIndex: 0,
+            colIndex: 3,
+            dutValue: ((httpSS_Stationary_UL.Good.DUT.Mean + httpSS_Stationary_UL.Moderate.DUT.Mean + httpSS_Stationary_UL.Poor.DUT.Mean) / 3).toFixed(2),
+            refValue: ((httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3).toFixed(2),
+          },
+        ]}
+      />
+      <DpDetailsTableLoc3
+        data={httpSS_Stationary_DL}
+        tableName="Single Stream HTTP Download for 60 seconds"
+        kpiRule="Throughput"
+        kpiTargetCells={[
+          {
+            dutValue: (httpSS_Stationary_DL.Good.DUT.Mean + httpSS_Stationary_DL.Moderate.DUT.Mean + httpSS_Stationary_DL.Poor.DUT.Mean) / 3,
+            refValue: (httpSS_Stationary_DL.Good.REF.Mean + httpSS_Stationary_DL.Moderate.REF.Mean + httpSS_Stationary_DL.Poor.REF.Mean) / 3,
+          },
+        ]}
+      />
       <DpHistogramComponent
         data={dlHistogramData}
         title="Single Stream HTTP Download Throughput"
         yAxisLabel="Throughput (Mbps)"
         barKeys={barKeys}
       />
-      <DpDetailsTableLoc3 data={httpSS_Stationary_UL} tableName="Single Stream HTTP Upload of a 15 MB file"  />
+      <DpDetailsTableLoc3
+        data={httpSS_Stationary_UL}
+        tableName="Single Stream HTTP Upload of a 15 MB file"
+        kpiRule="Throughput"
+        kpiTargetCells={[
+          {
+            dutValue: (httpSS_Stationary_UL.Good.DUT.Mean + httpSS_Stationary_UL.Moderate.DUT.Mean + httpSS_Stationary_UL.Poor.DUT.Mean) / 3,
+            refValue: (httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3,
+          },
+        ]}
+      />
       <DpHistogramComponent
         data={ulHistogramData}
         title="Single Stream HTTP Upload Throughput"

@@ -1,6 +1,7 @@
 import React from 'react';
+import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
-function DpDetailsTableLoc3({ data, tableName }) {
+function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
   const tableData = [
     {
       category: "Average",
@@ -86,18 +87,31 @@ function DpDetailsTableLoc3({ data, tableName }) {
           </tr>
         </thead>
         <tbody>
-          {tableData.map((row, index) => (
-            <tr key={index}>
-              {row.deviceName === "DUT" && (
-                <td rowSpan="2">{row.category}</td>
-              )}
-              <td>{row.deviceName}</td>
-              <td>{row.overall}</td>
-              <td>{row.site1}</td>
-              <td>{row.site2}</td>
-              <td>{row.site3}</td>
-            </tr>
-          ))}
+          {tableData.map((row, index) => {
+            let overallCellStyle = {};
+            if (kpiRule && kpiTargetCells && row.deviceName === "DUT" && row.category === "Average") {
+              const refRow = tableData.find(r => r.deviceName === "REF" && r.category === "Average");
+              if (refRow) {
+                const color = getKpiCellColor(kpiRule, parseFloat(row.overall), parseFloat(refRow.overall));
+                if (color) {
+                  overallCellStyle = { backgroundColor: color };
+                }
+              }
+            }
+
+            return (
+              <tr key={index}>
+                {row.deviceName === "DUT" && (
+                  <td rowSpan="2">{row.category}</td>
+                )}
+                <td>{row.deviceName}</td>
+                <td style={overallCellStyle}>{row.overall}</td>
+                <td>{row.site1}</td>
+                <td>{row.site2}</td>
+                <td>{row.site3}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

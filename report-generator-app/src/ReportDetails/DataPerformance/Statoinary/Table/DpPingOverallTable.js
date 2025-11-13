@@ -32,13 +32,13 @@ const DpPingOverallTable = ({ data }) => {
                             <tr>
                                 <td rowSpan="2">{row.metric}</td>
                                 <td>DUT</td>
-                                <td style={{
+                                <td style={row.key === "average" ? {
                                     backgroundColor: getKpiCellColor(
-                                        'Ping',
+                                        'PingLatency',
                                         parseFloat(data[row.key].DUT.Overall),
                                         parseFloat(data[row.key].REF.Overall)
                                     )
-                                }}>
+                                } : {}}>
                                     {data[row.key].DUT.Overall}
                                 </td>
                             </tr>

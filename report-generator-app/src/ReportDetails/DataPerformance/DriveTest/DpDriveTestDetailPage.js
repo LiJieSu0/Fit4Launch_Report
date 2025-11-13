@@ -1,6 +1,7 @@
 import React from 'react';
 import DpDriveTestTable from './DpDriveTestTable';
 import DpMHSTestDriveTable from '../MHS/Table/DpMHSTestDriveTable';
+import DpDriveTestOverallTable from './DpDriveTestOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import TestDriveData from '../../../DataFiles/SA/DpMobilityResults/Test Drive.json';
@@ -30,6 +31,7 @@ const DpDriveTestDetailPage = () => {
     return (
     <div>
       <div className='page-content'>
+       <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overall Data" />
        <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Data" />
        <DpHistogramComponent
          data={driveTestThroughputData}

@@ -41,9 +41,13 @@ const OverallTable = ({ tableHeader, tableData }) => {
     <table className="general-table-style">
       <thead>
         <tr>
-          {tableHeader.map((header, index) => (
-            <th key={index}>{header}</th>
-          ))}
+          <th rowSpan="2">{tableHeader[0]}</th>
+          <th rowSpan="2">{tableHeader[1]}</th>
+          <th colSpan="2">Seattle (5G NR)</th>
+        </tr>
+        <tr>
+          <th key={2}>{tableHeader[2]}</th>
+          <th key={3}>{tableHeader[3]}</th>
         </tr>
       </thead>
       <tbody>

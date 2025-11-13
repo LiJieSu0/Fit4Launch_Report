@@ -56,29 +56,18 @@ function Dp_httpSS_Component() {
     },
   ];
 
-  const dlOverallTableHeader = ["Throughput", "Device Name", "Overall"];
-  const dlOverallTableData = [
-    ["Average", "DUT", ((httpSS_Stationary_DL.Good.DUT.Mean + httpSS_Stationary_DL.Moderate.DUT.Mean + httpSS_Stationary_DL.Poor.DUT.Mean) / 3).toFixed(2)],
-    ["Average", "REF", ((httpSS_Stationary_DL.Good.REF.Mean + httpSS_Stationary_DL.Moderate.REF.Mean + httpSS_Stationary_DL.Poor.REF.Mean) / 3).toFixed(2)],
-    ["Standard Deviation", "DUT", ((httpSS_Stationary_DL.Good.DUT["Standard Deviation"] + httpSS_Stationary_DL.Moderate.DUT["Standard Deviation"] + httpSS_Stationary_DL.Poor.DUT["Standard Deviation"]) / 3).toFixed(2)],
-    ["Standard Deviation", "REF", ((httpSS_Stationary_DL.Good.REF["Standard Deviation"] + httpSS_Stationary_DL.Moderate.REF["Standard Deviation"] + httpSS_Stationary_DL.Poor.REF["Standard Deviation"]) / 3).toFixed(2)],
-    ["Maximum", "DUT", ((httpSS_Stationary_DL.Good.DUT.Maximum + httpSS_Stationary_DL.Moderate.DUT.Maximum + httpSS_Stationary_DL.Poor.DUT.Maximum) / 3).toFixed(2)],
-    ["Maximum", "REF", ((httpSS_Stationary_DL.Good.REF.Maximum + httpSS_Stationary_DL.Moderate.REF.Maximum + httpSS_Stationary_DL.Poor.REF.Maximum) / 3).toFixed(2)],
-    ["Minimum", "DUT", ((httpSS_Stationary_DL.Good.DUT.Minimum + httpSS_Stationary_DL.Moderate.DUT.Minimum + httpSS_Stationary_DL.Poor.DUT.Minimum) / 3).toFixed(2)],
-    ["Minimum", "REF", ((httpSS_Stationary_DL.Good.REF.Minimum + httpSS_Stationary_DL.Moderate.REF.Minimum + httpSS_Stationary_DL.Poor.REF.Minimum) / 3).toFixed(2)],
+  const overallTableHeader = ["Throughput", "Device Name", "Download", "Upload"];
+  const combinedOverallTableData = [
+    ["Average", "DUT", ((httpSS_Stationary_DL.Good.DUT.Mean + httpSS_Stationary_DL.Moderate.DUT.Mean + httpSS_Stationary_DL.Poor.DUT.Mean) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.DUT.Mean + httpSS_Stationary_UL.Moderate.DUT.Mean + httpSS_Stationary_UL.Poor.DUT.Mean) / 3).toFixed(2)],
+    ["Average", "REF", ((httpSS_Stationary_DL.Good.REF.Mean + httpSS_Stationary_DL.Moderate.REF.Mean + httpSS_Stationary_DL.Poor.REF.Mean) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3).toFixed(2)],
+    ["Standard Deviation", "DUT", ((httpSS_Stationary_DL.Good.DUT["Standard Deviation"] + httpSS_Stationary_DL.Moderate.DUT["Standard Deviation"] + httpSS_Stationary_DL.Poor.DUT["Standard Deviation"]) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.DUT["Standard Deviation"] + httpSS_Stationary_UL.Moderate.DUT["Standard Deviation"] + httpSS_Stationary_UL.Poor.DUT["Standard Deviation"]) / 3).toFixed(2)],
+    ["Standard Deviation", "REF", ((httpSS_Stationary_DL.Good.REF["Standard Deviation"] + httpSS_Stationary_DL.Moderate.REF["Standard Deviation"] + httpSS_Stationary_DL.Poor.REF["Standard Deviation"]) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.REF["Standard Deviation"] + httpSS_Stationary_UL.Moderate.REF["Standard Deviation"] + httpSS_Stationary_UL.Poor.REF["Standard Deviation"]) / 3).toFixed(2)],
+    ["Maximum", "DUT", ((httpSS_Stationary_DL.Good.DUT.Maximum + httpSS_Stationary_DL.Moderate.DUT.Maximum + httpSS_Stationary_DL.Poor.DUT.Maximum) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.DUT.Maximum + httpSS_Stationary_UL.Moderate.DUT.Maximum + httpSS_Stationary_UL.Poor.DUT.Maximum) / 3).toFixed(2)],
+    ["Maximum", "REF", ((httpSS_Stationary_DL.Good.REF.Maximum + httpSS_Stationary_DL.Moderate.REF.Maximum + httpSS_Stationary_DL.Poor.REF.Maximum) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.REF.Maximum + httpSS_Stationary_UL.Moderate.REF.Maximum + httpSS_Stationary_UL.Poor.REF.Maximum) / 3).toFixed(2)],
+    ["Minimum", "DUT", ((httpSS_Stationary_DL.Good.DUT.Minimum + httpSS_Stationary_DL.Moderate.DUT.Minimum + httpSS_Stationary_DL.Poor.DUT.Minimum) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.DUT.Minimum + httpSS_Stationary_UL.Moderate.DUT.Minimum + httpSS_Stationary_UL.Poor.DUT.Minimum) / 3).toFixed(2)],
+    ["Minimum", "REF", ((httpSS_Stationary_DL.Good.REF.Minimum + httpSS_Stationary_DL.Moderate.REF.Minimum + httpSS_Stationary_DL.Poor.REF.Minimum) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.REF.Minimum + httpSS_Stationary_UL.Moderate.REF.Minimum + httpSS_Stationary_UL.Poor.REF.Minimum) / 3).toFixed(2)],
   ];
 
-  const ulOverallTableHeader = ["Throughput", "Device Name", "Overall"];
-  const ulOverallTableData = [
-    ["Average", "DUT", ((httpSS_Stationary_UL.Good.DUT.Mean + httpSS_Stationary_UL.Moderate.DUT.Mean + httpSS_Stationary_UL.Poor.DUT.Mean) / 3).toFixed(2)],
-    ["Average", "REF", ((httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3).toFixed(2)],
-    ["Standard Deviation", "DUT", ((httpSS_Stationary_UL.Good.DUT["Standard Deviation"] + httpSS_Stationary_UL.Moderate.DUT["Standard Deviation"] + httpSS_Stationary_UL.Poor.DUT["Standard Deviation"]) / 3).toFixed(2)],
-    ["Standard Deviation", "REF", ((httpSS_Stationary_UL.Good.REF["Standard Deviation"] + httpSS_Stationary_UL.Moderate.REF["Standard Deviation"] + httpSS_Stationary_UL.Poor.REF["Standard Deviation"]) / 3).toFixed(2)],
-    ["Maximum", "DUT", ((httpSS_Stationary_UL.Good.DUT.Maximum + httpSS_Stationary_UL.Moderate.DUT.Maximum + httpSS_Stationary_UL.Poor.DUT.Maximum) / 3).toFixed(2)],
-    ["Maximum", "REF", ((httpSS_Stationary_UL.Good.REF.Maximum + httpSS_Stationary_UL.Moderate.REF.Maximum + httpSS_Stationary_UL.Poor.REF.Maximum) / 3).toFixed(2)],
-    ["Minimum", "DUT", ((httpSS_Stationary_UL.Good.DUT.Minimum + httpSS_Stationary_UL.Moderate.DUT.Minimum + httpSS_Stationary_UL.Poor.DUT.Minimum) / 3).toFixed(2)],
-    ["Minimum", "REF", ((httpSS_Stationary_UL.Good.REF.Minimum + httpSS_Stationary_UL.Moderate.REF.Minimum + httpSS_Stationary_UL.Poor.REF.Minimum) / 3).toFixed(2)],
-  ];
 
   const barKeys = [
     { key: 'DUT', fill: CHART_COLOR_DUT },
@@ -89,8 +78,8 @@ function Dp_httpSS_Component() {
     <div className='page-content'>
       
       <h2>HTTP Single Stream test - 5G NR</h2>
-      <h3>Overall Single Stream HTTP Download for 60 seconds</h3>
-      <OverallTable tableHeader={dlOverallTableHeader} tableData={dlOverallTableData} />
+      <h3>Overall Single Stream HTTP</h3>
+      <OverallTable tableHeader={overallTableHeader} tableData={combinedOverallTableData} />
       <DpDetailsTableLoc3 data={httpSS_Stationary_DL} tableName="Single Stream HTTP Download for 60 seconds" />
       <DpHistogramComponent
         data={dlHistogramData}
@@ -98,8 +87,6 @@ function Dp_httpSS_Component() {
         yAxisLabel="Throughput (Mbps)"
         barKeys={barKeys}
       />
-      <h3>Overall Single Stream HTTP Upload of a 15 MB file</h3>
-      <OverallTable tableHeader={ulOverallTableHeader} tableData={ulOverallTableData} />
       <DpDetailsTableLoc3 data={httpSS_Stationary_UL} tableName="Single Stream HTTP Upload of a 15 MB file"  />
       <DpHistogramComponent
         data={ulHistogramData}

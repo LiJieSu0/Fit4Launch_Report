@@ -1,4 +1,5 @@
 import React from 'react';
+import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
 function DpMHSTestDriveTable({ data, tableName }) {
   if (!data) {
@@ -23,6 +24,7 @@ function DpMHSTestDriveTable({ data, tableName }) {
           { key: "UL.Number of Intervals", label: "UL Number of Intervals" },
         ],
         path: "Throughput",
+        kpiType: "Throughput",
       },
       {
         name: "Jitter (ms)",
@@ -31,6 +33,7 @@ function DpMHSTestDriveTable({ data, tableName }) {
           { key: "UL Mean", label: "UL Mean" },
         ],
         path: "Jitter",
+        kpiType: "Jitter",
       },
       {
         name: "Error Ratio (%)",
@@ -39,6 +42,7 @@ function DpMHSTestDriveTable({ data, tableName }) {
           { key: "DL Mean", label: "DL Mean" },
         ],
         path: "Error Ratio",
+        kpiType: "ErrorRatio",
       },
       {
         name: "Ping RTT (ms)",
@@ -49,6 +53,7 @@ function DpMHSTestDriveTable({ data, tableName }) {
           { key: "std_dev", label: "Std Dev" },
         ],
         path: "Ping RTT",
+        kpiType: "PingLatency",
       },
     ];
 
@@ -63,6 +68,7 @@ function DpMHSTestDriveTable({ data, tableName }) {
         processed.push({
           metric: metric.name,
           subMetric: subMetric.label,
+          kpiType: metric.kpiType,
           dutValue: typeof dutValue === 'number' ? dutValue.toFixed(2) : dutValue,
           refValue: typeof refValue === 'number' ? refValue.toFixed(2) : refValue,
         });
@@ -102,7 +108,7 @@ function DpMHSTestDriveTable({ data, tableName }) {
                   <td rowSpan={metricRowSpan}>{row.metric}</td>
                 )}
                 <td>{row.subMetric}</td>
-                <td>{row.dutValue}</td>
+                <td style={{ backgroundColor: (row.subMetric.includes("Mean") || row.subMetric === "Avg") ? getKpiCellColor(row.kpiType, parseFloat(row.dutValue), parseFloat(row.refValue)) : 'inherit' }}>{row.dutValue}</td>
                 <td>{row.refValue}</td>
               </tr>
             );

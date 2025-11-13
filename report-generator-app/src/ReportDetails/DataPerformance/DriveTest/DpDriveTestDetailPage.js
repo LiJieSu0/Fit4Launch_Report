@@ -2,6 +2,7 @@ import React from 'react';
 import DpDriveTestTable from './DpDriveTestTable';
 import DpMHSTestDriveTable from '../MHS/Table/DpMHSTestDriveTable';
 import DpDriveTestOverallTable from './DpDriveTestOverallTable';
+import DpMHSTestDriveOverallTable from '../MHS/Table/DpMHSTestDriveOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import TestDriveData from '../../../DataFiles/SA/DpMobilityResults/Test Drive.json';
@@ -60,6 +61,7 @@ const DpDriveTestDetailPage = () => {
       </div>
       <div className='page-content'>
       <h2>Mobility test - 5G Auto Data Test MHS Drive</h2>
+      <DpMHSTestDriveOverallTable data={TestDriveMHSData} tableName="MHS Test Drive Overall Data" />
       <DpMHSTestDriveTable data={TestDriveMHSData} tableName="MHS Test Drive Data" />
       <DpHistogramComponent
         data={mhsThroughputData}

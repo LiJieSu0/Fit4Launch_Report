@@ -1,4 +1,5 @@
 import React from 'react';
+import { getKpiCellColor } from '../../../Utils/KpiRules';
 // Removed: import { Table } from 'react-bootstrap';
 
 const DpDriveTestTable = ({ data, tableName }) => {
@@ -19,6 +20,7 @@ const DpDriveTestTable = ({ data, tableName }) => {
                     { key: "Number of Intervals", label: "DL Number of Intervals" },
                 ],
                 path: "Throughput",
+                kpiType: "Throughput",
             },
             {
                 name: "Jitter (s)",
@@ -26,6 +28,7 @@ const DpDriveTestTable = ({ data, tableName }) => {
                     { key: "Mean", label: "DL Mean" },
                 ],
                 path: "Jitter",
+                kpiType: "Jitter",
             },
             {
                 name: "Error Ratio (%)",
@@ -33,6 +36,7 @@ const DpDriveTestTable = ({ data, tableName }) => {
                     { key: "Mean", label: "DL Mean" },
                 ],
                 path: "Error Ratio",
+                kpiType: "ErrorRatio",
             },
             {
                 name: "Ping RTT (ms)",
@@ -43,6 +47,7 @@ const DpDriveTestTable = ({ data, tableName }) => {
                     { key: "std_dev", label: "Std Dev" },
                 ],
                 path: "Ping RTT",
+                kpiType: "PingLatency",
             },
         ];
 
@@ -67,6 +72,7 @@ const DpDriveTestTable = ({ data, tableName }) => {
                 processed.push({
                     metric: metric.name,
                     subMetric: subMetric.label,
+                    kpiType: metric.kpiType,
                     dutValue: dutValue,
                     refValue: refValue,
                 });
@@ -106,7 +112,7 @@ const DpDriveTestTable = ({ data, tableName }) => {
                                     <td rowSpan={metricRowSpan}>{row.metric}</td>
                                 )}
                                 <td>{row.subMetric}</td>
-                                <td>{row.dutValue}</td>
+                                <td style={{ backgroundColor: (row.subMetric === "DL Mean" || row.subMetric === "Avg") ? getKpiCellColor(row.kpiType, parseFloat(row.dutValue), parseFloat(row.refValue)) : 'inherit' }}>{row.dutValue}</td>
                                 <td>{row.refValue}</td>
                             </tr>
                         );

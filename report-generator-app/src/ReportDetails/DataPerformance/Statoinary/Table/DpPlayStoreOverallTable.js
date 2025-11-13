@@ -1,4 +1,5 @@
 import React from 'react';
+import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
 const DpPlayStoreOverallTable = ({ tableData }) => {
   if (!tableData || tableData.length === 0) {
@@ -51,17 +52,31 @@ const DpPlayStoreOverallTable = ({ tableData }) => {
         </tr>
       </thead>
       <tbody>
-        {processedTableData.map((row, rowIndex) => (
-          <tr key={rowIndex}>
-            {!row.isMerged && (
-              <td rowSpan={row.rowSpan}>
-                {row.throughput}
-              </td>
-            )}
-            <td>{row.deviceName}</td>
-            <td>{row.overall}</td>
-          </tr>
-        ))}
+        {processedTableData.map((row, rowIndex) => {
+          const throughputCategory = row.throughput.split(' ')[0]; // e.g., "30M" from "30M (kbps)"
+          const dutOverall = tableData.find(d => d.throughput === throughputCategory && d.deviceName === 'DUT')?.overall;
+          const refOverall = tableData.find(d => d.throughput === throughputCategory && d.deviceName === 'REF')?.overall;
+
+          let cellStyle = {};
+          if (row.deviceName === 'DUT' && dutOverall && refOverall) {
+            const color = getKpiCellColor('Throughput', parseFloat(dutOverall), parseFloat(refOverall));
+            if (color) {
+              cellStyle = { backgroundColor: color };
+            }
+          }
+
+          return (
+            <tr key={rowIndex}>
+              {!row.isMerged && (
+                <td rowSpan={row.rowSpan}>
+                  {row.throughput}
+                </td>
+              )}
+              <td>{row.deviceName}</td>
+              <td style={cellStyle}>{row.overall}</td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );

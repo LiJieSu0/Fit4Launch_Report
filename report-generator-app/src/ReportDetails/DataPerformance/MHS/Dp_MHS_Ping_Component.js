@@ -1,5 +1,6 @@
 import React from "react";
 import DpMHSPingTable from "./Table/DpMHSPingTable";
+import DpPingOverallTable from "../Statoinary/Table/DpPingOverallTable"; // Import DpPingOverallTable
 import PingData from "../../../DataFiles/SA/DpMHSResults/Ping.json";
 import DpHistogramComponent from "../DpHistogramComponent";
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from "../../../Constants/ChartColors";
@@ -85,6 +86,7 @@ function Dp_MHS_Ping_Component() {
   return (
     <div className='page-content'>
       <h2>MHS-Ping Component</h2>
+      <DpPingOverallTable data={data} /> {/* Add DpPingOverallTable */}
       <DpMHSPingTable data={data} />
       <DpHistogramComponent
         data={histogramData}

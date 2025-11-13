@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../../../StyleScript/Restricted_Report_Style.css';
+import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
 const DpMHSPingTable = ({ data }) => {
     if (!data || Object.keys(data).length === 0) {
@@ -45,7 +46,7 @@ const DpMHSPingTable = ({ data }) => {
                     <tr>
                         <td rowSpan="2">Average</td>
                         <td>DUT</td>
-                        <td>{parseFloat(data.average.DUT.Overall).toFixed(2)}</td>
+                        <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(data.average.DUT.Overall), parseFloat(data.average.REF.Overall)) }}>{parseFloat(data.average.DUT.Overall).toFixed(2)}</td>
                         <td>{parseFloat(data.average.DUT.Good).toFixed(2)}</td>
                         <td>{parseFloat(data.average.DUT.Moderate).toFixed(2)}</td>
                     </tr>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import DpMHSUdpTable from "./Table/DpMHSUdpTable";
 import DpHistogramComponent from "../DpHistogramComponent";
+import DpUdpOverallTable from '../DpUdpOverallTable';
 import udpDataRaw from '../../../DataFiles/SA/DpMHSResults/UDP.json'; // Direct import of JSON
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
+import '../../../StyleScript/Restricted_Report_Style.css';
 
 function Dp_MHS_Udp_Component() {
 
@@ -169,43 +171,19 @@ function Dp_MHS_Udp_Component() {
     }
   ];
 
-  // Calculate Overall for Download Metrics
   const getOverallMean = (goodValue, moderateValue) => {
-    if (goodValue !== undefined && moderateValue !== undefined) {
-      return (goodValue + moderateValue) / 2;
+    let sum = 0;
+    let count = 0;
+    if (goodValue !== undefined) {
+      sum += parseFloat(goodValue);
+      count++;
     }
-    return undefined;
+    if (moderateValue !== undefined) {
+      sum += parseFloat(moderateValue);
+      count++;
+    }
+    return count > 0 ? (sum / count) : undefined;
   };
-
-  const downloadHistogramData = [];
-  const downloadMetrics = [
-    { metric: "Mean Throughput", idealThroughput: "200000", title: "MHS UDP Download Mean Throughput (200 Mbps)", yAxisLabel: "Throughput (Mbps)" },
-    { metric: "Mean Throughput", idealThroughput: "400000", title: "MHS UDP Download Mean Throughput (400 Mbps)", yAxisLabel: "Throughput (Mbps)" },
-    { metric: "Mean Jitter", idealThroughput: "200000", title: "MHS UDP Download Mean Jitter (200 Mbps)", yAxisLabel: "Jitter (ms)" },
-    { metric: "Mean Jitter", idealThroughput: "400000", title: "MHS UDP Download Mean Jitter (400 Mbps)", yAxisLabel: "Jitter (ms)" },
-    { metric: "Packet Failure Rate", idealThroughput: "200000", title: "MHS UDP Download Packet Failure Rate (200 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
-    { metric: "Packet Failure Rate", idealThroughput: "400000", title: "MHS UDP Download Packet Failure Rate (400 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
-  ];
-
-  downloadMetrics.forEach(({ metric, idealThroughput, title }) => {
-    const dutGood = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "DUT")?.location?.good;
-    const dutModerate = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "DUT")?.location?.moderate;
-    const refGood = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "REF")?.location?.good;
-    const refModerate = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "REF")?.location?.moderate;
-
-    const overallDUT = getOverallMean(dutGood, dutModerate);
-    const overallREF = getOverallMean(refGood, refModerate);
-
-    downloadHistogramData.push({
-      title: title,
-      metric: metric,
-      data: [
-        { name: 'Good', DUT: dutGood, REF: refGood },
-        { name: 'Moderate', DUT: dutModerate, REF: refModerate },
-        { name: 'Overall', DUT: overallDUT, REF: overallREF },
-      ]
-    });
-  });
 
   const udp_Stationary_UL = [
     // Mean Throughput - 10 Mbps
@@ -362,7 +340,60 @@ function Dp_MHS_Udp_Component() {
     }
   ];
 
-  // Calculate Overall for Upload Metrics
+  const dlOverallTableData = udp_Stationary_DL.map(item => {
+    const overallValue = getOverallMean(item.location.good, item.location.moderate);
+    return {
+      Metric: item.metric,
+      "Ideal Throughput": item.idealThroughput,
+      "Device Name": item.deviceName,
+      Overall: overallValue !== undefined ? overallValue.toFixed(2) : 'N/A',
+    };
+  });
+
+  const dlOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
+
+  const ulOverallTableData = udp_Stationary_UL.map(item => {
+    const overallValue = getOverallMean(item.location.good, item.location.moderate);
+    return {
+      Metric: item.metric,
+      "Ideal Throughput": item.idealThroughput,
+      "Device Name": item.deviceName,
+      Overall: overallValue !== undefined ? overallValue.toFixed(2) : 'N/A',
+    };
+  });
+
+  const ulOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
+
+  const downloadHistogramData = [];
+  const downloadMetrics = [
+    { metric: "Mean Throughput", idealThroughput: "200000", title: "MHS UDP Download Mean Throughput (200 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Throughput", idealThroughput: "400000", title: "MHS UDP Download Mean Throughput (400 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Jitter", idealThroughput: "200000", title: "MHS UDP Download Mean Jitter (200 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Mean Jitter", idealThroughput: "400000", title: "MHS UDP Download Mean Jitter (400 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Packet Failure Rate", idealThroughput: "200000", title: "MHS UDP Download Packet Failure Rate (200 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
+    { metric: "Packet Failure Rate", idealThroughput: "400000", title: "MHS UDP Download Packet Failure Rate (400 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
+  ];
+
+  downloadMetrics.forEach(({ metric, idealThroughput, title, yAxisLabel }) => {
+    const dutGood = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "DUT")?.location?.good;
+    const dutModerate = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "DUT")?.location?.moderate;
+    const refGood = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "REF")?.location?.good;
+    const refModerate = udp_Stationary_DL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "REF")?.location?.moderate;
+
+    const overallDUT = getOverallMean(dutGood, dutModerate);
+    const overallREF = getOverallMean(refGood, refModerate);
+
+    downloadHistogramData.push({
+      title: title,
+      yAxisLabel: yAxisLabel,
+      data: [
+        { name: 'Good', DUT: dutGood, REF: refGood },
+        { name: 'Moderate', DUT: dutModerate, REF: refModerate },
+        { name: 'Overall', DUT: overallDUT, REF: overallREF },
+      ]
+    });
+  });
+
   const uploadHistogramData = [];
   const uploadMetrics = [
     { metric: "Mean Throughput", idealThroughput: "10000", title: "MHS UDP Upload Mean Throughput (10 Mbps)", yAxisLabel: "Throughput (Mbps)" },
@@ -373,7 +404,7 @@ function Dp_MHS_Udp_Component() {
     { metric: "Packet Failure Rate", idealThroughput: "20000", title: "MHS UDP Upload Packet Failure Rate (20 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
   ];
 
-  uploadMetrics.forEach(({ metric, idealThroughput, title }) => {
+  uploadMetrics.forEach(({ metric, idealThroughput, title, yAxisLabel }) => {
     const dutGood = udp_Stationary_UL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "DUT")?.location?.good;
     const dutModerate = udp_Stationary_UL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "DUT")?.location?.moderate;
     const refGood = udp_Stationary_UL.find(d => d.metric === metric && d.idealThroughput === idealThroughput && d.deviceName === "REF")?.location?.good;
@@ -384,7 +415,7 @@ function Dp_MHS_Udp_Component() {
 
     uploadHistogramData.push({
       title: title,
-      metric: metric,
+      yAxisLabel: yAxisLabel,
       data: [
         { name: 'Good', DUT: dutGood, REF: refGood },
         { name: 'Moderate', DUT: dutModerate, REF: refModerate },
@@ -396,6 +427,8 @@ function Dp_MHS_Udp_Component() {
   return (
     <div className='page-content'>
       <h2>MHS-UDP Component</h2>
+      <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
+      <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
       <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP DL Table" />
       {downloadHistogramData.map((histogram, index) => (
         <DpHistogramComponent

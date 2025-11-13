@@ -1,9 +1,19 @@
 import React from 'react';
+import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
-function MHSUdpTable({ data, tableName }) {
+function DpMHSUdpTable({ data, tableName }) {
   const calculateOverallAverage = (good, moderate) => {
-    const sum = parseFloat(good) + parseFloat(moderate);
-    return (sum / 2).toFixed(2); // Calculate average and format to 2 decimal places
+    let sum = 0;
+    let count = 0;
+    if (good !== undefined) {
+      sum += parseFloat(good);
+      count++;
+    }
+    if (moderate !== undefined) {
+      sum += parseFloat(moderate);
+      count++;
+    }
+    return count > 0 ? (sum / count).toFixed(2) : 'N/A';
   };
 
   // Dummy data structure for now, will be replaced with actual data
@@ -59,6 +69,16 @@ function MHSUdpTable({ data, tableName }) {
               lastIdealThroughput = row.idealThroughput;
             }
 
+            const refRow = data.find(
+              (item) =>
+                item.metric === row.metric &&
+                item.idealThroughput === row.idealThroughput &&
+                item.deviceName === 'REF'
+            );
+
+            const refOverallValue = refRow ? calculateOverallAverage(refRow.location.good, refRow.location.moderate) : null;
+            const currentOverallValue = calculateOverallAverage(row.location.good, row.location.moderate);
+
             return (
               <tr key={index}>
                 {showMetric && (
@@ -68,9 +88,21 @@ function MHSUdpTable({ data, tableName }) {
                   <td rowSpan={getRowSpan(row.metric, row.idealThroughput)}>{row.idealThroughput}</td>
                 )}
                 <td>{row.deviceName}</td>
-                <td>{calculateOverallAverage(row.location.good, row.location.moderate)}</td>
-                <td>{row.location.good.toFixed(2)}</td>
-                <td>{row.location.moderate.toFixed(2)}</td>
+                <td style={{
+                  backgroundColor: row.deviceName === 'DUT' && refOverallValue !== null && row.metric !== 'Max Throughput' && currentOverallValue !== 'N/A' && refOverallValue !== 'N/A'
+                    ? getKpiCellColor(
+                        row.metric === 'Mean Jitter' ? 'Jitter' :
+                        row.metric === 'Packet Failure Rate' ? 'ErrorRatio' :
+                        'Throughput',
+                        parseFloat(currentOverallValue),
+                        parseFloat(refOverallValue)
+                      )
+                    : 'inherit'
+                }}>
+                  {currentOverallValue}
+                </td>
+                <td>{row.location.good !== undefined ? row.location.good.toFixed(2) : 'N/A'}</td>
+                <td>{row.location.moderate !== undefined ? row.location.moderate.toFixed(2) : 'N/A'}</td>
               </tr>
             );
           })}
@@ -80,4 +112,4 @@ function MHSUdpTable({ data, tableName }) {
   );
 }
 
-export default MHSUdpTable;
+export default DpMHSUdpTable;

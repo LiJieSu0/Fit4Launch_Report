@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
+import OverallTable from '../../../CommonPage/OverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import httpMS_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/Multi Stream HTTP.json';
@@ -58,6 +59,18 @@ function Dp_httpMS_Component() {
         },
     ];
 
+    const overallTableHeader = ["Throughput", "Device Name", "Download", "Upload"];
+    const combinedOverallTableData = [
+        ["Average", "DUT", ((httpMS_Stationary_DL.Good.DUT.Mean + httpMS_Stationary_DL.Moderate.DUT.Mean + httpMS_Stationary_DL.Poor.DUT.Mean) / 3).toFixed(2), ((httpMS_Stationary_UL.Good.DUT.Mean + httpMS_Stationary_UL.Moderate.DUT.Mean + httpMS_Stationary_UL.Poor.DUT.Mean) / 3).toFixed(2)],
+        ["Average", "REF", ((httpMS_Stationary_DL.Good.REF.Mean + httpMS_Stationary_DL.Moderate.REF.Mean + httpMS_Stationary_DL.Poor.REF.Mean) / 3).toFixed(2), ((httpMS_Stationary_UL.Good.REF.Mean + httpMS_Stationary_UL.Moderate.REF.Mean + httpMS_Stationary_UL.Poor.REF.Mean) / 3).toFixed(2)],
+        ["Standard Deviation", "DUT", ((httpMS_Stationary_DL.Good.DUT["Standard Deviation"] + httpMS_Stationary_DL.Moderate.DUT["Standard Deviation"] + httpMS_Stationary_DL.Poor.DUT["Standard Deviation"]) / 3).toFixed(2), ((httpMS_Stationary_UL.Good.DUT["Standard Deviation"] + httpMS_Stationary_UL.Moderate.DUT["Standard Deviation"] + httpMS_Stationary_UL.Poor.DUT["Standard Deviation"]) / 3).toFixed(2)],
+        ["Standard Deviation", "REF", ((httpMS_Stationary_DL.Good.REF["Standard Deviation"] + httpMS_Stationary_DL.Moderate.REF["Standard Deviation"] + httpMS_Stationary_DL.Poor.REF["Standard Deviation"]) / 3).toFixed(2), ((httpMS_Stationary_UL.Good.REF["Standard Deviation"] + httpMS_Stationary_UL.Moderate.REF["Standard Deviation"] + httpMS_Stationary_UL.Poor.REF["Standard Deviation"]) / 3).toFixed(2)],
+        ["Maximum", "DUT", ((httpMS_Stationary_DL.Good.DUT.Maximum + httpMS_Stationary_DL.Moderate.DUT.Maximum + httpMS_Stationary_DL.Poor.DUT.Maximum) / 3).toFixed(2), ((httpMS_Stationary_UL.Good.DUT.Maximum + httpMS_Stationary_UL.Moderate.DUT.Maximum + httpMS_Stationary_UL.Poor.DUT.Maximum) / 3).toFixed(2)],
+        ["Maximum", "REF", ((httpMS_Stationary_DL.Good.REF.Maximum + httpMS_Stationary_DL.Moderate.REF.Maximum + httpMS_Stationary_DL.Poor.REF.Maximum) / 3).toFixed(2), ((httpMS_Stationary_UL.Good.REF.Maximum + httpMS_Stationary_UL.Moderate.REF.Maximum + httpMS_Stationary_UL.Poor.REF.Maximum) / 3).toFixed(2)],
+        ["Minimum", "DUT", ((httpMS_Stationary_DL.Good.DUT.Minimum + httpMS_Stationary_DL.Moderate.DUT.Minimum + httpMS_Stationary_DL.Poor.DUT.Minimum) / 3).toFixed(2), ((httpMS_Stationary_UL.Good.DUT.Minimum + httpMS_Stationary_UL.Moderate.DUT.Minimum + httpMS_Stationary_UL.Poor.DUT.Minimum) / 3).toFixed(2)],
+        ["Minimum", "REF", ((httpMS_Stationary_DL.Good.REF.Minimum + httpMS_Stationary_DL.Moderate.REF.Minimum + httpMS_Stationary_DL.Poor.REF.Minimum) / 3).toFixed(2), ((httpMS_Stationary_UL.Good.REF.Minimum + httpMS_Stationary_UL.Moderate.REF.Minimum + httpMS_Stationary_UL.Poor.REF.Minimum) / 3).toFixed(2)],
+    ];
+
     const barKeys = [
         { key: 'DUT', fill: CHART_COLOR_DUT },
         { key: 'REF', fill: CHART_COLOR_REF },
@@ -66,15 +79,54 @@ function Dp_httpMS_Component() {
     return (
         <div className='page-content'>
             <h2>HTTP Multi Stream test - 5G NR</h2>
-            {/* Overall Tablehere */}
-            <DpDetailsTableLoc3 data={httpMS_Stationary_DL} tableName="Multi Stream HTTP Download for 30 seconds" />
+            <h3>Overall Multi Stream HTTP</h3>
+            <OverallTable
+                tableHeader={overallTableHeader}
+                tableData={combinedOverallTableData}
+                kpiRule="Throughput"
+                kpiTargetCells={[
+                    {
+                        rowIndex: 0,
+                        colIndex: 2,
+                        dutValue: ((httpMS_Stationary_DL.Good.DUT.Mean + httpMS_Stationary_DL.Moderate.DUT.Mean + httpMS_Stationary_DL.Poor.DUT.Mean) / 3).toFixed(2),
+                        refValue: ((httpMS_Stationary_DL.Good.REF.Mean + httpMS_Stationary_DL.Moderate.REF.Mean + httpMS_Stationary_DL.Poor.REF.Mean) / 3).toFixed(2),
+                    },
+                    {
+                        rowIndex: 0,
+                        colIndex: 3,
+                        dutValue: ((httpMS_Stationary_UL.Good.DUT.Mean + httpMS_Stationary_UL.Moderate.DUT.Mean + httpMS_Stationary_UL.Poor.DUT.Mean) / 3).toFixed(2),
+                        refValue: ((httpMS_Stationary_UL.Good.REF.Mean + httpMS_Stationary_UL.Moderate.REF.Mean + httpMS_Stationary_UL.Poor.REF.Mean) / 3).toFixed(2),
+                    },
+                ]}
+            />
+            <DpDetailsTableLoc3
+                data={httpMS_Stationary_DL}
+                tableName="Multi Stream HTTP Download for 30 seconds"
+                kpiRule="Throughput"
+                kpiTargetCells={[
+                    {
+                        dutValue: (httpMS_Stationary_DL.Good.DUT.Mean + httpMS_Stationary_DL.Moderate.DUT.Mean + httpMS_Stationary_DL.Poor.DUT.Mean) / 3,
+                        refValue: (httpMS_Stationary_DL.Good.REF.Mean + httpMS_Stationary_DL.Moderate.REF.Mean + httpMS_Stationary_DL.Poor.REF.Mean) / 3,
+                    },
+                ]}
+            />
             <DpHistogramComponent
                 data={dlHistogramData}
                 title="Multi Stream HTTP Download Throughput"
                 yAxisLabel="Throughput (Mbps)"
                 barKeys={barKeys}
             />
-            <DpDetailsTableLoc3 data={httpMS_Stationary_UL} tableName="Multi Stream HTTP Upload for 30 seconds" />
+            <DpDetailsTableLoc3
+                data={httpMS_Stationary_UL}
+                tableName="Multi Stream HTTP Upload for 30 seconds"
+                kpiRule="Throughput"
+                kpiTargetCells={[
+                    {
+                        dutValue: (httpMS_Stationary_UL.Good.DUT.Mean + httpMS_Stationary_UL.Moderate.DUT.Mean + httpMS_Stationary_UL.Poor.DUT.Mean) / 3,
+                        refValue: (httpMS_Stationary_UL.Good.REF.Mean + httpMS_Stationary_UL.Moderate.REF.Mean + httpMS_Stationary_UL.Poor.REF.Mean) / 3,
+                    },
+                ]}
+            />
             <DpHistogramComponent
                 data={ulHistogramData}
                 title="Multi Stream HTTP Upload Throughput"

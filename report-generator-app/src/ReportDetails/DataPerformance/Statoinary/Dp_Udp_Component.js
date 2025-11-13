@@ -588,6 +588,7 @@ function Dp_Udp_Component() {
       <div className='page-content'>
         <h2>UDP test - 5G NR</h2>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
+        {/* dp udp ul overall table */}
         <DpUdpTableLoc3 data={udp_Stationary_DL} tableName="UDP DL" />
         <DpHistogramComponent
           data={dlMeanThroughput200HistogramData}

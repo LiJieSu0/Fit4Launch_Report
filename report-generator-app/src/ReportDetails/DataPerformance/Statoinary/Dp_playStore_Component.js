@@ -1,5 +1,6 @@
 import React from 'react';
 import DpPlayStoreTable from './Table/DpPlayStoreTable';
+import DpPlayStoreOverallTable from './Table/DpPlayStoreOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import playStoreData from '../../../DataFiles/SA/DpPlayStoreResults/Play Store.json';
@@ -79,6 +80,7 @@ const Dp_playStore_Component = () => {
   return (
       <div className='page-content'>
         <h2>Play-store app download test - 5G NR</h2>
+        <DpPlayStoreOverallTable tableData={tableData} />
         <DpPlayStoreTable tableData={tableData} />
         <DpHistogramComponent
           data={histogramData30M}

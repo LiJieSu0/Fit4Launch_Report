@@ -1,8 +1,8 @@
 // KpiRules.js
 
-export const getKpiCellColor = (kpiType, dutValue, refValue = null) => {
+export const getKpiCellColor = (kpiType, dutValue, refValue = null) => { // only apply color on the cell of dut average value or mean value
   if (refValue === null) {
-    return; // Or a default color if needed
+    return; 
   }
 
   switch (kpiType) {

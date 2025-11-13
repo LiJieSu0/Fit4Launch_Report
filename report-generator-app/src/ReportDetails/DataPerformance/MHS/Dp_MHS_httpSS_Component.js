@@ -75,7 +75,7 @@ function Dp_MHS_httpSS_Component() {
           },
         ]}
       />
-      <DpMHSHttpSSTable data={dataDL} tableName="MHS Single Stream HTTP Download Throughput" />
+      <DpMHSHttpSSTable data={dataDL} tableName="MHS Single Stream HTTP Download Throughput" kpiRule="Throughput" />
       <DpHistogramComponent
         data={[
           { name: 'Good', DUT: dataDL.Good.DUT["Mean"], REF: dataDL.Good.REF["Mean"] },
@@ -86,7 +86,7 @@ function Dp_MHS_httpSS_Component() {
         yAxisLabel="Throughput"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
       />
-      <DpMHSHttpSSTable data={dataUL} tableName="MHS Single Stream HTTP Upload Throughput" />
+      <DpMHSHttpSSTable data={dataUL} tableName="MHS Single Stream HTTP Upload Throughput" kpiRule="Throughput" />
       <DpHistogramComponent
         data={[
           { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },

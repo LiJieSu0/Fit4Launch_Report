@@ -1,6 +1,7 @@
 import React from 'react';
+import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
-function DpMHSHttpSSTable({ data, tableName }) {
+function DpMHSHttpSSTable({ data, tableName, kpiRule }) {
   const tableData = [
     {
       category: "Average",
@@ -77,17 +78,28 @@ function DpMHSHttpSSTable({ data, tableName }) {
           </tr>
         </thead>
         <tbody>
-          {tableData.map((row, index) => (
-            <tr key={index}>
-              {row.deviceName === "DUT" && (
-                <td rowSpan="2">{row.category}</td>
-              )}
-              <td>{row.deviceName}</td>
-              <td>{row.overall}</td>
-              <td>{row.site1}</td>
-              <td>{row.site2}</td>
-            </tr>
-          ))}
+          {tableData.map((row, index) => {
+            const overallColor =
+              row.deviceName === "DUT" && row.category === "Average"
+                ? getKpiCellColor(
+                    kpiRule,
+                    parseFloat(row.overall),
+                    parseFloat(tableData[index + 1].overall)
+                  )
+                : undefined;
+
+            return (
+              <tr key={index}>
+                {row.deviceName === "DUT" && (
+                  <td rowSpan="2">{row.category}</td>
+                )}
+                <td>{row.deviceName}</td>
+                <td style={{ backgroundColor: overallColor }}>{row.overall}</td>
+                <td>{row.site1}</td>
+                <td>{row.site2}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

@@ -1,7 +1,8 @@
 import React from 'react';
 import '../../../../../StyleScript/Restricted_Report_Style.css';
+import { getKpiCellColor } from '../../../../../Utils/KpiRules';
 
-const DpNSAPingTable = ({ data,tableName }) => {
+const DpNSAPingTable = ({ data, tableName }) => {
     if (!data || Object.keys(data).length === 0) {
         return (
             <div className="">
@@ -55,7 +56,7 @@ const DpNSAPingTable = ({ data,tableName }) => {
                     <tr>
                         <td rowSpan="2">Average</td>
                         <td>DUT</td>
-                        <td>{parseFloat(data.average.DUT.Overall).toFixed(2)}</td>
+                        <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(data.average.DUT.Overall), parseFloat(data.average.REF.Overall)) }}>{parseFloat(data.average.DUT.Overall).toFixed(2)}</td>
                         <td>{parseFloat(data.average.DUT.Moderate).toFixed(2)}</td>
                         <td>{parseFloat(data.average.DUT.Poor).toFixed(2)}</td>
                     </tr>

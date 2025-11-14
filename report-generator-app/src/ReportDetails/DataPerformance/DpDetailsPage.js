@@ -17,7 +17,7 @@ import DpHistogramComponent from './DpHistogramComponent';
 function DpDetailsPage() {
   // Example data for DpRangeChart
   const chartDataForRegions = {
-    good: {
+    Good: {
       dutMin: 5,
       dutMax: 90,
       dutMean: 55,
@@ -25,7 +25,7 @@ function DpDetailsPage() {
       refMax: 85,
       refMean: 50,
     },
-    moderate: {
+    Moderate: {
       dutMin: 10,
       dutMax: 80,
       dutMean: 45,
@@ -33,7 +33,7 @@ function DpDetailsPage() {
       refMax: 75,
       refMean: 40,
     },
-    poor: {
+    Poor: {
       dutMin: 2,
       dutMax: 60,
       dutMean: 30,

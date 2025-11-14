@@ -1,5 +1,5 @@
 import React from 'react';
-import DpRangeChart from './Statoinary/Table/DpRangeChart';
+import DpRangeChart from './DpRangeChart';
 import '../../StyleScript/Restricted_Report_Style.css';
 import Dp_httpSS_Component from './Statoinary/Dp_httpSS_Component';
 import Dp_httpMS_Component from './Statoinary/Dp_httpMS_Component';
@@ -15,6 +15,33 @@ import DpNSATestDriveDetails from './NSA/TestDrive/DpNSATestDriveDetails';
 import DpHistogramComponent from './DpHistogramComponent';
 
 function DpDetailsPage() {
+  // Example data for DpRangeChart
+  const chartDataForRegions = {
+    good: {
+      dutMin: 5,
+      dutMax: 90,
+      dutMean: 55,
+      refMin: 15,
+      refMax: 85,
+      refMean: 50,
+    },
+    moderate: {
+      dutMin: 10,
+      dutMax: 80,
+      dutMean: 45,
+      refMin: 20,
+      refMax: 75,
+      refMean: 40,
+    },
+    poor: {
+      dutMin: 2,
+      dutMax: 60,
+      dutMean: 30,
+      refMin: 8,
+      refMax: 55,
+      refMean: 25,
+    },
+  };
 
   return (
     <div>
@@ -31,8 +58,11 @@ function DpDetailsPage() {
 
       <DpNSAStationaryDetails/>
       <DpNSATestDriveDetails/>
-      {/* <DpRangeChart dataPerformanceResults={dataPerformanceResults} /> */}
-
+      <DpRangeChart
+        data={chartDataForRegions}
+        chartTitle="Example TPUT Performance by Region"
+        yAxisTitle="Example Throughput (Mbps)"
+      />
     </div>
   );
 }

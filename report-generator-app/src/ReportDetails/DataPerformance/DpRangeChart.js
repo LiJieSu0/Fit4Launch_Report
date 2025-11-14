@@ -12,6 +12,7 @@ import {
   LineElement,
 } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../Constants/ChartColors';
 
 ChartJS.register(
   CategoryScale,
@@ -25,40 +26,35 @@ ChartJS.register(
   ChartDataLabels
 );
 
-function DpRangeChart({ dataPerformanceResults }) {
-  const dutThroughput = dataPerformanceResults["5G AUTO DP"]["2.1.1 5G Auto Data Test Drive"]["DUT UDP DL"]["Throughput"];
-  const refThroughput = dataPerformanceResults["5G AUTO DP"]["2.1.1 5G Auto Data Test Drive"]["REF UDP DL"]["Throughput"];
+function DpRangeChart({ data, chartTitle, yAxisTitle }) {
+  const labels = Object.keys(data); // e.g., ['good', 'moderate', 'poor']
 
-  const dutMin = dutThroughput.Minimum;
-  const dutMax = dutThroughput.Maximum;
-  const dutMean = dutThroughput.Mean;
-
-  const refMin = refThroughput.Minimum;
-  const refMax = refThroughput.Maximum;
-  const refMean = refThroughput.Mean;
+  const dutRanges = labels.map(region => [data[region].dutMin, data[region].dutMax]);
+  const refRanges = labels.map(region => [data[region].refMin, data[region].refMax]);
+  const dutMeans = labels.map(region => data[region].dutMean);
+  const refMeans = labels.map(region => data[region].refMean);
 
   const chartData = {
-    labels: ['DUT', 'REF'],
+    labels: labels.flatMap(label => [`${label} DUT`, `${label} REF`]),
     datasets: [
       {
-        data: [
-          [dutMin, dutMax],
-          [refMin, refMax],
-        ],
-        backgroundColor: ['rgba(20, 218, 20, 0.6)', 'rgba(153, 102, 255, 0.6)'],
-        borderColor: ['rgba(20, 218, 20, 0.6)', 'rgba(153, 102, 255, 0.6)'],
+        label: 'Range',
+        data: labels.flatMap(region => [[data[region].dutMin, data[region].dutMax], [data[region].refMin, data[region].refMax]]),
+        backgroundColor: labels.flatMap(() => [CHART_COLOR_DUT, CHART_COLOR_REF]),
+        borderColor: labels.flatMap(() => [CHART_COLOR_DUT, CHART_COLOR_REF]),
         borderWidth: 1,
-        type:'bar',
-        barThickness: 30
+        type: 'bar',
+        barThickness: 30,
       },
       {
-        data: [dutMean, refMean],
+        label: 'Mean',
+        data: labels.flatMap(region => [data[region].dutMean, data[region].refMean]),
         borderColor: ['rgba(255, 0, 0, 1)'],
-        backgroundColor:['rgba(255, 0, 0, 1)'],
+        backgroundColor: ['rgba(255, 0, 0, 1)'],
         type: 'line',
-        pointRadius: 20,
+        pointRadius: 30,
         showLine: false,
-        pointStyle:'dash',
+        pointStyle: 'dash',
       },
     ],
   };
@@ -71,15 +67,15 @@ function DpRangeChart({ dataPerformanceResults }) {
         labels: {
           generateLabels: function(chart) {
             const datasets = chart.data.datasets;
-            const dutColor = datasets[0].backgroundColor[0];
-            const refColor = datasets[0].backgroundColor[1];
+            const dutColor = CHART_COLOR_DUT;
+            const refColor = CHART_COLOR_REF;
             const meanColor = datasets[1].borderColor[0];
 
             return [
               {
                 text: 'DUT',
                 fillStyle: dutColor,
-                strokeStyle: datasets[0].borderColor[0],
+                strokeStyle: dutColor,
                 lineWidth: datasets[0].borderWidth,
                 hidden: false,
                 index: 0
@@ -87,7 +83,7 @@ function DpRangeChart({ dataPerformanceResults }) {
               {
                 text: 'REF',
                 fillStyle: refColor,
-                strokeStyle: datasets[0].borderColor[1],
+                strokeStyle: refColor,
                 lineWidth: datasets[0].borderWidth,
                 hidden: false,
                 index: 1
@@ -106,7 +102,7 @@ function DpRangeChart({ dataPerformanceResults }) {
       },
       title: {
         display: true,
-        text: 'TPUT Performance (Min-Max with Mean)',
+        text: chartTitle,
       },
       datalabels: {
         color: 'black',
@@ -128,7 +124,7 @@ function DpRangeChart({ dataPerformanceResults }) {
           max: {
             align: 'end',
             anchor: 'end',
-            offset: 5,
+            offset: 0,
             formatter: function(value, context) {
               if (context.dataset.type === 'bar') {
                 return value[1].toFixed(2);
@@ -139,7 +135,7 @@ function DpRangeChart({ dataPerformanceResults }) {
           mean: {
             align: 'right',
             anchor: 'center',
-            offset:20,
+            offset: 30,
             formatter: function(value, context) {
               if (context.dataset.type === 'line') {
                 return value.toFixed(2);
@@ -155,7 +151,7 @@ function DpRangeChart({ dataPerformanceResults }) {
         beginAtZero: false,
         title: {
           display: true,
-          text: 'Throughput',
+          text: yAxisTitle,
         },
       },
     },

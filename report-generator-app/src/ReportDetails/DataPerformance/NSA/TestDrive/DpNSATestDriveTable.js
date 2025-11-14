@@ -1,4 +1,5 @@
 import React from 'react';
+import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
 function DpNSATestDriveTable({ data, tableName }) {
   if (!data) {
@@ -17,18 +18,21 @@ function DpNSATestDriveTable({ data, tableName }) {
           { key: "Throughput.Maximum", label: "Maximum" },
           { key: "Throughput.Number of Intervals", label: "Number of Intervals" },
         ],
+        kpiType: "Throughput",
       },
       {
         name: "Jitter (s)",
         subMetrics: [
           { key: "Jitter.Mean", label: "Mean" },
         ],
+        kpiType: "Jitter",
       },
       {
         name: "Error Ratio (%)",
         subMetrics: [
           { key: "Error Ratio.Mean", label: "Mean" },
         ],
+        kpiType: "ErrorRatio",
       },
       {
         name: "Ping RTT (ms)",
@@ -38,6 +42,7 @@ function DpNSATestDriveTable({ data, tableName }) {
           { key: "Ping RTT.avg", label: "Avg" },
           { key: "Ping RTT.std_dev", label: "Std Dev" },
         ],
+        kpiType: "PingLatency",
       },
     ];
 
@@ -52,6 +57,7 @@ function DpNSATestDriveTable({ data, tableName }) {
         processed.push({
           metric: metric.name,
           subMetric: subMetric.label,
+          kpiType: metric.kpiType,
           dutValue: typeof dutValue === 'number' ? dutValue.toFixed(2) : dutValue,
           refValue: typeof refValue === 'number' ? refValue.toFixed(2) : refValue,
         });
@@ -91,7 +97,7 @@ function DpNSATestDriveTable({ data, tableName }) {
                   <td rowSpan={metricRowSpan}>{row.metric}</td>
                 )}
                 <td>{row.subMetric}</td>
-                <td>{row.dutValue}</td>
+                <td style={{ backgroundColor: (row.subMetric === "Mean" || row.subMetric === "Avg") ? getKpiCellColor(row.kpiType, parseFloat(row.dutValue), parseFloat(row.refValue)) : 'inherit' }}>{row.dutValue}</td>
                 <td>{row.refValue}</td>
               </tr>
             );

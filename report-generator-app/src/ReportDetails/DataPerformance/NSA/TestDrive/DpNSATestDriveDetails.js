@@ -1,5 +1,6 @@
 import React from 'react';
 import DpNSATestDriveTable from './DpNSATestDriveTable';
+import DpNSATestDriveOverallTable from './DpNSATestDriveOverallTable';
 import DpHistogramComponent from '../../DpHistogramComponent';
 import TestDriveData from '../../../../DataFiles/NSA/DpMobilityResults/Test Drive.json';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../../Constants/ChartColors';
@@ -56,7 +57,7 @@ function DpNSATestDriveDetails() {
   return (
     <div>
       <h2>NSA Test Drive Data Performance Details</h2>
-      {/* Test drive Overall table here */}
+      <DpNSATestDriveOverallTable data={TestDriveData} tableName="Test Drive Overall Data" />
       <DpNSATestDriveTable data={TestDriveData} tableName="Test Drive" />
       <DpHistogramComponent
         data={throughputData}

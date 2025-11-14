@@ -35,7 +35,7 @@ function DpRangeChart({ data, chartTitle, yAxisTitle }) {
   const refMeans = labels.map(region => data[region].refMean);
 
   const chartData = {
-    labels: labels.flatMap(label => [`${label}`, `${label}`]),
+    labels: labels.flatMap(label => [`${label}`, `${label}`]), //X axis label set up here
     datasets: [
       {
         label: 'Range',

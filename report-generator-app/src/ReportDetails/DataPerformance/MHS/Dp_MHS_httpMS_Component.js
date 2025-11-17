@@ -1,6 +1,7 @@
 import React from "react";
 import DpMHSHttpMSTable from "./Table/DpMHSHttpMSTable";
 import DpHistogramComponent from "../DpHistogramComponent";
+import DpRangeChart from "../DpRangeChart";
 import DpThroughputOverallTable from "../DpThroughputOverallTable";
 import MultiStreamHTTPData from "../../../DataFiles/SA/DpMHSResults/Multi Stream HTTP.json";
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
@@ -53,6 +54,44 @@ function Dp_MHS_httpMS_Component() {
     ["Minimum", "REF", ((goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput.Minimum + moderateDownloadData["REF MS HTTP DL 30s"].Throughput.Minimum) / 2).toFixed(2), ((uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Minimum + uploadModerateData["REF MS HTTP UL 30S"].Throughput.Minimum) / 2).toFixed(2)],
   ];
 
+  const downloadRangeChartData = {
+    Good: {
+      dutMin: goodDownloadData["DUT MS HTTP DL for 30 seconds"].Throughput.Minimum,
+      dutMax: goodDownloadData["DUT MS HTTP DL for 30 seconds"].Throughput.Maximum,
+      dutMean: goodDownloadData["DUT MS HTTP DL for 30 seconds"].Throughput.Mean,
+      refMin: goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput.Minimum,
+      refMax: goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput.Maximum,
+      refMean: goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput.Mean,
+    },
+    Moderate: {
+      dutMin: moderateDownloadData["DUT MS HTTP DL 30s"].Throughput.Minimum,
+      dutMax: moderateDownloadData["DUT MS HTTP DL 30s"].Throughput.Maximum,
+      dutMean: moderateDownloadData["DUT MS HTTP DL 30s"].Throughput.Mean,
+      refMin: moderateDownloadData["REF MS HTTP DL 30s"].Throughput.Minimum,
+      refMax: moderateDownloadData["REF MS HTTP DL 30s"].Throughput.Maximum,
+      refMean: moderateDownloadData["REF MS HTTP DL 30s"].Throughput.Mean,
+    },
+  };
+
+  const uploadRangeChartData = {
+    Good: {
+      dutMin: uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Minimum,
+      dutMax: uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Maximum,
+      dutMean: uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Mean,
+      refMin: uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Minimum,
+      refMax: uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Maximum,
+      refMean: uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Mean,
+    },
+    Moderate: {
+      dutMin: uploadModerateData["DUT MS HTTP UL 30S"].Throughput.Minimum,
+      dutMax: uploadModerateData["DUT MS HTTP UL 30S"].Throughput.Maximum,
+      dutMean: uploadModerateData["DUT MS HTTP UL 30S"].Throughput.Mean,
+      refMin: uploadModerateData["REF MS HTTP UL 30S"].Throughput.Minimum,
+      refMax: uploadModerateData["REF MS HTTP UL 30S"].Throughput.Maximum,
+      refMean: uploadModerateData["REF MS HTTP UL 30S"].Throughput.Mean,
+    },
+  };
+
   return (
     <div className=''>
       <h2>MHS-httpMS Component</h2>
@@ -87,6 +126,11 @@ function Dp_MHS_httpMS_Component() {
         yAxisLabel="Throughput"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
       />
+      <DpRangeChart
+        data={downloadRangeChartData}
+        chartTitle="MHS Multi Stream HTTP Download Throughput Range Chart"
+        yAxisTitle="Throughput"
+      />
       <DpMHSHttpMSTable data={dataUL} tableName="MHS Multi Stream HTTP Upload Throughput" kpiRule="Throughput" />
       <DpHistogramComponent
         data={[
@@ -97,6 +141,11 @@ function Dp_MHS_httpMS_Component() {
         title="MHS Multi Stream HTTP Upload Throughput Histogram"
         yAxisLabel="Throughput"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+      />
+      <DpRangeChart
+        data={uploadRangeChartData}
+        chartTitle="MHS Multi Stream HTTP Upload Throughput Range Chart"
+        yAxisTitle="Throughput"
       />
     </div>
   );

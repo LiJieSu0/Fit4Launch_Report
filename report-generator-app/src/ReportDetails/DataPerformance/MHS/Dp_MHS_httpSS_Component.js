@@ -1,6 +1,7 @@
 import React from "react";
 import DpMHSHttpSSTable from "./Table/DpMHSHttpSSTable";
 import DpHistogramComponent from "../DpHistogramComponent";
+import DpRangeChart from "../DpRangeChart";
 import DpThroughputOverallTable from "../DpThroughputOverallTable";
 import SingleStreamHTTPData from "../../../DataFiles/SA/DpMHSResults/Single Stream HTTP.json";
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
@@ -52,6 +53,44 @@ function Dp_MHS_httpSS_Component() {
     ["Minimum", "REF", ((goodData["REF SS HTTP DL for 60 seconds"].Throughput.Minimum + moderateData["REF SS HTTP DL 60S"].Throughput.Minimum) / 2).toFixed(2), ((uploadGoodData["_20250915_115630_CH02_TMO-Ref_5G MHS_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput.Minimum + uploadModerateData["_20250918_124924_CH02_TMO-ref_5G Auto_Single Stream HTTP Upload of a 15 MB file_Moderate Coverage_DA Test"].Throughput.Minimum) / 2).toFixed(2)],
   ];
 
+  const downloadRangeChartData = {
+    Good: {
+      dutMin: goodData["DUT SS HTTP DL for 60 seconds"].Throughput.Minimum,
+      dutMax: goodData["DUT SS HTTP DL for 60 seconds"].Throughput.Maximum,
+      dutMean: goodData["DUT SS HTTP DL for 60 seconds"].Throughput.Mean,
+      refMin: goodData["REF SS HTTP DL for 60 seconds"].Throughput.Minimum,
+      refMax: goodData["REF SS HTTP DL for 60 seconds"].Throughput.Maximum,
+      refMean: goodData["REF SS HTTP DL for 60 seconds"].Throughput.Mean,
+    },
+    Moderate: {
+      dutMin: moderateData["DUT SS HTTP DL 60S"].Throughput.Minimum,
+      dutMax: moderateData["DUT SS HTTP DL 60S"].Throughput.Maximum,
+      dutMean: moderateData["DUT SS HTTP DL 60S"].Throughput.Mean,
+      refMin: moderateData["REF SS HTTP DL 60S"].Throughput.Minimum,
+      refMax: moderateData["REF SS HTTP DL 60S"].Throughput.Maximum,
+      refMean: moderateData["REF SS HTTP DL 60S"].Throughput.Mean,
+    },
+  };
+
+  const uploadRangeChartData = {
+    Good: {
+      dutMin: uploadGoodData["_20250915_115630_CH01_TMO-DUT_5G MHS_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput.Minimum,
+      dutMax: uploadGoodData["_20250915_115630_CH01_TMO-DUT_5G MHS_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput.Maximum,
+      dutMean: uploadGoodData["_20250915_115630_CH01_TMO-DUT_5G MHS_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput.Mean,
+      refMin: uploadGoodData["_20250915_115630_CH02_TMO-Ref_5G MHS_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput.Minimum,
+      refMax: uploadGoodData["_20250915_115630_CH02_TMO-Ref_5G MHS_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput.Maximum,
+      refMean: uploadGoodData["_20250915_115630_CH02_TMO-Ref_5G MHS_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput.Mean,
+    },
+    Moderate: {
+      dutMin: uploadModerateData["_20250918_124924_CH01_TMO-dut_5G Auto_Single Stream HTTP Upload of a 15 MB file_Moderate Coverage_DA Test"].Throughput.Minimum,
+      dutMax: uploadModerateData["_20250918_124924_CH01_TMO-dut_5G Auto_Single Stream HTTP Upload of a 15 MB file_Moderate Coverage_DA Test"].Throughput.Maximum,
+      dutMean: uploadModerateData["_20250918_124924_CH01_TMO-dut_5G Auto_Single Stream HTTP Upload of a 15 MB file_Moderate Coverage_DA Test"].Throughput.Mean,
+      refMin: uploadModerateData["_20250918_124924_CH02_TMO-ref_5G Auto_Single Stream HTTP Upload of a 15 MB file_Moderate Coverage_DA Test"].Throughput.Minimum,
+      refMax: uploadModerateData["_20250918_124924_CH02_TMO-ref_5G Auto_Single Stream HTTP Upload of a 15 MB file_Moderate Coverage_DA Test"].Throughput.Maximum,
+      refMean: uploadModerateData["_20250918_124924_CH02_TMO-ref_5G Auto_Single Stream HTTP Upload of a 15 MB file_Moderate Coverage_DA Test"].Throughput.Mean,
+    },
+  };
+
   return (
     <div className=''>
       <h2>MHS-httpSS Component</h2>
@@ -86,6 +125,7 @@ function Dp_MHS_httpSS_Component() {
         yAxisLabel="Throughput"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
       />
+      
       <DpMHSHttpSSTable data={dataUL} tableName="MHS Single Stream HTTP Upload Throughput" kpiRule="Throughput" />
       <DpHistogramComponent
         data={[

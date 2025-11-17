@@ -65,9 +65,6 @@ function DpRangeChart({ data, chartTitle, yAxisTitle }) {
       legend: {
         display: true,
         labels: {
-          font: {
-            family: 'Arial', // Set legend font family to Arial
-          },
           generateLabels: function(chart) {
             const datasets = chart.data.datasets;
             const dutColor = CHART_COLOR_DUT;
@@ -107,9 +104,6 @@ function DpRangeChart({ data, chartTitle, yAxisTitle }) {
         display: true,
         text: chartTitle,
         color: '#000000', // Set title font color to black
-        font: {
-          family: 'Arial', // Set title font family to Arial
-        },
       },
       datalabels: {
         display: false, // Disable datalabels to hide min, max, and mean numbers
@@ -118,9 +112,6 @@ function DpRangeChart({ data, chartTitle, yAxisTitle }) {
     scales: {
       x: {
         ticks: {
-          font: {
-            family: 'Arial', // Set x-axis label font family to Arial
-          },
         },
       },
       y: {
@@ -128,14 +119,8 @@ function DpRangeChart({ data, chartTitle, yAxisTitle }) {
         title: {
           display: true,
           text: yAxisTitle,
-          font: {
-            family: 'Arial', // Set y-axis title font family to Arial
-          },
         },
         ticks: {
-          font: {
-            family: 'Arial', // Set y-axis label font family to Arial
-          },
         },
       },
     },

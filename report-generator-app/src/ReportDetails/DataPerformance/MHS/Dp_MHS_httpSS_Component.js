@@ -72,6 +72,20 @@ function Dp_MHS_httpSS_Component() {
     },
   };
 
+  const overallDownloadDUTMin = (downloadRangeChartData.Good.dutMin + downloadRangeChartData.Moderate.dutMin) / 2;
+  const overallDownloadDUTMax = (downloadRangeChartData.Good.dutMax + downloadRangeChartData.Moderate.dutMax) / 2;
+  const overallDownloadREFMin = (downloadRangeChartData.Good.refMin + downloadRangeChartData.Moderate.refMin) / 2;
+  const overallDownloadREFMax = (downloadRangeChartData.Good.refMax + downloadRangeChartData.Moderate.refMax) / 2;
+
+  downloadRangeChartData.Overall = {
+    dutMin: overallDownloadDUTMin,
+    dutMax: overallDownloadDUTMax,
+    dutMean: overallDownloadDUTMean,
+    refMin: overallDownloadREFMin,
+    refMax: overallDownloadREFMax,
+    refMean: overallDownloadREFMean,
+  };
+
   const uploadRangeChartData = {
     Good: {
       dutMin: uploadGoodData["_20250915_115630_CH01_TMO-DUT_5G MHS_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput.Minimum,
@@ -89,6 +103,20 @@ function Dp_MHS_httpSS_Component() {
       refMax: uploadModerateData["_20250918_124924_CH02_TMO-ref_5G Auto_Single Stream HTTP Upload of a 15 MB file_Moderate Coverage_DA Test"].Throughput.Maximum,
       refMean: uploadModerateData["_20250918_124924_CH02_TMO-ref_5G Auto_Single Stream HTTP Upload of a 15 MB file_Moderate Coverage_DA Test"].Throughput.Mean,
     },
+  };
+
+  const overallUploadDUTMin = (uploadRangeChartData.Good.dutMin + uploadRangeChartData.Moderate.dutMin) / 2;
+  const overallUploadDUTMax = (uploadRangeChartData.Good.dutMax + uploadRangeChartData.Moderate.dutMax) / 2;
+  const overallUploadREFMin = (uploadRangeChartData.Good.refMin + uploadRangeChartData.Moderate.refMin) / 2;
+  const overallUploadREFMax = (uploadRangeChartData.Good.refMax + uploadRangeChartData.Moderate.refMax) / 2;
+
+  uploadRangeChartData.Overall = {
+    dutMin: overallUploadDUTMin,
+    dutMax: overallUploadDUTMax,
+    dutMean: overallUploadDUTMean,
+    refMin: overallUploadREFMin,
+    refMax: overallUploadREFMax,
+    refMean: overallUploadREFMean,
   };
 
   return (
@@ -115,6 +143,7 @@ function Dp_MHS_httpSS_Component() {
         ]}
       />
       <DpMHSHttpSSTable data={dataDL} tableName="MHS Single Stream HTTP Download Throughput" kpiRule="Throughput" />
+      
       <DpHistogramComponent
         data={[
           { name: 'Good', DUT: dataDL.Good.DUT["Mean"], REF: dataDL.Good.REF["Mean"] },
@@ -125,8 +154,13 @@ function Dp_MHS_httpSS_Component() {
         yAxisLabel="Throughput"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
       />
-      
+      <DpRangeChart
+        data={downloadRangeChartData}
+        title="MHS Single Stream HTTP Download Throughput Range"
+        yAxisLabel="Throughput"
+      />
       <DpMHSHttpSSTable data={dataUL} tableName="MHS Single Stream HTTP Upload Throughput" kpiRule="Throughput" />
+      
       <DpHistogramComponent
         data={[
           { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },
@@ -136,6 +170,11 @@ function Dp_MHS_httpSS_Component() {
         title="MHS Single Stream HTTP Upload Throughput Histogram"
         yAxisLabel="Throughput"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+      />
+      <DpRangeChart
+        data={uploadRangeChartData}
+        title="MHS Single Stream HTTP Upload Throughput Range"
+        yAxisLabel="Throughput"
       />
     </div>
   );

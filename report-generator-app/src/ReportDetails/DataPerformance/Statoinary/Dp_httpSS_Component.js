@@ -72,6 +72,41 @@ function Dp_httpSS_Component() {
     },
   };
 
+  const ulRangeChartData = {
+    Good: {
+      dutMin: httpSS_Stationary_UL.Good.DUT.Minimum,
+      dutMax: httpSS_Stationary_UL.Good.DUT.Maximum,
+      refMin: httpSS_Stationary_UL.Good.REF.Minimum,
+      refMax: httpSS_Stationary_UL.Good.REF.Maximum,
+      dutMean: httpSS_Stationary_UL.Good.DUT.Mean,
+      refMean: httpSS_Stationary_UL.Good.REF.Mean,
+    },
+    Moderate: {
+      dutMin: httpSS_Stationary_UL.Moderate.DUT.Minimum,
+      dutMax: httpSS_Stationary_UL.Moderate.DUT.Maximum,
+      refMin: httpSS_Stationary_UL.Moderate.REF.Minimum,
+      refMax: httpSS_Stationary_UL.Moderate.REF.Maximum,
+      dutMean: httpSS_Stationary_UL.Moderate.DUT.Mean,
+      refMean: httpSS_Stationary_UL.Moderate.REF.Mean,
+    },
+    Poor: {
+      dutMin: httpSS_Stationary_UL.Poor.DUT.Minimum,
+      dutMax: httpSS_Stationary_UL.Poor.DUT.Maximum,
+      refMin: httpSS_Stationary_UL.Poor.REF.Minimum,
+      refMax: httpSS_Stationary_UL.Poor.REF.Maximum,
+      dutMean: httpSS_Stationary_UL.Poor.DUT.Mean,
+      refMean: httpSS_Stationary_UL.Poor.REF.Mean,
+    },
+    Overall: {
+      dutMin: Math.min(httpSS_Stationary_UL.Good.DUT.Minimum, httpSS_Stationary_UL.Moderate.DUT.Minimum, httpSS_Stationary_UL.Poor.DUT.Minimum),
+      dutMax: Math.max(httpSS_Stationary_UL.Good.DUT.Maximum, httpSS_Stationary_UL.Moderate.DUT.Maximum, httpSS_Stationary_UL.Poor.DUT.Maximum),
+      refMin: Math.min(httpSS_Stationary_UL.Good.REF.Minimum, httpSS_Stationary_UL.Moderate.REF.Minimum, httpSS_Stationary_UL.Poor.REF.Minimum),
+      refMax: Math.max(httpSS_Stationary_UL.Good.REF.Maximum, httpSS_Stationary_UL.Moderate.REF.Maximum, httpSS_Stationary_UL.Poor.REF.Maximum),
+      dutMean: (httpSS_Stationary_UL.Good.DUT.Mean + httpSS_Stationary_UL.Moderate.DUT.Mean + httpSS_Stationary_UL.Poor.DUT.Mean) / 3,
+      refMean: (httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3,
+    },
+  };
+
   const dlHistogramData = [
     { name: 'Good', DUT: httpSS_Stationary_DL.Good.DUT.Mean, REF: httpSS_Stationary_DL.Good.REF.Mean },
     { name: 'Moderate', DUT: httpSS_Stationary_DL.Moderate.DUT.Mean, REF: httpSS_Stationary_DL.Moderate.REF.Mean },
@@ -167,6 +202,12 @@ function Dp_httpSS_Component() {
           },
         ]}
       />
+      <DpRangeChart
+        data={ulRangeChartData}
+        chartTitle="Single Stream HTTP Upload Throughput Range"
+        yAxisTitle="Throughput (Mbps)"
+      />
+      {/* range chart */}
       <DpHistogramComponent
         data={ulHistogramData}
         title="Single Stream HTTP Upload Throughput"

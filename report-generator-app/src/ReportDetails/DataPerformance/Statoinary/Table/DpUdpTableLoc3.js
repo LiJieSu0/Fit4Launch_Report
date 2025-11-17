@@ -81,7 +81,7 @@ function DpUdpTableLoc3({ data, tableName }) {
                 )}
                 <td>{row.deviceName}</td>
                 <td style={{
-                  backgroundColor: row.deviceName === 'DUT' && refOverallValue !== null && row.metric !== 'Max Throughput'
+                  backgroundColor: row.deviceName === 'DUT' && refOverallValue !== null && row.metric !== 'Max Throughput' && row.metric !== 'Min Throughput'
                     ? getKpiCellColor(
                         row.metric === 'Mean Jitter' ? 'Jitter' :
                         row.metric === 'Packet Failure Rate' ? 'ErrorRatio' :

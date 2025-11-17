@@ -601,6 +601,9 @@ function Dp_Udp_Component() {
         <h2>UDP test - 5G NR</h2>
         {/* dp udp overall  table */}
         <DpUdpTableLoc3 data={udp_Stationary_DL} tableName="UDP DL" />
+
+        {/* histograms */}
+        <div> 
         <DpHistogramComponent
           data={dlMeanThroughput200HistogramData}
           title="UDP Download Mean Throughput (200 Mbps)"
@@ -637,10 +640,15 @@ function Dp_Udp_Component() {
           yAxisLabel="Packet Failure Rate (%)"
           barKeys={barKeys}
         />
+        </div>
+        {/* histograms */}
 
       </div>
       <div className='page-content'>
         <DpUdpTableLoc3 data={udp_Stationary_UL} tableName="UDP UL" />
+        
+        {/* histograms */}
+        <div>
         <DpHistogramComponent
           data={ulMeanThroughput10HistogramData}
           title="UDP Upload Mean Throughput (10 Mbps)"
@@ -677,6 +685,9 @@ function Dp_Udp_Component() {
           yAxisLabel="Packet Failure Rate (%)"
           barKeys={barKeys}
         />
+        </div>
+        {/* histograms */}
+
       </div>
     </>
   );

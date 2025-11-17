@@ -156,8 +156,8 @@ function Dp_MHS_httpSS_Component() {
       />
       <DpRangeChart
         data={downloadRangeChartData}
-        title="MHS Single Stream HTTP Download Throughput Range"
-        yAxisLabel="Throughput"
+        chartTitle="MHS Single Stream HTTP Download Throughput Range"
+        yAxisTitle="Throughput"
       />
       <DpMHSHttpSSTable data={dataUL} tableName="MHS Single Stream HTTP Upload Throughput" kpiRule="Throughput" />
       
@@ -173,8 +173,8 @@ function Dp_MHS_httpSS_Component() {
       />
       <DpRangeChart
         data={uploadRangeChartData}
-        title="MHS Single Stream HTTP Upload Throughput Range"
-        yAxisLabel="Throughput"
+        chartTitle="MHS Single Stream HTTP Upload Throughput Range"
+        yAxisTitle="Throughput"
       />
     </div>
   );

@@ -73,6 +73,20 @@ function Dp_MHS_httpMS_Component() {
     },
   };
 
+  const overallDownloadDUTMin = (downloadRangeChartData.Good.dutMin + downloadRangeChartData.Moderate.dutMin) / 2;
+  const overallDownloadDUTMax = (downloadRangeChartData.Good.dutMax + downloadRangeChartData.Moderate.dutMax) / 2;
+  const overallDownloadREFMin = (downloadRangeChartData.Good.refMin + downloadRangeChartData.Moderate.refMin) / 2;
+  const overallDownloadREFMax = (downloadRangeChartData.Good.refMax + downloadRangeChartData.Moderate.refMax) / 2;
+
+  downloadRangeChartData.Overall = {
+    dutMin: overallDownloadDUTMin,
+    dutMax: overallDownloadDUTMax,
+    dutMean: overallDownloadDUTMean,
+    refMin: overallDownloadREFMin,
+    refMax: overallDownloadREFMax,
+    refMean: overallDownloadREFMean,
+  };
+
   const uploadRangeChartData = {
     Good: {
       dutMin: uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Minimum,
@@ -90,6 +104,20 @@ function Dp_MHS_httpMS_Component() {
       refMax: uploadModerateData["REF MS HTTP UL 30S"].Throughput.Maximum,
       refMean: uploadModerateData["REF MS HTTP UL 30S"].Throughput.Mean,
     },
+  };
+
+  const overallUploadDUTMin = (uploadRangeChartData.Good.dutMin + uploadRangeChartData.Moderate.dutMin) / 2;
+  const overallUploadDUTMax = (uploadRangeChartData.Good.dutMax + uploadRangeChartData.Moderate.dutMax) / 2;
+  const overallUploadREFMin = (uploadRangeChartData.Good.refMin + uploadRangeChartData.Moderate.refMin) / 2;
+  const overallUploadREFMax = (uploadRangeChartData.Good.refMax + uploadRangeChartData.Moderate.refMax) / 2;
+
+  uploadRangeChartData.Overall = {
+    dutMin: overallUploadDUTMin,
+    dutMax: overallUploadDUTMax,
+    dutMean: overallUploadDUTMean,
+    refMin: overallUploadREFMin,
+    refMax: overallUploadREFMax,
+    refMean: overallUploadREFMean,
   };
 
   return (

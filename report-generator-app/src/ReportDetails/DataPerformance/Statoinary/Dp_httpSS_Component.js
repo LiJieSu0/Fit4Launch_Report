@@ -169,11 +169,7 @@ function Dp_httpSS_Component() {
           },
         ]}
       />
-      <DpRangeChart
-        data={dlRangeChartData}
-        chartTitle="Single Stream HTTP Download Throughput Range"
-        yAxisTitle="Throughput (Mbps)"
-      />
+      
       <DpDetailsTableLoc3
         data={httpSS_Stationary_DL}
         tableName="Single Stream HTTP Download for 60 seconds"
@@ -191,6 +187,11 @@ function Dp_httpSS_Component() {
         yAxisLabel="Throughput (Mbps)"
         barKeys={barKeys}
       />
+      <DpRangeChart
+        data={dlRangeChartData}
+        chartTitle="Single Stream HTTP Download Throughput Range"
+        yAxisTitle="Throughput (Mbps)"
+      />
       <DpDetailsTableLoc3
         data={httpSS_Stationary_UL}
         tableName="Single Stream HTTP Upload of a 15 MB file"
@@ -202,17 +203,16 @@ function Dp_httpSS_Component() {
           },
         ]}
       />
-      <DpRangeChart
-        data={ulRangeChartData}
-        chartTitle="Single Stream HTTP Upload Throughput Range"
-        yAxisTitle="Throughput (Mbps)"
-      />
-      {/* range chart */}
       <DpHistogramComponent
         data={ulHistogramData}
         title="Single Stream HTTP Upload Throughput"
         yAxisLabel="Throughput (Mbps)"
         barKeys={barKeys}
+      />
+      <DpRangeChart
+        data={ulRangeChartData}
+        chartTitle="Single Stream HTTP Upload Throughput Range"
+        yAxisTitle="Throughput (Mbps)"
       />
     </div>
   );

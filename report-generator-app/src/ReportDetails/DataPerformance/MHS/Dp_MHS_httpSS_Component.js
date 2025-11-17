@@ -53,7 +53,7 @@ function Dp_MHS_httpSS_Component() {
   ];
 
   return (
-    <div className='page-content'>
+    <div className=''>
       <h2>MHS-httpSS Component</h2>
       <h3>Overall Single Stream HTTP</h3>
       <DpThroughputOverallTable

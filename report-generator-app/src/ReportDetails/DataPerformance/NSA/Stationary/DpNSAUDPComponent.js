@@ -375,7 +375,7 @@ function DpNSAUDPComponent() {
 
   return (
     <>
-      <div className='page-content'>
+      <div className=''>
         <h2>UDP test - 5G NSA</h2>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
         <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
@@ -414,7 +414,7 @@ function DpNSAUDPComponent() {
           />
         ))}
       </div>
-      <div className='page-content'>
+      <div className=''>
         <DpNSAUDPULTable data={udp_Stationary_UL} tableName="UDP Upload Stationary" />
         {/* UDP UL overall  */}
         {["10000", "20000"].map((idealThroughput) => (

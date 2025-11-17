@@ -55,7 +55,7 @@ function DpNSATestDriveDetails() {
   ];
 
   return (
-    <div>
+    <div className='page-content'>
       <h2>NSA Test Drive Data Performance Details</h2>
       <DpNSATestDriveOverallTable data={TestDriveData} tableName="Test Drive Overall Data" />
       <DpNSATestDriveTable data={TestDriveData} tableName="Test Drive" />

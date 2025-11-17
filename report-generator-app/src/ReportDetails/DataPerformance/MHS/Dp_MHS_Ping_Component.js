@@ -84,7 +84,7 @@ function Dp_MHS_Ping_Component() {
   ];
 
   return (
-    <div className='page-content'>
+    <div className=''>
       <h2>MHS-Ping Component</h2>
       <DpPingOverallTable data={data} /> {/* Add DpPingOverallTable */}
       <DpMHSPingTable data={data} />

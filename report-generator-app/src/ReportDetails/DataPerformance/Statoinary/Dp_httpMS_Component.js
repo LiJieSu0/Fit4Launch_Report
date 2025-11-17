@@ -2,6 +2,7 @@ import React from 'react';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
 import DpThroughputOverallTable from '../DpThroughputOverallTable';
+import DpRangeChart from '../DpRangeChart';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import httpMS_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/Multi Stream HTTP.json';
@@ -34,6 +35,76 @@ function Dp_httpMS_Component() {
         Poor: {
             DUT: httpMS_Stationary_Data.Poor["Multi Stream HTTP Upload for 30 seconds"]["dut_5g auto_Multi Stream HTTP Upload for 30 seconds_poor Coverage_DA Test"].Throughput,
             REF: httpMS_Stationary_Data.Poor["Multi Stream HTTP Upload for 30 seconds"]["ref_5g auto_Multi Stream HTTP Upload for 30 seconds_poor Coverage_DA Test"].Throughput,
+        },
+    };
+
+    const dlRangeChartData = {
+        Good: {
+            dutMin: httpMS_Stationary_DL.Good.DUT.Minimum,
+            dutMax: httpMS_Stationary_DL.Good.DUT.Maximum,
+            refMin: httpMS_Stationary_DL.Good.REF.Minimum,
+            refMax: httpMS_Stationary_DL.Good.REF.Maximum,
+            dutMean: httpMS_Stationary_DL.Good.DUT.Mean,
+            refMean: httpMS_Stationary_DL.Good.REF.Mean,
+        },
+        Moderate: {
+            dutMin: httpMS_Stationary_DL.Moderate.DUT.Minimum,
+            dutMax: httpMS_Stationary_DL.Moderate.DUT.Maximum,
+            refMin: httpMS_Stationary_DL.Moderate.REF.Minimum,
+            refMax: httpMS_Stationary_DL.Moderate.REF.Maximum,
+            dutMean: httpMS_Stationary_DL.Moderate.DUT.Mean,
+            refMean: httpMS_Stationary_DL.Moderate.REF.Mean,
+        },
+        Poor: {
+            dutMin: httpMS_Stationary_DL.Poor.DUT.Minimum,
+            dutMax: httpMS_Stationary_DL.Poor.DUT.Maximum,
+            refMin: httpMS_Stationary_DL.Poor.REF.Minimum,
+            refMax: httpMS_Stationary_DL.Poor.REF.Maximum,
+            dutMean: httpMS_Stationary_DL.Poor.DUT.Mean,
+            refMean: httpMS_Stationary_DL.Poor.REF.Mean,
+        },
+        Overall: {
+            dutMin: Math.min(httpMS_Stationary_DL.Good.DUT.Minimum, httpMS_Stationary_DL.Moderate.DUT.Minimum, httpMS_Stationary_DL.Poor.DUT.Minimum),
+            dutMax: Math.max(httpMS_Stationary_DL.Good.DUT.Maximum, httpMS_Stationary_DL.Moderate.DUT.Maximum, httpMS_Stationary_DL.Poor.DUT.Maximum),
+            refMin: Math.min(httpMS_Stationary_DL.Good.REF.Minimum, httpMS_Stationary_DL.Moderate.REF.Minimum, httpMS_Stationary_DL.Poor.REF.Minimum),
+            refMax: Math.max(httpMS_Stationary_DL.Good.REF.Maximum, httpMS_Stationary_DL.Moderate.REF.Maximum, httpMS_Stationary_DL.Poor.REF.Maximum),
+            dutMean: (httpMS_Stationary_DL.Good.DUT.Mean + httpMS_Stationary_DL.Moderate.DUT.Mean + httpMS_Stationary_DL.Poor.DUT.Mean) / 3,
+            refMean: (httpMS_Stationary_DL.Good.REF.Mean + httpMS_Stationary_DL.Moderate.REF.Mean + httpMS_Stationary_DL.Poor.REF.Mean) / 3,
+        },
+    };
+
+    const ulRangeChartData = {
+        Good: {
+            dutMin: httpMS_Stationary_UL.Good.DUT.Minimum,
+            dutMax: httpMS_Stationary_UL.Good.DUT.Maximum,
+            refMin: httpMS_Stationary_UL.Good.REF.Minimum,
+            refMax: httpMS_Stationary_UL.Good.REF.Maximum,
+            dutMean: httpMS_Stationary_UL.Good.DUT.Mean,
+            refMean: httpMS_Stationary_UL.Good.REF.Mean,
+        },
+        Moderate: {
+            dutMin: httpMS_Stationary_UL.Moderate.DUT.Minimum,
+            dutMax: httpMS_Stationary_UL.Moderate.DUT.Maximum,
+            refMin: httpMS_Stationary_UL.Moderate.REF.Minimum,
+            refMax: httpMS_Stationary_UL.Moderate.REF.Maximum,
+            dutMean: httpMS_Stationary_UL.Moderate.DUT.Mean,
+            refMean: httpMS_Stationary_UL.Moderate.REF.Mean,
+        },
+        Poor: {
+            dutMin: httpMS_Stationary_UL.Poor.DUT.Minimum,
+            dutMax: httpMS_Stationary_UL.Poor.DUT.Maximum,
+            refMin: httpMS_Stationary_UL.Poor.REF.Minimum,
+            refMax: httpMS_Stationary_UL.Poor.REF.Maximum,
+            dutMean: httpMS_Stationary_UL.Poor.DUT.Mean,
+            refMean: httpMS_Stationary_UL.Poor.REF.Mean,
+        },
+        Overall: {
+            dutMin: Math.min(httpMS_Stationary_UL.Good.DUT.Minimum, httpMS_Stationary_UL.Moderate.DUT.Minimum, httpMS_Stationary_UL.Poor.DUT.Minimum),
+            dutMax: Math.max(httpMS_Stationary_UL.Good.DUT.Maximum, httpMS_Stationary_UL.Moderate.DUT.Maximum, httpMS_Stationary_UL.Poor.DUT.Maximum),
+            refMin: Math.min(httpMS_Stationary_UL.Good.REF.Minimum, httpMS_Stationary_UL.Moderate.REF.Minimum, httpMS_Stationary_UL.Poor.REF.Minimum),
+            refMax: Math.max(httpMS_Stationary_UL.Good.REF.Maximum, httpMS_Stationary_UL.Moderate.REF.Maximum, httpMS_Stationary_UL.Poor.REF.Maximum),
+            dutMean: (httpMS_Stationary_UL.Good.DUT.Mean + httpMS_Stationary_UL.Moderate.DUT.Mean + httpMS_Stationary_UL.Poor.DUT.Mean) / 3,
+            refMean: (httpMS_Stationary_UL.Good.REF.Mean + httpMS_Stationary_UL.Moderate.REF.Mean + httpMS_Stationary_UL.Poor.REF.Mean) / 3,
         },
     };
 
@@ -116,6 +187,11 @@ function Dp_httpMS_Component() {
                 yAxisLabel="Throughput (Mbps)"
                 barKeys={barKeys}
             />
+            <DpRangeChart
+                data={dlRangeChartData}
+                chartTitle="Multi Stream HTTP Download Throughput Range"
+                yAxisTitle="Throughput (Mbps)"
+            />
             <DpDetailsTableLoc3
                 data={httpMS_Stationary_UL}
                 tableName="Multi Stream HTTP Upload for 30 seconds"
@@ -132,6 +208,11 @@ function Dp_httpMS_Component() {
                 title="Multi Stream HTTP Upload Throughput"
                 yAxisLabel="Throughput (Mbps)"
                 barKeys={barKeys}
+            />
+            <DpRangeChart
+                data={ulRangeChartData}
+                chartTitle="Multi Stream HTTP Upload Throughput Range"
+                yAxisTitle="Throughput (Mbps)"
             />
         </div>
     );

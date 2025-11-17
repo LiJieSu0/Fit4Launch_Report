@@ -142,7 +142,7 @@ function DpRangeChart({ data, chartTitle, yAxisTitle }) {
   };
 
   return (
-    <div style={{ width: '800px', margin: 'auto' }}>
+    <div style={{ width: '600px', margin: 'auto' }}>
       <Bar data={chartData} options={options} />
     </div>
   );

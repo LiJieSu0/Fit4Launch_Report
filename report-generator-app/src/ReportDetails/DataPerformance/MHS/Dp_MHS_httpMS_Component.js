@@ -54,7 +54,7 @@ function Dp_MHS_httpMS_Component() {
   ];
 
   return (
-    <div className='page-content'>
+    <div className=''>
       <h2>MHS-httpMS Component</h2>
       <h3>Overall Multi Stream HTTP</h3>
       <DpThroughputOverallTable

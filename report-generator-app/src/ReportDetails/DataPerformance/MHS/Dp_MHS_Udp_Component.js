@@ -425,7 +425,7 @@ function Dp_MHS_Udp_Component() {
   });
 
   return (
-    <div className='page-content'>
+    <div className=''>
       <h2>MHS-UDP Component</h2>
       <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />

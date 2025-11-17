@@ -1,6 +1,7 @@
 import React from 'react';
 import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
 import DpThroughputOverallTable from '../DpThroughputOverallTable';
+import DpRangeChart from '../DpRangeChart';
 import DpHistogramComponent from '../DpHistogramComponent';
 import httpSS_Stationary_DL_Data from '../../../DataFiles/SA/DpStationaryResults/Single Stream HTTP.json';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
@@ -33,6 +34,41 @@ function Dp_httpSS_Component() {
     Poor: {
       DUT: httpSS_Stationary_DL_Data.Poor["Single Stream HTTP Upload of a 15 MB file"]["dut_5g auto_Single Stream HTTP Upload of a 15 MB file_poor Coverage_DA Test"].Throughput,
       REF: httpSS_Stationary_DL_Data.Poor["Single Stream HTTP Upload of a 15 MB file"]["ref_5g auto_Single Stream HTTP Upload of a 15 MB file_poor Coverage_DA Test"].Throughput,
+    },
+  };
+
+  const dlRangeChartData = {
+    Good: {
+      dutMin: httpSS_Stationary_DL.Good.DUT.Minimum,
+      dutMax: httpSS_Stationary_DL.Good.DUT.Maximum,
+      refMin: httpSS_Stationary_DL.Good.REF.Minimum,
+      refMax: httpSS_Stationary_DL.Good.REF.Maximum,
+      dutMean: httpSS_Stationary_DL.Good.DUT.Mean,
+      refMean: httpSS_Stationary_DL.Good.REF.Mean,
+    },
+    Moderate: {
+      dutMin: httpSS_Stationary_DL.Moderate.DUT.Minimum,
+      dutMax: httpSS_Stationary_DL.Moderate.DUT.Maximum,
+      refMin: httpSS_Stationary_DL.Moderate.REF.Minimum,
+      refMax: httpSS_Stationary_DL.Moderate.REF.Maximum,
+      dutMean: httpSS_Stationary_DL.Moderate.DUT.Mean,
+      refMean: httpSS_Stationary_DL.Moderate.REF.Mean,
+    },
+    Poor: {
+      dutMin: httpSS_Stationary_DL.Poor.DUT.Minimum,
+      dutMax: httpSS_Stationary_DL.Poor.DUT.Maximum,
+      refMin: httpSS_Stationary_DL.Poor.REF.Minimum,
+      refMax: httpSS_Stationary_DL.Poor.REF.Maximum,
+      dutMean: httpSS_Stationary_DL.Poor.DUT.Mean,
+      refMean: httpSS_Stationary_DL.Poor.REF.Mean,
+    },
+    Overall: {
+      dutMin: Math.min(httpSS_Stationary_DL.Good.DUT.Minimum, httpSS_Stationary_DL.Moderate.DUT.Minimum, httpSS_Stationary_DL.Poor.DUT.Minimum),
+      dutMax: Math.max(httpSS_Stationary_DL.Good.DUT.Maximum, httpSS_Stationary_DL.Moderate.DUT.Maximum, httpSS_Stationary_DL.Poor.DUT.Maximum),
+      refMin: Math.min(httpSS_Stationary_DL.Good.REF.Minimum, httpSS_Stationary_DL.Moderate.REF.Minimum, httpSS_Stationary_DL.Poor.REF.Minimum),
+      refMax: Math.max(httpSS_Stationary_DL.Good.REF.Maximum, httpSS_Stationary_DL.Moderate.REF.Maximum, httpSS_Stationary_DL.Poor.REF.Maximum),
+      dutMean: (httpSS_Stationary_DL.Good.DUT.Mean + httpSS_Stationary_DL.Moderate.DUT.Mean + httpSS_Stationary_DL.Poor.DUT.Mean) / 3,
+      refMean: (httpSS_Stationary_DL.Good.REF.Mean + httpSS_Stationary_DL.Moderate.REF.Mean + httpSS_Stationary_DL.Poor.REF.Mean) / 3,
     },
   };
 
@@ -97,6 +133,11 @@ function Dp_httpSS_Component() {
             refValue: ((httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3).toFixed(2),
           },
         ]}
+      />
+      <DpRangeChart
+        data={dlRangeChartData}
+        chartTitle="Single Stream HTTP Download Throughput Range"
+        yAxisTitle="Throughput (Mbps)"
       />
       <DpDetailsTableLoc3
         data={httpSS_Stationary_DL}

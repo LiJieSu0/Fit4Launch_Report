@@ -105,45 +105,7 @@ function DpRangeChart({ data, chartTitle, yAxisTitle }) {
         text: chartTitle,
       },
       datalabels: {
-        color: 'black',
-        font: {
-          weight: 'bold'
-        },
-        labels: {
-          min: {
-            align: 'end',
-            anchor: 'start',
-            offset: -20,
-            formatter: function(value, context) {
-              if (context.dataset.type === 'bar') {
-                return value[0].toFixed(2);
-              }
-              return null;
-            }
-          },
-          max: {
-            align: 'end',
-            anchor: 'end',
-            offset: 0,
-            formatter: function(value, context) {
-              if (context.dataset.type === 'bar') {
-                return value[1].toFixed(2);
-              }
-              return null;
-            }
-          },
-          mean: {
-            align: 'right',
-            anchor: 'center',
-            offset: 30,
-            formatter: function(value, context) {
-              if (context.dataset.type === 'line') {
-                return value.toFixed(2);
-              }
-              return null;
-            }
-          }
-        }
+        display: false, // Disable datalabels to hide min, max, and mean numbers
       }
     },
     scales: {
@@ -158,7 +120,7 @@ function DpRangeChart({ data, chartTitle, yAxisTitle }) {
   };
 
   return (
-    <div style={{ width: '600px', margin: 'auto' }}>
+    <div style={{ width: '800px', margin: 'auto' }}>
       <Bar data={chartData} options={options} />
     </div>
   );

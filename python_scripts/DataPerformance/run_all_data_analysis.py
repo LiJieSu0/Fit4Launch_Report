@@ -552,8 +552,8 @@ if __name__ == "__main__":
                 print(f"Warning: Google Throughput directory not found at {google_throughput_base_path}. Skipping analysis.")
 
     # After all other analyses, extract RSRP and Tx Power to CSV
-    rsrp_output_folder = os.path.join(scripts_parent_dir, "React", "frontend", "public", "rsrp_data")
-    tx_power_output_folder = os.path.join(scripts_parent_dir, "React", "frontend", "public", "tx_power_data")
+    rsrp_output_folder = os.path.join(output_dir, "rsrp_data")
+    tx_power_output_folder = os.path.join(output_dir, "tx_power_data")
     
     os.makedirs(rsrp_output_folder, exist_ok=True) # Ensure the RSRP output directory exists
     os.makedirs(tx_power_output_folder, exist_ok=True) # Ensure the Tx Power output directory exists

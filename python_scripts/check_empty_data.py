@@ -24,7 +24,7 @@ def check_empty_collections(data, path_parts=None, empty_collections_found=None)
     return empty_collections_found
 
 def main(output_dir):
-    json_file_path = os.path.join("Scripts", "React", "frontend", "src", "data_analysis_results.json")
+    json_file_path = os.path.join(output_dir, "data_analysis_results.json")
     output_file_path = os.path.join(output_dir, "Empty_Json.txt")
 
     try:

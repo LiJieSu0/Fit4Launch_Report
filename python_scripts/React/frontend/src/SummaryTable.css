@@ -1,0 +1,121 @@
+:root {
+  /* Table Header Colors */
+  --table-header-bg-primary: #808080; /* Dark grey for main headers */
+  --table-header-text-primary: #F5F5F5; /* Light text for main headers */
+
+  /* Table Body Colors */
+  --table-body-bg-odd: #F5F5DC; /* Light yellow/beige for odd rows */
+  --table-body-bg-even: #F5F5DC; /* Light yellow/beige for even rows */
+  --table-body-hover-bg: #e0e0e0; /* Light grey for hover effect */
+
+  /* Table Border Color - Keeping black as per image */
+  --table-grid-color: #000000;
+}
+
+.summary-report-container {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.table-section {
+  margin-bottom: 30px;
+}
+
+.dut-ref-table, .performance-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.dut-ref-table td,
+.performance-summary-table th, .performance-summary-table td {
+  border: 1px solid var(--table-grid-color);
+  padding: 8px; /* Reduced padding */
+  text-align: left;
+}
+.dut-ref-table th{
+  border: 1px solid var(--table-grid-color);
+  padding: 2px; /* Reduced padding */
+  text-align: left;
+}
+
+.dut-ref-table th, .performance-summary-table th {
+  background-color: var(--table-header-bg-primary);
+  color: var(--table-header-text-primary);
+  font-weight: bold;
+}
+
+.dut-ref-table tbody tr, .performance-summary-table tbody tr {
+  background-color: var(--table-body-bg-odd); /* Using odd for all rows as per image */
+}
+
+.dut-ref-table th:nth-child(1), .dut-ref-table td:nth-child(1),
+.dut-ref-table th:nth-child(3), .dut-ref-table td:nth-child(3) {
+  width: 15%; /* DUT and REF columns */
+}
+
+.dut-ref-table th:nth-child(2), .dut-ref-table td:nth-child(2),
+.dut-ref-table th:nth-child(4), .dut-ref-table td:nth-child(4) {
+  width: 35%; /* S. No./IMEI columns */
+}
+
+.performance-summary-table th:nth-child(1), .performance-summary-table td:nth-child(1) {
+  width: 25%; /* Category */
+}
+
+.performance-summary-table th:nth-child(2), .performance-summary-table td:nth-child(2),
+.performance-summary-table th:nth-child(3), .performance-summary-table td:nth-child(3),
+.performance-summary-table th:nth-child(4), .performance-summary-table td:nth-child(4),
+.performance-summary-table th:nth-child(6), .performance-summary-table td:nth-child(6) {
+  width: 12%; /* % Completed, % Passed, Issues, Time to complete */
+}
+
+.performance-summary-table th:nth-child(5), .performance-summary-table td:nth-child(5) {
+  width: 27%; /* Link to Issue Page */
+}
+
+.report-title, .table-title {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.submission-approval-section {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.submission-approval-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-decoration: none;
+  color: #000000; /* A blue color for the title, similar to the image */
+}
+
+.signature-block {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 120px;
+  padding-bottom: 10px; /* Increased padding for more space */
+  border-bottom: 1px solid #ccc; /* Underline for signature */
+}
+
+.signature-block p {
+  margin: 0;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.signature-block {
+  min-width: 150px; /* Ensure enough space for date */
+  text-align: left;
+}
+
+.date-field {
+  min-width: 250px; /* Ensure enough space for date */
+  text-align: left;
+}

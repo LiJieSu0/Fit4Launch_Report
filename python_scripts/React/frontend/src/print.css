@@ -1,0 +1,132 @@
+@media print {
+  html {
+    padding-top: 0 !important; /* Ensure no html padding */
+  }
+
+  body {
+    margin: 20px !important; /* Added a small left/right margin for print */
+    padding-top: 20px !important; /* Adjusted padding for print top margin to accommodate header */
+    padding-bottom: 20px !important; /* Adjusted padding at the bottom to make space for the @page footer (approx 10px for content + 10px for margin) */
+    -webkit-print-color-adjust: exact !important; /* Ensures background colors and images are printed */
+    print-color-adjust: exact !important;
+    min-height: 100vh !important; /* Ensure body takes full viewport height for proper page breaks */
+  }
+
+  .print-header {
+    /* Header will only appear on the first page by default if not fixed */
+    background-color: #FFFFFF !important; /* Ensure header background matches main content */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; Increase shadow thickness for print */
+    padding-bottom: 1px !important; /* Add some space below the header content */
+    border-bottom: 1px solid #eee !important; /* Optional: a subtle line below header */
+    margin-bottom: 20px !important; /* Add margin below header to separate from content */
+  }
+
+  /* Remove any conflicting margins/paddings from main-content */
+  .main-content {
+    margin-top: 0 !important;
+    padding: 0 !important; /* Remove all padding for print */
+    width: 100% !important; /* Ensure full width */
+    max-width: none !important; /* Override any max-width from container */
+    page-break-after: avoid !important; /* Try to keep main content and footer together */
+  }
+
+  /* Ensure h1, h2 have appropriate margins */
+  h1 {
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+  }
+
+  h2 {
+    margin-top: 40px !important; /* Adjusted margin-top for h2 in print */
+    margin-bottom: 30px !important;
+  }
+
+  /* Ensure h3 has no top margin, relying on body padding, and a bottom margin for spacing before table */
+  h3 {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Force page break before each report section (title + table) */
+  .report-section {
+    page-break-before: always !important;
+    page-break-inside: avoid !important; /* Ensure the section itself doesn't break in the middle */
+    margin-top: 10px !important; /* Default margin for report sections on new pages */
+  }
+
+  /* Ensure the first report section doesn't have a page break before it and has a specific top margin */
+  .main-content > .report-section:first-of-type {
+    page-break-before: auto !important;
+    margin-top: 40px !important; /* Specific margin for the first report section */
+  }
+
+  /* Ensure headers are not split across pages */
+  h1, h2, h3 {
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Ensure tables and charts are not split across pages */
+  .table-container, .BarChart-container {
+    page-break-inside: avoid !important;
+  }
+
+  /* Layout for table and chart within the same section */
+  .table-chart-container {
+    display: flex !important;
+    flex-direction: column !important; /* Stack table and chart vertically */
+    align-items: flex-start !important; /* Align items to the left */
+    gap: 20px !important; /* Add some space between table and chart */
+  }
+
+  .table-container {
+    width: 100% !important; /* Table takes full width */
+  }
+
+  .BarChart-container {
+    width: auto !important; /* Chart takes its natural width */
+    margin-left: 0 !important; /* Ensure it's aligned to the left */
+  }
+
+  table {
+    table-layout: fixed !important;
+    word-wrap: break-word !important;
+  }
+  th, td {
+    /* Reverted to original padding or default to avoid scaling down */
+  }
+
+  /* Custom classes for more granular page break control */
+  .page-break-always {
+    page-break-before: always !important;
+  }
+
+  .page-break-avoid {
+    page-break-inside: avoid !important;
+  }
+
+  .print-footer {
+    /* This class is no longer needed as @page handles the footer content and styling */
+    display: none !important;
+  }
+}
+
+@page {
+  margin-bottom: 15px; /* Set a smaller margin for the page itself */
+
+  @bottom-right {
+    content: "Page " counter(page) ""; /* Display page numbers, aligned right */
+    font-size: 10px;
+    color: #555;
+    line-height: 1;
+    margin-top: -30px;
+    margin-right: 0px; /* Adjust margin for the page number */
+
+    /* Add logo to the left of the page number */
+    background-image: url('../public/atmclogo.jpg');
+    background-repeat: no-repeat;
+    background-position: right 60px center; 
+    background-size: 200px; /* Adjust size as needed */
+    padding-right: 10px; /* Overall right padding for both logo and page number */
+  }
+}

@@ -1,0 +1,174 @@
+import os
+import pandas as pd
+import argparse
+
+def extract_device_type(file_path):
+    """
+    Extracts device type from the filename.
+    Handles specific cases like DUT1.csv, DUT2.csv, REF.csv,
+    and assumes filename format like 'YYYY-MM-DD_TMO_DeviceType_...' for others.
+    """
+    base_name = os.path.basename(file_path)
+    
+    # Handle specific cases
+    if base_name.lower() == "dut1.csv":
+        return "DUT1"
+    if base_name.lower() == "dut2.csv":
+        return "DUT2"
+    if base_name.lower() == "ref.csv":
+        return "REF"
+
+    # Existing logic for other filenames
+    parts = base_name.split('_')
+    if len(parts) >= 4:
+        # Assuming device type is like 'Wingtech_Plunkett' from 'TMO_Wingtech_Plunkett_...'
+        return f"{parts[2]}_{parts[3]}"
+    return "Unknown Device"
+
+def analyze_csv(file_path):
+    """
+    Analyzes a single CSV file for voice quality metrics.
+    Extracts UL MOS, DL MOS, and calculates statistics.
+    """
+    try:
+        df = pd.read_csv(file_path)
+    except Exception as e:
+        print(f"Error reading {file_path}: {e}")
+        return None, None
+
+    ul_mos_header = '[Call Test] [Voice Quality] [UL MOS] MOS'
+    dl_mos_header = '[Call Test] [Voice Quality] [Per Rx Clip] MOS Value'
+
+    ul_mos_scores = []
+    dl_mos_scores = []
+
+    if ul_mos_header in df.columns:
+        ul_mos_scores = df[ul_mos_header].dropna().tolist()
+    else:
+        print(f"Warning: '{ul_mos_header}' not found in {file_path}")
+
+    if dl_mos_header in df.columns:
+        dl_mos_scores = df[dl_mos_header].dropna().tolist()
+    else:
+        print(f"Warning: '{dl_mos_header}' not found in {file_path}")
+
+    ul_stats = calculate_statistics(ul_mos_scores)
+    dl_stats = calculate_statistics(dl_mos_scores)
+    device_type = extract_device_type(file_path)
+
+    return {
+        "file_path": file_path,
+        "device_type": device_type,
+        "ul_mos_stats": ul_stats,
+        "dl_mos_stats": dl_stats
+    }
+
+def process_directory(directory_path, subdir_filter=None):
+    """
+    Traverses a directory, finds CSV files, and collects voice quality metrics per file.
+    If subdir_filter is provided, only processes subdirectories whose names contain the filter string.
+    """
+    all_file_stats = []
+    
+    for root, dirs, files in os.walk(directory_path):
+        # If a filter is applied and we are not in the root directory, check the current subdirectory name
+        if subdir_filter and root != directory_path:
+            current_subdir_name = os.path.basename(root)
+            if subdir_filter.lower() not in current_subdir_name.lower():
+                # If the current subdirectory doesn't match the filter, skip its contents and subdirectories
+                dirs[:] = [] # Clear dirs to prevent os.walk from descending further
+                continue
+
+        for file in files:
+            if file.endswith('.csv'):
+                file_path = os.path.join(root, file)
+                print(f"Processing file: {file_path}")
+                file_stats = analyze_csv(file_path)
+                if file_stats is not None:
+                    all_file_stats.append(file_stats)
+    
+    return all_file_stats
+
+def calculate_statistics(mos_scores):
+    """
+    Calculates average MOS and percentage of scores less than 2.
+    """
+    if not mos_scores:
+        return {
+            "count": 0,
+            "mean": 0.0,
+            "std_dev": 0.0,
+            "max": 0.0,
+            "min": 0.0,
+            "percent_less_than_2": 0.0,
+            "percent_less_than_3": 0.0
+        }
+
+    series = pd.Series(mos_scores)
+    
+    mean_mos = series.mean()
+    std_dev_mos = series.std()
+    max_mos = series.max()
+    min_mos = series.min()
+    
+    count_less_than_2 = (series < 2).sum()
+    percent_less_than_2 = (count_less_than_2 / len(mos_scores)) * 100
+
+    count_less_than_3 = (series < 3).sum()
+    percent_less_than_3 = (count_less_than_3 / len(mos_scores)) * 100
+    
+    return {
+        "count": len(mos_scores),
+        "mean": mean_mos,
+            "std_dev": std_dev_mos,
+            "max": max_mos,
+            "percent_less_than_2": percent_less_than_2,
+            "percent_less_than_3": percent_less_than_3
+        }
+
+def main():
+    parser = argparse.ArgumentParser(description="Analyze voice quality from CSV files in a given directory.")
+    parser.add_argument("path", help="The path to the directory containing CSV files.")
+    args = parser.parse_args()
+
+    if not os.path.isdir(args.path):
+        print(f"Error: Directory not found at '{args.path}'")
+        return
+
+    print(f"Starting analysis for directory: {args.path}")
+    all_file_stats = process_directory(args.path)
+
+    print("\n--- Analysis Results ---")
+
+    if not all_file_stats:
+        print("No CSV files found or processed with relevant data.")
+        return
+
+    for stats in all_file_stats:
+        file_name = os.path.basename(stats["file_path"])
+        device_type = stats["device_type"]
+        print(f"\n--- File: {file_name} ---")
+        print(f"  Device Type: {device_type}")
+
+        # Uplink MOS statistics
+        ul_stats = stats["ul_mos_stats"]
+        print(f"  Uplink MOS :")
+        print(f"    Count: {ul_stats['count']}")
+        print(f"    Mean: {ul_stats['mean']:.2f}")
+        print(f"    Standard Deviation: {ul_stats['std_dev']:.2f}")
+        print(f"    Max: {ul_stats['max']:.2f}")
+        print(f"    Percentage of scores < 2: {ul_stats['percent_less_than_2']:.2f}%")
+        print(f"    Percentage of scores < 3: {ul_stats['percent_less_than_3']:.2f}%")
+
+        # Downlink MOS statistics
+        dl_stats = stats["dl_mos_stats"]
+        print(f"  Downlink MOS :")
+        print(f"    Count: {dl_stats['count']}")
+        print(f"    Mean: {dl_stats['mean']:.2f}")
+        print(f"    Standard Deviation: {dl_stats['std_dev']:.2f}")
+        print(f"    Max: {dl_stats['max']:.2f}")
+        print(f"    Percentage of scores < 2: {dl_stats['percent_less_than_2']:.2f}%")
+        print(f"    Percentage of scores < 3: {dl_stats['percent_less_than_3']:.2f}%")
+
+if __name__ == "__main__":
+    main()

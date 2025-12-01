@@ -1,0 +1,11 @@
+@import './table-styles.css'; /* Import the common table styles */
+
+/* MrabStatisticsTable.css */
+
+/* The .common-table class from table-styles.css will handle most of the table styling */
+/* Remove redundant styles */
+
+/* Performance colors - these are handled by Tailwind CSS classes directly in the component */
+/* No explicit background-color needed here for performance classes */
+
+/* If there are any specific styles for MRAB table that are not covered by common-table, add them here */

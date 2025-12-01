@@ -623,7 +623,7 @@ if __name__ == "__main__":
 
     if all_collected_results:
         # Output results to a JSON file for the React app
-        json_output_path = os.path.join("Scripts", "React", "frontend", "src", "data_analysis_results.json")
+        json_output_path = os.path.join(output_dir, "data_analysis_results.json")
         with open(json_output_path, 'w', encoding='utf-8') as f:
             json.dump(all_collected_results, f, ensure_ascii=False, indent=4)
         print(f"\nJSON data generated: {json_output_path}")

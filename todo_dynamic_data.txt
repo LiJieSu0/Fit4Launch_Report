@@ -1,0 +1,87 @@
+# Hardcoded Raw Statistical Data
+
+## report-generator-app/src/ReportDetails/CallPerformance/CallPerformanceDetails.js
+- Line 59: `categoryOrder = ['VoLTE', '5G SA', 'EPSFB', 'Unknown']` (Hardcoded categories for call distribution).
+- Line 143: `categoryOrder = ['VoLTE', '5G SA', 'EPSFB', 'Unknown', 'Total']` (Hardcoded categories for call distribution table).
+
+## report-generator-app/src/ReportDetails/CallPerformance/CpSummaryPage.js
+- Line 14: `"Seattle"` (Hardcoded market name).
+
+## report-generator-app/src/ReportDetails/CoveragePerformance/CoverageDetails.js
+- Line 6-9: `NR25_DL` array contains hardcoded numerical values: `1.77, 1.98, 2.16, 2.07, 2.02, 2.00` and string `"Fail"`.
+- Line 11-14: `NR25_UL` array contains hardcoded numerical values: `1.77, 1.94, 2.13, 2.02, 2.00, 1.97` and string `"Pass"`.
+- Line 16-19: `NR25_MOS` array contains hardcoded numerical values: `2.00, 2.30, 2.37, 2.44, 2.19, 2.26` and string `"Fail"`.
+- Line 21-24: `NR25_Audio` array contains hardcoded numerical values: `2.15, 2.40, 2.42, 2.46, 2.32, 2.35` and string `"Pass"`.
+- Line 27-30: `NR41_DL` array contains hardcoded numerical values: `2.43, 2.48, 2.48, 2.48, 2.27, 2.43` and string `"Pass"`.
+- Line 32-35: `NR41_UL` array contains hardcoded numerical values: `2.34, 2.41, 2.48, 2.47, 2.18, 2.38` and string `"Pass"`.
+- Line 37-40: `NR41_MOS` array contains hardcoded numerical values: `2.80, 2.76, 2.42, 2.80, 2.48, 2.65` and string `"Pass"`.
+- Line 42-45: `NR41_Audio` array contains hardcoded numerical values: `2.86, 2.82, 2.42, 2.84, 2.48, 2.68` and string `"Pass"`.
+- Line 48-51: `NR71_DL` array contains hardcoded numerical values: `2.10, 1.96, 1.81, 1.83, 1.86, 1.91` and string `"Pass"`.
+- Line 53-56: `NR71_UL` array contains hardcoded numerical values: `2.00, 1.83, 1.78, 1.76, 1.72, 1.82` and string `"Pass"`.
+- Line 58-61: `NR71_MOS` array contains hardcoded numerical values: `2.35, 2.30, 2.37, 2.44, 2.37, 2.37` and string `"Pass"`.
+- Line 63-66: `NR71_Audio` array contains hardcoded numerical values: `2.43, 2.40, 2.42, 2.46, 2.40, 2.42` and string `"Pass"`.
+- Line 183-188: Hardcoded numerical values for Power Class 2: `2.34, 2.10, 2.32, 2.33, 2.31, 2.28`.
+- Line 191-197: Hardcoded numerical values for Power Class 3: `2.39, 2.27, 1.98, 2.38, 2.33, 2.27`.
+- Line 221-224: `NR41_HPUE_Coverage` array contains hardcoded numerical values: `2.34, 2.10, 2.32, 2.33, 2.31, 2.28` and `2.39, 2.27, 1.98, 2.38, 2.33, 2.27`.
+
+## report-generator-app/src/ReportDetails/CoveragePerformance/CoverageSummaryTable.js
+- Line 7-37: `summaryData` array contains hardcoded market name "Seattle", device names "Samsung XCover Pro 7(NR 25)", "Samsung XCover Pro 7(NR 41)", "Samsung XCover Pro 7(NR 71)", KPI names, and their results ("Fail" or "Pass").
+
+## report-generator-app/src/ReportDetails/DataPerformance/DpSummaryPage.js
+- Line 22: `"Seattle (5G NR)"` (Hardcoded market for httpSSData).
+- Line 41: `"Seattle (5G NR)"` (Hardcoded market for httpMSData).
+- Line 60: `"Seattle (5G NR)"` (Hardcoded market for udpData).
+- Line 95: `"Seattle (5G NR)"` (Hardcoded market for pingData).
+- Line 113: `"Seattle (5G NR)"` (Hardcoded market for webBrowserData).
+- Line 131: `"Seattle (5G NR)"` (Hardcoded market for playStoreData).
+- Line 150: `"Seattle (5G NR)"` (Hardcoded market for mhsStationaryData).
+- Line 169: `"Seattle (5G NR)"` (Hardcoded market for mobiltyData).
+- Line 188: `"Seattle (5G NR)"` (Hardcoded market for mobiltyMHSData).
+- Line 207: `"Seattle (5G NR)"` (Hardcoded market for mrabData).
+- Line 227: `"Seattle (5G NSA)"` (Hardcoded market for httpNSASSData).
+- Line 246: `"Seattle (5G NSA)"` (Hardcoded market for httpNSAMSData).
+- Line 265: `"Seattle (5G NSA)"` (Hardcoded market for udpNSAData).
+- Line 300: `"Seattle (5G NSA)"` (Hardcoded market for pingNSAData).
+- Line 318: `"Seattle (5G NSA)"` (Hardcoded market for mobiltyNSAData).
+
+## report-generator-app/src/ReportDetails/DataPerformance/MHS/Dp_MHS_Udp_Component.js
+- Line 15: `"200000"` (Hardcoded ideal throughput for Mean Throughput DL).
+- Line 35: `"400000"` (Hardcoded ideal throughput for Mean Throughput DL).
+- Line 55: `"200000"` (Hardcoded ideal throughput for Max Throughput DL).
+- Line 75: `"400000"` (Hardcoded ideal throughput for Max Throughput DL).
+- Line 95: `"200000"` (Hardcoded ideal throughput for Mean Jitter DL).
+- Line 115: `"400000"` (Hardcoded ideal throughput for Mean Jitter DL).
+- Line 135: `"200000"` (Hardcoded ideal throughput for Packet Failure Rate DL).
+- Line 155: `"400000"` (Hardcoded ideal throughput for Packet Failure Rate DL).
+- Line 192: `"10000"` (Hardcoded ideal throughput for Mean Throughput UL).
+- Line 212: `"20000"` (Hardcoded ideal throughput for Mean Throughput UL).
+- Line 232: `"10000"` (Hardcoded ideal throughput for Max Throughput UL).
+- Line 252: `"20000"` (Hardcoded ideal throughput for Max Throughput UL).
+- Line 272: `"10000"` (Hardcoded ideal throughput for Mean Jitter UL).
+- Line 292: `"20000"` (Hardcoded ideal throughput for Mean Jitter UL).
+- Line 312: `"10000"` (Hardcoded ideal throughput for Packet Failure Rate UL).
+- Line 332: `"20000"` (Hardcoded ideal throughput for Packet Failure Rate UL).
+
+## report-generator-app/src/ReportDetails/DataPerformance/NSA/Stationary/DpNSAUDPComponent.js
+- Line 16: `"200000"` (Hardcoded ideal throughput for Mean Throughput DL).
+- Line 36: `"400000"` (Hardcoded ideal throughput for Mean Throughput DL).
+- Line 56: `"200000"` (Hardcoded ideal throughput for Max Throughput DL).
+- Line 76: `"400000"` (Hardcoded ideal throughput for Max Throughput DL).
+- Line 96: `"200000"` (Hardcoded ideal throughput for Mean Jitter DL).
+- Line 116: `"400000"` (Hardcoded ideal throughput for Mean Jitter DL).
+- Line 136: `"200000"` (Hardcoded ideal throughput for Packet Failure Rate DL).
+- Line 156: `"400000"` (Hardcoded ideal throughput for Packet Failure Rate DL).
+- Line 173: `"10000"` (Hardcoded ideal throughput for Mean Throughput UL).
+- Line 193: `"20000"` (Hardcoded ideal throughput for Mean Throughput UL).
+- Line 213: `"10000"` (Hardcoded ideal throughput for Max Throughput UL).
+- Line 233: `"20000"` (Hardcoded ideal throughput for Max Throughput UL).
+- Line 253: `"10000"` (Hardcoded ideal throughput for Mean Jitter UL).
+- Line 273: `"20000"` (Hardcoded ideal throughput for Mean Jitter UL).
+- Line 293: `"10000"` (Hardcoded ideal throughput for Packet Failure Rate UL).
+- Line 313: `"20000"` (Hardcoded ideal throughput for Packet Failure Rate UL).
+- Line 385: `"200000", "400000"` (Hardcoded ideal throughput values for DL histograms).
+- Line 396: `"200000", "400000"` (Hardcoded ideal throughput values for DL histograms).
+- Line 407: `"200000", "400000"` (Hardcoded ideal throughput values for DL histograms).
+- Line 421: `"10000", "20000"` (Hardcoded ideal throughput values for UL histograms).
+- Line 432: `"10000", "20000"` (Hardcoded ideal throughput values for UL histograms).
+- Line 443: `"10000", "20000"` (Hardcoded ideal throughput values for UL histograms).

@@ -78,7 +78,7 @@ if __name__ == "__main__":
         "coverage_coordinate",
         "n41_coverage", # Add n41_coverage to excluded list
         "vonr_coverage_performance", # Add vonr_coverage_performance to excluded list
-        "google_throughput_analysis" # Add google_throughput_analysis to excluded list
+        "google_throughput_analysis" # Add google_throughput_analysis back to excluded list
     ]
 
     # Get all CSV file paths using the new data_path_reader script, excluding those handled separately
@@ -195,7 +195,7 @@ if __name__ == "__main__":
                     has_any_statistical_data = True
                     break
             
-            if not has_any_statistical_data and params["analysis_type_detected"] not in ["call_performance", "voice_quality", "audio_delay"]: # Don't mark call_performance, voice_quality, or audio_delay files as invalid here
+            if not has_any_statistical_data and params["analysis_type_detected"] not in ["call_performance", "voice_quality", "audio_delay", "google_throughput_analysis"]: # Don't mark call_performance, voice_quality, audio_delay, or google_throughput_analysis files as invalid here
                 current_file_has_invalid_data = True
         
         if current_file_has_invalid_data:

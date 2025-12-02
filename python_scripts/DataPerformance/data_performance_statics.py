@@ -91,6 +91,10 @@ def _determine_analysis_parameters(file_path):
     # Determine analysis type based on directory name
     if "5g vonr mrab stationary" in file_path_lower:
         params["analysis_type_detected"] = "mrab_performance"
+    elif "play-store app" in file_path_lower: # Specific condition for Play-store app analysis
+        params["analysis_type_detected"] = "google_throughput_analysis"
+        params["protocol_type_detected"] = "HTTP" # Play-store app is typically HTTP
+        params["analysis_direction_detected"] = "DL" # Explicitly set to DL for Play-store app DL Stationary
     elif "5g auto dp" in file_path_lower or "5g nsa dp" in file_path_lower:
         params["analysis_type_detected"] = "data_performance"
     elif "5g n41 hpue coverage test" in file_path_lower:

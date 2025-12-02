@@ -30,7 +30,7 @@ function App() {
     <div className="App">
       <CoverPage />
       
-      <ReportHeader />
+      {/* <ReportHeader /> */}
 
       {/* <DeviceInfoPage/>
       <ContentsIndexPage /> */}

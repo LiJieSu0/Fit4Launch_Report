@@ -50,7 +50,11 @@ if __name__ == "__main__":
         {"path": "Data Performance/5G AUTO DP/5G Auto Data Play-store app DL Stationary", "analysis_type": "google_throughput_analysis"}, # Add Google Throughput Analysis directory
     ]
     
-    all_collected_results = {}
+    data_performance_results = {}
+    call_performance_results = {}
+    voice_quality_results = {}
+    coverage_performance_results = {}
+    
     invalid_data_files = [] # Initialize a list to store paths of files with invalid data
     valid_data_files = [] # Initialize a list to store paths of files with valid data
     def _insert_into_nested_dict(data_dict, path_components, value):
@@ -202,7 +206,7 @@ if __name__ == "__main__":
             print(f"Valid data detected for: {csv_file_path}. Added to valid_data_files.")
         
         # Construct the hierarchical path for the JSON output
-        if all_file_stats and params["analysis_type_detected"] not in ["call_performance", "voice_quality"]: # Only insert if stats were successfully collected and not call_performance or voice_quality
+        if all_file_stats: # Always attempt to insert if stats were collected
             relative_path = os.path.relpath(csv_file_path, base_raw_data_dir)
             path_components = relative_path.replace("\\", "/").split('/') # Use forward slashes for consistency
             
@@ -210,7 +214,10 @@ if __name__ == "__main__":
             filename_without_ext = os.path.splitext(path_components[-1])[0]
             path_components[-1] = filename_without_ext
             
-            _insert_into_nested_dict(all_collected_results, path_components, all_file_stats)
+            # Direct to the appropriate dictionary based on analysis_type_detected
+            if params["analysis_type_detected"] == "data_performance" or params["analysis_type_detected"] == "mrab_performance":
+                _insert_into_nested_dict(data_performance_results, path_components, all_file_stats)
+            # Call performance and Voice Quality files are handled by their respective directory analyzers, so no individual CSV insertion here.
     
     # After processing all individual CSVs, handle directory-level analyses
     for directory_info in directories_to_process:
@@ -272,8 +279,8 @@ if __name__ == "__main__":
                                     if retention_p_value is not None:
                                         call_results_for_subdir['retention_p_value'] = retention_p_value
 
-                                # Insert results under the specific subdirectory's name
-                                _insert_into_nested_dict(all_collected_results, [directory_info["path"], sub_dir_name], call_results_for_subdir)
+                                # Insert results under the specific subdirectory's name into call_performance_results
+                                _insert_into_nested_dict(call_performance_results, [directory_info["path"], sub_dir_name], call_results_for_subdir)
                                 print(f"Call Performance analysis for {sub_dir_name} completed and added to results.")
                             else:
                                 print(f"No call performance data collected for {sub_dir_name}.")
@@ -343,7 +350,7 @@ if __name__ == "__main__":
                             print(f"Skipping subfolder {sub_dir_name}: Does not match any known voice quality analysis type.")
                 
                 if voice_quality_combined_results:
-                    _insert_into_nested_dict(all_collected_results, ["Voice Quality"], voice_quality_combined_results)
+                    _insert_into_nested_dict(voice_quality_results, ["Voice Quality"], voice_quality_combined_results)
                     print(f"Combined Voice Quality analysis for {base_voice_quality_path} completed and added to results.")
                 else:
                     print(f"No combined voice quality data collected for {base_voice_quality_path}.")
@@ -400,9 +407,9 @@ if __name__ == "__main__":
 
                     coverage_comparisons[subfolder] = subfolder_comparison_results
                 
-                # Insert the structured comparison results into all_collected_results
+                # Insert the structured comparison results into coverage_performance_results
                 # Path components: ['Coverage Performance', '5G VoNR Coverage Test']
-                _insert_into_nested_dict(all_collected_results, ["Coverage Performance", "5G VoNR Coverage Test"], coverage_comparisons)
+                _insert_into_nested_dict(coverage_performance_results, ["Coverage Performance", "5G VoNR Coverage Test"], coverage_comparisons)
                 print(f"Coverage Coordinate analysis for {base_coverage_test_path} completed and added to results.")
             else:
                 print(f"Warning: Coverage base directory not found at {base_coverage_test_path}. Skipping analysis.")
@@ -432,7 +439,7 @@ if __name__ == "__main__":
                             print(f"No n41 coverage results found for {run_folder_name}.")
                 
                 if n41_coverage_results_by_run:
-                    _insert_into_nested_dict(all_collected_results, ["Coverage Performance", "5G n41 HPUE Coverage Test"], n41_coverage_results_by_run)
+                    _insert_into_nested_dict(coverage_performance_results, ["Coverage Performance", "5G n41 HPUE Coverage Test"], n41_coverage_results_by_run)
                     print(f"N41 Coverage analysis for {n41_base_path} completed and added to results.")
                 else:
                     print(f"No N41 Coverage data collected for {n41_base_path}.")
@@ -483,7 +490,7 @@ if __name__ == "__main__":
                             print(f"No CSV files with 'DUT' or 'REF' found in band {band_folder_name}.")
 
                 if vonr_coverage_results_by_band:
-                    _insert_into_nested_dict(all_collected_results, directory_info["path"].replace("\\", "/").split('/'), vonr_coverage_results_by_band)
+                    _insert_into_nested_dict(coverage_performance_results, directory_info["path"].replace("\\", "/").split('/'), vonr_coverage_results_by_band)
                     print(f"5G VoNR Coverage Performance analysis for {vonr_coverage_base_path} completed and added to results.")
                 else:
                     print(f"No 5G VoNR Coverage Performance data collected for {vonr_coverage_base_path}.")
@@ -544,7 +551,7 @@ if __name__ == "__main__":
                 if google_throughput_results:
                     # Correctly insert into nested dictionary structure
                     path_components_for_insertion = directory_info["path"].replace("\\", "/").split('/')
-                    _insert_into_nested_dict(all_collected_results, path_components_for_insertion, google_throughput_results)
+                    _insert_into_nested_dict(data_performance_results, path_components_for_insertion, google_throughput_results)
                     print(f"Google Throughput analysis for {google_throughput_base_path} completed and added to results.")
                 else:
                     print(f"No Google Throughput data collected for {google_throughput_base_path}.")
@@ -621,14 +628,38 @@ if __name__ == "__main__":
         f.write(f"Incorrect paths: {incorrect_paths_count}\n")
     print(f"\nProcessed file count written to: {summary_output_path}")
 
-    if all_collected_results:
-        # Output results to a JSON file for the React app
-        json_output_path = os.path.join(output_dir, "data_analysis_results.json")
+    # Output results to separate JSON files for each category
+    if data_performance_results:
+        json_output_path = os.path.join(output_dir, "data_performance_results.json")
         with open(json_output_path, 'w', encoding='utf-8') as f:
-            json.dump(all_collected_results, f, ensure_ascii=False, indent=4)
-        print(f"\nJSON data generated: {json_output_path}")
+            json.dump(data_performance_results, f, ensure_ascii=False, indent=4)
+        print(f"\nData Performance JSON data generated: {json_output_path}")
     else:
-        print("No data collected to generate a report.")
+        print("No Data Performance data collected to generate a report.")
+
+    if call_performance_results:
+        json_output_path = os.path.join(output_dir, "call_performance_results.json")
+        with open(json_output_path, 'w', encoding='utf-8') as f:
+            json.dump(call_performance_results, f, ensure_ascii=False, indent=4)
+        print(f"\nCall Performance JSON data generated: {json_output_path}")
+    else:
+        print("No Call Performance data collected to generate a report.")
+
+    if voice_quality_results:
+        json_output_path = os.path.join(output_dir, "voice_quality_results.json")
+        with open(json_output_path, 'w', encoding='utf-8') as f:
+            json.dump(voice_quality_results, f, ensure_ascii=False, indent=4)
+        print(f"\nVoice Quality JSON data generated: {json_output_path}")
+    else:
+        print("No Voice Quality data collected to generate a report.")
+
+    if coverage_performance_results:
+        json_output_path = os.path.join(output_dir, "coverage_performance_results.json")
+        with open(json_output_path, 'w', encoding='utf-8') as f:
+            json.dump(coverage_performance_results, f, ensure_ascii=False, indent=4)
+        print(f"\nCoverage Performance JSON data generated: {json_output_path}")
+    else:
+        print("No Coverage Performance data collected to generate a report.")
     
     # Call check_empty_data.main with the output_dir
     check_empty_data.main(output_dir)

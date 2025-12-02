@@ -34,9 +34,13 @@ const CoverPage = () => {
           <span className="detail-value">Claude.li@atmcl.com</span>
         </div>
       </div>
+
       <div className="footer-logos">
-        <img src="/CoverPagePic/other-logo.png" alt="other-logo" style={{ maxWidth: '60%', height: '60%' }} />
-        <p className="footer-text">ATMCL One Stop Test Service</p>
+        <div className="footer-left-content">
+          <img src="/CoverPagePic/other-logo.png" alt="other-logo" style={{ maxWidth: '60%', height: '60%' }} />
+          <p className="footer-text">ATMCL One Stop Test Service</p>
+        </div>
+        <img src="/CoverPagePic/signalLogo.png" alt="signal-logo" className="signal-logo" />
       </div>
     </div>
   );

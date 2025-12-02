@@ -24,26 +24,26 @@
 
 .report-title {
   font-size: 2.5em;
-  color: #000080; /* Dark blue */
+  color: #000000; /* Dark blue */
   margin: 0;
 }
 
 .separator {
   font-size: 2.5em;
-  color: #000080; /* Dark blue */
+  color: #000000; /* Dark blue */
   margin: 0 10px;
 }
 
 .report-subtitle {
   font-size: 1.8em;
-  color: #00bfff; /* Light blue */
+  color: rgb(255, 204, 0);  /* Light blue */
   margin: 0;
 }
 
 .title-underline {
   width: 100%;
   border: none;
-  border-top: 2px solid #000080; /* Dark blue */
+  border-top: 2px solid #000000; /* Dark blue */
   margin-bottom: 50px;
 }
 

@@ -52,6 +52,7 @@ def analyze_throughput(file_path):
         return None
 
     interval_averages = []
+    interval_counts = [] # New list to store counts of data points in each interval
     in_interval = False
     current_interval_data = []
     consecutive_low_count = 0
@@ -78,10 +79,12 @@ def analyze_throughput(file_path):
                     interval_to_average = current_interval_data[:-3]
                     if interval_to_average:
                         interval_averages.append(sum(interval_to_average) / len(interval_to_average))
+                        interval_counts.append(len(interval_to_average)) # Store the count
                 elif len(current_interval_data) > 0: # Handle cases where interval is very short
                     interval_to_average = current_interval_data[:-consecutive_low_count]
                     if interval_to_average:
                         interval_averages.append(sum(interval_to_average) / len(interval_to_average))
+                        interval_counts.append(len(interval_to_average)) # Store the count
                 
                 in_interval = False
                 current_interval_data = []
@@ -92,14 +95,22 @@ def analyze_throughput(file_path):
         # If the last part of the data was an open interval, average what's there
         # We don't have 3 consecutive low values to end it, so we average all of it.
         interval_averages.append(sum(current_interval_data) / len(current_interval_data))
+        interval_counts.append(len(current_interval_data)) # Store the count for the last interval
 
     print(f"DEBUG: Final interval_averages: {interval_averages}")
+
+    print(f"DEBUG: Final interval_averages: {interval_averages}")
+    print(f"DEBUG: Final interval_counts: {interval_counts}")
 
     if interval_averages:
         overall_average = sum(interval_averages) / len(interval_averages)
         print(f"Individual interval averages: {interval_averages}")
         print(f"Overall average of all interval averages: {overall_average}")
-        return {"overall_average": overall_average, "interval_averages": interval_averages}
+        return {
+            "overall_average": overall_average,
+            "interval_averages": interval_averages, # Keep for now, will remove in run_all_data_analysis.py
+            "interval_counts": interval_counts # Add interval counts
+        }
     else:
         # Fallback: If no valid intervals are found, calculate the average of all non-zero throughput values
         non_zero_throughput = [val for val in numeric_throughput_data if val > 0]
@@ -108,7 +119,11 @@ def analyze_throughput(file_path):
             overall_average = sum(non_zero_throughput) / len(non_zero_throughput)
             print("No valid intervals found using the defined criteria. Calculating overall average of all non-zero throughput values as a fallback.")
             print(f"Fallback overall average throughput: {overall_average}")
-            return {"overall_average": overall_average, "interval_averages": []} # Return empty list for individual averages
+            return {
+                "overall_average": overall_average,
+                "interval_averages": [], # Return empty list for individual averages
+                "interval_counts": [] # Return empty list for interval counts in fallback
+            }
         else:
             print("No valid intervals found and no non-zero throughput data to calculate a fallback average.")
             return None

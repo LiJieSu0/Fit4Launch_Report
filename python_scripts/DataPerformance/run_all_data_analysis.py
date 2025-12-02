@@ -540,8 +540,7 @@ if __name__ == "__main__":
                                         google_throughput_results[location][device_type][test_content] = {}
                                     
                                     google_throughput_results[location][device_type][test_content][os.path.splitext(file_name)[0]] = {
-                                        "overall_average_throughput": throughput_analysis_results["overall_average"],
-                                        "individual_interval_averages": throughput_analysis_results["interval_averages"]
+                                        "overall_average_throughput": throughput_analysis_results["overall_average"]
                                     }
                                 else:
                                     print(f"No valid throughput data found for {file_name}.")

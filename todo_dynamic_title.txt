@@ -1,0 +1,33 @@
+Hardcoded <h2> titles for refactoring:
+
+
+CoveragePerformance Directory:
+- report-generator-app/src/ReportDetails/CoveragePerformance/CoverageDetails.js: <h2>4.1 5G VoNR Coverage Test - N25, N41, N71</h2>
+- report-generator-app/src/ReportDetails/CoveragePerformance/CoverageDetails.js: <h2>4.2 5G n41 HPUE Coverage Test</h2>
+- report-generator-app/src/ReportDetails/CoveragePerformance/CoverageDetails.js: <h2>5G n41 HPUE Coverage Test-RSRP Analysis</h2>
+- report-generator-app/src/ReportDetails/CoveragePerformance/CoverageDetails.js: <h2>5G n41 HPUE Coverage Test-Tx Power Analysis</h2>
+
+DataPerformance Directory:
+- report-generator-app/src/ReportDetails/DataPerformance/DpMrabDetailsPage.js: <h2>VoNR MRAB Stationary test - 5G NR</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/DriveTest/DpDriveTestDetailPage.js: <h2>Mobility test - 5G Auto Data Test MHS Drive</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/NSA/TestDrive/DpNSATestDriveDetails.js: <h2>NSA Test Drive Data Performance Details</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/NSA/Stationary/DpNSAStationaryDetails.js: <h2>NSA Stationary Data Performance Details</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/Statoinary/Dp_httpMS_Component.js: <h2>HTTP Multi Stream test - 5G NR</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/MHS/Dp_MHS_httpMS_Component.js: <h2>MHS-httpMS Component</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/NSA/Stationary/DpNSAUDPComponent.js: <h2>UDP test - 5G NSA</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/Statoinary/Dp_httpSS_Component.js: <h2>HTTP Single Stream test - 5G NR</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/MHS/Dp_MHS_httpSS_Component.js: <h2>MHS-httpSS Component</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/Statoinary/Dp_Ping_Component.js: <h2>PING test - 5G NR</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/MHS/Dp_MHS_Ping_Component.js: <h2>MHS-Ping Component</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/MHS/Dp_MHS_Udp_Component.js: <h2>MHS-UDP Component</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/Statoinary/Dp_playStore_Component.js: <h2>Play-store app download test - 5G NR</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/Statoinary/Dp_Udp_Component.js: <h2>UDP test - 5G NR</h2>
+- report-generator-app/src/ReportDetails/DataPerformance/Statoinary/Dp_Webbrowser_Component.js: <h2>Web browser test - 5G NR</h2>
+
+VoiceQuality Directory:
+- report-generator-app/src/ReportDetails/VoiceQuality/VqCases/VqAmrNbVq.js: <h2>3.1 5G Auto VoNR Enabled AMR NB VQ</h2>
+- report-generator-app/src/ReportDetails/VoiceQuality/VqCases/VqAmrWbVq.js: <h2>3.2 5G Auto VoNR Enabled AMR WB VQ</h2>
+- report-generator-app/src/ReportDetails/VoiceQuality/VqCases/VqAutoVonrAudioDelay.js: <h2>3.6 Auto VoNR Enabled Audio Delay</h2>
+- report-generator-app/src/ReportDetails/VoiceQuality/VqCases/VqEvsWbVqDisabled.js: <h2>3.3 5G Auto VoNR Disabled EVS WB VQ</h2>
+- report-generator-app/src/ReportDetails/VoiceQuality/VqCases/VqEvsWbVqEnabled.js: <h2>3.4 5G Auto VoNR Enabled EVS WB VQ</h2>
+- report-generator-app/src/ReportDetails/VoiceQuality/VqCases/VqKpiAudioDelay.js: <h2>3.5 KPI FOR AUDIO DELAY</h2>

@@ -73,7 +73,7 @@ if __name__ == "__main__":
     # Define analysis types that are handled at the directory level and should not have individual CSVs processed in the main loop
     excluded_analysis_types_for_individual_csvs = [
         "call_performance",
-        "voice_quality",
+        "voice_quality_combined", # Changed from "voice_quality" to "voice_quality_combined"
         "audio_delay",
         "coverage_coordinate",
         "n41_coverage", # Add n41_coverage to excluded list
@@ -195,7 +195,7 @@ if __name__ == "__main__":
                     has_any_statistical_data = True
                     break
             
-            if not has_any_statistical_data and params["analysis_type_detected"] not in ["call_performance", "voice_quality"]: # Don't mark call_performance or voice_quality files as invalid here
+            if not has_any_statistical_data and params["analysis_type_detected"] not in ["call_performance", "voice_quality", "audio_delay"]: # Don't mark call_performance, voice_quality, or audio_delay files as invalid here
                 current_file_has_invalid_data = True
         
         if current_file_has_invalid_data:

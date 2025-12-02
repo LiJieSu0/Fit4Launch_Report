@@ -91,6 +91,9 @@ def _determine_analysis_parameters(file_path):
     # Determine analysis type based on directory name
     if "5g vonr mrab stationary" in file_path_lower:
         params["analysis_type_detected"] = "mrab_performance"
+    elif "5g auto data test mhs drive" in file_path_lower:
+        params["analysis_type_detected"] = "mhs_drive_performance"
+        params["protocol_type_detected"] = "UDP" # MHS Drive is UDP
     elif "play-store app" in file_path_lower: # Specific condition for Play-store app analysis
         params["analysis_type_detected"] = "google_throughput_analysis"
         params["protocol_type_detected"] = "HTTP" # Play-store app is typically HTTP
@@ -117,9 +120,9 @@ def _determine_analysis_parameters(file_path):
     # If essential parameters are not detected, return None
     # For WEB_PAGE, analysis_direction_detected is not strictly necessary as it's a single metric
     # For PING, analysis_direction_detected is not strictly necessary as it's a single metric (RTT)
-    # For MRAB, protocol_type_detected and analysis_direction_detected are not strictly necessary as it's a specific analysis
-    if params["analysis_type_detected"] == "mrab_performance":
-        # Only need network type and device type for MRAB
+    # For MRAB and MHS Drive, protocol_type_detected and analysis_direction_detected are not strictly necessary as it's a specific analysis
+    if params["analysis_type_detected"] == "mrab_performance" or params["analysis_type_detected"] == "mhs_drive_performance":
+        # Only need network type and device type for MRAB and MHS Drive
         if not params["network_type_detected"] or not params["device_type_detected"]:
             return None
     elif params["protocol_type_detected"] not in ["WEB_PAGE", "PING"] and (not params["analysis_direction_detected"] or not params["protocol_type_detected"] or not params["network_type_detected"]):
@@ -232,20 +235,15 @@ def _calculate_statistics(data_series, column_name):
     return stats
 
 def analyze_throughput(file_path, column_name_to_analyze, event_col_name, start_event_str, end_event_str, fallback_column_name=None, fallback_event_col_name=None, third_fallback_column_name=None):
-    num_intervals = 0 # Initialize interval count
     """
-    Reads a data CSV file, identifies intervals based on start/end event markers,
-    calculates average throughput for each, and then performs full statistics on these averages.
+    Reads a data CSV file and calculates statistics (Mean, Min, Max, Std Dev)
+    for the entire specified throughput column.
     Returns a dictionary of statistics or None.
     """
     try:
         data = pd.read_csv(file_path)
         # Apply the cleaning function to all column names in the DataFrame
         data.columns = [_clean_header(col) for col in data.columns]
-        # print(f"Successfully loaded {file_path}")
-
-        # The column names to analyze are already cleaned by _determine_analysis_parameters
-        # No need to strip or clean them again here.
         
         current_column_to_use = column_name_to_analyze
         
@@ -265,116 +263,27 @@ def analyze_throughput(file_path, column_name_to_analyze, event_col_name, start_
                 print(f"Available columns: {data.columns.tolist()}")
                 return {} # Return empty dict instead of None
         
-        # Check if primary event column exists, otherwise try fallback
-        current_event_col_to_use = event_col_name
-        if current_event_col_to_use not in data.columns:
-            if fallback_event_col_name:
-                if fallback_event_col_name in data.columns:
-                    print(f"Warning: Primary event column '{current_event_col_to_use}' not found. Using fallback event column '{fallback_event_col_name}'.")
-                    current_event_col_to_use = fallback_event_col_name
-                else:
-                    print(f"\nError: Primary event column '{current_event_col_to_use}' not found, and fallback event column '{fallback_event_col_name}' is also not found.")
-                    print(f"Available columns: {data.columns.tolist()}")
-                    return {} # Return empty dict instead of None
-            else:
-                print(f"\nError: Event column '{current_event_col_to_use}' not found in the CSV file, and no fallback event column was provided.")
-                print(f"Available columns: {data.columns.tolist()}")
-                return {} # Return empty dict instead of None
+        # Extract all non-NaN values from the chosen throughput column
+        throughput_data = data[current_column_to_use].dropna()
+
+        if throughput_data.empty:
+            print(f"Warning: No valid data found in column '{current_column_to_use}' for throughput analysis.")
+            return {}
         
-        # print(f"Attempting to analyze with column: '{current_column_to_use}' and event column: '{current_event_col_to_use}'") # Removed as per user request
-        # print(f"Looking for start event: '{start_event_str}' and end event: '{end_event_str}'") # Removed as per user request
-
-        filtered_data = data.copy()
-
-        started_indices = filtered_data[filtered_data[current_event_col_to_use].astype(str).str.contains(start_event_str, na=False)].index
-        ended_indices = filtered_data[filtered_data[current_event_col_to_use].astype(str).str.contains(end_event_str, na=False)].index
-
-        if started_indices.empty or ended_indices.empty:
-            print(f"\nWarning: Could not find both '{start_event_str}' and '{end_event_str}' events in '{current_event_col_to_use}'. Cannot calculate interval averages.")
-            # print(f"Started indices empty: {started_indices.empty}, Ended indices empty: {ended_indices.empty}") # Removed as per user request
-            print(f"Proceeding with full dataset for {current_column_to_use} analysis (this will calculate overall statistics, not statistics of averages).")
-            overall_data = filtered_data[current_column_to_use].dropna()
-            if overall_data.empty:
-                print(f"Warning: No valid data in '{current_column_to_use}' even for overall statistics.")
-            stats_result = _calculate_statistics(overall_data, current_column_to_use)
-            return stats_result if stats_result is not None else {} # Ensure empty dict if _calculate_statistics returns None
+        # Calculate full statistics on the entire column
+        stats = _calculate_statistics(throughput_data, current_column_to_use)
         
-        # print(f"Found {len(started_indices)} start events and {len(ended_indices)} end events.") # Removed as per user request
-
-        interval_averages = []
-        current_start_idx = -1
-
-        for i in range(len(filtered_data)):
-            event = str(filtered_data.loc[i, current_event_col_to_use])
-            
-            if start_event_str in event:
-                current_start_idx = i
-            elif end_event_str in event and current_start_idx != -1:
-                end_idx = i
-                
-                interval_data = filtered_data.loc[current_start_idx : end_idx, current_column_to_use].dropna()
-                
-                if not interval_data.empty:
-                    interval_avg = interval_data.mean()
-                    interval_averages.append(interval_avg)
-                # else:
-                    # print(f"Interval from row {current_start_idx} to {end_idx}: No valid {current_column_to_use} data.") # Removed as per user request
-                
-                current_start_idx = -1 # Reset for the next interval
-
-        if not interval_averages:
-            # print(f"\nNo valid '{start_event_str}' to '{end_event_str}' intervals with {current_column_to_use} data found.") # Removed as per user request
-            
-            # Implement user's requested fallback logic
-            overall_data_for_sum = filtered_data[current_column_to_use].dropna()
-            
-            # If overall_data_for_sum has more than 20 entries, take only the last 20
-            if len(overall_data_for_sum) > 20:
-                overall_data_for_sum = overall_data_for_sum.tail(20)
-                print(f"Warning: Overall data for sum exceeded 20 rows. Using last 20 rows for calculation.")
-
-            num_intervals_detected = len(started_indices) # Use the count of detected start events
-
-            if not overall_data_for_sum.empty and num_intervals_detected > 0:
-                # Calculate full statistics for the overall data
-                stats = _calculate_statistics(overall_data_for_sum, current_column_to_use)
-                if stats:
-                    # Add the calculated mean (sum / intervals) and other info
-                    total_sum = overall_data_for_sum.sum()
-                    # If num_intervals_detected is based on the full dataset, and overall_data_for_sum is sliced,
-                    # the mean calculation might be skewed. The request says "從最後20組的Row開始計算總和，而不是整Column計算"
-                    # and "輸出統計的組數假如超過20組，也只計算最後20組".
-                    # This implies that if we are taking the sum of the last 20 rows, the "number of intervals"
-                    # for the mean calculation should also be based on these 20 rows, or the number of actual intervals
-                    # found within these 20 rows. For simplicity and to align with "last 20 rows",
-                    # I will use the count of the sliced `overall_data_for_sum` for the mean divisor.
-                    calculated_mean = total_sum / len(overall_data_for_sum) if len(overall_data_for_sum) > 0 else 0
-                    stats["Mean"] = calculated_mean # Override mean with the requested calculation
-                    stats["Number of Intervals"] = len(overall_data_for_sum) # Reflect the number of rows used for sum
-                    stats["Note"] = "Calculated overall sum divided by number of detected intervals due to no valid interval data. Limited to last 20 rows if applicable."
-                    # print(f"Fallback: Calculated overall stats for '{current_column_to_use}': {stats}") # Removed as per user request
-                    return stats
-                else:
-                    print(f"Warning: Cannot perform fallback calculation: No valid data in column ('{current_column_to_use}' empty: {overall_data_for_sum.empty}) or no intervals detected (num_intervals_detected: {num_intervals_detected}).")
-                    print(f"Available columns in file: {data.columns.tolist()}")
-                    return {} # Return empty dict instead of None
-            else:
-                print(f"Warning: Cannot perform fallback calculation: No valid data in column ('{current_column_to_use}' empty: {overall_data_for_sum.empty}) or no intervals detected (num_intervals_detected: {num_intervals_detected}).")
-                print(f"Available columns in file: {data.columns.tolist()}")
-                return {} # Return empty dict instead of None
-
-        # If interval_averages has more than 20 entries, take only the last 20
-        if len(interval_averages) > 20:
-            interval_averages = interval_averages[-20:]
-            print(f"Warning: Throughput interval groups exceeded 20. Using last 20 groups for statistics.")
-
-        averages_series = pd.Series(interval_averages)
-        
-        # Get statistics and add interval count
-        stats = _calculate_statistics(averages_series, current_column_to_use)
+        # Add the number of data points used for calculation
         if stats:
-            stats["Number of Intervals"] = len(interval_averages)
+            stats["Number of Data Points"] = len(throughput_data)
         return stats
+
+    except FileNotFoundError:
+        print(f"Error: The file at {file_path} was not found.")
+        return {} # Return empty dict instead of None
+    except Exception as e:
+        print(f"An error occurred during throughput analysis: {e}")
+        return {} # Return empty dict instead of None
 
     except FileNotFoundError:
         print(f"Error: The file at {file_path} was not found.")

@@ -26,6 +26,7 @@ from Coverage.coverage_coordinate_analyzer import analyze_coverage_coordinates, 
 from Coverage.n41_coverage_analyzer import analyze_n41_coverage, extract_coverage_data_to_csv # Import the n41 coverage analyzer and generic data extractor
 from Coverage.coverage_performance_analyzer import analyze_csv as analyze_vonr_coverage_performance # Import the new VoNR coverage performance analyzer
 from DataPerformance.google_throughput_analyzer import analyze_throughput as google_analyze_throughput # Import the google throughput analyzer
+from DataPerformance.mhs_drive_analyzer import analyze_mhs_drive_data # Import the new MHS Drive analyzer
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -48,6 +49,7 @@ if __name__ == "__main__":
         {"path": "Coverage Performance/5G n41 HPUE Coverage Test", "analysis_type": "n41_coverage"}, # Add N41 Coverage directory
         {"path": "Coverage Performance/5G VoNR Coverage Test", "analysis_type": "vonr_coverage_performance"}, # Add 5G VoNR Coverage Test directory
         {"path": "Data Performance/5G AUTO DP/5G Auto Data Play-store app DL Stationary", "analysis_type": "google_throughput_analysis"}, # Add Google Throughput Analysis directory
+        {"path": "Data Performance/5G AUTO DP/5G Auto Data Test MHS Drive", "analysis_type": "mhs_drive_performance"}, # Add MHS Drive Performance directory
     ]
     
     data_performance_results = {}
@@ -78,7 +80,8 @@ if __name__ == "__main__":
         "coverage_coordinate",
         "n41_coverage", # Add n41_coverage to excluded list
         "vonr_coverage_performance", # Add vonr_coverage_performance to excluded list
-        "google_throughput_analysis" # Add google_throughput_analysis back to excluded list
+        "google_throughput_analysis", # Add google_throughput_analysis back to excluded list
+        "mhs_drive_performance" # Exclude MHS Drive performance for individual CSV processing
     ]
 
     # Get all CSV file paths using the new data_path_reader script, excluding those handled separately
@@ -195,7 +198,7 @@ if __name__ == "__main__":
                     has_any_statistical_data = True
                     break
             
-            if not has_any_statistical_data and params["analysis_type_detected"] not in ["call_performance", "voice_quality", "audio_delay", "google_throughput_analysis"]: # Don't mark call_performance, voice_quality, audio_delay, or google_throughput_analysis files as invalid here
+            if not has_any_statistical_data and params["analysis_type_detected"] not in ["call_performance", "voice_quality", "audio_delay", "google_throughput_analysis", "mhs_drive_performance"]: # Don't mark call_performance, voice_quality, audio_delay, google_throughput_analysis, or mhs_drive_performance files as invalid here
                 current_file_has_invalid_data = True
         
         if current_file_has_invalid_data:
@@ -556,6 +559,59 @@ if __name__ == "__main__":
                     print(f"No Google Throughput data collected for {google_throughput_base_path}.")
             else:
                 print(f"Warning: Google Throughput directory not found at {google_throughput_base_path}. Skipping analysis.")
+
+        elif directory_info["analysis_type"] == "mhs_drive_performance":
+            mhs_drive_base_path = os.path.join(base_raw_data_dir, directory_info["path"])
+            if os.path.isdir(mhs_drive_base_path):
+                print(f"\n--- Starting MHS Drive Performance analysis for directory: {mhs_drive_base_path} ---")
+                
+                mhs_drive_results = {}
+                
+                # Regex to extract Device Type from filenames like DUT MHS UDP Drive.csv
+                filename_pattern = re.compile(r"(DUT|REF)\s+MHS UDP Drive\.csv", re.IGNORECASE)
+
+                for file_name in os.listdir(mhs_drive_base_path):
+                    if file_name.lower().endswith(".csv"):
+                        match = filename_pattern.match(file_name)
+                        if match:
+                            device_type = match.group(1).upper()
+                            file_path = os.path.join(mhs_drive_base_path, file_name)
+                            print(f"Analyzing MHS Drive data for: {file_path}")
+                            
+                            mhs_analysis_results = analyze_mhs_drive_data(file_path, device_type)
+                            
+                            if mhs_analysis_results:
+                                # Structure results: Directory Path -> Filename (without extension)
+                                relative_path_components = directory_info["path"].replace("\\", "/").split('/')
+                                
+                                # Ensure the structure is correct: Data Performance/5G AUTO DP/5G Auto Data Test MHS Drive/DUT MHS UDP Drive
+                                # We want to insert under "5G Auto Data Test MHS Drive" with filename as key
+                                current_level = data_performance_results
+                                for comp in relative_path_components:
+                                    if comp not in current_level:
+                                        current_level[comp] = {}
+                                    current_level = current_level[comp]
+                                
+                                current_level[os.path.splitext(file_name)[0]] = {
+                                    "Device Type": device_type,
+                                    "Network Type": "5G", # Assuming 5G for MHS Drive based on context
+                                    "Analysis Type": "mhs_drive_performance",
+                                    **mhs_analysis_results # Unpack the analysis results
+                                }
+                                print(f"MHS Drive analysis for {file_name} completed and added to results.")
+                            else:
+                                print(f"No valid MHS Drive data found for {file_name}.")
+                        else:
+                            print(f"Filename '{file_name}' does not match expected pattern for MHS Drive analysis. Skipping.")
+                
+                if mhs_drive_results:
+                    # The results are already inserted directly into data_performance_results in the loop
+                    # This block is mainly for confirmation message
+                    print(f"MHS Drive Performance analysis for {mhs_drive_base_path} completed and added to results.")
+                else:
+                    print(f"No MHS Drive Performance data collected for {mhs_drive_base_path}.")
+            else:
+                print(f"Warning: MHS Drive Performance directory not found at {mhs_drive_base_path}. Skipping analysis.")
 
     # After all other analyses, extract RSRP and Tx Power to CSV
     rsrp_output_folder = os.path.join(output_dir, "rsrp_data")

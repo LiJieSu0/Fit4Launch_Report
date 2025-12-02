@@ -11,7 +11,7 @@
 }
 
 .header-logo {
-  align-self: flex-end;
+  align-self: flex-start; /* Changed to align to the left */
   font-size: 1.5em;
   font-weight: bold;
   color: #333;

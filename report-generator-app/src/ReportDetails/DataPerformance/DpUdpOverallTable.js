@@ -40,8 +40,7 @@ const DpUdpOverallTable = ({ data, headers }) => {
             item['Ideal Throughput'] === currentIdealThroughput &&
             item['Device Name'] === 'REF'
         );
-        const refDownloadValue = refRow ? parseFloat(refRow['Download']) : null;
-        const refUploadValue = refRow ? parseFloat(refRow['Upload']) : null;
+        const refOverallValue = refRow ? parseFloat(refRow['Overall']) : null;
 
         processedData.push({
           ...data[k],
@@ -49,8 +48,7 @@ const DpUdpOverallTable = ({ data, headers }) => {
           isFirstInMetricGroup: k === metricGroupStart,
           idealThroughputRowSpan: idealThroughputRowSpan,
           isFirstInIdealThroughputGroup: k === idealThroughputGroupStart,
-          refDownloadValue: refDownloadValue,
-          refUploadValue: refUploadValue,
+          refOverallValue: refOverallValue,
         });
       }
       j = idealThroughputGroupEnd;
@@ -66,11 +64,10 @@ const DpUdpOverallTable = ({ data, headers }) => {
             <th rowSpan="2">Metric</th>
             <th rowSpan="2">Ideal Throughput</th>
             <th rowSpan="2">Device Name</th>
-            <th colSpan="2">Seattle (5G NR)</th>
+            <th>Seattle (5G NR)</th>
           </tr>
           <tr>
-            <th>Download</th>
-            <th>Upload</th>
+            <th>Overall</th>
           </tr>
         </thead>
         <tbody>
@@ -84,30 +81,17 @@ const DpUdpOverallTable = ({ data, headers }) => {
               )}
               <td>{row['Device Name']}</td>
               <td style={{
-                backgroundColor: row['Device Name'] === 'DUT' && row.refDownloadValue !== null && row['Metric'] !== 'Max Throughput'
+                backgroundColor: row['Device Name'] === 'DUT' && row.refOverallValue !== null && row['Metric'] !== 'Max Throughput'
                   ? getKpiCellColor(
                       row['Metric'] === 'Mean Jitter' ? 'Jitter' :
                       row['Metric'] === 'Packet Failure Rate' ? 'ErrorRatio' :
                       'Throughput',
-                      parseFloat(row['Download']),
-                      row.refDownloadValue
+                      parseFloat(row['Overall']),
+                      row.refOverallValue
                     )
                   : 'inherit'
               }}>
-                {row['Download']}
-              </td>
-              <td style={{
-                backgroundColor: row['Device Name'] === 'DUT' && row.refUploadValue !== null && row['Metric'] !== 'Max Throughput'
-                  ? getKpiCellColor(
-                      row['Metric'] === 'Mean Jitter' ? 'Jitter' :
-                      row['Metric'] === 'Packet Failure Rate' ? 'ErrorRatio' :
-                      'Throughput',
-                      parseFloat(row['Upload']),
-                      row.refUploadValue
-                    )
-                  : 'inherit'
-              }}>
-                {row['Upload']}
+                {row['Overall']}
               </td>
             </tr>
           ))}

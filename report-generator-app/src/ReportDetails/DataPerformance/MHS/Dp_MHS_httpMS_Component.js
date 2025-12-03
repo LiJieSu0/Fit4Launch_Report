@@ -121,61 +121,72 @@ function Dp_MHS_httpMS_Component() {
   };
 
   return (
-    <div className=''>
-      <h2>MHS-httpMS Component</h2>
-      <h3>Overall Multi Stream HTTP</h3>
-      <DpThroughputOverallTable
-        tableHeader={overallTableHeader}
-        tableData={combinedOverallTableData}
-        kpiRule="Throughput"
-        kpiTargetCells={[
-          {
-            rowIndex: 0,
-            colIndex: 2,
-            dutValue: overallDownloadDUTMean.toFixed(2),
-            refValue: overallDownloadREFMean.toFixed(2),
-          },
-          {
-            rowIndex: 0,
-            colIndex: 3,
-            dutValue: overallUploadDUTMean.toFixed(2),
-            refValue: overallUploadREFMean.toFixed(2),
-          },
-        ]}
-      />
-      <DpMHSHttpMSTable data={data} tableName="MHS Multi Stream HTTP Download Throughput" kpiRule="Throughput" />
-      <DpHistogramComponent
-        data={[
-          { name: 'Good', DUT: data.Good.DUT["Mean"], REF: data.Good.REF["Mean"] },
-          { name: 'Moderate', DUT: data.Moderate.DUT["Mean"], REF: data.Moderate.REF["Mean"] },
-          { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
-        ]}
-        title="MHS Multi Stream HTTP Download Throughput Histogram"
-        yAxisLabel="Throughput"
-        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-      />
-      <DpRangeChart
-        data={downloadRangeChartData}
-        chartTitle="MHS Multi Stream HTTP Download Throughput Range Chart"
-        yAxisTitle="Throughput"
-      />
-      <DpMHSHttpMSTable data={dataUL} tableName="MHS Multi Stream HTTP Upload Throughput" kpiRule="Throughput" />
-      <DpHistogramComponent
-        data={[
-          { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },
-          { name: 'Moderate', DUT: dataUL.Moderate.DUT["Mean"], REF: dataUL.Moderate.REF["Mean"] },
-          { name: 'Overall', DUT: overallUploadDUTMean, REF: overallUploadREFMean },
-        ]}
-        title="MHS Multi Stream HTTP Upload Throughput Histogram"
-        yAxisLabel="Throughput"
-        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-      />
-      <DpRangeChart
-        data={uploadRangeChartData}
-        chartTitle="MHS Multi Stream HTTP Upload Throughput Range Chart"
-        yAxisTitle="Throughput"
-      />
-    </div>
+    <>
+      <div className='page-content'>
+        <h2>MHS-httpMS Component</h2>
+        <h3>Overall Multi Stream HTTP</h3>
+        <DpThroughputOverallTable
+          tableHeader={overallTableHeader}
+          tableData={combinedOverallTableData}
+          kpiRule="Throughput"
+          kpiTargetCells={[
+            {
+              rowIndex: 0,
+              colIndex: 2,
+              dutValue: overallDownloadDUTMean.toFixed(2),
+              refValue: overallDownloadREFMean.toFixed(2),
+            },
+            {
+              rowIndex: 0,
+              colIndex: 3,
+              dutValue: overallUploadDUTMean.toFixed(2),
+              refValue: overallUploadREFMean.toFixed(2),
+            },
+          ]}
+        />
+        <DpMHSHttpMSTable data={data} tableName="MHS Multi Stream HTTP Download Throughput" kpiRule="Throughput" />
+      </div>
+      
+      <div className='page-content'>
+        <DpHistogramComponent
+          data={[
+            { name: 'Good', DUT: data.Good.DUT["Mean"], REF: data.Good.REF["Mean"] },
+            { name: 'Moderate', DUT: data.Moderate.DUT["Mean"], REF: data.Moderate.REF["Mean"] },
+            { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
+          ]}
+          title="MHS Multi Stream HTTP Download Throughput Histogram"
+          yAxisLabel="Throughput"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+        <DpRangeChart
+          data={downloadRangeChartData}
+          chartTitle="MHS Multi Stream HTTP Download Throughput Range Chart"
+          yAxisTitle="Throughput"
+        />
+      </div>
+
+      <div className='page-content'>
+        <DpMHSHttpMSTable data={dataUL} tableName="MHS Multi Stream HTTP Upload Throughput" kpiRule="Throughput" />
+      </div>
+
+      <div className='page-content'>
+        <DpHistogramComponent
+          data={[
+            { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },
+            { name: 'Moderate', DUT: dataUL.Moderate.DUT["Mean"], REF: dataUL.Moderate.REF["Mean"] },
+            { name: 'Overall', DUT: overallUploadDUTMean, REF: overallUploadREFMean },
+          ]}
+          title="MHS Multi Stream HTTP Upload Throughput Histogram"
+          yAxisLabel="Throughput"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+        <DpRangeChart
+          data={uploadRangeChartData}
+          chartTitle="MHS Multi Stream HTTP Upload Throughput Range Chart"
+          yAxisTitle="Throughput"
+        />
+      </div>
+    </>
   );
 }
 

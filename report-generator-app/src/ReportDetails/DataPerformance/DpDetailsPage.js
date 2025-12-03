@@ -25,7 +25,7 @@ function DpDetailsPage() {
       <Dp_playStore_Component/>
       <Dp_MHS_Page/> */}
       
-      <DpDriveTestDetailPage/>
+      {/* <DpDriveTestDetailPage/> */}
       <DpMrabDetailsPage/>
 
       <DpNSAStationaryDetails/>

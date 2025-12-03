@@ -3,6 +3,7 @@ import MrabData from '../../DataFiles/SA/DpMrabResults/Mrab.json';
 import '../../StyleScript/Restricted_Report_Style.css';
 import DpHistogramComponent from './DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../Constants/ChartColors';
+import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const DpMrabDetailsPage = () => {
   const [mrabData, setMrabData] = useState(null);
@@ -15,8 +16,8 @@ const DpMrabDetailsPage = () => {
     return <div>Loading MRAB data...</div>;
   }
   return (
-    //TODO add overall data
     <div className="page-content">
+      {/* Overall table here */}
       <h2>VoNR MRAB Stationary test - 5G NR</h2>
 
       <table className="general-table-style">
@@ -33,7 +34,9 @@ const DpMrabDetailsPage = () => {
           <tr>
             <td rowSpan="4">Pre Call</td>
             <td>Mean</td>
-            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"].toFixed(2)}</td>
+            <td style={{ backgroundColor: getKpiCellColor('Throughput', mrabData["DUT MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"], mrabData["REF MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"]) }}>
+              {mrabData["DUT MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"].toFixed(2)}
+            </td>
             <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"].toFixed(2)}</td>
           </tr>
           <tr>
@@ -54,7 +57,9 @@ const DpMrabDetailsPage = () => {
           <tr>
             <td rowSpan="4">In Call</td>
             <td>Mean</td>
-            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["In Call"]["Mean"].toFixed(2)}</td>
+            <td style={{ backgroundColor: getKpiCellColor('Throughput', mrabData["DUT MRAB"]["MRAB Statistics"]["In Call"]["Mean"], mrabData["REF MRAB"]["MRAB Statistics"]["In Call"]["Mean"]) }}>
+              {mrabData["DUT MRAB"]["MRAB Statistics"]["In Call"]["Mean"].toFixed(2)}
+            </td>
             <td>{mrabData["REF MRAB"]["MRAB Statistics"]["In Call"]["Mean"].toFixed(2)}</td>
           </tr>
           <tr>
@@ -75,7 +80,9 @@ const DpMrabDetailsPage = () => {
           <tr>
             <td rowSpan="4">Post Call</td>
             <td>Mean</td>
-            <td>{mrabData["DUT MRAB"]["MRAB Statistics"]["Post Call"]["Mean"].toFixed(2)}</td>
+            <td style={{ backgroundColor: getKpiCellColor('Throughput', mrabData["DUT MRAB"]["MRAB Statistics"]["Post Call"]["Mean"], mrabData["REF MRAB"]["MRAB Statistics"]["Post Call"]["Mean"]) }}>
+              {mrabData["DUT MRAB"]["MRAB Statistics"]["Post Call"]["Mean"].toFixed(2)}
+            </td>
             <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Post Call"]["Mean"].toFixed(2)}</td>
           </tr>
           <tr>

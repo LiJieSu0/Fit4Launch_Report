@@ -44,9 +44,9 @@ function App() {
         <CallPerformanceDetails />
         <CpKpiPage/> */}
 
-        {/* <VqSummaryPage />
+        <VqSummaryPage />
         <VqDetailsPage />
-        <VqKpiPage/> */}
+        <VqKpiPage/>
         
         {/* <CoverageSummaryPage />
         <CoverageDetails />

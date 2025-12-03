@@ -15,34 +15,6 @@ import DpNSATestDriveDetails from './NSA/TestDrive/DpNSATestDriveDetails';
 import DpHistogramComponent from './DpHistogramComponent';
 
 function DpDetailsPage() {
-  // Example data for DpRangeChart
-  // const chartDataForRegions = {
-  //   Good: {
-  //     dutMin: 5,
-  //     dutMax: 90,
-  //     dutMean: 55,
-  //     refMin: 15,
-  //     refMax: 85,
-  //     refMean: 50,
-  //   },
-  //   Moderate: {
-  //     dutMin: 10,
-  //     dutMax: 80,
-  //     dutMean: 45,
-  //     refMin: 20,
-  //     refMax: 75,
-  //     refMean: 40,
-  //   },
-  //   Poor: {
-  //     dutMin: 2,
-  //     dutMax: 60,
-  //     dutMean: 30,
-  //     refMin: 8,
-  //     refMax: 55,
-  //     refMean: 25,
-  //   },
-  // };
-
   return (
     <div>
       <Dp_httpSS_Component />

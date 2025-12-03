@@ -28,6 +28,7 @@ from Coverage.n41_coverage_analyzer import analyze_n41_coverage, extract_coverag
 from Coverage.coverage_performance_analyzer import analyze_csv as analyze_vonr_coverage_performance # Import the new VoNR coverage performance analyzer
 from DataPerformance.google_throughput_analyzer import analyze_throughput as google_analyze_throughput # Import the google throughput analyzer
 from DataPerformance.mhs_drive_analyzer import analyze_mhs_drive_data # Import the new MHS Drive analyzer
+from VoiceQuality.VqLineChartAnalyzer import calculate_vq_statistics # Import the VqLineChartAnalyzer
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -625,6 +626,28 @@ if __name__ == "__main__":
                     print(f"No MHS Drive Performance data collected for {mhs_drive_base_path}.")
             else:
                 print(f"Warning: MHS Drive Performance directory not found at {mhs_drive_base_path}. Skipping analysis.")
+
+    # --- VqLineChartAnalyzer Integration ---
+    vq_linechart_output_dir = os.path.join(output_dir, "vq_linechart_data")
+    os.makedirs(vq_linechart_output_dir, exist_ok=True)
+    print(f"\n--- Starting VqLineChartAnalyzer for EVS WB VQ data ---")
+
+    evs_wb_vq_paths = [
+        os.path.join(base_raw_data_dir, r"Voice Quality\5G Auto VoNR Disabled EVS WB VQ\Base"),
+        os.path.join(base_raw_data_dir, r"Voice Quality\5G Auto VoNR Disabled EVS WB VQ\Mobile"),
+        os.path.join(base_raw_data_dir, r"Voice Quality\5G Auto VoNR Enabled EVS WB VQ\Base"),
+        os.path.join(base_raw_data_dir, r"Voice Quality\5G Auto VoNR Enabled EVS WB VQ\Mobile"),
+    ]
+
+    for path in evs_wb_vq_paths:
+        if os.path.isdir(path):
+            scenario_name = os.path.basename(os.path.dirname(path)) + "_" + os.path.basename(path)
+            output_json_filename = f"vq_mos_statistics_{scenario_name.replace(' ', '_').lower()}.json"
+            output_file_path = os.path.join(vq_linechart_output_dir, output_json_filename)
+            print(f"Processing {scenario_name} from directory: {path}")
+            calculate_vq_statistics(path, output_json_path=output_file_path)
+        else:
+            print(f"Warning: VqLineChartAnalyzer path not found at {path}. Skipping.")
 
     # After all other analyses, extract RSRP and Tx Power to CSV
     rsrp_output_folder = os.path.join(output_dir, "rsrp_data")

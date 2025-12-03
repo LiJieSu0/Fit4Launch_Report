@@ -40,10 +40,46 @@ const vqTableData1 = [
   }
 ];
 
+const vqTableData2 = [
+  {
+    metric: "MOS Average",
+    results: "4.33",
+    highlightClass: "performance-excellent-bg"
+  },
+  {
+    metric: "% MOS < 2.0",
+    results: "0.0%",
+    highlightClass: "performance-excellent-bg"
+  },
+  {
+    metric: "% MOS < 3.0",
+    results: "0.4%",
+    highlightClass: "performance-excellent-bg"
+  }
+];
+
 const VqAmrNbVq = () => {
   return (
     <div className="page-content">
       <h2>3.1 5G Auto VoNR Enabled AMR NB VQ</h2>
+      <h3>Results</h3>
+      <table className="general-table-style performance-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Results</th>
+          </tr>
+        </thead>
+        <tbody>
+          {vqTableData2.map((row, index) => (
+            <tr key={index}>
+              <td>{row.metric}</td>
+              <td className={row.highlightClass}></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h3>Details</h3>
       <table className="general-table-style vq-details-table">
         <thead>
           <tr>
@@ -74,6 +110,9 @@ const VqAmrNbVq = () => {
           ))}
         </tbody>
       </table>
+
+      {/* New table for Voice Quality Performance EVS to EVS Call Scenario */}
+
     </div>
   );
 };

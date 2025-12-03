@@ -78,19 +78,23 @@ function Dp_Ping_Component() {
     ];
  
     return(
-        <div>
-            <div className='page-content'>
-                <h2>PING test - 5G NR</h2>
-                <DpPingOverallTable data={processedPingData} />
-                <DpPingTableLoc3 data={processedPingData} />
-                <DpHistogramComponent
-                    data={pingHistogramData}
-                    title="Average Ping RTT by Location"
-                    yAxisLabel="Ping RTT (ms)"
-                    barKeys={barKeys}
-                />
-            </div>
+        <>
+        <div className='page-content'>
+            <h2>PING test - 5G NR</h2>
+            <DpPingOverallTable data={processedPingData} />
         </div>
+        <div className='page-content'>
+            <h3>Ping Details</h3>
+            <DpPingTableLoc3 data={processedPingData} />
+            <DpHistogramComponent
+                data={pingHistogramData}
+                title="Average Ping RTT by Location"
+                yAxisLabel="Ping RTT (ms)"
+                barKeys={barKeys}
+            />
+        </div>
+        </>
+
     )
 };
 

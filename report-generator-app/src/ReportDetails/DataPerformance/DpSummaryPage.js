@@ -2,6 +2,8 @@ import React from 'react';
 import DpSummaryTable from './DpSummaryTable';
 import DataPerformanceResults from '../../DataFiles/DataPerformanceResults.json';
 
+
+//TODO summary page cell link
 function DpSummaryPage() {
   const extractThroughput = (path, direction) => {
     const value = path?.Throughput?.[direction]?.Mean || path?.Throughput?.Mean;
@@ -20,8 +22,8 @@ function DpSummaryPage() {
         cells: [
           { label: "Data Throughput Average" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'}
+          {label:'Result',className:'bg-performance-pass',link:'#'},
+          {label:'Result',className:'bg-performance-pass',link:'#'}
         ],
       },
     ],
@@ -39,8 +41,8 @@ function DpSummaryPage() {
         cells: [
           { label: "Data Throughput Average" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'}
+          {label:'Result',className:'bg-performance-pass',link:'#'},
+          {label:'Result',className:'bg-performance-marginal-fail',link:'#'}
         ],
       },
     ],
@@ -58,24 +60,24 @@ function DpSummaryPage() {
         cells: [
           { label: "Mean Throughput" },
           { label: "Seattle (5G NR)", rowSpan: 3 },
-          {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'}
+          {label:'Result',className:'bg-performance-pass',link:'#'},
+          {label:'Result',className:'bg-performance-pass',link:'#'}
         ],
       },
       {
         cells: [
           { label: "Mean Jitter" },
           null, // Placeholder for the merged 'Market' cell
-          { label: "Result", className: "average-fail", link: "#" },
-          { label: "Result", className: "average-fail", link: "#" },
+          { label: "Result", className: "bg-performance-pass", link: "#" },
+          { label: "Result", className: "bg-performance-pass", link: "#" },
         ],
       },
       {
         cells: [
           { label: "Packet Failure Rate (%)" },
           null, // Placeholder for the merged 'Market' cell
-          { label: "Result", className: "average-fail", link: "#" },
-          { label: "Result", className: "average-fail", link: "#" },
+          { label: "Result", className: "bg-performance-pass", link: "#" },
+          { label: "Result", className: "bg-performance-pass", link: "#" },
         ],
       },
     ],
@@ -86,15 +88,13 @@ function DpSummaryPage() {
       { label: "Ping Test", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
-      { label: "Upload", rowSpan: 1 },
     ],
     rows: [
       {
         cells: [
           { label: "Mean Round Trip Time(ms)" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'}
+          {label:'Result',className:'bg-performance-fail',link:'#'},
         ],
       },
     ],
@@ -111,7 +111,7 @@ function DpSummaryPage() {
         cells: [
           { label: "Average Page LoadTime (s)" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'average-fail',link:'#'},
+          {label:'Result',className:'bg-performance-pass',link:'#'},
         ],
       },
     ],
@@ -121,8 +121,10 @@ function DpSummaryPage() {
     headers: [
       { label: "Play Store", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
-      { label: "Download", rowSpan: 1 },
-      { label: "Upload", rowSpan: 1 },
+      { label: "30M", rowSpan: 1 },
+      { label: "60M", rowSpan: 1 },
+      { label: "100M", rowSpan: 1 },
+
     ],
     rows: [
       {
@@ -130,7 +132,9 @@ function DpSummaryPage() {
           { label: "Mean Throughput" },
           { label: "Seattle (5G NR)" },
           {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'}
+          {label:'Result',className:'average-fail',link:'#'},
+          {label:'Result',className:'average-fail',link:'#'},
+
         ],
       },
     ],
@@ -334,6 +338,7 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={httpMSData} />
         <DpSummaryTable tableData={udpData} />
         <DpSummaryTable tableData={pingData} />
+        <DpSummaryTable tableData={webBrowserData} />
         <DpSummaryTable tableData={playStoreData} />
       </div>
       <div className='page-content'>
@@ -342,7 +347,6 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={mobiltyData} />
         <DpSummaryTable tableData={mobiltyMHSData} />
         <DpSummaryTable tableData={mrabData} />
-        <DpSummaryTable tableData={webBrowserData} />
       </div>
       <div className='page-content'>
         <h3>5G NSA</h3>

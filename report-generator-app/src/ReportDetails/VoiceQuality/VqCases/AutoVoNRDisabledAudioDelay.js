@@ -1,56 +1,88 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import '../../../StyleScript/Restricted_Report_Style.css';
 import '../../../StyleScript/Restricted_Report_Style.css';
 
-const vqTableData5 = [
-  {
-    metric: "Average (ms)",
-    dut1: "333.23",
-    dut2: "326.47",
-    ref1: "323.20",
-    ref2: "328.31",
-    highlight: false
-  },
-  {
-    metric: "Average of 2 Devices (ms)",
-    dut: "329.85",
-    ref: "325.75",
-    highlight: true
-  },
-  {
-    metric: "Stdev (ms)",
-    dut1: "13.03",
-    dut2: "13.57",
-    ref1: "16.70",
-    ref2: "51.00",
-    highlight: false
-  },
-  {
-    metric: "Maximum (ms)",
-    dut1: "365.41",
-    dut2: "367.91",
-    ref1: "415.75",
-    ref2: "1157.07",
-    highlight: false
-  },
-  {
-    metric: "Minimum (ms)",
-    dut1: "278.42",
-    dut2: "298.17",
-    ref1: "274.78",
-    ref2: "285.33",
-    highlight: false
-  },
-  {
-    metric: "Count",
-    dut1: "286",
-    dut2: "285",
-    ref1: "286",
-    ref2: "285",
-    highlight: false
+const processAudioDelayData = (audioDelayData) => {
+  if (!audioDelayData || !audioDelayData.DUT1 || !audioDelayData.REF1 || !audioDelayData.DUT2 || !audioDelayData.REF2) {
+    return [];
   }
-];
+
+  const dut1Key = Object.keys(audioDelayData.DUT1)[0];
+  const ref1Key = Object.keys(audioDelayData.REF1)[0];
+  const dut2Key = Object.keys(audioDelayData.DUT2)[0];
+  const ref2Key = Object.keys(audioDelayData.REF2)[0];
+
+  const dut1Data = audioDelayData.DUT1[dut1Key];
+  const ref1Data = audioDelayData.REF1[ref1Key];
+  const dut2Data = audioDelayData.DUT2[dut2Key];
+  const ref2Data = audioDelayData.REF2[ref2Key];
+
+  const averageDut = ((dut1Data.mean + dut2Data.mean) / 2).toFixed(2);
+  const averageRef = ((ref1Data.mean + ref2Data.mean) / 2).toFixed(2);
+
+  return [
+    {
+      metric: "Average (ms)",
+      dut1: dut1Data.mean.toFixed(2),
+      dut2: dut2Data.mean.toFixed(2),
+      ref1: ref1Data.mean.toFixed(2),
+      ref2: ref2Data.mean.toFixed(2),
+      highlight: false
+    },
+    {
+      metric: "Average of 2 Devices (ms)",
+      dut: averageDut,
+      ref: averageRef,
+      highlight: true
+    },
+    {
+      metric: "Stdev (ms)",
+      dut1: dut1Data.std_dev.toFixed(2),
+      dut2: dut2Data.std_dev.toFixed(2),
+      ref1: ref1Data.std_dev.toFixed(2),
+      ref2: ref2Data.std_dev.toFixed(2),
+      highlight: false
+    },
+    {
+      metric: "Maximum (ms)",
+      dut1: dut1Data.max.toFixed(2),
+      dut2: dut2Data.max.toFixed(2),
+      ref1: ref1Data.max.toFixed(2),
+      ref2: ref2Data.max.toFixed(2),
+      highlight: false
+    },
+    {
+      metric: "Minimum (ms)",
+      dut1: dut1Data.min.toFixed(2),
+      dut2: dut2Data.min.toFixed(2),
+      ref1: ref1Data.min.toFixed(2),
+      ref2: ref2Data.min.toFixed(2),
+      highlight: false
+    },
+    {
+      metric: "Count",
+      dut1: dut1Data.occurrences.toString(),
+      dut2: dut2Data.occurrences.toString(),
+      ref1: ref1Data.occurrences.toString(),
+      ref2: ref2Data.occurrences.toString(),
+      highlight: false
+    }
+  ];
+};
 
 const AutoVoNRDisabledAudioDelay = () => {
+  const [vqTableData5, setVqTableData5] = useState([]);
+
+  useEffect(() => {
+    fetch('/AnalyzeResults/Seattle/voice_quality_results.json')
+      .then(response => response.json())
+      .then(data => {
+        const processedData = processAudioDelayData(data["Voice Quality"]["5G Auto VoNR Disabled Audio Delay"]);
+        setVqTableData5(processedData);
+      })
+      .catch(error => console.error("Error fetching voice quality data:", error));
+  }, []);
+
   return (
     <div className="page-content">
       <h2>3.5 Auto VoNR Disabled Audio Delay</h2>

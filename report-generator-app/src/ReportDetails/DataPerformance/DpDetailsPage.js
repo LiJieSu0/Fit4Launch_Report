@@ -17,13 +17,13 @@ import DpHistogramComponent from './DpHistogramComponent';
 function DpDetailsPage() {
   return (
     <div>
-      <Dp_httpSS_Component />
+      {/* <Dp_httpSS_Component />
       <Dp_httpMS_Component />
       <Dp_Udp_Component />
       <Dp_Ping_Component/>
       <Dp_Webbrowser_Component />
       <Dp_playStore_Component/>
-      <Dp_MHS_Page/>
+      <Dp_MHS_Page/> */}
       
       <DpDriveTestDetailPage/>
       <DpMrabDetailsPage/>

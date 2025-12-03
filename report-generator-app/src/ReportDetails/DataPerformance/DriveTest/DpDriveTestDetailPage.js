@@ -30,10 +30,13 @@ const DpDriveTestDetailPage = () => {
     const mhsPingRttData = getDriveTestMetricData("Ping RTT", dutMHS['Ping RTT'].avg, refMHS['Ping RTT'].avg);
 
     return (
-    <div>
+    <>
       <div className='page-content'>
        <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overall Data" />
        <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Data" />
+      </div>
+      <div className='page-content'>
+
        <DpHistogramComponent
          data={driveTestThroughputData}
          title="Mobility Test Drive - Mean Throughput Histogram"
@@ -46,6 +49,9 @@ const DpDriveTestDetailPage = () => {
          yAxisLabel="Jitter (s)"
          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
        />
+       </div>
+      <div className='page-content'>
+
        <DpHistogramComponent
          data={driveTestErrorRatioData}
          title="Mobility Test Drive - Mean Error Ratio Histogram"
@@ -60,9 +66,11 @@ const DpDriveTestDetailPage = () => {
        />
       </div>
       <div className='page-content'>
-      <h2>Mobility test - 5G Auto Data Test MHS Drive</h2>
-      <DpMHSTestDriveOverallTable data={TestDriveMHSData} tableName="MHS Test Drive Overall Data" />
-      <DpMHSTestDriveTable data={TestDriveMHSData} tableName="MHS Test Drive Data" />
+        <h2>Mobility test - 5G Auto Data Test MHS Drive</h2>
+        <DpMHSTestDriveOverallTable data={TestDriveMHSData} tableName="MHS Test Drive Overall Data" />
+        <DpMHSTestDriveTable data={TestDriveMHSData} tableName="MHS Test Drive Data" />
+      </div>
+      <div className='page-content'>
       <DpHistogramComponent
         data={mhsThroughputData}
         title="MHS Test Drive - Mean Throughput Histogram"
@@ -75,6 +83,9 @@ const DpDriveTestDetailPage = () => {
         yAxisLabel="Jitter (ms)"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
       />
+      </div>
+      <div className='page-content'>
+
       <DpHistogramComponent
         data={mhsErrorRatioData}
         title="MHS Test Drive - Mean Error Ratio Histogram"
@@ -89,8 +100,7 @@ const DpDriveTestDetailPage = () => {
       />
       </div>
 
-    </div>
-
+    </>
     );
 };
 

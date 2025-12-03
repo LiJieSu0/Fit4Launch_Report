@@ -122,8 +122,8 @@ const VqAmrWbVq = () => {
         <thead>
           <tr>
             <th rowSpan="2"></th>
-            <th colSpan="3">Base</th>
-            <th colSpan="3">Mobile</th>
+            <th colSpan="3">Downlink</th>
+            <th colSpan="3">Uplink</th>
           </tr>
           <tr>
             <th>REF</th>

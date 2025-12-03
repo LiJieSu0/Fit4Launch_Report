@@ -32,10 +32,8 @@ import DpSummaryPage from './ReportDetails/DataPerformance/DpSummaryPage';
 import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
 
 function App() {
-  const [market, setMarket] = useState('Seattle'); // Default market
-
   return (
-    <ReportDataProvider market={market}>
+    <ReportDataProvider>
       <div className="App">
         <CoverPage />
         <ReportHeader />

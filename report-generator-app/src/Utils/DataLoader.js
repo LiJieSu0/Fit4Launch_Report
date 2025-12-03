@@ -1,6 +1,7 @@
-const DATA_PATH = '/AnalyzeResults/';
+const BASE_DATA_PATH = '/AnalyzeResults/';
 
-export const loadAllData = async (market) => {
+export const loadAllData = async (city) => {
+  const cityDataPath = `${BASE_DATA_PATH}${city}/`;
   try {
     const [
       callPerformanceRes,
@@ -8,10 +9,10 @@ export const loadAllData = async (market) => {
       dataPerformanceRes,
       voiceQualityRes,
     ] = await Promise.all([
-      fetch(`${DATA_PATH}${market}/call_performance_results.json`),
-      fetch(`${DATA_PATH}${market}/coverage_performance_results.json`),
-      fetch(`${DATA_PATH}${market}/data_performance_results.json`),
-      fetch(`${DATA_PATH}${market}/voice_quality_results.json`),
+      fetch(`${cityDataPath}call_performance_results.json`),
+      fetch(`${cityDataPath}coverage_performance_results.json`),
+      fetch(`${cityDataPath}data_performance_results.json`),
+      fetch(`${cityDataPath}voice_quality_results.json`),
     ]);
 
     const callPerformance = await callPerformanceRes.json();
@@ -26,7 +27,11 @@ export const loadAllData = async (market) => {
       voiceQuality,
     };
   } catch (error) {
-    console.error(`Failed to load ${market} market data:`, error);
-    throw new Error(`Failed to load ${market} market data.`);
+    console.error(`Failed to load all report data for ${city}:`, error);
+    throw new Error(`Failed to load all report data for ${city}.`);
   }
+};
+
+export const getAvailableCities = async () => {
+  return ['Seattle']; // To add data folders, need to hard coded the data path through here. 
 };

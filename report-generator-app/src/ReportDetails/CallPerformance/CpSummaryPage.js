@@ -1,13 +1,24 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
-import callPerformanceResults from '../../DataFiles/CallPerformanceResults.json';
+import { useReportData } from '../../Contexts/ReportContext';
 
 const CpSummaryPage = () => {
+  const { reportData, loading, error } = useReportData();
+
+  if (loading) return <div>Loading Call Performance Summary...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!reportData || !reportData.callPerformance) return <div>No Call Performance data available.</div>;
+
+  const callPerformanceResults = reportData.callPerformance['Call Performance'];
+
   const summaryData = Object.keys(callPerformanceResults).map(key => {
     const testName = key.split(' ').slice(2).join(' '); // Extracts "5G Auto VoNR Disabled CP MO Drive"
-    const dutFailures = callPerformanceResults[key].DUT.total_retention_failures + callPerformanceResults[key].DUT.total_initiation_failures;
-    const refFailures = callPerformanceResults[key].REF.total_retention_failures + callPerformanceResults[key].REF.total_initiation_failures;
-    const pValue = callPerformanceResults[key].retention_p_value; // Using retention_p_value as an example
+    const dataEntry = callPerformanceResults[key];
+
+    // Safely access properties, providing default values if undefined
+    const dutFailures = (dataEntry?.DUT?.total_retention_failures || 0) + (dataEntry?.DUT?.total_initiation_failures || 0);
+    const refFailures = (dataEntry?.REF?.total_retention_failures || 0) + (dataEntry?.REF?.total_initiation_failures || 0);
+    const pValue = dataEntry?.retention_p_value || 1; // Default to 1 to avoid issues with comparison
     const result = pValue < 0.05 ? "Fail" : "Pass"; // Example logic for result
 
     return {

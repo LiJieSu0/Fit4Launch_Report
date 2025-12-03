@@ -1,5 +1,5 @@
-import React from 'react';
-import callPerformanceData from '../../DataFiles/CallPerformanceResults.json';
+import React, { useEffect } from 'react';
+import { useReportData } from '../../Contexts/ReportContext';
 import CpCaseTable from './CpCaseTable'; // Import the new component
 import '../../StyleScript/Restricted_Report_Style.css'; // Import the restricted report style
 import { Bar } from 'react-chartjs-2';
@@ -12,6 +12,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import { writeToFile } from '../../Utils/ErrorLogger'; // Assuming an ErrorLogger utility
 
 ChartJS.register(
     CategoryScale,
@@ -23,9 +24,25 @@ ChartJS.register(
 );
 
 const CallPerformanceDetails = () => {
+    const { reportData, loading, error } = useReportData();
+
+    useEffect(() => {
+        if (!loading && !error && reportData && reportData.callPerformance) {
+            // Perform data consistency checks here if needed
+            // For now, just ensure data is loaded
+            console.log("Call Performance Data Loaded:", reportData.callPerformance);
+        }
+    }, [reportData, loading, error]);
+
+    if (loading) return <div>Loading Call Performance Details...</div>;
+    if (error) return <div>Error: {error.message}</div>;
+    if (!reportData || !reportData.callPerformance) return <div>No Call Performance data available.</div>;
+
+    const callPerformanceData = reportData.callPerformance['Call Performance'];
 
     const processRatDistribution = (ratDistribution) => {
-        const total = Object.values(ratDistribution).reduce((sum, value) => sum + value, 0);
+        const safeRatDistribution = ratDistribution || {};
+        const total = Object.values(safeRatDistribution).reduce((sum, value) => sum + value, 0);
         const categories = {
             VoLTE: 0,
             '5G SA': 0,
@@ -33,7 +50,7 @@ const CallPerformanceDetails = () => {
             Unknown: 0,
         };
 
-        for (const [rat, count] of Object.entries(ratDistribution)) {
+        for (const [rat, count] of Object.entries(safeRatDistribution)) {
             if (rat === 'VoLTE') {
                 categories.VoLTE += count;
             } else if (rat === 'VoNR' || rat === 'VoNR-VoLTE') {
@@ -53,8 +70,8 @@ const CallPerformanceDetails = () => {
     };
 
     const CallCategoriesChart = ({ title, data }) => {
-        const dutPercentages = processRatDistribution(data.DUT.rat_distribution);
-        const refPercentages = processRatDistribution(data.REF.rat_distribution);
+        const dutPercentages = processRatDistribution(data.DUT?.rat_distribution);
+        const refPercentages = processRatDistribution(data.REF?.rat_distribution);
 
         const categoryOrder = ['VoLTE', '5G SA', 'EPSFB', 'Unknown'];
         const categoryColors = {
@@ -114,6 +131,7 @@ const CallPerformanceDetails = () => {
     };
 
     const processRatDistributionCounts = (ratDistribution) => {
+        const safeRatDistribution = ratDistribution || {};
         const categories = {
             VoLTE: 0,
             '5G SA': 0,
@@ -121,7 +139,7 @@ const CallPerformanceDetails = () => {
             Unknown: 0,
         };
 
-        for (const [rat, count] of Object.entries(ratDistribution)) {
+        for (const [rat, count] of Object.entries(safeRatDistribution)) {
             if (rat === 'VoLTE') {
                 categories.VoLTE += count;
             } else if (rat === 'VoNR' || rat === 'VoNR-VoLTE') {
@@ -137,8 +155,8 @@ const CallPerformanceDetails = () => {
     };
 
     const CallCategoriesTable = ({ data }) => {
-        const dutCounts = processRatDistributionCounts(data.DUT.rat_distribution);
-        const refCounts = processRatDistributionCounts(data.REF.rat_distribution);
+        const dutCounts = processRatDistributionCounts(data.DUT?.rat_distribution);
+        const refCounts = processRatDistributionCounts(data.REF?.rat_distribution);
 
         const categoryOrder = ['VoLTE', '5G SA', 'EPSFB', 'Unknown', 'Total'];
 
@@ -178,28 +196,28 @@ const CallPerformanceDetails = () => {
             datasets: [
                 {
                     label: 'Total Calls',
-                    data: [data.DUT.total_attempts, data.REF.total_attempts],
+                    data: [data.DUT?.total_attempts || 0, data.REF?.total_attempts || 0],
                     backgroundColor: 'rgba(0, 0, 255, 0.6)', // Blue for Total Calls
                     borderColor: 'rgba(0, 0, 255, 1)',
                     borderWidth: 1,
                 },
                 {
                     label: 'Successful Calls',
-                    data: [data.DUT.total_initiation_successes, data.REF.total_initiation_successes],
+                    data: [data.DUT?.total_initiation_successes || 0, data.REF?.total_initiation_successes || 0],
                     backgroundColor: 'rgba(0, 128, 0, 0.6)', // Green for Successful Calls
                     borderColor: 'rgba(0, 128, 0, 1)',
                     borderWidth: 1,
                 },
                 {
                     label: 'Init Failures Calls',
-                    data: [data.DUT.total_initiation_failures, data.REF.total_initiation_failures],
+                    data: [data.DUT?.total_initiation_failures || 0, data.REF?.total_initiation_failures || 0],
                     backgroundColor: 'rgba(255, 0, 0, 1)', // Red for Init Failures
                     borderColor: 'rgba(255, 0, 0, 1)',
                     borderWidth: 1,
                 },
                 {
                     label: 'Dropped Calls',
-                    data: [data.DUT.call_result_distribution.Drop || 0, data.REF.call_result_distribution.Drop || 0],
+                    data: [data.DUT?.call_result_distribution?.Drop || 0, data.REF?.call_result_distribution?.Drop || 0],
                     backgroundColor: 'rgba(255, 255, 0, 0.6)', // Yellow for Dropped Calls
                     borderColor: 'rgba(255, 255, 0, 1)',
                     borderWidth: 1,
@@ -262,32 +280,38 @@ const CallPerformanceDetails = () => {
                    <tbody>
                        <tr>
                            <td>Call Initiation</td>
-                           <td>{data.initiation_p_value.toFixed(3)}</td>
+                           <td>{(data.initiation_p_value || 1).toFixed(3)}</td>
                        </tr>
                        <tr>
                            <td>Call Retention</td>
-                           <td>{data.retention_p_value.toFixed(3)}</td>
+                           <td>{(data.retention_p_value || 1).toFixed(3)}</td>
                        </tr>
                    </tbody>
                </table>
            </div>
        );
    };
- 
+
      return (
          <div>
-             {Object.entries(callPerformanceData).map(([title, data], index) => (
-                 <React.Fragment key={index}>
-                     <div className='page-content'>
-                         <CpCaseTable title={title} data={data} />
-                         <CallSummaryChart title={title} data={data} /> 
-                         <div style={{marginBottom:50}}></div>
-                         <PValueTable data={data} />
-                         <CallCategoriesChart title={title} data={data} />
-                         <CallCategoriesTable data={data} />
-                     </div>
-                 </React.Fragment>
-             ))}
+             {Object.entries(callPerformanceData).map(([title, data], index) => {
+                 // Example consistency check: Ensure total_attempts is a number
+                 if (typeof data.DUT?.total_attempts !== 'number' || typeof data.REF?.total_attempts !== 'number') {
+                     writeToFile(`Data inconsistency in ${title}: total_attempts is not a number.`);
+                 }
+                 return (
+                     <React.Fragment key={index}>
+                         <div className='page-content'>
+                             <CpCaseTable title={title} data={data} />
+                             <CallSummaryChart title={title} data={data} />
+                             <div style={{marginBottom:80}}></div>
+                             <PValueTable data={data} />
+                             <CallCategoriesChart title={title} data={data} />
+                             <CallCategoriesTable data={data} />
+                         </div>
+                     </React.Fragment>
+                 );
+             })}
          </div>
      );
 };

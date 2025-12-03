@@ -104,9 +104,6 @@
     margin-bottom: 5px !important; /* Reduce margin below h3 in p-value container */
   }
 
-  .chart-container {
-    margin-bottom: 0px !important; /* Reduce space below chart for print */
-  }
 
   /* Remove any background colors or images for print */
   * {
@@ -412,7 +409,7 @@ VQ
   padding: 15px;
   border-radius: 8px;
   background-color: #ffffff;
-  transform: scale(0.8); /* Scale down by 20% */
+  transform: scale(0.7); /* Scale down by 20% */
   transform-origin: left top; /* Scale from the top-left corner */
 }
 

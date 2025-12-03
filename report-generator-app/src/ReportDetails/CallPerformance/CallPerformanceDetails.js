@@ -281,7 +281,7 @@ const CallPerformanceDetails = () => {
                      <div className='page-content'>
                          <CpCaseTable title={title} data={data} />
                          <CallSummaryChart title={title} data={data} /> 
-                         <div style={{marginBottom:100}}></div>
+                         <div style={{marginBottom:50}}></div>
                          <PValueTable data={data} />
                          <CallCategoriesChart title={title} data={data} />
                          <CallCategoriesTable data={data} />

@@ -6,6 +6,9 @@ import DeviceInfoPage from './CommonPage/DeviceInfoPage';
 import LegalPage from './CommonPage/LegalPage';
 
 
+import useSeattleMarketData from './data/seattleMarketData';
+
+
 import ReportHeader from './CommonPage/ReportHeader';
 import ReportFooter from './CommonPage/ReportFooter';
 
@@ -26,6 +29,16 @@ import DpSummaryPage from './ReportDetails/DataPerformance/DpSummaryPage';
 import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
 
 function App() {
+  const { callPerformance, coveragePerformance, dataPerformance, voiceQuality, loading, error } = useSeattleMarketData();
+
+  if (loading) {
+    return <div className="App">Loading Seattle market data...</div>;
+  }
+
+  if (error) {
+    return <div className="App" style={{ color: 'red' }}>Error: {error}</div>;
+  }
+
   return (
     <div className="App">
       <CoverPage />

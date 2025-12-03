@@ -100,8 +100,8 @@ def calculate_statistics(mos_scores):
             "std_dev": 0.0,
             "max": 0.0,
             "min": 0.0,
-            "percent_less_than_2": 0.0,
-            "percent_less_than_3": 0.0
+            "% MOS < 2.0": 0.0,
+            "% MOS < 3.0": 0.0
         }
 
     series = pd.Series(mos_scores)
@@ -122,8 +122,9 @@ def calculate_statistics(mos_scores):
         "mean": mean_mos,
             "std_dev": std_dev_mos,
             "max": max_mos,
-            "percent_less_than_2": percent_less_than_2,
-            "percent_less_than_3": percent_less_than_3
+            "min": min_mos,
+            "% MOS < 2.0": percent_less_than_2,
+            "% MOS < 3.0": percent_less_than_3
         }
 
 def main():
@@ -157,8 +158,8 @@ def main():
         print(f"    Mean: {ul_stats['mean']:.2f}")
         print(f"    Standard Deviation: {ul_stats['std_dev']:.2f}")
         print(f"    Max: {ul_stats['max']:.2f}")
-        print(f"    Percentage of scores < 2: {ul_stats['percent_less_than_2']:.2f}%")
-        print(f"    Percentage of scores < 3: {ul_stats['percent_less_than_3']:.2f}%")
+        print(f"    Percentage of scores < 2: {ul_stats['% MOS < 2.0']:.2f}%")
+        print(f"    Percentage of scores < 3: {ul_stats['% MOS < 3.0']:.2f}%")
 
         # Downlink MOS statistics
         dl_stats = stats["dl_mos_stats"]
@@ -167,8 +168,8 @@ def main():
         print(f"    Mean: {dl_stats['mean']:.2f}")
         print(f"    Standard Deviation: {dl_stats['std_dev']:.2f}")
         print(f"    Max: {dl_stats['max']:.2f}")
-        print(f"    Percentage of scores < 2: {dl_stats['percent_less_than_2']:.2f}%")
-        print(f"    Percentage of scores < 3: {dl_stats['percent_less_than_3']:.2f}%")
+        print(f"    Percentage of scores < 2: {dl_stats['% MOS < 2.0']:.2f}%")
+        print(f"    Percentage of scores < 3: {dl_stats['% MOS < 3.0']:.2f}%")
 
 if __name__ == "__main__":
     main()

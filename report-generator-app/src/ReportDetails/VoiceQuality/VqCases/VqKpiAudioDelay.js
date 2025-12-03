@@ -53,7 +53,7 @@ const vqTableData5 = [
 const VqKpiAudioDelay = () => {
   return (
     <div className="page-content">
-      <h2>3.5 KPI FOR AUDIO DELAY</h2>
+      <h2>3.5 Auto VoNR Disabled Audio Delay</h2>
       <table className="general-table-style vq-details-table">
         <thead>
           <tr>

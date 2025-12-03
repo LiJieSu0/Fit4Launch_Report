@@ -425,31 +425,45 @@ function Dp_MHS_Udp_Component() {
   });
 
   return (
-    <div className=''>
-      <h2>MHS-UDP Component</h2>
-      <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
-      <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
-      <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP DL Table" />
-      {downloadHistogramData.map((histogram, index) => (
-        <DpHistogramComponent
-          key={index}
-          data={histogram.data}
-          title={histogram.title}
-          yAxisLabel={histogram.yAxisLabel}
-          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-        />
-      ))}
-      <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP UL Table" />
-      {uploadHistogramData.map((histogram, index) => (
-        <DpHistogramComponent
-          key={index}
-          data={histogram.data}
-          title={histogram.title}
-          yAxisLabel={histogram.yAxisLabel}
-          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-        />
-      ))}
-    </div>
+    <>
+      <div className="page-content">
+        <h2>MHS-UDP Component</h2>
+        <h3>MHS UDP DL Overall table</h3>
+        <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
+      </div>
+      <div className="page-content">
+        <h3>MHS UDP UL Overall table</h3>
+        <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
+      </div>
+
+      <div className="page-content">
+        <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP DL Table" />
+      </div>
+
+      
+        {downloadHistogramData.map((histogram, index) => (
+          <DpHistogramComponent
+            key={index}
+            data={histogram.data}
+            title={histogram.title}
+            yAxisLabel={histogram.yAxisLabel}
+            barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+          />
+        ))}
+
+        <div className="page-content">
+          <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP UL Table" />
+        </div>
+        {uploadHistogramData.map((histogram, index) => (
+          <DpHistogramComponent
+            key={index}
+            data={histogram.data}
+            title={histogram.title}
+            yAxisLabel={histogram.yAxisLabel}
+            barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+          />
+        ))}
+    </>
   );
 }
 

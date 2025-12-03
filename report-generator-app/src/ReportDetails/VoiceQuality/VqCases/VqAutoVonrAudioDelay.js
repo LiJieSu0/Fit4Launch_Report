@@ -73,7 +73,7 @@ const VqAutoVonrAudioDelay = () => {
               <td>{row.metric}</td>
               {row.metric === "Average of 2 Devices (ms)" ? (
                 <>
-                  <td colSpan="2">{row.dut}</td>
+                  <td colSpan="2" className='bg-performance-pass'>{row.dut}</td>
                   <td colSpan="2">{row.ref}</td>
                 </>
               ) : (

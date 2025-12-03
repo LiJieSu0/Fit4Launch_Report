@@ -8,6 +8,8 @@ import VqEvsWbVqEnabled from './VqCases/VqEvsWbVqEnabled';
 import VqKpiAudioDelay from './VqCases/VqKpiAudioDelay';
 import VqAutoVonrAudioDelay from './VqCases/VqAutoVonrAudioDelay';
 
+
+//TODO audio delay color hardcoded
 const VqDetailsPage = () => {
   return (
     <div>

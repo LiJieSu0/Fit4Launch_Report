@@ -148,39 +148,44 @@ function Dp_httpMS_Component() {
     ];
 
     return (
-        <div className='page-content'>
-            <h2>HTTP Multi Stream test - 5G NR</h2>
-            <h3>Overall Multi Stream HTTP</h3>
-            <DpThroughputOverallTable
-                tableHeader={overallTableHeader}
-                tableData={combinedOverallTableData}
-                kpiRule="Throughput"
-                kpiTargetCells={[
-                    {
-                        rowIndex: 0,
-                        colIndex: 2,
-                        dutValue: ((httpMS_Stationary_DL.Good.DUT.Mean + httpMS_Stationary_DL.Moderate.DUT.Mean + httpMS_Stationary_DL.Poor.DUT.Mean) / 3).toFixed(2),
-                        refValue: ((httpMS_Stationary_DL.Good.REF.Mean + httpMS_Stationary_DL.Moderate.REF.Mean + httpMS_Stationary_DL.Poor.REF.Mean) / 3).toFixed(2),
-                    },
-                    {
-                        rowIndex: 0,
-                        colIndex: 3,
-                        dutValue: ((httpMS_Stationary_UL.Good.DUT.Mean + httpMS_Stationary_UL.Moderate.DUT.Mean + httpMS_Stationary_UL.Poor.DUT.Mean) / 3).toFixed(2),
-                        refValue: ((httpMS_Stationary_UL.Good.REF.Mean + httpMS_Stationary_UL.Moderate.REF.Mean + httpMS_Stationary_UL.Poor.REF.Mean) / 3).toFixed(2),
-                    },
-                ]}
-            />
-            <DpDetailsTableLoc3
-                data={httpMS_Stationary_DL}
-                tableName="Multi Stream HTTP Download for 30 seconds"
-                kpiRule="Throughput"
-                kpiTargetCells={[
-                    {
-                        dutValue: (httpMS_Stationary_DL.Good.DUT.Mean + httpMS_Stationary_DL.Moderate.DUT.Mean + httpMS_Stationary_DL.Poor.DUT.Mean) / 3,
-                        refValue: (httpMS_Stationary_DL.Good.REF.Mean + httpMS_Stationary_DL.Moderate.REF.Mean + httpMS_Stationary_DL.Poor.REF.Mean) / 3,
-                    },
-                ]}
-            />
+        <>
+            <div className='page-content'>
+                <h2>HTTP Multi Stream test - 5G NR</h2>
+                <h3>Overall Multi Stream HTTP</h3>
+                <DpThroughputOverallTable
+                    tableHeader={overallTableHeader}
+                    tableData={combinedOverallTableData}
+                    kpiRule="Throughput"
+                    kpiTargetCells={[
+                        {
+                            rowIndex: 0,
+                            colIndex: 2,
+                            dutValue: ((httpMS_Stationary_DL.Good.DUT.Mean + httpMS_Stationary_DL.Moderate.DUT.Mean + httpMS_Stationary_DL.Poor.DUT.Mean) / 3).toFixed(2),
+                            refValue: ((httpMS_Stationary_DL.Good.REF.Mean + httpMS_Stationary_DL.Moderate.REF.Mean + httpMS_Stationary_DL.Poor.REF.Mean) / 3).toFixed(2),
+                        },
+                        {
+                            rowIndex: 0,
+                            colIndex: 3,
+                            dutValue: ((httpMS_Stationary_UL.Good.DUT.Mean + httpMS_Stationary_UL.Moderate.DUT.Mean + httpMS_Stationary_UL.Poor.DUT.Mean) / 3).toFixed(2),
+                            refValue: ((httpMS_Stationary_UL.Good.REF.Mean + httpMS_Stationary_UL.Moderate.REF.Mean + httpMS_Stationary_UL.Poor.REF.Mean) / 3).toFixed(2),
+                        },
+                    ]}
+                />
+                <DpDetailsTableLoc3
+                    data={httpMS_Stationary_DL}
+                    tableName="Multi Stream HTTP Download for 30 seconds"
+                    kpiRule="Throughput"
+                    kpiTargetCells={[
+                        {
+                            dutValue: (httpMS_Stationary_DL.Good.DUT.Mean + httpMS_Stationary_DL.Moderate.DUT.Mean + httpMS_Stationary_DL.Poor.DUT.Mean) / 3,
+                            refValue: (httpMS_Stationary_DL.Good.REF.Mean + httpMS_Stationary_DL.Moderate.REF.Mean + httpMS_Stationary_DL.Poor.REF.Mean) / 3,
+                        },
+                    ]}
+                />
+            </div>
+
+            <div className='page-content'>
+
             <DpHistogramComponent
                 data={dlHistogramData}
                 title="Multi Stream HTTP Download Throughput"
@@ -192,6 +197,10 @@ function Dp_httpMS_Component() {
                 chartTitle="Multi Stream HTTP Download Throughput Range"
                 yAxisTitle="Throughput (Mbps)"
             />
+            </div>
+
+            <div className='page-content'>
+
             <DpDetailsTableLoc3
                 data={httpMS_Stationary_UL}
                 tableName="Multi Stream HTTP Upload for 30 seconds"
@@ -209,12 +218,18 @@ function Dp_httpMS_Component() {
                 yAxisLabel="Throughput (Mbps)"
                 barKeys={barKeys}
             />
+            </div>
+
+            <div className='page-content'>
+
             <DpRangeChart
                 data={ulRangeChartData}
                 chartTitle="Multi Stream HTTP Upload Throughput Range"
                 yAxisTitle="Throughput (Mbps)"
             />
-        </div>
+            </div>
+        </>
+
     );
 };
 

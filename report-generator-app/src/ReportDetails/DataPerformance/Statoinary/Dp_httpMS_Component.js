@@ -185,7 +185,6 @@ function Dp_httpMS_Component() {
             </div>
 
             <div className='page-content'>
-
             <DpHistogramComponent
                 data={dlHistogramData}
                 title="Multi Stream HTTP Download Throughput"
@@ -198,9 +197,7 @@ function Dp_httpMS_Component() {
                 yAxisTitle="Throughput (Mbps)"
             />
             </div>
-
             <div className='page-content'>
-
             <DpDetailsTableLoc3
                 data={httpMS_Stationary_UL}
                 tableName="Multi Stream HTTP Upload for 30 seconds"
@@ -221,7 +218,6 @@ function Dp_httpMS_Component() {
             </div>
 
             <div className='page-content'>
-
             <DpRangeChart
                 data={ulRangeChartData}
                 chartTitle="Multi Stream HTTP Upload Throughput Range"

@@ -684,9 +684,9 @@ function Dp_Udp_Component() {
         <h2>UDP test - 5G NR</h2>
         {/* dp udp overall  table */}
         <DpUdpTableLoc3 data={udp_Stationary_DL} tableName="UDP DL" />
-
+      </div>
         {/* histograms */}
-        <div> 
+      <div className='page-content'>
         <DpHistogramComponent
           data={dlMeanThroughput200HistogramData}
           title="UDP Download Mean Throughput (200 Mbps)"
@@ -699,6 +699,8 @@ function Dp_Udp_Component() {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
+      </div>
+      <div className='page-content'>
         <DpHistogramComponent
           data={dlMeanJitter200HistogramData}
           title="UDP Download Mean Jitter (200 Mbps)"
@@ -711,6 +713,8 @@ function Dp_Udp_Component() {
           yAxisLabel="Jitter (s)"
           barKeys={barKeys}
         />
+      </div>
+      <div className='page-content'>
         <DpHistogramComponent
           data={dlPFR200HistogramData}
           title="UDP Download Packet Failure Rate (200 Mbps)"
@@ -723,15 +727,16 @@ function Dp_Udp_Component() {
           yAxisLabel="Packet Failure Rate (%)"
           barKeys={barKeys}
         />
-        </div>
-        {/* histograms */}
-
       </div>
+
+      
       <div className='page-content'>
         <DpUdpTableLoc3 data={udp_Stationary_UL} tableName="UDP UL" />
         
         {/* histograms */}
-        <div>
+      </div>
+      
+      <div className='page-content'>
         <DpHistogramComponent
           data={ulMeanThroughput10HistogramData}
           title="UDP Upload Mean Throughput (10 Mbps)"
@@ -744,6 +749,10 @@ function Dp_Udp_Component() {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
+      </div>
+
+      <div className='page-content'>
+
         <DpHistogramComponent
           data={ulMeanJitter10HistogramData}
           title="UDP Upload Mean Jitter (10 Mbps)"
@@ -756,6 +765,10 @@ function Dp_Udp_Component() {
           yAxisLabel="Jitter (ms)"
           barKeys={barKeys}
         />
+      </div>
+
+      <div className='page-content'>
+
         <DpHistogramComponent
           data={ulPFR10HistogramData}
           title="UDP Upload Packet Failure Rate (10 Mbps)"
@@ -769,9 +782,6 @@ function Dp_Udp_Component() {
           barKeys={barKeys}
         />
         </div>
-        {/* histograms */}
-
-      </div>
     </>
   );
 }

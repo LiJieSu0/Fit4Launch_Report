@@ -55,10 +55,15 @@ function DpNSATestDriveDetails() {
   ];
 
   return (
+    <>
     <div className='page-content'>
       <h2>NSA Test Drive Data Performance Details</h2>
       <DpNSATestDriveOverallTable data={TestDriveData} tableName="Test Drive Overall Data" />
       <DpNSATestDriveTable data={TestDriveData} tableName="Test Drive" />
+      </div>
+
+    <div className='page-content'>
+
       <DpHistogramComponent
         data={throughputData}
         title="Mean Throughput (Mbps)"
@@ -71,6 +76,10 @@ function DpNSATestDriveDetails() {
         yAxisLabel="s"
         barKeys={barKeysJitter}
       />
+      </div>
+
+    <div className='page-content'>
+
       <DpHistogramComponent
         data={errorRatioData}
         title="Error Ratio (%)"
@@ -83,7 +92,9 @@ function DpNSATestDriveDetails() {
         yAxisLabel="ms"
         barKeys={barKeysPingRtt}
       />
-    </div>
+      </div>
+    </>
+    
   );
 }
 

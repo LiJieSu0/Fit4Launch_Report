@@ -84,17 +84,23 @@ function Dp_MHS_Ping_Component() {
   ];
 
   return (
-    <div className=''>
-      <h2>MHS-Ping Component</h2>
-      <DpPingOverallTable data={data} /> {/* Add DpPingOverallTable */}
-      <DpMHSPingTable data={data} />
-      <DpHistogramComponent
-        data={histogramData}
-        title="Average Ping RTT"
-        yAxisLabel="Latency (ms)"
-        barKeys={barKeys}
-      />
-    </div>
+    <>
+      <div className="page-content">
+        <h2>MHS-Ping Component</h2>
+        <h3>Results</h3>
+        <DpPingOverallTable data={data} /> {/* Add DpPingOverallTable */}
+      </div>
+      <div className="page-content">
+        <h3>Details</h3>
+        <DpMHSPingTable data={data} />
+        <DpHistogramComponent
+          data={histogramData}
+          title="Average Ping RTT"
+          yAxisLabel="Latency (ms)"
+          barKeys={barKeys}
+          />
+      </div>
+    </>
   );
 }
 

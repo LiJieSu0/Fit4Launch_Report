@@ -52,9 +52,9 @@ function App() {
         <CoverageDetails />
         <CoverageKpiPage /> */}
 
-        {/* <DpSummaryPage /> */}
+        <DpSummaryPage />
         <DpDetailsPage />
-        {/* <DpKpiPage /> */}
+        <DpKpiPage />
 
         {/* <LegalPage/>
         <AboutPage />

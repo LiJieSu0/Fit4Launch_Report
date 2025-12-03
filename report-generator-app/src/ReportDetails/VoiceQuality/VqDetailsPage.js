@@ -15,6 +15,7 @@ const VqDetailsPage = () => {
     <div>
       <VqAmrNbVq />
       <VqAmrWbVq />
+      {/* Todo Line chart data dynamic loading */}
       <VqEvsWbVqDisabled />
       <VqEvsWbVqEnabled />
       <VqKpiAudioDelay />

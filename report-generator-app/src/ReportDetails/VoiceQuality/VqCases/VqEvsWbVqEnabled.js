@@ -1,90 +1,127 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import VqLineChart from './VqLineChart';
 import VqMosTable from './VqMosTable';
 
-const vqTableData4 = [
-  {
-    metric: "MOS Average",
-    mobile: { dut1: "3.65", dut2: "3.45", ref1: "3.73", ref2: "3.49" },
-    base: { dut1: "3.70", dut2: "3.22", ref1: "3.71", ref2: "3.37" },
-    highlight: true
-  },
-  {
-    metric: "MOS Stdev",
-    mobile: { dut1: "0.62", dut2: "0.62", ref1: "0.71", ref2: "0.51" },
-    base: { dut1: "0.51", dut2: "0.64", ref1: "0.66", ref2: "0.66" },
-    highlight: false
-  },
-  {
-    metric: "Maximum MOS",
-    mobile: { dut1: "4.08", dut2: "3.90", ref1: "4.19", ref2: "3.86" },
-    base: { dut1: "4.06", dut2: "3.89", ref1: "4.14", ref2: "3.87" },
-    highlight: false
-  },
-  {
-    metric: "Count",
-    mobile: { dut1: "505", dut2: "502", ref1: "507", ref2: "505" },
-    base: { dut1: "507", dut2: "504", ref1: "505", ref2: "508" },
-    highlight: false
-  },
-  {
-    metric: "% MOS < 3.0",
-    mobile: { dut1: "11.1%", dut2: "14.5%", ref1: "13.4%", ref2: "8.7%" },
-    base: { dut1: "8.9%", dut2: "27.6%", ref1: "13.5%", ref2: "17.9%" },
-    highlight: true
-  },
-  {
-    metric: "% MOS < 3.4",
-    mobile: { dut1: "15.0%", dut2: "18.1%", ref1: "17.9%", ref2: "18.2%" },
-    base: { dut1: "12.4%", dut2: "47.0%", ref1: "17.2%", ref2: "28.0%" },
-    highlight: true
+const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
+  let value = data;
+  for (const key of path) {
+    if (value && typeof value === 'object' && key in value) {
+      value = value[key];
+    } else {
+      return 'N/A';
+    }
   }
-];
-
-const vqTableDataEVStoEVS_3_3 = [
-  {
-    metric: "MOS Average",
-    downlink: { value: "", className: "bg-performance-fail" },
-    uplink: { value: "", className: "bg-performance-fail" },
-    highlight: true
-  },
-  {
-    metric: "% MOS < 3.4",
-    downlink: { value: "", className: "bg-performance-excellent" },
-    uplink: { value: "", className: "bg-performance-excellent" },
-    highlight: false
-  },
-  {
-    metric: "% MOS < 3.0",
-    downlink: { value: "", className: "bg-performance-excellent" },
-    uplink: { value: "", className: "bg-performance-excellent" },
-    highlight: true
+  if (typeof value === 'number') {
+    if (isPercentage) {
+      return `${(value).toFixed(decimals)}%`;
+    }
+    return value.toFixed(decimals);
   }
-];
-
-const vqTableDataEVStoAMR_3_3 = [
-  {
-    metric: "MOS Average",
-    downlink: { value: "", className: "bg-performance-excellent" },
-    uplink: { value: "", className: "bg-performance-excellent" },
-    highlight: true
-  },
-  {
-    metric: "% MOS < 3.4",
-    downlink: { value: "", className: "bg-performance-excellent" },
-    uplink: { value: "", className: "bg-performance-excellent" },
-    highlight: false
-  },
-  {
-    metric: "% MOS < 3.0",
-    downlink: { value: "", className: "bg-performance-pass" },
-    uplink: { value: "", className: "bg-performance-excellent" },
-    highlight: true
-  }
-];
+  return value;
+};
 
 const VqEvsWbVqEnabled = () => {
+  const { reportData } = useContext(ReportContext);
+
+  if (!reportData || !reportData.voiceQuality || !reportData.voiceQuality["Voice Quality"]) {
+    return <div>Loading voice quality data...</div>;
+  }
+
+  const evsWbKey = "5G Auto VoNR Enabled EVS WB VQ";
+  const evsWbDataPath = reportData.voiceQuality["Voice Quality"][evsWbKey];
+
+  if (!evsWbDataPath) {
+    return <div>Loading {evsWbKey} data...</div>;
+  }
+
+  const getEvsWbValue = (category, device, stat, isPercentage = false, decimals = 2) => {
+    const path = [category, `vonr enable evs wb ${device} ${category.toLowerCase()}`, stat];
+    return getFormattedValue(evsWbDataPath, path, isPercentage, decimals);
+  };
+
+  const vqTableData4 = [
+    {
+      metric: "MOS Average",
+      mobile: { dut1: getEvsWbValue("Mobile", "DUT1", "MOS Average"), dut2: getEvsWbValue("Mobile", "DUT2", "MOS Average"), ref1: getEvsWbValue("Mobile", "REF1", "MOS Average"), ref2: getEvsWbValue("Mobile", "REF2", "MOS Average") },
+      base: { dut1: getEvsWbValue("Base", "DUT1", "MOS Average"), dut2: getEvsWbValue("Base", "DUT2", "MOS Average"), ref1: getEvsWbValue("Base", "REF1", "MOS Average"), ref2: getEvsWbValue("Base", "REF2", "MOS Average") },
+      highlight: true
+    },
+    {
+      metric: "MOS Stdev",
+      mobile: { dut1: getEvsWbValue("Mobile", "DUT1", "MOS Stdev"), dut2: getEvsWbValue("Mobile", "DUT2", "MOS Stdev"), ref1: getEvsWbValue("Mobile", "REF1", "MOS Stdev"), ref2: getEvsWbValue("Mobile", "REF2", "MOS Stdev") },
+      base: { dut1: getEvsWbValue("Base", "DUT1", "MOS Stdev"), dut2: getEvsWbValue("Base", "DUT2", "MOS Stdev"), ref1: getEvsWbValue("Base", "REF1", "MOS Stdev"), ref2: getEvsWbValue("Base", "REF2", "MOS Stdev") },
+      highlight: false
+    },
+    {
+      metric: "Maximum MOS",
+      mobile: { dut1: getEvsWbValue("Mobile", "DUT1", "Maximum MOS"), dut2: getEvsWbValue("Mobile", "DUT2", "Maximum MOS"), ref1: getEvsWbValue("Mobile", "REF1", "Maximum MOS"), ref2: getEvsWbValue("Mobile", "REF2", "Maximum MOS") },
+      base: { dut1: getEvsWbValue("Base", "DUT1", "Maximum MOS"), dut2: getEvsWbValue("Base", "DUT2", "Maximum MOS"), ref1: getEvsWbValue("Base", "REF1", "Maximum MOS"), ref2: getEvsWbValue("Base", "REF2", "Maximum MOS") },
+      highlight: false
+    },
+    {
+      metric: "Count",
+      mobile: { dut1: getEvsWbValue("Mobile", "DUT1", "Counts", false, 0), dut2: getEvsWbValue("Mobile", "DUT2", "Counts", false, 0), ref1: getEvsWbValue("Mobile", "REF1", "Counts", false, 0), ref2: getEvsWbValue("Mobile", "REF2", "Counts", false, 0) },
+      base: { dut1: getEvsWbValue("Base", "DUT1", "Counts", false, 0), dut2: getEvsWbValue("Base", "DUT2", "Counts", false, 0), ref1: getEvsWbValue("Base", "REF1", "Counts", false, 0), ref2: getEvsWbValue("Base", "REF2", "Counts", false, 0) },
+      highlight: false
+    },
+    {
+      metric: "% MOS < 3.4",
+      mobile: { dut1: getEvsWbValue("Mobile", "DUT1", "% MOS < 3.4", true, 2), dut2: getEvsWbValue("Mobile", "DUT2", "% MOS < 3.4", true, 2), ref1: getEvsWbValue("Mobile", "REF1", "% MOS < 3.4", true, 2), ref2: getEvsWbValue("Mobile", "REF2", "% MOS < 3.4", true, 2) },
+      base: { dut1: getEvsWbValue("Base", "DUT1", "% MOS < 3.4", true, 2), dut2: getEvsWbValue("Base", "DUT2", "% MOS < 3.4", true, 2), ref1: getEvsWbValue("Base", "REF1", "% MOS < 3.4", true, 2), ref2: getEvsWbValue("Base", "REF2", "% MOS < 3.4", true, 2) },
+      highlight: true
+    },
+    {
+      metric: "% MOS < 3.0",
+      mobile: { dut1: getEvsWbValue("Mobile", "DUT1", "% MOS < 3.0", true, 2), dut2: getEvsWbValue("Mobile", "DUT2", "% MOS < 3.0", true, 2), ref1: getEvsWbValue("Mobile", "REF1", "% MOS < 3.0", true, 2), ref2: getEvsWbValue("Mobile", "REF2", "% MOS < 3.0", true, 2) },
+      base: { dut1: getEvsWbValue("Base", "DUT1", "% MOS < 3.0", true, 2), dut2: getEvsWbValue("Base", "DUT2", "% MOS < 3.0", true, 2), ref1: getEvsWbValue("Base", "REF1", "% MOS < 3.0", true, 2), ref2: getEvsWbValue("Base", "REF2", "% MOS < 3.0", true, 2) },
+      highlight: true
+    }
+  ];
+
+  const vqTableDataEVStoEVS_3_3 = [
+    {
+      metric: "MOS Average",
+      downlink: { value: "", className: "bg-performance-fail" },
+      uplink: { value: "", className: "bg-performance-fail" },
+      highlight: true
+    },
+    {
+      metric: "% MOS < 3.4",
+      downlink: { value: "", className: "bg-performance-pass" },
+      uplink: { value: "", className: "bg-performance-pass" },
+      highlight: false
+    },
+    {
+      metric: "% MOS < 3.0",
+      downlink: { value: "", className: "bg-performance-pass" },
+      uplink: { value: "", className: "bg-performance-fail" },
+      highlight: true
+    }
+  ];
+
+  const vqTableDataEVStoAMR_3_3 = [
+    {
+      metric: "MOS Average",
+      downlink: { value: "", className: "bg-performance-fail" },
+      uplink: { value: "", className: "bg-performance-fail" },
+      highlight: true
+    },
+    {
+      metric: "% MOS < 3.4",
+      downlink: { value: "", className: "bg-performance-excellent" },
+      uplink: { value: "", className: "bg-performance-fail" },
+      highlight: false
+    },
+    {
+      metric: "% MOS < 3.0",
+      downlink: { value: "", className: "bg-performance-excellent" },
+      uplink: { value: "", className: "bg-performance-pass" },
+      highlight: true
+    }
+  ];
+
   return (
     <>
       <div className="page-content">
@@ -166,12 +203,12 @@ const VqEvsWbVqEnabled = () => {
               <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
                 <td>{row.metric}</td>
                 <td>{row.mobile.dut1}</td>
-                <td>{row.mobile.dut2}</td>
                 <td>{row.mobile.ref1}</td>
+                <td>{row.mobile.dut2}</td>
                 <td>{row.mobile.ref2}</td>
                 <td>{row.base.dut1}</td>
-                <td>{row.base.dut2}</td>
                 <td>{row.base.ref1}</td>
+                <td>{row.base.dut2}</td>
                 <td>{row.base.ref2}</td>
               </tr>
             ))}
@@ -187,7 +224,6 @@ const VqEvsWbVqEnabled = () => {
         <VqMosTable dataSource="vonr_enabled_evs_wb_vq_base" />
       </div>
     </>
-
   );
 };
 

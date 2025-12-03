@@ -6,7 +6,8 @@ import DeviceInfoPage from './CommonPage/DeviceInfoPage';
 import LegalPage from './CommonPage/LegalPage';
 
 
-import useSeattleMarketData from './data/seattleMarketData';
+import { useState, useEffect } from 'react';
+import useDataLoader from './Utils/DataLoader';
 
 
 import ReportHeader from './CommonPage/ReportHeader';
@@ -29,12 +30,12 @@ import DpSummaryPage from './ReportDetails/DataPerformance/DpSummaryPage';
 import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
 
 function App() {
-  const { callPerformance, coveragePerformance, dataPerformance, voiceQuality, loading, error } = useSeattleMarketData();
+  const [market, setMarket] = useState('Seattle'); // New state for market selection
+  const { marketData, loading, error } = useDataLoader(market); // Use useDataLoader with market
 
   if (loading) {
-    return <div className="App">Loading Seattle market data...</div>;
+    return <div className="App">Loading {market} market data...</div>;
   }
-
   if (error) {
     return <div className="App" style={{ color: 'red' }}>Error: {error}</div>;
   }
@@ -67,6 +68,28 @@ function App() {
       {/* <LegalPage/> */}
       {/* <AboutPage /> */}
       {/* <ReportFooter /> */}
+
+      {/* Displaying data for demonstration */}
+      <header className="App-header">
+        <h1>Market Data Report</h1>
+        <select onChange={(e) => setMarket(e.target.value)} value={market}>
+          <option value="Seattle">Seattle</option>
+          {/* Add other market options here as needed */}
+        </select>
+      </header>
+      <main>
+        <h2>Call Performance ({market})</h2>
+        <pre>{JSON.stringify(marketData.callPerformance, null, 2)}</pre>
+
+        <h2>Coverage Performance ({market})</h2>
+        <pre>{JSON.stringify(marketData.coveragePerformance, null, 2)}</pre>
+
+        <h2>Data Performance ({market})</h2>
+        <pre>{JSON.stringify(marketData.dataPerformance, null, 2)}</pre>
+
+        <h2>Voice Quality ({market})</h2>
+        <pre>{JSON.stringify(marketData.voiceQuality, null, 2)}</pre>
+      </main>
     </div>
   );
 }

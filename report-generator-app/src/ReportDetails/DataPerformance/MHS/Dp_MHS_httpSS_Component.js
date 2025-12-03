@@ -120,63 +120,73 @@ function Dp_MHS_httpSS_Component() {
   };
 
   return (
-    <div className=''>
-      <h2>MHS-httpSS Component</h2>
-      <h3>Overall Single Stream HTTP</h3>
-      <DpThroughputOverallTable
-        tableHeader={overallTableHeader}
-        tableData={combinedOverallTableData}
-        kpiRule="Throughput"
-        kpiTargetCells={[
-          {
-            rowIndex: 0,
-            colIndex: 2,
-            dutValue: overallDownloadDUTMean.toFixed(2),
-            refValue: overallDownloadREFMean.toFixed(2),
-          },
-          {
-            rowIndex: 0,
-            colIndex: 3,
-            dutValue: overallUploadDUTMean.toFixed(2),
-            refValue: overallUploadREFMean.toFixed(2),
-          },
-        ]}
-      />
-      <DpMHSHttpSSTable data={dataDL} tableName="MHS Single Stream HTTP Download Throughput" kpiRule="Throughput" />
-      
-      <DpHistogramComponent
-        data={[
-          { name: 'Good', DUT: dataDL.Good.DUT["Mean"], REF: dataDL.Good.REF["Mean"] },
-          { name: 'Moderate', DUT: dataDL.Moderate.DUT["Mean"], REF: dataDL.Moderate.REF["Mean"] },
-          { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
-        ]}
-        title="MHS Single Stream HTTP Download Throughput Histogram"
-        yAxisLabel="Throughput"
-        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-      />
-      <DpRangeChart
-        data={downloadRangeChartData}
-        chartTitle="MHS Single Stream HTTP Download Throughput Range"
-        yAxisTitle="Throughput"
-      />
-      <DpMHSHttpSSTable data={dataUL} tableName="MHS Single Stream HTTP Upload Throughput" kpiRule="Throughput" />
-      
-      <DpHistogramComponent
-        data={[
-          { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },
-          { name: 'Moderate', DUT: dataUL.Moderate.DUT["Mean"], REF: dataUL.Moderate.REF["Mean"] },
-          { name: 'Overall', DUT: overallUploadDUTMean, REF: overallUploadREFMean },
-        ]}
-        title="MHS Single Stream HTTP Upload Throughput Histogram"
-        yAxisLabel="Throughput"
-        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-      />
-      <DpRangeChart
-        data={uploadRangeChartData}
-        chartTitle="MHS Single Stream HTTP Upload Throughput Range"
-        yAxisTitle="Throughput"
-      />
-    </div>
+    <>
+      <div className='page-content'>
+        <h2>MHS-httpSS Component</h2>
+        <h3>Overall Single Stream HTTP</h3>
+        <DpThroughputOverallTable
+          tableHeader={overallTableHeader}
+          tableData={combinedOverallTableData}
+          kpiRule="Throughput"
+          kpiTargetCells={[
+            {
+              rowIndex: 0,
+              colIndex: 2,
+              dutValue: overallDownloadDUTMean.toFixed(2),
+              refValue: overallDownloadREFMean.toFixed(2),
+            },
+            {
+              rowIndex: 0,
+              colIndex: 3,
+              dutValue: overallUploadDUTMean.toFixed(2),
+              refValue: overallUploadREFMean.toFixed(2),
+            },
+          ]}
+        />
+        <DpMHSHttpSSTable data={dataDL} tableName="MHS Single Stream HTTP Download Throughput" kpiRule="Throughput" />
+      </div>
+
+      <div className='page-content'>
+        <DpHistogramComponent
+          data={[
+            { name: 'Good', DUT: dataDL.Good.DUT["Mean"], REF: dataDL.Good.REF["Mean"] },
+            { name: 'Moderate', DUT: dataDL.Moderate.DUT["Mean"], REF: dataDL.Moderate.REF["Mean"] },
+            { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
+          ]}
+          title="MHS Single Stream HTTP Download Throughput Histogram"
+          yAxisLabel="Throughput"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+        <DpRangeChart
+          data={downloadRangeChartData}
+          chartTitle="MHS Single Stream HTTP Download Throughput Range"
+          yAxisTitle="Throughput"
+        />
+      </div>
+
+      <div className='page-content'>
+        <DpMHSHttpSSTable data={dataUL} tableName="MHS Single Stream HTTP Upload Throughput" kpiRule="Throughput" />
+      </div>
+      <div className='page-content'>
+        
+        <DpHistogramComponent
+          data={[
+            { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },
+            { name: 'Moderate', DUT: dataUL.Moderate.DUT["Mean"], REF: dataUL.Moderate.REF["Mean"] },
+            { name: 'Overall', DUT: overallUploadDUTMean, REF: overallUploadREFMean },
+          ]}
+          title="MHS Single Stream HTTP Upload Throughput Histogram"
+          yAxisLabel="Throughput"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+        <DpRangeChart
+          data={uploadRangeChartData}
+          chartTitle="MHS Single Stream HTTP Upload Throughput Range"
+          yAxisTitle="Throughput"
+        />
+      </div>
+
+    </>
   );
 }
 

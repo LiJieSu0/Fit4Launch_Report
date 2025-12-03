@@ -78,10 +78,14 @@ const Dp_playStore_Component = () => {
   ];
 
   return (
+    <>
       <div className='page-content'>
         <h2>Play-store app download test - 5G NR</h2>
         <DpPlayStoreOverallTable tableData={tableData} />
         <DpPlayStoreTable tableData={tableData} />
+      </div>
+      <div className='page-content'>
+
         <DpHistogramComponent
           data={histogramData30M}
           title="Play Store 30M Download Throughput"
@@ -94,6 +98,10 @@ const Dp_playStore_Component = () => {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
+      </div>
+
+      <div className='page-content'>
+
         <DpHistogramComponent
           data={histogramData100M}
           title="Play Store 100M Download Throughput"
@@ -102,6 +110,8 @@ const Dp_playStore_Component = () => {
         />
 
       </div>
+    </>
+
   );
 };
 

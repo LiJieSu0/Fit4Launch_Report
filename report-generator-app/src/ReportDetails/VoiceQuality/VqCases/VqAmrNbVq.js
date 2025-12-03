@@ -111,7 +111,6 @@ const VqAmrNbVq = () => {
         </tbody>
       </table>
 
-      {/* New table for Voice Quality Performance EVS to EVS Call Scenario */}
 
     </div>
   );

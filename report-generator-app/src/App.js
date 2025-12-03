@@ -44,7 +44,7 @@ function App() {
         <CallPerformanceDetails />
         <CpKpiPage/> */}
 
-        <VqSummaryPage />
+        {/* <VqSummaryPage /> */}
         <VqDetailsPage />
         <VqKpiPage/>
         

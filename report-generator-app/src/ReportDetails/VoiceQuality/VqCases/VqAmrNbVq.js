@@ -1,64 +1,148 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 
-const vqTableData1 = [
-  {
-    metric: "MOS Average",
-    downlink: { ref: "4.29", dut1: "4.33", dut2: "4.32" },
-    uplink: { ref: "4.28", dut1: "4.31", dut2: "4.33" },
-    highlight: true
-  },
-  {
-    metric: "MOS Stdev",
-    downlink: { ref: "0.26", dut1: "0.16", dut2: "0.19" },
-    uplink: { ref: "0.36", dut1: "0.35", dut2: "0.22" },
-    highlight: false
-  },
-  {
-    metric: "Maximum MOS",
-    downlink: { ref: "4.47", dut1: "4.49", dut2: "4.48" },
-    uplink: { ref: "4.50", dut1: "4.50", dut2: "4.50" },
-    highlight: false
-  },
-  {
-    metric: "Count",
-    downlink: { ref: "512", dut1: "512", dut2: "510" },
-    uplink: { ref: "510", dut1: "510", dut2: "509" },
-    highlight: false
-  },
-  {
-    metric: "% MOS < 3.0",
-    downlink: { ref: "1.0%", dut1: "0.4%", dut2: "0.6%" },
-    uplink: { ref: "1.6%", dut1: "2.0%", dut2: "0.6%" },
-    highlight: true
-  },
-  {
-    metric: "% MOS < 2.0",
-    downlink: { ref: "0.4%", dut1: "0.0%", dut2: "0.0%" },
-    uplink: { ref: "0.4%", dut1: "0.4%", dut2: "0.0%" },
-    highlight: true
+const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
+  let value = data;
+  for (const key of path) {
+    if (value && typeof value === 'object' && key in value) {
+      value = value[key];
+    } else {
+      return 'N/A';
+    }
   }
-];
-
-const vqTableData2 = [
-  {
-    metric: "MOS Average",
-    results: "4.33",
-    highlightClass: "performance-excellent-bg"
-  },
-  {
-    metric: "% MOS < 2.0",
-    results: "0.0%",
-    highlightClass: "performance-excellent-bg"
-  },
-  {
-    metric: "% MOS < 3.0",
-    results: "0.4%",
-    highlightClass: "performance-excellent-bg"
+  if (typeof value === 'number') {
+    if (isPercentage) {
+      return `${(value).toFixed(decimals)}%`;
+    }
+    return value.toFixed(decimals);
   }
-];
+  return value;
+};
 
 const VqAmrNbVq = () => {
+  const { reportData } = useContext(ReportContext);
+
+  if (!reportData || !reportData.voiceQuality || !reportData.voiceQuality["Voice Quality"]) {
+    return <div>Loading voice quality data...</div>;
+  }
+
+  const amrNbKey = "5G Auto VoNR Enabled AMR NB VQ";
+  const amrNbDataPath = reportData.voiceQuality["Voice Quality"][amrNbKey];
+
+  if (!amrNbDataPath) {
+    return <div>Loading {amrNbKey} data...</div>;
+  }
+
+  const getAmrNbValue = (device, type, stat, isPercentage = false, decimals = 2) => {
+    const path = [device, `${type}_mos_stats`, stat];
+    return getFormattedValue(amrNbDataPath, path, isPercentage, decimals);
+  };
+
+  const vqTableData1 = [
+    {
+      metric: "MOS Average",
+      downlink: {
+        ref: getAmrNbValue("REF", "dl", "mean"),
+        dut1: getAmrNbValue("DUT1", "dl", "mean"),
+        dut2: getAmrNbValue("DUT2", "dl", "mean")
+      },
+      uplink: {
+        ref: getAmrNbValue("REF", "ul", "mean"),
+        dut1: getAmrNbValue("DUT1", "ul", "mean"),
+        dut2: getAmrNbValue("DUT2", "ul", "mean")
+      },
+      highlight: true
+    },
+    {
+      metric: "MOS Stdev",
+      downlink: {
+        ref: getAmrNbValue("REF", "dl", "std_dev"),
+        dut1: getAmrNbValue("DUT1", "dl", "std_dev"),
+        dut2: getAmrNbValue("DUT2", "dl", "std_dev")
+      },
+      uplink: {
+        ref: getAmrNbValue("REF", "ul", "std_dev"),
+        dut1: getAmrNbValue("DUT1", "ul", "std_dev"),
+        dut2: getAmrNbValue("DUT2", "ul", "std_dev")
+      },
+      highlight: false
+    },
+    {
+      metric: "Maximum MOS",
+      downlink: {
+        ref: getAmrNbValue("REF", "dl", "max"),
+        dut1: getAmrNbValue("DUT1", "dl", "max"),
+        dut2: getAmrNbValue("DUT2", "dl", "max")
+      },
+      uplink: {
+        ref: getAmrNbValue("REF", "ul", "max"),
+        dut1: getAmrNbValue("DUT1", "ul", "max"),
+        dut2: getAmrNbValue("DUT2", "ul", "max")
+      },
+      highlight: false
+    },
+    {
+      metric: "Count",
+      downlink: {
+        ref: getAmrNbValue("REF", "dl", "count", false, 0),
+        dut1: getAmrNbValue("DUT1", "dl", "count", false, 0),
+        dut2: getAmrNbValue("DUT2", "dl", "count", false, 0)
+      },
+      uplink: {
+        ref: getAmrNbValue("REF", "ul", "count", false, 0),
+        dut1: getAmrNbValue("DUT1", "ul", "count", false, 0),
+        dut2: getAmrNbValue("DUT2", "ul", "count", false, 0)
+      },
+      highlight: false
+    },
+    {
+      metric: "% MOS < 2.0",
+      downlink: {
+        ref: getAmrNbValue("REF", "dl", "percent_less_than_2", true, 2),
+        dut1: getAmrNbValue("DUT1", "dl", "percent_less_than_2", true, 2),
+        dut2: getAmrNbValue("DUT2", "dl", "percent_less_than_2", true, 2)
+      },
+      uplink: {
+        ref: getAmrNbValue("REF", "ul", "percent_less_than_2", true, 2),
+        dut1: getAmrNbValue("DUT1", "ul", "percent_less_than_2", true, 2),
+        dut2: getAmrNbValue("DUT2", "ul", "percent_less_than_2", true, 2)
+      },
+      highlight: true
+    },
+    {
+      metric: "% MOS < 3.0",
+      downlink: {
+        ref: getAmrNbValue("REF", "dl", "percent_less_than_3", true, 2),
+        dut1: getAmrNbValue("DUT1", "dl", "percent_less_than_3", true, 2),
+        dut2: getAmrNbValue("DUT2", "dl", "percent_less_than_3", true, 2)
+      },
+      uplink: {
+        ref: getAmrNbValue("REF", "ul", "percent_less_than_3", true, 2),
+        dut1: getAmrNbValue("DUT1", "ul", "percent_less_than_3", true, 2),
+        dut2: getAmrNbValue("DUT2", "ul", "percent_less_than_3", true, 2)
+      },
+      highlight: true
+    }
+  ];
+
+  const vqTableData2 = [
+    {
+      metric: "MOS Average",
+      results: getAmrNbValue("DUT1", "dl", "mean"),
+      highlightClass: "performance-excellent-bg"
+    },
+    {
+      metric: "% MOS < 2.0",
+      results: getAmrNbValue("DUT1", "dl", "percent_less_than_2", true, 2),
+      highlightClass: "performance-excellent-bg"
+    },
+    {
+      metric: "% MOS < 3.0",
+      results: getAmrNbValue("DUT1", "dl", "percent_less_than_3", true, 2),
+      highlightClass: "performance-excellent-bg"
+    }
+  ];
   return (
     <div className="page-content">
       <h2>3.1 5G Auto VoNR Enabled AMR NB VQ</h2>

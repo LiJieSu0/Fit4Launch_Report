@@ -6,8 +6,10 @@ import DeviceInfoPage from './CommonPage/DeviceInfoPage';
 import LegalPage from './CommonPage/LegalPage';
 
 
-import { useState, useEffect } from 'react';
-import useDataLoader from './Utils/DataLoader';
+import { useState } from 'react';
+
+
+import { ReportDataProvider } from './Contexts/ReportDataProvider';
 
 
 import ReportHeader from './CommonPage/ReportHeader';
@@ -30,45 +32,37 @@ import DpSummaryPage from './ReportDetails/DataPerformance/DpSummaryPage';
 import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
 
 function App() {
-  const [market, setMarket] = useState('Seattle'); // New state for market selection
-  const { marketData, loading, error } = useDataLoader(market); // Use useDataLoader with market
-
-  if (loading) {
-    return <div className="App">Loading {market} market data...</div>;
-  }
-  if (error) {
-    return <div className="App" style={{ color: 'red' }}>Error: {error}</div>;
-  }
+  const [market, setMarket] = useState('Seattle'); // Default market
 
   return (
-    <div className="App">
-      <CoverPage />
-      
-      {/* <ReportHeader /> */}
+    <ReportDataProvider market={market}>
+      <div className="App">
+        {/* <CoverPage />
+        <ReportHeader />
+        <DeviceInfoPage/>
+        <ContentsIndexPage /> */}
 
-      {/* <DeviceInfoPage/>
-      <ContentsIndexPage /> */}
+        <CpSummaryPage />
+        <CallPerformanceDetails />
+        <CpKpiPage/>
 
-      {/* <CpSummaryPage />
-      <CallPerformanceDetails />
-      <CpKpiPage/>  */}
+        {/* <VqSummaryPage />
+        <VqDetailsPage />
+        <VqKpiPage/> */}
+        
+        {/* <CoverageSummaryPage />
+        <CoverageDetails />
+        <CoverageKpiPage /> */}
 
-      {/* <VqSummaryPage />
-      <VqDetailsPage />
-      <VqKpiPage/> */}
-      
-      {/* <CoverageSummaryPage />
-      <CoverageDetails />
-      <CoverageKpiPage /> */}
+        {/* <DpSummaryPage />
+        <DpDetailsPage />
+        <DpKpiPage /> */}
 
-      {/* <DpSummaryPage />
-      <DpDetailsPage />
-      <DpKpiPage /> */}
-
-      {/* <LegalPage/> */}
-      {/* <AboutPage /> */}
-      {/* <ReportFooter /> */}
-    </div>
+        {/* <LegalPage/>
+        <AboutPage />
+        <ReportFooter /> */}
+      </div>
+    </ReportDataProvider>
   );
 }
 

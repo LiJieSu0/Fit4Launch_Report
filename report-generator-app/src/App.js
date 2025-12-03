@@ -37,10 +37,10 @@ function App() {
   return (
     <ReportDataProvider market={market}>
       <div className="App">
-        {/* <CoverPage />
+        <CoverPage />
         <ReportHeader />
         <DeviceInfoPage/>
-        <ContentsIndexPage /> */}
+        <ContentsIndexPage />
 
         <CpSummaryPage />
         <CallPerformanceDetails />

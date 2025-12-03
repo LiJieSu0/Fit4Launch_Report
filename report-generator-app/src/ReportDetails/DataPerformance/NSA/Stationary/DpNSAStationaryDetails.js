@@ -111,9 +111,9 @@ function DpNSAStationaryDetails() {
   ];
 
   return (
+    <>
     <div className='page-content'>
       <h2>NSA Stationary Data Performance Details</h2>
-
       <h3>Overall Single Stream HTTP</h3>
       <DpThroughputOverallTable
         tableHeader={overallTableHeader}
@@ -148,13 +148,8 @@ function DpNSAStationaryDetails() {
         }}
         tableName="Single Stream HTTP Download"
       />
-      <DpHistogramComponent
-        data={ssHttpDlHistogramData}
-        title="Single Stream HTTP Download Throughput Histogram"
-        yAxisLabel="Throughput"
-        barKeys={barKeys}
-      />
-
+    </div>
+    <div className='page-content'>
       <DpNSAHttpSSTable
         data={{
           Moderate: {
@@ -169,13 +164,21 @@ function DpNSAStationaryDetails() {
         tableName="Single Stream HTTP Upload"
       />
       <DpHistogramComponent
+        data={ssHttpDlHistogramData}
+        title="Single Stream HTTP Download Throughput Histogram"
+        yAxisLabel="Throughput"
+        barKeys={barKeys}
+      />
+    </div>
+    <div className='page-content'>
+      <DpHistogramComponent
         data={ssHttpUlHistogramData}
         title="Single Stream HTTP Upload Throughput Histogram"
         yAxisLabel="Throughput"
         barKeys={barKeys}
       />
-
-
+    </div>
+    <div className='page-content'>
       <h3>Overall Multi Stream HTTP</h3>
             <DpThroughputOverallTable
               tableHeader={overallTableHeader}
@@ -209,15 +212,8 @@ function DpNSAStationaryDetails() {
         }}
         tableName="Multi Stream HTTP Download"
       />
-      <DpHistogramComponent
-        data={msHttpDlHistogramData}
-        title="Multi Stream HTTP Download Throughput Histogram"
-        yAxisLabel="Throughput"
-        barKeys={barKeys}
-      />
-
-      
-
+      </div>
+    <div className='page-content'>
       <DpNSAHttpMSTable
         data={{
           Moderate: {
@@ -232,11 +228,23 @@ function DpNSAStationaryDetails() {
         tableName="Multi Stream HTTP Upload"
       />
       <DpHistogramComponent
+        data={msHttpDlHistogramData}
+        title="Multi Stream HTTP Download Throughput Histogram"
+        yAxisLabel="Throughput"
+        barKeys={barKeys}
+      />
+      </div>
+
+    <div className='page-content'>
+      <DpHistogramComponent
         data={msHttpUlHistogramData}
         title="Multi Stream HTTP Upload Throughput Histogram"
         yAxisLabel="Throughput"
         barKeys={barKeys}
       />
+      </div>
+
+    <div className='page-content'>
       <h3>Overall Ping</h3>
       <DpNSAPingOverallTable data={pingData} />
       <DpNSAPingTable data={pingData} tableName="Ping RTT" />
@@ -246,8 +254,12 @@ function DpNSAStationaryDetails() {
         yAxisLabel="Latency (ms)"
         barKeys={barKeys}
       />
+      </div>
+
       <DpNSAUDPComponent />
-    </div>
+
+    </>
+
   );
 }
 

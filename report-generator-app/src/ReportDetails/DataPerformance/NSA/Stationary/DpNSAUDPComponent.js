@@ -375,12 +375,21 @@ function DpNSAUDPComponent() {
 
   return (
     <>
-      <div className=''>
+      <div className='page-content'>
         <h2>UDP test - 5G NSA</h2>
+        <h3>NSA UDP DL Overall results</h3>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
+      </div>
+      <div className='page-content'>
+        <h3>NSA UDP UL Overall results</h3>
         <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
-        <DpNSAUDPDLTable data={udp_Stationary_DL} tableName="UDP Download Stationary" />
+      </div>
 
+      <div className='page-content'>
+        <DpNSAUDPDLTable data={udp_Stationary_DL} tableName="UDP Download Stationary" />
+      </div>
+
+      
         {/* UDP DL overall  */}
         {["200000", "400000"].map((idealThroughput) => (
           <DpHistogramComponent
@@ -413,7 +422,8 @@ function DpNSAUDPComponent() {
             barKeys={histogramBarKeys}
           />
         ))}
-      </div>
+
+
       <div className=''>
         <DpNSAUDPULTable data={udp_Stationary_UL} tableName="UDP Upload Stationary" />
         {/* UDP UL overall  */}

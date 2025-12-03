@@ -441,27 +441,51 @@ function Dp_MHS_Udp_Component() {
       </div>
 
       
-        {downloadHistogramData.map((histogram, index) => (
-          <DpHistogramComponent
-            key={index}
-            data={histogram.data}
-            title={histogram.title}
-            yAxisLabel={histogram.yAxisLabel}
-            barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-          />
+        {downloadHistogramData.reduce((acc, histogram, index) => {
+          const component = (
+            <DpHistogramComponent
+              key={index}
+              data={histogram.data}
+              title={histogram.title}
+              yAxisLabel={histogram.yAxisLabel}
+              barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+            />
+          );
+          if (index % 2 === 0) {
+            acc.push([component]);
+          } else {
+            acc[acc.length - 1].push(component);
+          }
+          return acc;
+        }, []).map((group, groupIndex) => (
+          <div className="page-content" key={`dl-group-${groupIndex}`}>
+            {group}
+          </div>
         ))}
 
         <div className="page-content">
           <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP UL Table" />
         </div>
-        {uploadHistogramData.map((histogram, index) => (
-          <DpHistogramComponent
-            key={index}
-            data={histogram.data}
-            title={histogram.title}
-            yAxisLabel={histogram.yAxisLabel}
-            barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-          />
+        {uploadHistogramData.reduce((acc, histogram, index) => {
+          const component = (
+            <DpHistogramComponent
+              key={index}
+              data={histogram.data}
+              title={histogram.title}
+              yAxisLabel={histogram.yAxisLabel}
+              barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+            />
+          );
+          if (index % 2 === 0) {
+            acc.push([component]);
+          } else {
+            acc[acc.length - 1].push(component);
+          }
+          return acc;
+        }, []).map((group, groupIndex) => (
+          <div className="page-content" key={`ul-group-${groupIndex}`}>
+            {group}
+          </div>
         ))}
     </>
   );

@@ -99,28 +99,28 @@ const VqAmrNbVq = () => {
     {
       metric: "% MOS < 2.0",
       downlink: {
-        ref: getAmrNbValue("REF", "dl", "percent_less_than_2", true, 2),
-        dut1: getAmrNbValue("DUT1", "dl", "percent_less_than_2", true, 2),
-        dut2: getAmrNbValue("DUT2", "dl", "percent_less_than_2", true, 2)
+        ref: getAmrNbValue("REF", "dl", "% MOS < 2.0", true, 2),
+        dut1: getAmrNbValue("DUT1", "dl", "% MOS < 2.0", true, 2),
+        dut2: getAmrNbValue("DUT2", "dl", "% MOS < 2.0", true, 2)
       },
       uplink: {
-        ref: getAmrNbValue("REF", "ul", "percent_less_than_2", true, 2),
-        dut1: getAmrNbValue("DUT1", "ul", "percent_less_than_2", true, 2),
-        dut2: getAmrNbValue("DUT2", "ul", "percent_less_than_2", true, 2)
+        ref: getAmrNbValue("REF", "ul", "% MOS < 2.0", true, 2),
+        dut1: getAmrNbValue("DUT1", "ul", "% MOS < 2.0", true, 2),
+        dut2: getAmrNbValue("DUT2", "ul", "% MOS < 2.0", true, 2)
       },
       highlight: true
     },
     {
       metric: "% MOS < 3.0",
       downlink: {
-        ref: getAmrNbValue("REF", "dl", "percent_less_than_3", true, 2),
-        dut1: getAmrNbValue("DUT1", "dl", "percent_less_than_3", true, 2),
-        dut2: getAmrNbValue("DUT2", "dl", "percent_less_than_3", true, 2)
+        ref: getAmrNbValue("REF", "dl", "% MOS < 3.0", true, 2),
+        dut1: getAmrNbValue("DUT1", "dl", "% MOS < 3.0", true, 2),
+        dut2: getAmrNbValue("DUT2", "dl", "% MOS < 3.0", true, 2)
       },
       uplink: {
-        ref: getAmrNbValue("REF", "ul", "percent_less_than_3", true, 2),
-        dut1: getAmrNbValue("DUT1", "ul", "percent_less_than_3", true, 2),
-        dut2: getAmrNbValue("DUT2", "ul", "percent_less_than_3", true, 2)
+        ref: getAmrNbValue("REF", "ul", "% MOS < 3.0", true, 2),
+        dut1: getAmrNbValue("DUT1", "ul", "% MOS < 3.0", true, 2),
+        dut2: getAmrNbValue("DUT2", "ul", "% MOS < 3.0", true, 2)
       },
       highlight: true
     }
@@ -134,12 +134,12 @@ const VqAmrNbVq = () => {
     },
     {
       metric: "% MOS < 2.0",
-      results: getAmrNbValue("DUT1", "dl", "percent_less_than_2", true, 2),
+      results: getAmrNbValue("DUT1", "dl", "% MOS < 2.0", true, 2),
       highlightClass: "performance-excellent-bg"
     },
     {
       metric: "% MOS < 3.0",
-      results: getAmrNbValue("DUT1", "dl", "percent_less_than_3", true, 2),
+      results: getAmrNbValue("DUT1", "dl", "% MOS < 3.0", true, 2),
       highlightClass: "performance-excellent-bg"
     }
   ];

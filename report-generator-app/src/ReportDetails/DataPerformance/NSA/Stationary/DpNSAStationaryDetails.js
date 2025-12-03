@@ -255,7 +255,6 @@ function DpNSAStationaryDetails() {
         barKeys={barKeys}
       />
       </div>
-
       <DpNSAUDPComponent />
 
     </>

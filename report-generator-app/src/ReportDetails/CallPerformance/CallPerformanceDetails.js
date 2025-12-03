@@ -222,20 +222,7 @@ const CallPerformanceDetails = () => {
 
             },
             scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Device',
-                        font: {
-                            size: 18, // Increase x-axis title font size by 50%
-                        },
-                    },
-                    ticks: {
-                        font: {
-                            size: 18, // Increase x-axis tick font size by 50%
-                        },
-                    },
-                },
+
                 y: {
                     beginAtZero: true,
                     title: {
@@ -294,7 +281,7 @@ const CallPerformanceDetails = () => {
                      <div className='page-content'>
                          <CpCaseTable title={title} data={data} />
                          <CallSummaryChart title={title} data={data} /> 
-                         <div style={{marginBottom:180}}></div>
+                         <div style={{marginBottom:100}}></div>
                          <PValueTable data={data} />
                          <CallCategoriesChart title={title} data={data} />
                          <CallCategoriesTable data={data} />

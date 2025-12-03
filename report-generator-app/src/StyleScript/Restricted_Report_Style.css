@@ -412,8 +412,8 @@ VQ
   padding: 15px;
   border-radius: 8px;
   background-color: #ffffff;
-  /* transform: scale(0.5); */ /* Scale down by 50% */
-  /* transform-origin: left top; */ /* Scale from the top-left corner */
+  transform: scale(0.8); /* Scale down by 20% */
+  transform-origin: left top; /* Scale from the top-left corner */
 }
 
 .chart-container h3 {

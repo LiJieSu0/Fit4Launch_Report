@@ -17,9 +17,41 @@ const DpMrabDetailsPage = () => {
   }
   return (
     <div className="page-content">
-      {/* Overall table here */}
       <h2>VoNR MRAB Stationary test - 5G NR</h2>
-
+      <h3>Results</h3>
+      <table className="general-table-style">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Mean DUT Value (Mbps)</th>
+            <th>Mean REF Value (Mbps)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pre Call</td>
+            <td style={{ backgroundColor: getKpiCellColor('Throughput', mrabData["DUT MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"], mrabData["REF MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"]) }}>
+              {mrabData["DUT MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"].toFixed(2)}
+            </td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Pre Call"]["Mean"].toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td>In Call</td>
+            <td style={{ backgroundColor: getKpiCellColor('Throughput', mrabData["DUT MRAB"]["MRAB Statistics"]["In Call"]["Mean"], mrabData["REF MRAB"]["MRAB Statistics"]["In Call"]["Mean"]) }}>
+              {mrabData["DUT MRAB"]["MRAB Statistics"]["In Call"]["Mean"].toFixed(2)}
+            </td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["In Call"]["Mean"].toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td>Post Call</td>
+            <td style={{ backgroundColor: getKpiCellColor('Throughput', mrabData["DUT MRAB"]["MRAB Statistics"]["Post Call"]["Mean"], mrabData["REF MRAB"]["MRAB Statistics"]["Post Call"]["Mean"]) }}>
+              {mrabData["DUT MRAB"]["MRAB Statistics"]["Post Call"]["Mean"].toFixed(2)}
+            </td>
+            <td>{mrabData["REF MRAB"]["MRAB Statistics"]["Post Call"]["Mean"].toFixed(2)}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Details</h3>
       <table className="general-table-style">
         <thead>
           <tr>

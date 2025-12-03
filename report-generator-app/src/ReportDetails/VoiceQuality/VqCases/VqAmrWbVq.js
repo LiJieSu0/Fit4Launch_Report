@@ -40,14 +40,7 @@ const vqTableData2 = [
   }
 ];
 
-/*
-  Voice Quality Performance EVS to EVS Call Scenario
-  | Metric        | Results |
-  |---------------|---------|
-  | MOS Average   | #FF00FF |
-  | % MOS < 2.0   | #FF00FF |
-  | % MOS < 3.0   | #FF00FF |
-*/
+
 const vqTableData3 = [
   {
     metric: "MOS Average",

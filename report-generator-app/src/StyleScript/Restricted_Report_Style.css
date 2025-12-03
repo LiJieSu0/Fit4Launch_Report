@@ -284,6 +284,21 @@ VQ
   color: #FFFFFF;
 }
 
+.bg-performance-fail {
+  background-color: var(--performance-fail);
+  color: #FFFFFF;
+}
+
+.bg-performance-pass {
+  background-color: var(--performance-pass);
+  color: #FFFFFF;
+}
+
+.bg-performance-excellent {
+  background-color: var(--performance-excellent);
+  color: #FFFFFF;
+}
+
 .performance-table {
   width: 100%;
   border-collapse: collapse;

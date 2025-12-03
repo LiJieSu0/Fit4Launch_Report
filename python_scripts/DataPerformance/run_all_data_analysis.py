@@ -19,9 +19,10 @@ import mrab_statistics # Import the mrab_statistics module
 import data_path_reader # Import the new path reader script
 import check_empty_data # Import check_empty_data directly
 from CallPerformance.call_analyze import analyze_directory, _calculate_fisher_exact_criteria # Import analyze_directory and _calculate_fisher_exact_criteria
-from VoiceQuality.voice_quality_analyzer import process_directory as analyze_nb_voice_quality_directory # Import process_directory from voice_quality_analyzer.py for NB
+from VoiceQuality.VqAmrNb import process_directory as analyze_vq_amr_nb # Import process_directory from VqAmrNb.py for NB
 from VoiceQuality.audio_delay_analyzer import process_directory as analyze_audio_delay_directory # Import process_directory from audio_delay_analyzer.py
-from VoiceQuality.wb_voice_quality_analyzer import analyze_wb_voice_quality # Import the new WB voice quality analyzer
+from VoiceQuality.VqAmrWb import analyze_wb_voice_quality as analyze_vq_amr_wb # Import the new WB voice quality analyzer
+from VoiceQuality.VQEVSanalyzer import analyze_vqe_vs_quality # Import the EVS WB voice quality analyzer
 from Coverage.coverage_coordinate_analyzer import analyze_coverage_coordinates, find_dut_ref_files, compare_analysis_results # Import the coverage analysis functions
 from Coverage.n41_coverage_analyzer import analyze_n41_coverage, extract_coverage_data_to_csv # Import the n41 coverage analyzer and generic data extractor
 from Coverage.coverage_performance_analyzer import analyze_csv as analyze_vonr_coverage_performance # Import the new VoNR coverage performance analyzer
@@ -306,8 +307,8 @@ if __name__ == "__main__":
                         print(f"Processing Voice Quality subfolder: {sub_dir_name}")
                         
                         if "5G Auto VoNR Enabled AMR NB VQ" in sub_dir_name:
-                            print(f"Calling analyze_nb_voice_quality_directory for {sub_dir_name}")
-                            nb_vq_results = analyze_nb_voice_quality_directory(sub_dir_full_path, subdir_filter="VQ")
+                            print(f"Calling analyze_vq_amr_nb for {sub_dir_name}")
+                            nb_vq_results = analyze_vq_amr_nb(sub_dir_full_path, subdir_filter="VQ")
                             if nb_vq_results:
                                 organized_nb_vq_results = {}
                                 for file_stats in nb_vq_results:
@@ -341,14 +342,26 @@ if __name__ == "__main__":
                             else:
                                 print(f"No Audio Delay data collected for {sub_dir_name}.")
 
-                        elif "WB" in sub_dir_name:
-                            print(f"Calling analyze_wb_voice_quality for {sub_dir_name}")
-                            wb_vq_results = analyze_wb_voice_quality(sub_dir_full_path)
+                        elif "5G Auto VoNR Enabled AMR WB VQ" in sub_dir_name:
+                            print(f"Calling analyze_vq_amr_wb for {sub_dir_name}")
+                            wb_vq_results = analyze_vq_amr_wb(sub_dir_full_path)
                             if wb_vq_results:
                                 voice_quality_combined_results[sub_dir_name] = wb_vq_results
-                                print(f"WB VQ analysis for {sub_dir_name} completed.")
+                                print(f"AMR WB VQ analysis for {sub_dir_name} completed.")
                             else:
-                                print(f"No WB VQ data collected for {sub_dir_name}.")
+                                print(f"No AMR WB VQ data collected for {sub_dir_name}.")
+
+                        elif "EVS WB VQ" in sub_dir_name: # This covers both Enabled and Disabled EVS WB VQ
+                            print(f"Calling analyze_vqe_vs_quality for {sub_dir_name}")
+                            # analyze_vqe_vs_quality expects a list of paths, so wrap sub_dir_full_path in a list
+                            evs_vq_results = analyze_vqe_vs_quality([sub_dir_full_path])
+                            if evs_vq_results:
+                                # The result from analyze_vqe_vs_quality is already structured by scenario name
+                                # We need to merge it into voice_quality_combined_results
+                                voice_quality_combined_results.update(evs_vq_results)
+                                print(f"EVS WB VQ analysis for {sub_dir_name} completed.")
+                            else:
+                                print(f"No EVS WB VQ data collected for {sub_dir_name}.")
                         else:
                             print(f"Skipping subfolder {sub_dir_name}: Does not match any known voice quality analysis type.")
                 

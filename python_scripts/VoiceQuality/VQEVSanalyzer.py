@@ -51,7 +51,7 @@ def parse_mos_metrics(file_path):
             'Maximum MOS': mos_values.max(),
             'Counts': len(mos_values),
             '% MOS < 3.0': (mos_values < 3.0).sum() / len(mos_values) * 100,
-            '% MOS < 3.4': (mos_values < 3.4).sum() / len(mos_values) * 100 # Changed from 2.0 to 3.4
+            '% MOS < 3.4': (mos_values < 3.4).sum() / len(mos_values) * 100
         }
         
         # Handle cases where std might be NaN if there's only one value

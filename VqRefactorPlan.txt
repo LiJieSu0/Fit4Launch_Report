@@ -1,0 +1,49 @@
+# Voice Quality Script Refactoring Plan
+
+This plan outlines the steps to refactor the Voice Quality Python scripts as per the requirements. Audio delay related functionalities will remain unchanged.
+
+## 1. Create New Scripts for AMR NB and AMR WB Voice Quality
+
+### 1.1. Create VqAmrNb.py
+- **Action:** Copy the entire content of `python_scripts/VoiceQuality/voice_quality_analyzer.py` to a new file named `python_scripts/VoiceQuality/VqAmrNb.py`.
+- **Reason:** To provide a dedicated script for AMR Narrowband Voice Quality analysis, as requested, while maintaining its original functionality and logic.
+
+### 1.2. Create VqAmrWb.py
+- **Action:** Copy the entire content of `python_scripts/VoiceQuality/wb_voice_quality_analyzer.py` to a new file named `python_scripts/VoiceQuality/VqAmrWb.py`.
+- **Reason:** To provide a dedicated script for AMR Wideband Voice Quality analysis, as requested, while maintaining its original functionality and logic.
+
+## 2. Modify VQEVSanalyzer.py for EVS WB MOS Thresholds
+
+### 2.1. Update MOS Thresholds
+- **Action:** In `python_scripts/VoiceQuality/VQEVSanalyzer.py`, locate the `parse_mos_metrics` function.
+- **Change:** Modify the line calculating `'% MOS < 3.0'` to calculate `'% MOS < 3.4'`.
+  - **Original Line (approx. line 53):** `'% MOS < 3.0': (mos_values < 3.0).sum() / len(mos_values) * 100,`
+  - **Modified Line:** `'% MOS < 3.4_alt': (mos_values < 3.4).sum() / len(mos_values) * 100,`
+  - **Note:** The script already has a `'% MOS < 3.4'` entry. To avoid duplicate keys, the new entry will be temporarily named `'% MOS < 3.4_alt'`. After confirming the change, the original `'% MOS < 3.0'` will be removed, and the existing `'% MOS < 3.4'` will be retained as the single metric.
+- **Reason:** To align the EVS WB VQ analysis with the new requirement of reporting `% MOS < 3.4` for both specified thresholds.
+
+## 3. Integrate Refactored Functions into run_all_data_analysis.py
+
+### 3.1. Update Imports
+- **Action:** In `python_scripts/DataPerformance/run_all_data_analysis.py`, update the import statements for voice quality analyzers.
+- **Changes:**
+  - Replace `from VoiceQuality.voice_quality_analyzer import process_directory as analyze_nb_voice_quality_directory` with `from VoiceQuality.VqAmrNb import process_directory as analyze_vq_amr_nb`.
+  - Replace `from VoiceQuality.wb_voice_quality_analyzer import analyze_wb_voice_quality` with `from VoiceQuality.VqAmrWb import analyze_wb_voice_quality as analyze_vq_amr_wb`.
+  - Add `from VoiceQuality.VQEVSanalyzer import analyze_vqe_vs_quality`.
+- **Reason:** To use the newly created and modified voice quality scripts.
+
+### 3.2. Modify Voice Quality Combined Analysis Logic
+- **Action:** In `python_scripts/DataPerformance/run_all_data_analysis.py`, locate the `elif directory_info["analysis_type"] == "voice_quality_combined":` block (approx. line 295).
+- **Changes:**
+  - Adjust the conditional logic within the loop that iterates through `sub_dir_name` to specifically call the correct analyzer based on the subdirectory name:
+    - For `sub_dir_name` containing `"5G Auto VoNR Enabled AMR NB VQ"`, call `analyze_vq_amr_nb`.
+    - For `sub_dir_name` containing `"5G Auto VoNR Enabled AMR WB VQ"`, call `analyze_vq_amr_wb`.
+    - For `sub_dir_name` containing `"5G Auto VoNR Disabled EVS WB VQ"` or `"5G Auto VoNR Enabled EVS WB VQ"`, call `analyze_vqe_vs_quality` with the appropriate path.
+  - Ensure the existing logic for `"Audio Delay"` remains untouched.
+- **Reason:** To correctly dispatch the analysis to the appropriate voice quality script based on the data type and scenario.
+
+## 4. Clean Up Redundant Scripts (Optional, to be confirmed after refactoring)
+
+### 4.1. Remove Original Scripts
+- **Action:** After successful implementation and verification, consider deleting `python_scripts/VoiceQuality/voice_quality_analyzer.py` and `python_scripts/VoiceQuality/wb_voice_quality_analyzer.py` if they are no longer used elsewhere.
+- **Reason:** To maintain a clean and organized codebase, removing redundant files.

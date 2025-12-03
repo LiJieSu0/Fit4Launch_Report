@@ -45,121 +45,149 @@ const vqTableData4 = [
 const vqTableDataEVStoEVS_3_3 = [
   {
     metric: "MOS Average",
-    downlink: "",
-    uplink: "",
+    downlink: { value: "", className: "bg-performance-fail" },
+    uplink: { value: "", className: "bg-performance-fail" },
     highlight: true
   },
   {
     metric: "% MOS < 3.4",
-    downlink: "",
-    uplink: "",
+    downlink: { value: "", className: "bg-performance-excellent" },
+    uplink: { value: "", className: "bg-performance-excellent" },
     highlight: false
   },
   {
     metric: "% MOS < 3.0",
-    downlink: "",
-    uplink: "",
+    downlink: { value: "", className: "bg-performance-excellent" },
+    uplink: { value: "", className: "bg-performance-excellent" },
+    highlight: true
+  }
+];
+
+const vqTableDataEVStoAMR_3_3 = [
+  {
+    metric: "MOS Average",
+    downlink: { value: "", className: "bg-performance-excellent" },
+    uplink: { value: "", className: "bg-performance-excellent" },
+    highlight: true
+  },
+  {
+    metric: "% MOS < 3.4",
+    downlink: { value: "", className: "bg-performance-excellent" },
+    uplink: { value: "", className: "bg-performance-excellent" },
+    highlight: false
+  },
+  {
+    metric: "% MOS < 3.0",
+    downlink: { value: "", className: "bg-performance-pass" },
+    uplink: { value: "", className: "bg-performance-excellent" },
     highlight: true
   }
 ];
 
 const VqEvsWbVqEnabled = () => {
   return (
-    <div className="page-content">
-      <h2>3.4 5G Auto VoNR Enabled EVS WB VQ</h2>
-      <div className="two-column-layout">
-        <table className="general-table-style half-width-table">
-          <thead>
-            <tr>
-              <th colSpan="3" className="title">
-                Voice Quality Performance
-                EVS to EVS Call Scenario
-              </th>
-            </tr>
-            <tr>
-              <th>Metric</th>
-              <th>Downlink</th>
-              <th>Uplink</th>
-            </tr>
-          </thead>
-          <tbody>
-            {vqTableDataEVStoEVS_3_3.map((row, index) => (
-              <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
-                <td>{row.metric}</td>
-                <td>{row.downlink}</td>
-                <td>{row.uplink}</td>
+    <>
+      <div className="page-content">
+        <h2>3.4 5G Auto VoNR Enabled EVS WB VQ</h2>
+        <h3>Results</h3>
+        <div className="two-column-layout">
+          <table className="general-table-style half-width-table">
+            <thead>
+              <tr>
+                <th colSpan="3" className="title">
+                  Voice Quality Performance
+                  EVS to EVS Call Scenario
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+              <tr>
+                <th>Metric</th>
+                <th>Downlink</th>
+                <th>Uplink</th>
+              </tr>
+            </thead>
+            <tbody>
+              {vqTableDataEVStoEVS_3_3.map((row, index) => (
+                <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
+                  <td>{row.metric}</td>
+                  <td className={row.downlink.className}>{row.downlink.value}</td>
+                  <td className={row.uplink.className}>{row.uplink.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-        <table className="general-table-style half-width-table">
+          <table className="general-table-style half-width-table">
+            <thead>
+              <tr>
+                <th colSpan="3" className="title">
+                  Voice Quality Performance
+                  EVS to AMR Call Scenario
+                </th>
+              </tr>
+              <tr>
+                <th>Metric</th>
+                <th>Downlink</th>
+                <th>Uplink</th>
+              </tr>
+            </thead>
+            <tbody>
+              {vqTableDataEVStoAMR_3_3.map((row, index) => (
+                <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
+                  <td>{row.metric}</td>
+                  <td className={row.downlink.className}>{row.downlink.value}</td>
+                  <td className={row.uplink.className}>{row.uplink.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Details</h3>
+        <table className="general-table-style vq-details-table">
           <thead>
             <tr>
-              <th colSpan="3" className="title">
-                Voice Quality Performance
-                EVS to AMR Call Scenario
-              </th>
+              <th rowSpan="2"></th>
+              <th colSpan="4">Downlink</th>
+              <th colSpan="4">Uplink</th>
             </tr>
             <tr>
-              <th>Metric</th>
-              <th>Downlink</th>
-              <th>Uplink</th>
+              <th>DUT 1 (EVS to EVS)</th>
+              <th>REF 1 (EVS to EVS)</th>
+              <th>DUT 2 (EVS to AMR)</th>
+              <th>REF 2 (EVS to AMR)</th>
+              <th>DUT 1 (EVS to EVS)</th>
+              <th>REF 1 (EVS to EVS)</th>
+              <th>DUT 2 (EVS to AMR)</th>
+              <th>REF 2 (EVS to AMR)</th>
             </tr>
           </thead>
           <tbody>
-            {vqTableDataEVStoEVS_3_3.map((row, index) => (
+            {vqTableData4.map((row, index) => (
               <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
                 <td>{row.metric}</td>
-                <td>{row.downlink}</td>
-                <td>{row.uplink}</td>
+                <td>{row.mobile.dut1}</td>
+                <td>{row.mobile.dut2}</td>
+                <td>{row.mobile.ref1}</td>
+                <td>{row.mobile.ref2}</td>
+                <td>{row.base.dut1}</td>
+                <td>{row.base.dut2}</td>
+                <td>{row.base.ref1}</td>
+                <td>{row.base.ref2}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <table className="general-table-style vq-details-table">
-        <thead>
-          <tr>
-            <th rowSpan="2"></th>
-            <th colSpan="4">Downlink</th>
-            <th colSpan="4">Uplink</th>
-          </tr>
-          <tr>
-            <th>DUT 1 (EVS to EVS)</th>
-            <th>REF 1 (EVS to EVS)</th>
-            <th>DUT 2 (EVS to AMR)</th>
-            <th>REF 2 (EVS to AMR)</th>
-            <th>DUT 1 (EVS to EVS)</th>
-            <th>REF 1 (EVS to EVS)</th>
-            <th>DUT 2 (EVS to AMR)</th>
-            <th>REF 2 (EVS to AMR)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {vqTableData4.map((row, index) => (
-            <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
-              <td>{row.metric}</td>
-              <td>{row.mobile.dut1}</td>
-              <td>{row.mobile.dut2}</td>
-              <td>{row.mobile.ref1}</td>
-              <td>{row.mobile.ref2}</td>
-              <td>{row.base.dut1}</td>
-              <td>{row.base.dut2}</td>
-              <td>{row.base.ref1}</td>
-              <td>{row.base.ref2}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="page-content">
         <h3>VoNR Enabled EVS WB VQ Downlink</h3>
         <VqLineChart dataSource="vonr_enabled_evs_wb_vq_mobile" />
         <VqMosTable dataSource="vonr_enabled_evs_wb_vq_mobile" />
         <h3>VoNR Enabled EVS WB VQ Uplink</h3>
         <VqLineChart dataSource="vonr_enabled_evs_wb_vq_base" />
         <VqMosTable dataSource="vonr_enabled_evs_wb_vq_base" />
+      </div>
+    </>
 
-    </div>
   );
 };
 

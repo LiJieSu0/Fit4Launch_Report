@@ -5,8 +5,8 @@ import VqAmrNbVq from './VqCases/VqAmrNbVq';
 import VqAmrWbVq from './VqCases/VqAmrWbVq';
 import VqEvsWbVqDisabled from './VqCases/VqEvsWbVqDisabled';
 import VqEvsWbVqEnabled from './VqCases/VqEvsWbVqEnabled';
-import VqKpiAudioDelay from './VqCases/VqKpiAudioDelay';
-import VqAutoVonrAudioDelay from './VqCases/VqAutoVonrAudioDelay';
+import AutoVoNRDisabledAudioDelay from './VqCases/AutoVoNRDisabledAudioDelay';
+import AutoVoNREnabledAudioDelay from './VqCases/AutoVoNREnabledAudioDelay';
 
 
 //TODO audio delay color hardcoded
@@ -18,8 +18,8 @@ const VqDetailsPage = () => {
       {/* Todo Line chart data dynamic loading */}
       <VqEvsWbVqDisabled />
       <VqEvsWbVqEnabled />
-      <VqKpiAudioDelay />
-      <VqAutoVonrAudioDelay />
+      <AutoVoNRDisabledAudioDelay />
+      <AutoVoNREnabledAudioDelay />
 
     </div>
   );

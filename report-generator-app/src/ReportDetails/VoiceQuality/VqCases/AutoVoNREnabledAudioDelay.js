@@ -1,59 +1,59 @@
 import React from 'react';
 import '../../../StyleScript/Restricted_Report_Style.css';
 
-const vqTableData5 = [
+const vqTableData6 = [
   {
     metric: "Average (ms)",
-    dut1: "333.23",
-    dut2: "326.47",
-    ref1: "323.20",
-    ref2: "328.31",
+    dut1: "310.82",
+    dut2: "299.96",
+    ref1: "331.56",
+    ref2: "335.30",
     highlight: false
   },
   {
     metric: "Average of 2 Devices (ms)",
-    dut: "329.85",
-    ref: "325.75",
+    dut: "305.39",
+    ref: "333.43",
     highlight: true
   },
   {
     metric: "Stdev (ms)",
-    dut1: "13.03",
-    dut2: "13.57",
-    ref1: "16.70",
-    ref2: "51.00",
+    dut1: "10.88",
+    dut2: "14.76",
+    ref1: "15.65",
+    ref2: "34.55",
     highlight: false
   },
   {
     metric: "Maximum (ms)",
-    dut1: "365.41",
-    dut2: "367.91",
-    ref1: "415.75",
-    ref2: "1157.07",
+    dut1: "397.87",
+    dut2: "386.30",
+    ref1: "388.02",
+    ref2: "823.20",
     highlight: false
   },
   {
     metric: "Minimum (ms)",
-    dut1: "278.42",
-    dut2: "298.17",
-    ref1: "274.78",
-    ref2: "285.33",
+    dut1: "282.54",
+    dut2: "266.91",
+    ref1: "279.68",
+    ref2: "296.00",
     highlight: false
   },
   {
     metric: "Count",
-    dut1: "286",
-    dut2: "285",
-    ref1: "286",
-    ref2: "285",
+    dut1: "282",
+    dut2: "281",
+    ref1: "282",
+    ref2: "280",
     highlight: false
   }
 ];
 
-const VqKpiAudioDelay = () => {
+const AutoVoNREnabledAudioDelay = () => {
   return (
     <div className="page-content">
-      <h2>3.5 Auto VoNR Disabled Audio Delay</h2>
+      <h2>3.6 Auto VoNR Enabled Audio Delay</h2>
       <table className="general-table-style vq-details-table">
         <thead>
           <tr>
@@ -68,12 +68,12 @@ const VqKpiAudioDelay = () => {
           </tr>
         </thead>
         <tbody>
-          {vqTableData5.map((row, index) => (
+          {vqTableData6.map((row, index) => (
             <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
               <td>{row.metric}</td>
               {row.metric === "Average of 2 Devices (ms)" ? (
                 <>
-                  <td colSpan="2" className="bg-performance-pass">{row.dut}</td>
+                  <td colSpan="2" className='bg-performance-pass'>{row.dut}</td>
                   <td colSpan="2">{row.ref}</td>
                 </>
               ) : (
@@ -92,4 +92,4 @@ const VqKpiAudioDelay = () => {
   );
 };
 
-export default VqKpiAudioDelay;
+export default AutoVoNREnabledAudioDelay;

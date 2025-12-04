@@ -681,7 +681,7 @@ function Dp_Udp_Component() {
   return (
     <>
       <div className='page-content'>
-        <h2>UDP test - 5G NR</h2>
+        <h2>2.3 UDP Test - 5G Auto</h2>
         {/* dp udp overall  table */}
         <DpUdpTableLoc3 data={udp_Stationary_DL} tableName="UDP DL" />
       </div>

@@ -17,7 +17,7 @@ const DpMrabDetailsPage = () => {
   }
   return (
     <div className="page-content">
-      <h2>VoNR MRAB Stationary test - 5G NR</h2>
+      <h2>2.9 VoNR MRAB Stationary test - 5G NR</h2>
       <h3>Results</h3>
       <table className="general-table-style">
         <thead>

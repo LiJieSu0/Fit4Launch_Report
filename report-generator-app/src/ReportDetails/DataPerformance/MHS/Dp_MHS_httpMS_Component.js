@@ -123,7 +123,7 @@ function Dp_MHS_httpMS_Component() {
   return (
     <>
       <div className='page-content'>
-        <h2>MHS-httpMS Component</h2>
+        <h2>2.7.2 MHS-HTTP Multi Stream Test</h2>
         <h3>Overall Multi Stream HTTP</h3>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}

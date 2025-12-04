@@ -86,7 +86,7 @@ function Dp_MHS_Ping_Component() {
   return (
     <>
       <div className="page-content">
-        <h2>MHS-Ping Component</h2>
+        <h2>2.7.4 MHS-Ping test</h2>
         <h3>Results</h3>
         <DpPingOverallTable data={data} /> {/* Add DpPingOverallTable */}
       </div>

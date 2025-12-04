@@ -22,9 +22,18 @@ const ContentsIndexPage = () => {
         if (!heading.id) {
           heading.id = `section-${heading.textContent.replace(/\s+/g, '-').toLowerCase()}-${index}`;
         }
+
+        // Calculate indentation level based on numerical prefix
+        const match = heading.textContent.match(/^(\d+(\.\d+)*)\s/);
+        let level = 0;
+        if (match && match[1]) {
+          level = match[1].split('.').length - 1;
+        }
+
         return {
           id: heading.id,
           text: heading.textContent,
+          level: level,
         };
       });
       setHeadings(extractedHeadings);
@@ -38,7 +47,7 @@ const ContentsIndexPage = () => {
         <ul style={{ listStyleType: 'none', padding: 0 }}>
           {headings.length > 0 ? (
             headings.map((heading) => (
-              <li key={heading.id}>
+              <li key={heading.id} style={{ paddingLeft: `${heading.level * 20}px` }}>
                 <a href={`#${heading.id}`}>{heading.text}</a>
               </li>
             ))

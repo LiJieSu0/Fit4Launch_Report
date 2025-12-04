@@ -37,7 +37,7 @@ function Dp_Webbrowser_Component(){
     
     return(
         <div className='page-content'>
-            <h2>Web browser test - 5G NR</h2>
+            <h2>2.5 Web browser Test - 5G Auto</h2>
             <DpWebOverallTable data={overallTableData} />
             <DpWebTable data={Dp_WebData} />
             <DpHistogramComponent

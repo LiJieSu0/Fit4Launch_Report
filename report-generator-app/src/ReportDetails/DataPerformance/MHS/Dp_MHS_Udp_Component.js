@@ -427,7 +427,7 @@ function Dp_MHS_Udp_Component() {
   return (
     <>
       <div className="page-content">
-        <h2>MHS-UDP Component</h2>
+        <h2>2.7.3 MHS-UDP Test</h2>
         <h3>MHS UDP DL Overall table</h3>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>

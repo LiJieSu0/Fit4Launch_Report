@@ -150,7 +150,7 @@ function Dp_httpMS_Component() {
     return (
         <>
             <div className='page-content'>
-                <h2>HTTP Multi Stream test - 5G NR</h2>
+                <h2>2.2 HTTP Multi Stream Test Download & Upload - 5G Auto</h2>
                 <h3>Overall Multi Stream HTTP</h3>
                 <DpThroughputOverallTable
                     tableHeader={overallTableHeader}

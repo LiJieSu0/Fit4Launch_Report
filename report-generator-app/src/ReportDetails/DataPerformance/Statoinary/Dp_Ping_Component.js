@@ -80,7 +80,7 @@ function Dp_Ping_Component() {
     return(
         <>
         <div className='page-content'>
-            <h2>PING test - 5G NR</h2>
+            <h2>2.4 Ping Test - 5G Auto</h2>
             <DpPingOverallTable data={processedPingData} />
         </div>
         <div className='page-content'>

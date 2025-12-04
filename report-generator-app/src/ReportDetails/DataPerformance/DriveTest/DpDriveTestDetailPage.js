@@ -32,6 +32,7 @@ const DpDriveTestDetailPage = () => {
     return (
     <>
       <div className='page-content'>
+       <h2>2.8 Mobility test - 5G Auto Data Test MHS Drive</h2>
        <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overall Data" />
        <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Data" />
       </div>
@@ -66,7 +67,7 @@ const DpDriveTestDetailPage = () => {
        />
       </div>
       <div className='page-content'>
-        <h2>Mobility test - 5G Auto Data Test MHS Drive</h2>
+        <h3>Mobility test - 5G Auto Data Test MHS Drive</h3>
         <DpMHSTestDriveOverallTable data={TestDriveMHSData} tableName="MHS Test Drive Overall Data" />
         <DpMHSTestDriveTable data={TestDriveMHSData} tableName="MHS Test Drive Data" />
       </div>

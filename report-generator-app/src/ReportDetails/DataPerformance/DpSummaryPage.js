@@ -332,24 +332,21 @@ function DpSummaryPage() {
   return (
     <div>
       <div className='page-content'>
-        <h2>Data Performance Summary Page</h2>
-        <h3>5G SA</h3>
+        <h2>1.Data Performance Overview – All Network</h2>
+        <h3>Data Performance Overview – 5G Auto</h3>
         <DpSummaryTable tableData={httpSSData} />
         <DpSummaryTable tableData={httpMSData} />
         <DpSummaryTable tableData={udpData} />
         <DpSummaryTable tableData={pingData} />
         <DpSummaryTable tableData={webBrowserData} />
         <DpSummaryTable tableData={playStoreData} />
-      </div>
-      <div className='page-content'>
-        <div style={{ marginBottom: 10 }}></div>
         <DpSummaryTable tableData={mhsStationaryData} />
         <DpSummaryTable tableData={mobiltyData} />
         <DpSummaryTable tableData={mobiltyMHSData} />
         <DpSummaryTable tableData={mrabData} />
       </div>
       <div className='page-content'>
-        <h3>5G NSA</h3>
+        <h3>Data Performance Overview – 5G NSA</h3>
         <DpSummaryTable tableData={httpNSASSData} />
         <DpSummaryTable tableData={httpNSAMSData} />
         <DpSummaryTable tableData={udpNSAData} />

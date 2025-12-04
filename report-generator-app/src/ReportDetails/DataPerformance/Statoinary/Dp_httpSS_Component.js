@@ -149,8 +149,8 @@ function Dp_httpSS_Component() {
     <>
       <div className='page-content'>
         {/* todo adjust font size */}
-        <h1 style={{ textAlign: 'center' }}>2.Data Performance - 5G AUTO</h1>
-        <h2>2.1HTTP Single Stream test - 5G NR</h2>
+        <h1 style={{ textAlign: 'center' }}>2. Data Performance - 5G AUTO</h1>
+        <h2>2.1 HTTP Single Stream test - 5G NR</h2>
         <h3>Overall Single Stream HTTP</h3>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}

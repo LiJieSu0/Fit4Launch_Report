@@ -113,7 +113,8 @@ function DpNSAStationaryDetails() {
   return (
     <>
     <div className='page-content'>
-      <h2>NSA Stationary Data Performance Details</h2>
+      <h1>3. Data Performance - 5G NSA</h1>
+      <h2>3.1 HTTP Single Stream Test Download & Upload - 5G NSA</h2>
       <h3>Overall Single Stream HTTP</h3>
       <DpThroughputOverallTable
         tableHeader={overallTableHeader}
@@ -179,6 +180,7 @@ function DpNSAStationaryDetails() {
       />
     </div>
     <div className='page-content'>
+      <h2>3.2 HTTP Single Stream Test Download & Upload - 5G NSA</h2>
       <h3>Overall Multi Stream HTTP</h3>
             <DpThroughputOverallTable
               tableHeader={overallTableHeader}
@@ -245,6 +247,7 @@ function DpNSAStationaryDetails() {
       </div>
 
     <div className='page-content'>
+      <h2>3.3 Ping Test - 5G NSA</h2>
       <h3>Overall Ping</h3>
       <DpNSAPingOverallTable data={pingData} />
       <DpNSAPingTable data={pingData} tableName="Ping RTT" />

@@ -5,39 +5,38 @@ const ContentsIndexPage = () => {
   const contentsRef = useRef(null);
 
   useEffect(() => {
-    if (contentsRef.current) {
-      const allHeadings = Array.from(document.querySelectorAll('h1, h2'));
-      const contentsIndexPageElement = contentsRef.current;
+    const timer = setTimeout(() => {
+      if (contentsRef.current) {
+        const allHeadings = Array.from(document.querySelectorAll('h1, h2'));
+        const contentsIndexPageElement = contentsRef.current;
 
-      // Filter headings that appear after the ContentsIndexPage element
-      const headingsOutsideContentsPage = allHeadings.filter(heading => !contentsIndexPageElement.contains(heading));
+        // Filter out headings that are children of ContentsIndexPage itself
+        const headingsOutsideContentsPage = allHeadings.filter(heading => !contentsIndexPageElement.contains(heading));
 
-      // Filter headings that appear after the ContentsIndexPage element and are not within it
-      const headingsAfterContents = headingsOutsideContentsPage.filter(heading => {
-        return contentsIndexPageElement.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING;
-      });
+        const extractedHeadings = headingsOutsideContentsPage.map((heading, index) => {
+          // Ensure each heading has a unique ID for linking
+          if (!heading.id) {
+            heading.id = `section-${heading.textContent.replace(/\s+/g, '-').toLowerCase()}-${index}`;
+          }
 
-      const extractedHeadings = headingsAfterContents.map((heading, index) => {
-        // Ensure each heading has a unique ID for linking
-        if (!heading.id) {
-          heading.id = `section-${heading.textContent.replace(/\s+/g, '-').toLowerCase()}-${index}`;
-        }
+          // Calculate indentation level based on numerical prefix
+          const match = heading.textContent.match(/^(\d+(\.\d+)*)\s/);
+          let level = 0;
+          if (match && match[1]) {
+            level = match[1].split('.').length - 1;
+          }
 
-        // Calculate indentation level based on numerical prefix
-        const match = heading.textContent.match(/^(\d+(\.\d+)*)\s/);
-        let level = 0;
-        if (match && match[1]) {
-          level = match[1].split('.').length - 1;
-        }
+          return {
+            id: heading.id,
+            text: heading.textContent,
+            level: level,
+          };
+        });
+        setHeadings(extractedHeadings);
+      }
+    }, 100); // Delay by 100ms
 
-        return {
-          id: heading.id,
-          text: heading.textContent,
-          level: level,
-        };
-      });
-      setHeadings(extractedHeadings);
-    }
+    return () => clearTimeout(timer); // Cleanup the timer
   }, []); // Empty dependency array means this effect runs once after the initial render
 
   return (

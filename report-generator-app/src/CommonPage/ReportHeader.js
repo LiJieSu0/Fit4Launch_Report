@@ -3,7 +3,7 @@ import styles from './ReportHeader.module.css';
 
 const ReportHeader = () => {
   return (
-    <div className={styles.headerContainer}>
+    <div className={`${styles.headerContainer} report-header-component`}>
       <div className={styles.headerContent}>
         <div>
           <h1 className={styles.title}><span className={styles.fit4Launch}>ATMCL TMO Field Performance Test</span></h1>

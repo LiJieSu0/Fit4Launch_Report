@@ -29,7 +29,7 @@ const deviceData = [
 
 const DeviceInfoPage = () => {
     return (
-        <div className="page-content">
+        <div className="page-content device-info-page">
             <h2>Device Information</h2>
             
             <table className="device-info-table general-table-style">

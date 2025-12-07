@@ -3,7 +3,7 @@ import '../StyleScript/CoverPage.css';
 
 const CoverPage = () => {
   return (
-    <div className="cover-page">
+    <div className="cover-page cover-page-component">
       <div className="header-logo">
         <div className="header-left-content">
           <img src="atmclogo.jpg" alt="atmcl" style={{ maxWidth: '50%', height: '15%' }} />

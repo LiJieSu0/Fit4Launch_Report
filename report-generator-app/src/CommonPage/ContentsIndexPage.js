@@ -10,8 +10,13 @@ const ContentsIndexPage = () => {
         const allHeadings = Array.from(document.querySelectorAll('h1, h2'));
         const contentsIndexPageElement = contentsRef.current;
 
-        // Filter out headings that are children of ContentsIndexPage itself
-        const headingsOutsideContentsPage = allHeadings.filter(heading => !contentsIndexPageElement.contains(heading));
+        // Filter out headings that are children of ContentsIndexPage, DeviceInfoPage, CoverPage, or ReportHeader components
+        const headingsOutsideContentsPage = allHeadings.filter(heading =>
+          !contentsIndexPageElement.contains(heading) &&
+          !heading.closest('.device-info-page') &&
+          !heading.closest('.cover-page-component') &&
+          !heading.closest('.report-header-component')
+        );
 
         const extractedHeadings = headingsOutsideContentsPage.map((heading, index) => {
           // Ensure each heading has a unique ID for linking

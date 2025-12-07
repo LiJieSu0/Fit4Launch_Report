@@ -376,7 +376,7 @@ function DpNSAUDPComponent() {
   return (
     <>
       <div className='page-content'>
-        <h2>3.4 UDP test - 5G NSA</h2>
+        <h2>3.4 UDP Test - 5G NSA</h2>
         <h3>NSA UDP DL Overall results</h3>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>

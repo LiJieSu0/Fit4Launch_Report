@@ -5,7 +5,7 @@ import '../../StyleScript/Restricted_Report_Style.css';
 function CoverageSummaryPage() {
   return (
     <div className='page-content'>
-      <h2>Coverage Summary Page</h2>
+      <h2>1. Coverage Test Overview</h2>
       <CoverageSummaryTable />
     </div>
   );

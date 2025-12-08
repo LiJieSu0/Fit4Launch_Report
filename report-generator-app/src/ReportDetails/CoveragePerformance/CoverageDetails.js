@@ -72,7 +72,8 @@ function CoverageDetails() {
   return (
     <div>
         <div className='page-content'>
-        <h2>4.1 5G VoNR Coverage Test - N25, N41, N71</h2>
+        <h1>2. Coverage Test</h1>
+        <h2>2.1 5G VoNR Coverage Test - N25, N41, N71</h2>
         {/* ------NR25 */}
         <h3>5G VoNR Coverage Test NR25- DL Throughput &lt; 1Mbps (km)</h3>
         {/* NR25 DL table */}
@@ -164,7 +165,7 @@ function CoverageDetails() {
         </div>
 
         <div className='page-content'>
-          <h2>4.2 5G n41 HPUE Coverage Test</h2>
+          <h2>2.2 5G n41 HPUE Coverage Test</h2>
           <table className="general-table-style">
                 <thead>
                     <tr>
@@ -200,7 +201,7 @@ function CoverageDetails() {
           </table>
         </div>
         <div className='page-content'>
-          <h2>5G n41 HPUE Coverage Test-RSRP Analysis</h2>
+          <h2>2.3 5G n41 HPUE Coverage Test-RSRP Analysis</h2>
           <img src="/CoverageRSRPChart/RSRP_R1.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
           <img src="/CoverageRSRPChart/RSRP_R2.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
           <img src="/CoverageRSRPChart/RSRP_R3.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
@@ -208,7 +209,7 @@ function CoverageDetails() {
           <img src="/CoverageRSRPChart/RSRP_R5.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
         </div>
         <div className='page-content'>
-          <h2>5G n41 HPUE Coverage Test-Tx Power Analysis</h2>
+          <h2>2.4 5G n41 HPUE Coverage Test-Tx Power Analysis</h2>
           <img src="/CoverageTxChart/Tx_R1.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
           <img src="/CoverageTxChart/Tx_R2.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
           <img src="/CoverageTxChart/Tx_R3.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />

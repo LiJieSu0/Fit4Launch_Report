@@ -85,7 +85,7 @@ const AutoVoNRDisabledAudioDelay = () => {
 
   return (
     <div className="page-content">
-      <h2>3.5 Auto VoNR Disabled Audio Delay</h2>
+      <h2>2.5 Auto VoNR Disabled Audio Delay</h2>
       <table className="general-table-style vq-details-table">
         <thead>
           <tr>

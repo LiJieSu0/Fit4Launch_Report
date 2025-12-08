@@ -99,7 +99,7 @@ const VqAmrWbVq = () => {
 
   return (
     <div className="page-content">
-      <h2>3.2 5G Auto VoNR Enabled AMR WB VQ</h2>
+      <h2>2.2 5G Auto VoNR Enabled AMR WB VQ</h2>
       <h3>Results</h3>
       <table className="general-table-style performance-table">
         <thead>

@@ -124,7 +124,7 @@ function Dp_MHS_httpMS_Component() {
     <>
       <div className='page-content'>
         <h2>2.7.2 MHS-HTTP Multi Stream Test</h2>
-        <h3>Overall Multi Stream HTTP</h3>
+        <h3>MHS Http Multi Stream Overview </h3>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}
           tableData={combinedOverallTableData}
@@ -144,7 +144,7 @@ function Dp_MHS_httpMS_Component() {
             },
           ]}
         />
-        <DpMHSHttpMSTable data={data} tableName="MHS Multi Stream HTTP Download Throughput" kpiRule="Throughput" />
+        <DpMHSHttpMSTable data={data} tableName="MHS Http Multi Stream DL Details" kpiRule="Throughput" />
       </div>
       
       <div className='page-content'>
@@ -154,19 +154,19 @@ function Dp_MHS_httpMS_Component() {
             { name: 'Moderate', DUT: data.Moderate.DUT["Mean"], REF: data.Moderate.REF["Mean"] },
             { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
           ]}
-          title="MHS Multi Stream HTTP Download Throughput"
+          title="MHS Http Multi Stream Download Throughput"
           yAxisLabel="Throughput"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
         />
         <DpRangeChart
           data={downloadRangeChartData}
-          chartTitle="MHS Multi Stream HTTP Download Throughput Range Chart"
+          chartTitle="MHS Http Multi Stream Download Throughput Range Chart"
           yAxisTitle="Throughput"
         />
       </div>
 
       <div className='page-content'>
-        <DpMHSHttpMSTable data={dataUL} tableName="MHS Multi Stream HTTP Upload Throughput" kpiRule="Throughput" />
+        <DpMHSHttpMSTable data={dataUL} tableName="MHS Http Multi Stream UL Details" kpiRule="Throughput" />
       </div>
 
       <div className='page-content'>

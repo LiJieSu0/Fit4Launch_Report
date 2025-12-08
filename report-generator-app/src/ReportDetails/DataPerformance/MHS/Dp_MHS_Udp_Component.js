@@ -428,16 +428,16 @@ function Dp_MHS_Udp_Component() {
     <>
       <div className="page-content">
         <h2>2.7.3 MHS-UDP Test</h2>
-        <h3>MHS UDP DL Overall table</h3>
+        <h3>MHS UDP DL Overview</h3>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>
       <div className="page-content">
-        <h3>MHS UDP UL Overall table</h3>
+        <h3>MHS UDP UL Overview</h3>
         <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
       </div>
 
       <div className="page-content">
-        <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP DL Table" />
+        <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP DL Details" />
       </div>
 
       
@@ -464,7 +464,7 @@ function Dp_MHS_Udp_Component() {
         ))}
 
         <div className="page-content">
-          <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP UL Table" />
+          <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP UL Details" />
         </div>
         {uploadHistogramData.reduce((acc, histogram, index) => {
           const component = (

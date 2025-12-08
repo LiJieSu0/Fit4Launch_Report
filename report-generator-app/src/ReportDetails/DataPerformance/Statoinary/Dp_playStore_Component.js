@@ -110,7 +110,6 @@ const Dp_playStore_Component = () => {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
-
       </div>
     </>
 

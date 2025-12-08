@@ -87,15 +87,15 @@ function Dp_MHS_Ping_Component() {
     <>
       <div className="page-content">
         <h2>2.7.4 MHS-Ping Test</h2>
-        <h3>Results</h3>
+        <h3>MHS Ping Test Overview</h3>
         <DpPingOverallTable data={data} /> {/* Add DpPingOverallTable */}
       </div>
       <div className="page-content">
-        <h3>Details</h3>
+        <h3>MHS Ping Test Details</h3>
         <DpMHSPingTable data={data} />
         <DpHistogramComponent
           data={histogramData}
-          title="Avg Ping RTT"
+          title="Ping RTT"
           yAxisLabel="Latency (ms)"
           barKeys={barKeys}
           />

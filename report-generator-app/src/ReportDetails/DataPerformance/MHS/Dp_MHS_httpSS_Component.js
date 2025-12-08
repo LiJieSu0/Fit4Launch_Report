@@ -124,7 +124,7 @@ function Dp_MHS_httpSS_Component() {
       <div className='page-content'>
         <h1>2.7 Mobile Hotspot Test-5G Auto</h1>
         <h2>2.7.1 MHS-HTTP Single Stream Test</h2>
-        <h3>Overall Single Stream HTTP</h3>
+        <h3>MHS Http Single Stream Overview</h3>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}
           tableData={combinedOverallTableData}
@@ -144,7 +144,7 @@ function Dp_MHS_httpSS_Component() {
             },
           ]}
         />
-        <DpMHSHttpSSTable data={dataDL} tableName="MHS Single Stream HTTP Download Throughput" kpiRule="Throughput" />
+        <DpMHSHttpSSTable data={dataDL} tableName="MHS Http Single Stream DL Details" kpiRule="Throughput" />
       </div>
 
       <div className='page-content'>
@@ -154,19 +154,19 @@ function Dp_MHS_httpSS_Component() {
             { name: 'Moderate', DUT: dataDL.Moderate.DUT["Mean"], REF: dataDL.Moderate.REF["Mean"] },
             { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
           ]}
-          title="MHS Single Stream HTTP Download Throughput"
+          title="MHS Http Single Stream Download Throughput"
           yAxisLabel="Throughput"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
         />
         <DpRangeChart
           data={downloadRangeChartData}
-          chartTitle="MHS Single Stream HTTP Download Throughput Range"
+          chartTitle="MHS Http Single Stream Download Throughput Range"
           yAxisTitle="Throughput"
         />
       </div>
 
       <div className='page-content'>
-        <DpMHSHttpSSTable data={dataUL} tableName="MHS Single Stream HTTP Upload Throughput" kpiRule="Throughput" />
+        <DpMHSHttpSSTable data={dataUL} tableName="MHS Http Single Stream UL Details" kpiRule="Throughput" />
       </div>
       <div className='page-content'>
         

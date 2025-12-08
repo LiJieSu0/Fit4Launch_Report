@@ -151,7 +151,7 @@ function Dp_httpSS_Component() {
         <h1 style={{ textAlign: 'center' }}>2. Data Performance - 5G Auto</h1>
         <h2>2.1 HTTP Single Stream Test Download & Upload - 5G Auto</h2>
         <div id="2.1"></div>
-        <h3>Overall Single Stream HTTP</h3>
+        <h3>Http Single Stream Overview Table</h3>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}
           tableData={combinedOverallTableData}
@@ -174,7 +174,7 @@ function Dp_httpSS_Component() {
         
         <DpDetailsTableLoc3
           data={httpSS_Stationary_DL}
-          tableName="Single Stream HTTP Download for 60 seconds"
+          tableName="Http Single Stream DL Details"
           kpiRule="Throughput"
           kpiTargetCells={[
             {
@@ -187,13 +187,13 @@ function Dp_httpSS_Component() {
       <div className='page-content'>
         <DpHistogramComponent
           data={dlHistogramData}
-          title="Single Stream HTTP Download Throughput"
+          title="Http Single Stream Download Throughput"
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
         <DpRangeChart
           data={dlRangeChartData}
-          chartTitle="Single Stream HTTP Download Throughput Range"
+          chartTitle="Http Single Stream Download Throughput Range"
           yAxisTitle="Throughput (Mbps)"
         />
       </div>
@@ -202,7 +202,7 @@ function Dp_httpSS_Component() {
 
       <DpDetailsTableLoc3
         data={httpSS_Stationary_UL}
-        tableName="Single Stream HTTP Upload of a 15 MB file"
+        tableName="Http Single Stream UL Details"
         kpiRule="Throughput"
         kpiTargetCells={[
           {
@@ -213,7 +213,7 @@ function Dp_httpSS_Component() {
       />
       <DpHistogramComponent
         data={ulHistogramData}
-        title="Single Stream HTTP Upload Throughput"
+        title="Http Single Stream Upload Throughput"
         yAxisLabel="Throughput (Mbps)"
         barKeys={barKeys}
       />
@@ -223,7 +223,7 @@ function Dp_httpSS_Component() {
 
       <DpRangeChart
         data={ulRangeChartData}
-        chartTitle="Single Stream HTTP Upload Throughput Range"
+        chartTitle="Http Single Stream Upload Throughput Range"
         yAxisTitle="Throughput (Mbps)"
       />
       </div>

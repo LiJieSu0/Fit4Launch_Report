@@ -55,8 +55,7 @@ function DpNSATestDriveTable({ data, tableName }) {
         const dutValue = getNestedValue(rawData["UDP DL DUT1_Data Test Drive"], subMetric.key);
         const refValue = getNestedValue(rawData["UDP DL REF1_Data Test Drive"], subMetric.key);
         processed.push({
-          metric: metric.name,
-          subMetric: subMetric.label,
+          metric: `${metric.name.replace(" (Mbps)", "").replace(" (s)", "").replace(" (%)", "")} ${subMetric.label}`,
           kpiType: metric.kpiType,
           dutValue: typeof dutValue === 'number' ? dutValue.toFixed(2) : dutValue,
           refValue: typeof refValue === 'number' ? refValue.toFixed(2) : refValue,
@@ -78,30 +77,18 @@ function DpNSATestDriveTable({ data, tableName }) {
         <thead>
           <tr>
             <th>Metric</th>
-            <th>Sub-Metric</th>
             <th>DUT Value</th>
             <th>REF Value</th>
           </tr>
         </thead>
         <tbody>
-          {tableData.map((row, index) => {
-            const showMetric = row.metric !== lastMetric;
-            if (showMetric) {
-              lastMetric = row.metric;
-            }
-            const metricRowSpan = tableData.filter(item => item.metric === row.metric).length;
-
-            return (
-              <tr key={index}>
-                {showMetric && (
-                  <td rowSpan={metricRowSpan}>{row.metric}</td>
-                )}
-                <td>{row.subMetric}</td>
-                <td style={{ backgroundColor: (row.subMetric === "Mean" || row.subMetric === "Avg") ? getKpiCellColor(row.kpiType, parseFloat(row.dutValue), parseFloat(row.refValue)) : 'inherit' }}>{row.dutValue}</td>
-                <td>{row.refValue}</td>
-              </tr>
-            );
-          })}
+          {tableData.map((row, index) => (
+            <tr key={index}>
+              <td>{row.metric}</td>
+              <td style={{ backgroundColor: (row.metric.includes("Mean") || row.metric.includes("Avg")) ? getKpiCellColor(row.kpiType, parseFloat(row.dutValue), parseFloat(row.refValue)) : 'inherit' }}>{row.dutValue}</td>
+              <td>{row.refValue}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

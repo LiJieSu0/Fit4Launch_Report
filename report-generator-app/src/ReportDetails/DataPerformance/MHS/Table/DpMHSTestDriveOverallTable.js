@@ -14,8 +14,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Throughput DL
         overallMetrics.push({
-            metric: "Throughput (Mbps)",
-            subMetric: "DL Mean",
+            metric: "DL Throughput Mean",
             kpiType: "Throughput",
             dutValue: dutDl.Throughput.DL.Mean.toFixed(2),
             refValue: refDl.Throughput.DL.Mean.toFixed(2),
@@ -23,8 +22,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Throughput UL
         overallMetrics.push({
-            metric: "Throughput (Mbps)",
-            subMetric: "UL Mean",
+            metric: "UL Throughput Mean",
             kpiType: "Throughput",
             dutValue: dutDl.Throughput.UL.Mean.toFixed(2),
             refValue: refDl.Throughput.UL.Mean.toFixed(2),
@@ -32,8 +30,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Jitter DL
         overallMetrics.push({
-            metric: "Jitter (ms)",
-            subMetric: "DL Mean",
+            metric: "DL Jitter Mean",
             kpiType: "Jitter",
             dutValue: dutDl.Jitter["DL Mean"].toFixed(2),
             refValue: refDl.Jitter["DL Mean"].toFixed(2),
@@ -41,8 +38,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Jitter UL
         overallMetrics.push({
-            metric: "Jitter (ms)",
-            subMetric: "UL Mean",
+            metric: "UL Jitter Mean",
             kpiType: "Jitter",
             dutValue: dutDl.Jitter["UL Mean"].toFixed(2),
             refValue: refDl.Jitter["UL Mean"].toFixed(2),
@@ -50,8 +46,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Error Ratio DL
         overallMetrics.push({
-            metric: "Error Ratio (%)",
-            subMetric: "DL Mean",
+            metric: "DL Error Ratio Mean",
             kpiType: "ErrorRatio",
             dutValue: dutDl['Error Ratio']["DL Mean"].toFixed(2),
             refValue: refDl['Error Ratio']["DL Mean"].toFixed(2),
@@ -59,8 +54,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Error Ratio UL
         overallMetrics.push({
-            metric: "Error Ratio (%)",
-            subMetric: "UL Mean",
+            metric: "UL Error Ratio Mean",
             kpiType: "ErrorRatio",
             dutValue: dutDl['Error Ratio']["UL Mean"].toFixed(2),
             refValue: refDl['Error Ratio']["UL Mean"].toFixed(2),
@@ -68,8 +62,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Ping RTT
         overallMetrics.push({
-            metric: "Ping RTT (ms)",
-            subMetric: "Avg",
+            metric: "Ping RTT Avg",
             kpiType: "PingLatency",
             dutValue: dutDl['Ping RTT'].avg.toFixed(2),
             refValue: refDl['Ping RTT'].avg.toFixed(2),
@@ -89,30 +82,18 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
                 <thead>
                     <tr>
                         <th>Metric</th>
-                        <th>Sub-Metric</th>
                         <th>DUT Value</th>
                         <th>REF Value</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {tableData.map((row, index) => {
-                        const showMetric = row.metric !== lastMetric;
-                        if (showMetric) {
-                            lastMetric = row.metric;
-                        }
-                        const metricRowSpan = tableData.filter(item => item.metric === row.metric).length;
-
-                        return (
-                            <tr key={index}>
-                                {showMetric && (
-                                    <td rowSpan={metricRowSpan}>{row.metric}</td>
-                                )}
-                                <td>{row.subMetric}</td>
-                                <td style={{ backgroundColor: getKpiCellColor(row.kpiType, parseFloat(row.dutValue), parseFloat(row.refValue)) }}>{row.dutValue}</td>
-                                <td>{row.refValue}</td>
-                            </tr>
-                        );
-                    })}
+                    {tableData.map((row, index) => (
+                        <tr key={index}>
+                            <td>{row.metric}</td>
+                            <td style={{ backgroundColor: (row.metric.includes("Mean") || row.metric.includes("Avg")) ? getKpiCellColor(row.kpiType, parseFloat(row.dutValue), parseFloat(row.refValue)) : 'inherit' }}>{row.dutValue}</td>
+                            <td>{row.refValue}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

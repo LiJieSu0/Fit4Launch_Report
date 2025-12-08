@@ -4,7 +4,7 @@ import '../../StyleScript/Restricted_Report_Style.css';
 function DpSummaryTable({ tableData }) {
   return (
     <div className="">
-      <table className="general-table-style">
+      <table className="general-table-style dp-summary-table">
         <thead>
           <tr>
             {tableData.headers.map((header, index) => (

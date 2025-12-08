@@ -207,6 +207,20 @@
 .device-info-table td:nth-child(4) {
   width: 20%; /* Distribute remaining 60% among 3 columns */
 }
+.dp-summary-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.dp-summary-table th:first-child,
+.dp-summary-table td:first-child {
+  width: 40%;
+}
+
+.dp-summary-table th:not(:first-child),
+.dp-summary-table td:not(:first-child) {
+  width: auto; /* Distribute remaining width equally */
+}
 /*
 DP
 */

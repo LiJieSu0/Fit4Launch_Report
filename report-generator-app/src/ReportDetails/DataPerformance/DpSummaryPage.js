@@ -12,7 +12,7 @@ function DpSummaryPage() {
   };
   const httpSSData = {
     headers: [
-      { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
+      { label: "Http Single Stream", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -31,7 +31,7 @@ function DpSummaryPage() {
 
   const httpMSData = {
     headers: [
-      { label: "File Transfer (HTTP) Multi-Stream", rowSpan: 2 },
+      { label: "Http Multi-Stream", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -142,7 +142,7 @@ function DpSummaryPage() {
 
   const mhsStationaryData = {
     headers: [
-      { label: "Mobile hot spot Test", rowSpan: 2 },
+      { label: "Mobile Hot Spot Test", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -219,7 +219,7 @@ function DpSummaryPage() {
   // NSA DATA
    const httpNSASSData = {
     headers: [
-      { label: "File Transfer (HTTP) Single Stream", rowSpan: 2 },
+      { label: "Http Single Stream", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -238,7 +238,7 @@ function DpSummaryPage() {
 
   const httpNSAMSData = {
     headers: [
-      { label: "File Transfer (HTTP) Multi-Stream", rowSpan: 2 },
+      { label: "Http Multi-Stream", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },

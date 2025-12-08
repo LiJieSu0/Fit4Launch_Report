@@ -151,7 +151,7 @@ function Dp_httpSS_Component() {
         <h1 style={{ textAlign: 'center' }}>2. Data Performance - 5G Auto</h1>
         <h2>2.1 HTTP Single Stream Test Download & Upload - 5G Auto</h2>
         <div id="2.1"></div>
-        <h3>Http Single Stream Overview Table</h3>
+        <h3>Http Single Stream Overview</h3>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}
           tableData={combinedOverallTableData}

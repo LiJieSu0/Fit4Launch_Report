@@ -377,16 +377,16 @@ function DpNSAUDPComponent() {
     <>
       <div className='page-content'>
         <h2>3.4 UDP Test - 5G NSA</h2>
-        <h3>NSA UDP DL Overall results</h3>
+        <h3>NSA UDP Test DL Overview</h3>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>
       <div className='page-content'>
-        <h3>NSA UDP UL Overall results</h3>
+        <h3>NSA UDP Test UL Overview</h3>
         <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
       </div>
 
       <div className='page-content'>
-        <DpNSAUDPDLTable data={udp_Stationary_DL} tableName="UDP Download Stationary" />
+        <DpNSAUDPDLTable data={udp_Stationary_DL} tableName="NSA UDP Test DL Details" />
       </div>
 
       
@@ -396,7 +396,7 @@ function DpNSAUDPComponent() {
             <DpHistogramComponent
               key={`dl-throughput-${idealThroughput}`}
               data={extractHistogramDataByLocation(udp_Stationary_DL, "Throughput (kbps)", idealThroughput)}
-              title={`Throughput (kbps) - UDP Download Stationary (${parseInt(idealThroughput / 1000)} Mbps)`}
+              title={`UDP Download Throughput (${parseInt(idealThroughput / 1000)} Mbps)`}
               yAxisLabel="Throughput (kbps)"
               barKeys={histogramBarKeys}
             />
@@ -409,7 +409,7 @@ function DpNSAUDPComponent() {
             <DpHistogramComponent
               key={`dl-jitter-${idealThroughput}`}
               data={extractHistogramDataByLocation(udp_Stationary_DL, "Mean Jitter (s)", idealThroughput)}
-              title={`Mean Jitter (s) - UDP Download Stationary (${parseInt(idealThroughput / 1000)} Mbps)`}
+              title={`UDP Download Jitter (${parseInt(idealThroughput / 1000)} Mbps)`}
               yAxisLabel="Mean Jitter (s)"
               barKeys={histogramBarKeys}
             />
@@ -422,7 +422,7 @@ function DpNSAUDPComponent() {
             <DpHistogramComponent
               key={`dl-packet-failure-${idealThroughput}`}
               data={extractHistogramDataByLocation(udp_Stationary_DL, "Packet Failure Rate (%)", idealThroughput)}
-              title={`Packet Failure Rate (%) - UDP Download Stationary (${parseInt(idealThroughput / 1000)} Mbps)`}
+              title={`UDP Download Packet Failure Rate (${parseInt(idealThroughput / 1000)} Mbps)`}
               yAxisLabel="Packet Failure Rate (%)"
               barKeys={histogramBarKeys}
             />
@@ -431,7 +431,7 @@ function DpNSAUDPComponent() {
 
 
       <div className='page-content'>
-        <DpNSAUDPULTable data={udp_Stationary_UL} tableName="UDP Upload Stationary" />
+        <DpNSAUDPULTable data={udp_Stationary_UL} tableName="NSA UDP Test UL Details" />
       </div>
         {/* UDP UL overall  */}
         <div className='page-content'>
@@ -439,7 +439,7 @@ function DpNSAUDPComponent() {
             <DpHistogramComponent
               key={`ul-throughput-${idealThroughput}`}
               data={extractHistogramDataByLocation(udp_Stationary_UL, "Throughput (kbps)", idealThroughput)}
-              title={`Throughput (kbps) - UDP Upload Stationary (${parseInt(idealThroughput / 1000)} Mbps)`}
+              title={`UDP Upload Throughput (${parseInt(idealThroughput / 1000)} Mbps)`}
               yAxisLabel="Throughput (kbps)"
               barKeys={histogramBarKeys}
             />
@@ -452,7 +452,7 @@ function DpNSAUDPComponent() {
             <DpHistogramComponent
               key={`ul-jitter-${idealThroughput}`}
               data={extractHistogramDataByLocation(udp_Stationary_UL, "Mean Jitter (s)", idealThroughput)}
-              title={`Mean Jitter (s) - UDP Upload Stationary (${parseInt(idealThroughput / 1000)} Mbps)`}
+              title={`UDP Upload Jitter (${parseInt(idealThroughput / 1000)} Mbps)`}
               yAxisLabel="Mean Jitter (s)"
               barKeys={histogramBarKeys}
             />
@@ -465,7 +465,7 @@ function DpNSAUDPComponent() {
             <DpHistogramComponent
               key={`ul-packet-failure-${idealThroughput}`}
               data={extractHistogramDataByLocation(udp_Stationary_UL, "Packet Failure Rate (%)", idealThroughput)}
-              title={`Packet Failure Rate (%) - UDP Upload Stationary (${parseInt(idealThroughput / 1000)} Mbps)`}
+              title={`UDP Upload Packet Failure Rate (${parseInt(idealThroughput / 1000)} Mbps)`}
               yAxisLabel="Packet Failure Rate (%)"
               barKeys={histogramBarKeys}
             />

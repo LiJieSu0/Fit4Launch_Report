@@ -115,7 +115,7 @@ function DpNSAStationaryDetails() {
     <div className='page-content'>
       <h1>3. Data Performance - 5G NSA</h1>
       <h2>3.1 HTTP Single Stream Test Download & Upload - 5G NSA</h2>
-      <h3>Overall Single Stream HTTP</h3>
+      <h3>Http Single Stream Overview </h3>
       <DpThroughputOverallTable
         tableHeader={overallTableHeader}
         tableData={combinedOverallSsHttpTableData}
@@ -147,7 +147,7 @@ function DpNSAStationaryDetails() {
             REF: SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["REF HTTP DL"].Throughput,
           },
         }}
-        tableName="Single Stream HTTP Download"
+        tableName="Http Single Stream DL Details"
       />
     </div>
     <div className='page-content'>
@@ -162,11 +162,11 @@ function DpNSAStationaryDetails() {
             REF: SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput,
           },
         }}
-        tableName="Single Stream HTTP Upload"
+        tableName="Http Single Stream UL Details"
       />
       <DpHistogramComponent
         data={ssHttpDlHistogramData}
-        title="Single Stream HTTP Download Throughput"
+        title="Http Single Stream Download Throughput"
         yAxisLabel="Throughput"
         barKeys={barKeys}
       />
@@ -174,14 +174,14 @@ function DpNSAStationaryDetails() {
     <div className='page-content'>
       <DpHistogramComponent
         data={ssHttpUlHistogramData}
-        title="Single Stream HTTP Upload Throughput"
+        title="Http Single Stream Upload Throughput"
         yAxisLabel="Throughput"
         barKeys={barKeys}
       />
     </div>
     <div className='page-content'>
       <h2>3.2 HTTP Single Stream Test Download & Upload - 5G NSA</h2>
-      <h3>Overall Multi Stream HTTP</h3>
+      <h3>Http Multi Stream Overview</h3>
             <DpThroughputOverallTable
               tableHeader={overallTableHeader}
               tableData={combinedOverallMsHttpTableData}
@@ -212,7 +212,7 @@ function DpNSAStationaryDetails() {
             REF: MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["REF HTTP DL"].Throughput,
           },
         }}
-        tableName="Multi Stream HTTP Download"
+        tableName="Http Multi Stream DL Details"
       />
       </div>
     <div className='page-content'>
@@ -227,11 +227,11 @@ function DpNSAStationaryDetails() {
             REF: MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO-ref_5G NSA_UDP UMulti Stream HTTP Upload for 30 second_Poor Coverage_DA Test"].Throughput,
           },
         }}
-        tableName="Multi Stream HTTP Upload"
+        tableName="Http Multi Stream UL Details"
       />
       <DpHistogramComponent
         data={msHttpDlHistogramData}
-        title="Multi Stream HTTP Download Throughput"
+        title="Http Multi Stream Download Throughput"
         yAxisLabel="Throughput"
         barKeys={barKeys}
       />
@@ -240,7 +240,7 @@ function DpNSAStationaryDetails() {
     <div className='page-content'>
       <DpHistogramComponent
         data={msHttpUlHistogramData}
-        title="Multi Stream HTTP Upload Throughput"
+        title="Http Multi Stream Upload Throughput"
         yAxisLabel="Throughput"
         barKeys={barKeys}
       />
@@ -248,9 +248,9 @@ function DpNSAStationaryDetails() {
 
     <div className='page-content'>
       <h2>3.3 Ping Test - 5G NSA</h2>
-      <h3>Overall Ping</h3>
+      <h3>Ping Test Overview</h3>
       <DpNSAPingOverallTable data={pingData} />
-      <DpNSAPingTable data={pingData} tableName="Ping RTT" />
+      <DpNSAPingTable data={pingData} tableName="Ping Test Details" />
       <DpHistogramComponent
         data={pingHistogramData}
         title="Ping RTT"

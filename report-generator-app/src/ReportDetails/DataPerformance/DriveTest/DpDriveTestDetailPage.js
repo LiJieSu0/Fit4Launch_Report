@@ -31,22 +31,23 @@ const DpDriveTestDetailPage = () => {
 
     return (
     <>
+    {/* TODO add 2.8.1 */}
       <div className='page-content'>
-       <h2>2.8 Mobility test - 5G Auto Data Test MHS Drive</h2>
-       <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overall Data" />
-       <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Data" />
+       <h2>2.8 Mobility Test - 5G Auto Data Test MHS Drive</h2>
+       <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overview" />
+       <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Details" />
       </div>
       <div className='page-content'>
 
        <DpHistogramComponent
          data={driveTestThroughputData}
-         title="Mobility Test Drive - Mean Throughput"
+         title="Mobility Test Drive Throughput"
          yAxisLabel="Throughput (Mbps)"
          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
        />
        <DpHistogramComponent
          data={driveTestJitterData}
-         title="Mobility Test Drive - Mean Jitter"
+         title="Mobility Test Drive Jitter"
          yAxisLabel="Jitter (s)"
          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
        />
@@ -55,13 +56,13 @@ const DpDriveTestDetailPage = () => {
 
        <DpHistogramComponent
          data={driveTestErrorRatioData}
-         title="Mobility Test Drive - Mean Error Ratio"
+         title="Mobility Test Drive Error Ratio"
          yAxisLabel="Error Ratio (%)"
          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
        />
        <DpHistogramComponent
          data={driveTestPingRttData}
-         title="Mobility Test Drive - Avg Ping RTT"
+         title="Mobility Test Drive Ping RTT"
          yAxisLabel="RTT (ms)"
          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
        />

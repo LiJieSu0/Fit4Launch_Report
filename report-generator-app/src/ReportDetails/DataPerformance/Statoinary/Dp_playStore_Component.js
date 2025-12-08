@@ -80,8 +80,10 @@ const Dp_playStore_Component = () => {
   return (
     <>
       <div className='page-content'>
-        <h2>2.6 Play-store app download Test - 5G Auto</h2>
+        <h2>2.6 Play-store App Download Test - 5G Auto</h2>
+        <h3>Play-store App Download Test Overview</h3>
         <DpPlayStoreOverallTable tableData={tableData} />
+        <h3>Play-store App Download Test Details</h3>
         <DpPlayStoreTable tableData={tableData} />
       </div>
       <div className='page-content'>

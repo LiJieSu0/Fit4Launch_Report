@@ -1,7 +1,6 @@
 .footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   padding: 10px 1in; /* Adjust padding to match page margins */
   font-size: 10pt;
   color: #333;
@@ -12,16 +11,42 @@
   right: 0;
   width: 100%;
   box-sizing: border-box; /* Include padding in the element's total width and height */
-  background-color: #f8f8f8; /* Light background for visibility */
+  background-color: #ffffff; /* Light background for visibility */
   z-index: 1000; /* Ensure it's above other content */
 }
 
-.leftContent {
-  /* Styles for the left content (e.g., "Proprietary & Confidential") */
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.rightContent {
-  /* Styles for the right content (e.g., "spirent.com | 3") */
+.leftHeader {
+  text-align: left;
+  line-height: 1.4;
+}
+
+.rightHeader {
+  text-align: right;
+}
+
+.tableContainer {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableContainer table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableContainer td {
+  border: 1px solid #333;
+  padding: 8px;
+  text-align: left;
+  width: 25%; /* Distribute width evenly among 4 columns */
 }
 
 /* Print-specific styles */
@@ -36,5 +61,13 @@
     background-color: transparent;
     border-top: 1px solid #eee;
     z-index: 1000;
+  }
+
+  .headerContent {
+    margin-bottom: 5px;
+  }
+
+  .tableContainer td {
+    padding: 5px;
   }
 }

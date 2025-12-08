@@ -37,9 +37,11 @@ function Dp_Webbrowser_Component(){
     
     return(
         <div className='page-content'>
-            <h2>2.5 Web browser Test - 5G Auto</h2>
+            <h2>2.5 Web Browser Test - 5G Auto</h2>
+            <h3>Web Browser Test Overview</h3>
             <DpWebOverallTable data={overallTableData} />
-            <DpWebTable data={Dp_WebData} />
+            {/* <h3>Web Browser Test Details</h3> */}
+            {/* <DpWebTable data={Dp_WebData} /> */}
             {/* <DpHistogramComponent
                 data={histogramData}
                 title="Web Page Load Time - Mean"

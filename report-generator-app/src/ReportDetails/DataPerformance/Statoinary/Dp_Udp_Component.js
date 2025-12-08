@@ -683,7 +683,7 @@ function Dp_Udp_Component() {
       <div className='page-content'>
         <h2>2.3 UDP Test - 5G Auto</h2>
         {/* dp udp overall  table */}
-        <DpUdpTableLoc3 data={udp_Stationary_DL} tableName="UDP DL" />
+        <DpUdpTableLoc3 data={udp_Stationary_DL} tableName="UDP Test DL Details" />
       </div>
         {/* histograms */}
       <div className='page-content'>
@@ -731,9 +731,7 @@ function Dp_Udp_Component() {
 
       
       <div className='page-content'>
-        <DpUdpTableLoc3 data={udp_Stationary_UL} tableName="UDP UL" />
-        
-        {/* histograms */}
+        <DpUdpTableLoc3 data={udp_Stationary_UL} tableName="UDP Test UL Details" />
       </div>
       
       <div className='page-content'>

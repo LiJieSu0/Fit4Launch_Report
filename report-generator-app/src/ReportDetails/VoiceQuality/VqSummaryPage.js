@@ -7,7 +7,7 @@ const VqSummaryPage = () => {
 
   return (
     <div className="page-content">
-      <h2>1. Voice Quality Summary</h2>
+      <h2>1. Voice Quality Test Overview</h2>
       <table className="general-table-style">
         <thead>
           <tr>

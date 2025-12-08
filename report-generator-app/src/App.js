@@ -48,9 +48,9 @@ function App() {
         <VqDetailsPage />
         <VqKpiPage/> */}
         
-        <CoverageSummaryPage />
+        {/* <CoverageSummaryPage />
         <CoverageDetails />
-        <CoverageKpiPage />
+        <CoverageKpiPage /> */}
 
         {/* <DpSummaryPage />
         <DpDetailsPage />

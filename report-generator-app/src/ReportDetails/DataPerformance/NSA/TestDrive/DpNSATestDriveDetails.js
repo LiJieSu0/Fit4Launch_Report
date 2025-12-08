@@ -57,22 +57,22 @@ function DpNSATestDriveDetails() {
   return (
     <>
     <div className='page-content'>
-      <h2>3.5 Mobility test - 5G NSA</h2>
-      <DpNSATestDriveOverallTable data={TestDriveData} tableName="Test Drive Overall Data" />
-      <DpNSATestDriveTable data={TestDriveData} tableName="Test Drive" />
+      <h2>3.5 Mobility Test - 5G NSA</h2>
+      <DpNSATestDriveOverallTable data={TestDriveData} tableName="Drive Test Overview" />
+      <DpNSATestDriveTable data={TestDriveData} tableName="Drive Test Details" />
       </div>
 
     <div className='page-content'>
 
       <DpHistogramComponent
         data={throughputData}
-        title="Mean Throughput (Mbps)"
+        title="Drive Test Throughput"
         yAxisLabel="Mbps"
         barKeys={barKeysThroughput}
       />
       <DpHistogramComponent
         data={jitterData}
-        title="Jitter (s)"
+        title="Drive Test Jitter"
         yAxisLabel="s"
         barKeys={barKeysJitter}
       />
@@ -82,13 +82,13 @@ function DpNSATestDriveDetails() {
 
       <DpHistogramComponent
         data={errorRatioData}
-        title="Error Ratio (%)"
+        title="Packet Failure Rate"
         yAxisLabel="%"
         barKeys={barKeysErrorRatio}
       />
       <DpHistogramComponent
         data={pingRttData}
-        title="Ping RTT (ms)"
+        title="Ping RTT"
         yAxisLabel="ms"
         barKeys={barKeysPingRtt}
       />

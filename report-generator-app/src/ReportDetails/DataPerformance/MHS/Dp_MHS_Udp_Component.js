@@ -366,10 +366,10 @@ function Dp_MHS_Udp_Component() {
 
   const downloadHistogramData = [];
   const downloadMetrics = [
-    { metric: "Mean Throughput", idealThroughput: "200000", title: "MHS UDP Download Mean Throughput (200 Mbps)", yAxisLabel: "Throughput (Mbps)" },
-    { metric: "Mean Throughput", idealThroughput: "400000", title: "MHS UDP Download Mean Throughput (400 Mbps)", yAxisLabel: "Throughput (Mbps)" },
-    { metric: "Mean Jitter", idealThroughput: "200000", title: "MHS UDP Download Mean Jitter (200 Mbps)", yAxisLabel: "Jitter (ms)" },
-    { metric: "Mean Jitter", idealThroughput: "400000", title: "MHS UDP Download Mean Jitter (400 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Mean Throughput", idealThroughput: "200000", title: "MHS UDP Download Throughput (200 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Throughput", idealThroughput: "400000", title: "MHS UDP Download Throughput (400 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Jitter", idealThroughput: "200000", title: "MHS UDP Download Jitter (200 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Mean Jitter", idealThroughput: "400000", title: "MHS UDP Download Jitter (400 Mbps)", yAxisLabel: "Jitter (ms)" },
     { metric: "Packet Failure Rate", idealThroughput: "200000", title: "MHS UDP Download Packet Failure Rate (200 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
     { metric: "Packet Failure Rate", idealThroughput: "400000", title: "MHS UDP Download Packet Failure Rate (400 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
   ];
@@ -396,10 +396,10 @@ function Dp_MHS_Udp_Component() {
 
   const uploadHistogramData = [];
   const uploadMetrics = [
-    { metric: "Mean Throughput", idealThroughput: "10000", title: "MHS UDP Upload Mean Throughput (10 Mbps)", yAxisLabel: "Throughput (Mbps)" },
-    { metric: "Mean Throughput", idealThroughput: "20000", title: "MHS UDP Upload Mean Throughput (20 Mbps)", yAxisLabel: "Throughput (Mbps)" },
-    { metric: "Mean Jitter", idealThroughput: "10000", title: "MHS UDP Upload Mean Jitter (10 Mbps)", yAxisLabel: "Jitter (ms)" },
-    { metric: "Mean Jitter", idealThroughput: "20000", title: "MHS UDP Upload Mean Jitter (20 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Mean Throughput", idealThroughput: "10000", title: "MHS UDP Upload Throughput (10 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Throughput", idealThroughput: "20000", title: "MHS UDP Upload Throughput (20 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Jitter", idealThroughput: "10000", title: "MHS UDP Upload Jitter (10 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Mean Jitter", idealThroughput: "20000", title: "MHS UDP Upload Jitter (20 Mbps)", yAxisLabel: "Jitter (ms)" },
     { metric: "Packet Failure Rate", idealThroughput: "10000", title: "MHS UDP Upload Packet Failure Rate (10 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
     { metric: "Packet Failure Rate", idealThroughput: "20000", title: "MHS UDP Upload Packet Failure Rate (20 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
   ];
@@ -428,16 +428,16 @@ function Dp_MHS_Udp_Component() {
     <>
       <div className="page-content">
         <h2>2.7.3 MHS-UDP Test</h2>
-        <h3>MHS UDP DL Overview</h3>
+        <h3>MHS UDP Test DL Overview</h3>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>
       <div className="page-content">
-        <h3>MHS UDP UL Overview</h3>
+        <h3>MHS UDP Test UL Overview</h3>
         <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
       </div>
 
       <div className="page-content">
-        <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP DL Details" />
+        <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP Test DL Details" />
       </div>
 
       
@@ -464,7 +464,7 @@ function Dp_MHS_Udp_Component() {
         ))}
 
         <div className="page-content">
-          <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP UL Details" />
+          <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP Test UL Details" />
         </div>
         {uploadHistogramData.reduce((acc, histogram, index) => {
           const component = (

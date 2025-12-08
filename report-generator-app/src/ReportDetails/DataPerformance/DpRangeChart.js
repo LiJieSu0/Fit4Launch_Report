@@ -108,7 +108,7 @@ function DpRangeChart({ data, chartTitle, yAxisTitle }) {
         text: chartTitle,
         color: '#000000', // Set title font color to black
         font: {
-          family: 'Times New Roman',
+          size: 18, // Add this line to set the font size
         },
       },
       datalabels: {

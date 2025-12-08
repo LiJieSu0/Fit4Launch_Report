@@ -40,9 +40,9 @@ function App() {
         <DeviceInfoPage/>
         <ContentsIndexPage />
 
-        <CpSummaryPage />
+        {/* <CpSummaryPage />
         <CallPerformanceDetails />
-        <CpKpiPage/>
+        <CpKpiPage/> */}
 
         {/* <VqSummaryPage />
         <VqDetailsPage />
@@ -52,9 +52,9 @@ function App() {
         <CoverageDetails />
         <CoverageKpiPage /> */}
 
-        {/* <DpSummaryPage />
+        <DpSummaryPage />
         <DpDetailsPage />
-        <DpKpiPage /> */}
+        <DpKpiPage />
 
         <LegalPage/>
         <AboutPage />

@@ -47,14 +47,14 @@ function App() {
         {/* <VqSummaryPage />
         <VqDetailsPage />
         <VqKpiPage/> */}
-        
+
         {/* <CoverageSummaryPage />
         <CoverageDetails />
         <CoverageKpiPage /> */}
 
-        {/* <DpSummaryPage />
+        <DpSummaryPage />
         <DpDetailsPage />
-        <DpKpiPage /> */}
+        <DpKpiPage />
 
         <LegalPage/>
         <AboutPage />

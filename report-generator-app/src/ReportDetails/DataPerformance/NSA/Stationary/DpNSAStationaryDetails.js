@@ -166,7 +166,7 @@ function DpNSAStationaryDetails() {
       />
       <DpHistogramComponent
         data={ssHttpDlHistogramData}
-        title="Single Stream HTTP Download Throughput Histogram"
+        title="Single Stream HTTP Download Throughput"
         yAxisLabel="Throughput"
         barKeys={barKeys}
       />
@@ -174,7 +174,7 @@ function DpNSAStationaryDetails() {
     <div className='page-content'>
       <DpHistogramComponent
         data={ssHttpUlHistogramData}
-        title="Single Stream HTTP Upload Throughput Histogram"
+        title="Single Stream HTTP Upload Throughput"
         yAxisLabel="Throughput"
         barKeys={barKeys}
       />
@@ -231,7 +231,7 @@ function DpNSAStationaryDetails() {
       />
       <DpHistogramComponent
         data={msHttpDlHistogramData}
-        title="Multi Stream HTTP Download Throughput Histogram"
+        title="Multi Stream HTTP Download Throughput"
         yAxisLabel="Throughput"
         barKeys={barKeys}
       />
@@ -240,7 +240,7 @@ function DpNSAStationaryDetails() {
     <div className='page-content'>
       <DpHistogramComponent
         data={msHttpUlHistogramData}
-        title="Multi Stream HTTP Upload Throughput Histogram"
+        title="Multi Stream HTTP Upload Throughput"
         yAxisLabel="Throughput"
         barKeys={barKeys}
       />
@@ -253,7 +253,7 @@ function DpNSAStationaryDetails() {
       <DpNSAPingTable data={pingData} tableName="Ping RTT" />
       <DpHistogramComponent
         data={pingHistogramData}
-        title="Ping RTT Histogram"
+        title="Ping RTT"
         yAxisLabel="Latency (ms)"
         barKeys={barKeys}
       />

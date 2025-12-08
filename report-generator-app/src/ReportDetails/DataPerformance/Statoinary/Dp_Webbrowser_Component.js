@@ -40,12 +40,12 @@ function Dp_Webbrowser_Component(){
             <h2>2.5 Web browser Test - 5G Auto</h2>
             <DpWebOverallTable data={overallTableData} />
             <DpWebTable data={Dp_WebData} />
-            <DpHistogramComponent
+            {/* <DpHistogramComponent
                 data={histogramData}
                 title="Web Page Load Time - Mean"
                 yAxisLabel="Time (s)"
                 barKeys={barKeys}
-            />
+            /> */}
         </div>
     )
 };

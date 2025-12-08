@@ -36,7 +36,7 @@ function App() {
     <ReportDataProvider>
       <div className="App">
         <ReportHeader />
-        <CoverPage />
+        {/* <CoverPage /> */}
         <DeviceInfoPage/>
         <ContentsIndexPage />
 

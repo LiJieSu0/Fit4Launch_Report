@@ -95,7 +95,7 @@ function Dp_MHS_Ping_Component() {
         <DpMHSPingTable data={data} />
         <DpHistogramComponent
           data={histogramData}
-          title="Average Ping RTT"
+          title="Avg Ping RTT"
           yAxisLabel="Latency (ms)"
           barKeys={barKeys}
           />

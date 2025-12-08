@@ -22,8 +22,8 @@ function DpSummaryPage() {
         cells: [
           { label: "Data Throughput Average" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'bg-performance-pass',link:'#'},
-          {label:'Result',className:'bg-performance-pass',link:'#'}
+          {label:'Result',className:'bg-performance-pass',link:'#2.1'},
+          {label:'Result',className:'bg-performance-pass',link:'#2.1'}
         ],
       },
     ],
@@ -41,8 +41,8 @@ function DpSummaryPage() {
         cells: [
           { label: "Data Throughput Average" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'bg-performance-pass',link:'#'},
-          {label:'Result',className:'bg-performance-marginal-fail',link:'#'}
+          {label:'Result',className:'bg-performance-pass',link:'#2.2'},
+          {label:'Result',className:'bg-performance-marginal-fail',link:'#2.2'}
         ],
       },
     ],
@@ -60,8 +60,8 @@ function DpSummaryPage() {
         cells: [
           { label: "Mean Throughput" },
           { label: "Seattle (5G NR)", rowSpan: 3 },
-          {label:'Result',className:'bg-performance-pass',link:'#'},
-          {label:'Result',className:'bg-performance-pass',link:'#'}
+          {label:'Result',className:'bg-performance-pass',link:'#2.3'},
+          {label:'Result',className:'bg-performance-pass',link:'#2.3'}
         ],
       },
       {
@@ -94,7 +94,7 @@ function DpSummaryPage() {
         cells: [
           { label: "Mean Round Trip Time(ms)" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'bg-performance-fail',link:'#'},
+          {label:'Result',className:'bg-performance-fail',link:'#2.4'},
         ],
       },
     ],
@@ -111,7 +111,7 @@ function DpSummaryPage() {
         cells: [
           { label: "Average Page LoadTime (s)" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'bg-performance-pass',link:'#'},
+          {label:'Result',className:'bg-performance-pass',link:'#2.5'},
         ],
       },
     ],
@@ -131,9 +131,9 @@ function DpSummaryPage() {
         cells: [
           { label: "Mean Throughput" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'},
+          {label:'Result',className:'average-fail',link:'#2.6'},
+          {label:'Result',className:'average-fail',link:'#2.6'},
+          {label:'Result',className:'average-fail',link:'#2.6'},
 
         ],
       },
@@ -152,13 +152,14 @@ function DpSummaryPage() {
         cells: [
           { label: "Data Throughput Average" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'}
+          {label:'Result',className:'average-fail',link:'#2.6'},
+          {label:'Result',className:'average-fail',link:'#2.6'}
         ],
       },
     ],
   };
 
+  
   const mobiltyData = {
     headers: [
       { label: "5G Auto Data Test Drive", rowSpan: 2 },
@@ -177,7 +178,8 @@ function DpSummaryPage() {
       },
     ],
   };
-
+  
+// TODO MHS tables add
   const mobiltyMHSData = {
     headers: [
       { label: "5G Auto Data Test MHS Drive", rowSpan: 2 },
@@ -196,6 +198,10 @@ function DpSummaryPage() {
       },
     ],
   };
+
+
+
+
 
   const mrabData = {
     headers: [

@@ -154,7 +154,7 @@ function Dp_MHS_httpMS_Component() {
             { name: 'Moderate', DUT: data.Moderate.DUT["Mean"], REF: data.Moderate.REF["Mean"] },
             { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
           ]}
-          title="MHS Multi Stream HTTP Download Throughput Histogram"
+          title="MHS Multi Stream HTTP Download Throughput"
           yAxisLabel="Throughput"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
         />
@@ -176,7 +176,7 @@ function Dp_MHS_httpMS_Component() {
             { name: 'Moderate', DUT: dataUL.Moderate.DUT["Mean"], REF: dataUL.Moderate.REF["Mean"] },
             { name: 'Overall', DUT: overallUploadDUTMean, REF: overallUploadREFMean },
           ]}
-          title="MHS Multi Stream HTTP Upload Throughput Histogram"
+          title="MHS Multi Stream HTTP Upload Throughput"
           yAxisLabel="Throughput"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
         />

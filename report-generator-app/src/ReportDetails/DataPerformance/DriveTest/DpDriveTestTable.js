@@ -13,11 +13,11 @@ const DpDriveTestTable = ({ data, tableName }) => {
             {
                 name: "Throughput (Mbps)",
                 subMetrics: [
-                    { key: "Mean", label: "DL Mean" },
-                    { key: "Standard Deviation", label: "DL Standard Deviation" },
-                    { key: "Minimum", label: "DL Minimum" },
-                    { key: "Maximum", label: "DL Maximum" },
-                    { key: "Number of Intervals", label: "DL Number of Intervals" },
+                    { key: "Mean", label: "Mean" },
+                    { key: "Standard Deviation", label: "Standard Deviation" },
+                    { key: "Minimum", label: "Minimum" },
+                    { key: "Maximum", label: "Maximum" },
+                    { key: "Number of Intervals", label: "Number of Intervals" },
                 ],
                 path: "Throughput",
                 kpiType: "Throughput",
@@ -25,7 +25,7 @@ const DpDriveTestTable = ({ data, tableName }) => {
             {
                 name: "Jitter (s)",
                 subMetrics: [
-                    { key: "Mean", label: "DL Mean" },
+                    { key: "Mean", label: "Mean" },
                 ],
                 path: "Jitter",
                 kpiType: "Jitter",
@@ -33,7 +33,7 @@ const DpDriveTestTable = ({ data, tableName }) => {
             {
                 name: "Error Ratio (%)",
                 subMetrics: [
-                    { key: "Mean", label: "DL Mean" },
+                    { key: "Mean", label: "Mean" },
                 ],
                 path: "Error Ratio",
                 kpiType: "ErrorRatio",
@@ -70,8 +70,7 @@ const DpDriveTestTable = ({ data, tableName }) => {
                 }
 
                 processed.push({
-                    metric: metric.name,
-                    subMetric: subMetric.label,
+                    metric: `${metric.name.includes("Ping RTT") ? "" : "DL "}${metric.name.replace(" (Mbps)", "").replace(" (s)", "").replace(" (%)", "")} ${subMetric.label}`,
                     kpiType: metric.kpiType,
                     dutValue: dutValue,
                     refValue: refValue,
@@ -93,26 +92,16 @@ const DpDriveTestTable = ({ data, tableName }) => {
                 <thead>
                     <tr>
                         <th>Metric</th>
-                        <th>Sub-Metric</th>
                         <th>DUT Value</th>
                         <th>REF Value</th>
                     </tr>
                 </thead>
                 <tbody>
                     {tableData.map((row, index) => {
-                        const showMetric = row.metric !== lastMetric;
-                        if (showMetric) {
-                            lastMetric = row.metric;
-                        }
-                        const metricRowSpan = tableData.filter(item => item.metric === row.metric).length;
-
                         return (
                             <tr key={index}>
-                                {showMetric && (
-                                    <td rowSpan={metricRowSpan}>{row.metric}</td>
-                                )}
-                                <td>{row.subMetric}</td>
-                                <td style={{ backgroundColor: (row.subMetric === "DL Mean" || row.subMetric === "Avg") ? getKpiCellColor(row.kpiType, parseFloat(row.dutValue), parseFloat(row.refValue)) : 'inherit' }}>{row.dutValue}</td>
+                                <td>{row.metric}</td>
+                                <td style={{ backgroundColor: (row.metric.includes("Mean") || row.metric.includes("Avg")) ? getKpiCellColor(row.kpiType, parseFloat(row.dutValue), parseFloat(row.refValue)) : 'inherit' }}>{row.dutValue}</td>
                                 <td>{row.refValue}</td>
                             </tr>
                         );

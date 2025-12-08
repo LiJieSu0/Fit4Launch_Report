@@ -1,15 +1,19 @@
 import React from 'react';
 import styles from './ReportFooter.module.css';
 
-const ReportFooter = ({ version = '1.0', issueDate = '11/24/2025', issuer = 'Claude Li' }) => {
+const ReportFooter = ({ version = '1.0', issuer = 'Claude Li' }) => {
+  const today = new Date();
+  const issueDate = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`;
   return (
     <footer className={styles.footer}>
       <div className={styles.headerContent}>
         <div className={styles.leftHeader}>
-          ATMC Labs: Phase Two Report, Field Routes Confidential
+          ATMC Labs: Phase Two Report, Field Routes <br/>Confidential
         </div>
         <div className={styles.rightHeader}>
+          <a href="#table-of-contents" className={styles.tableOfContentsLink}>
           ATMC Labs
+          </a>
         </div>
       </div>
       <div className={styles.tableContainer}>

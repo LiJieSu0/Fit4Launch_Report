@@ -18,16 +18,9 @@ const CpSummaryPage = () => {
     // Safely access properties, providing default values if undefined
     const dutFailures = (dataEntry?.DUT?.total_retention_failures || 0) + (dataEntry?.DUT?.total_initiation_failures || 0);
     const refFailures = (dataEntry?.REF?.total_retention_failures || 0) + (dataEntry?.REF?.total_initiation_failures || 0);
-    const pValue = dataEntry?.retention_p_value || 1; // Default to 1 to avoid issues with comparison
-    const result = pValue < 0.05 ? "Fail" : "Pass"; // Example logic for result
-
     return {
       market: "Seattle",
       test: testName,
-      dutFailures: dutFailures,
-      refFailures: refFailures,
-      pValue: pValue.toFixed(3), // Format to 3 decimal places
-      result: result
     };
   });
   return (
@@ -36,23 +29,15 @@ const CpSummaryPage = () => {
       <table className="general-table-style" style={{ display: 'table' }}>
         <thead style={{ display: 'table-header-group' }}>
           <tr style={{ display: 'table-row' }}>
-            <th style={{ display: 'table-cell' }}>Market</th>
             <th style={{ display: 'table-cell' }}>Test</th>
-            <th style={{ display: 'table-cell' }}>DUT Failures</th>
-            <th style={{ display: 'table-cell' }}>REF Failures</th>
-            <th style={{ display: 'table-cell' }}>p-value</th>
-            <th style={{ display: 'table-cell' }}>Result</th>
+            <th style={{ display: 'table-cell' }}>Market</th>
           </tr>
         </thead>
         <tbody style={{ display: 'table-row-group' }}>
           {summaryData.map((data, index) => (
             <tr key={index} style={{ display: 'table-row' }}>
-              <td style={{ display: 'table-cell' }}>{data.market}</td>
               <td style={{ display: 'table-cell' }}>{data.test}</td>
-              <td style={{ display: 'table-cell' }}>{data.dutFailures}</td>
-              <td style={{ display: 'table-cell' }}>{data.refFailures}</td>
-              <td style={{ display: 'table-cell' }}>{data.pValue}</td>
-              <td style={{ display: 'table-cell', backgroundColor: data.result === 'Pass' ? 'var(--performance-pass)' : 'var(--performance-fail)' }}>{data.result}</td>
+              <td style={{ display: 'table-cell' }}>{data.market}</td>
             </tr>
           ))}
         </tbody>

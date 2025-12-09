@@ -72,7 +72,7 @@ function CoverageDetails() {
   return (
     <div>
         <div className='page-content'>
-        <h1>2. Coverage Test</h1>
+        <h1>2. Coverage Test - Seattle</h1>
         <h2>2.1 5G VoNR Coverage Test - N25, N41, N71</h2>
         <div id='2.1DL'></div>
         {/* ------NR25 */}

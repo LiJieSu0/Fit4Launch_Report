@@ -33,7 +33,7 @@ const DpDriveTestDetailPage = () => {
     <>
     {/* TODO add 2.8.1 */}
       <div className='page-content'>
-       <h2>2.8 Mobility Test - 5G Auto Data Test MHS Drive</h2>
+       <h2>2.8 Mobility Test - 5G Auto</h2>
        <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overview" />
        <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Details" />
       </div>

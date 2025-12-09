@@ -180,7 +180,7 @@ function DpNSAStationaryDetails() {
       />
     </div>
     <div className='page-content'>
-      <h2>3.2 HTTP Single Stream Test Download & Upload - 5G NSA</h2>
+      <h2>3.2 HTTP Multi Stream Test Download & Upload - 5G NSA</h2>
       <h3>Http Multi Stream Overview</h3>
             <DpThroughputOverallTable
               tableHeader={overallTableHeader}
@@ -245,9 +245,9 @@ function DpNSAStationaryDetails() {
         barKeys={barKeys}
       />
       </div>
-
+    <DpNSAUDPComponent />
     <div className='page-content'>
-      <h2>3.3 Ping Test - 5G NSA</h2>
+      <h2>3.4 Ping Test - 5G NSA</h2>
       <h3>Ping Test Overview</h3>
       <DpNSAPingOverallTable data={pingData} />
       <DpNSAPingTable data={pingData} tableName="Ping Test Details" />
@@ -257,9 +257,7 @@ function DpNSAStationaryDetails() {
         yAxisLabel="Latency (ms)"
         barKeys={barKeys}
       />
-      </div>
-      <DpNSAUDPComponent />
-
+    </div>
     </>
 
   );

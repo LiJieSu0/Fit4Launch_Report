@@ -12,7 +12,7 @@ function DpSummaryPage() {
   };
   const httpSSData = {
     headers: [
-      { label: "Http Single Stream", rowSpan: 2 },
+      { label: "HTTP Single Stream Test Download & Upload - 5G Auto", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -31,7 +31,7 @@ function DpSummaryPage() {
 
   const httpMSData = {
     headers: [
-      { label: "Http Multi-Stream", rowSpan: 2 },
+      { label: "HTTP Multi Stream Test Download & Upload - 5G Auto", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -50,7 +50,7 @@ function DpSummaryPage() {
 
   const udpData = {
     headers: [
-      { label: "UDP test", rowSpan: 2 },
+      { label: "UDP Test - 5G Auto", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -68,16 +68,16 @@ function DpSummaryPage() {
         cells: [
           { label: "Mean Jitter" },
           null, // Placeholder for the merged 'Market' cell
-          { label: "Result", className: "bg-performance-pass", link: "#" },
-          { label: "Result", className: "bg-performance-pass", link: "#" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
         ],
       },
       {
         cells: [
           { label: "Packet Failure Rate (%)" },
           null, // Placeholder for the merged 'Market' cell
-          { label: "Result", className: "bg-performance-pass", link: "#" },
-          { label: "Result", className: "bg-performance-pass", link: "#" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
         ],
       },
     ],
@@ -85,7 +85,7 @@ function DpSummaryPage() {
 
   const pingData = {
     headers: [
-      { label: "Ping Test", rowSpan: 2 },
+      { label: "Ping Test - 5G Auto", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
     ],
@@ -102,7 +102,7 @@ function DpSummaryPage() {
 
   const webBrowserData = {
     headers: [
-      { label: "Web Browser", rowSpan: 2 },
+      { label: "Web Browser Test - 5G Auto", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Kelper", rowSpan: 1 },
     ],
@@ -119,7 +119,7 @@ function DpSummaryPage() {
 
   const playStoreData = {
     headers: [
-      { label: "Play Store", rowSpan: 2 },
+      { label: "Play-store App Download Test - 5G Auto", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "30M", rowSpan: 1 },
       { label: "60M", rowSpan: 1 },
@@ -140,9 +140,9 @@ function DpSummaryPage() {
     ],
   };
 
-  const mhsStationaryData = {
+  const mhsHttpSSData = {
     headers: [
-      { label: "Mobile Hot Spot Test", rowSpan: 2 },
+      { label: "MHS-HTTP Single Stream Test", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -152,17 +152,88 @@ function DpSummaryPage() {
         cells: [
           { label: "Data Throughput Average" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'average-fail',link:'#2.6'},
-          {label:'Result',className:'average-fail',link:'#2.6'}
+          {label:'Result',className:'average-fail',link:'#2.7.1'},
+          {label:'Result',className:'average-fail',link:'#2.7.1'}
         ],
       },
     ],
   };
 
-  
+  const mhsHttpMSData = {
+    headers: [
+      { label: "MHS-HTTP Multi Stream Test", rowSpan: 2 },
+      { label: "Market", rowSpan: 2 },
+      { label: "Download", rowSpan: 1 },
+      { label: "Upload", rowSpan: 1 },
+    ],
+    rows: [
+      {
+        cells: [
+          { label: "Data Throughput Average" },
+          { label: "Seattle (5G NR)" },
+          {label:'Result',className:'average-fail',link:'#2.7.2'},
+          {label:'Result',className:'average-fail',link:'#2.7.2'}
+        ],
+      },
+    ],
+  };
+
+  const mhsUdpData = {
+    headers: [
+      { label: "MHS-UDP Test", rowSpan: 2 },
+      { label: "Market", rowSpan: 2 },
+      { label: "Download", rowSpan: 1 },
+      { label: "Upload", rowSpan: 1 },
+    ],
+    rows: [
+      {
+        cells: [
+          { label: "Mean Throughput" },
+          { label: "Seattle (5G NR)", rowSpan: 3 },
+          {label:'Result',className:'bg-performance-pass',link:'#2.3'},
+          {label:'Result',className:'bg-performance-pass',link:'#2.3'}
+        ],
+      },
+      {
+        cells: [
+          { label: "Mean Jitter" },
+          null, // Placeholder for the merged 'Market' cell
+          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
+        ],
+      },
+      {
+        cells: [
+          { label: "Packet Failure Rate (%)" },
+          null, // Placeholder for the merged 'Market' cell
+          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
+        ],
+      },
+    ],
+  };
+
+
+  const mhsPingData = {
+    headers: [
+      { label: "MHS-Ping Test", rowSpan: 2 },
+      { label: "Market", rowSpan: 2 },
+      { label: "Download", rowSpan: 1 },
+    ],
+    rows: [
+      {
+        cells: [
+          { label: "Mean Round Trip Time(ms)" },
+          { label: "Seattle (5G NR)" },
+          {label:'Result',className:'bg-performance-fail',link:'#2.4'},
+        ],
+      },
+    ],
+  };
+
   const mobiltyData = {
     headers: [
-      { label: "5G Auto Data Test Drive", rowSpan: 2 },
+      { label: "Mobility Test - 5G Auto", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -199,13 +270,9 @@ function DpSummaryPage() {
     ],
   };
 
-
-
-
-
   const mrabData = {
     headers: [
-      { label: "VoNR MRAB Stationary Test", rowSpan: 2 },
+      { label: "VoNR MRAB Stationary Test - 5G Auto", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -225,7 +292,7 @@ function DpSummaryPage() {
   // NSA DATA
    const httpNSASSData = {
     headers: [
-      { label: "Http Single Stream", rowSpan: 2 },
+      { label: "HTTP Single Stream Test Download & Upload - 5G NSA", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -244,7 +311,7 @@ function DpSummaryPage() {
 
   const httpNSAMSData = {
     headers: [
-      { label: "Http Multi-Stream", rowSpan: 2 },
+      { label: "HTTP Multi Stream Test Download & Upload - 5G NSA", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -263,7 +330,7 @@ function DpSummaryPage() {
 
   const udpNSAData = {
     headers: [
-      { label: "UDP test", rowSpan: 2 },
+      { label: "UDP Test - 5G NSA", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -298,7 +365,7 @@ function DpSummaryPage() {
 
   const pingNSAData = {
     headers: [
-      { label: "Ping Test", rowSpan: 2 },
+      { label: "Ping Test - 5G NSA", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -316,7 +383,7 @@ function DpSummaryPage() {
   };
   const mobiltyNSAData = {
     headers: [
-      { label: "5G NSA Auto Data Test Drive", rowSpan: 2 },
+      { label: "Mobility Test - 5G NSA", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -346,7 +413,12 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={pingData} />
         <DpSummaryTable tableData={webBrowserData} />
         <DpSummaryTable tableData={playStoreData} />
-        <DpSummaryTable tableData={mhsStationaryData} />
+        <DpSummaryTable tableData={mhsHttpSSData} />
+        <DpSummaryTable tableData={mhsHttpMSData} />
+        <DpSummaryTable tableData={mhsUdpData} />
+        <DpSummaryTable tableData={mhsPingData} />
+
+        
         <DpSummaryTable tableData={mobiltyData} />
         <DpSummaryTable tableData={mobiltyMHSData} />
         <DpSummaryTable tableData={mrabData} />

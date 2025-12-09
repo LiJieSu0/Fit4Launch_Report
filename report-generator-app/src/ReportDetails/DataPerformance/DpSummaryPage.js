@@ -474,12 +474,12 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={pingData} />
         <DpSummaryTable tableData={webBrowserData} />
         <DpSummaryTable tableData={playStoreData} />
+      </div>
+      <div className='page-content'>
         <DpSummaryTable tableData={mhsHttpSSData} />
         <DpSummaryTable tableData={mhsHttpMSData} />
         <DpSummaryTable tableData={mhsUdpData} />
         <DpSummaryTable tableData={mhsPingData} />
-
-        
         <DpSummaryTable tableData={mobiltyData} />
         <DpSummaryTable tableData={mobiltyMHSData} />
         <DpSummaryTable tableData={mrabData} />

@@ -241,9 +241,12 @@ function CoverageDetails() {
           <img src="/CoverageRSRPChart/RSRP_R1.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
           <img src="/CoverageRSRPChart/RSRP_R2.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
           <img src="/CoverageRSRPChart/RSRP_R3.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
-          <img src="/CoverageRSRPChart/RSRP_R4.png" alt="R1" style={{ maxWidth: '100%', height: '50%', marginTop: 60, display: 'block', margin: '0 auto' }} />
-          <img src="/CoverageRSRPChart/RSRP_R5.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
+
         </div>
+      </div>
+      <div className='page-content'>
+        <img src="/CoverageRSRPChart/RSRP_R4.png" alt="R1" style={{ maxWidth: '100%', height: '50%', marginTop: 40, display: 'block', margin: '0 auto' }} />
+        <img src="/CoverageRSRPChart/RSRP_R5.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
       </div>
       <div className='page-content'>
         <h2>2.2.2 5G n41 HPUE Coverage Test-Tx Power Analysis</h2>
@@ -251,9 +254,12 @@ function CoverageDetails() {
           <img src="/CoverageTxChart/Tx_R1.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
           <img src="/CoverageTxChart/Tx_R2.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
           <img src="/CoverageTxChart/Tx_R3.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
-          <img src="/CoverageTxChart/Tx_R4.png" alt="R1" style={{ maxWidth: '100%', height: '50%', marginTop: 60, display: 'block', margin: '0 auto' }} />
-          <img src="/CoverageTxChart/Tx_R5.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
+
         </div>
+      </div>
+      <div className='page-content'>
+        <img src="/CoverageTxChart/Tx_R4.png" alt="R1" style={{ maxWidth: '100%', height: '50%', marginTop: 40, display: 'block', margin: '0 auto' }} />
+        <img src="/CoverageTxChart/Tx_R5.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
       </div>
     </div>
   );

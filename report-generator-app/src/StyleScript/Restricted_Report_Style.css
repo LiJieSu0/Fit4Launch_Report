@@ -184,7 +184,7 @@
   }
 
   .call-categories-chart-container {
-    margin-top: -100px;
+    margin-top: -120px;
     margin-bottom: 10px;
     /* Added to reduce space after the chart */
     border-radius: 8px;
@@ -505,10 +505,10 @@ VQ
 .chart-container {
   margin-bottom: 0px;
   /* Adjusted margin for scaled chart to minimize space */
-  padding: 15px;
+  padding: 10px;
   border-radius: 8px;
   background-color: #ffffff;
-  transform: scale(0.7);
+  transform: scale(0.65);
   transform-origin: left top;
   /* Scale from the top-left corner */
 }
@@ -530,4 +530,21 @@ VQ
 .half-width-table {
   width: 49%;
   /* Each table takes slightly less than half to accommodate the gap */
+}
+
+.vq-summary-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.vq-summary-table th:first-child,
+.vq-summary-table td:first-child {
+  width: 40%;
+}
+
+.vq-summary-table th:nth-child(2),
+.vq-summary-table td:nth-child(2),
+.vq-summary-table th:nth-child(3),
+.vq-summary-table td:nth-child(3) {
+  width: 30%;
 }

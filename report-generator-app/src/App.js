@@ -44,13 +44,13 @@ function App() {
         <CallPerformanceDetails />
         <CpKpiPage /> */}
 
-        {/* <VqSummaryPage />
+        <VqSummaryPage />
         <VqDetailsPage />
-        <VqKpiPage /> */}
+        <VqKpiPage />
 
-        <CoverageSummaryPage />
+        {/* <CoverageSummaryPage />
         <CoverageDetails />
-        <CoverageKpiPage />
+        <CoverageKpiPage /> */}
 
         {/* <DpSummaryPage />
         <DpDetailsPage />

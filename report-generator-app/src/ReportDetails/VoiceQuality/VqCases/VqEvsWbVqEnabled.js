@@ -129,7 +129,7 @@ const VqEvsWbVqEnabled = () => {
         <div id='2.4'></div>
         <h3>Results</h3>
         <div className="two-column-layout">
-          <table className="general-table-style half-width-table">
+          <table className="general-table-style half-width-table vq-summary-table">
             <thead>
               <tr>
                 <th colSpan="3" className="title">
@@ -154,7 +154,7 @@ const VqEvsWbVqEnabled = () => {
             </tbody>
           </table>
 
-          <table className="general-table-style half-width-table">
+          <table className="general-table-style half-width-table vq-summary-table">
             <thead>
               <tr>
                 <th colSpan="3" className="title">

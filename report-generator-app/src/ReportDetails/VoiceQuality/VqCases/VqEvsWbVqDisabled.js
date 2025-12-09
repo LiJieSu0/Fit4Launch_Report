@@ -129,7 +129,7 @@ const VqEvsWbVqDisabled = () => {
         <div id='2.3'></div>
         <h3>Results</h3>
         <div className="two-column-layout">
-          <table className="general-table-style half-width-table">
+          <table className="general-table-style half-width-table vq-summary-table">
             <thead>
               <tr>
                 <th colSpan="3" className="title">
@@ -154,7 +154,7 @@ const VqEvsWbVqDisabled = () => {
             </tbody>
           </table>
 
-          <table className="general-table-style half-width-table">
+          <table className="general-table-style half-width-table vq-summary-table">
             <thead>
               <tr>
                 <th colSpan="3" className="title">
@@ -218,10 +218,10 @@ const VqEvsWbVqDisabled = () => {
       <div className="page-content">
         <h3>VoNR Disabled EVS WB VQ Downlink MOS Distribution</h3>
         <VqLineChart dataSource="vonr_disabled_evs_wb_vq_mobile" />
-        <VqMosTable  dataSource="vonr_disabled_evs_wb_vq_mobile" />
+        <VqMosTable dataSource="vonr_disabled_evs_wb_vq_mobile" />
         <h3>VoNR Disabled EVS WB VQ Uplink MOS Distribution</h3>
         <VqLineChart dataSource="vonr_disabled_evs_wb_vq_base" />
-        <VqMosTable  dataSource="vonr_disabled_evs_wb_vq_base" />
+        <VqMosTable dataSource="vonr_disabled_evs_wb_vq_base" />
       </div>
 
     </>

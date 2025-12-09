@@ -14,48 +14,64 @@
 
   /* Set page margins for printing */
   @page {
-      counter-increment: page;
-      margin: 0.8in 1in 0.8in 1in; /* Top, Right, Bottom, Left - Ensures 1in left/right margin */
-      @bottom-right {
-      content: "Page " counter(page) ""; /* Display page numbers, aligned right */
+    counter-increment: page;
+    margin: 0.8in 1in 0.8in 1in;
+
+    /* Top, Right, Bottom, Left - Ensures 1in left/right margin */
+    @bottom-right {
+      content: "Page " counter(page) "";
+      /* Display page numbers, aligned right */
       font-size: 15px;
       color: #000000;
       line-height: 1;
       margin-top: -40px;
-      margin-right: 30px; /* Adjust margin for the page number */
+      margin-right: 30px;
+      /* Adjust margin for the page number */
     }
   }
 
-  @page:first {
+  @page: first {
     counter-reset: page 0;
+
     @bottom-right {
-      content: none; 
+      content: none;
     }
   }
- 
+
   .page-content {
-    padding-top: 70px; /* Space for header */
-    padding-left: 1in; /* Apply left margin as padding */
-    padding-right: 1in; /* Apply right margin as padding */
+    padding-top: 70px;
+    /* Space for header */
+    padding-left: 1in;
+    /* Apply left margin as padding */
+    padding-right: 1in;
+    /* Apply right margin as padding */
     page-break-after: always;
   }
 
   /* Ensure content breaks correctly across pages */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     page-break-after: avoid;
-    scroll-margin-top: 0.8in; /* Account for the padding-top on .page-content */
+    scroll-margin-top: 0.8in;
+    /* Account for the padding-top on .page-content */
   }
 
-  h1{
+  h1 {
     margin-top: 20px !important;
     margin-bottom: 0px;
   }
-  h2{
+
+  h2 {
     margin-top: 20px !important;
     margin-bottom: 10px;
     color: rgb(0, 0, 0);
   }
-  h3{
+
+  h3 {
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -65,50 +81,59 @@
     margin-top: 5px;
   }
 
-  pre, blockquote {
+  pre,
+  blockquote {
     page-break-inside: avoid;
   }
 
   table {
     page-break-inside: avoid;
-    border-collapse: collapse; /* Ensure borders collapse for all tables */
+    border-collapse: collapse;
+    /* Ensure borders collapse for all tables */
   }
 
   /* Explicitly set borders for general-table-style within print media */
   .general-table-style,
   .general-table-style th,
   .general-table-style td {
-    border: 1px solid #000 !important; /* Ensure borders are visible */
+    border: 1px solid #000 !important;
+    /* Ensure borders are visible */
   }
 
   /* Reduce spacing for tables in print */
   .performance-table {
-    margin-bottom: 0.5em !important; /* Reduce space below tables */
-    margin-top: 0.5em !important; /* Reduce space above tables */
+    margin-bottom: 0.5em !important;
+    /* Reduce space below tables */
+    margin-top: 0.5em !important;
+    /* Reduce space above tables */
   }
 
   .p-value-table-container {
-    margin-bottom: 0.5em !important; /* Reduce space below tables */
+    margin-bottom: 0.5em !important;
+    /* Reduce space below tables */
   }
 
   .performance-table th,
   .performance-table td {
-    padding: 4px !important; /* Reduce padding inside table cells */
+    padding: 4px !important;
+    /* Reduce padding inside table cells */
   }
 
   .p-value-table-container {
-    padding: 5px !important; /* Reduce padding inside the p-value container */
+    padding: 5px !important;
+    /* Reduce padding inside the p-value container */
   }
 
   .p-value-table-container h3 {
-    margin-bottom: 5px !important; /* Reduce margin below h3 in p-value container */
+    margin-bottom: 5px !important;
+    /* Reduce margin below h3 in p-value container */
   }
 
 
   /* Remove any background colors or images for print */
   * {
-    background: transparent ;
-    color: black ;
+    background: transparent;
+    color: black;
     box-shadow: none !important;
     text-shadow: none !important;
   }
@@ -116,9 +141,12 @@
   /* Explicitly hide URLs for specific links when printing */
   .contents-index-page a[href]:after,
   .back-to-top-print[href]:after {
-    content: "" !important; /* Ensure content is empty */
-    color: transparent !important; /* Make text transparent */
-    font-size: 0 !important; /* Make font size zero */
+    content: "" !important;
+    /* Ensure content is empty */
+    color: transparent !important;
+    /* Make text transparent */
+    font-size: 0 !important;
+    /* Make font size zero */
   }
 
   /* Remove underline from Table of Contents links when printing */
@@ -133,32 +161,44 @@
   .no-print {
     display: none !important;
   }
-  .page-break{
+
+  .page-break {
     page-break-after: always;
   }
 
   .back-to-top-print {
-    display: inline !important; /* Show Back to Top link when printing */
+    display: inline !important;
+    /* Show Back to Top link when printing */
   }
-  ul{
+
+  ul {
     margin-top: 5px;
   }
 
-  .div-margin-bottom{
+  .div-margin-bottom {
     margin-bottom: 100px;
   }
-  .margin-top-for-header{
-   margin-top: 100px !important;
+
+  .margin-top-for-header {
+    margin-top: 100px !important;
   }
+
   .call-categories-chart-container {
     margin-top: -100px;
-    margin-bottom: 10px; /* Added to reduce space after the chart */
+    margin-bottom: 10px;
+    /* Added to reduce space after the chart */
     border-radius: 8px;
     background-color: #ffffff;
   }
+
+  .general-table-style th,
+  .general-table-style td {
+    font-size: 10pt;
+    /* Example size */
+  }
 }
 
-:root{
+:root {
   --performance-excellent: #FF00FF;
   --performance-pass: #2ab42a;
   --performance-marginal-fail: #FFFF00;
@@ -166,7 +206,8 @@
 }
 
 .back-to-top-print {
-  display: none; /* Hide Back to Top link by default */
+  display: none;
+  /* Hide Back to Top link by default */
 }
 
 
@@ -186,7 +227,7 @@
 }
 
 .general-table-style th {
-  background-color: rgb(128,128,128);
+  background-color: rgb(128, 128, 128);
   color: rgb(255, 255, 255);
 }
 
@@ -200,7 +241,8 @@
 /* Specific width for the first column (Test Name) */
 .device-info-table th:first-child,
 .device-info-table td:first-child {
-  width: 35%; /* Adjust as needed */
+  width: 35%;
+  /* Adjust as needed */
 }
 
 /* Specific widths for Market, Download, Upload columns */
@@ -210,8 +252,10 @@
 .device-info-table td:nth-child(3),
 .device-info-table th:nth-child(4),
 .device-info-table td:nth-child(4) {
-  width: 20%; /* Distribute remaining 60% among 3 columns */
+  width: 20%;
+  /* Distribute remaining 60% among 3 columns */
 }
+
 .dp-summary-table {
   width: 100%;
   table-layout: fixed;
@@ -224,29 +268,32 @@
 
 .dp-summary-table th:not(:first-child),
 .dp-summary-table td:not(:first-child) {
-  width: auto; /* Distribute remaining width equally */
+  width: auto;
+  /* Distribute remaining width equally */
 }
+
 /*
 DP
 */
-.dp-details-table{
+.dp-details-table {
   width: 100%;
-  table-layout: fixed; /* 讓 width 設定生效，而不是依內容決定寬度 */
+  table-layout: fixed;
+  /* 讓 width 設定生效，而不是依內容決定寬度 */
   border-collapse: collapse;
 }
 
 .dp-details-table th:first-child,
 .dp-details-table td:first-child {
-  width: 12% !important; 
+  width: 12% !important;
 }
 
 .dp-details-table th:nth-child(2),
 .dp-details-table td:nth-child(2),
 .dp-details-table th:nth-child(3),
-.dp-details-table td:nth-child(3)
-{
+.dp-details-table td:nth-child(3) {
   width: 8% !important;
 }
+
 /*
 VQ
 */
@@ -259,36 +306,36 @@ VQ
 .vq-details-table th:nth-child(5),
 .vq-details-table td:nth-child(5),
 .vq-details-table th:nth-child(6),
-.vq-details-table td:nth-child(6)
-
-{
+.vq-details-table td:nth-child(6) {
   width: 10% !important;
 }
 
 /* ---UDP-- */
-.udp-stationary-details-table{
+.udp-stationary-details-table {
   width: 100%;
-  table-layout: fixed; /* 讓 width 設定生效，而不是依內容決定寬度 */
+  table-layout: fixed;
+  /* 讓 width 設定生效，而不是依內容決定寬度 */
   border-collapse: collapse;
 }
 
 /* 第一欄固定 200px（或百分比） */
 .udp-stationary-details-table th:first-child,
 .udp-stationary-details-table td:first-child {
-  width: 15% !important; 
+  width: 15% !important;
 }
 
 .udp-stationary-details-table th:nth-child(2),
 .udp-stationary-details-table td:nth-child(2),
 .udp-stationary-details-table th:nth-child(3),
-.udp-stationary-details-table td:nth-child(3)
-{
+.udp-stationary-details-table td:nth-child(3) {
   width: 15% !important;
 }
+
 .udp-stationary-details-table th:nth-child(4),
-.udp-stationary-details-table td:nth-child(4){
+.udp-stationary-details-table td:nth-child(4) {
   width: 10%;
 }
+
 .average-pass {
   background-color: var(--performance-pass);
   color: #FFFFFF;
@@ -313,10 +360,12 @@ VQ
   background-color: var(--performance-excellent);
   color: #FFFFFF;
 }
-.bg-performance-marginal-fail{
+
+.bg-performance-marginal-fail {
   background-color: var(--performance-marginal-fail);
   color: #FFFFFF;
 }
+
 .performance-table {
   width: 100%;
   border-collapse: collapse;
@@ -325,38 +374,49 @@ VQ
 
 .performance-table th,
 .performance-table td {
-  border: 1px solid #000; /* Match device-info-table border */
-  padding: 8px; /* Match device-info-table padding */
-  text-align: left; /* Match device-info-table text-align */
-  font-size: 12pt; /* Ensure font size matches body/device-info-table */
+  border: 1px solid #000;
+  /* Match device-info-table border */
+  padding: 8px;
+  /* Match device-info-table padding */
+  text-align: left;
+  /* Match device-info-table text-align */
+  font-size: 12pt;
+  /* Ensure font size matches body/device-info-table */
 }
 
 .performance-table thead th {
-  background-color: rgb(128,128,128); 
-  color: rgb(255, 255, 255); 
+  background-color: rgb(128, 128, 128);
+  color: rgb(255, 255, 255);
   font-weight: bold;
-  text-align: left; /* Match device-info-table header text-align */
-  vertical-align: middle; /* Vertically align header text */
+  text-align: left;
+  /* Match device-info-table header text-align */
+  vertical-align: middle;
+  /* Vertically align header text */
 }
 
 .performance-table tbody tr:nth-child(odd) {
-  background-color: #ffffff; /* Light grey for odd rows */
+  background-color: #ffffff;
+  /* Light grey for odd rows */
 }
 
 .performance-table tbody tr:nth-child(even) {
-  background-color: #ffffff; /* White for even rows */
+  background-color: #ffffff;
+  /* White for even rows */
 }
 
 .performance-table td:first-child {
-  font-weight: normal; /* Remove bold for device names */
+  font-weight: normal;
+  /* Remove bold for device names */
 }
 
 .performance-table td:last-child {
-  text-align: left; /* Align P-Value to left, consistent with device-info-table */
+  text-align: left;
+  /* Align P-Value to left, consistent with device-info-table */
 }
 
 .call-categories-chart-container {
-  margin-bottom: 10px; /* Added to reduce space after the chart */
+  margin-bottom: 10px;
+  /* Added to reduce space after the chart */
   border-radius: 8px;
   background-color: #ffffff;
 }
@@ -398,7 +458,8 @@ VQ
 }
 
 .chart-label {
-  width: 50px; /* Adjust as needed */
+  width: 50px;
+  /* Adjust as needed */
   font-weight: bold;
   font-size: 14px;
   color: #333;
@@ -442,12 +503,14 @@ VQ
 }
 
 .chart-container {
-  margin-bottom: 0px; /* Adjusted margin for scaled chart to minimize space */
+  margin-bottom: 0px;
+  /* Adjusted margin for scaled chart to minimize space */
   padding: 15px;
   border-radius: 8px;
   background-color: #ffffff;
-  transform: scale(0.7); 
-  transform-origin: left top; /* Scale from the top-left corner */
+  transform: scale(0.7);
+  transform-origin: left top;
+  /* Scale from the top-left corner */
 }
 
 .chart-container h3 {
@@ -460,9 +523,11 @@ VQ
 .two-column-layout {
   display: flex;
   justify-content: space-between;
-  gap: 2%; /* Optional: adds a small gap between the tables */
+  gap: 2%;
+  /* Optional: adds a small gap between the tables */
 }
 
 .half-width-table {
-  width: 49%; /* Each table takes slightly less than half to accommodate the gap */
+  width: 49%;
+  /* Each table takes slightly less than half to accommodate the gap */
 }

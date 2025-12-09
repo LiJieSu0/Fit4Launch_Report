@@ -4,7 +4,7 @@ import styles from './LegalPage.module.css';
 const LegalPage = () => {
   return (
     <div className='page-content'>
-      <h2>4. Legal Notice</h2>
+      <h2>5. Legal Notice</h2>
       <p>
         This report contains confidential and proprietary information belonging to ATMC Labs and is provided
         exclusively for the intended recipient for internal evaluation and Fit-for-Launch (F4L) verification
@@ -25,7 +25,7 @@ const LegalPage = () => {
         ATMCL IMMEDIATELY. UNAUTHORIZED USE, DISCLOSURE, DISTRIBUTION, COPYING,
         PRINTING, OR RELIANCE ON THIS INFORMATION IS STRICTLY PROHIBITED.
       </p>
-        <img src="/LegalPage/infoPic.png" alt="legalPic" className={styles.legalImage} />
+      <img src="/LegalPage/infoPic.png" alt="legalPic" className={styles.legalImage} />
 
     </div>
   );

@@ -3,10 +3,10 @@ import React from 'react';
 const AboutPage = () => {
   return (
     <div className='page-content'>
-      <h2>5. About ATMCL</h2>
+      <h2>6. About ATMCL</h2>
       <p>Advanced Test Management and Certification Labs (ATMCL) is a Seattle-based
-          wireless device testing laboratory offering test products and services to the
-          wireless industry.
+        wireless device testing laboratory offering test products and services to the
+        wireless industry.
       </p>
       <p>
         ATMCL was founded on the principle of distributed testing. Traditional “test

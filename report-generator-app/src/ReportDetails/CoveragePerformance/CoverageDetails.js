@@ -80,7 +80,8 @@ function CoverageDetails() {
         {/* NR25 DL table */}
         <CoverageTestTable tableData={NR25_DL.slice(0, -1)} status={NR25_DL[NR25_Audio.length - 1]} />
         {/* map picture */}
-        <img src="/CoverageMap/NR25_DL_MAP.png" alt="Coverage Map" style={{ maxWidth: '50%', height: '50%' }} />
+        <div style={{marginBottom:100}}></div>
+        <img src="/CoverageMap/NR25_DL_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%',  }} />
         </div>
         <div className='page-content'>
         <h3>5G VoNR Coverage Test NR25- UL Throughput &lt; 1Mbps (km)</h3>
@@ -182,7 +183,7 @@ function CoverageDetails() {
           <table className="general-table-style">
                 <thead>
                     <tr>
-                        <th>Power Class</th>
+                        <th>Power Class (km)</th>
                         <th>Run1</th>
                         <th>Run2</th>
                         <th>Run3</th>

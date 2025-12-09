@@ -58,7 +58,7 @@ function App() {
 
         <LegalPage/>
         <AboutPage />
-        <ReportFooter />
+        {/* <ReportFooter /> */}
       </div>
     </ReportDataProvider>
   );

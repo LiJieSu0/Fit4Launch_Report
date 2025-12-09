@@ -89,7 +89,6 @@
 
   .p-value-table-container {
     margin-bottom: 0.5em !important; /* Reduce space below tables */
-    margin-top: -200px !important; /* Reduce space above tables for print */
   }
 
   .performance-table th,
@@ -150,7 +149,13 @@
   }
   .margin-top-for-header{
    margin-top: 100px !important;
-}
+  }
+  .call-categories-chart-container {
+    margin-top: -40px;
+    margin-bottom: 10px; /* Added to reduce space after the chart */
+    border-radius: 8px;
+    background-color: #ffffff;
+  }
 }
 
 :root{
@@ -424,7 +429,6 @@ VQ
 }
 
 .p-value-table-container {
-  margin-top: -150px; /* Reduced margin-top to minimize space */
   padding: 15px;
   border-radius: 8px;
   background-color: #ffffff;
@@ -442,7 +446,7 @@ VQ
   padding: 15px;
   border-radius: 8px;
   background-color: #ffffff;
-  transform: scale(0.6); /* Scale down by 20% */
+  transform: scale(0.8); /* Scale down by 20% */
   transform-origin: left top; /* Scale from the top-left corner */
 }
 

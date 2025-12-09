@@ -3,47 +3,79 @@ import '../../StyleScript/Restricted_Report_Style.css';
 import { useReportData } from '../../Contexts/ReportContext';
 
 const CpSummaryPage = () => {
-  const { reportData, loading, error } = useReportData();
 
-  if (loading) return <div>Loading Call Performance Summary...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  if (!reportData || !reportData.callPerformance) return <div>No Call Performance data available.</div>;
+    
+  
+    const CpSummaryData = [
+        {
+            test: 'VoNR Disabled CP MO Drive',
+            market: 'Seattle',
+            callInitiationLink: '2.1',
+            callRetentionLink: '2.1',
+            callSetupTimeLink: '2.1',
+            callInitiationClassName: 'bg-performance-pass',
+            callRetentionClassName: 'bg-performance-pass',
+            callSetupTimeClassName: 'bg-performance-pass'
+        },
+        {
+            test: 'VoNR Disabled CP MT Drive',
+            market: 'Seattle',
+            callInitiationLink: '2.2',
+            callRetentionLink: '2.2',
+            callSetupTimeLink: '2.2',
+            callInitiationClassName: 'bg-performance-pass',
+            callRetentionClassName: 'bg-performance-fail',
+            callSetupTimeClassName: 'bg-performance-pass'
+        },
+        {
+            test: 'VoNR Enabled CP MO Drive',
+            market: 'Seattle',
+            callInitiationLink: '2.3',
+            callRetentionLink: '2.3',
+            callSetupTimeLink: '2.3',
+            callInitiationClassName: 'bg-performance-pass',
+            callRetentionClassName: 'bg-performance-pass',
+            callSetupTimeClassName: 'bg-performance-pass'
+        },
+        {
+            test: 'VoNR Enabled CP MT Drive',
+            market: 'Seattle',
+            callInitiationLink: '2.4',
+            callRetentionLink: '2.4',
+            callSetupTimeLink: '2.4',
+            callInitiationClassName: 'bg-performance-pass',
+            callRetentionClassName: 'bg-performance-pass',
+            callSetupTimeClassName: 'bg-performance-pass'
+        },
+    ];
 
-  const callPerformanceResults = reportData.callPerformance['Call Performance'];
-
-  const summaryData = Object.keys(callPerformanceResults).map(key => {
-    const testName = key.split(' ').slice(2).join(' '); // Extracts "5G Auto VoNR Disabled CP MO Drive"
-    const dataEntry = callPerformanceResults[key];
-
-    // Safely access properties, providing default values if undefined
-    const dutFailures = (dataEntry?.DUT?.total_retention_failures || 0) + (dataEntry?.DUT?.total_initiation_failures || 0);
-    const refFailures = (dataEntry?.REF?.total_retention_failures || 0) + (dataEntry?.REF?.total_initiation_failures || 0);
-    return {
-      market: "Seattle",
-      test: testName,
-    };
-  });
-  return (
-    <div className="page-content">
-      <h2>1. Call Performance Overview</h2>
-      <table className="general-table-style" style={{ display: 'table' }}>
-        <thead style={{ display: 'table-header-group' }}>
-          <tr style={{ display: 'table-row' }}>
-            <th style={{ display: 'table-cell' }}>Test</th>
-            <th style={{ display: 'table-cell' }}>Market</th>
-          </tr>
-        </thead>
-        <tbody style={{ display: 'table-row-group' }}>
-          {summaryData.map((data, index) => (
-            <tr key={index} style={{ display: 'table-row' }}>
-              <td style={{ display: 'table-cell' }}>{data.test}</td>
-              <td style={{ display: 'table-cell' }}>{data.market}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+    return (
+        <div className="page">
+            <h1>CP Summary</h1>
+            <table className="general-table-style">
+                <thead>
+                    <tr>
+                        <th>Test</th>
+                        <th>Market</th>
+                        <th>Call Initiation</th>
+                        <th>Call Retention</th>
+                        <th>Call Setup Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {CpSummaryData.map((row, index) => (
+                        <tr key={index}>
+                            <td>{row.test}</td>
+                            <td>{row.market}</td>
+                            <td className={row.callInitiationClassName}><a href={row.callInitiationLink}>Result</a></td>
+                            <td className={row.callRetentionClassName}><a href={row.callRetentionLink}>Result</a></td>
+                            <td className={row.callSetupTimeClassName}><a href={row.callSetupTimeLink}>Result</a></td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
 };
 
 export default CpSummaryPage;

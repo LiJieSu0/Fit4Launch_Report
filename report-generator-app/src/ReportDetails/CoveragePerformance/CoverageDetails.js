@@ -214,7 +214,7 @@ function CoverageDetails() {
           </table>
         </div>
         <div className='page-content'>
-          <h2>2.3 5G n41 HPUE Coverage Test-RSRP Analysis</h2>
+          <h2>2.2.1 5G n41 HPUE Coverage Test-RSRP Analysis</h2>
           <img src="/CoverageRSRPChart/RSRP_R1.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
           <img src="/CoverageRSRPChart/RSRP_R2.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
           <img src="/CoverageRSRPChart/RSRP_R3.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
@@ -222,7 +222,7 @@ function CoverageDetails() {
           <img src="/CoverageRSRPChart/RSRP_R5.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
         </div>
         <div className='page-content'>
-          <h2>2.4 5G n41 HPUE Coverage Test-Tx Power Analysis</h2>
+          <h2>2.2.2 5G n41 HPUE Coverage Test-Tx Power Analysis</h2>
           <img src="/CoverageTxChart/Tx_R1.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
           <img src="/CoverageTxChart/Tx_R2.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />
           <img src="/CoverageTxChart/Tx_R3.png" alt="R1" style={{ maxWidth: '100%', height: '50%' }} />

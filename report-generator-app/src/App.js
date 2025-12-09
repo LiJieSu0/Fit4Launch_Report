@@ -37,7 +37,7 @@ function App() {
       <div className="App">
         <ReportHeader />
         {/* <CoverPage /> */}
-        {/* <DeviceInfoPage/> */}
+        <DeviceInfoPage/>
         <ContentsIndexPage />
 
         {/* <CpSummaryPage />
@@ -48,13 +48,13 @@ function App() {
         <VqDetailsPage />
         <VqKpiPage/> */}
 
-        <CoverageSummaryPage />
+        {/* <CoverageSummaryPage />
         <CoverageDetails />
-        <CoverageKpiPage />
+        <CoverageKpiPage /> */}
 
-        {/* <DpSummaryPage />
+        <DpSummaryPage />
         <DpDetailsPage />
-        <DpKpiPage /> */}
+        <DpKpiPage />
 
         <LegalPage/>
         <AboutPage />

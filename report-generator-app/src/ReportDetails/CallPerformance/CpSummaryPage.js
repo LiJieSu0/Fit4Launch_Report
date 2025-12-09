@@ -50,7 +50,7 @@ const CpSummaryPage = () => {
     ];
 
     return (
-        <div className="page">
+        <div className="page-content">
             <h1>1. Call Performance Test Overview</h1>
             <table className="general-table-style">
                 <thead>

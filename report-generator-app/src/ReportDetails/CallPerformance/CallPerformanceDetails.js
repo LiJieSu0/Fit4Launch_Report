@@ -304,7 +304,7 @@ const CallPerformanceDetails = () => {
              {callPerformanceData["5G Auto VoNR Disabled CP MO Drive"] && (
                  <React.Fragment key="5G Auto VoNR Disabled CP MO Drive">
                      <div className='page-content'>
-                         <h1 style={{textAlign: 'center'}}>2. Call Performance Test</h1>
+                         <h1 style={{textAlign: 'center'}}>2. Call Performance Test - Seattle</h1>
                         <div id='2.1'></div>
                          <CpCaseTable title="2.1 5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
                          <PValueTable data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />

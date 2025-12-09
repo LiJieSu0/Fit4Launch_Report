@@ -145,7 +145,7 @@ const VqAmrNbVq = () => {
   ];
   return (
     <div className="page-content">
-      <h1 style={{textAlign:'center'}}>2. Voice Quality Test</h1>
+      <h1 style={{textAlign:'center'}}>2. Voice Quality Test - Seattle</h1>
       <h2>2.1 5G Auto VoNR Enabled AMR NB VQ</h2>
       <div id='2.1'></div>
       <h3>Results</h3>

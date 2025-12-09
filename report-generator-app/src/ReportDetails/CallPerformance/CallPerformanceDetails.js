@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useReportData } from '../../Contexts/ReportContext';
 import CpCaseTable from './CpCaseTable'; // Import the new component
 import '../../StyleScript/Restricted_Report_Style.css'; // Import the restricted report style
+import { getKpiCellColor } from '../../Utils/KpiRules'; // Import KpiRules
 import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -280,11 +281,15 @@ const CallPerformanceDetails = () => {
                    <tbody>
                        <tr>
                            <td>Call Initiation</td>
-                           <td>{(data.initiation_p_value || 1).toFixed(3)}</td>
+                           <td style={{ backgroundColor: getKpiCellColor('CallInitiation', data.initiation_p_value || 1, null) }}>
+                               {(data.initiation_p_value || 1).toFixed(3)}
+                           </td>
                        </tr>
                        <tr>
                            <td>Call Retention</td>
-                           <td>{(data.retention_p_value || 1).toFixed(3)}</td>
+                           <td style={{ backgroundColor: getKpiCellColor('CallRetention', data.retention_p_value || 1, null) }}>
+                               {(data.retention_p_value || 1).toFixed(3)}
+                           </td>
                        </tr>
                    </tbody>
                </table>

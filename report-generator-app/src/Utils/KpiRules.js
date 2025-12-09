@@ -1,9 +1,6 @@
 // KpiRules.js
 
 export const getKpiCellColor = (kpiType, dutValue, refValue = null) => { // only apply color on the cell of dut average value or mean value
-  if (refValue === null) {
-    return; 
-  }
 
   switch (kpiType) {
     case 'Throughput':
@@ -96,6 +93,9 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => { // only
       }
       break;
     default:
+      if (refValue === null) { // Apply refValue check for other KPI types
+        return;
+      }
       return; // Default case if kpiType doesn't match
   }
 

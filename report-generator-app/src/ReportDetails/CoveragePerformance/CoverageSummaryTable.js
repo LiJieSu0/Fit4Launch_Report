@@ -68,7 +68,7 @@ const CoverageSummaryTable = () => {
                                     </td>
                                 )}
                                 <td>{kpiData.name}</td>
-                                <td className={kpiData.result === "Pass" ? styles['result-pass'] : styles['result-fail']}></td>
+                                <td className={kpiData.result === "Pass" ? styles['result-pass'] : styles['result-fail']}><a href=''>Results</a></td>
                             </tr>
                         ))
                     ))

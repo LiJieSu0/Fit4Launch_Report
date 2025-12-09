@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
+import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const CpCaseTable = ({ title, data }) => {
     const dut = data?.DUT || {};
@@ -38,7 +39,9 @@ const CpCaseTable = ({ title, data }) => {
                     <tr>
                         <td>DUT</td>
                         <td>{dutTotalAttempts}</td>
-                        <td>{(dut.mean_setup_time || 0).toFixed(2)}</td>
+                        <td style={{ backgroundColor: getKpiCellColor('CallSetupTime', dut.mean_setup_time, ref.mean_setup_time) }}>
+                            {(dut.mean_setup_time || 0).toFixed(2)}
+                        </td>
                         <td>{dutSuccessfulInitiations}</td>
                         <td>{dutSuccessfulInitiationsPercentage}%</td>
                         <td>{dutFailedInitiations}</td>

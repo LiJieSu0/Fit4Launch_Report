@@ -297,6 +297,11 @@ DP
 /*
 VQ
 */
+.vq-details-table th:first-child,
+.vq-details-table td:first-child {
+  width: 12% !important;
+}
+
 .vq-details-table th:nth-child(2),
 .vq-details-table td:nth-child(2),
 .vq-details-table th:nth-child(3),
@@ -306,8 +311,14 @@ VQ
 .vq-details-table th:nth-child(5),
 .vq-details-table td:nth-child(5),
 .vq-details-table th:nth-child(6),
-.vq-details-table td:nth-child(6) {
-  width: 10% !important;
+.vq-details-table td:nth-child(6),
+.vq-details-table th:nth-child(7),
+.vq-details-table td:nth-child(7),
+.vq-details-table th:nth-child(8),
+.vq-details-table td:nth-child(8),
+.vq-details-table th:nth-child(9),
+.vq-details-table td:nth-child(9) {
+  width: 11% !important;
 }
 
 /* ---UDP-- */

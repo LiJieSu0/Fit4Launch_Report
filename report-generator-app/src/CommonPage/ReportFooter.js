@@ -12,7 +12,7 @@ const ReportFooter = ({ version = '1.0', issuer = 'Claude Li' }) => {
         </div>
         <div className={styles.rightHeader}>
           <a href="#table-of-contents" className={styles.tableOfContentsLink}>
-          ATMC Labs
+          Back to Top
           </a>
         </div>
       </div>

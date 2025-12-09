@@ -205,7 +205,7 @@ function CoverageDetails() {
                         <td>2.28</td>
                     </tr>
                     <tr>
-                        <td>Tx Power (dB)</td>
+                        <td>Tx Power (dBm)</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -224,7 +224,7 @@ function CoverageDetails() {
                         <td>2.27</td>
                     </tr>
                     <tr>
-                        <td>Tx Power (dB)</td>
+                        <td>Tx Power (dBm)</td>
                         <td></td>
                         <td></td>
                         <td></td>

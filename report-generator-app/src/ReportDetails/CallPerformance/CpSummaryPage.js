@@ -10,9 +10,9 @@ const CpSummaryPage = () => {
         {
             test: 'VoNR Disabled CP MO Drive',
             market: 'Seattle',
-            callInitiationLink: '2.1',
-            callRetentionLink: '2.1',
-            callSetupTimeLink: '2.1',
+            callInitiationLink: '#2.1',
+            callRetentionLink: '#2.1',
+            callSetupTimeLink: '#2.1',
             callInitiationClassName: 'bg-performance-pass',
             callRetentionClassName: 'bg-performance-pass',
             callSetupTimeClassName: 'bg-performance-pass'
@@ -20,9 +20,9 @@ const CpSummaryPage = () => {
         {
             test: 'VoNR Disabled CP MT Drive',
             market: 'Seattle',
-            callInitiationLink: '2.2',
-            callRetentionLink: '2.2',
-            callSetupTimeLink: '2.2',
+            callInitiationLink: '#2.2',
+            callRetentionLink: '#2.2',
+            callSetupTimeLink: '#2.2',
             callInitiationClassName: 'bg-performance-pass',
             callRetentionClassName: 'bg-performance-fail',
             callSetupTimeClassName: 'bg-performance-pass'
@@ -30,9 +30,9 @@ const CpSummaryPage = () => {
         {
             test: 'VoNR Enabled CP MO Drive',
             market: 'Seattle',
-            callInitiationLink: '2.3',
-            callRetentionLink: '2.3',
-            callSetupTimeLink: '2.3',
+            callInitiationLink: '#2.3',
+            callRetentionLink: '#2.3',
+            callSetupTimeLink: '#2.3',
             callInitiationClassName: 'bg-performance-pass',
             callRetentionClassName: 'bg-performance-pass',
             callSetupTimeClassName: 'bg-performance-pass'
@@ -40,9 +40,9 @@ const CpSummaryPage = () => {
         {
             test: 'VoNR Enabled CP MT Drive',
             market: 'Seattle',
-            callInitiationLink: '2.4',
-            callRetentionLink: '2.4',
-            callSetupTimeLink: '2.4',
+            callInitiationLink: '#2.4',
+            callRetentionLink: '#2.4',
+            callSetupTimeLink: '#2.4',
             callInitiationClassName: 'bg-performance-pass',
             callRetentionClassName: 'bg-performance-pass',
             callSetupTimeClassName: 'bg-performance-pass'

@@ -33,7 +33,9 @@ const DpDriveTestDetailPage = () => {
     <>
     {/* TODO add 2.8.1 */}
       <div className='page-content'>
-       <h2>2.8 Mobility Test - 5G Auto</h2>
+       <h1 style={{textAlign:'center'}}>2.8 Mobility Test</h1>
+       <h2>2.8.1 Mobility Test - 5G Auto</h2>
+       <div id='2.8.1'></div>
        <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overview" />
        <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Details" />
       </div>
@@ -57,7 +59,7 @@ const DpDriveTestDetailPage = () => {
        <DpHistogramComponent
          data={driveTestErrorRatioData}
          title="Mobility Test Drive Error Ratio"
-         yAxisLabel="Error Ratio (%)"
+         yAxisLabel="Packet Failure Rate (%)"
          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
        />
        <DpHistogramComponent
@@ -68,7 +70,7 @@ const DpDriveTestDetailPage = () => {
        />
       </div>
       <div className='page-content'>
-        <h3>Mobility test - 5G Auto Data Test MHS Drive</h3>
+        <h2>2.8.2 Mobility test - MHS</h2>
         <DpMHSTestDriveOverallTable data={TestDriveMHSData} tableName="MHS Test Drive Overall Data" />
         <DpMHSTestDriveTable data={TestDriveMHSData} tableName="MHS Test Drive Data" />
       </div>
@@ -91,12 +93,12 @@ const DpDriveTestDetailPage = () => {
       <DpHistogramComponent
         data={mhsErrorRatioData}
         title="MHS Test Drive - Mean Error Ratio"
-        yAxisLabel="Error Ratio (%)"
+        yAxisLabel="Packet Failure Rate (%)"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
       />
       <DpHistogramComponent
         data={mhsPingRttData}
-        title="MHS Test Drive - Avg Ping RTT"
+        title="MHS Test Drive - Mean Ping RTT"
         yAxisLabel="RTT (ms)"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
       />

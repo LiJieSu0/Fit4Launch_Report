@@ -20,7 +20,7 @@ function DpSummaryPage() {
     rows: [
       {
         cells: [
-          { label: "Data Throughput Average" },
+          { label: "Mean Throughput" },
           { label: "Seattle (5G NR)" },
           {label:'Result',className:'bg-performance-pass',link:'#2.1'},
           {label:'Result',className:'bg-performance-pass',link:'#2.1'}
@@ -39,7 +39,7 @@ function DpSummaryPage() {
     rows: [
       {
         cells: [
-          { label: "Data Throughput Average" },
+          { label: "Mean Throughput" },
           { label: "Seattle (5G NR)" },
           {label:'Result',className:'bg-performance-pass',link:'#2.2'},
           {label:'Result',className:'bg-performance-marginal-fail',link:'#2.2'}
@@ -60,24 +60,24 @@ function DpSummaryPage() {
         cells: [
           { label: "Mean Throughput" },
           { label: "Seattle (5G NR)", rowSpan: 3 },
-          {label:'Result',className:'bg-performance-pass',link:'#2.3'},
-          {label:'Result',className:'bg-performance-pass',link:'#2.3'}
+          {label:'Result',className:'bg-performance-pass',link:'#2.3DL'},
+          {label:'Result',className:'bg-performance-pass',link:'#2.3UL'}
         ],
       },
       {
         cells: [
           { label: "Mean Jitter" },
           null, // Placeholder for the merged 'Market' cell
-          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
-          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.3DL" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.3UL" },
         ],
       },
       {
         cells: [
-          { label: "Packet Failure Rate (%)" },
+          { label: "Packet Failure Rate" },
           null, // Placeholder for the merged 'Market' cell
-          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
-          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.3DL" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.3UL" },
         ],
       },
     ],
@@ -87,12 +87,12 @@ function DpSummaryPage() {
     headers: [
       { label: "Ping Test - 5G Auto", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
-      { label: "Download", rowSpan: 1 },
+      { label: "RTT", rowSpan: 1 },
     ],
     rows: [
       {
         cells: [
-          { label: "Mean Round Trip Time(ms)" },
+          { label: "Mean Round Trip Time" },
           { label: "Seattle (5G NR)" },
           {label:'Result',className:'bg-performance-fail',link:'#2.4'},
         ],
@@ -104,12 +104,12 @@ function DpSummaryPage() {
     headers: [
       { label: "Web Browser Test - 5G Auto", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
-      { label: "Kelper", rowSpan: 1 },
+      { label: "Load Time", rowSpan: 1 },
     ],
     rows: [
       {
         cells: [
-          { label: "Average Page LoadTime (s)" },
+          { label: "Average Page Load Time" },
           { label: "Seattle (5G NR)" },
           {label:'Result',className:'bg-performance-pass',link:'#2.5'},
         ],
@@ -131,9 +131,9 @@ function DpSummaryPage() {
         cells: [
           { label: "Mean Throughput" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'average-fail',link:'#2.6'},
-          {label:'Result',className:'average-fail',link:'#2.6'},
-          {label:'Result',className:'average-fail',link:'#2.6'},
+          {label:'Result',className:'bg-performance-fail',link:'#2.6'},
+          {label:'Result',className:'bg-performance-fail',link:'#2.6'},
+          {label:'Result',className:'bg-performance-fail',link:'#2.6'},
 
         ],
       },
@@ -150,10 +150,10 @@ function DpSummaryPage() {
     rows: [
       {
         cells: [
-          { label: "Data Throughput Average" },
+          { label: "Mean Throughput" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'average-fail',link:'#2.7.1'},
-          {label:'Result',className:'average-fail',link:'#2.7.1'}
+          {label:'Result',className:'bg-performance-fail',link:'#2.7.1'},
+          {label:'Result',className:'bg-performance-marginal-fail',link:'#2.7.1'}
         ],
       },
     ],
@@ -169,10 +169,10 @@ function DpSummaryPage() {
     rows: [
       {
         cells: [
-          { label: "Data Throughput Average" },
+          { label: "Mean Throughput" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'average-fail',link:'#2.7.2'},
-          {label:'Result',className:'average-fail',link:'#2.7.2'}
+          {label:'Result',className:'bg-performance-pass',link:'#2.7.2'},
+          {label:'Result',className:'bg-performance-pass',link:'#2.7.2'}
         ],
       },
     ],
@@ -190,24 +190,24 @@ function DpSummaryPage() {
         cells: [
           { label: "Mean Throughput" },
           { label: "Seattle (5G NR)", rowSpan: 3 },
-          {label:'Result',className:'bg-performance-pass',link:'#2.3'},
-          {label:'Result',className:'bg-performance-pass',link:'#2.3'}
+          {label:'Result',className:'bg-performance-marginal-fail',link:'#2.7.3DL'},
+          {label:'Result',className:'bg-performance-pass',link:'#2.7.3UL'}
         ],
       },
       {
         cells: [
           { label: "Mean Jitter" },
           null, // Placeholder for the merged 'Market' cell
-          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
-          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.7.3DL" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.7.3UL" },
         ],
       },
       {
         cells: [
-          { label: "Packet Failure Rate (%)" },
+          { label: "Packet Failure Rate" },
           null, // Placeholder for the merged 'Market' cell
-          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
-          { label: "Result", className: "bg-performance-pass", link: "#2.3" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.7.3DL" },
+          { label: "Result", className: "bg-performance-pass", link: "#2.7.3UL" },
         ],
       },
     ],
@@ -218,14 +218,14 @@ function DpSummaryPage() {
     headers: [
       { label: "MHS-Ping Test", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
-      { label: "Download", rowSpan: 1 },
+      { label: "RTT", rowSpan: 1 },
     ],
     rows: [
       {
         cells: [
-          { label: "Mean Round Trip Time(ms)" },
+          { label: "Mean Round Trip Time" },
           { label: "Seattle (5G NR)" },
-          {label:'Result',className:'bg-performance-fail',link:'#2.4'},
+          {label:'Result',className:'bg-performance-pass',link:'#2.7.4'},
         ],
       },
     ],
@@ -235,16 +235,35 @@ function DpSummaryPage() {
     headers: [
       { label: "Mobility Test - 5G Auto", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
-      { label: "Download", rowSpan: 1 },
-      { label: "Upload", rowSpan: 1 },
+      { label: "Value", rowSpan: 1 },
     ],
     rows: [
       {
         cells: [
-          { label: "Data Throughput Average" },
-          { label: "Seattle (5G NR)" },
-          {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'}
+          { label: "Mean Throughput" },
+          { label: "Seattle (5G NR)", rowSpan: 4 },
+          {label:'Result',className:'average-pass',link:'#2.8'},
+        ],
+      },
+      {
+        cells: [
+          { label: "Mean Jitter" },
+          null, // Placeholder for the merged 'Market' cell
+          { label: "Result", className: "bg-performance-pass", link: "#2.8" },
+        ],
+      },
+      {
+        cells: [
+          { label: "Packet Failure Rate" },
+          null, // Placeholder for the merged 'Market' cell
+          { label: "Result", className: "bg-performance-pass", link: "#2.8" },
+        ],
+      },
+      {
+        cells: [
+          { label: "Ping RTT" },
+          null, // Placeholder for the merged 'Market' cell
+          { label: "Result", className: "bg-performance-pass", link: "#2.8" },
         ],
       },
     ],
@@ -253,7 +272,7 @@ function DpSummaryPage() {
 // TODO MHS tables add
   const mobiltyMHSData = {
     headers: [
-      { label: "5G Auto Data Test MHS Drive", rowSpan: 2 },
+      { label: "Mobility test - MHS", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -261,7 +280,7 @@ function DpSummaryPage() {
     rows: [
       {
         cells: [
-          { label: "Data Throughput Average" },
+          { label: "Mean Throughput" },
           { label: "Seattle (5G NR)" },
           {label:'Result',className:'average-fail',link:'#'},
           {label:'Result',className:'average-fail',link:'#'}

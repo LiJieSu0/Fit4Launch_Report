@@ -81,6 +81,7 @@ const Dp_playStore_Component = () => {
     <>
       <div className='page-content'>
         <h2>2.6 Play-store App Download Test - 5G Auto</h2>
+        <div id='2.6'></div>
         <h3>Play-store App Download Test Overview</h3>
         <DpPlayStoreOverallTable tableData={tableData} />
         <h3>Play-store App Download Test Details</h3>

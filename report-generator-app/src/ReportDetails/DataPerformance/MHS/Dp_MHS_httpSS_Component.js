@@ -124,6 +124,7 @@ function Dp_MHS_httpSS_Component() {
       <div className='page-content'>
         <h1>2.7 Mobile Hotspot Test-5G Auto</h1>
         <h2>2.7.1 MHS-HTTP Single Stream Test</h2>
+        <div id="2.7.1"></div>
         <h3>MHS Http Single Stream Overview</h3>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}

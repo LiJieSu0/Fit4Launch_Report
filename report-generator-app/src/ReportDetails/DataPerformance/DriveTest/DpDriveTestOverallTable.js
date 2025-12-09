@@ -30,7 +30,7 @@ const DpDriveTestOverallTable = ({ data, tableName }) => {
 
         // Error Ratio
         overallMetrics.push({
-            metric: "Error Ratio (%)",
+            metric: "Packet Failure Rate (%)",
             kpiType: "ErrorRatio",
             dutValue: dutDl['Error Ratio'].Mean.toFixed(2),
             refValue: refDl['Error Ratio'].Mean.toFixed(2),

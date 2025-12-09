@@ -87,6 +87,7 @@ function Dp_MHS_Ping_Component() {
     <>
       <div className="page-content">
         <h2>2.7.4 MHS-Ping Test</h2>
+        <div id="2.7.4"></div>
         <h3>MHS Ping Test Overview</h3>
         <DpPingOverallTable data={data} /> {/* Add DpPingOverallTable */}
       </div>

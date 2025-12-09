@@ -273,8 +273,8 @@ const CallPerformanceDetails = () => {
                <table className="general-table-style">
                    <thead>
                        <tr>
-                           <th>Metrics</th>
-                           <th>P-Value</th>
+                           <th style={{ width: '50%' }}>Metrics</th>
+                           <th style={{ width: '50%' }}>P-Value</th>
                        </tr>
                    </thead>
                    <tbody>
@@ -302,7 +302,7 @@ const CallPerformanceDetails = () => {
                          <h1 style={{textAlign: 'center'}}>2. Call Performance Test</h1>
                          <CpCaseTable title="2.1 5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
                          <CallSummaryChart title="5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
-                         <div style={{marginBottom:80}}></div>
+                         <div style={{marginBottom:60}}></div>
                          <PValueTable data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
                          <CallCategoriesChart title="5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
                          <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
@@ -314,7 +314,7 @@ const CallPerformanceDetails = () => {
                      <div className='page-content'>
                          <CpCaseTable title="2.2 5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
                          <CallSummaryChart title="5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
-                         <div style={{marginBottom:80}}></div>
+                         <div style={{marginBottom:60}}></div>
                          <PValueTable data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
                          <CallCategoriesChart title="5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
                          <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
@@ -326,7 +326,7 @@ const CallPerformanceDetails = () => {
                      <div className='page-content'>
                          <CpCaseTable title="2.3 5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
                          <CallSummaryChart title="5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
-                         <div style={{marginBottom:80}}></div>
+                         <div style={{marginBottom:60}}></div>
                          <PValueTable data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
                          <CallCategoriesChart title="5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
                          <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
@@ -338,7 +338,7 @@ const CallPerformanceDetails = () => {
                      <div className='page-content'>
                          <CpCaseTable title="2.4 5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
                          <CallSummaryChart title="5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
-                         <div style={{marginBottom:100}}></div>
+                         <div style={{marginBottom:60}}></div>
                          <PValueTable data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
                          <CallCategoriesChart title="5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
                          <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />

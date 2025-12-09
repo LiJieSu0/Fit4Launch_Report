@@ -83,17 +83,17 @@ const VqAmrWbVq = () => {
     {
       metric: "MOS Average",
       results: getAmrWbValue("Mobile", "DUT1", "MOS Average"),
-      highlightClass: "performance-excellent-bg"
+      highlightClass: "bg-performance-excellent"
     },
     {
       metric: "% MOS < 2.0",
       results: getAmrWbValue("Mobile", "DUT1", "% MOS < 2.0", true, 2),
-      highlightClass: "performance-excellent-bg"
+      highlightClass: "bg-performance-excellent"
     },
     {
       metric: "% MOS < 3.0",
       results: getAmrWbValue("Mobile", "DUT1", "% MOS < 3.0", true, 2),
-      highlightClass: "performance-excellent-bg"
+      highlightClass: "bg-performance-excellent"
     }
   ];
 

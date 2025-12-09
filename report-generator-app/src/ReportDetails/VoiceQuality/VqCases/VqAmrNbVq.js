@@ -130,17 +130,17 @@ const VqAmrNbVq = () => {
     {
       metric: "MOS Average",
       results: getAmrNbValue("DUT1", "dl", "mean"),
-      highlightClass: "performance-excellent-bg"
+      highlightClass: "bg-performance-excellent"
     },
     {
       metric: "% MOS < 2.0",
       results: getAmrNbValue("DUT1", "dl", "% MOS < 2.0", true, 2),
-      highlightClass: "performance-excellent-bg"
+      highlightClass: "bg-performance-excellent"
     },
     {
       metric: "% MOS < 3.0",
       results: getAmrNbValue("DUT1", "dl", "% MOS < 3.0", true, 2),
-      highlightClass: "performance-excellent-bg"
+      highlightClass: "bg-performance-excellent"
     }
   ];
   return (

@@ -51,7 +51,7 @@ const CpSummaryPage = () => {
 
     return (
         <div className="page">
-            <h1>CP Summary</h1>
+            <h1>1. Call Performance Test Overview</h1>
             <table className="general-table-style">
                 <thead>
                     <tr>

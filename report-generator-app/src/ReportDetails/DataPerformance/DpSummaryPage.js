@@ -142,7 +142,7 @@ function DpSummaryPage() {
 
   const mhsHttpSSData = {
     headers: [
-      { label: "MHS-HTTP Single Stream Test", rowSpan: 2 },
+      { label: "HTTP Single Stream Test - Mobile Hot Spot", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -161,7 +161,7 @@ function DpSummaryPage() {
 
   const mhsHttpMSData = {
     headers: [
-      { label: "MHS-HTTP Multi Stream Test", rowSpan: 2 },
+      { label: "HTTP Multi Stream Test - Mobile Hot Spot", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -180,7 +180,7 @@ function DpSummaryPage() {
 
   const mhsUdpData = {
     headers: [
-      { label: "MHS-UDP Test", rowSpan: 2 },
+      { label: "UDP Test - Mobile Hot Spot", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },
@@ -216,7 +216,7 @@ function DpSummaryPage() {
 
   const mhsPingData = {
     headers: [
-      { label: "MHS-Ping Test", rowSpan: 2 },
+      { label: "Ping Test - Mobile Hot Spot", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "RTT", rowSpan: 1 },
     ],
@@ -272,7 +272,7 @@ function DpSummaryPage() {
 // TODO MHS tables add
   const mobiltyMHSData = {
     headers: [
-      { label: "Mobility Test - MHS", rowSpan: 2 },
+      { label: "Mobility Test - Mobile Hot Spot", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
       { label: "Upload", rowSpan: 1 },

@@ -47,9 +47,9 @@ function DpMHSTestDriveTable({ data, tableName }) {
       {
         name: "Ping RTT (ms)",
         subMetrics: [
-          { key: "min", label: "Min" },
-          { key: "max", label: "Max" },
-          { key: "avg", label: "Avg" },
+          { key: "min", label: "Minimum" },
+          { key: "max", label: "Maximum" },
+          { key: "avg", label: "Mean" },
           { key: "std_dev", label: "Std Dev" },
         ],
         path: "Ping RTT",

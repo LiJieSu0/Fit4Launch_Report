@@ -58,7 +58,7 @@ const DpDriveTestDetailPage = () => {
 
        <DpHistogramComponent
          data={driveTestErrorRatioData}
-         title="Mobility Test Drive Error Ratio"
+         title="Mobility Test Drive Packet Failure Rate"
          yAxisLabel="Packet Failure Rate (%)"
          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
        />
@@ -71,6 +71,7 @@ const DpDriveTestDetailPage = () => {
       </div>
       <div className='page-content'>
         <h2>2.8.2 Mobility test - MHS</h2>
+        <div id='2.8.2'></div>
         <DpMHSTestDriveOverallTable data={TestDriveMHSData} tableName="MHS Test Drive Overall Data" />
         <DpMHSTestDriveTable data={TestDriveMHSData} tableName="MHS Test Drive Data" />
       </div>
@@ -92,7 +93,7 @@ const DpDriveTestDetailPage = () => {
 
       <DpHistogramComponent
         data={mhsErrorRatioData}
-        title="MHS Test Drive - Mean Error Ratio"
+        title="MHS Test Drive - Packet Failure Rate"
         yAxisLabel="Packet Failure Rate (%)"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
       />

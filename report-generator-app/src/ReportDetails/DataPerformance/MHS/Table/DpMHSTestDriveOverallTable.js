@@ -46,7 +46,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Error Ratio DL
         overallMetrics.push({
-            metric: "DL Error Ratio Mean",
+            metric: "DL Packet Failure Rate Mean",
             kpiType: "ErrorRatio",
             dutValue: dutDl['Error Ratio']["DL Mean"].toFixed(2),
             refValue: refDl['Error Ratio']["DL Mean"].toFixed(2),
@@ -54,7 +54,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Error Ratio UL
         overallMetrics.push({
-            metric: "UL Error Ratio Mean",
+            metric: "UL Packet Failure Rate Mean",
             kpiType: "ErrorRatio",
             dutValue: dutDl['Error Ratio']["UL Mean"].toFixed(2),
             refValue: refDl['Error Ratio']["UL Mean"].toFixed(2),
@@ -62,7 +62,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Ping RTT
         overallMetrics.push({
-            metric: "Ping RTT Avg",
+            metric: "Ping RTT Mean",
             kpiType: "PingLatency",
             dutValue: dutDl['Ping RTT'].avg.toFixed(2),
             refValue: refDl['Ping RTT'].avg.toFixed(2),

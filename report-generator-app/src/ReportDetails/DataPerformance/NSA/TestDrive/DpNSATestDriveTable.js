@@ -28,7 +28,7 @@ function DpNSATestDriveTable({ data, tableName }) {
         kpiType: "Jitter",
       },
       {
-        name: "Error Ratio (%)",
+        name: "Packet Failure Rate (%)",
         subMetrics: [
           { key: "Error Ratio.Mean", label: "Mean" },
         ],
@@ -37,9 +37,9 @@ function DpNSATestDriveTable({ data, tableName }) {
       {
         name: "Ping RTT (ms)",
         subMetrics: [
-          { key: "Ping RTT.min", label: "Min" },
-          { key: "Ping RTT.max", label: "Max" },
-          { key: "Ping RTT.avg", label: "Avg" },
+          { key: "Ping RTT.min", label: "Minimum" },
+          { key: "Ping RTT.max", label: "Maximum" },
+          { key: "Ping RTT.avg", label: "Mean" },
           { key: "Ping RTT.std_dev", label: "Std Dev" },
         ],
         kpiType: "PingLatency",

@@ -412,15 +412,13 @@ function DpSummaryPage() {
       { label: "Ping Test - 5G NSA", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
       { label: "Download", rowSpan: 1 },
-      { label: "Upload", rowSpan: 1 },
     ],
     rows: [
       {
         cells: [
-          { label: "Mean Round Trip Time(ms)" },
+          { label: "Mean Round Trip Time" },
           { label: "Seattle (5G NSA)" },
-          {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'}
+          {label:'Result',className:'bg-performance-pass',link:'#3.4'},
         ],
       },
     ],
@@ -429,16 +427,35 @@ function DpSummaryPage() {
     headers: [
       { label: "Mobility Test - 5G NSA", rowSpan: 2 },
       { label: "Market", rowSpan: 2 },
-      { label: "Download", rowSpan: 1 },
-      { label: "Upload", rowSpan: 1 },
+      { label: "Value", rowSpan: 1 },
     ],
     rows: [
       {
         cells: [
-          { label: "Data Throughput Average" },
-          { label: "Seattle (5G NSA)" },
-          {label:'Result',className:'average-fail',link:'#'},
-          {label:'Result',className:'average-fail',link:'#'}
+          { label: "Mean Throughput" },
+          { label: "Seattle (5G NSA)",rowSpan:4 },
+          {label:'Result',className:'bg-performance-pass',link:'#3.5'},
+        ],
+      },
+      {
+        cells: [
+          { label: "Mean Jitter" },
+          null,
+          {label:'Result',className:'bg-performance-pass',link:'#3.5'},
+        ],
+      },
+      {
+        cells: [
+          { label: "Packet Failure Rate" },
+          null,
+          {label:'Result',className:'bg-performance-pass',link:'#3.5'},
+        ],
+      },
+      {
+        cells: [
+          { label: "Mean Round Trip Time" },
+          null,
+          {label:'Result',className:'bg-performance-pass',link:'#3.5'},
         ],
       },
     ],

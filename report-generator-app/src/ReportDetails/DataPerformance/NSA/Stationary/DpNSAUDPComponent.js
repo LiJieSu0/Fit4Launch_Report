@@ -381,11 +381,13 @@ function DpNSAUDPComponent() {
     <>
       <div className='page-content'>
         <h2>3.3 UDP Test - 5G NSA</h2>
+        <div id='3.3DL'></div>
         <h3>NSA UDP Test DL Overview</h3>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>
       <div className='page-content'>
         <h3>NSA UDP Test UL Overview</h3>
+        <div id='3.3UL'></div>
         <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
       </div>
 

@@ -35,9 +35,9 @@ function App() {
   return (
     <ReportDataProvider>
       <div className="App">
-        {/* <ReportHeader /> */}
+        <ReportHeader />
         {/* <CoverPage /> */}
-        {/* <DeviceInfoPage/> */}
+        <DeviceInfoPage/>
         <ContentsIndexPage />
 
         {/* <CpSummaryPage />
@@ -58,7 +58,7 @@ function App() {
 
         <LegalPage/>
         <AboutPage />
-        {/* <ReportFooter /> */}
+        <ReportFooter />
       </div>
     </ReportDataProvider>
   );

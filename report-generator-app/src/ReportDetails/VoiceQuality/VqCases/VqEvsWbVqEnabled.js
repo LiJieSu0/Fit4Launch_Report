@@ -126,6 +126,7 @@ const VqEvsWbVqEnabled = () => {
     <>
       <div className="page-content">
         <h2>2.4 5G Auto VoNR Enabled EVS WB VQ</h2>
+        <div id='2.4'></div>
         <h3>Results</h3>
         <div className="two-column-layout">
           <table className="general-table-style half-width-table">

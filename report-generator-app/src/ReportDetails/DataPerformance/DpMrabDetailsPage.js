@@ -17,9 +17,9 @@ const DpMrabDetailsPage = () => {
   }
   return (
     <div className="page-content">
-      <h2>2.9 VoNR MRAB Stationary Test - 5G Auto</h2>
+      <h2>2.9 VoNR M-RAB Stationary Test - 5G Auto</h2>
       <div id='2.9'></div>
-      <h3>VoNR Mrab Overview</h3>
+      <h3>VoNR M-RAB Overview</h3>
       <table className="general-table-style">
         <thead>
           <tr>
@@ -52,7 +52,7 @@ const DpMrabDetailsPage = () => {
           </tr>
         </tbody>
       </table>
-      <h3>VoNR Mrab Details</h3>
+      <h3>VoNR M-RAB Details</h3>
       <table className="general-table-style">
         <thead>
           <tr>
@@ -143,7 +143,7 @@ const DpMrabDetailsPage = () => {
           { name: 'In Call', DUT: mrabData["DUT MRAB"]["MRAB Statistics"]["In Call"]["Mean"], REF: mrabData["REF MRAB"]["MRAB Statistics"]["In Call"]["Mean"] },
           { name: 'Post Call', DUT: mrabData["DUT MRAB"]["MRAB Statistics"]["Post Call"]["Mean"], REF: mrabData["REF MRAB"]["MRAB Statistics"]["Post Call"]["Mean"] },
         ]}
-        title="MRAB Throughput"
+        title="M-RAB Throughput"
         yAxisLabel="Mean Value (Mbps)"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
       />

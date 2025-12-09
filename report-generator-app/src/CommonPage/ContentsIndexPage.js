@@ -51,7 +51,7 @@ const ContentsIndexPage = () => {
         <ul style={{ listStyleType: 'none', padding: 0 }}>
           {headings.length > 0 ? (
             headings.map((heading) => (
-              <li key={heading.id} style={{ paddingLeft: `${heading.level * 20}px` }}>
+              <li key={heading.id} style={{ paddingLeft: `${heading.level * 20}px`, marginTop:5, marginBottom:5, fontSize:20}}>
                 <a href={`#${heading.id}`}>{heading.text}</a>
               </li>
             ))

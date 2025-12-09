@@ -345,31 +345,35 @@ function DpNSAUDPComponent() {
     { key: 'REF', fill: CHART_COLOR_REF },
   ];
 
-  const dlOverallTableData = udp_Stationary_DL.map(item => {
-    const moderateVal = parseFloat(item.location.moderate);
-    const poorVal = parseFloat(item.location.poor);
-    const overallValue = (isNaN(moderateVal) || isNaN(poorVal)) ? "N/A" : ((moderateVal + poorVal) / 2).toFixed(2);
-    return {
-      Metric: item.metric,
-      "Ideal Throughput": item.idealThroughput,
-      "Device Name": item.deviceName,
-      Overall: overallValue,
-    };
-  });
+  const dlOverallTableData = udp_Stationary_DL
+    .filter(item => item.metric !== "Max Throughput (kbps)")
+    .map(item => {
+      const moderateVal = parseFloat(item.location.moderate);
+      const poorVal = parseFloat(item.location.poor);
+      const overallValue = (isNaN(moderateVal) || isNaN(poorVal)) ? "N/A" : ((moderateVal + poorVal) / 2).toFixed(2);
+      return {
+        Metric: item.metric,
+        "Ideal Throughput": item.idealThroughput,
+        "Device Name": item.deviceName,
+        Overall: overallValue,
+      };
+    });
 
   const dlOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
 
-  const ulOverallTableData = udp_Stationary_UL.map(item => {
-    const moderateVal = parseFloat(item.location.moderate);
-    const poorVal = parseFloat(item.location.poor);
-    const overallValue = (isNaN(moderateVal) || isNaN(poorVal)) ? "N/A" : ((moderateVal + poorVal) / 2).toFixed(2);
-    return {
-      Metric: item.metric,
-      "Ideal Throughput": item.idealThroughput,
-      "Device Name": item.deviceName,
-      Overall: overallValue,
-    };
-  });
+  const ulOverallTableData = udp_Stationary_UL
+    .filter(item => item.metric !== "Max Throughput (kbps)")
+    .map(item => {
+      const moderateVal = parseFloat(item.location.moderate);
+      const poorVal = parseFloat(item.location.poor);
+      const overallValue = (isNaN(moderateVal) || isNaN(poorVal)) ? "N/A" : ((moderateVal + poorVal) / 2).toFixed(2);
+      return {
+        Metric: item.metric,
+        "Ideal Throughput": item.idealThroughput,
+        "Device Name": item.deviceName,
+        Overall: overallValue,
+      };
+    });
 
   const ulOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
 

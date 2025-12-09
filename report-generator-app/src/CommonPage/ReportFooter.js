@@ -8,7 +8,7 @@ const ReportFooter = ({ version = '1.0', issuer = 'Claude Li' }) => {
     <footer className={styles.footer}>
       <div className={styles.headerContent}>
         <div className={styles.leftHeader}>
-          ATMC Labs: Phase Two Report, Field Routes <br/>Confidential
+          ATMC Labs: Field Test Report
         </div>
         <div className={styles.rightHeader}>
           <a href="#table-of-contents" className={styles.tableOfContentsLink}>

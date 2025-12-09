@@ -49,7 +49,7 @@ const VqMosTable = ({ dataSource }) => {
       <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.6em' }}>
         <thead>
           <tr>
-            <th style={{ border: '1px solid black', padding: '1px' }}></th>
+            <th style={{ border: '1px solid black', padding: '1px' }}>%</th>
             {mosCategories.map(category => (
               <th key={category} style={{ border: '1px solid black', padding: '1px' }}>{category}</th>
             ))}
@@ -62,7 +62,7 @@ const VqMosTable = ({ dataSource }) => {
               {mosCategories.map(category => {
                 const rowData = tableData.find(row => row.category === category);
                 return (
-                  <td key={`${entity}-${category}-percentage`} style={{ border: '1px solid black', padding: '1px' }}>{rowData?.[`${entity}_percentage`] || 0}%</td>
+                  <td key={`${entity}-${category}-percentage`} style={{ border: '1px solid black', padding: '1px' }}>{rowData?.[`${entity}_percentage`] || 0}</td>
                 );
               })}
             </tr>

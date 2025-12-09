@@ -18,8 +18,10 @@ const VqDetailsPage = () => {
       {/* Todo Line chart data dynamic loading */}
       <VqEvsWbVqDisabled />
       <VqEvsWbVqEnabled />
-      <AutoVoNRDisabledAudioDelay />
-      <AutoVoNREnabledAudioDelay />
+      <div className='page-content'>
+        <AutoVoNRDisabledAudioDelay />
+        <AutoVoNREnabledAudioDelay />
+      </div>
 
     </div>
   );

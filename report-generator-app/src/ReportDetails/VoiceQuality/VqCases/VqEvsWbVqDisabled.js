@@ -134,7 +134,7 @@ const VqEvsWbVqDisabled = () => {
               <tr>
                 <th colSpan="3" className="title">
                   Voice Quality Performance
-                  EVS to EVS Call Scenario
+                  EVS to EVS Calling
                 </th>
               </tr>
               <tr>
@@ -159,7 +159,7 @@ const VqEvsWbVqDisabled = () => {
               <tr>
                 <th colSpan="3" className="title">
                   Voice Quality Performance
-                  EVS to AMR Call Scenario
+                  EVS to AMR Transcode Calling
                 </th>
               </tr>
               <tr>
@@ -216,10 +216,10 @@ const VqEvsWbVqDisabled = () => {
         </table>
       </div>
       <div className="page-content">
-        <h3>VoNR Disabled EVS WB VQ Downlink</h3>
+        <h3>VoNR Disabled EVS WB VQ Downlink MOS Distribution</h3>
         <VqLineChart dataSource="vonr_disabled_evs_wb_vq_mobile" />
         <VqMosTable  dataSource="vonr_disabled_evs_wb_vq_mobile" />
-        <h3>VoNR Disabled EVS WB VQ Uplink</h3>
+        <h3>VoNR Disabled EVS WB VQ Uplink MOS Distribution</h3>
         <VqLineChart dataSource="vonr_disabled_evs_wb_vq_base" />
         <VqMosTable  dataSource="vonr_disabled_evs_wb_vq_base" />
       </div>

@@ -16,14 +16,14 @@ const DpPlayStoreOverallTable = ({ tableData }) => {
     const currentThroughputRows = [];
     if (dutData) {
       currentThroughputRows.push({
-        throughput: `${throughput} (kbps)`,
+        throughput: `${throughput} (Mbps)`,
         deviceName: 'DUT',
         overall: dutData.overall,
       });
     }
     if (refData) {
       currentThroughputRows.push({
-        throughput: `${throughput} (kbps)`,
+        throughput: `${throughput} (Mbps)`,
         deviceName: 'REF',
         overall: refData.overall,
       });
@@ -42,7 +42,7 @@ const DpPlayStoreOverallTable = ({ tableData }) => {
     <table className="general-table-style">
       <thead>
         <tr>
-          <th rowSpan={2}>Throughput (kbps)</th>
+          <th rowSpan={2}>Throughput (Mbps)</th>
           <th rowSpan={2}>Device Name</th>
           <th>Seattle (5G NR)</th>
         </tr>

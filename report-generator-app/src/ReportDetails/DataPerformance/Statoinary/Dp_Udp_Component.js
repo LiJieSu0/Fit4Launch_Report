@@ -19,7 +19,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: dlMeanThroughput200_DUT_Good, REF: dlMeanThroughput200_REF_Good },
     { name: 'Moderate', DUT: dlMeanThroughput200_DUT_Moderate, REF: dlMeanThroughput200_REF_Moderate },
     { name: 'Poor', DUT: dlMeanThroughput200_DUT_Poor, REF: dlMeanThroughput200_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (dlMeanThroughput200_DUT_Good + dlMeanThroughput200_DUT_Moderate + dlMeanThroughput200_DUT_Poor) / 3,
       REF: (dlMeanThroughput200_REF_Good + dlMeanThroughput200_REF_Moderate + dlMeanThroughput200_REF_Poor) / 3
     },
@@ -37,7 +38,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: dlMeanThroughput400_DUT_Good, REF: dlMeanThroughput400_REF_Good },
     { name: 'Moderate', DUT: dlMeanThroughput400_DUT_Moderate, REF: dlMeanThroughput400_REF_Moderate },
     { name: 'Poor', DUT: dlMeanThroughput400_DUT_Poor, REF: dlMeanThroughput400_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (dlMeanThroughput400_DUT_Good + dlMeanThroughput400_DUT_Moderate + dlMeanThroughput400_DUT_Poor) / 3,
       REF: (dlMeanThroughput400_REF_Good + dlMeanThroughput400_REF_Moderate + dlMeanThroughput400_REF_Poor) / 3
     },
@@ -55,7 +57,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: dlMeanJitter200_DUT_Good, REF: dlMeanJitter200_REF_Good },
     { name: 'Moderate', DUT: dlMeanJitter200_DUT_Moderate, REF: dlMeanJitter200_REF_Moderate },
     { name: 'Poor', DUT: dlMeanJitter200_DUT_Poor, REF: dlMeanJitter200_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (dlMeanJitter200_DUT_Good + dlMeanJitter200_DUT_Moderate + dlMeanJitter200_DUT_Poor) / 3,
       REF: (dlMeanJitter200_REF_Good + dlMeanJitter200_REF_Moderate + dlMeanJitter200_REF_Poor) / 3
     },
@@ -73,7 +76,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: dlMeanJitter400_DUT_Good, REF: dlMeanJitter400_REF_Good },
     { name: 'Moderate', DUT: dlMeanJitter400_DUT_Moderate, REF: dlMeanJitter400_REF_Moderate },
     { name: 'Poor', DUT: dlMeanJitter400_DUT_Poor, REF: dlMeanJitter400_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (dlMeanJitter400_DUT_Good + dlMeanJitter400_DUT_Moderate + dlMeanJitter400_DUT_Poor) / 3,
       REF: (dlMeanJitter400_REF_Good + dlMeanJitter400_REF_Moderate + dlMeanJitter400_REF_Poor) / 3
     },
@@ -91,7 +95,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: dlPFR200_DUT_Good, REF: dlPFR200_REF_Good },
     { name: 'Moderate', DUT: dlPFR200_DUT_Moderate, REF: dlPFR200_REF_Moderate },
     { name: 'Poor', DUT: dlPFR200_DUT_Poor, REF: dlPFR200_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (dlPFR200_DUT_Good + dlPFR200_DUT_Moderate + dlPFR200_DUT_Poor) / 3,
       REF: (dlPFR200_REF_Good + dlPFR200_REF_Moderate + dlPFR200_REF_Poor) / 3
     },
@@ -109,7 +114,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: dlPFR400_DUT_Good, REF: dlPFR400_REF_Good },
     { name: 'Moderate', DUT: dlPFR400_DUT_Moderate, REF: dlPFR400_REF_Moderate },
     { name: 'Poor', DUT: dlPFR400_DUT_Poor, REF: dlPFR400_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (dlPFR400_DUT_Good + dlPFR400_DUT_Moderate + dlPFR400_DUT_Poor) / 3,
       REF: (dlPFR400_REF_Good + dlPFR400_REF_Moderate + dlPFR400_REF_Poor) / 3
     },
@@ -123,10 +129,10 @@ function Dp_Udp_Component() {
 
   const udp_Stationary_DL = [
     // Mean Throughput - 200 Mbps
-    
+
     {
-      metric: "Mean Throughput",
-      idealThroughput: "200000",
+      metric: "Mean Throughput (Mbps)",
+      idealThroughput: "200",
       deviceName: "DUT",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"].Throughput.Mean,
@@ -135,8 +141,8 @@ function Dp_Udp_Component() {
       },
     },
     {
-      metric: "Mean Throughput",
-      idealThroughput: "200000",
+      metric: "Mean Throughput (Mbps)",
+      idealThroughput: "200",
       deviceName: "REF",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"].Throughput.Mean,
@@ -145,10 +151,10 @@ function Dp_Udp_Component() {
       },
     },
     // Mean Throughput - 400 Mbps
-    
+
     {
-      metric: "Mean Throughput",
-      idealThroughput: "400000",
+      metric: "Mean Throughput (Mbps)",
+      idealThroughput: "400",
       deviceName: "DUT",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP DL 400M 10sec_Good"].Throughput.Mean,
@@ -157,8 +163,8 @@ function Dp_Udp_Component() {
       },
     },
     {
-      metric: "Mean Throughput",
-      idealThroughput: "400000",
+      metric: "Mean Throughput (Mbps)",
+      idealThroughput: "400",
       deviceName: "REF",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP DL 400M 10sec_Good"].Throughput.Mean,
@@ -167,10 +173,10 @@ function Dp_Udp_Component() {
       },
     },
     // Max Throughput - 200 Mbps
-    
+
     {
-      metric: "Max Throughput",
-      idealThroughput: "200000",
+      metric: "Max Throughput (Mbps)",
+      idealThroughput: "200",
       deviceName: "DUT",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"].Throughput.Maximum,
@@ -179,8 +185,8 @@ function Dp_Udp_Component() {
       },
     },
     {
-      metric: "Max Throughput",
-      idealThroughput: "200000",
+      metric: "Max Throughput (Mbps)",
+      idealThroughput: "200",
       deviceName: "REF",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"].Throughput.Maximum,
@@ -188,12 +194,12 @@ function Dp_Udp_Component() {
         poor: udp_Stationary_Data.Poor["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP Download Task at 200 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Maximum,
       },
     },
-    
+
     // Max Throughput - 400 Mbps
-    
+
     {
-      metric: "Max Throughput",
-      idealThroughput: "400000",
+      metric: "Max Throughput (Mbps)",
+      idealThroughput: "400",
       deviceName: "DUT",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP DL 400M 10sec_Good"].Throughput.Maximum,
@@ -202,8 +208,8 @@ function Dp_Udp_Component() {
       },
     },
     {
-      metric: "Max Throughput",
-      idealThroughput: "400000",
+      metric: "Max Throughput (Mbps)",
+      idealThroughput: "400",
       deviceName: "REF",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP DL 400M 10sec_Good"].Throughput.Maximum,
@@ -214,8 +220,8 @@ function Dp_Udp_Component() {
     // Min Throughput - 400 Mbps
     // Min Throughput - 200 Mbps
     {
-      metric: "Min Throughput",
-      idealThroughput: "200000",
+      metric: "Min Throughput (Mbps)",
+      idealThroughput: "200",
       deviceName: "DUT",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"].Throughput.Minimum,
@@ -224,8 +230,8 @@ function Dp_Udp_Component() {
       },
     },
     {
-      metric: "Min Throughput",
-      idealThroughput: "200000",
+      metric: "Min Throughput (Mbps)",
+      idealThroughput: "200",
       deviceName: "REF",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"].Throughput.Minimum,
@@ -234,8 +240,8 @@ function Dp_Udp_Component() {
       },
     },
     {
-      metric: "Min Throughput",
-      idealThroughput: "400000",
+      metric: "Min Throughput (Mbps)",
+      idealThroughput: "400",
       deviceName: "DUT",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP DL 400M 10sec_Good"].Throughput.Minimum,
@@ -244,8 +250,8 @@ function Dp_Udp_Component() {
       },
     },
     {
-      metric: "Min Throughput",
-      idealThroughput: "400000",
+      metric: "Min Throughput (Mbps)",
+      idealThroughput: "400",
       deviceName: "REF",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP DL 400M 10sec_Good"].Throughput.Minimum,
@@ -254,10 +260,10 @@ function Dp_Udp_Component() {
       },
     },
     // Mean Jitter - 200 Mbps
-    
+
     {
-      metric: "Mean Jitter",
-      idealThroughput: "200000",
+      metric: "Mean Jitter (ms)",
+      idealThroughput: "200",
       deviceName: "DUT",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"].Jitter.Mean,
@@ -266,8 +272,8 @@ function Dp_Udp_Component() {
       },
     },
     {
-      metric: "Mean Jitter",
-      idealThroughput: "200000",
+      metric: "Mean Jitter (ms)",
+      idealThroughput: "200",
       deviceName: "REF",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"].Jitter.Mean,
@@ -276,10 +282,10 @@ function Dp_Udp_Component() {
       },
     },
     // Mean Jitter - 400 Mbps
-    
+
     {
-      metric: "Mean Jitter",
-      idealThroughput: "400000",
+      metric: "Mean Jitter (ms)",
+      idealThroughput: "400",
       deviceName: "DUT",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP DL 400M 10sec_Good"].Jitter.Mean,
@@ -288,8 +294,8 @@ function Dp_Udp_Component() {
       },
     },
     {
-      metric: "Mean Jitter",
-      idealThroughput: "400000",
+      metric: "Mean Jitter (ms)",
+      idealThroughput: "400",
       deviceName: "REF",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP DL 400M 10sec_Good"].Jitter.Mean,
@@ -298,10 +304,10 @@ function Dp_Udp_Component() {
       },
     },
     // Packet Failure Rate - 200 Mbps
-    
+
     {
-      metric: "Packet Failure Rate",
-      idealThroughput: "200000",
+      metric: "Packet Failure Rate (%)",
+      idealThroughput: "200",
       deviceName: "DUT",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"]["Error Ratio"].Mean,
@@ -310,8 +316,8 @@ function Dp_Udp_Component() {
       },
     },
     {
-      metric: "Packet Failure Rate",
-      idealThroughput: "200000",
+      metric: "Packet Failure Rate (%)",
+      idealThroughput: "200",
       deviceName: "REF",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"]["Error Ratio"].Mean,
@@ -320,10 +326,10 @@ function Dp_Udp_Component() {
       },
     },
     // Packet Failure Rate - 400 Mbps
-    
+
     {
-      metric: "Packet Failure Rate",
-      idealThroughput: "400000",
+      metric: "Packet Failure Rate (%)",
+      idealThroughput: "400",
       deviceName: "DUT",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["dut_5G auto_UDP DL 400M 10sec_Good"]["Error Ratio"].Mean,
@@ -332,8 +338,8 @@ function Dp_Udp_Component() {
       },
     },
     {
-      metric: "Packet Failure Rate",
-      idealThroughput: "400000",
+      metric: "Packet Failure Rate (%)",
+      idealThroughput: "400",
       deviceName: "REF",
       location: {
         good: udp_Stationary_Data.Good["UDP Download Task at 400 Mbps for 10 seconds"]["ref_5G auto_UDP DL 400M 10sec_Good"]["Error Ratio"].Mean,
@@ -345,204 +351,204 @@ function Dp_Udp_Component() {
 
   const udp_Stationary_UL = [
     {
-        metric: "Mean Throughput",
-        idealThroughput: "10000",
-        deviceName: "DUT",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"].Throughput.Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Mean,
-        },
+      metric: "Mean Throughput (Mbps)",
+      idealThroughput: "10",
+      deviceName: "DUT",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"].Throughput.Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Mean,
+      },
     },
     {
-        metric: "Mean Throughput",
-        idealThroughput: "10000",
-        deviceName: "REF",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"].Throughput.Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Mean,
-        },
+      metric: "Mean Throughput (Mbps)",
+      idealThroughput: "10",
+      deviceName: "REF",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"].Throughput.Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Mean,
+      },
     },
     {
-        metric: "Mean Throughput",
-        idealThroughput: "20000",
-        deviceName: "DUT",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Mean,
-        },
+      metric: "Mean Throughput (Mbps)",
+      idealThroughput: "20",
+      deviceName: "DUT",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Mean,
+      },
     },
     {
-        metric: "Mean Throughput",
-        idealThroughput: "20000",
-        deviceName: "REF",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Mean,
-        },
+      metric: "Mean Throughput (Mbps)",
+      idealThroughput: "20",
+      deviceName: "REF",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Mean,
+      },
     },
     {
-        metric: "Max Throughput",
-        idealThroughput: "10000",
-        deviceName: "DUT",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Maximum,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"].Throughput.Maximum,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Maximum,
-        },
+      metric: "Max Throughput (Mbps)",
+      idealThroughput: "10",
+      deviceName: "DUT",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Maximum,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"].Throughput.Maximum,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Maximum,
+      },
     },
     {
-        metric: "Max Throughput",
-        idealThroughput: "10000",
-        deviceName: "REF",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Maximum,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"].Throughput.Maximum,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Maximum,
-        },
+      metric: "Max Throughput (Mbps)",
+      idealThroughput: "10",
+      deviceName: "REF",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Maximum,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"].Throughput.Maximum,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Maximum,
+      },
     },
     {
-        metric: "Max Throughput",
-        idealThroughput: "20000",
-        deviceName: "DUT",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Maximum,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Maximum,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Maximum,
-        },
+      metric: "Max Throughput (Mbps)",
+      idealThroughput: "20",
+      deviceName: "DUT",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Maximum,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Maximum,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Maximum,
+      },
     },
     {
-        metric: "Max Throughput",
-        idealThroughput: "20000",
-        deviceName: "REF",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Maximum,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Maximum,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Maximum,
-        },
+      metric: "Max Throughput (Mbps)",
+      idealThroughput: "20",
+      deviceName: "REF",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Maximum,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Maximum,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Maximum,
+      },
     },
     {
-        metric: "Min Throughput",
-        idealThroughput: "10000",
-        deviceName: "DUT",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Minimum,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"].Throughput.Minimum,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Minimum,
-        },
+      metric: "Min Throughput (Mbps)",
+      idealThroughput: "10",
+      deviceName: "DUT",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Minimum,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"].Throughput.Minimum,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Minimum,
+      },
     },
     {
-        metric: "Min Throughput",
-        idealThroughput: "10000",
-        deviceName: "REF",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Minimum,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"].Throughput.Minimum,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Minimum,
-        },
+      metric: "Min Throughput (Mbps)",
+      idealThroughput: "10",
+      deviceName: "REF",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Minimum,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"].Throughput.Minimum,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Throughput.Minimum,
+      },
     },
     {
-        metric: "Min Throughput",
-        idealThroughput: "20000",
-        deviceName: "DUT",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Minimum,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Minimum,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Minimum,
-        },
+      metric: "Min Throughput (Mbps)",
+      idealThroughput: "20",
+      deviceName: "DUT",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Minimum,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Minimum,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Minimum,
+      },
     },
     {
-        metric: "Min Throughput",
-        idealThroughput: "20000",
-        deviceName: "REF",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Minimum,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Minimum,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Minimum,
-        },
+      metric: "Min Throughput (Mbps)",
+      idealThroughput: "20",
+      deviceName: "REF",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Throughput.Minimum,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Throughput.Minimum,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Throughput.Minimum,
+      },
     },
     {
-        metric: "Mean Jitter",
-        idealThroughput: "10000",
-        deviceName: "DUT",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"].Jitter.Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Jitter.Mean,
-        },
+      metric: "Mean Jitter (ms)",
+      idealThroughput: "10",
+      deviceName: "DUT",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"].Jitter.Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Jitter.Mean,
+      },
     },
     {
-        metric: "Mean Jitter",
-        idealThroughput: "10000",
-        deviceName: "REF",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"].Jitter.Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Jitter.Mean,
-        },
+      metric: "Mean Jitter (ms)",
+      idealThroughput: "10",
+      deviceName: "REF",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"].Jitter.Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"].Jitter.Mean,
+      },
     },
     {
-        metric: "Mean Jitter",
-        idealThroughput: "20000",
-        deviceName: "DUT",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Jitter.Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Jitter.Mean,
-        },
+      metric: "Mean Jitter (ms)",
+      idealThroughput: "20",
+      deviceName: "DUT",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Jitter.Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Jitter.Mean,
+      },
     },
     {
-        metric: "Mean Jitter",
-        idealThroughput: "20000",
-        deviceName: "REF",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Jitter.Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Jitter.Mean,
-        },
+      metric: "Mean Jitter (ms)",
+      idealThroughput: "20",
+      deviceName: "REF",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"].Jitter.Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"].Jitter.Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"].Jitter.Mean,
+      },
     },
     {
-        metric: "Packet Failure Rate",
-        idealThroughput: "10000",
-        deviceName: "DUT",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"]["Error Ratio"].Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"]["Error Ratio"].Mean,
-        },
+      metric: "Packet Failure Rate (%)",
+      idealThroughput: "10",
+      deviceName: "DUT",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_DUT_"]["Error Ratio"].Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"]["Error Ratio"].Mean,
+      },
     },
     {
-        metric: "Packet Failure Rate",
-        idealThroughput: "10000",
-        deviceName: "REF",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"]["Error Ratio"].Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"]["Error Ratio"].Mean,
-        },
+      metric: "Packet Failure Rate (%)",
+      idealThroughput: "10",
+      deviceName: "REF",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_REF_"]["Error Ratio"].Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 10 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 10 Mbps for 10 seconds_Poor Coverage_DA Test"]["Error Ratio"].Mean,
+      },
     },
     {
-        metric: "Packet Failure Rate",
-        idealThroughput: "20000",
-        deviceName: "DUT",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"]["Error Ratio"].Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"]["Error Ratio"].Mean,
-        },
+      metric: "Packet Failure Rate (%)",
+      idealThroughput: "20",
+      deviceName: "DUT",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH01_TMO-dut_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT_5G auto_UDP Upload Task at 20 Mbps for 10 sec"]["Error Ratio"].Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["DUT UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"]["Error Ratio"].Mean,
+      },
     },
     {
-        metric: "Packet Failure Rate",
-        idealThroughput: "20000",
-        deviceName: "REF",
-        location: {
-            good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean,
-            moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"]["Error Ratio"].Mean,
-            poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"]["Error Ratio"].Mean,
-        },
+      metric: "Packet Failure Rate (%)",
+      idealThroughput: "20",
+      deviceName: "REF",
+      location: {
+        good: udp_Stationary_Data.Good["UDP Upload Task at 20 Mbps for 10 seconds"]["_CH02_TMO-ref_5G auto_UDP Upload Task at 20 Mbps for 10 seconds_Good Coverage_DA Test"]["Error Ratio"].Mean,
+        moderate: udp_Stationary_Data.Moderate["UDP Upload Task at 20 Mbps for 10 seconds"]["REF_5G auto_UDP Upload Task at 20 Mbps for 10 sec"]["Error Ratio"].Mean,
+        poor: udp_Stationary_Data.Poor["UDP Upload Task at 20 Mbps for 10 seconds"]["REF UDP Upload Task at 20 Mbps for 10 seconds_poor Coverage_DA Test"]["Error Ratio"].Mean,
+      },
     },
   ];
 
@@ -590,7 +596,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: ulMeanThroughput10_DUT_Good, REF: ulMeanThroughput10_REF_Good },
     { name: 'Moderate', DUT: ulMeanThroughput10_DUT_Moderate, REF: ulMeanThroughput10_REF_Moderate },
     { name: 'Poor', DUT: ulMeanThroughput10_DUT_Poor, REF: ulMeanThroughput10_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (ulMeanThroughput10_DUT_Good + ulMeanThroughput10_DUT_Moderate + ulMeanThroughput10_DUT_Poor) / 3,
       REF: (ulMeanThroughput10_REF_Good + ulMeanThroughput10_REF_Moderate + ulMeanThroughput10_REF_Poor) / 3
     },
@@ -600,7 +607,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: ulMeanThroughput20_DUT_Good, REF: ulMeanThroughput20_REF_Good },
     { name: 'Moderate', DUT: ulMeanThroughput20_DUT_Moderate, REF: ulMeanThroughput20_REF_Moderate },
     { name: 'Poor', DUT: ulMeanThroughput20_DUT_Poor, REF: ulMeanThroughput20_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (ulMeanThroughput20_DUT_Good + ulMeanThroughput20_DUT_Moderate + ulMeanThroughput20_DUT_Poor) / 3,
       REF: (ulMeanThroughput20_REF_Good + ulMeanThroughput20_REF_Moderate + ulMeanThroughput20_REF_Poor) / 3
     },
@@ -618,7 +626,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: ulMeanJitter10_DUT_Good, REF: ulMeanJitter10_REF_Good },
     { name: 'Moderate', DUT: ulMeanJitter10_DUT_Moderate, REF: ulMeanJitter10_REF_Moderate },
     { name: 'Poor', DUT: ulMeanJitter10_DUT_Poor, REF: ulMeanJitter10_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (ulMeanJitter10_DUT_Good + ulMeanJitter10_DUT_Moderate + ulMeanJitter10_DUT_Poor) / 3,
       REF: (ulMeanJitter10_REF_Good + ulMeanJitter10_REF_Moderate + ulMeanJitter10_REF_Poor) / 3
     },
@@ -636,7 +645,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: ulMeanJitter20_DUT_Good, REF: ulMeanJitter20_REF_Good },
     { name: 'Moderate', DUT: ulMeanJitter20_DUT_Moderate, REF: ulMeanJitter20_REF_Moderate },
     { name: 'Poor', DUT: ulMeanJitter20_DUT_Poor, REF: ulMeanJitter20_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (ulMeanJitter20_DUT_Good + ulMeanJitter20_DUT_Moderate + ulMeanJitter20_DUT_Poor) / 3,
       REF: (ulMeanJitter20_REF_Good + ulMeanJitter20_REF_Moderate + ulMeanJitter20_REF_Poor) / 3
     },
@@ -654,7 +664,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: ulPFR10_DUT_Good, REF: ulPFR10_REF_Good },
     { name: 'Moderate', DUT: ulPFR10_DUT_Moderate, REF: ulPFR10_REF_Moderate },
     { name: 'Poor', DUT: ulPFR10_DUT_Poor, REF: ulPFR10_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (ulPFR10_DUT_Good + ulPFR10_DUT_Moderate + ulPFR10_DUT_Poor) / 3,
       REF: (ulPFR10_REF_Good + ulPFR10_REF_Moderate + ulPFR10_REF_Poor) / 3
     },
@@ -672,7 +683,8 @@ function Dp_Udp_Component() {
     { name: 'Good', DUT: ulPFR20_DUT_Good, REF: ulPFR20_REF_Good },
     { name: 'Moderate', DUT: ulPFR20_DUT_Moderate, REF: ulPFR20_REF_Moderate },
     { name: 'Poor', DUT: ulPFR20_DUT_Poor, REF: ulPFR20_REF_Poor },
-    { name: 'Overall',
+    {
+      name: 'Overall',
       DUT: (ulPFR20_DUT_Good + ulPFR20_DUT_Moderate + ulPFR20_DUT_Poor) / 3,
       REF: (ulPFR20_REF_Good + ulPFR20_REF_Moderate + ulPFR20_REF_Poor) / 3
     },
@@ -686,7 +698,7 @@ function Dp_Udp_Component() {
         {/* dp udp overall  table */}
         <DpUdpTableLoc3 data={udp_Stationary_DL} tableName="UDP Test DL Details" />
       </div>
-        {/* histograms */}
+      {/* histograms */}
       <div className='page-content'>
         <DpHistogramComponent
           data={dlMeanThroughput200HistogramData}
@@ -730,12 +742,12 @@ function Dp_Udp_Component() {
         />
       </div>
 
-      
+
       <div className='page-content'>
         <div id='2.3UL'></div>
         <DpUdpTableLoc3 data={udp_Stationary_UL} tableName="UDP Test UL Details" />
       </div>
-      
+
       <div className='page-content'>
         <DpHistogramComponent
           data={ulMeanThroughput10HistogramData}
@@ -781,7 +793,7 @@ function Dp_Udp_Component() {
           yAxisLabel="Packet Failure Rate (%)"
           barKeys={barKeys}
         />
-        </div>
+      </div>
     </>
   );
 }

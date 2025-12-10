@@ -4,7 +4,7 @@ import { getKpiCellColor } from '../../../../Utils/KpiRules';
 function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
   const tableData = [
     {
-      category: "Average",
+      category: "Average (Mbps)",
       deviceName: "DUT",
       overall: ((data.Good.DUT.Mean + data.Moderate.DUT.Mean + data.Poor.DUT.Mean) / 3).toFixed(2),
       site1: data.Good.DUT.Mean.toFixed(2),
@@ -12,7 +12,7 @@ function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
       site3: data.Poor.DUT.Mean.toFixed(2)
     },
     {
-      category: "Average",
+      category: "Average (Mbps)",
       deviceName: "REF",
       overall: ((data.Good.REF.Mean + data.Moderate.REF.Mean + data.Poor.REF.Mean) / 3).toFixed(2),
       site1: data.Good.REF.Mean.toFixed(2),
@@ -20,7 +20,7 @@ function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
       site3: data.Poor.REF.Mean.toFixed(2)
     },
     {
-      category: "Standard Deviation",
+      category: "Standard Deviation (Mbps)",
       deviceName: "DUT",
       overall: ((data.Good.DUT["Standard Deviation"] + data.Moderate.DUT["Standard Deviation"] + data.Poor.DUT["Standard Deviation"]) / 3).toFixed(2),
       site1: data.Good.DUT["Standard Deviation"].toFixed(2),
@@ -28,7 +28,7 @@ function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
       site3: data.Poor.DUT["Standard Deviation"].toFixed(2)
     },
     {
-      category: "Standard Deviation",
+      category: "Standard Deviation (Mbps)",
       deviceName: "REF",
       overall: ((data.Good.REF["Standard Deviation"] + data.Moderate.REF["Standard Deviation"] + data.Poor.REF["Standard Deviation"]) / 3).toFixed(2),
       site1: data.Good.REF["Standard Deviation"].toFixed(2),
@@ -36,7 +36,7 @@ function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
       site3: data.Poor.REF["Standard Deviation"].toFixed(2)
     },
     {
-      category: "Maximum",
+      category: "Maximum (Mbps)",
       deviceName: "DUT",
       overall: ((data.Good.DUT.Maximum + data.Moderate.DUT.Maximum + data.Poor.DUT.Maximum) / 3).toFixed(2),
       site1: data.Good.DUT.Maximum.toFixed(2),
@@ -44,7 +44,7 @@ function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
       site3: data.Poor.DUT.Maximum.toFixed(2)
     },
     {
-      category: "Maximum",
+      category: "Maximum (Mbps)",
       deviceName: "REF",
       overall: ((data.Good.REF.Maximum + data.Moderate.REF.Maximum + data.Poor.REF.Maximum) / 3).toFixed(2),
       site1: data.Good.REF.Maximum.toFixed(2),
@@ -52,7 +52,7 @@ function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
       site3: data.Poor.REF.Maximum.toFixed(2)
     },
     {
-      category: "Minimum",
+      category: "Minimum (Mbps)",
       deviceName: "DUT",
       overall: ((data.Good.DUT.Minimum + data.Moderate.DUT.Minimum + data.Poor.DUT.Minimum) / 3).toFixed(2),
       site1: data.Good.DUT.Minimum.toFixed(2),
@@ -60,7 +60,7 @@ function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
       site3: data.Poor.DUT.Minimum.toFixed(2)
     },
     {
-      category: "Minimum",
+      category: "Minimum (Mbps)",
       deviceName: "REF",
       overall: ((data.Good.REF.Minimum + data.Moderate.REF.Minimum + data.Poor.REF.Minimum) / 3).toFixed(2),
       site1: data.Good.REF.Minimum.toFixed(2),

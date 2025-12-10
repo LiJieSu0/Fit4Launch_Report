@@ -9,7 +9,7 @@ const DpPlayStoreTable = ({ tableData }) => {
         <thead>
           <tr>
             <th rowSpan="2">Market</th>
-            <th rowSpan="2">Throughput (kbps)</th>
+            <th rowSpan="2">Throughput (Mbps)</th>
             <th rowSpan="2">Device Name</th>
             <th colSpan="4">Play Store Download Throughput (Mbps)</th>
           </tr>

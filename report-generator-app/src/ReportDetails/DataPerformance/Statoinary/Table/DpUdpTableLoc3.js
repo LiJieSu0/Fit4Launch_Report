@@ -81,14 +81,14 @@ function DpUdpTableLoc3({ data, tableName }) {
                 )}
                 <td>{row.deviceName}</td>
                 <td style={{
-                  backgroundColor: row.deviceName === 'DUT' && refOverallValue !== null && row.metric !== 'Max Throughput' && row.metric !== 'Min Throughput'
+                  backgroundColor: row.deviceName === 'DUT' && refOverallValue !== null && row.metric !== 'Max Throughput (Mbps)' && row.metric !== 'Min Throughput (Mbps)'
                     ? getKpiCellColor(
-                        row.metric === 'Mean Jitter' ? 'Jitter' :
-                        row.metric === 'Packet Failure Rate' ? 'ErrorRatio' :
-                        'Throughput',
-                        parseFloat(currentOverallValue),
-                        parseFloat(refOverallValue)
-                      )
+                      row.metric === 'Mean Jitter (ms)' ? 'Jitter' :
+                        row.metric === 'Packet Failure Rate (%)' ? 'ErrorRatio' :
+                          'Throughput',
+                      parseFloat(currentOverallValue),
+                      parseFloat(refOverallValue)
+                    )
                     : 'inherit'
                 }}>
                   {currentOverallValue}

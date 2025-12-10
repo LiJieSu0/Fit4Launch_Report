@@ -89,8 +89,8 @@ function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
         <tbody>
           {tableData.map((row, index) => {
             let overallCellStyle = {};
-            if (kpiRule && kpiTargetCells && row.deviceName === "DUT" && row.category === "Average") {
-              const refRow = tableData.find(r => r.deviceName === "REF" && r.category === "Average");
+            if (kpiRule && kpiTargetCells && row.deviceName === "DUT" && row.category === "Average (Mbps)") {
+              const refRow = tableData.find(r => r.deviceName === "REF" && r.category === "Average (Mbps)");
               if (refRow) {
                 const color = getKpiCellColor(kpiRule, parseFloat(row.overall), parseFloat(refRow.overall));
                 if (color) {

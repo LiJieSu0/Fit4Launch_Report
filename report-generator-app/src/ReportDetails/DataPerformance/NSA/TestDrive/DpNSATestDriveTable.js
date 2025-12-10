@@ -70,6 +70,13 @@ function DpNSATestDriveTable({ data, tableName }) {
 
   let lastMetric = null;
 
+  const unit = {
+    "Throughput": " (Mbps)",
+    "Jitter": " (s)",
+    "ErrorRatio": " (%)",
+    "PingLatency": "",
+  };
+
   return (
     <div className="table-container">
       <h3>{tableName}</h3>
@@ -84,7 +91,7 @@ function DpNSATestDriveTable({ data, tableName }) {
         <tbody>
           {tableData.map((row, index) => (
             <tr key={index}>
-              <td>{row.metric}</td>
+              <td>{row.metric} {unit[row.kpiType]}</td>
               <td style={{ backgroundColor: (row.metric.includes("Mean") || row.metric.includes("Avg")) ? getKpiCellColor(row.kpiType, parseFloat(row.dutValue), parseFloat(row.refValue)) : 'inherit' }}>{row.dutValue}</td>
               <td>{row.refValue}</td>
             </tr>

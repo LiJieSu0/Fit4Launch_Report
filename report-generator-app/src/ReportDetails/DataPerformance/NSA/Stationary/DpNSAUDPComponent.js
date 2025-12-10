@@ -12,7 +12,7 @@ function DpNSAUDPComponent() {
   const udp_Stationary_DL = [
     // Mean Throughput - 200 Mbps
     {
-      metric: "Throughput (kbps)",
+      metric: "Throughput (Mbps)",
       idealThroughput: "200000",
       deviceName: "DUT",
       location: {
@@ -21,7 +21,7 @@ function DpNSAUDPComponent() {
       },
     },
     {
-      metric: "Throughput (kbps)",
+      metric: "Throughput (Mbps)",
       idealThroughput: "200000",
       deviceName: "REF",
       location: {
@@ -31,7 +31,7 @@ function DpNSAUDPComponent() {
     },
     // Mean Throughput - 400 Mbps
     {
-      metric: "Throughput (kbps)",
+      metric: "Throughput (Mbps)",
       idealThroughput: "400000",
       deviceName: "DUT",
       location: {
@@ -40,7 +40,7 @@ function DpNSAUDPComponent() {
       },
     },
     {
-      metric: "Throughput (kbps)",
+      metric: "Throughput (Mbps)",
       idealThroughput: "400000",
       deviceName: "REF",
       location: {
@@ -50,7 +50,7 @@ function DpNSAUDPComponent() {
     },
     // Max Throughput - 200 Mbps
     {
-      metric: "Max Throughput (kbps)",
+      metric: "Max Throughput (Mbps)",
       idealThroughput: "200000",
       deviceName: "DUT",
       location: {
@@ -59,7 +59,7 @@ function DpNSAUDPComponent() {
       },
     },
     {
-      metric: "Max Throughput (kbps)",
+      metric: "Max Throughput (Mbps)",
       idealThroughput: "200000",
       deviceName: "REF",
       location: {
@@ -69,7 +69,7 @@ function DpNSAUDPComponent() {
     },
     // Max Throughput - 400 Mbps
     {
-      metric: "Max Throughput (kbps)",
+      metric: "Max Throughput (Mbps)",
       idealThroughput: "400000",
       deviceName: "DUT",
       location: {
@@ -78,7 +78,7 @@ function DpNSAUDPComponent() {
       },
     },
     {
-      metric: "Max Throughput (kbps)",
+      metric: "Max Throughput (Mbps)",
       idealThroughput: "400000",
       deviceName: "REF",
       location: {
@@ -167,7 +167,7 @@ function DpNSAUDPComponent() {
   const udp_Stationary_UL = [
     // Mean Throughput - 10 Mbps
     {
-      metric: "Throughput (kbps)",
+      metric: "Throughput (Mbps)",
       idealThroughput: "10000",
       deviceName: "DUT",
       location: {
@@ -176,7 +176,7 @@ function DpNSAUDPComponent() {
       },
     },
     {
-      metric: "Throughput (kbps)",
+      metric: "Throughput (Mbps)",
       idealThroughput: "10000",
       deviceName: "REF",
       location: {
@@ -186,7 +186,7 @@ function DpNSAUDPComponent() {
     },
     // Mean Throughput - 20 Mbps
     {
-      metric: "Throughput (kbps)",
+      metric: "Throughput (Mbps)",
       idealThroughput: "20000",
       deviceName: "DUT",
       location: {
@@ -195,7 +195,7 @@ function DpNSAUDPComponent() {
       },
     },
     {
-      metric: "Throughput (kbps)",
+      metric: "Throughput (Mbps)",
       idealThroughput: "20000",
       deviceName: "REF",
       location: {
@@ -205,7 +205,7 @@ function DpNSAUDPComponent() {
     },
     // Max Throughput - 10 Mbps
     {
-      metric: "Max Throughput (kbps)",
+      metric: "Max Throughput (Mbps)",
       idealThroughput: "10000",
       deviceName: "DUT",
       location: {
@@ -214,7 +214,7 @@ function DpNSAUDPComponent() {
       },
     },
     {
-      metric: "Max Throughput (kbps)",
+      metric: "Max Throughput (Mbps)",
       idealThroughput: "10000",
       deviceName: "REF",
       location: {
@@ -224,7 +224,7 @@ function DpNSAUDPComponent() {
     },
     // Max Throughput - 20 Mbps
     {
-      metric: "Max Throughput (kbps)",
+      metric: "Max Throughput (Mbps)",
       idealThroughput: "20000",
       deviceName: "DUT",
       location: {
@@ -233,7 +233,7 @@ function DpNSAUDPComponent() {
       },
     },
     {
-      metric: "Max Throughput (kbps)",
+      metric: "Max Throughput (Mbps)",
       idealThroughput: "20000",
       deviceName: "REF",
       location: {
@@ -346,7 +346,7 @@ function DpNSAUDPComponent() {
   ];
 
   const dlOverallTableData = udp_Stationary_DL
-    .filter(item => item.metric !== "Max Throughput (kbps)")
+    .filter(item => item.metric !== "Max Throughput (Mbps)")
     .map(item => {
       const moderateVal = parseFloat(item.location.moderate);
       const poorVal = parseFloat(item.location.poor);
@@ -362,7 +362,7 @@ function DpNSAUDPComponent() {
   const dlOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
 
   const ulOverallTableData = udp_Stationary_UL
-    .filter(item => item.metric !== "Max Throughput (kbps)")
+    .filter(item => item.metric !== "Max Throughput (Mbps)")
     .map(item => {
       const moderateVal = parseFloat(item.location.moderate);
       const poorVal = parseFloat(item.location.poor);
@@ -401,9 +401,9 @@ function DpNSAUDPComponent() {
         {["200000", "400000"].map((idealThroughput) => (
           <DpHistogramComponent
             key={`dl-throughput-${idealThroughput}`}
-            data={extractHistogramDataByLocation(udp_Stationary_DL, "Throughput (kbps)", idealThroughput)}
+            data={extractHistogramDataByLocation(udp_Stationary_DL, "Throughput (Mbps)", idealThroughput)}
             title={`UDP Download Throughput (${parseInt(idealThroughput / 1000)} Mbps)`}
-            yAxisLabel="Throughput (kbps)"
+            yAxisLabel="Throughput (Mbps)"
             barKeys={histogramBarKeys}
           />
         ))}
@@ -444,9 +444,9 @@ function DpNSAUDPComponent() {
         {["10000", "20000"].map((idealThroughput) => (
           <DpHistogramComponent
             key={`ul-throughput-${idealThroughput}`}
-            data={extractHistogramDataByLocation(udp_Stationary_UL, "Throughput (kbps)", idealThroughput)}
+            data={extractHistogramDataByLocation(udp_Stationary_UL, "Throughput (Mbps)", idealThroughput)}
             title={`UDP Upload Throughput (${parseInt(idealThroughput / 1000)} Mbps)`}
-            yAxisLabel="Throughput (kbps)"
+            yAxisLabel="Throughput (Mbps)"
             barKeys={histogramBarKeys}
           />
         ))}

@@ -14,7 +14,7 @@ const DpNSATestDriveOverallTable = ({ data, tableName }) => {
 
         // Throughput
         overallMetrics.push({
-            metric: "Mean Throughput",
+            metric: "Mean Throughput (Mbps)",
             kpiType: "Throughput",
             dutValue: dutDl.Throughput.Mean.toFixed(2),
             refValue: refDl.Throughput.Mean.toFixed(2),
@@ -22,7 +22,7 @@ const DpNSATestDriveOverallTable = ({ data, tableName }) => {
 
         // Jitter
         overallMetrics.push({
-            metric: "Mean Jitter",
+            metric: "Mean Jitter (s)",
             kpiType: "Jitter",
             dutValue: dutDl.Jitter.Mean.toFixed(2),
             refValue: refDl.Jitter.Mean.toFixed(2),
@@ -30,7 +30,7 @@ const DpNSATestDriveOverallTable = ({ data, tableName }) => {
 
         // Error Ratio
         overallMetrics.push({
-            metric: "Packet Failure Rate",
+            metric: "Packet Failure Rate (%)",
             kpiType: "ErrorRatio",
             dutValue: dutDl['Error Ratio'].Mean.toFixed(2),
             refValue: refDl['Error Ratio'].Mean.toFixed(2),
@@ -38,7 +38,7 @@ const DpNSATestDriveOverallTable = ({ data, tableName }) => {
 
         // Ping RTT
         overallMetrics.push({
-            metric: "Mean Round Trip Time",
+            metric: "Mean Round Trip Time (ms)",
             kpiType: "PingLatency",
             dutValue: dutDl['Ping RTT'].avg.toFixed(2),
             refValue: refDl['Ping RTT'].avg.toFixed(2),

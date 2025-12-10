@@ -35,8 +35,8 @@ function App() {
   return (
     <ReportDataProvider>
       <div className="App">
-        <ReportHeader />
         {/* <CoverPage /> */}
+        <ReportHeader />
         <DeviceInfoPage />
         <ContentsIndexPage />
 
@@ -48,13 +48,13 @@ function App() {
         <VqDetailsPage />
         <VqKpiPage /> */}
 
-        {/* <CoverageSummaryPage />
+        <CoverageSummaryPage />
         <CoverageDetails />
-        <CoverageKpiPage /> */}
+        <CoverageKpiPage />
 
-        <DpSummaryPage />
+        {/* <DpSummaryPage />
         <DpDetailsPage />
-        <DpKpiPage />
+        <DpKpiPage /> */}
 
         <LegalPage />
         <AboutPage />

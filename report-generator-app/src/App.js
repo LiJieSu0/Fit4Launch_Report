@@ -30,7 +30,12 @@ import CoverageKpiPage from './ReportDetails/CoveragePerformance/CoverageKpiPage
 import DpKpiPage from './ReportDetails/DataPerformance/DpKpiPage';
 import DpSummaryPage from './ReportDetails/DataPerformance/DpSummaryPage';
 import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
-
+const reportType = {
+  1: "Coverage Performance",
+  2: "Voice Quality",
+  3: "Data Performance",
+  4: "Call Performance"
+}
 function App() {
   return (
     <ReportDataProvider>
@@ -58,10 +63,12 @@ function App() {
 
         <LegalPage />
         <AboutPage />
-        <ReportFooter />
+        <ReportFooter reportType={reportType[1]} />
       </div>
     </ReportDataProvider>
   );
 }
+
+
 
 export default App;

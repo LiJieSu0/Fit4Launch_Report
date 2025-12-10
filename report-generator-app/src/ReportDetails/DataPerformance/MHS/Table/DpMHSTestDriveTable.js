@@ -12,15 +12,15 @@ function DpMHSTestDriveTable({ data, tableName }) {
       {
         name: "Throughput (Mbps)",
         subMetrics: [
-          { key: "DL.Mean", label: "Mean" },
-          { key: "DL.Standard Deviation", label: "Standard Deviation" },
-          { key: "DL.Minimum", label: "Minimum" },
-          { key: "DL.Maximum", label: "Maximum" },
+          { key: "DL.Mean", label: "Mean (Mbps)" },
+          { key: "DL.Standard Deviation", label: "Standard Deviation (Mbps)" },
+          { key: "DL.Minimum", label: "Minimum (Mbps)" },
+          { key: "DL.Maximum", label: "Maximum (Mbps)" },
           { key: "DL.Number of Intervals", label: "Number of Intervals" },
-          { key: "UL.Mean", label: "Mean" },
-          { key: "UL.Standard Deviation", label: "Standard Deviation" },
-          { key: "UL.Minimum", label: "Minimum" },
-          { key: "UL.Maximum", label: "Maximum" },
+          { key: "UL.Mean", label: "Mean (Mbps)" },
+          { key: "UL.Standard Deviation", label: "Standard Deviation (Mbps)" },
+          { key: "UL.Minimum", label: "Minimum (Mbps)" },
+          { key: "UL.Maximum", label: "Maximum (Mbps)" },
           { key: "UL.Number of Intervals", label: "Number of Intervals" },
         ],
         path: "Throughput",
@@ -29,8 +29,8 @@ function DpMHSTestDriveTable({ data, tableName }) {
       {
         name: "Jitter (ms)",
         subMetrics: [
-          { key: "DL Mean", label: "Mean" },
-          { key: "UL Mean", label: "Mean" },
+          { key: "DL Mean", label: "Mean (ms)" },
+          { key: "UL Mean", label: "Mean (ms)" },
         ],
         path: "Jitter",
         kpiType: "Jitter",
@@ -38,8 +38,8 @@ function DpMHSTestDriveTable({ data, tableName }) {
       {
         name: "Error Ratio (%)",
         subMetrics: [
-          { key: "UL Mean", label: "Mean" },
-          { key: "DL Mean", label: "Mean" },
+          { key: "UL Mean", label: "Mean (%)" },
+          { key: "DL Mean", label: "Mean (%)" },
         ],
         path: "Error Ratio",
         kpiType: "ErrorRatio",
@@ -47,10 +47,10 @@ function DpMHSTestDriveTable({ data, tableName }) {
       {
         name: "Ping RTT (ms)",
         subMetrics: [
-          { key: "min", label: "Minimum" },
-          { key: "max", label: "Maximum" },
-          { key: "avg", label: "Mean" },
-          { key: "std_dev", label: "Std Dev" },
+          { key: "min", label: "Minimum (ms)" },
+          { key: "max", label: "Maximum (ms)" },
+          { key: "avg", label: "Mean (ms)" },
+          { key: "std_dev", label: "Std Dev (ms)" },
         ],
         path: "Ping RTT",
         kpiType: "PingLatency",
@@ -69,11 +69,11 @@ function DpMHSTestDriveTable({ data, tableName }) {
           metric: (() => {
             let prefix = "";
             if (metric.name.includes("Throughput") || metric.name.includes("Jitter") || metric.name.includes("Error Ratio")) {
-                if (subMetric.key.startsWith("DL")) {
-                    prefix = "DL ";
-                } else if (subMetric.key.startsWith("UL")) {
-                    prefix = "UL ";
-                }
+              if (subMetric.key.startsWith("DL")) {
+                prefix = "DL ";
+              } else if (subMetric.key.startsWith("UL")) {
+                prefix = "UL ";
+              }
             }
             return `${prefix}${metric.name.replace(" (Mbps)", "").replace(" (ms)", "").replace(" (%)", "")} ${subMetric.label}`;
           })(),

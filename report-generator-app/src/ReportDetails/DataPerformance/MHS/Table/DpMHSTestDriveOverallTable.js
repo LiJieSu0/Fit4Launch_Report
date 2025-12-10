@@ -14,7 +14,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Throughput DL
         overallMetrics.push({
-            metric: "DL Throughput Mean",
+            metric: "DL Throughput Mean (Mbps)",
             kpiType: "Throughput",
             dutValue: dutDl.Throughput.DL.Mean.toFixed(2),
             refValue: refDl.Throughput.DL.Mean.toFixed(2),
@@ -22,7 +22,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Throughput UL
         overallMetrics.push({
-            metric: "UL Throughput Mean",
+            metric: "UL Throughput Mean (Mbps)",
             kpiType: "Throughput",
             dutValue: dutDl.Throughput.UL.Mean.toFixed(2),
             refValue: refDl.Throughput.UL.Mean.toFixed(2),
@@ -30,7 +30,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Jitter DL
         overallMetrics.push({
-            metric: "DL Jitter Mean",
+            metric: "DL Jitter Mean (ms)",
             kpiType: "Jitter",
             dutValue: dutDl.Jitter["DL Mean"].toFixed(2),
             refValue: refDl.Jitter["DL Mean"].toFixed(2),
@@ -38,7 +38,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Jitter UL
         overallMetrics.push({
-            metric: "UL Jitter Mean",
+            metric: "UL Jitter Mean (ms)",
             kpiType: "Jitter",
             dutValue: dutDl.Jitter["UL Mean"].toFixed(2),
             refValue: refDl.Jitter["UL Mean"].toFixed(2),
@@ -46,7 +46,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Error Ratio DL
         overallMetrics.push({
-            metric: "DL Packet Failure Rate Mean",
+            metric: "DL Packet Failure Rate Mean (%)",
             kpiType: "ErrorRatio",
             dutValue: dutDl['Error Ratio']["DL Mean"].toFixed(2),
             refValue: refDl['Error Ratio']["DL Mean"].toFixed(2),
@@ -54,7 +54,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Error Ratio UL
         overallMetrics.push({
-            metric: "UL Packet Failure Rate Mean",
+            metric: "UL Packet Failure Rate Mean (%)",
             kpiType: "ErrorRatio",
             dutValue: dutDl['Error Ratio']["UL Mean"].toFixed(2),
             refValue: refDl['Error Ratio']["UL Mean"].toFixed(2),
@@ -62,7 +62,7 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
 
         // Ping RTT
         overallMetrics.push({
-            metric: "Ping RTT Mean",
+            metric: "Ping RTT Mean (ms)",
             kpiType: "PingLatency",
             dutValue: dutDl['Ping RTT'].avg.toFixed(2),
             refValue: refDl['Ping RTT'].avg.toFixed(2),

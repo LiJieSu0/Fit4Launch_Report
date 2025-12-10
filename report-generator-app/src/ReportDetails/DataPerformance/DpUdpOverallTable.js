@@ -55,7 +55,13 @@ const DpUdpOverallTable = ({ data, headers }) => {
     }
     i = metricGroupEnd;
   }
-
+  const unit = {
+    "Mean Throughput": "(Mbps)",
+    "Max Throughput": "(Mbps)",
+    "Min Throughput": "(Mbps)",
+    "Mean Jitter": "(ms)",
+    "Packet Failure Rate": "(%)",
+  }
   return (
     <div>
       <table className="general-table-style">
@@ -74,7 +80,7 @@ const DpUdpOverallTable = ({ data, headers }) => {
           {processedData.map((row, pRowIndex) => (
             <tr key={pRowIndex}>
               {row.isFirstInMetricGroup && (
-                <td rowSpan={row.metricRowSpan}>{row['Metric']}</td>
+                <td rowSpan={row.metricRowSpan}>{row['Metric']} {unit[row['Metric']]}</td>
               )}
               {row.isFirstInIdealThroughputGroup && (
                 <td rowSpan={row.idealThroughputRowSpan}>{row['Ideal Throughput']}</td>

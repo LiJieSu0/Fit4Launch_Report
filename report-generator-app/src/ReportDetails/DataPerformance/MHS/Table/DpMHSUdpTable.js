@@ -39,7 +39,13 @@ function DpMHSUdpTable({ data, tableName }) {
 
   let lastMetric = null;
   let lastIdealThroughput = null;
-
+  const unit = {
+    "Mean Throughput": " (Mbps)",
+    "Max Throughput": " (Mbps)",
+    "Min Throughput": " (Mbps)",
+    "Mean Jitter": " (ms)",
+    "Packet Failure Rate": " (%)",
+  }
   return (
     <div className="">
       <h3>{tableName}</h3>
@@ -82,7 +88,7 @@ function DpMHSUdpTable({ data, tableName }) {
             return (
               <tr key={index}>
                 {showMetric && (
-                  <td rowSpan={getMetricRowSpan(row.metric)}>{row.metric}</td>
+                  <td rowSpan={getMetricRowSpan(row.metric)}>{row.metric}{unit[row.metric]}</td>
                 )}
                 {showIdealThroughput && (
                   <td rowSpan={getRowSpan(row.metric, row.idealThroughput)}>{row.idealThroughput}</td>
@@ -91,12 +97,12 @@ function DpMHSUdpTable({ data, tableName }) {
                 <td style={{
                   backgroundColor: row.deviceName === 'DUT' && refOverallValue !== null && row.metric !== 'Max Throughput' && currentOverallValue !== 'N/A' && refOverallValue !== 'N/A'
                     ? getKpiCellColor(
-                        row.metric === 'Mean Jitter' ? 'Jitter' :
+                      row.metric === 'Mean Jitter' ? 'Jitter' :
                         row.metric === 'Packet Failure Rate' ? 'ErrorRatio' :
-                        'Throughput',
-                        parseFloat(currentOverallValue),
-                        parseFloat(refOverallValue)
-                      )
+                          'Throughput',
+                      parseFloat(currentOverallValue),
+                      parseFloat(refOverallValue)
+                    )
                     : 'inherit'
                 }}>
                   {currentOverallValue}

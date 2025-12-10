@@ -81,7 +81,7 @@ function DpNSAHttpMSTable({ data, tableName }) {
           {tableData.map((row, index) => (
             <tr key={index}>
               {row.deviceName === "DUT" && (
-                <td rowSpan="2">{row.category}</td>
+                <td rowSpan="2">{row.category}{" (Mbps)"}</td>
               )}
               <td>{row.deviceName}</td>
               <td style={{

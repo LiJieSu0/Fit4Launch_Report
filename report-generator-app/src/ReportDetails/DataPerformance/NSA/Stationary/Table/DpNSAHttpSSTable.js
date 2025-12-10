@@ -81,17 +81,17 @@ function DpNSAHttpSSTable({ data, tableName }) {
           {tableData.map((row, index) => (
             <tr key={index}>
               {row.deviceName === "DUT" && (
-                <td rowSpan="2">{row.category}</td>
+                <td rowSpan="2">{row.category}{" (Mbps)"}</td>
               )}
               <td>{row.deviceName}</td>
               <td style={{
                 backgroundColor:
                   row.category === "Average" && row.deviceName === "DUT"
                     ? getKpiCellColor(
-                        "Throughput",
-                        parseFloat(row.overall),
-                        parseFloat(tableData[1].overall)
-                      )
+                      "Throughput",
+                      parseFloat(row.overall),
+                      parseFloat(tableData[1].overall)
+                    )
                     : "transparent",
               }}>{row.overall}</td>
               <td>{row.site1}</td>

@@ -64,14 +64,14 @@ function DpNSAStationaryDetails() {
 
 
   const combinedOverallSsHttpTableData = [
-    ["Average", "DUT", ssHttpDlOverallMean.toFixed(2), ssHttpUlOverallMean.toFixed(2)],
-    ["Average", "REF", ssHttpDlOverallRefMean.toFixed(2), ssHttpUlOverallRefMean.toFixed(2)],
-    ["Standard Deviation", "DUT", ssHttpDlOverallStdDev.toFixed(2), ssHttpUlOverallStdDev.toFixed(2)],
-    ["Standard Deviation", "REF", ssHttpDlOverallRefStdDev.toFixed(2), ssHttpUlOverallRefStdDev.toFixed(2)],
-    ["Maximum", "DUT", ssHttpDlOverallMax.toFixed(2), ssHttpUlOverallMax.toFixed(2)],
-    ["Maximum", "REF", ssHttpDlOverallRefMax.toFixed(2), ssHttpUlOverallRefMax.toFixed(2)],
-    ["Minimum", "DUT", ssHttpDlOverallMin.toFixed(2), ssHttpUlOverallMin.toFixed(2)],
-    ["Minimum", "REF", ssHttpDlOverallRefMin.toFixed(2), ssHttpUlOverallRefMin.toFixed(2)],
+    ["Average (Mbps)", "DUT", ssHttpDlOverallMean.toFixed(2), ssHttpUlOverallMean.toFixed(2)],
+    ["Average (Mbps)", "REF", ssHttpDlOverallRefMean.toFixed(2), ssHttpUlOverallRefMean.toFixed(2)],
+    ["Standard Deviation (Mbps)", "DUT", ssHttpDlOverallStdDev.toFixed(2), ssHttpUlOverallStdDev.toFixed(2)],
+    ["Standard Deviation (Mbps)", "REF", ssHttpDlOverallRefStdDev.toFixed(2), ssHttpUlOverallRefStdDev.toFixed(2)],
+    ["Maximum (Mbps)", "DUT", ssHttpDlOverallMax.toFixed(2), ssHttpUlOverallMax.toFixed(2)],
+    ["Maximum (Mbps)", "REF", ssHttpDlOverallRefMax.toFixed(2), ssHttpUlOverallRefMax.toFixed(2)],
+    ["Minimum (Mbps)", "DUT", ssHttpDlOverallMin.toFixed(2), ssHttpUlOverallMin.toFixed(2)],
+    ["Minimum (Mbps)", "REF", ssHttpDlOverallRefMin.toFixed(2), ssHttpUlOverallRefMin.toFixed(2)],
   ];
 
   const msHttpDlOverallMean = (MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["DUT_Multi Stream HTTP Download for 30 seconds"].Throughput.Mean + MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["DUT HTTP DL"].Throughput.Mean) / 2;
@@ -95,14 +95,14 @@ function DpNSAStationaryDetails() {
   const msHttpUlOverallRefMin = (MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["REF 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput.Minimum + MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO-ref_5G NSA_UDP UMulti Stream HTTP Upload for 30 second_Poor Coverage_DA Test"].Throughput.Minimum) / 2;
 
   const combinedOverallMsHttpTableData = [
-    ["Average", "DUT", msHttpDlOverallMean.toFixed(2), msHttpUlOverallMean.toFixed(2)],
-    ["Average", "REF", msHttpDlOverallRefMean.toFixed(2), msHttpUlOverallRefMean.toFixed(2)],
-    ["Standard Deviation", "DUT", msHttpDlOverallStdDev.toFixed(2), msHttpUlOverallStdDev.toFixed(2)],
-    ["Standard Deviation", "REF", msHttpDlOverallRefStdDev.toFixed(2), msHttpUlOverallRefStdDev.toFixed(2)],
-    ["Maximum", "DUT", msHttpDlOverallMax.toFixed(2), msHttpUlOverallMax.toFixed(2)],
-    ["Maximum", "REF", msHttpDlOverallRefMax.toFixed(2), msHttpUlOverallRefMax.toFixed(2)],
-    ["Minimum", "DUT", msHttpDlOverallMin.toFixed(2), msHttpUlOverallMin.toFixed(2)],
-    ["Minimum", "REF", msHttpDlOverallRefMin.toFixed(2), msHttpUlOverallRefMin.toFixed(2)],
+    ["Average (Mbps)", "DUT", msHttpDlOverallMean.toFixed(2), msHttpUlOverallMean.toFixed(2)],
+    ["Average (Mbps)", "REF", msHttpDlOverallRefMean.toFixed(2), msHttpUlOverallRefMean.toFixed(2)],
+    ["Standard Deviation (Mbps)", "DUT", msHttpDlOverallStdDev.toFixed(2), msHttpUlOverallStdDev.toFixed(2)],
+    ["Standard Deviation (Mbps)", "REF", msHttpDlOverallRefStdDev.toFixed(2), msHttpUlOverallRefStdDev.toFixed(2)],
+    ["Maximum (Mbps)", "DUT", msHttpDlOverallMax.toFixed(2), msHttpUlOverallMax.toFixed(2)],
+    ["Maximum (Mbps)", "REF", msHttpDlOverallRefMax.toFixed(2), msHttpUlOverallRefMax.toFixed(2)],
+    ["Minimum (Mbps)", "DUT", msHttpDlOverallMin.toFixed(2), msHttpUlOverallMin.toFixed(2)],
+    ["Minimum (Mbps)", "REF", msHttpDlOverallRefMin.toFixed(2), msHttpUlOverallRefMin.toFixed(2)],
   ];
 
   const barKeys = [
@@ -112,155 +112,155 @@ function DpNSAStationaryDetails() {
 
   return (
     <>
-    <div className='page-content'>
-      <h1>3. Data Performance - 5G NSA</h1>
-      <h2>3.1 HTTP Single Stream Test Download & Upload - 5G NSA</h2>
-      <div id='3.1'></div>
-      <h3>Http Single Stream Overview </h3>
-      <DpThroughputOverallTable
-        tableHeader={overallTableHeader}
-        tableData={combinedOverallSsHttpTableData}
-        kpiRule="Throughput"
-        kpiTargetCells={[
-          {
-            rowIndex: 0,
-            colIndex: 2,
-            dutValue: ssHttpDlOverallMean,
-            refValue: ssHttpDlOverallRefMean,
-          },
-          {
-            rowIndex: 0,
-            colIndex: 3,
-            dutValue: ssHttpUlOverallMean,
-            refValue: ssHttpUlOverallRefMean,
-          },
-        ]}
-      />
+      <div className='page-content'>
+        <h1>3. Data Performance - 5G NSA</h1>
+        <h2>3.1 HTTP Single Stream Test Download & Upload - 5G NSA</h2>
+        <div id='3.1'></div>
+        <h3>Http Single Stream Overview </h3>
+        <DpThroughputOverallTable
+          tableHeader={overallTableHeader}
+          tableData={combinedOverallSsHttpTableData}
+          kpiRule="Throughput"
+          kpiTargetCells={[
+            {
+              rowIndex: 0,
+              colIndex: 2,
+              dutValue: ssHttpDlOverallMean,
+              refValue: ssHttpDlOverallRefMean,
+            },
+            {
+              rowIndex: 0,
+              colIndex: 3,
+              dutValue: ssHttpUlOverallMean,
+              refValue: ssHttpUlOverallRefMean,
+            },
+          ]}
+        />
 
-      <DpNSAHttpSSTable
-        data={{
-          Moderate: {
-            DUT: SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["DUT_Single Stream HTTP Download for 60 seconds"].Throughput,
-            REF: SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["REF Single Stream HTTP Download for 60 seconds"].Throughput,
-          },
-          Poor: {
-            DUT: SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["DUT HTTP DL"].Throughput,
-            REF: SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["REF HTTP DL"].Throughput,
-          },
-        }}
-        tableName="Http Single Stream DL Details"
-      />
-    </div>
-    <div className='page-content'>
-      <DpNSAHttpSSTable
-        data={{
-          Moderate: {
-            DUT: SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput,
-            REF: SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput,
-          },
-          Poor: {
-            DUT: SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput,
-            REF: SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput,
-          },
-        }}
-        tableName="Http Single Stream UL Details"
-      />
-      <DpHistogramComponent
-        data={ssHttpDlHistogramData}
-        title="Http Single Stream Download Throughput"
-        yAxisLabel="Throughput"
-        barKeys={barKeys}
-      />
-    </div>
-    <div className='page-content'>
-      <DpHistogramComponent
-        data={ssHttpUlHistogramData}
-        title="Http Single Stream Upload Throughput"
-        yAxisLabel="Throughput"
-        barKeys={barKeys}
-      />
-    </div>
-    <div className='page-content'>
-      <h2>3.2 HTTP Multi Stream Test Download & Upload - 5G NSA</h2>
-      <div id='3.2'></div>
-      <h3>Http Multi Stream Overview</h3>
-            <DpThroughputOverallTable
-              tableHeader={overallTableHeader}
-              tableData={combinedOverallMsHttpTableData}
-              kpiRule="Throughput"
-              kpiTargetCells={[
-                {
-                  rowIndex: 0,
-                  colIndex: 2,
-                  dutValue: msHttpDlOverallMean,
-                  refValue: msHttpDlOverallRefMean,
-                },
-                {
-                  rowIndex: 0,
-                  colIndex: 3,
-                  dutValue: msHttpUlOverallMean,
-                  refValue: msHttpUlOverallRefMean,
-                },
-              ]}
-            />
-      <DpNSAHttpMSTable
-        data={{
-          Moderate: {
-            DUT: MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["DUT_Multi Stream HTTP Download for 30 seconds"].Throughput,
-            REF: MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["REF_Multi Stream HTTP Download for 30 seconds"].Throughput,
-          },
-          Poor: {
-            DUT: MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["DUT HTTP DL"].Throughput,
-            REF: MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["REF HTTP DL"].Throughput,
-          },
-        }}
-        tableName="Http Multi Stream DL Details"
-      />
+        <DpNSAHttpSSTable
+          data={{
+            Moderate: {
+              DUT: SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["DUT_Single Stream HTTP Download for 60 seconds"].Throughput,
+              REF: SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["REF Single Stream HTTP Download for 60 seconds"].Throughput,
+            },
+            Poor: {
+              DUT: SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["DUT HTTP DL"].Throughput,
+              REF: SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["REF HTTP DL"].Throughput,
+            },
+          }}
+          tableName="Http Single Stream DL Details"
+        />
       </div>
-    <div className='page-content'>
-      <DpNSAHttpMSTable
-        data={{
-          Moderate: {
-            DUT: MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["DUT 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput,
-            REF: MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["REF 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput,
-          },
-          Poor: {
-            DUT: MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH01_TMO-dut_5G NSA_Multi Stream HTTP Upload for 30 seconds_Poor Coverage_DA Test"].Throughput,
-            REF: MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO-ref_5G NSA_UDP UMulti Stream HTTP Upload for 30 second_Poor Coverage_DA Test"].Throughput,
-          },
-        }}
-        tableName="Http Multi Stream UL Details"
-      />
-      <DpHistogramComponent
-        data={msHttpDlHistogramData}
-        title="Http Multi Stream Download Throughput"
-        yAxisLabel="Throughput"
-        barKeys={barKeys}
-      />
+      <div className='page-content'>
+        <DpNSAHttpSSTable
+          data={{
+            Moderate: {
+              DUT: SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput,
+              REF: SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput,
+            },
+            Poor: {
+              DUT: SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput,
+              REF: SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput,
+            },
+          }}
+          tableName="Http Single Stream UL Details"
+        />
+        <DpHistogramComponent
+          data={ssHttpDlHistogramData}
+          title="Http Single Stream Download Throughput"
+          yAxisLabel="Throughput"
+          barKeys={barKeys}
+        />
+      </div>
+      <div className='page-content'>
+        <DpHistogramComponent
+          data={ssHttpUlHistogramData}
+          title="Http Single Stream Upload Throughput"
+          yAxisLabel="Throughput"
+          barKeys={barKeys}
+        />
+      </div>
+      <div className='page-content'>
+        <h2>3.2 HTTP Multi Stream Test Download & Upload - 5G NSA</h2>
+        <div id='3.2'></div>
+        <h3>Http Multi Stream Overview</h3>
+        <DpThroughputOverallTable
+          tableHeader={overallTableHeader}
+          tableData={combinedOverallMsHttpTableData}
+          kpiRule="Throughput"
+          kpiTargetCells={[
+            {
+              rowIndex: 0,
+              colIndex: 2,
+              dutValue: msHttpDlOverallMean,
+              refValue: msHttpDlOverallRefMean,
+            },
+            {
+              rowIndex: 0,
+              colIndex: 3,
+              dutValue: msHttpUlOverallMean,
+              refValue: msHttpUlOverallRefMean,
+            },
+          ]}
+        />
+        <DpNSAHttpMSTable
+          data={{
+            Moderate: {
+              DUT: MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["DUT_Multi Stream HTTP Download for 30 seconds"].Throughput,
+              REF: MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["REF_Multi Stream HTTP Download for 30 seconds"].Throughput,
+            },
+            Poor: {
+              DUT: MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["DUT HTTP DL"].Throughput,
+              REF: MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["REF HTTP DL"].Throughput,
+            },
+          }}
+          tableName="Http Multi Stream DL Details"
+        />
+      </div>
+      <div className='page-content'>
+        <DpNSAHttpMSTable
+          data={{
+            Moderate: {
+              DUT: MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["DUT 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput,
+              REF: MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["REF 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput,
+            },
+            Poor: {
+              DUT: MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH01_TMO-dut_5G NSA_Multi Stream HTTP Upload for 30 seconds_Poor Coverage_DA Test"].Throughput,
+              REF: MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO-ref_5G NSA_UDP UMulti Stream HTTP Upload for 30 second_Poor Coverage_DA Test"].Throughput,
+            },
+          }}
+          tableName="Http Multi Stream UL Details"
+        />
+        <DpHistogramComponent
+          data={msHttpDlHistogramData}
+          title="Http Multi Stream Download Throughput"
+          yAxisLabel="Throughput"
+          barKeys={barKeys}
+        />
       </div>
 
-    <div className='page-content'>
-      <DpHistogramComponent
-        data={msHttpUlHistogramData}
-        title="Http Multi Stream Upload Throughput"
-        yAxisLabel="Throughput"
-        barKeys={barKeys}
-      />
+      <div className='page-content'>
+        <DpHistogramComponent
+          data={msHttpUlHistogramData}
+          title="Http Multi Stream Upload Throughput"
+          yAxisLabel="Throughput"
+          barKeys={barKeys}
+        />
       </div>
-    <DpNSAUDPComponent />
-    <div className='page-content'>
-      <h2>3.4 Ping Test - 5G NSA</h2>
-      <div id='3.4'></div>
-      <h3>Ping Test Overview</h3>
-      <DpNSAPingOverallTable data={pingData} />
-      <DpNSAPingTable data={pingData} tableName="Ping Test Details" />
-      <DpHistogramComponent
-        data={pingHistogramData}
-        title="Ping RTT"
-        yAxisLabel="Latency (ms)"
-        barKeys={barKeys}
-      />
-    </div>
+      <DpNSAUDPComponent />
+      <div className='page-content'>
+        <h2>3.4 Ping Test - 5G NSA</h2>
+        <div id='3.4'></div>
+        <h3>Ping Test Overview</h3>
+        <DpNSAPingOverallTable data={pingData} />
+        <DpNSAPingTable data={pingData} tableName="Ping Test Details" />
+        <DpHistogramComponent
+          data={pingHistogramData}
+          title="Ping RTT"
+          yAxisLabel="Latency (ms)"
+          barKeys={barKeys}
+        />
+      </div>
     </>
 
   );

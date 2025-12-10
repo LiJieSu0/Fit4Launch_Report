@@ -13,10 +13,10 @@ const DpDriveTestTable = ({ data, tableName }) => {
             {
                 name: "Throughput (Mbps)",
                 subMetrics: [
-                    { key: "Mean", label: "Mean" },
-                    { key: "Standard Deviation", label: "Standard Deviation" },
-                    { key: "Minimum", label: "Minimum" },
-                    { key: "Maximum", label: "Maximum" },
+                    { key: "Mean", label: "Mean (Mbps)" },
+                    { key: "Standard Deviation", label: "Standard Deviation (Mbps)" },
+                    { key: "Minimum", label: "Minimum (Mbps)" },
+                    { key: "Maximum", label: "Maximum (Mbps)" },
                     { key: "Number of Intervals", label: "Number of Intervals" },
                 ],
                 path: "Throughput",
@@ -25,7 +25,7 @@ const DpDriveTestTable = ({ data, tableName }) => {
             {
                 name: "Jitter (s)",
                 subMetrics: [
-                    { key: "Mean", label: "Mean" },
+                    { key: "Mean", label: "Mean (s)" },
                 ],
                 path: "Jitter",
                 kpiType: "Jitter",
@@ -33,7 +33,7 @@ const DpDriveTestTable = ({ data, tableName }) => {
             {
                 name: "Packet Failure Rate (%)",
                 subMetrics: [
-                    { key: "Mean", label: "Mean" },
+                    { key: "Mean", label: "Mean (%)" },
                 ],
                 path: "Error Ratio",
                 kpiType: "ErrorRatio",

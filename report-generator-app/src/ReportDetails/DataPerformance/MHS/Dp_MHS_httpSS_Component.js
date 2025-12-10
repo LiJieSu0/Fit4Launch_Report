@@ -41,7 +41,7 @@ function Dp_MHS_httpSS_Component() {
   const overallUploadDUTMean = (dataUL.Good.DUT["Mean"] + dataUL.Moderate.DUT["Mean"]) / 2;
   const overallUploadREFMean = (dataUL.Good.REF["Mean"] + dataUL.Moderate.REF["Mean"]) / 2;
 
-  const overallTableHeader = ["Throughput", "Device Name", "Download", "Upload"];
+  const overallTableHeader = ["Throughput (Mbps)", "Device Name", "Download", "Upload"];
   const combinedOverallTableData = [
     ["Average", "DUT", overallDownloadDUTMean.toFixed(2), overallUploadDUTMean.toFixed(2)],
     ["Average", "REF", overallDownloadREFMean.toFixed(2), overallUploadREFMean.toFixed(2)],
@@ -170,7 +170,7 @@ function Dp_MHS_httpSS_Component() {
         <DpMHSHttpSSTable data={dataUL} tableName="MHS Http Single Stream UL Details" kpiRule="Throughput" />
       </div>
       <div className='page-content'>
-        
+
         <DpHistogramComponent
           data={[
             { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },

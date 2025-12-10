@@ -67,7 +67,7 @@ function DpMHSHttpSSTable({ data, tableName, kpiRule }) {
       <table className="general-table-style dp-details-table">
         <thead>
           <tr>
-            <th rowSpan="2">Throughput</th>
+            <th rowSpan="2">Throughput (Mbps)</th>
             <th rowSpan="2">Device Name</th>
             <th rowSpan="2">Overall</th>
             <th colSpan="2">Location</th>
@@ -82,10 +82,10 @@ function DpMHSHttpSSTable({ data, tableName, kpiRule }) {
             const overallColor =
               row.deviceName === "DUT" && row.category === "Average"
                 ? getKpiCellColor(
-                    kpiRule,
-                    parseFloat(row.overall),
-                    parseFloat(tableData[index + 1].overall)
-                  )
+                  kpiRule,
+                  parseFloat(row.overall),
+                  parseFloat(tableData[index + 1].overall)
+                )
                 : undefined;
 
             return (

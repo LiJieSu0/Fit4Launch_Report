@@ -83,12 +83,12 @@ const DpUdpOverallTable = ({ data, headers }) => {
               <td style={{
                 backgroundColor: row['Device Name'] === 'DUT' && row.refOverallValue !== null && row['Metric'] !== 'Max Throughput'
                   ? getKpiCellColor(
-                      row['Metric'] === 'Mean Jitter' ? 'Jitter' :
+                    row['Metric'] === 'Mean Jitter' ? 'Jitter' :
                       row['Metric'] === 'Packet Failure Rate' ? 'ErrorRatio' :
-                      'Throughput',
-                      parseFloat(row['Overall']),
-                      row.refOverallValue
-                    )
+                        'Throughput',
+                    parseFloat(row['Overall']),
+                    row.refOverallValue
+                  )
                   : 'inherit'
               }}>
                 {row['Overall']}

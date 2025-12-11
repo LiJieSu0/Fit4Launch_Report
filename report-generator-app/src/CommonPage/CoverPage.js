@@ -8,15 +8,15 @@ const CoverPage = () => {
         <div className="header-left-content">
           <img src="atmclogo.jpg" alt="atmcl" style={{ maxWidth: '50%', height: '15%' }} />
         </div>
-        <div className="header-contact-info" style={{marginTop:10}}>
-          <p>30540 SE 84th St STE 1</p>
-          <p>Preston, WA 98050</p>
+        <div className="header-contact-info" style={{ marginTop: 10 }}>
+          <p>30540 SE 84th St, STE 1, Preston, WA 98050 and</p>
+          <p>721 Enterprise Dr., Lexington, KY 40510</p>
           <p>Telephone: +1-858-342-8435</p>
           <p>www.atmcl.com</p>
         </div>
       </div>
 
-      <div style={{marginBottom:80}}></div>
+      <div style={{ marginBottom: 80 }}></div>
       <div className="report-title-section">
         <p className="report-title cover-title">T-Mobile Field Performance Report</p>
         <span className="separator">|</span>

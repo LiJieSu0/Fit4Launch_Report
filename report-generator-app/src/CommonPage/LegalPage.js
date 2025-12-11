@@ -23,7 +23,15 @@ const LegalPage = ({ number }) => {
         PLEASE NOTIFY ATMC LABS IMMEDIATELY. UNAUTHORIZED USE, DISCLOSURE, DISTRIBUTION, COPYING, PRINTING,
         OR RELIANCE ON THIS INFORMATION IS STRICTLY PROHIBITED.
       </p>
-      <img src="/LegalPage/infoPic.png" alt="legalPic" className={styles.legalImage} />
+      <img src="/LegalPage/infoPic.png" alt="legalPic" className={styles.legalImage} style={{ marginBottom: '10px' }} />
+      <p>
+        30540 SE 84th St, STE 1, Preston, WA 98050 and <br />
+        721 Enterprise Dr., Lexington, KY  40510 <br />
+        <br />
+        Contact: info@atmcl.com <br />
+        <br />
+        Telephone: +1-858-342-8435
+      </p>
 
     </div>
   );

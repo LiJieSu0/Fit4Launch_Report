@@ -106,7 +106,7 @@ function CoverageDetails() {
         {/* NR25 Audio table */}
         <CoverageTestTable tableData={NR25_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
         <img src="/CoverageMap/NR25_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
-
+        {/* secondary kpi table */}
       </div>
 
       {/* Status below are minor bug, no time to deal with it */}

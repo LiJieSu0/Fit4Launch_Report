@@ -31,7 +31,7 @@
   }
 
   @page: first {
-    counter-reset: page 0;
+    counter-reset: page -1;
 
     @bottom-right {
       content: none;

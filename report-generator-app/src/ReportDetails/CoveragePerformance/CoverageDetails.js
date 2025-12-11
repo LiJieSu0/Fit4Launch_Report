@@ -109,6 +109,49 @@ function CoverageDetails() {
     },
   ];
 
+  const n41SecondaryKpiData = [
+    {
+      run: 'RUN 1',
+      segments: [
+        { segment: 'First 30%', bler: 2.294686067, mcs: 5.382022472, cqi: 10.349 },
+        { segment: 'Middle 40%', bler: 2.076082898, mcs: 6.515923567, cqi: 11.465 },
+        { segment: 'Last 30%', bler: 39.12799513, mcs: 1.761904762, cqi: 5.8759 },
+      ],
+    },
+    {
+      run: 'RUN 2',
+      segments: [
+        { segment: 'First 30%', bler: 1.45510707, mcs: 6.434782609, cqi: 11.1654 },
+        { segment: 'Middle 40%', bler: 3.254273595, mcs: 5.045801527, cqi: 10.7183 },
+        { segment: 'Last 30%', bler: 35.16159218, mcs: 1.594594595, cqi: 5.76757 },
+      ],
+    },
+    {
+      run: 'RUN 3',
+      segments: [
+        { segment: 'First 30%', bler: 2.090231161, mcs: 7.482352941, cqi: 10.6865 },
+        { segment: 'Middle 40%', bler: 2.197929952, mcs: 8.301369863, cqi: 11.6589 },
+        { segment: 'Last 30%', bler: 46.1069859, mcs: 1.16, cqi: 5.86486 },
+      ],
+    },
+    {
+      run: 'RUN 4',
+      segments: [
+        { segment: 'First 30%', bler: 2.016925881, mcs: 3.850746269, cqi: 11.394 },
+        { segment: 'Middle 40%', bler: 1.933122928, mcs: 8.416, cqi: 12.3864 },
+        { segment: 'Last 30%', bler: 27.69401441, mcs: 1.898305085, cqi: 6.08448 },
+      ],
+    },
+    {
+      run: 'RUN 5',
+      segments: [
+        { segment: 'First 30%', bler: 3.55, mcs: 13.70, cqi: 11.26 },
+        { segment: 'Middle 40%', bler: 6.78, mcs: 8.15, cqi: 10.88 },
+        { segment: 'Last 30%', bler: 29.43, mcs: 5.50, cqi: 8.62 },
+      ],
+    },
+  ];
+
   return (
     <div>
       <div className='page-content'>
@@ -215,8 +258,36 @@ function CoverageDetails() {
         <img src="/CoverageMap/NR41_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
       </div>
       <div className='page-content'>
-        <h3>NR41 Secondary KPI</h3>
-
+        <h3>5G VoNR Coverage Test NR41- Secondary KPI</h3>
+        {/* n41 Secondary KPI table */}
+        <table className="general-table-style">
+          <thead>
+            <tr>
+              <th>Run</th>
+              <th>Segment</th>
+              <th>AVG BLER</th>
+              <th>AVG MCS</th>
+              <th>AVG CQI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {n41SecondaryKpiData.map((runData, runIndex) => (
+              <React.Fragment key={runIndex}>
+                {runData.segments.map((segmentData, segmentIndex) => (
+                  <tr key={`${runIndex}-${segmentIndex}`}>
+                    {segmentIndex === 0 && (
+                      <td rowSpan={runData.segments.length}>{runData.run}</td>
+                    )}
+                    <td>{segmentData.segment}</td>
+                    <td>{segmentData.bler.toFixed(2)}</td>
+                    <td>{segmentData.mcs.toFixed(2)}</td>
+                    <td>{segmentData.cqi.toFixed(2)}</td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
       </div>
       {/* ------NR71 */}
       <div className='page-content'>

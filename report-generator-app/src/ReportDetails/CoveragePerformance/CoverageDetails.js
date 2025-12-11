@@ -69,6 +69,24 @@ function CoverageDetails() {
 
 
 
+  const n25secondaryKpiData = [
+    { segment: 'First 30%', avgBler: 2.51335957966, avgMcs: 10.81351082, avgCqi: 11.4638103959533 },
+    { segment: 'Last 30%', avgBler: 2.1943196634, avgMcs: 10.52610753, avgCqi: 9.65242530044276 },
+    { segment: 'Middle 40%', avgBler: 2.04854091165, avgMcs: 15.26325386, avgCqi: 12.7193446896535 }
+  ]
+
+  const n41secondaryKpiData = [
+    { segment: 'First 30%', avgBler: 1.9642375448, avgMcs: 5.7874760726, avgCqi: 10.898722413 },
+    { segment: 'Last 30%', avgBler: 37.022646905, avgMcs: 1.6037011103, avgCqi: 5.8982047014 },
+    { segment: 'Middle 40%', avgBler: 2.3653523434, avgMcs: 7.0697737392, avgCqi: 11.557148218 }
+  ]
+
+  const n71secondaryKpiData = [
+    { segment: 'First 30%', avgBler: 2.5640832441, avgMcs: 12.613344408, avgCqi: 11.908527686 },
+    { segment: 'Last 30%', avgBler: 6.914563891, avgMcs: 7.4465928882, avgCqi: 7.1988945573 },
+    { segment: 'Middle 40%', avgBler: 1.6890910213, avgMcs: 13.819685119, avgCqi: 11.028498929 }
+  ]
+
   return (
     <div>
       <div className='page-content'>
@@ -107,6 +125,28 @@ function CoverageDetails() {
         <CoverageTestTable tableData={NR25_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
         <img src="/CoverageMap/NR25_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
         {/* secondary kpi table */}
+        <br />
+        <h3>Secondary KPI</h3>
+        <table className="general-table-style">
+          <thead>
+            <tr>
+              <th>Segment</th>
+              <th>AVG BLER</th>
+              <th>AVG MCS</th>
+              <th>AVG CQI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {n25secondaryKpiData.map((row, index) => (
+              <tr key={index}>
+                <td>{row.segment}</td>
+                <td>{row.avgBler.toFixed(2)}</td>
+                <td>{row.avgMcs.toFixed(2)}</td>
+                <td>{row.avgCqi.toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       {/* Status below are minor bug, no time to deal with it */}
@@ -142,7 +182,29 @@ function CoverageDetails() {
         {/* NR41 Audio table */}
         <CoverageTestTable tableData={NR41_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
         <img src="/CoverageMap/NR41_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
-
+        {/* n41 secondary kpi table */}
+        <br />
+        <h3>Secondary KPI</h3>
+        <table className="general-table-style">
+          <thead>
+            <tr>
+              <th>Segment</th>
+              <th>AVG BLER</th>
+              <th>AVG MCS</th>
+              <th>AVG CQI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {n41secondaryKpiData.map((row, index) => (
+              <tr key={index}>
+                <td>{row.segment}</td>
+                <td>{row.avgBler.toFixed(2)}</td>
+                <td>{row.avgMcs.toFixed(2)}</td>
+                <td>{row.avgCqi.toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       {/* ------NR71 */}
@@ -176,6 +238,31 @@ function CoverageDetails() {
         {/* NR71 Audio table */}
         <CoverageTestTable tableData={NR71_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
         <img src="/CoverageMap/NR71_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        {/* n71 secondary kpi table */}
+        <br />
+        <h3>Secondary KPI</h3>
+        <table className="general-table-style">
+          <thead>
+            <tr>
+              <th>Segment</th>
+              <th>AVG BLER</th>
+              <th>AVG MCS</th>
+              <th>AVG CQI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {n71secondaryKpiData.map((row, index) => (
+              <tr key={index}>
+                <td>{row.segment}</td>
+                <td>{row.avgBler.toFixed(2)}</td>
+                <td>{row.avgMcs.toFixed(2)}</td>
+                <td>{row.avgCqi.toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+
       </div>
 
       <div className='page-content'>

@@ -41,7 +41,7 @@ function App() {
   return (
     <ReportDataProvider>
       <div className="App">
-        {/* <CoverPage /> */}
+        <CoverPage />
         <ReportHeader />
         <DeviceInfoPage />
         <ContentsIndexPage />

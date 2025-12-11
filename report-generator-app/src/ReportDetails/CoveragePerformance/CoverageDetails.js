@@ -152,6 +152,49 @@ function CoverageDetails() {
     },
   ];
 
+  const n71SecondaryKpiData = [
+    {
+      run: 'RUN 1',
+      segments: [
+        { segment: 'First 30%', bler: 2.277494571, mcs: 12.95238085, cqi: 12.00145 },
+        { segment: 'Middle 40%', bler: 1.644078059, mcs: 14.70588235, cqi: 11.34202 },
+        { segment: 'Last 30%', bler: 3.112151692, mcs: 8.923076923, cqi: 8.593846 },
+      ],
+    },
+    {
+      run: 'RUN 2',
+      segments: [
+        { segment: 'First 30%', bler: 2.316072977, mcs: 12.75, cqi: 11.74 },
+        { segment: 'Middle 40%', bler: 1.872247871, mcs: 13.06451613, cqi: 11.07312 },
+        { segment: 'Last 30%', bler: 3.114783792, mcs: 8.3125, cqi: 7.19375 },
+      ],
+    },
+    {
+      run: 'RUN 3',
+      segments: [
+        { segment: 'First 30%', bler: 1.840999091, mcs: 13.69767442, cqi: 12.41429 },
+        { segment: 'Middle 40%', bler: 1.745570495, mcs: 15.31868132, cqi: 11.23297 },
+        { segment: 'Last 30%', bler: 7.84314896, mcs: 6.8, cqi: 6.592 },
+      ],
+    },
+    {
+      run: 'RUN 4',
+      segments: [
+        { segment: 'First 30%', bler: 2.983172346, mcs: 11.11764706, cqi: 11.55294 },
+        { segment: 'Middle 40%', bler: 1.41624571, mcs: 13.10280374, cqi: 10.55794 },
+        { segment: 'Last 30%', bler: 16.15227547, mcs: 2.735849057, cqi: 5.326415 },
+      ],
+    },
+    {
+      run: 'RUN 5',
+      segments: [
+        { segment: 'First 30%', bler: 3.402677235, mcs: 12.54901961, cqi: 11.83396 },
+        { segment: 'Middle 40%', bler: 1.767312972, mcs: 12.90654206, cqi: 10.93645 },
+        { segment: 'Last 30%', bler: 4.350459538, mcs: 10.46153846, cqi: 8.288462 },
+      ],
+    },
+  ];
+
   return (
     <div>
       <div className='page-content'>
@@ -212,9 +255,9 @@ function CoverageDetails() {
                       <td rowSpan={runData.segments.length}>{runData.run}</td>
                     )}
                     <td>{segmentData.segment}</td>
-                    <td>{segmentData.bler}</td>
-                    <td>{segmentData.mcs}</td>
-                    <td>{segmentData.cqi}</td>
+                    <td>{segmentData.bler.toFixed(2)}</td>
+                    <td>{segmentData.mcs.toFixed(2)}</td>
+                    <td>{segmentData.cqi.toFixed(2)}</td>
                   </tr>
                 ))}
               </React.Fragment>
@@ -323,7 +366,34 @@ function CoverageDetails() {
       </div>
       <div className='page-content'>
         <h3>NR71 Secondary KPI</h3>
-
+        <table className="general-table-style">
+          <thead>
+            <tr>
+              <th>Run</th>
+              <th>Segment</th>
+              <th>AVG BLER</th>
+              <th>AVG MCS</th>
+              <th>AVG CQI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {n71SecondaryKpiData.map((runData, runIndex) => (
+              <React.Fragment key={runIndex}>
+                {runData.segments.map((segmentData, segmentIndex) => (
+                  <tr key={`${runIndex}-${segmentIndex}`}>
+                    {segmentIndex === 0 && (
+                      <td rowSpan={runData.segments.length}>{runData.run}</td>
+                    )}
+                    <td>{segmentData.segment}</td>
+                    <td>{segmentData.bler.toFixed(2)}</td>
+                    <td>{segmentData.mcs.toFixed(2)}</td>
+                    <td>{segmentData.cqi.toFixed(2)}</td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
       </div>
       <div className='page-content'>
         <h2>2.2 5G n41 HPUE Coverage Test</h2>

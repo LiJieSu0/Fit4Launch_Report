@@ -36,7 +36,7 @@ const reportType = {
   3: "Data Performance",
   4: "Call Performance"
 }
-const reportTypeNo = 3;
+const reportTypeNo = 1;
 function App() {
   return (
     <ReportDataProvider>
@@ -62,8 +62,8 @@ function App() {
         <DpDetailsPage />
         <DpKpiPage /> */}
 
-        <LegalPage number={5} />
-        <AboutPage number={6} />
+        <LegalPage number={4} />
+        <AboutPage number={5} />
         <ReportFooter reportType={reportType[reportTypeNo]} />
       </div>
     </ReportDataProvider>

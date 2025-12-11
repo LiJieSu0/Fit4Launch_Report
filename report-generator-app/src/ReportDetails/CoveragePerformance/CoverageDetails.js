@@ -66,26 +66,48 @@ function CoverageDetails() {
     "Pass"
   ]
 
-
-
-
-  const n25secondaryKpiData = [
-    { segment: 'First 30%', avgBler: 2.51335957966, avgMcs: 10.81351082, avgCqi: 11.4638103959533 },
-    { segment: 'Last 30%', avgBler: 2.1943196634, avgMcs: 10.52610753, avgCqi: 9.65242530044276 },
-    { segment: 'Middle 40%', avgBler: 2.04854091165, avgMcs: 15.26325386, avgCqi: 12.7193446896535 }
-  ]
-
-  const n41secondaryKpiData = [
-    { segment: 'First 30%', avgBler: 1.9642375448, avgMcs: 5.7874760726, avgCqi: 10.898722413 },
-    { segment: 'Last 30%', avgBler: 37.022646905, avgMcs: 1.6037011103, avgCqi: 5.8982047014 },
-    { segment: 'Middle 40%', avgBler: 2.3653523434, avgMcs: 7.0697737392, avgCqi: 11.557148218 }
-  ]
-
-  const n71secondaryKpiData = [
-    { segment: 'First 30%', avgBler: 2.5640832441, avgMcs: 12.613344408, avgCqi: 11.908527686 },
-    { segment: 'Last 30%', avgBler: 6.914563891, avgMcs: 7.4465928882, avgCqi: 7.1988945573 },
-    { segment: 'Middle 40%', avgBler: 1.6890910213, avgMcs: 13.819685119, avgCqi: 11.028498929 }
-  ]
+  const n25SecondaryKpiData = [
+    {
+      run: 'RUN 1',
+      segments: [
+        { segment: 'First 30%', bler: 2.66, mcs: 9.48, cqi: 11.17 },
+        { segment: 'Middle 40%', bler: 1.96, mcs: 16.60, cqi: 13.05 },
+        { segment: 'Last 30%', bler: 1.81, mcs: 15.98, cqi: 11.99 },
+      ],
+    },
+    {
+      run: 'RUN 2',
+      segments: [
+        { segment: 'First 30%', bler: 2.39, mcs: 13.23, cqi: 11.80 },
+        { segment: 'Middle 40%', bler: 1.95, mcs: 14.05, cqi: 12.50 },
+        { segment: 'Last 30%', bler: 2.01, mcs: 9.92, cqi: 9.96 },
+      ],
+    },
+    {
+      run: 'RUN 3',
+      segments: [
+        { segment: 'First 30%', bler: 2.50, mcs: 9.37, cqi: 11.27 },
+        { segment: 'Middle 40%', bler: 2.28, mcs: 14.85, cqi: 12.64 },
+        { segment: 'Last 30%', bler: 2.86, mcs: 7.96, cqi: 8.51 },
+      ],
+    },
+    {
+      run: 'RUN 4',
+      segments: [
+        { segment: 'First 30%', bler: 2.85, mcs: 9.54, cqi: 11.48 },
+        { segment: 'Middle 40%', bler: 2.15, mcs: 16.20, cqi: 13.14 },
+        { segment: 'Last 30%', bler: 2.44, mcs: 7.07, cqi: 7.79 },
+      ],
+    },
+    {
+      run: 'RUN 5',
+      segments: [
+        { segment: 'First 30%', bler: 2.17, mcs: 12.45, cqi: 11.60 },
+        { segment: 'Middle 40%', bler: 1.90, mcs: 14.62, cqi: 12.27 },
+        { segment: 'Last 30%', bler: 1.85, mcs: 11.70, cqi: 10.01 },
+      ],
+    },
+  ];
 
   return (
     <div>
@@ -126,10 +148,12 @@ function CoverageDetails() {
         <img src="/CoverageMap/NR25_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
       </div>
       <div className='page-content'>
-        <h3>Secondary KPI</h3>
+        <h3>5G VoNR Coverage Test NR25 - Secondary KPI</h3>
+        {/* n25 secondary kpi table */}
         <table className="general-table-style">
           <thead>
             <tr>
+              <th>Run</th>
               <th>Segment</th>
               <th>AVG BLER</th>
               <th>AVG MCS</th>
@@ -137,13 +161,20 @@ function CoverageDetails() {
             </tr>
           </thead>
           <tbody>
-            {n25secondaryKpiData.map((row, index) => (
-              <tr key={index}>
-                <td>{row.segment}</td>
-                <td>{row.avgBler.toFixed(2)}</td>
-                <td>{row.avgMcs.toFixed(2)}</td>
-                <td>{row.avgCqi.toFixed(2)}</td>
-              </tr>
+            {n25SecondaryKpiData.map((runData, runIndex) => (
+              <React.Fragment key={runIndex}>
+                {runData.segments.map((segmentData, segmentIndex) => (
+                  <tr key={`${runIndex}-${segmentIndex}`}>
+                    {segmentIndex === 0 && (
+                      <td rowSpan={runData.segments.length}>{runData.run}</td>
+                    )}
+                    <td>{segmentData.segment}</td>
+                    <td>{segmentData.bler}</td>
+                    <td>{segmentData.mcs}</td>
+                    <td>{segmentData.cqi}</td>
+                  </tr>
+                ))}
+              </React.Fragment>
             ))}
           </tbody>
         </table>
@@ -184,27 +215,8 @@ function CoverageDetails() {
         <img src="/CoverageMap/NR41_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
       </div>
       <div className='page-content'>
-        <h3>Secondary KPI</h3>
-        <table className="general-table-style">
-          <thead>
-            <tr>
-              <th>Segment</th>
-              <th>AVG BLER</th>
-              <th>AVG MCS</th>
-              <th>AVG CQI</th>
-            </tr>
-          </thead>
-          <tbody>
-            {n41secondaryKpiData.map((row, index) => (
-              <tr key={index}>
-                <td>{row.segment}</td>
-                <td>{row.avgBler.toFixed(2)}</td>
-                <td>{row.avgMcs.toFixed(2)}</td>
-                <td>{row.avgCqi.toFixed(2)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <h3>NR41 Secondary KPI</h3>
+
       </div>
       {/* ------NR71 */}
       <div className='page-content'>
@@ -239,27 +251,8 @@ function CoverageDetails() {
         <img src="/CoverageMap/NR71_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
       </div>
       <div className='page-content'>
-        <h3>Secondary KPI</h3>
-        <table className="general-table-style">
-          <thead>
-            <tr>
-              <th>Segment</th>
-              <th>AVG BLER</th>
-              <th>AVG MCS</th>
-              <th>AVG CQI</th>
-            </tr>
-          </thead>
-          <tbody>
-            {n71secondaryKpiData.map((row, index) => (
-              <tr key={index}>
-                <td>{row.segment}</td>
-                <td>{row.avgBler.toFixed(2)}</td>
-                <td>{row.avgMcs.toFixed(2)}</td>
-                <td>{row.avgCqi.toFixed(2)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <h3>NR71 Secondary KPI</h3>
+
       </div>
       <div className='page-content'>
         <h2>2.2 5G n41 HPUE Coverage Test</h2>

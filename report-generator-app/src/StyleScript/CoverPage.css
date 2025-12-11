@@ -7,14 +7,18 @@
   font-family: Arial, sans-serif;
   background-color: #ffffff;
   box-sizing: border-box;
-  position: relative; /* Added for absolute positioning of footer-logos */
+  position: relative;
+  /* Added for absolute positioning of footer-logos */
 }
 
 .header-logo {
   display: flex;
-  justify-content: space-between; /* Distribute items with space between them */
-  align-items: flex-start; /* Align items to the top */
-  width: 100%; /* Ensure it takes full width to allow space-between */
+  justify-content: space-between;
+  /* Distribute items with space between them */
+  align-items: flex-start;
+  /* Align items to the top */
+  width: 100%;
+  /* Ensure it takes full width to allow space-between */
   font-size: 1.5em;
   font-weight: bold;
   color: #333;
@@ -27,26 +31,30 @@
 
 .report-title {
   font-size: 2.5em;
-  color: #000000; /* Dark blue */
+  color: rgb(255, 204, 0);
+  /* Dark blue */
   margin: 0;
 }
 
 .separator {
   font-size: 2.5em;
-  color: #000000; /* Dark blue */
+  color: #000000;
+  /* Dark blue */
   margin: 0 10px;
 }
 
 .report-subtitle {
   font-size: 1.8em;
-  color: rgb(255, 204, 0);  /* Light blue */
+  color: rgb(255, 204, 0);
+  /* Light blue */
   margin: 0;
 }
 
 .title-underline {
   width: 100%;
   border: none;
-  border-top: 2px solid #000000; /* Dark blue */
+  border-top: 2px solid #000000;
+  /* Dark blue */
   margin-bottom: 50px;
 }
 
@@ -56,7 +64,8 @@
   margin-bottom: 80px;
   font-size: 2em;
   font-weight: bold;
-  color: #e20074; /* T-Mobile pink */
+  color: #e20074;
+  /* T-Mobile pink */
 }
 
 .report-details {
@@ -78,7 +87,8 @@
 }
 
 .detail-value {
-  color: #000000; /* Dark blue */
+  color: #000000;
+  /* Dark blue */
 }
 
 .footer-logos {
@@ -87,8 +97,10 @@
   left: 50px;
   right: 50px;
   display: flex;
-  justify-content: space-between; /* Distribute items with space between them */
-  align-items: flex-end; /* Align items to the bottom */
+  justify-content: space-between;
+  /* Distribute items with space between them */
+  align-items: flex-end;
+  /* Align items to the bottom */
   margin-bottom: 50px;
   margin-left: 70px;
 }
@@ -113,26 +125,31 @@
 }
 
 .signal-logo {
-  max-width: 150px; /* Increased size as requested */
+  max-width: 150px;
+  /* Increased size as requested */
   height: auto;
 }
 
 .footer-comment-text {
   font-size: 0.8em;
   color: #000000;
-  margin: 0; /* Remove default paragraph margin */
+  margin: 0;
+  /* Remove default paragraph margin */
 }
 
 .header-contact-info {
   text-align: right;
   font-size: 0.4em;
   color: #000000;
-  line-height: 1.2; /* Adjust line height for better spacing */
+  line-height: 1.2;
+  /* Adjust line height for better spacing */
 }
 
 .header-contact-info p {
-  margin: 0; /* Remove default paragraph margin */
-  white-space: nowrap; /* Prevent text from wrapping */
+  margin: 0;
+  /* Remove default paragraph margin */
+  white-space: nowrap;
+  /* Prevent text from wrapping */
 }
 
 .header-left-content {
@@ -142,7 +159,7 @@
 
 
 @media print {
-  .cover-title{
+  .cover-title {
     font-size: 30px !important;
   }
 }

@@ -124,8 +124,8 @@ function CoverageDetails() {
         {/* NR25 Audio table */}
         <CoverageTestTable tableData={NR25_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
         <img src="/CoverageMap/NR25_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
-        {/* secondary kpi table */}
-        <br />
+      </div>
+      <div className='page-content'>
         <h3>Secondary KPI</h3>
         <table className="general-table-style">
           <thead>
@@ -182,8 +182,8 @@ function CoverageDetails() {
         {/* NR41 Audio table */}
         <CoverageTestTable tableData={NR41_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
         <img src="/CoverageMap/NR41_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
-        {/* n41 secondary kpi table */}
-        <br />
+      </div>
+      <div className='page-content'>
         <h3>Secondary KPI</h3>
         <table className="general-table-style">
           <thead>
@@ -206,7 +206,6 @@ function CoverageDetails() {
           </tbody>
         </table>
       </div>
-
       {/* ------NR71 */}
       <div className='page-content'>
         <h3>5G VoNR Coverage Test NR71- DL Throughput &lt; 1Mbps Distance (km)</h3>
@@ -238,8 +237,8 @@ function CoverageDetails() {
         {/* NR71 Audio table */}
         <CoverageTestTable tableData={NR71_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
         <img src="/CoverageMap/NR71_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
-        {/* n71 secondary kpi table */}
-        <br />
+      </div>
+      <div className='page-content'>
         <h3>Secondary KPI</h3>
         <table className="general-table-style">
           <thead>
@@ -261,10 +260,7 @@ function CoverageDetails() {
             ))}
           </tbody>
         </table>
-
-
       </div>
-
       <div className='page-content'>
         <h2>2.2 5G n41 HPUE Coverage Test</h2>
         <table className="general-table-style">

@@ -20,7 +20,7 @@ const CoverPage = () => {
       <div className="report-title-section">
         <p className="report-title cover-title">T-Mobile Field Performance Report</p>
         <span className="separator">|</span>
-        <h2 className="report-subtitle">ATMCL Pilot</h2>
+        <p className="report-title cover-title">ATMCL Pilot</p>
       </div>
       <hr className="title-underline" />
       <div className="tmobile-logo">

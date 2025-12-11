@@ -10,7 +10,7 @@ function Dp_MHS_Udp_Component() {
 
   const udp_Stationary_DL = [
     // Mean Throughput - 200 Mbps
-    
+
     {
       metric: "Mean Throughput",
       idealThroughput: "200000",
@@ -30,7 +30,7 @@ function Dp_MHS_Udp_Component() {
       },
     },
     // Mean Throughput - 400 Mbps
-    
+
     {
       metric: "Mean Throughput",
       idealThroughput: "400000",
@@ -50,7 +50,7 @@ function Dp_MHS_Udp_Component() {
       },
     },
     // Max Throughput - 200 Mbps
-    
+
     {
       metric: "Max Throughput",
       idealThroughput: "200000",
@@ -70,7 +70,7 @@ function Dp_MHS_Udp_Component() {
       },
     },
     // Max Throughput - 400 Mbps
-    
+
     {
       metric: "Max Throughput",
       idealThroughput: "400000",
@@ -90,7 +90,7 @@ function Dp_MHS_Udp_Component() {
       },
     },
     // Mean Jitter - 200 Mbps
-    
+
     {
       metric: "Mean Jitter",
       idealThroughput: "200000",
@@ -110,7 +110,7 @@ function Dp_MHS_Udp_Component() {
       },
     },
     // Mean Jitter - 400 Mbps
-    
+
     {
       metric: "Mean Jitter",
       idealThroughput: "400000",
@@ -130,7 +130,7 @@ function Dp_MHS_Udp_Component() {
       },
     },
     // Packet Failure Rate - 200 Mbps
-    
+
     {
       metric: "Packet Failure Rate",
       idealThroughput: "200000",
@@ -150,7 +150,7 @@ function Dp_MHS_Udp_Component() {
       },
     },
     // Packet Failure Rate - 400 Mbps
-    
+
     {
       metric: "Packet Failure Rate",
       idealThroughput: "400000",
@@ -427,7 +427,7 @@ function Dp_MHS_Udp_Component() {
   return (
     <>
       <div className="page-content">
-        <h2>2.7.3 MHS-UDP Test</h2>
+        <h2>2.7.3 UDP Test - Mobile Hotspot</h2>
         <div id="2.7.3DL"></div>
         <h3>MHS UDP Test DL Overview</h3>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
@@ -441,54 +441,54 @@ function Dp_MHS_Udp_Component() {
         <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP Test DL Details" />
       </div>
 
-      
-        {downloadHistogramData.reduce((acc, histogram, index) => {
-          const component = (
-            <DpHistogramComponent
-              key={index}
-              data={histogram.data}
-              title={histogram.title}
-              yAxisLabel={histogram.yAxisLabel}
-              barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-            />
-          );
-          if (index % 2 === 0) {
-            acc.push([component]);
-          } else {
-            acc[acc.length - 1].push(component);
-          }
-          return acc;
-        }, []).map((group, groupIndex) => (
-          <div className="page-content" key={`dl-group-${groupIndex}`}>
-            {group}
-          </div>
-        ))}
 
-        <div className="page-content">
-          <div id="2.7.3UL"></div>
-          <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP Test UL Details" />
+      {downloadHistogramData.reduce((acc, histogram, index) => {
+        const component = (
+          <DpHistogramComponent
+            key={index}
+            data={histogram.data}
+            title={histogram.title}
+            yAxisLabel={histogram.yAxisLabel}
+            barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+          />
+        );
+        if (index % 2 === 0) {
+          acc.push([component]);
+        } else {
+          acc[acc.length - 1].push(component);
+        }
+        return acc;
+      }, []).map((group, groupIndex) => (
+        <div className="page-content" key={`dl-group-${groupIndex}`}>
+          {group}
         </div>
-        {uploadHistogramData.reduce((acc, histogram, index) => {
-          const component = (
-            <DpHistogramComponent
-              key={index}
-              data={histogram.data}
-              title={histogram.title}
-              yAxisLabel={histogram.yAxisLabel}
-              barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-            />
-          );
-          if (index % 2 === 0) {
-            acc.push([component]);
-          } else {
-            acc[acc.length - 1].push(component);
-          }
-          return acc;
-        }, []).map((group, groupIndex) => (
-          <div className="page-content" key={`ul-group-${groupIndex}`}>
-            {group}
-          </div>
-        ))}
+      ))}
+
+      <div className="page-content">
+        <div id="2.7.3UL"></div>
+        <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP Test UL Details" />
+      </div>
+      {uploadHistogramData.reduce((acc, histogram, index) => {
+        const component = (
+          <DpHistogramComponent
+            key={index}
+            data={histogram.data}
+            title={histogram.title}
+            yAxisLabel={histogram.yAxisLabel}
+            barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+          />
+        );
+        if (index % 2 === 0) {
+          acc.push([component]);
+        } else {
+          acc[acc.length - 1].push(component);
+        }
+        return acc;
+      }, []).map((group, groupIndex) => (
+        <div className="page-content" key={`ul-group-${groupIndex}`}>
+          {group}
+        </div>
+      ))}
     </>
   );
 }

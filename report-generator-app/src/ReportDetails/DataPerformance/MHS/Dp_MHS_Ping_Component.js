@@ -86,7 +86,7 @@ function Dp_MHS_Ping_Component() {
   return (
     <>
       <div className="page-content">
-        <h2>2.7.4 MHS-Ping Test</h2>
+        <h2>2.7.4 Ping Test - Mobile Hotspot</h2>
         <div id="2.7.4"></div>
         <h3>MHS Ping Test Overview</h3>
         <DpPingOverallTable data={data} /> {/* Add DpPingOverallTable */}
@@ -99,7 +99,7 @@ function Dp_MHS_Ping_Component() {
           title="Ping RTT"
           yAxisLabel="Latency (ms)"
           barKeys={barKeys}
-          />
+        />
       </div>
     </>
   );

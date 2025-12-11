@@ -123,7 +123,7 @@ function Dp_MHS_httpMS_Component() {
   return (
     <>
       <div className='page-content'>
-        <h2>2.7.2 MHS-HTTP Multi Stream Test</h2>
+        <h2>2.7.2 HTTP Multi Stream Test - Mobile Hotspot</h2>
         <div id="2.7.2"></div>
         <h3>MHS Http Multi Stream Overview </h3>
         <DpThroughputOverallTable

@@ -9,104 +9,104 @@ import TestDriveData from '../../../DataFiles/SA/DpMobilityResults/Test Drive.js
 import TestDriveMHSData from '../../../DataFiles/SA/DpMobilityMHSResults/MHS Test Drive.json';
 
 const DpDriveTestDetailPage = () => {
-    const getDriveTestMetricData = (metricName, dutValue, refValue) => {
-        return [{ name: metricName, DUT: dutValue, REF: refValue }];
-    };
+  const getDriveTestMetricData = (metricName, dutValue, refValue) => {
+    return [{ name: metricName, DUT: dutValue, REF: refValue }];
+  };
 
-    const dutDriveTest = TestDriveData["DUT UDP DL"];
-    const refDriveTest = TestDriveData["REF UDP DL"];
+  const dutDriveTest = TestDriveData["DUT UDP DL"];
+  const refDriveTest = TestDriveData["REF UDP DL"];
 
-    const driveTestThroughputData = getDriveTestMetricData("Throughput", dutDriveTest.Throughput.Mean, refDriveTest.Throughput.Mean);
-    const driveTestJitterData = getDriveTestMetricData("Jitter", dutDriveTest.Jitter.Mean, refDriveTest.Jitter.Mean);
-    const driveTestErrorRatioData = getDriveTestMetricData("Error Ratio", dutDriveTest['Error Ratio'].Mean, refDriveTest['Error Ratio'].Mean);
-    const driveTestPingRttData = getDriveTestMetricData("Ping RTT", dutDriveTest['Ping RTT'].avg, refDriveTest['Ping RTT'].avg);
+  const driveTestThroughputData = getDriveTestMetricData("Throughput", dutDriveTest.Throughput.Mean, refDriveTest.Throughput.Mean);
+  const driveTestJitterData = getDriveTestMetricData("Jitter", dutDriveTest.Jitter.Mean, refDriveTest.Jitter.Mean);
+  const driveTestErrorRatioData = getDriveTestMetricData("Error Ratio", dutDriveTest['Error Ratio'].Mean, refDriveTest['Error Ratio'].Mean);
+  const driveTestPingRttData = getDriveTestMetricData("Ping RTT", dutDriveTest['Ping RTT'].avg, refDriveTest['Ping RTT'].avg);
 
-    const dutMHS = TestDriveMHSData["DUT UDP DL"];
-    const refMHS = TestDriveMHSData["REF UDP DL"];
+  const dutMHS = TestDriveMHSData["DUT UDP DL"];
+  const refMHS = TestDriveMHSData["REF UDP DL"];
 
-    const mhsThroughputData = getDriveTestMetricData("Throughput", dutMHS.Throughput.DL.Mean, refMHS.Throughput.DL.Mean);
-    const mhsJitterData = getDriveTestMetricData("Jitter", dutMHS.Jitter["DL Mean"], refMHS.Jitter["DL Mean"]);
-    const mhsErrorRatioData = getDriveTestMetricData("Error Ratio", dutMHS['Error Ratio']["DL Mean"], refMHS['Error Ratio']["DL Mean"]);
-    const mhsPingRttData = getDriveTestMetricData("Ping RTT", dutMHS['Ping RTT'].avg, refMHS['Ping RTT'].avg);
+  const mhsThroughputData = getDriveTestMetricData("Throughput", dutMHS.Throughput.DL.Mean, refMHS.Throughput.DL.Mean);
+  const mhsJitterData = getDriveTestMetricData("Jitter", dutMHS.Jitter["DL Mean"], refMHS.Jitter["DL Mean"]);
+  const mhsErrorRatioData = getDriveTestMetricData("Error Ratio", dutMHS['Error Ratio']["DL Mean"], refMHS['Error Ratio']["DL Mean"]);
+  const mhsPingRttData = getDriveTestMetricData("Ping RTT", dutMHS['Ping RTT'].avg, refMHS['Ping RTT'].avg);
 
-    return (
+  return (
     <>
-    {/* TODO add 2.8.1 */}
+      {/* TODO add 2.8.1 */}
       <div className='page-content'>
-       <h1 style={{textAlign:'center'}}>2.8 Mobility Test</h1>
-       <h2>2.8.1 Mobility Test - 5G Auto</h2>
-       <div id='2.8.1'></div>
-       <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overview" />
-       <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Details" />
+        <h1 style={{ textAlign: 'center' }}>2.8 Mobility Test</h1>
+        <h2>2.8.1 Mobility Test - 5G Auto</h2>
+        <div id='2.8.1'></div>
+        <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overview" />
+        <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Details" />
       </div>
       <div className='page-content'>
 
-       <DpHistogramComponent
-         data={driveTestThroughputData}
-         title="Mobility Test Drive Throughput"
-         yAxisLabel="Throughput (Mbps)"
-         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-       />
-       <DpHistogramComponent
-         data={driveTestJitterData}
-         title="Mobility Test Drive Jitter"
-         yAxisLabel="Jitter (s)"
-         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-       />
-       </div>
-      <div className='page-content'>
-
-       <DpHistogramComponent
-         data={driveTestErrorRatioData}
-         title="Mobility Test Drive Packet Failure Rate"
-         yAxisLabel="Packet Failure Rate (%)"
-         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-       />
-       <DpHistogramComponent
-         data={driveTestPingRttData}
-         title="Mobility Test Drive Ping RTT"
-         yAxisLabel="RTT (ms)"
-         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-       />
+        <DpHistogramComponent
+          data={driveTestThroughputData}
+          title="Mobility Test Drive Throughput"
+          yAxisLabel="Throughput (Mbps)"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+        <DpHistogramComponent
+          data={driveTestJitterData}
+          title="Mobility Test Drive Jitter"
+          yAxisLabel="Jitter (s)"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
       </div>
       <div className='page-content'>
-        <h2>2.8.2 Mobility test - MHS</h2>
+
+        <DpHistogramComponent
+          data={driveTestErrorRatioData}
+          title="Mobility Test Drive Packet Failure Rate"
+          yAxisLabel="Packet Failure Rate (%)"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+        <DpHistogramComponent
+          data={driveTestPingRttData}
+          title="Mobility Test Drive Ping RTT"
+          yAxisLabel="RTT (ms)"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+      </div>
+      <div className='page-content'>
+        <h2>2.8.2 Mobility Test - Mobile Hotspot</h2>
         <div id='2.8.2'></div>
         <DpMHSTestDriveOverallTable data={TestDriveMHSData} tableName="MHS Test Drive Overall Data" />
         <DpMHSTestDriveTable data={TestDriveMHSData} tableName="MHS Test Drive Data" />
       </div>
       <div className='page-content'>
-      <DpHistogramComponent
-        data={mhsThroughputData}
-        title="MHS Test Drive - Mean Throughput"
-        yAxisLabel="Throughput (Mbps)"
-        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-      />
-      <DpHistogramComponent
-        data={mhsJitterData}
-        title="MHS Test Drive - Mean Jitter"
-        yAxisLabel="Jitter (ms)"
-        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-      />
+        <DpHistogramComponent
+          data={mhsThroughputData}
+          title="MHS Test Drive - Mean Throughput"
+          yAxisLabel="Throughput (Mbps)"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+        <DpHistogramComponent
+          data={mhsJitterData}
+          title="MHS Test Drive - Mean Jitter"
+          yAxisLabel="Jitter (ms)"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
       </div>
       <div className='page-content'>
 
-      <DpHistogramComponent
-        data={mhsErrorRatioData}
-        title="MHS Test Drive - Packet Failure Rate"
-        yAxisLabel="Packet Failure Rate (%)"
-        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-      />
-      <DpHistogramComponent
-        data={mhsPingRttData}
-        title="MHS Test Drive - Mean Ping RTT"
-        yAxisLabel="RTT (ms)"
-        barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-      />
+        <DpHistogramComponent
+          data={mhsErrorRatioData}
+          title="MHS Test Drive - Packet Failure Rate"
+          yAxisLabel="Packet Failure Rate (%)"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+        <DpHistogramComponent
+          data={mhsPingRttData}
+          title="MHS Test Drive - Mean Ping RTT"
+          yAxisLabel="RTT (ms)"
+          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
       </div>
 
     </>
-    );
+  );
 };
 
 export default DpDriveTestDetailPage;

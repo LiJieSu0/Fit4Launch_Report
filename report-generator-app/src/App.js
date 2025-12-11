@@ -62,8 +62,8 @@ function App() {
         <DpDetailsPage />
         <DpKpiPage /> */}
 
-        <LegalPage />
-        <AboutPage />
+        <LegalPage number={4} />
+        <AboutPage number={5} />
         <ReportFooter reportType={reportType[reportTypeNo]} />
       </div>
     </ReportDataProvider>

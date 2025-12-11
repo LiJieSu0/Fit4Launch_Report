@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './LegalPage.module.css';
 
-const LegalPage = () => {
+const LegalPage = ({ number }) => {
   return (
     <div className='page-content'>
-      <h2>4. Legal Notice</h2>
+      <h2>{number}. Legal Notice</h2>
       <p>
         This report contains confidential and proprietary information belonging to ATMC Labs and is provided
         exclusively for the intended recipient for internal evaluation and Fit-for-Launch (F4L) verification

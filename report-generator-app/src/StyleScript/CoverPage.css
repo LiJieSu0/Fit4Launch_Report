@@ -34,6 +34,7 @@
   color: rgb(255, 204, 0);
   /* Dark blue */
   margin: 0;
+  font-weight: bold;
 }
 
 .separator {
@@ -55,7 +56,7 @@
   border: none;
   border-top: 2px solid #000000;
   /* Dark blue */
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .tmobile-logo {
@@ -160,6 +161,11 @@
 
 @media print {
   .cover-title {
-    font-size: 25px !important;
+    font-size: 30px !important;
   }
+}
+
+.cover-title-right-align {
+  text-align: right;
+  width: 100%; /* Ensure it takes full width to apply text-align effectively */
 }

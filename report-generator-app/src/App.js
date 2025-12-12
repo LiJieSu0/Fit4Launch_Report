@@ -34,9 +34,10 @@ const reportType = {
   1: "Coverage Performance",
   2: "Voice Quality",
   3: "Call Performance",
-  4: "Data Performance"
+  4: "Data Performance",
+  5: "WFC"
 }
-const reportTypeNo = 2;
+const reportTypeNo = 3;
 function App() {
   return (
     <ReportDataProvider>
@@ -45,24 +46,46 @@ function App() {
         <ReportHeader />
         <DeviceInfoPage />
         <ContentsIndexPage />
-        {/* <CoverageSummaryPage />
-        <CoverageDetails />
-        <CoverageKpiPage /> */}
+        {reportTypeNo === 1 && (
+          <>
+            <CoverageSummaryPage />
+            <CoverageDetails />
+            <CoverageKpiPage />
+          </>
+        )}
 
-        <VqSummaryPage />
-        <VqDetailsPage />
-        <VqKpiPage />
+        {reportTypeNo === 2 && (
+          <>
+            <VqSummaryPage />
+            <VqDetailsPage />
+            <VqKpiPage />
+          </>
+        )}
 
-        {/* <CpSummaryPage />
-        <CallPerformanceDetails />
-        <CpKpiPage /> */}
+        {reportTypeNo === 3 && (
+          <>
+            <CpSummaryPage />
+            <CallPerformanceDetails />
+            <CpKpiPage />
+          </>
+        )}
 
-        {/* <DpSummaryPage />
-        <DpDetailsPage />
-        <DpKpiPage /> */}
+        {reportTypeNo === 4 && (
+          <>
+            <DpSummaryPage />
+            <DpDetailsPage />
+            <DpKpiPage />
+          </>
+        )}
 
-        <LegalPage number={reportType==4?4:5} />
-        <AboutPage number={reportType==4?5:6} />
+        {reportTypeNo === 5 && (
+          <>
+          </>
+        )}
+
+
+        <LegalPage number={reportTypeNo === 4 ? 5 : 4 } />
+        <AboutPage number={reportTypeNo === 4 ? 6 : 5} />
         <ReportFooter reportType={reportType[reportTypeNo]} />
       </div>
     </ReportDataProvider>

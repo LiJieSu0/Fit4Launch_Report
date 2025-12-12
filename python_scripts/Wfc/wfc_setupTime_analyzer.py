@@ -51,6 +51,32 @@ def analyze_csv_for_mean_setup_time(file_path):
         elif 'Time' not in df.columns:
              print(f"Warning: 'Time' column not found in {file_path} for secondary method.")
 
+    if not setup_times:
+        # Third method: Calculate time difference from '[Tool] Voice - Call Scheduling Start(Term)' to '[Tool] Voice - Answer Request'
+        if 'Time' in df.columns and '[Event] Voice Call Event' in df.columns:
+             # Ensure Time is datetime
+             df['Time'] = pd.to_datetime(df['Time'], errors='coerce')
+             df_filtered = df.dropna(subset=['Time'])
+             
+             start_event_name = '[Tool] Voice - Call Scheduling Start(Term)'
+             end_event_name = '[Tool] Voice - Answer Request'
+
+             # Filter for relevant events
+             relevant_events = df_filtered[df_filtered['[Event] Voice Call Event'].isin([start_event_name, end_event_name])].sort_values(by='Time')
+
+             if not relevant_events.empty:
+                 start_time = None
+                 for _, row in relevant_events.iterrows():
+                     event_type = row['[Event] Voice Call Event']
+                     current_time = row['Time']
+
+                     if event_type == start_event_name:
+                         start_time = current_time
+                     elif event_type == end_event_name and start_time is not None:
+                         time_diff_seconds = (current_time - start_time).total_seconds()
+                         setup_times.append(time_diff_seconds)
+                         start_time = None # Reset for the next pair
+
     if setup_times:
         return sum(setup_times) / len(setup_times)
     return None

@@ -3,7 +3,7 @@ import React from 'react';
 const AboutPage = ({ number }) => {
   return (
     <div className='page-content'>
-      <h2>{number}. About ATMCL</h2>
+      <h2>{number}. About ATMC Labs</h2>
       <p>
         Advanced Test Management and Certification Labs (ATMC Labs)
         is a Seattle-based wireless device testing laboratory offering test products and services to the wireless industry.

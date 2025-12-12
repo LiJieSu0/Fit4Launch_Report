@@ -1,7 +1,7 @@
 import React from 'react';
 import '../StyleScript/CoverPage.css';
 
-const CoverPage = () => {
+const CoverPage = ({reportType}   ) => {
   return (
     <div className="cover-page cover-page-component">
       <div className="header-logo">
@@ -17,12 +17,9 @@ const CoverPage = () => {
       </div>
 
       <div style={{ marginBottom: 80 }}></div>
-      <div className="report-title-section">
-        <p className="report-title cover-title">T-Mobile Field Performance Report</p>
-        <span className="separator">|</span>
-        <p className="report-title cover-title">ATMCL Pilot</p>
-      </div>
-      <hr className="title-underline" />
+        <p className="report-title cover-title">T-Mobile {reportType} Report</p>
+        <hr className="title-underline" />
+        <p className="report-title cover-title">ATMC Labs Pilot</p>
       <div className="tmobile-logo">
         <img src="/CoverPagePic/tmobile-title-logo.png" alt="tmobile-title-logo" style={{ maxWidth: '90%', height: '90%' }} />
       </div>
@@ -48,9 +45,9 @@ const CoverPage = () => {
       <div className="footer-logos">
         <div className="footer-left-content">
           <p className="footer-comment-text">DOCUMENT CONTROL NUMBER NA</p>
-          <p className="footer-comment-text">© 2025 ATMCL</p>
+          <p className="footer-comment-text">© 2025 ATMC Labs</p>
           <img src="/CoverPagePic/other-logo.png" alt="other-logo" style={{ maxWidth: '60%', height: '60%' }} />
-          <p className="footer-text">ATMCL One Stop Test Service</p>
+          <p className="footer-text">ATMC Labs One Stop Test Service</p>
         </div>
         <img src="/CoverPagePic/signalLogo.png" alt="signal-logo" className="signal-logo" />
       </div>

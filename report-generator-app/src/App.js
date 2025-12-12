@@ -33,16 +33,16 @@ import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
 const reportType = {
   1: "Coverage Performance",
   2: "Voice Quality",
-  3: "Data Performance",
-  4: "Call Performance"
+  3: "Call Performance",
+  4: "Data Performance"
 }
 const reportTypeNo = 1;
 function App() {
   return (
     <ReportDataProvider>
       <div className="App">
-        <CoverPage />
-        <ReportHeader />
+        <CoverPage reportType={reportType[reportTypeNo]} />
+        {/* <ReportHeader /> */}
         <DeviceInfoPage />
         <ContentsIndexPage />
 
@@ -62,9 +62,9 @@ function App() {
         <DpDetailsPage />
         <DpKpiPage /> */}
 
-        <LegalPage number={4} />
-        <AboutPage number={5} />
-        <ReportFooter reportType={reportType[reportTypeNo]} />
+        <LegalPage number={reportType==4?4:5} />
+        <AboutPage number={reportType==4?5:6} />
+        {/* <ReportFooter reportType={reportType[reportTypeNo]} /> */}
       </div>
     </ReportDataProvider>
   );

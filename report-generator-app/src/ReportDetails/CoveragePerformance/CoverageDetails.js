@@ -548,8 +548,4 @@ function CoverageDetails() {
     </div>
   );
 }
-const NR41_HPUE_Coverage = [
-  { device: 'Power Class 2', run1: 2.34, run2: 2.10, run3: 2.32, run4: 2.33, run5: 2.31, average: 2.28 },
-  { device: 'Power Class 3', run1: 2.39, run2: 2.27, run3: 1.98, run4: 2.38, run5: 2.33, average: 2.27 },
-];
 export default CoverageDetails;

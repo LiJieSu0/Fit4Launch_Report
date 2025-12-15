@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import '../../../StyleScript/Restricted_Report_Style.css';
+import React, { useState, useEffect, useContext } from 'react';
+import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 
 const processAudioDelayData = (audioDelayData) => {
@@ -71,21 +71,19 @@ const processAudioDelayData = (audioDelayData) => {
 };
 
 const AutoVoNRDisabledAudioDelay = () => {
+  const { reportData } = useContext(ReportContext);
   const [vqTableData5, setVqTableData5] = useState([]);
 
   useEffect(() => {
-    fetch('/AnalyzeResults/Seattle/voice_quality_results.json')
-      .then(response => response.json())
-      .then(data => {
-        const processedData = processAudioDelayData(data["Voice Quality"]["5G Auto VoNR Disabled Audio Delay"]);
-        setVqTableData5(processedData);
-      })
-      .catch(error => console.error("Error fetching voice quality data:", error));
-  }, []);
+    if (reportData && reportData.voiceQuality && reportData.voiceQuality["Voice Quality"]) {
+      const processedData = processAudioDelayData(reportData.voiceQuality["Voice Quality"]["5G Auto VoNR Disabled Audio Delay"]);
+      setVqTableData5(processedData);
+    }
+  }, [reportData]);
 
   return (
     <div>
-    <h2>2.5 5G Auto VoNR Disabled Audio Delay</h2>
+      <h2>2.5 5G Auto VoNR Disabled Audio Delay</h2>
       <div id='2.5'></div>
       <table className="general-table-style vq-details-table">
         <thead>

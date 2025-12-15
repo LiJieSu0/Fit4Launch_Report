@@ -54,8 +54,8 @@ function CoverageDetails() {
 
     const dutAvg = rows[0].average;
     const refAvg = rows[1].average;
-    // Pass if DUT average is greater than or equal to REF average
-    const status = dutAvg >= refAvg ? "Pass" : "Fail";
+    // Pass if DUT average is greater than or equal to 0.95 * REF average (CoverageDistance KPI)
+    const status = dutAvg >= 0.95 * refAvg ? "Pass" : "Fail";
 
     return [...rows, status];
   };

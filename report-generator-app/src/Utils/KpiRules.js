@@ -92,6 +92,13 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => { // only
         return 'var(--performance-fail)';
       }
       break;
+    case 'CoverageDistance':
+      if (dutValue >= 0.95 * refValue) {
+        return 'var(--performance-pass)';
+      } else {
+        return 'var(--performance-fail)';
+      }
+      break;
     default:
       if (refValue === null) { // Apply refValue check for other KPI types
         return;

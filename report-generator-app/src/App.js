@@ -90,8 +90,6 @@ function App() {
             <WfcDetailsPage />
           </>
         )}
-
-
         <LegalPage number={reportTypeNo === 4 ? 5 : 4} />
         <AboutPage number={reportTypeNo === 4 ? 6 : 5} />
         <ReportFooter reportType={reportType[reportTypeNo]} />

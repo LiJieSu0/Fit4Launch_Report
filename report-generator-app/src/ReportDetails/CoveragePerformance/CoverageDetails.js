@@ -1,70 +1,79 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CoverageTestTable from './CoverageTestTable';
 import '../../StyleScript/Restricted_Report_Style.css';
+import { ReportContext } from '../../Contexts/ReportContext';
 
 function CoverageDetails() {
-  const NR25_DL = [
-    { device: 'DUT', run1: 1.77, run2: 1.98, run3: 2.16, run4: 2.07, run5: 2.02, average: 2.00 },
-    { device: 'REF', run1: 2.24, run2: 2.23, run3: 2.23, run4: 2.25, run5: 2.12, average: 2.21 },
-    "Fail"
-  ]
-  const NR25_UL = [
-    { device: 'DUT', run1: 1.77, run2: 1.94, run3: 2.13, run4: 2.02, run5: 2.00, average: 1.97 },
-    { device: 'REF', run1: 1.72, run2: 1.91, run3: 1.76, run4: 1.86, run5: 1.74, average: 1.80 },
-    "Pass"
-  ]
-  const NR25_MOS = [
-    { device: 'DUT', run1: 2.00, run2: 2.30, run3: 2.37, run4: 2.44, run5: 2.19, average: 2.26 },
-    { device: 'REF', run1: 2.43, run2: 2.41, run3: 2.42, run4: 2.46, run5: 2.25, average: 2.39 },
-    "Fail"
-  ]
-  const NR25_Audio = [
-    { device: 'DUT', run1: 2.15, run2: 2.40, run3: 2.42, run4: 2.46, run5: 2.32, average: 2.35 },
-    { device: 'REF', run1: 2.43, run2: 2.41, run3: 2.42, run4: 2.46, run5: 2.43, average: 2.43 },
-    "Pass"
-  ]
+  const { reportData } = useContext(ReportContext);
 
-  const NR41_DL = [
-    { device: 'DUT', run1: 2.43, run2: 2.48, run3: 2.48, run4: 2.48, run5: 2.27, average: 2.43 },
-    { device: 'REF', run1: 2.26, run2: 2.38, run3: 2.38, run4: 2.39, run5: 2.25, average: 2.33 },
-    "Pass"
-  ]
-  const NR41_UL = [
-    { device: 'DUT', run1: 2.34, run2: 2.41, run3: 2.48, run4: 2.47, run5: 2.18, average: 2.38 },
-    { device: 'REF', run1: 1.73, run2: 2.29, run3: 2.25, run4: 2.07, run5: 2.20, average: 2.11 },
-    "Pass"
-  ]
-  const NR41_MOS = [
-    { device: 'DUT', run1: 2.80, run2: 2.76, run3: 2.42, run4: 2.80, run5: 2.48, average: 2.65 },
-    { device: 'REF', run1: 2.43, run2: 2.41, run3: 2.42, run4: 2.46, run5: 2.48, average: 2.44 },
-    "Pass"
-  ]
-  const NR41_Audio = [
-    { device: 'DUT', run1: 2.86, run2: 2.82, run3: 2.42, run4: 2.84, run5: 2.48, average: 2.68 },
-    { device: 'REF', run1: 2.43, run2: 2.41, run3: 2.42, run4: 2.46, run5: 2.48, average: 2.44 },
-    "Pass"
-  ]
+  const processVoNRCoverageData = (band, metric) => {
+    const defaultRows = [
+      { device: 'DUT', run1: 0, run2: 0, run3: 0, run4: 0, run5: 0, average: 0 },
+      { device: 'REF', run1: 0, run2: 0, run3: 0, run4: 0, run5: 0, average: 0 },
+      "N/A"
+    ];
 
-  const NR71_DL = [
-    { device: 'DUT', run1: 2.10, run2: 1.96, run3: 1.81, run4: 1.83, run5: 1.86, average: 1.91 },
-    { device: 'REF', run1: 1.84, run2: 1.98, run3: 1.83, run4: 1.69, run5: 1.72, average: 1.81 },
-    "Pass"
-  ]
-  const NR71_UL = [
-    { device: 'DUT', run1: 2.00, run2: 1.83, run3: 1.78, run4: 1.76, run5: 1.72, average: 1.82 },
-    { device: 'REF', run1: 1.72, run2: 1.84, run3: 1.64, run4: 1.65, run5: 1.64, average: 1.70 },
-    "Pass"
-  ]
-  const NR71_MOS = [
-    { device: 'DUT', run1: 2.35, run2: 2.30, run3: 2.37, run4: 2.44, run5: 2.37, average: 2.37 },
-    { device: 'REF', run1: 2.35, run2: 2.30, run3: 2.37, run4: 2.44, run5: 2.25, average: 2.34 },
-    "Pass"
-  ]
-  const NR71_Audio = [
-    { device: 'DUT', run1: 2.43, run2: 2.40, run3: 2.42, run4: 2.46, run5: 2.40, average: 2.42 },
-    { device: 'REF', run1: 2.43, run2: 2.41, run3: 2.42, run4: 2.46, run5: 2.48, average: 2.44 },
-    "Pass"
-  ]
+    // Check deep nested structure: reportData -> coveragePerformance (file) -> "Coverage Performance" (key) -> "5G VoNR Coverage Test"
+    const rootData = reportData && reportData.coveragePerformance && reportData.coveragePerformance['Coverage Performance'];
+
+    if (!rootData || !rootData['5G VoNR Coverage Test']) {
+      return defaultRows;
+    }
+
+    const bandData = rootData['5G VoNR Coverage Test'][band];
+    if (!bandData) {
+      return defaultRows;
+    }
+
+    const rows = ['DUT', 'REF'].map(device => {
+      const deviceRuns = bandData[device] || {};
+      const runData = { device };
+      let sum = 0;
+      let count = 0;
+
+      for (let i = 1; i <= 5; i++) {
+        const runKey = `Run${i}`;
+        const runInfo = deviceRuns[runKey];
+        let val = 0;
+        // Access nested metric and then distance_km
+        if (runInfo && runInfo[metric] && typeof runInfo[metric].distance_km === 'number') {
+          val = runInfo[metric].distance_km;
+        }
+
+        runData[`run${i}`] = val > 0 ? parseFloat(val.toFixed(2)) : 0;
+
+        if (val > 0) {
+          sum += val;
+          count++;
+        }
+      }
+
+      runData.average = count > 0 ? parseFloat((sum / count).toFixed(2)) : 0;
+      return runData;
+    });
+
+    const dutAvg = rows[0].average;
+    const refAvg = rows[1].average;
+    // Pass if DUT average is greater than or equal to REF average
+    const status = dutAvg >= refAvg ? "Pass" : "Fail";
+
+    return [...rows, status];
+  };
+
+  const NR25_DL = processVoNRCoverageData('n25', 'first_dl_tp_gt_1');
+  const NR25_UL = processVoNRCoverageData('n25', 'first_ul_tp_gt_1');
+  const NR25_MOS = processVoNRCoverageData('n25', 'mos_before_drop');
+  const NR25_Audio = processVoNRCoverageData('n25', 'call_drop');
+
+  const NR41_DL = processVoNRCoverageData('n41', 'first_dl_tp_gt_1');
+  const NR41_UL = processVoNRCoverageData('n41', 'first_ul_tp_gt_1');
+  const NR41_MOS = processVoNRCoverageData('n41', 'mos_before_drop');
+  const NR41_Audio = processVoNRCoverageData('n41', 'call_drop');
+
+  const NR71_DL = processVoNRCoverageData('n71', 'first_dl_tp_gt_1');
+  const NR71_UL = processVoNRCoverageData('n71', 'first_ul_tp_gt_1');
+  const NR71_MOS = processVoNRCoverageData('n71', 'mos_before_drop');
+  const NR71_Audio = processVoNRCoverageData('n71', 'call_drop');
 
   const n25SecondaryKpiData = [
     {

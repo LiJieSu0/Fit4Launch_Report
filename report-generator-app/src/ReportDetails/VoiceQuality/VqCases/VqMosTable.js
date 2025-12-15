@@ -1,3 +1,5 @@
+// NOTE: This component intentionally uses dynamic imports to load JSON data directly. 
+// It is an exception to the standard DataLoader/ReportContext pattern.
 import React, { useState, useEffect } from 'react';
 
 const VqMosTable = ({ dataSource }) => {

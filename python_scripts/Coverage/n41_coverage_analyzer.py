@@ -38,6 +38,7 @@ def analyze_n41_coverage(folder_path, device_type_filter=None):
             ul_tp_column = '[Call Test] [Throughput] Application UL TP'
             serving_network_column = '[General] Serving Network'
             rsrp_column = '[NR5G] [RF] RSRP'
+            tx_power_column = '[NR5G] [Power] Tx power (Total Actual)'
             latitude_column = '[General] [GPS] Latitude'
             longitude_column = '[General] [GPS] Longitude'
 
@@ -62,13 +63,15 @@ def analyze_n41_coverage(folder_path, device_type_filter=None):
                         latitude = df.loc[ul_tp_idx, latitude_column]
                         longitude = df.loc[ul_tp_idx, longitude_column]
                         rsrp_value = df.loc[ul_tp_idx, rsrp_column]
+                        tx_power_value = df.loc[ul_tp_idx, tx_power_column] if tx_power_column in df.columns else None
                         
                         results.append({
                             'Device type': device_type,
                             'latitude': latitude,
                             'longitude': longitude,
                             'ul_tp_value': ul_tp_value,
-                            'rsrp_value': rsrp_value
+                            'rsrp_value': rsrp_value,
+                            'tx_power_value': tx_power_value
                         })
                         found_data_point = True
                         break # Found UL TP for this 'No service', move to next 'No service'

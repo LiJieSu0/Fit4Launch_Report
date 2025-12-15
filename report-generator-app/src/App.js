@@ -30,6 +30,9 @@ import CoverageKpiPage from './ReportDetails/CoveragePerformance/CoverageKpiPage
 import DpKpiPage from './ReportDetails/DataPerformance/DpKpiPage';
 import DpSummaryPage from './ReportDetails/DataPerformance/DpSummaryPage';
 import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
+
+import WfcSummaryPage from './ReportDetails/WfcPerformance/WfcSummaryPage';
+import WfcDetailsPage from './ReportDetails/WfcPerformance/WfcDetailsPage';
 const reportType = {
   1: "Coverage Performance",
   2: "Voice Quality",
@@ -37,7 +40,11 @@ const reportType = {
   4: "Data Performance",
   5: "WFC"
 }
-const reportTypeNo = 3;
+// Report Type Setup-------------------------------------------------------------------------
+const reportTypeNo = 2;
+// Report Type Setup-------------------------------------------------------------------------
+
+
 function App() {
   return (
     <ReportDataProvider>
@@ -80,11 +87,13 @@ function App() {
 
         {reportTypeNo === 5 && (
           <>
+            <WfcSummaryPage />
+            <WfcDetailsPage />
           </>
         )}
 
 
-        <LegalPage number={reportTypeNo === 4 ? 5 : 4 } />
+        <LegalPage number={reportTypeNo === 4 ? 5 : 4} />
         <AboutPage number={reportTypeNo === 4 ? 6 : 5} />
         <ReportFooter reportType={reportType[reportTypeNo]} />
       </div>

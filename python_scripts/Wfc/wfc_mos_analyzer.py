@@ -27,7 +27,8 @@ def analyze_wfc_mos(directory_path):
     print(f"{'File Name':<60} | {'Average MOS':<15}")
     print("-" * 80)
 
-    target_column = "[Call Test] [Voice Quality] [Per Rx Clip] MOS Value"
+    primary_column = "[Call Test] [Voice Quality] [Per Rx Clip] MOS Value"
+    secondary_column = "[Call Test] [Voice Quality] [Sampled Values] MOS (POLQA)"
 
     for file_path in csv_files:
         file_name = os.path.basename(file_path)
@@ -36,8 +37,16 @@ def analyze_wfc_mos(directory_path):
             # Using low_memory=False to avoid mixed type warnings if file is large
             df = pd.read_csv(file_path, low_memory=False)
             
-            if target_column in df.columns:
+            target_column = None
+            if primary_column in df.columns:
+                target_column = primary_column
+            elif secondary_column in df.columns:
+                target_column = secondary_column
+
+            if target_column:
                 # Calculate mean, automatically ignores NaNs
+                # Convert to numeric, coercing errors to NaN to handle non-numeric data
+                df[target_column] = pd.to_numeric(df[target_column], errors='coerce')
                 mean_val = df[target_column].mean()
                 
                 if pd.notna(mean_val):

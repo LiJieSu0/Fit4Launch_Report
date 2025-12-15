@@ -4,7 +4,10 @@ import os
 import json
 import math
 
-BASE_STATION_COORDS = {"latitude": 47.128234, "longitude": -122.356792}
+BASE_STATION_COORDS = {"latitude": 47.128234
+,
+                       "longitude": -122.356792
+                       }
 
 def haversine_distance(lat1, lon1, lat2, lon2):
     R = 6371  # Radius of Earth in kilometers

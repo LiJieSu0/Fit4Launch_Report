@@ -8,7 +8,6 @@ import LegalPage from './CommonPage/LegalPage';
 
 import { useState } from 'react';
 
-
 import { ReportDataProvider } from './Contexts/ReportDataProvider';
 
 
@@ -41,7 +40,7 @@ const reportType = {
   5: "WFC"
 }
 // Report Type Setup-------------------------------------------------------------------------
-const reportTypeNo = 2;
+const reportTypeNo = 1;
 // Report Type Setup-------------------------------------------------------------------------
 
 

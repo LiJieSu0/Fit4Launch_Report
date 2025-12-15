@@ -60,6 +60,64 @@ function CoverageDetails() {
     return [...rows, status];
   };
 
+  const processN41HPUECoverageData = () => {
+    const defaultData = {
+      PC2: { distances: [0, 0, 0, 0, 0, 0], txPowers: [0, 0, 0, 0, 0, 0] },
+      PC3: { distances: [0, 0, 0, 0, 0, 0], txPowers: [0, 0, 0, 0, 0, 0] }
+    };
+
+    const rootData = reportData && reportData.coveragePerformance && reportData.coveragePerformance['Coverage Performance'];
+
+    if (!rootData || !rootData['5G n41 HPUE Coverage Test']) {
+      return defaultData;
+    }
+
+    const n41Data = rootData['5G n41 HPUE Coverage Test'];
+    const pc2Distances = [];
+    const pc2TxPowers = [];
+    const pc3Distances = [];
+    const pc3TxPowers = [];
+
+    for (let i = 1; i <= 5; i++) {
+      const runKey = `Run${i}`;
+      const runData = n41Data[runKey];
+
+      if (runData && Array.isArray(runData)) {
+        const pc2Entry = runData.find(item => item['Device type'] === 'PC2');
+        const pc3Entry = runData.find(item => item['Device type'] === 'PC3');
+
+        pc2Distances.push(pc2Entry ? parseFloat(pc2Entry.distance_km.toFixed(2)) : 0);
+        pc2TxPowers.push(pc2Entry ? parseFloat(pc2Entry.tx_power_value.toFixed(1)) : 0);
+        pc3Distances.push(pc3Entry ? parseFloat(pc3Entry.distance_km.toFixed(2)) : 0);
+        pc3TxPowers.push(pc3Entry ? parseFloat(pc3Entry.tx_power_value.toFixed(1)) : 0);
+      } else {
+        pc2Distances.push(0);
+        pc2TxPowers.push(0);
+        pc3Distances.push(0);
+        pc3TxPowers.push(0);
+      }
+    }
+
+    // Calculate averages
+    const pc2DistAvg = parseFloat((pc2Distances.reduce((a, b) => a + b, 0) / 5).toFixed(2));
+    const pc2TxAvg = parseFloat((pc2TxPowers.reduce((a, b) => a + b, 0) / 5).toFixed(1));
+    const pc3DistAvg = parseFloat((pc3Distances.reduce((a, b) => a + b, 0) / 5).toFixed(2));
+    const pc3TxAvg = parseFloat((pc3TxPowers.reduce((a, b) => a + b, 0) / 5).toFixed(1));
+
+    return {
+      PC2: {
+        distances: [...pc2Distances, pc2DistAvg],
+        txPowers: [...pc2TxPowers, pc2TxAvg]
+      },
+      PC3: {
+        distances: [...pc3Distances, pc3DistAvg],
+        txPowers: [...pc3TxPowers, pc3TxAvg]
+      }
+    };
+  };
+
+  const n41HPUEData = processN41HPUECoverageData();
+
   const NR25_DL = processVoNRCoverageData('n25', 'first_dl_tp_gt_1');
   const NR25_UL = processVoNRCoverageData('n25', 'first_ul_tp_gt_1');
   const NR25_MOS = processVoNRCoverageData('n25', 'mos_before_drop');
@@ -423,40 +481,40 @@ function CoverageDetails() {
             <tr >
               <td rowSpan={2}>Power Class 2</td>
               <td>UL &lt; 1Mbps Distance (km)</td>
-              <td>2.34</td>
-              <td>2.10</td>
-              <td>2.32</td>
-              <td>2.33</td>
-              <td>2.31</td>
-              <td>2.28</td>
+              <td>{n41HPUEData.PC2.distances[0]}</td>
+              <td>{n41HPUEData.PC2.distances[1]}</td>
+              <td>{n41HPUEData.PC2.distances[2]}</td>
+              <td>{n41HPUEData.PC2.distances[3]}</td>
+              <td>{n41HPUEData.PC2.distances[4]}</td>
+              <td>{n41HPUEData.PC2.distances[5]}</td>
             </tr>
             <tr>
               <td>Tx Power (dBm)</td>
-              <td>21.2</td>
-              <td>21.5</td>
-              <td>22.4</td>
-              <td>21.3</td>
-              <td>21.6</td>
-              <td>21.6</td>
+              <td>{n41HPUEData.PC2.txPowers[0]}</td>
+              <td>{n41HPUEData.PC2.txPowers[1]}</td>
+              <td>{n41HPUEData.PC2.txPowers[2]}</td>
+              <td>{n41HPUEData.PC2.txPowers[3]}</td>
+              <td>{n41HPUEData.PC2.txPowers[4]}</td>
+              <td>{n41HPUEData.PC2.txPowers[5]}</td>
             </tr>
             <tr >
               <td rowSpan={2}>Power Class 3</td>
               <td>UL &lt; 1Mbps Distance (km)</td>
-              <td>2.39</td>
-              <td>2.27</td>
-              <td>1.98</td>
-              <td>2.38</td>
-              <td>2.33</td>
-              <td>2.27</td>
+              <td>{n41HPUEData.PC3.distances[0]}</td>
+              <td>{n41HPUEData.PC3.distances[1]}</td>
+              <td>{n41HPUEData.PC3.distances[2]}</td>
+              <td>{n41HPUEData.PC3.distances[3]}</td>
+              <td>{n41HPUEData.PC3.distances[4]}</td>
+              <td>{n41HPUEData.PC3.distances[5]}</td>
             </tr>
             <tr>
               <td>Tx Power (dBm)</td>
-              <td>25.2</td>
-              <td>25.4</td>
-              <td>23.8</td>
-              <td>25.1</td>
-              <td>24.2</td>
-              <td>24.7</td>
+              <td>{n41HPUEData.PC3.txPowers[0]}</td>
+              <td>{n41HPUEData.PC3.txPowers[1]}</td>
+              <td>{n41HPUEData.PC3.txPowers[2]}</td>
+              <td>{n41HPUEData.PC3.txPowers[3]}</td>
+              <td>{n41HPUEData.PC3.txPowers[4]}</td>
+              <td>{n41HPUEData.PC3.txPowers[5]}</td>
             </tr>
           </tbody>
         </table>

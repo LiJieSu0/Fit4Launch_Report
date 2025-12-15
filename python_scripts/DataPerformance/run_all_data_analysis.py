@@ -29,6 +29,7 @@ from Coverage.coverage_performance_analyzer import analyze_csv as analyze_vonr_c
 from DataPerformance.google_throughput_analyzer import analyze_throughput as google_analyze_throughput # Import the google throughput analyzer
 from DataPerformance.mhs_drive_analyzer import analyze_mhs_drive_data # Import the new MHS Drive analyzer
 from VoiceQuality.VqLineChartAnalyzer import calculate_vq_statistics # Import the VqLineChartAnalyzer
+from Coverage.coverage_coordinate_analyzer import haversine_distance, BASE_STATION_COORDS # Import haversine_distance and BASE_STATION_COORDS
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -450,6 +451,15 @@ if __name__ == "__main__":
                         n41_results = analyze_n41_coverage(run_folder_path)
                         
                         if n41_results:
+                            for res in n41_results:
+                                if res.get('latitude') is not None and res.get('longitude') is not None:
+                                    res['distance_km'] = haversine_distance(
+                                        res['latitude'], res['longitude'],
+                                        BASE_STATION_COORDS["latitude"], BASE_STATION_COORDS["longitude"]
+                                    )
+                                else:
+                                    res['distance_km'] = None
+
                             n41_coverage_results_by_run[run_folder_name] = n41_results
                             print(f"Found {len(n41_results)} n41 coverage points for {run_folder_name}.")
                         else:
@@ -486,6 +496,25 @@ if __name__ == "__main__":
                                 analysis_results = analyze_vonr_coverage_performance(file_path)
                                 
                                 if analysis_results:
+                                    # Enrich with distance
+                                    enriched_results = {}
+                                    for key, coords in analysis_results.items():
+                                        if coords and coords[0] is not None and coords[1] is not None:
+                                            dist = haversine_distance(coords[0], coords[1], BASE_STATION_COORDS["latitude"], BASE_STATION_COORDS["longitude"])
+                                            enriched_results[key] = {
+                                                "latitude": coords[0],
+                                                "longitude": coords[1],
+                                                "distance_km": dist
+                                            }
+                                        else:
+                                            enriched_results[key] = {
+                                                "latitude": None,
+                                                "longitude": None,
+                                                "distance_km": None
+                                            }
+                                    
+                                    analysis_results = enriched_results
+
                                     # Determine device type (DUT or REF) from filename
                                     device_type_match = re.match(r"(DUT|REF)\d+", file_name, re.IGNORECASE)
                                     device_type = device_type_match.group(1).upper() if device_type_match else "Unknown"

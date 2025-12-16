@@ -6,7 +6,10 @@ import { ReportContext } from '../../Contexts/ReportContext';
 
 function CoverageDetails() {
   const { reportData } = useContext(ReportContext);
-
+  const BASE_STATION_COORDS = {"latitude": 47.128234
+                        ,
+                       "longitude": -122.356792
+                       }
   const processVoNRCoverageData = (band, metric) => {
     const defaultRows = [
       { device: 'DUT', run1: 0, run2: 0, run3: 0, run4: 0, run5: 0, average: 0 },
@@ -272,6 +275,7 @@ function CoverageDetails() {
         {/* ------NR25 */}
         <h3>5G VoNR Coverage Test NR25- DL Throughput &lt; 1Mbps Distance (km)</h3>
         {/* NR25 DL table */}
+        {/* map here */}
         <CoverageTestTable tableData={NR25_DL.slice(0, -1)} status={NR25_DL[NR25_Audio.length - 1]} />
         {/* map picture */}
         <div style={{ marginBottom: 10, textAlign: 'center' }}></div>

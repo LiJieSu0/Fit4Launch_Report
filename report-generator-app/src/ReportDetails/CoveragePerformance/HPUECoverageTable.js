@@ -63,4 +63,4 @@ const HPUECoverageTable = ({ n41Data }) => {
     );
 };
 
-export default N41HPUECoverageTable;
+export default HPUECoverageTable;

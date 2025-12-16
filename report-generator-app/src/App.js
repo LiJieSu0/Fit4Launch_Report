@@ -48,10 +48,10 @@ function App() {
   return (
     <ReportDataProvider>
       <div className="App">
-        <CoverPage reportType={reportType[reportTypeNo]} />
+        {/* <CoverPage reportType={reportType[reportTypeNo]} />
         <ReportHeader />
         <DeviceInfoPage />
-        <ContentsIndexPage />
+        <ContentsIndexPage /> */}
         {reportTypeNo === 1 && (
           <>
             <CoverageSummaryPage />

@@ -27,13 +27,19 @@ const CoverageMap = ({ baseStationCoords }) => {
 
   return (
     <MapContainer 
-      center={position} 
-      zoom={13} 
+      center={position}
+      zoom={13}
+      zoomControl={false}
+      dragging={false}
+      scrollWheelZoom={false}
+      doubleClickZoom={false}
+      boxZoom={false}
+      attributionControl={false}
       style={{ height: '400px', width: '80%' }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        attribution=""
       />
       <Marker position={baseStationCoords}> 
       </Marker>

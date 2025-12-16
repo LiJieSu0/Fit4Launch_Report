@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import CoverageTestTable from './CoverageTestTable';
 import HPUECoverageTable from './HPUECoverageTable';
 import '../../StyleScript/Restricted_Report_Style.css';
+import CoverageMap from './CoverageMap';
 import { ReportContext } from '../../Contexts/ReportContext';
 
 function CoverageDetails() {
@@ -275,7 +276,7 @@ function CoverageDetails() {
         {/* ------NR25 */}
         <h3>5G VoNR Coverage Test NR25- DL Throughput &lt; 1Mbps Distance (km)</h3>
         {/* NR25 DL table */}
-        {/* map here */}
+        <CoverageMap baseStationCoords={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]} />
         <CoverageTestTable tableData={NR25_DL.slice(0, -1)} status={NR25_DL[NR25_Audio.length - 1]} />
         {/* map picture */}
         <div style={{ marginBottom: 10, textAlign: 'center' }}></div>

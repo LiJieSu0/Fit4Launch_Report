@@ -3,6 +3,7 @@ import CoverageTestTable from './CoverageTestTable';
 import HPUECoverageTable from './HPUECoverageTable';
 import '../../StyleScript/Restricted_Report_Style.css';
 import CoverageMap from './CoverageMap';
+import CoverageLineChart from './CoverageLineChart';
 import { ReportContext } from '../../Contexts/ReportContext';
 
 function CoverageDetails() {
@@ -519,28 +520,21 @@ function CoverageDetails() {
       <HPUECoverageTable n41Data={n41HPUEData} />
       <div className='page-content'>
         <h2>2.2.1 5G n41 HPUE Coverage Test-RSRP Analysis</h2>
-        <div style={{ textAlign: 'center' }}>
-          <img src="/CoverageRSRPChart/RSRP_R1.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
-          <img src="/CoverageRSRPChart/RSRP_R2.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
-          <img src="/CoverageRSRPChart/RSRP_R3.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
-        </div>
-      </div>
-      <div className='page-content'>
-        <img src="/CoverageRSRPChart/RSRP_R4.png" alt="R1" style={{ maxWidth: '100%', height: '50%', marginTop: 40, display: 'block', margin: '0 auto' }} />
-        <img src="/CoverageRSRPChart/RSRP_R5.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
+        <CoverageLineChart
+          dataFolderPath="/AnalyzeResults/Seattle/cv_rsrp_data"
+          fileNamePart="_PC2_PC3_RSRP_Analysis.csv"
+          yAxisLabel="RSRP Value"
+          chartTitleContext="RSRP Analysis"
+        />
       </div>
       <div className='page-content'>
         <h2>2.2.2 5G n41 HPUE Coverage Test-Tx Power Analysis</h2>
-        <div style={{ textAlign: 'center' }}>
-          <img src="/CoverageTxChart/Tx_R1.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
-          <img src="/CoverageTxChart/Tx_R2.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
-          <img src="/CoverageTxChart/Tx_R3.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
-
-        </div>
-      </div>
-      <div className='page-content'>
-        <img src="/CoverageTxChart/Tx_R4.png" alt="R1" style={{ maxWidth: '100%', height: '50%', marginTop: 40, display: 'block', margin: '0 auto' }} />
-        <img src="/CoverageTxChart/Tx_R5.png" alt="R1" style={{ maxWidth: '100%', height: '50%', display: 'block', margin: '0 auto' }} />
+        <CoverageLineChart
+          dataFolderPath="/AnalyzeResults/Seattle/cv_tx_power_data"
+          fileNamePart="_PC2_PC3_TxPower_Analysis.csv"
+          yAxisLabel="Tx Power Value (dBm)"
+          chartTitleContext="Tx Power Analysis"
+        />
       </div>
     </div>
   );

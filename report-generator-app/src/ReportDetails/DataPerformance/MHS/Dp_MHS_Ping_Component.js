@@ -1,11 +1,21 @@
 import React from "react";
 import DpMHSPingTable from "./Table/DpMHSPingTable";
 import DpPingOverallTable from "../Statoinary/Table/DpPingOverallTable"; // Import DpPingOverallTable
-import PingData from "../../../DataFiles/SA/DpMHSResults/Ping.json";
+// import PingData from "../../../DataFiles/SA/DpMHSResults/Ping.json"; // Removed direct import
+import { ReportContext } from '../../../Contexts/ReportContext';
+import { useContext } from 'react';
 import DpHistogramComponent from "../DpHistogramComponent";
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from "../../../Constants/ChartColors";
 
 function Dp_MHS_Ping_Component() {
+  const { reportData } = useContext(ReportContext);
+
+  if (!reportData || !reportData.dataPerformanceDetails) {
+    return <div className="page-content">Loading...</div>;
+  }
+
+  const PingData = reportData.dataPerformanceDetails.SA.MHS.Ping;
+
   const goodPingData = PingData.Good["25x64 bytes PING (ICMP)"];
   const moderatePingData = PingData.Moderate["25x64 bytes PING (ICMP)"];
 

@@ -4,10 +4,20 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../../Constants/ChartCol
 import DpNSAUDPDLTable from './Table/DpNSAUDPDLTable';
 import DpNSAUDPULTable from './Table/DpNSAUDPULTable';
 import DpUdpOverallTable from '../../DpUdpOverallTable';
-import UDPData from '../../../../DataFiles/NSA/DpStationaryResults/UDP.json';
+// import UDPData from '../../../../DataFiles/NSA/DpStationaryResults/UDP.json'; // Removed direct import
+import { ReportContext } from '../../../../Contexts/ReportContext';
+import { useContext } from 'react';
 import '../../../../StyleScript/Restricted_Report_Style.css';
 
 function DpNSAUDPComponent() {
+  const { reportData } = useContext(ReportContext);
+
+  if (!reportData || !reportData.dataPerformanceDetails) {
+    return <div className="page-content">Loading...</div>;
+  }
+
+  const UDPData = reportData.dataPerformanceDetails.NSA.Stationary.UDP;
+
 
   const udp_Stationary_DL = [
     // Mean Throughput - 200 Mbps

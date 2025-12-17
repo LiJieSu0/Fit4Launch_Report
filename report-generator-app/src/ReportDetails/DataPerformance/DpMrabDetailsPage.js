@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import MrabData from '../../DataFiles/SA/DpMrabResults/Mrab.json';
+import React, { useState, useEffect, useContext } from 'react';
+// import MrabData from '../../DataFiles/SA/DpMrabResults/Mrab.json'; // Removed direct import
+import { ReportContext } from '../../Contexts/ReportContext';
 import '../../StyleScript/Restricted_Report_Style.css';
 import DpHistogramComponent from './DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../Constants/ChartColors';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const DpMrabDetailsPage = () => {
+  const { reportData } = useContext(ReportContext);
   const [mrabData, setMrabData] = useState(null);
 
   useEffect(() => {
-    setMrabData(MrabData);
-  }, []);
+    if (reportData && reportData.dataPerformanceDetails && reportData.dataPerformanceDetails.SA && reportData.dataPerformanceDetails.SA.Mrab) {
+      setMrabData(reportData.dataPerformanceDetails.SA.Mrab);
+    }
+  }, [reportData]);
 
   if (!mrabData) {
     return <div>Loading MRAB data...</div>;

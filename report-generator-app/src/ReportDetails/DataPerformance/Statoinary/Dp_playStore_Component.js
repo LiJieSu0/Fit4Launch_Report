@@ -3,9 +3,19 @@ import DpPlayStoreTable from './Table/DpPlayStoreTable';
 import DpPlayStoreOverallTable from './Table/DpPlayStoreOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
-import playStoreData from '../../../DataFiles/SA/DpPlayStoreResults/Play Store.json';
+// import playStoreData from '../../../DataFiles/SA/DpPlayStoreResults/Play Store.json'; // Removed direct import
+import { ReportContext } from '../../../Contexts/ReportContext';
+import { useContext } from 'react';
 
 const Dp_playStore_Component = () => {
+  const { reportData } = useContext(ReportContext);
+
+  if (!reportData || !reportData.dataPerformanceDetails) {
+    return <div className="page-content">Loading...</div>;
+  }
+
+  const playStoreData = reportData.dataPerformanceDetails.SA.Stationary.PlayStore;
+
   const processData = () => {
     const processed = [];
     const throughputCategories = ['30M', '60M', '100M'];

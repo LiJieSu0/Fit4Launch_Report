@@ -3,10 +3,20 @@ import DpMHSHttpSSTable from "./Table/DpMHSHttpSSTable";
 import DpHistogramComponent from "../DpHistogramComponent";
 import DpRangeChart from "../DpRangeChart";
 import DpThroughputOverallTable from "../DpThroughputOverallTable";
-import SingleStreamHTTPData from "../../../DataFiles/SA/DpMHSResults/Single Stream HTTP.json";
+// import SingleStreamHTTPData from "../../../DataFiles/SA/DpMHSResults/Single Stream HTTP.json"; // Removed direct import
+import { ReportContext } from '../../../Contexts/ReportContext';
+import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 
 function Dp_MHS_httpSS_Component() {
+  const { reportData } = useContext(ReportContext);
+
+  if (!reportData || !reportData.dataPerformanceDetails) {
+    return <div className="page-content">Loading...</div>;
+  }
+
+  const SingleStreamHTTPData = reportData.dataPerformanceDetails.SA.MHS.HttpSingle;
+
   const goodData = SingleStreamHTTPData.Good["Single Stream HTTP Download for 60 seconds"];
   const moderateData = SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"];
 

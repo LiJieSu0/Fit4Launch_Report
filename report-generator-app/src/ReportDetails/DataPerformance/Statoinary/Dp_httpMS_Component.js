@@ -5,9 +5,19 @@ import DpThroughputOverallTable from '../DpThroughputOverallTable';
 import DpRangeChart from '../DpRangeChart';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
-import httpMS_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/Multi Stream HTTP.json';
+// import httpMS_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/Multi Stream HTTP.json'; // Removed direct import
+import { ReportContext } from '../../../Contexts/ReportContext';
+import { useContext } from 'react';
 
 function Dp_httpMS_Component() {
+    const { reportData } = useContext(ReportContext);
+
+    if (!reportData || !reportData.dataPerformanceDetails) {
+        return <div className="page-content">Loading...</div>;
+    }
+
+    const httpMS_Stationary_Data = reportData.dataPerformanceDetails.SA.Stationary.HttpMulti;
+
     const httpMS_Stationary_DL = {
         Good: {
             DUT: httpMS_Stationary_Data.Good["Multi Stream HTTP Download for 30 seconds"]["dut_5G auto_MS HTTP DL_Good"].Throughput,

@@ -5,10 +5,21 @@ import DpDriveTestOverallTable from './DpDriveTestOverallTable';
 import DpMHSTestDriveOverallTable from '../MHS/Table/DpMHSTestDriveOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
-import TestDriveData from '../../../DataFiles/SA/DpMobilityResults/Test Drive.json';
-import TestDriveMHSData from '../../../DataFiles/SA/DpMobilityMHSResults/MHS Test Drive.json';
+// import TestDriveData from '../../../DataFiles/SA/DpMobilityResults/Test Drive.json'; // Removed direct import
+// import TestDriveMHSData from '../../../DataFiles/SA/DpMobilityMHSResults/MHS Test Drive.json'; // Removed direct import
+import { ReportContext } from '../../../Contexts/ReportContext';
+import { useContext } from 'react';
 
 const DpDriveTestDetailPage = () => {
+  const { reportData } = useContext(ReportContext);
+
+  if (!reportData || !reportData.dataPerformanceDetails) {
+    return <div className="page-content">Loading...</div>;
+  }
+
+  const TestDriveData = reportData.dataPerformanceDetails.SA.Mobility.TestDrive;
+  const TestDriveMHSData = reportData.dataPerformanceDetails.SA.Mobility.MhsTestDrive;
+
   const getDriveTestMetricData = (metricName, dutValue, refValue) => {
     return [{ name: metricName, DUT: dutValue, REF: refValue }];
   };

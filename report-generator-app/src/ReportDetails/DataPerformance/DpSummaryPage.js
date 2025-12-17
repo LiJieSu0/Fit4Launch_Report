@@ -1,10 +1,18 @@
 import React from 'react';
 import DpSummaryTable from './DpSummaryTable';
-import DataPerformanceResults from '../../DataFiles/DataPerformanceResults.json';
+// import DataPerformanceResults from '../../DataFiles/DataPerformanceResults.json'; // Removed direct import
+import { ReportContext } from '../../Contexts/ReportContext';
+import { useContext } from 'react';
 
 
 //TODO summary page cell link
 function DpSummaryPage() {
+  const { reportData } = useContext(ReportContext);
+
+  // Note: DataPerformanceResults import was unused in the visible code, 
+  // but if it is needed, access it here:
+  // const DataPerformanceResults = reportData ? reportData.dataPerformance : null;
+
   const extractThroughput = (path, direction) => {
     const value = path?.Throughput?.[direction]?.Mean || path?.Throughput?.Mean;
     const className = value > 100 ? 'average-fail' : 'average-pass'; // Placeholder logic

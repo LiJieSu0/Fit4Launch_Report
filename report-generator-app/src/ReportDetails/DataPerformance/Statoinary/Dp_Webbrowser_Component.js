@@ -2,10 +2,20 @@ import React from "react";
 import DpWebTable from "./Table/DpWebTable";
 import DpWebOverallTable from "./Table/DpWebOverallTable";
 import DpHistogramComponent from "../DpHistogramComponent";
-import WebBrowserData from '../../../DataFiles/SA/DpWebResults/Web Browser.json';
+// import WebBrowserData from '../../../DataFiles/SA/DpWebResults/Web Browser.json'; // Removed direct import
+import { ReportContext } from '../../../Contexts/ReportContext';
+import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 
-function Dp_Webbrowser_Component(){
+function Dp_Webbrowser_Component() {
+    const { reportData } = useContext(ReportContext);
+
+    if (!reportData || !reportData.dataPerformanceDetails) {
+        return <div className="page-content">Loading...</div>;
+    }
+
+    const WebBrowserData = reportData.dataPerformanceDetails.SA.Stationary.WebBrowser;
+
     const dutKey = "_CH01_TMO-dut_5G auto_ETSI Kepler web page hosted on Spirent mediaserver_Good Coverage_DA Test";
     const refKey = "_CH02_TMO-ref_5G auto_ETSI Kepler web page hosted on Spirent mediaserver_Good Coverage_DA Test";
 
@@ -34,8 +44,8 @@ function Dp_Webbrowser_Component(){
         { key: "DUT", fill: CHART_COLOR_DUT },
         { key: "REF", fill: CHART_COLOR_REF },
     ];
-    
-    return(
+
+    return (
         <div className='page-content'>
             <h2>2.5 Web Browser Test - 5G Auto</h2>
             <div id="2.5"></div>

@@ -2,11 +2,21 @@ import React, { useState, useEffect } from "react";
 import DpMHSUdpTable from "./Table/DpMHSUdpTable";
 import DpHistogramComponent from "../DpHistogramComponent";
 import DpUdpOverallTable from '../DpUdpOverallTable';
-import udpDataRaw from '../../../DataFiles/SA/DpMHSResults/UDP.json'; // Direct import of JSON
+// import udpDataRaw from '../../../DataFiles/SA/DpMHSResults/UDP.json'; // Removed direct import
+import { ReportContext } from '../../../Contexts/ReportContext';
+import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import '../../../StyleScript/Restricted_Report_Style.css';
 
 function Dp_MHS_Udp_Component() {
+  const { reportData } = useContext(ReportContext);
+
+  if (!reportData || !reportData.dataPerformanceDetails) {
+    return <div className="page-content">Loading...</div>;
+  }
+
+  const udpDataRaw = reportData.dataPerformanceDetails.SA.MHS.UDP;
+
 
   const udp_Stationary_DL = [
     // Mean Throughput - 200 Mbps

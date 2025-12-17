@@ -7,13 +7,26 @@ import DpThroughputOverallTable from '../../DpThroughputOverallTable';
 import processPingData from './NSAPingData';
 import DpHistogramComponent from '../../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../../Constants/ChartColors';
-import MultiStreamHTTPData from '../../../../DataFiles/NSA/DpStationaryResults/Multi Stream HTTP.json';
-import SingleStreamHTTPData from '../../../../DataFiles/NSA/DpStationaryResults/Single Stream HTTP.json';
-import PingData from '../../../../DataFiles/NSA/DpStationaryResults/Ping.json';
+// import MultiStreamHTTPData from '../../../../DataFiles/NSA/DpStationaryResults/Multi Stream HTTP.json'; // Removed direct import
+// import SingleStreamHTTPData from '../../../../DataFiles/NSA/DpStationaryResults/Single Stream HTTP.json'; // Removed direct import
+// import PingData from '../../../../DataFiles/NSA/DpStationaryResults/Ping.json'; // Removed direct import
 import DpNSAUDPComponent from './DpNSAUDPComponent';
+import { ReportContext } from '../../../../Contexts/ReportContext';
+import { useContext } from 'react';
 
 function DpNSAStationaryDetails() {
+  const { reportData } = useContext(ReportContext);
+
+  if (!reportData || !reportData.dataPerformanceDetails) {
+    return <div className="page-content">Loading...</div>;
+  }
+
+  const MultiStreamHTTPData = reportData.dataPerformanceDetails.NSA.Stationary.HttpMulti;
+  const SingleStreamHTTPData = reportData.dataPerformanceDetails.NSA.Stationary.HttpSingle;
+  const PingData = reportData.dataPerformanceDetails.NSA.Stationary.Ping;
+
   const pingData = processPingData(PingData);
+
 
   const ssHttpDlHistogramData = [
     { name: 'Moderate', DUT: SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["DUT_Single Stream HTTP Download for 60 seconds"].Throughput.Mean, REF: SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["REF Single Stream HTTP Download for 60 seconds"].Throughput.Mean },

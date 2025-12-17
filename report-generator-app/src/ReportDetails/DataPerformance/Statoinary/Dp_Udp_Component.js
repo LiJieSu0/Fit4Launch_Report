@@ -2,11 +2,21 @@ import React from 'react';
 import DpUdpTableLoc3 from './Table/DpUdpTableLoc3';
 import DpHistogramComponent from '../DpHistogramComponent';
 import DpUdpOverallTable from '../DpUdpOverallTable';
-import udp_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/UDP.json';
+// import udp_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/UDP.json'; // Removed direct import
+import { ReportContext } from '../../../Contexts/ReportContext';
+import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import '../../../StyleScript/Restricted_Report_Style.css';
 
 function Dp_Udp_Component() {
+  const { reportData } = useContext(ReportContext);
+
+  if (!reportData || !reportData.dataPerformanceDetails) {
+    return <div className="page-content">Loading...</div>;
+  }
+
+  const udp_Stationary_Data = reportData.dataPerformanceDetails.SA.Stationary.UDP;
+
   // DL Mean Throughput for 200 Mbps
   const dlMeanThroughput200_DUT_Good = udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["dut_5G auto_UDP DL 200M 10sec_Good"].Throughput.Mean;
   const dlMeanThroughput200_REF_Good = udp_Stationary_Data.Good["UDP Download Task at 200 Mbps for 10 seconds"]["ref_5G auto_UDP DL 200M 10sec_Good"].Throughput.Mean;

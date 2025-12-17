@@ -2,11 +2,20 @@ import React from 'react';
 import DpPingTableLoc3 from './Table/DpPingTableLoc3';
 import DpPingOverallTable from './Table/DpPingOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
-import PingData from '../../../DataFiles/SA/DpStationaryResults/Ping.json';
+// import PingData from '../../../DataFiles/SA/DpStationaryResults/Ping.json'; // Removed direct import
+import { ReportContext } from '../../../Contexts/ReportContext';
+import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 
 function Dp_Ping_Component() {
-    const Dp_Ping_Data = PingData;
+    const { reportData } = useContext(ReportContext);
+
+    if (!reportData || !reportData.dataPerformanceDetails) {
+        return <div className="page-content">Loading...</div>;
+    }
+
+    const Dp_Ping_Data = reportData.dataPerformanceDetails.SA.Stationary.Ping;
+
 
     const processedPingData = {
         average: { DUT: {}, REF: {} },
@@ -76,25 +85,25 @@ function Dp_Ping_Component() {
         { key: 'DUT', fill: CHART_COLOR_DUT },
         { key: 'REF', fill: CHART_COLOR_REF },
     ];
- 
-    return(
+
+    return (
         <>
-        <div className='page-content'>
-            <h2>2.4 Ping Test - 5G Auto</h2>
-            <div id='2.4'></div>
-            <h3>Ping Test Overview</h3>
-            <DpPingOverallTable data={processedPingData} />
-        </div>
-        <div className='page-content'>
-            <h3>Ping Test Details</h3>
-            <DpPingTableLoc3 data={processedPingData} />
-            <DpHistogramComponent
-                data={pingHistogramData}
-                title="Average Ping RTT by Location"
-                yAxisLabel="Ping RTT (ms)"
-                barKeys={barKeys}
-            />
-        </div>
+            <div className='page-content'>
+                <h2>2.4 Ping Test - 5G Auto</h2>
+                <div id='2.4'></div>
+                <h3>Ping Test Overview</h3>
+                <DpPingOverallTable data={processedPingData} />
+            </div>
+            <div className='page-content'>
+                <h3>Ping Test Details</h3>
+                <DpPingTableLoc3 data={processedPingData} />
+                <DpHistogramComponent
+                    data={pingHistogramData}
+                    title="Average Ping RTT by Location"
+                    yAxisLabel="Ping RTT (ms)"
+                    barKeys={barKeys}
+                />
+            </div>
         </>
 
     )

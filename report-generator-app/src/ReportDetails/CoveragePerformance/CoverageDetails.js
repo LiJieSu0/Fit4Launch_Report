@@ -7,10 +7,11 @@ import { ReportContext } from '../../Contexts/ReportContext';
 
 function CoverageDetails() {
   const { reportData } = useContext(ReportContext);
-  const BASE_STATION_COORDS = {"latitude": 47.128234
-                        ,
-                       "longitude": -122.356792
-                       }
+  const BASE_STATION_COORDS = {
+    "latitude": 47.128234
+    ,
+    "longitude": -122.356792
+  }
   const processVoNRCoverageData = (band, metric) => {
     const defaultRows = [
       { device: 'DUT', run1: 0, run2: 0, run3: 0, run4: 0, run5: 0, average: 0 },
@@ -276,11 +277,14 @@ function CoverageDetails() {
         {/* ------NR25 */}
         <h3>5G VoNR Coverage Test NR25- DL Throughput &lt; 1Mbps Distance (km)</h3>
         {/* NR25 DL table */}
-        <CoverageMap baseStationCoords={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]} />
         <CoverageTestTable tableData={NR25_DL.slice(0, -1)} status={NR25_DL[NR25_Audio.length - 1]} />
         {/* map picture */}
         <div style={{ marginBottom: 10, textAlign: 'center' }}></div>
-        <img src="/CoverageMap/NR25_DL_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n25}
+          metric="first_dl_tp_gt_1"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
       </div>
       <div className='page-content'>
         <h3>5G VoNR Coverage Test NR25- UL Throughput &lt; 1Mbps Distance (km)</h3>
@@ -288,7 +292,11 @@ function CoverageDetails() {
 
         {/* NR25 UL table */}
         <CoverageTestTable tableData={NR25_UL.slice(0, -1)} status={NR25_UL[NR25_Audio.length - 1]} />
-        <img src="/CoverageMap/NR25_UL_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n25}
+          metric="first_ul_tp_gt_1"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
 
       </div>
       <div className='page-content'>
@@ -296,7 +304,11 @@ function CoverageDetails() {
         <div id='2.1MOS'></div>
         {/* NR25 MOS table */}
         <CoverageTestTable tableData={NR25_MOS.slice(0, -1)} status={NR25_MOS[NR25_Audio.length - 1]} />
-        <img src="/CoverageMap/NR25_MOS_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n25}
+          metric="mos_before_drop"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
 
       </div>
       <div className='page-content'>
@@ -304,7 +316,11 @@ function CoverageDetails() {
         <div id='2.1Call'></div>
         {/* NR25 Audio table */}
         <CoverageTestTable tableData={NR25_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
-        <img src="/CoverageMap/NR25_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n25}
+          metric="call_drop"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
       </div>
       <div className='page-content'>
         <h3>5G VoNR Coverage Test NR25 - Secondary KPI</h3>
@@ -347,7 +363,11 @@ function CoverageDetails() {
         <div id='2.2DL'></div>
         {/* NR41 DL table */}
         <CoverageTestTable tableData={NR41_DL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
-        <img src="/CoverageMap/NR41_DL_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n41}
+          metric="first_dl_tp_gt_1"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
 
       </div>
       <div className='page-content'>
@@ -355,7 +375,11 @@ function CoverageDetails() {
         <div id='2.2UL'></div>
         {/* NR41 UL table */}
         <CoverageTestTable tableData={NR41_UL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
-        <img src="/CoverageMap/NR41_UL_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n41}
+          metric="first_ul_tp_gt_1"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
 
       </div>
       <div className='page-content'>
@@ -363,7 +387,11 @@ function CoverageDetails() {
         <div id='2.2MOS'></div>
         {/* NR41 MOS table */}
         <CoverageTestTable tableData={NR41_MOS.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
-        <img src="/CoverageMap/NR41_MOS_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n41}
+          metric="mos_before_drop"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
 
       </div>
       <div className='page-content'>
@@ -371,7 +399,11 @@ function CoverageDetails() {
         <div id='2.2Call'></div>
         {/* NR41 Audio table */}
         <CoverageTestTable tableData={NR41_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
-        <img src="/CoverageMap/NR41_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n41}
+          metric="call_drop"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
       </div>
       <div className='page-content'>
         <h3>5G VoNR Coverage Test NR41- Secondary KPI</h3>
@@ -411,7 +443,11 @@ function CoverageDetails() {
         <div id='2.3DL'></div>
         {/* NR71 DL table */}
         <CoverageTestTable tableData={NR71_DL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
-        <img src="/CoverageMap/NR71_DL_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n71}
+          metric="first_dl_tp_gt_1"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
 
       </div>
       <div className='page-content'>
@@ -419,7 +455,11 @@ function CoverageDetails() {
         <div id='2.3UL'></div>
         {/* NR71 UL table */}
         <CoverageTestTable tableData={NR71_UL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
-        <img src="/CoverageMap/NR71_UL_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n71}
+          metric="first_ul_tp_gt_1"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
 
       </div>
       <div className='page-content'>
@@ -427,7 +467,11 @@ function CoverageDetails() {
         <div id='2.3MOS'></div>
         {/* NR71 MOS table */}
         <CoverageTestTable tableData={NR71_MOS.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
-        <img src="/CoverageMap/NR71_MOS_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n71}
+          metric="mos_before_drop"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
 
       </div>
       <div className='page-content'>
@@ -435,7 +479,11 @@ function CoverageDetails() {
         <div id='2.3Call'></div>
         {/* NR71 Audio table */}
         <CoverageTestTable tableData={NR71_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
-        <img src="/CoverageMap/NR71_Audio_MAP.png" alt="Coverage Map" style={{ maxWidth: '70%', height: '70%', display: 'block', margin: '0 auto' }} />
+        <CoverageMap
+          bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.n71}
+          metric="call_drop"
+          baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+        />
       </div>
       <div className='page-content'>
         <h3>NR71 Secondary KPI</h3>

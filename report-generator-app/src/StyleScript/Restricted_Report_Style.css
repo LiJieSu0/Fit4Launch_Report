@@ -560,3 +560,31 @@ VQ
 .vq-summary-table td:nth-child(3) {
   width: 30%;
 }
+
+/* Coverage Map Icons */
+.dut-icon {
+  background-color: red;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: block;
+  border: 1px solid white; 
+}
+
+.ref-icon {
+  background-color: blue;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: block;
+  border: 1px solid white;
+}
+
+.base-station-label {
+    background: none;
+    border: none;
+    box-shadow: none;
+    font-weight: bold;
+    color: black;
+    white-space: nowrap;
+}

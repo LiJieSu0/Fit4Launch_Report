@@ -520,21 +520,23 @@ function CoverageDetails() {
       <HPUECoverageTable n41Data={n41HPUEData} />
       <div className='page-content'>
         <h2>2.2.1 5G n41 HPUE Coverage Test-RSRP Analysis</h2>
-        <CoverageLineChart
-          dataFolderPath="/AnalyzeResults/Seattle/cv_rsrp_data"
-          fileNamePart="_PC2_PC3_RSRP_Analysis.csv"
-          yAxisLabel="RSRP Value"
-          chartTitleContext="RSRP Analysis"
-        />
+        <CoverageLineChart analysisType="RSRP" run={1} />
+        <CoverageLineChart analysisType="RSRP" run={2} />
+        <CoverageLineChart analysisType="RSRP" run={3} />
+      </div>
+      <div className='page-content'>
+        <CoverageLineChart analysisType="RSRP" run={4} />
+        <CoverageLineChart analysisType="RSRP" run={5} />
       </div>
       <div className='page-content'>
         <h2>2.2.2 5G n41 HPUE Coverage Test-Tx Power Analysis</h2>
-        <CoverageLineChart
-          dataFolderPath="/AnalyzeResults/Seattle/cv_tx_power_data"
-          fileNamePart="_PC2_PC3_TxPower_Analysis.csv"
-          yAxisLabel="Tx Power Value (dBm)"
-          chartTitleContext="Tx Power Analysis"
-        />
+        <CoverageLineChart analysisType="TxPower" run={1} />
+        <CoverageLineChart analysisType="TxPower" run={2} />
+        <CoverageLineChart analysisType="TxPower" run={3} />
+      </div>
+      <div className='page-content'>
+        <CoverageLineChart analysisType="TxPower" run={4} />
+        <CoverageLineChart analysisType="TxPower" run={5} />
       </div>
     </div>
   );

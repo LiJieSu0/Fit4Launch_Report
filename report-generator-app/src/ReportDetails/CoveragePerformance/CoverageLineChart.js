@@ -118,13 +118,19 @@ const CoverageLineChart = ({ analysisType, run }) => {
     }
 
     return (
-        <div style={{ height: '400px', width: '100%', margin: '0 auto', marginBottom: '20px' }}>
+        <div style={{ height: '350px', width: '50%', marginBottom: '20px' }}>
             <Line
                 data={chartData}
                 options={{
                     responsive: true,
                     maintainAspectRatio: false,
                     animation: false,
+                    layout: {
+                        padding: {
+                            right: 20,
+                            left: 10
+                        }
+                    },
                     plugins: {
                         datalabels: {
                             display: false

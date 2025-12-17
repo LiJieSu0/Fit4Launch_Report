@@ -522,20 +522,24 @@ function CoverageDetails() {
         <h2>2.2.1 5G n41 HPUE Coverage Test-RSRP Analysis</h2>
         <CoverageLineChart analysisType="RSRP" run={1} />
         <CoverageLineChart analysisType="RSRP" run={2} />
-        <CoverageLineChart analysisType="RSRP" run={3} />
       </div>
       <div className='page-content'>
+        <CoverageLineChart analysisType="RSRP" run={3} />
         <CoverageLineChart analysisType="RSRP" run={4} />
+      </div>
+      <div className='page-content'>
         <CoverageLineChart analysisType="RSRP" run={5} />
       </div>
       <div className='page-content'>
         <h2>2.2.2 5G n41 HPUE Coverage Test-Tx Power Analysis</h2>
         <CoverageLineChart analysisType="TxPower" run={1} />
         <CoverageLineChart analysisType="TxPower" run={2} />
-        <CoverageLineChart analysisType="TxPower" run={3} />
       </div>
       <div className='page-content'>
+        <CoverageLineChart analysisType="TxPower" run={3} />
         <CoverageLineChart analysisType="TxPower" run={4} />
+      </div>
+      <div className='page-content'>
         <CoverageLineChart analysisType="TxPower" run={5} />
       </div>
     </div>

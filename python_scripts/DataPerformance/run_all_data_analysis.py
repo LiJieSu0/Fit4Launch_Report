@@ -30,6 +30,7 @@ from DataPerformance.google_throughput_analyzer import analyze_throughput as goo
 from DataPerformance.mhs_drive_analyzer import analyze_mhs_drive_data # Import the new MHS Drive analyzer
 from VoiceQuality.VqLineChartAnalyzer import calculate_vq_statistics # Import the VqLineChartAnalyzer
 from Coverage.coverage_coordinate_analyzer import haversine_distance, BASE_STATION_COORDS # Import haversine_distance and BASE_STATION_COORDS
+from Coverage.coverage_secondary_kpi_analyzer import analyze_secondary_kpis # Import the new secondary KPI analyzer
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -525,6 +526,11 @@ if __name__ == "__main__":
                                     
                                     if device_type in band_results:
                                         band_results[device_type][run_name] = analysis_results
+                                        
+                                        # Also analyze secondary KPIs (BLER, MCS, CQI)
+                                        secondary_results = analyze_secondary_kpis(file_path)
+                                        if secondary_results:
+                                            band_results[device_type][run_name]["secondary_kpi"] = secondary_results
                                     else:
                                         print(f"Warning: Unknown device type '{device_type}' for file {file_name}. Skipping.")
                                 else:

@@ -116,9 +116,9 @@ const CoverageLineChart = ({ analysisType, run }) => {
     if (!chartData) {
         return <div style={{ height: '400px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading Run {run}...</div>;
     }
-
+    // 寬度百分比顯示會因為螢幕不同而改變大小，這段需要修改
     return (
-        <div style={{ height: '350px', width: '50%', marginBottom: '20px' }}>
+        <div style={{ height: '350px', width: '40%', marginBottom: '20px' }}>
             <Line
                 data={chartData}
                 options={{

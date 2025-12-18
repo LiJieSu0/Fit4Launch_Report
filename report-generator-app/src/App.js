@@ -40,7 +40,7 @@ const reportType = {
   5: "WFC"
 }
 // Report Type Setup-------------------------------------------------------------------------
-const reportTypeNo = 4;
+const reportTypeNo = 1;
 // Report Type Setup-------------------------------------------------------------------------
 
 

@@ -20,21 +20,17 @@ function DpDetailsPage() {
       <Dp_httpSS_Component />
       <Dp_httpMS_Component />
       <Dp_Udp_Component />
-      <Dp_Ping_Component/>
+      <Dp_Ping_Component />
       <Dp_Webbrowser_Component />
-      <Dp_playStore_Component/>
-      <Dp_MHS_Page/>
-      
-      <DpDriveTestDetailPage/>
-      <DpMrabDetailsPage/>
+      <Dp_playStore_Component />
+      <Dp_MHS_Page />
 
-      <DpNSAStationaryDetails/>
-      <DpNSATestDriveDetails/>
-      {/* <DpRangeChart
-        data={chartDataForRegions}
-        chartTitle="Example TPUT Performance by Region"
-        yAxisTitle="Example Throughput (Mbps)"
-      /> */}
+      <DpDriveTestDetailPage />
+      <DpMrabDetailsPage />
+
+      <DpNSAStationaryDetails />
+      <DpNSATestDriveDetails />
+
     </div>
   );
 }

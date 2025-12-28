@@ -33,14 +33,14 @@ import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
 import WfcSummaryPage from './ReportDetails/WfcPerformance/WfcSummaryPage';
 import WfcDetailsPage from './ReportDetails/WfcPerformance/WfcDetailsPage';
 const reportType = {
-  1: "Coverage Performance",
-  2: "Voice Quality",
-  3: "Call Performance",
-  4: "Data Performance",
-  5: "WFC"
+  'CV': "Coverage Performance",
+  'VQ': "Voice Quality",
+  'CP': "Call Performance",
+  'DP': "Data Performance",
+  'WFC': "WFC"
 }
 // Report Type Setup-------------------------------------------------------------------------
-const reportTypeNo = 2;
+const reportTypeNo = "DP";
 // Report Type Setup-------------------------------------------------------------------------
 //TODO Summary page results and link need to be loaded from file
 
@@ -52,7 +52,7 @@ function App() {
         <ReportHeader />
         <DeviceInfoPage />
         <ContentsIndexPage /> */}
-        {reportTypeNo === 1 && (
+        {reportTypeNo === "CV" && (
           <>
             <CoverageSummaryPage />
             <CoverageDetails />
@@ -60,7 +60,7 @@ function App() {
           </>
         )}
 
-        {reportTypeNo === 2 && (
+        {reportTypeNo === "VQ" && (
           <>
             <VqSummaryPage />
             <VqDetailsPage />
@@ -68,7 +68,7 @@ function App() {
           </>
         )}
 
-        {reportTypeNo === 3 && (
+        {reportTypeNo === "CP" && (
           <>
             <CpSummaryPage />
             <CallPerformanceDetails />
@@ -76,7 +76,7 @@ function App() {
           </>
         )}
 
-        {reportTypeNo === 4 && (
+        {reportTypeNo === "DP" && (
           <>
             <DpSummaryPage />
             <DpDetailsPage />
@@ -84,14 +84,14 @@ function App() {
           </>
         )}
 
-        {reportTypeNo === 5 && (
+        {reportTypeNo === "WFC" && (
           <>
             <WfcSummaryPage />
             <WfcDetailsPage />
           </>
         )}
-        <LegalPage number={reportTypeNo === 4 ? 5 : 4} />
-        <AboutPage number={reportTypeNo === 4 ? 6 : 5} />
+        <LegalPage number={reportTypeNo === "DP" ? 5 : 4} />
+        <AboutPage number={reportTypeNo === "DP" ? 6 : 5} />
         <ReportFooter reportType={reportType[reportTypeNo]} />
       </div>
     </ReportDataProvider>

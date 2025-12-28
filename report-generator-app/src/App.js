@@ -40,7 +40,7 @@ const reportType = {
   5: "WFC"
 }
 // Report Type Setup-------------------------------------------------------------------------
-const reportTypeNo = 1;
+const reportTypeNo = 4;
 // Report Type Setup-------------------------------------------------------------------------
 //TODO Summary page results and link need to be loaded from file
 

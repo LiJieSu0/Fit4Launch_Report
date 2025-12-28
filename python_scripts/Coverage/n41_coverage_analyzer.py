@@ -38,7 +38,7 @@ def analyze_n41_coverage(folder_path, device_type_filter=None):
             ul_tp_column = '[Call Test] [Throughput] Application UL TP'
             serving_network_column = '[General] Serving Network'
             rsrp_column = '[NR5G] [RF] RSRP'
-            tx_power_column = '[NR5G] [Power] Tx power (Total Actual)'
+            tx_power_column = '[NR5G] [Power] Tx power (PUSCH Actual)'
             latitude_column = '[General] [GPS] Latitude'
             longitude_column = '[General] [GPS] Longitude'
 
@@ -149,7 +149,7 @@ def extract_coverage_data_to_csv(folder_path, output_folder='.', device_type_fil
     
     if not all_extracted_data.empty:
         # Clean up Tx Power data: remove rows where Tx Power is 0 or NaN
-        if data_column_name == '[NR5G] [Power] Tx power (Total Actual)':
+        if data_column_name == '[NR5G] [Power] Tx power (PUSCH Actual)':
             # Create a copy to avoid SettingWithCopyWarning and ensure independent operation
             temp_df = all_extracted_data.copy()
             
@@ -200,7 +200,7 @@ def run_all_coverage_analysis(base_folder, output_base_folder='public'):
         # Extract RSRP data
         extract_coverage_data_to_csv(
             folder_path=run_folder,
-            output_folder=output_base_folder,
+            output_folder=os.path.join(output_base_folder, 'cv_rsrp_data'),
             device_type_filters=device_filters,
             data_column_name='[NR5G] [RF] RSRP',
             output_suffix='RSRP_Analysis'
@@ -209,9 +209,9 @@ def run_all_coverage_analysis(base_folder, output_base_folder='public'):
         # Extract Tx Power data
         extract_coverage_data_to_csv(
             folder_path=run_folder,
-            output_folder=output_base_folder,
+            output_folder=os.path.join(output_base_folder, 'cv_tx_power_data'),
             device_type_filters=device_filters,
-            data_column_name='[NR5G] [Power] Tx power (Total Actual)',
+            data_column_name='[NR5G] [Power] Tx power (PUSCH Actual)',
             output_suffix='TxPower_Analysis'
         )
 
@@ -224,4 +224,5 @@ if __name__ == '__main__':
 
     # New functionality: Extract RSRP and Tx Power for 5 runs
     base_coverage_path = 'Raw Data/Coverage Performance/5G n41 HPUE Coverage Test'
-    run_all_coverage_analysis(base_coverage_path, output_base_folder='Scripts/React/frontend/public')
+    output_path = 'report-generator-app/public/AnalyzeResults/Seattle'
+    run_all_coverage_analysis(base_coverage_path, output_base_folder=output_path)

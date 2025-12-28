@@ -8,7 +8,7 @@ function DpSummaryTable({ tableData }) {
         <thead>
           <tr>
             {tableData.headers.map((header, index) => (
-              <th key={index} rowSpan={header.rowSpan}>{header.label}</th>
+              <th key={index} rowSpan={header.rowSpan} colSpan={header.colSpan}>{header.label}</th>
             ))}
           </tr>
           {tableData.subHeaders && (

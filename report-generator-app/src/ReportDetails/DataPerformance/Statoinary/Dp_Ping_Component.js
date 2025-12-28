@@ -2,7 +2,6 @@ import React from 'react';
 import DpPingTableLoc3 from './Table/DpPingTableLoc3';
 import DpPingOverallTable from './Table/DpPingOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
-// import PingData from '../../../DataFiles/SA/DpStationaryResults/Ping.json'; // Removed direct import
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';

@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
-import voiceQualityResults from '../../DataFiles/VoiceQualityResults.json';
 import VqAmrNbVq from './VqCases/VqAmrNbVq';
 import VqAmrWbVq from './VqCases/VqAmrWbVq';
 import VqEvsWbVqDisabled from './VqCases/VqEvsWbVqDisabled';
@@ -15,7 +14,6 @@ const VqDetailsPage = () => {
     <div>
       <VqAmrNbVq />
       <VqAmrWbVq />
-      {/* Todo Line chart data dynamic loading */}
       <VqEvsWbVqDisabled />
       <VqEvsWbVqEnabled />
       <div className='page-content'>

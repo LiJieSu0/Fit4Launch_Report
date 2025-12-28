@@ -3,7 +3,6 @@ import DpPlayStoreTable from './Table/DpPlayStoreTable';
 import DpPlayStoreOverallTable from './Table/DpPlayStoreOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
-// import playStoreData from '../../../DataFiles/SA/DpPlayStoreResults/Play Store.json'; // Removed direct import
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 

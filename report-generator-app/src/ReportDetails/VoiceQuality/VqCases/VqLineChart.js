@@ -19,8 +19,11 @@ const VqLineChart = ({ dataSource }) => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const dataModule = await import(`../../../DataFiles/Vq/${dataSource}.json`);
-        const vqMosStatistics = dataModule.default;
+        const response = await fetch(`/AnalyzeResults/Seattle/vq_linechart_data/vq_mos_statistics_5g_auto_${dataSource}.json`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const vqMosStatistics = await response.json();
 
         const mosCategories = Object.keys(vqMosStatistics.DUT1);
 

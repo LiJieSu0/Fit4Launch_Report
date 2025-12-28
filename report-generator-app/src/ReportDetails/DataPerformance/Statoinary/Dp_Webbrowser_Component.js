@@ -2,7 +2,6 @@ import React from "react";
 import DpWebTable from "./Table/DpWebTable";
 import DpWebOverallTable from "./Table/DpWebOverallTable";
 import DpHistogramComponent from "../DpHistogramComponent";
-// import WebBrowserData from '../../../DataFiles/SA/DpWebResults/Web Browser.json'; // Removed direct import
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';

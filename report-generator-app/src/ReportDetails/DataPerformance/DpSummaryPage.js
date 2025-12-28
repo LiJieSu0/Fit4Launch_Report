@@ -16,48 +16,48 @@ function DpSummaryPage() {
 
   const RAW_DATA_INPUT = {
     "Seattle (5G NR)": {
-      httpSS: { dl: 500, ul: 500, refDl: 500, refUl: 600 },
-      httpMS: { dl: 400, ul: 450, refDl: 500, refUl: 500 },
-      udp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1 },
-      ping: { rtt: 40, ref: 30 },
-      web: { time: 1.5, ref: 2 },
-      play: { tput30: 500, tput60: 500, tput100: 500, ref: 500 },
-      mhsSS: { dl: 500, ul: 500, refDl: 500, refUl: 500 },
-      mhsMS: { dl: 500, ul: 500, refDl: 500, refUl: 500 },
-      mhsUdp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1 },
-      mhsPing: { rtt: 40, ref: 30 },
-      mobility: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30 },
-      mobilityMhs: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30 },
-      mrab: { pre: 500, in: 500, post: 500, ref: 500 }
+      httpSS: { dl: 500, ul: 500, refDl: 500, refUl: 600, link: '#2.1' },
+      httpMS: { dl: 400, ul: 450, refDl: 500, refUl: 500, link: '#2.2' },
+      udp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1, linkDl: '#2.3DL', linkUl: '#2.3UL' },
+      ping: { rtt: 40, ref: 30, link: '#2.4' },
+      web: { time: 1.5, ref: 2, link: '#2.5' },
+      play: { tput30: 500, tput60: 500, tput100: 500, ref: 500, link: '#2.6' },
+      mhsSS: { dl: 500, ul: 500, refDl: 500, refUl: 500, link: '#2.7' },
+      mhsMS: { dl: 500, ul: 500, refDl: 500, refUl: 500, link: '#2.8' },
+      mhsUdp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1, linkDl: '#2.9DL', linkUl: '#2.9UL' },
+      mhsPing: { rtt: 40, ref: 30, link: '#2.10' },
+      mobility: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30, link: '#2.11' },
+      mobilityMhs: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30, link: '#2.12' },
+      mrab: { pre: 500, in: 500, post: 500, ref: 500, link: '#2.13' }
     },
     "New York (5G NR)": {
-      httpSS: { dl: 500, ul: 500, refDl: 500, refUl: 500 },
-      httpMS: { dl: 450, ul: 450, refDl: 500, refUl: 500 },
-      udp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1 },
-      ping: { rtt: 40, ref: 30 },
-      web: { time: 1.5, ref: 2 },
-      play: { tput30: 500, tput60: 500, tput100: 500, ref: 500 },
-      mhsSS: { dl: 500, ul: 500, refDl: 500, refUl: 500 },
-      mhsMS: { dl: 500, ul: 500, refDl: 500, refUl: 500 },
-      mhsUdp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1 },
-      mhsPing: { rtt: 40, ref: 30 },
-      mobility: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30 },
-      mobilityMhs: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30 },
-      mrab: { pre: 500, in: 500, post: 500, ref: 500 }
+      httpSS: { dl: 500, ul: 500, refDl: 500, refUl: 500, link: '#2.1' },
+      httpMS: { dl: 450, ul: 450, refDl: 500, refUl: 500, link: '#2.2' },
+      udp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1, linkDl: '#2.3DL', linkUl: '#2.3UL' },
+      ping: { rtt: 40, ref: 30, link: '#2.4' },
+      web: { time: 1.5, ref: 2, link: '#2.5' },
+      play: { tput30: 500, tput60: 500, tput100: 500, ref: 500, link: '#2.6' },
+      mhsSS: { dl: 500, ul: 500, refDl: 500, refUl: 500, link: '#2.7' },
+      mhsMS: { dl: 500, ul: 500, refDl: 500, refUl: 500, link: '#2.8' },
+      mhsUdp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1, linkDl: '#2.9DL', linkUl: '#2.9UL' },
+      mhsPing: { rtt: 40, ref: 30, link: '#2.10' },
+      mobility: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30, link: '#2.11' },
+      mobilityMhs: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30, link: '#2.12' },
+      mrab: { pre: 500, in: 500, post: 500, ref: 500, link: '#2.13' }
     },
     "Seattle (5G NSA)": {
-      httpSS: { dl: 500, ul: 500, refDl: 500, refUl: 500 },
-      httpMS: { dl: 500, ul: 500, refDl: 500, refUl: 500 },
-      udp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1 },
-      ping: { rtt: 40, ref: 30 },
-      mobility: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30 }
+      httpSS: { dl: 500, ul: 500, refDl: 500, refUl: 500, link: '#3.1' },
+      httpMS: { dl: 500, ul: 500, refDl: 500, refUl: 500, link: '#3.2' },
+      udp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1, linkDl: '#3.3DL', linkUl: '#3.3UL' },
+      ping: { rtt: 40, ref: 30, link: '#3.4' },
+      mobility: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30, link: '#3.5' }
     },
     "New York (5G NSA)": {
-      httpSS: { dl: 500, ul: 500, refDl: 500, refUl: 500 },
-      httpMS: { dl: 500, ul: 500, refDl: 500, refUl: 500 },
-      udp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1 },
-      ping: { rtt: 40, ref: 30 },
-      mobility: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30 }
+      httpSS: { dl: 500, ul: 500, refDl: 500, refUl: 500, link: '#3.1' },
+      httpMS: { dl: 500, ul: 500, refDl: 500, refUl: 500, link: '#3.2' },
+      udp: { dl: 500, ul: 500, refDl: 500, refUl: 500, jitterDl: 5, jitterUl: 5, jitterRefDl: 10, jitterRefUl: 10, errDl: 0, errUl: 0, errRefDl: 0.1, errRefUl: 0.1, linkDl: '#3.3DL', linkUl: '#3.3UL' },
+      ping: { rtt: 40, ref: 30, link: '#3.4' },
+      mobility: { tput: 500, jitter: 5, err: 0, rtt: 40, refTput: 500, refJitter: 10, refErr: 0.1, refRtt: 30, link: '#3.5' }
     }
   };
 
@@ -80,11 +80,11 @@ function DpSummaryPage() {
     };
   };
 
-  const extractThroughput = (path, direction) => {
-    const value = path?.Throughput?.[direction]?.Mean || path?.Throughput?.Mean;
-    const className = value > 100 ? 'average-fail' : 'average-pass'; // Placeholder logic
-    return { label: value ? value.toFixed(2) : 'N/A', className, link: "#" };
-  };
+  // const extractThroughput = (path, direction) => { 
+  //   const value = path?.Throughput?.[direction]?.Mean || path?.Throughput?.Mean;
+  //   const className = value > 100 ? 'average-fail' : 'average-pass'; // Placeholder logic
+  //   return { label: value ? value.toFixed(2) : 'N/A', className, link: "#" };
+  // };
   const httpSSData = {
     headers: [{ label: "HTTP Single Stream Test Download & Upload - 5G Auto", colSpan: 4 }],
     subHeaders: [
@@ -94,14 +94,14 @@ function DpSummaryPage() {
       { label: "Upload" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.httpSS || { dl: 0, ul: 0, refDl: 1, refUl: 1 };
+      const data = RAW_DATA_INPUT[market]?.httpSS || { dl: 0, ul: 0, refDl: 1, refUl: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.dl, data.refDl, '#2.1'),
-            getResultCell('Throughput', data.ul, data.refUl, '#2.1')
+            getResultCell('Throughput', data.dl, data.refDl, data.link),
+            getResultCell('Throughput', data.ul, data.refUl, data.link)
           ],
         }
       ];
@@ -117,14 +117,14 @@ function DpSummaryPage() {
       { label: "Upload" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.httpMS || { dl: 0, ul: 0, refDl: 1, refUl: 1 };
+      const data = RAW_DATA_INPUT[market]?.httpMS || { dl: 0, ul: 0, refDl: 1, refUl: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.dl, data.refDl, '#2.2'),
-            getResultCell('Throughput', data.ul, data.refUl, '#2.2')
+            getResultCell('Throughput', data.dl, data.refDl, data.link),
+            getResultCell('Throughput', data.ul, data.refUl, data.link)
           ],
         }
       ];
@@ -140,30 +140,30 @@ function DpSummaryPage() {
       { label: "Upload" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.udp || { dl: 0, ul: 0, refDl: 1, refUl: 1, jitterDl: 0, jitterUl: 0, jitterRefDl: 1, jitterRefUl: 1, errDl: 0, errUl: 0, errRefDl: 1, errRefUl: 1 };
+      const data = RAW_DATA_INPUT[market]?.udp || { dl: 0, ul: 0, refDl: 1, refUl: 1, jitterDl: 0, jitterUl: 0, jitterRefDl: 1, jitterRefUl: 1, errDl: 0, errUl: 0, errRefDl: 1, errRefUl: 1, linkDl: '#', linkUl: '#' };
       return [
         {
           cells: [
             { label: market, rowSpan: 3 },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.dl, data.refDl, '#2.3DL'),
-            getResultCell('Throughput', data.ul, data.refUl, '#2.3UL')
+            getResultCell('Throughput', data.dl, data.refDl, data.linkDl),
+            getResultCell('Throughput', data.ul, data.refUl, data.linkUl)
           ],
         },
         {
           cells: [
             null,
             { label: "Mean Jitter" },
-            getResultCell('Jitter', data.jitterDl, data.jitterRefDl, '#2.3DL'),
-            getResultCell('Jitter', data.jitterUl, data.jitterRefUl, '#2.3UL')
+            getResultCell('Jitter', data.jitterDl, data.jitterRefDl, data.linkDl),
+            getResultCell('Jitter', data.jitterUl, data.jitterRefUl, data.linkUl)
           ],
         },
         {
           cells: [
             null,
             { label: "Packet Failure Rate" },
-            getResultCell('ErrorRatio', data.errDl, data.errRefDl, '#2.3DL'),
-            getResultCell('ErrorRatio', data.errUl, data.errRefUl, '#2.3UL')
+            getResultCell('ErrorRatio', data.errDl, data.errRefDl, data.linkDl),
+            getResultCell('ErrorRatio', data.errUl, data.errRefUl, data.linkUl)
           ],
         }
       ];
@@ -178,13 +178,13 @@ function DpSummaryPage() {
       { label: "RTT" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.ping || { rtt: 0, ref: 1 };
+      const data = RAW_DATA_INPUT[market]?.ping || { rtt: 0, ref: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Mean Round Trip Time" },
-            getResultCell('PingLatency', data.rtt, data.ref, '#2.4'),
+            getResultCell('PingLatency', data.rtt, data.ref, data.link),
           ],
         }
       ];
@@ -199,13 +199,13 @@ function DpSummaryPage() {
       { label: "Load Time" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.web || { time: 0, ref: 1 };
+      const data = RAW_DATA_INPUT[market]?.web || { time: 0, ref: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Average Page Load Time" },
-            getResultCell('WebPageLoadTime', data.time, data.ref, '#2.5'),
+            getResultCell('WebPageLoadTime', data.time, data.ref, data.link),
           ],
         }
       ];
@@ -222,15 +222,15 @@ function DpSummaryPage() {
       { label: "100M" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.play || { tput30: 0, tput60: 0, tput100: 0, ref: 1 };
+      const data = RAW_DATA_INPUT[market]?.play || { tput30: 0, tput60: 0, tput100: 0, ref: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.tput30, data.ref, '#2.6'),
-            getResultCell('Throughput', data.tput60, data.ref, '#2.6'),
-            getResultCell('Throughput', data.tput100, data.ref, '#2.6'),
+            getResultCell('Throughput', data.tput30, data.ref, data.link),
+            getResultCell('Throughput', data.tput60, data.ref, data.link),
+            getResultCell('Throughput', data.tput100, data.ref, data.link),
           ],
         }
       ];
@@ -246,14 +246,14 @@ function DpSummaryPage() {
       { label: "Upload" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.mhsSS || { dl: 0, ul: 0, refDl: 1, refUl: 1 };
+      const data = RAW_DATA_INPUT[market]?.mhsSS || { dl: 0, ul: 0, refDl: 1, refUl: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.dl, data.refDl, '#2.7'),
-            getResultCell('Throughput', data.ul, data.refUl, '#2.7'),
+            getResultCell('Throughput', data.dl, data.refDl, data.link),
+            getResultCell('Throughput', data.ul, data.refUl, data.link),
           ],
         }
       ];
@@ -269,14 +269,14 @@ function DpSummaryPage() {
       { label: "Upload" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.mhsMS || { dl: 0, ul: 0, refDl: 1, refUl: 1 };
+      const data = RAW_DATA_INPUT[market]?.mhsMS || { dl: 0, ul: 0, refDl: 1, refUl: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.dl, data.refDl, '#2.8'),
-            getResultCell('Throughput', data.ul, data.refUl, '#2.8'),
+            getResultCell('Throughput', data.dl, data.refDl, data.link),
+            getResultCell('Throughput', data.ul, data.refUl, data.link),
           ],
         }
       ];
@@ -292,30 +292,30 @@ function DpSummaryPage() {
       { label: "Upload" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.mhsUdp || { dl: 0, ul: 0, refDl: 1, refUl: 1, jitterDl: 0, jitterUl: 0, jitterRefDl: 1, jitterRefUl: 1, errDl: 0, errUl: 0, errRefDl: 1, errRefUl: 1 };
+      const data = RAW_DATA_INPUT[market]?.mhsUdp || { dl: 0, ul: 0, refDl: 1, refUl: 1, jitterDl: 0, jitterUl: 0, jitterRefDl: 1, jitterRefUl: 1, errDl: 0, errUl: 0, errRefDl: 1, errRefUl: 1, linkDl: '#', linkUl: '#' };
       return [
         {
           cells: [
             { label: market, rowSpan: 3 },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.dl, data.refDl, '#2.9DL'),
-            getResultCell('Throughput', data.ul, data.refUl, '#2.9UL'),
+            getResultCell('Throughput', data.dl, data.refDl, data.linkDl),
+            getResultCell('Throughput', data.ul, data.refUl, data.linkUl),
           ],
         },
         {
           cells: [
             null,
             { label: "Mean Jitter" },
-            getResultCell('Jitter', data.jitterDl, data.jitterRefDl, '#2.9DL'),
-            getResultCell('Jitter', data.jitterUl, data.jitterRefUl, '#2.9UL'),
+            getResultCell('Jitter', data.jitterDl, data.jitterRefDl, data.linkDl),
+            getResultCell('Jitter', data.jitterUl, data.jitterRefUl, data.linkUl),
           ],
         },
         {
           cells: [
             null,
             { label: "Packet Failure Rate" },
-            getResultCell('ErrorRatio', data.errDl, data.errRefDl, '#2.9DL'),
-            getResultCell('ErrorRatio', data.errUl, data.errRefUl, '#2.9UL'),
+            getResultCell('ErrorRatio', data.errDl, data.errRefDl, data.linkDl),
+            getResultCell('ErrorRatio', data.errUl, data.errRefUl, data.linkUl),
           ],
         }
       ];
@@ -330,13 +330,13 @@ function DpSummaryPage() {
       { label: "RTT" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.mhsPing || { rtt: 0, ref: 1 };
+      const data = RAW_DATA_INPUT[market]?.mhsPing || { rtt: 0, ref: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Mean Round Trip Time" },
-            getResultCell('PingLatency', data.rtt, data.ref, '#2.10'),
+            getResultCell('PingLatency', data.rtt, data.ref, data.link),
           ],
         }
       ];
@@ -351,34 +351,34 @@ function DpSummaryPage() {
       { label: "Value" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.mobility || { tput: 0, jitter: 0, err: 0, rtt: 0, refTput: 1, refJitter: 1, refErr: 1, refRtt: 1 };
+      const data = RAW_DATA_INPUT[market]?.mobility || { tput: 0, jitter: 0, err: 0, rtt: 0, refTput: 1, refJitter: 1, refErr: 1, refRtt: 1, link: '#' };
       return [
         {
           cells: [
             { label: market, rowSpan: 4 },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.tput, data.refTput, '#2.11'),
+            getResultCell('Throughput', data.tput, data.refTput, data.link),
           ],
         },
         {
           cells: [
             null,
             { label: "Mean Jitter" },
-            getResultCell('Jitter', data.jitter, data.refJitter, '#2.11'),
+            getResultCell('Jitter', data.jitter, data.refJitter, data.link),
           ],
         },
         {
           cells: [
             null,
             { label: "Packet Failure Rate" },
-            getResultCell('ErrorRatio', data.err, data.refErr, '#2.11'),
+            getResultCell('ErrorRatio', data.err, data.refErr, data.link),
           ],
         },
         {
           cells: [
             null,
             { label: "Mean Round Trip Time" },
-            getResultCell('PingLatency', data.rtt, data.refRtt, '#2.11'),
+            getResultCell('PingLatency', data.rtt, data.refRtt, data.link),
           ],
         }
       ];
@@ -393,34 +393,34 @@ function DpSummaryPage() {
       { label: "Value" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.mobilityMhs || { tput: 0, jitter: 0, err: 0, rtt: 0, refTput: 1, refJitter: 1, refErr: 1, refRtt: 1 };
+      const data = RAW_DATA_INPUT[market]?.mobilityMhs || { tput: 0, jitter: 0, err: 0, rtt: 0, refTput: 1, refJitter: 1, refErr: 1, refRtt: 1, link: '#' };
       return [
         {
           cells: [
             { label: market, rowSpan: 4 },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.tput, data.refTput, '#2.12'),
+            getResultCell('Throughput', data.tput, data.refTput, data.link),
           ],
         },
         {
           cells: [
             null,
             { label: "Mean Jitter" },
-            getResultCell('Jitter', data.jitter, data.refJitter, '#2.12'),
+            getResultCell('Jitter', data.jitter, data.refJitter, data.link),
           ],
         },
         {
           cells: [
             null,
             { label: "Packet Failure Rate" },
-            getResultCell('ErrorRatio', data.err, data.refErr, '#2.12'),
+            getResultCell('ErrorRatio', data.err, data.refErr, data.link),
           ],
         },
         {
           cells: [
             null,
             { label: "Mean Round Trip Time" },
-            getResultCell('PingLatency', data.rtt, data.refRtt, '#2.12'),
+            getResultCell('PingLatency', data.rtt, data.refRtt, data.link),
           ],
         }
       ];
@@ -437,15 +437,15 @@ function DpSummaryPage() {
       { label: "Post Call" }
     ],
     rows: MARKETS.NR.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.mrab || { pre: 0, in: 0, post: 0, ref: 1 };
+      const data = RAW_DATA_INPUT[market]?.mrab || { pre: 0, in: 0, post: 0, ref: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.pre, data.ref, '#2.13'),
-            getResultCell('Throughput', data.in, data.ref, '#2.13'),
-            getResultCell('Throughput', data.post, data.ref, '#2.13'),
+            getResultCell('Throughput', data.pre, data.ref, data.link),
+            getResultCell('Throughput', data.in, data.ref, data.link),
+            getResultCell('Throughput', data.post, data.ref, data.link),
           ],
         }
       ];
@@ -462,14 +462,14 @@ function DpSummaryPage() {
       { label: "Upload" }
     ],
     rows: MARKETS.NSA.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.httpSS || { dl: 0, ul: 0, refDl: 1, refUl: 1 };
+      const data = RAW_DATA_INPUT[market]?.httpSS || { dl: 0, ul: 0, refDl: 1, refUl: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Data Throughput Average" },
-            getResultCell('Throughput', data.dl, data.refDl, '#3.1'),
-            getResultCell('Throughput', data.ul, data.refUl, '#3.1'),
+            getResultCell('Throughput', data.dl, data.refDl, data.link),
+            getResultCell('Throughput', data.ul, data.refUl, data.link),
           ],
         }
       ];
@@ -485,14 +485,14 @@ function DpSummaryPage() {
       { label: "Upload" }
     ],
     rows: MARKETS.NSA.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.httpMS || { dl: 0, ul: 0, refDl: 1, refUl: 1 };
+      const data = RAW_DATA_INPUT[market]?.httpMS || { dl: 0, ul: 0, refDl: 1, refUl: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Data Throughput Average" },
-            getResultCell('Throughput', data.dl, data.refDl, '#3.2'),
-            getResultCell('Throughput', data.ul, data.refUl, '#3.2'),
+            getResultCell('Throughput', data.dl, data.refDl, data.link),
+            getResultCell('Throughput', data.ul, data.refUl, data.link),
           ],
         }
       ];
@@ -508,30 +508,30 @@ function DpSummaryPage() {
       { label: "Upload" }
     ],
     rows: MARKETS.NSA.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.udp || { dl: 0, ul: 0, refDl: 1, refUl: 1, jitterDl: 0, jitterUl: 0, jitterRefDl: 1, jitterRefUl: 1, errDl: 0, errUl: 0, errRefDl: 1, errRefUl: 1 };
+      const data = RAW_DATA_INPUT[market]?.udp || { dl: 0, ul: 0, refDl: 1, refUl: 1, jitterDl: 0, jitterUl: 0, jitterRefDl: 1, jitterRefUl: 1, errDl: 0, errUl: 0, errRefDl: 1, errRefUl: 1, linkDl: '#', linkUl: '#' };
       return [
         {
           cells: [
             { label: market, rowSpan: 3 },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.dl, data.refDl, '#3.3DL'),
-            getResultCell('Throughput', data.ul, data.refUl, '#3.3UL'),
+            getResultCell('Throughput', data.dl, data.refDl, data.linkDl),
+            getResultCell('Throughput', data.ul, data.refUl, data.linkUl),
           ],
         },
         {
           cells: [
             null,
             { label: "Mean Jitter" },
-            getResultCell('Jitter', data.jitterDl, data.jitterRefDl, '#3.3DL'),
-            getResultCell('Jitter', data.jitterUl, data.jitterRefUl, '#3.3UL'),
+            getResultCell('Jitter', data.jitterDl, data.jitterRefDl, data.linkDl),
+            getResultCell('Jitter', data.jitterUl, data.jitterRefUl, data.linkUl),
           ],
         },
         {
           cells: [
             null,
             { label: "Packet Failure Rate" },
-            getResultCell('ErrorRatio', data.errDl, data.errRefDl, '#3.3DL'),
-            getResultCell('ErrorRatio', data.errUl, data.errRefUl, '#3.3UL'),
+            getResultCell('ErrorRatio', data.errDl, data.errRefDl, data.linkDl),
+            getResultCell('ErrorRatio', data.errUl, data.errRefUl, data.linkUl),
           ],
         }
       ];
@@ -546,13 +546,13 @@ function DpSummaryPage() {
       { label: "RTT" }
     ],
     rows: MARKETS.NSA.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.ping || { rtt: 0, ref: 1 };
+      const data = RAW_DATA_INPUT[market]?.ping || { rtt: 0, ref: 1, link: '#' };
       return [
         {
           cells: [
             { label: market },
             { label: "Mean Round Trip Time" },
-            getResultCell('PingLatency', data.rtt, data.ref, '#3.4'),
+            getResultCell('PingLatency', data.rtt, data.ref, data.link),
           ],
         }
       ];
@@ -567,34 +567,34 @@ function DpSummaryPage() {
       { label: "Value" }
     ],
     rows: MARKETS.NSA.flatMap(market => {
-      const data = RAW_DATA_INPUT[market]?.mobility || { tput: 0, jitter: 0, err: 0, rtt: 0, refTput: 1, refJitter: 1, refErr: 1, refRtt: 1 };
+      const data = RAW_DATA_INPUT[market]?.mobility || { tput: 0, jitter: 0, err: 0, rtt: 0, refTput: 1, refJitter: 1, refErr: 1, refRtt: 1, link: '#' };
       return [
         {
           cells: [
             { label: market, rowSpan: 4 },
             { label: "Mean Throughput" },
-            getResultCell('Throughput', data.tput, data.refTput, '#3.5'),
+            getResultCell('Throughput', data.tput, data.refTput, data.link),
           ],
         },
         {
           cells: [
             null,
             { label: "Mean Jitter" },
-            getResultCell('Jitter', data.jitter, data.refJitter, '#3.5'),
+            getResultCell('Jitter', data.jitter, data.refJitter, data.link),
           ],
         },
         {
           cells: [
             null,
             { label: "Packet Failure Rate" },
-            getResultCell('ErrorRatio', data.err, data.refErr, '#3.5'),
+            getResultCell('ErrorRatio', data.err, data.refErr, data.link),
           ],
         },
         {
           cells: [
             null,
             { label: "Mean Round Trip Time" },
-            getResultCell('PingLatency', data.rtt, data.refRtt, '#3.5'),
+            getResultCell('PingLatency', data.rtt, data.refRtt, data.link),
           ],
         }
       ];

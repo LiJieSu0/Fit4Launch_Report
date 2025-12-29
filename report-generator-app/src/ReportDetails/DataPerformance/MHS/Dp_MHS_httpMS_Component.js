@@ -133,9 +133,9 @@ function Dp_MHS_httpMS_Component() {
   return (
     <>
       <div className='page-content'>
-        <h2>2.7.2 HTTP Multi Stream Test - Mobile Hotspot</h2>
+        <h3>2.7.2 HTTP Multi Stream Test - Mobile Hotspot</h3>
         <div id="2.7.2"></div>
-        <h3>MHS Http Multi Stream Overview </h3>
+        <h4>MHS Http Multi Stream Overview </h4>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}
           tableData={combinedOverallTableData}

@@ -437,13 +437,13 @@ function Dp_MHS_Udp_Component() {
   return (
     <>
       <div className="page-content">
-        <h2>2.7.3 UDP Test - Mobile Hotspot</h2>
+        <h3>2.7.3 UDP Test - Mobile Hotspot</h3>
         <div id="2.7.3DL"></div>
-        <h3>MHS UDP Test DL Overview</h3>
+        <h4>MHS UDP Test DL Overview</h4>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>
       <div className="page-content">
-        <h3>MHS UDP Test UL Overview</h3>
+        <h4>MHS UDP Test UL Overview</h4>
         <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
       </div>
 

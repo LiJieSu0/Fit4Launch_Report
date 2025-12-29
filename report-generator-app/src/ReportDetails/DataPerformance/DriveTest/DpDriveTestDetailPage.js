@@ -44,8 +44,8 @@ const DpDriveTestDetailPage = () => {
     <>
       {/* TODO add 2.8.1 */}
       <div className='page-content'>
-        <h1 style={{ textAlign: 'center' }}>2.8 Mobility Test</h1>
-        <h2>2.8.1 Mobility Test - 5G Auto</h2>
+        <h2 style={{ textAlign: 'center' }}>2.8 Mobility Test</h2>
+        <h3>2.8.1 Mobility Test - 5G Auto</h3>
         <div id='2.8.1'></div>
         <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overview" />
         <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Details" />
@@ -81,7 +81,7 @@ const DpDriveTestDetailPage = () => {
         />
       </div>
       <div className='page-content'>
-        <h2>2.8.2 Mobility Test - Mobile Hotspot</h2>
+        <h3>2.8.2 Mobility Test - Mobile Hotspot</h3>
         <div id='2.8.2'></div>
         <DpMHSTestDriveOverallTable data={TestDriveMHSData} tableName="MHS Test Drive Overall Data" />
         <DpMHSTestDriveTable data={TestDriveMHSData} tableName="MHS Test Drive Data" />

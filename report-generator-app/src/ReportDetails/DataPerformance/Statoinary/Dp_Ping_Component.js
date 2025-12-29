@@ -90,11 +90,11 @@ function Dp_Ping_Component() {
             <div className='page-content'>
                 <h2>2.4 Ping Test - 5G Auto</h2>
                 <div id='2.4'></div>
-                <h3>Ping Test Overview</h3>
+                <h4>Ping Test Overview</h4>
                 <DpPingOverallTable data={processedPingData} />
             </div>
             <div className='page-content'>
-                <h3>Ping Test Details</h3>
+                <h4>Ping Test Details</h4>
                 <DpPingTableLoc3 data={processedPingData} />
                 <DpHistogramComponent
                     data={pingHistogramData}

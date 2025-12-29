@@ -96,13 +96,13 @@ function Dp_MHS_Ping_Component() {
   return (
     <>
       <div className="page-content">
-        <h2>2.7.4 Ping Test - Mobile Hotspot</h2>
+        <h3>2.7.4 Ping Test - Mobile Hotspot</h3>
         <div id="2.7.4"></div>
-        <h3>MHS Ping Test Overview</h3>
+        <h4>MHS Ping Test Overview</h4>
         <DpPingOverallTable data={data} /> {/* Add DpPingOverallTable */}
       </div>
       <div className="page-content">
-        <h3>MHS Ping Test Details</h3>
+        <h4>MHS Ping Test Details</h4>
         <DpMHSPingTable data={data} />
         <DpHistogramComponent
           data={histogramData}

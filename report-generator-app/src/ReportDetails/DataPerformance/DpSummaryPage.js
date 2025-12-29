@@ -606,8 +606,8 @@ function DpSummaryPage() {
   return (
     <div>
       <div className='page-content'>
-        <h2>1. Data Performance Overview – All Network</h2>
-        <h3>Data Performance Overview – 5G Auto</h3>
+        <h1>1. Data Performance Overview – All Network</h1>
+        <h4>Data Performance Overview – 5G Auto</h4>
         <DpSummaryTable tableData={httpSSData} />
         <DpSummaryTable tableData={httpMSData} />
         <DpSummaryTable tableData={udpData} />
@@ -626,7 +626,7 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={mrabData} />
       </div>
       <div className='page-content'>
-        <h3>Data Performance Overview – 5G NSA</h3>
+        <h4>Data Performance Overview – 5G NSA</h4>
         <DpSummaryTable tableData={httpNSASSData} />
         <DpSummaryTable tableData={httpNSAMSData} />
         <DpSummaryTable tableData={udpNSAData} />

@@ -23,7 +23,7 @@ const DpMrabDetailsPage = () => {
     <div className="page-content">
       <h2>2.9 VoNR M-RAB Stationary Test - 5G Auto</h2>
       <div id='2.9'></div>
-      <h3>VoNR M-RAB Overview</h3>
+      <h4>VoNR M-RAB Overview</h4>
       <table className="general-table-style">
         <thead>
           <tr>
@@ -56,7 +56,7 @@ const DpMrabDetailsPage = () => {
           </tr>
         </tbody>
       </table>
-      <h3>VoNR M-RAB Details</h3>
+      <h4>VoNR M-RAB Details</h4>
       <table className="general-table-style">
         <thead>
           <tr>

@@ -50,8 +50,8 @@ function App() {
       <div className="App">
         {/* <CoverPage reportType={reportType[reportTypeNo]} />
         <ReportHeader />
-        <DeviceInfoPage />
-        <ContentsIndexPage /> */}
+        <DeviceInfoPage />*/}
+        <ContentsIndexPage />
         {reportTypeNo === "CV" && (
           <>
             <CoverageSummaryPage />

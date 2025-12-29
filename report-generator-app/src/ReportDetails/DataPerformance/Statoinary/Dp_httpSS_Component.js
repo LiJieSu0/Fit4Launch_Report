@@ -163,7 +163,6 @@ function Dp_httpSS_Component() {
       <div className='page-content'>
         <DynamicHeader level={1} style={{ textAlign: 'center' }}>Data Performance - 5G Auto - Seattle</DynamicHeader>
         <DynamicHeader level={2}>HTTP Single Stream Test Download & Upload - 5G Auto</DynamicHeader>
-        <div id="2.1"></div>
         <h4>Http Single Stream Overview</h4>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}

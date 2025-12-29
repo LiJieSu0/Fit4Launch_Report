@@ -48,7 +48,6 @@ function Dp_Webbrowser_Component() {
     return (
         <div className='page-content'>
             <DynamicHeader level={2}>Web Browser Test - 5G Auto</DynamicHeader>
-            <div id="2.5"></div>
             <h4>Web Browser Test Overview</h4>
             <DpWebOverallTable data={overallTableData} />
             {/* <h3>Web Browser Test Details</h3> */}

@@ -268,7 +268,6 @@ function CoverageDetails() {
           metric="mos_before_drop"
           baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
         />
-
       </div>
       <div className='page-content'>
         <h4>5G VoNR Coverage Test NR25- Audio Call Drop Distance (km)</h4>

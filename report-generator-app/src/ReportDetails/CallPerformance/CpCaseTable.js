@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
 import { getKpiCellColor } from '../../Utils/KpiRules';
+import DynamicHeader from '../../CommonPage/DynamicHeader';
 
 const CpCaseTable = ({ title, data }) => {
     const dut = data?.DUT || {};
@@ -22,7 +23,7 @@ const CpCaseTable = ({ title, data }) => {
 
     return (
         <div className="">
-            <h2>{title}</h2>
+            <DynamicHeader level={2}>{title}</DynamicHeader>
             <table className="performance-table general-table-style">
                 <thead>
                     <tr>

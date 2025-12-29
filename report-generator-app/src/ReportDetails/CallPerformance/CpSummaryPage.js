@@ -3,6 +3,7 @@ import '../../StyleScript/Restricted_Report_Style.css';
 import { useReportData } from '../../Contexts/ReportContext';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 
+
 const CpSummaryPage = () => {
 
 
@@ -52,7 +53,7 @@ const CpSummaryPage = () => {
 
     return (
         <div className="page-content">
-            <h1>1. Call Performance Test Overview</h1>
+            <DynamicHeader level={1}>Call Performance Test Overview</DynamicHeader>
             <table className="general-table-style">
                 <thead>
                     <tr>

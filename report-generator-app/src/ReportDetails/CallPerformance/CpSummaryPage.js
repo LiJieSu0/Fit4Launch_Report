@@ -1,11 +1,12 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
 import { useReportData } from '../../Contexts/ReportContext';
+import DynamicHeader from '../../CommonPage/DynamicHeader';
 
 const CpSummaryPage = () => {
 
-    
-  
+
+
     const CpSummaryData = [
         {
             test: 'VoNR Disabled CP MO Drive',

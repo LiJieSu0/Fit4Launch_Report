@@ -13,6 +13,7 @@ import { ReportDataProvider } from './Contexts/ReportDataProvider';
 
 import ReportHeader from './CommonPage/ReportHeader';
 import ReportFooter from './CommonPage/ReportFooter';
+import { HeaderProvider } from './Contexts/HeaderContext';
 
 import CallPerformanceDetails from './ReportDetails/CallPerformance/CallPerformanceDetails';
 import CpSummaryPage from './ReportDetails/CallPerformance/CpSummaryPage';
@@ -40,60 +41,62 @@ const reportType = {
   'WFC': "WFC"
 }
 // Report Type Setup-------------------------------------------------------------------------
-const reportTypeNo = "DP";
+const reportTypeNo = "CV";
 // Report Type Setup-------------------------------------------------------------------------
 //TODO Summary page results and link need to be loaded from file
 
 function App() {
   return (
     <ReportDataProvider>
-      <div className="App">
-        {/* <CoverPage reportType={reportType[reportTypeNo]} />
-        <ReportHeader />
-        <DeviceInfoPage />*/}
-        <ContentsIndexPage />
-        {reportTypeNo === "CV" && (
-          <>
-            <CoverageSummaryPage />
-            <CoverageDetails />
-            <CoverageKpiPage />
-          </>
-        )}
+      <HeaderProvider>
+        <div className="App">
+          {/* <CoverPage reportType={reportType[reportTypeNo]} />
+          <ReportHeader />
+          <DeviceInfoPage />*/}
+          <ContentsIndexPage />
+          {reportTypeNo === "CV" && (
+            <>
+              <CoverageSummaryPage />
+              <CoverageDetails />
+              <CoverageKpiPage />
+            </>
+          )}
 
-        {reportTypeNo === "VQ" && (
-          <>
-            <VqSummaryPage />
-            <VqDetailsPage />
-            <VqKpiPage />
-          </>
-        )}
+          {reportTypeNo === "VQ" && (
+            <>
+              <VqSummaryPage />
+              <VqDetailsPage />
+              <VqKpiPage />
+            </>
+          )}
 
-        {reportTypeNo === "CP" && (
-          <>
-            <CpSummaryPage />
-            <CallPerformanceDetails />
-            <CpKpiPage />
-          </>
-        )}
+          {reportTypeNo === "CP" && (
+            <>
+              <CpSummaryPage />
+              <CallPerformanceDetails />
+              <CpKpiPage />
+            </>
+          )}
 
-        {reportTypeNo === "DP" && (
-          <>
-            <DpSummaryPage />
-            <DpDetailsPage />
-            <DpKpiPage />
-          </>
-        )}
+          {reportTypeNo === "DP" && (
+            <>
+              <DpSummaryPage />
+              <DpDetailsPage />
+              <DpKpiPage />
+            </>
+          )}
 
-        {reportTypeNo === "WFC" && (
-          <>
-            <WfcSummaryPage />
-            <WfcDetailsPage />
-          </>
-        )}
-        <LegalPage number={reportTypeNo === "DP" ? 5 : 4} />
-        <AboutPage number={reportTypeNo === "DP" ? 6 : 5} />
-        <ReportFooter reportType={reportType[reportTypeNo]} />
-      </div>
+          {reportTypeNo === "WFC" && (
+            <>
+              <WfcSummaryPage />
+              <WfcDetailsPage />
+            </>
+          )}
+          <LegalPage />
+          <AboutPage />
+          <ReportFooter reportType={reportType[reportTypeNo]} />
+        </div>
+      </HeaderProvider>
     </ReportDataProvider>
   );
 }

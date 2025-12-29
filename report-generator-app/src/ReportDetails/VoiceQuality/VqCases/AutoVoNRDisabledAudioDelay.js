@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
+import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 const processAudioDelayData = (audioDelayData) => {
   if (!audioDelayData || !audioDelayData.DUT1 || !audioDelayData.REF1 || !audioDelayData.DUT2 || !audioDelayData.REF2) {
@@ -82,9 +83,8 @@ const AutoVoNRDisabledAudioDelay = () => {
   }, [reportData]);
 
   return (
-    <div>
-      <h2>2.5 5G Auto VoNR Disabled Audio Delay</h2>
-      <div id='2.5'></div>
+    <div className="page-content">
+      <DynamicHeader level={2}>5G Auto VoNR Disabled Audio Delay</DynamicHeader>
       <table className="general-table-style vq-details-table">
         <thead>
           <tr>

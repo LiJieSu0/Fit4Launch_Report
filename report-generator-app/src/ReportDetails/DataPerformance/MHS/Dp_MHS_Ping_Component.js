@@ -6,6 +6,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DpHistogramComponent from "../DpHistogramComponent";
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from "../../../Constants/ChartColors";
+import DynamicHeader from "../../../CommonPage/DynamicHeader";
 
 function Dp_MHS_Ping_Component() {
   const { reportData } = useContext(ReportContext);
@@ -96,8 +97,7 @@ function Dp_MHS_Ping_Component() {
   return (
     <>
       <div className="page-content">
-        <h3>2.7.4 Ping Test - Mobile Hotspot</h3>
-        <div id="2.7.4"></div>
+        <DynamicHeader level={3}>Ping Test - Mobile Hotspot</DynamicHeader>
         <h4>MHS Ping Test Overview</h4>
         <DpPingOverallTable data={data} /> {/* Add DpPingOverallTable */}
       </div>

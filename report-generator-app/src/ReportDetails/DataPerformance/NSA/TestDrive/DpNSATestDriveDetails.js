@@ -6,6 +6,7 @@ import DpHistogramComponent from '../../DpHistogramComponent';
 import { ReportContext } from '../../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../../Constants/ChartColors';
+import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 
 // Define additional colors for the histogram bars
 function DpNSATestDriveDetails() {
@@ -67,8 +68,7 @@ function DpNSATestDriveDetails() {
   return (
     <>
       <div className='page-content'>
-        <h2>3.5 Mobility Test - 5G NSA</h2>
-        <div id='3.5'></div>
+        <DynamicHeader level={2}>Mobility Test - 5G NSA</DynamicHeader>
         <DpNSATestDriveOverallTable data={TestDriveData} tableName="Drive Test Overview" />
         <DpNSATestDriveTable data={TestDriveData} tableName="Drive Test Details" />
       </div>

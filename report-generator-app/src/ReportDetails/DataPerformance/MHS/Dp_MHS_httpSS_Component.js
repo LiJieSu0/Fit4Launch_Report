@@ -7,6 +7,7 @@ import DpThroughputOverallTable from "../DpThroughputOverallTable";
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
+import DynamicHeader from "../../../CommonPage/DynamicHeader";
 
 function Dp_MHS_httpSS_Component() {
   const { reportData } = useContext(ReportContext);
@@ -132,9 +133,8 @@ function Dp_MHS_httpSS_Component() {
   return (
     <>
       <div className='page-content'>
-        <h2>2.7 Mobile Hotspot Test-5G Auto</h2>
-        <h3>2.7.1 HTTP Single Stream Test - Mobile Hotspot</h3>
-        <div id="2.7.1"></div>
+        <DynamicHeader level={2}>Mobile Hotspot Test-5G Auto</DynamicHeader>
+        <DynamicHeader level={3}>HTTP Single Stream Test - Mobile Hotspot</DynamicHeader>
         <h4>MHS Http Single Stream Overview</h4>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}

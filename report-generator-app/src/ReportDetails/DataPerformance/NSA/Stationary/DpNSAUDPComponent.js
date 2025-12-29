@@ -8,6 +8,7 @@ import DpUdpOverallTable from '../../DpUdpOverallTable';
 import { ReportContext } from '../../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import '../../../../StyleScript/Restricted_Report_Style.css';
+import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 
 function DpNSAUDPComponent() {
   const { reportData } = useContext(ReportContext);
@@ -390,14 +391,12 @@ function DpNSAUDPComponent() {
   return (
     <>
       <div className='page-content'>
-        <h2>3.3 UDP Test - 5G NSA</h2>
-        <div id='3.3DL'></div>
+        <DynamicHeader level={2}>UDP Test - 5G NSA</DynamicHeader>
         <h4>NSA UDP Test DL Overview</h4>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>
       <div className='page-content'>
         <h4>NSA UDP Test UL Overview</h4>
-        <div id='3.3UL'></div>
         <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
       </div>
 

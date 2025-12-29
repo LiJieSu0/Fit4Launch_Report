@@ -8,6 +8,7 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors
 // import httpMS_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/Multi Stream HTTP.json'; // Removed direct import
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
+import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 function Dp_httpMS_Component() {
     const { reportData } = useContext(ReportContext);
@@ -160,8 +161,7 @@ function Dp_httpMS_Component() {
     return (
         <>
             <div className='page-content'>
-                <h2>2.2 HTTP Multi Stream Test Download & Upload - 5G Auto</h2>
-                <div id='2.2'></div>
+                <DynamicHeader level={2}>HTTP Multi Stream Test Download & Upload - 5G Auto</DynamicHeader>
                 <h4>Http Multi Stream Overview</h4>
                 <DpThroughputOverallTable
                     tableHeader={overallTableHeader}

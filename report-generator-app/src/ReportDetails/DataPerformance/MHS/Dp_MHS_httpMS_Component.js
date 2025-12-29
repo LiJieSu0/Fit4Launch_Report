@@ -7,6 +7,7 @@ import DpThroughputOverallTable from "../DpThroughputOverallTable";
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
+import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 
 function Dp_MHS_httpMS_Component() {
@@ -133,8 +134,7 @@ function Dp_MHS_httpMS_Component() {
   return (
     <>
       <div className='page-content'>
-        <h3>2.7.2 HTTP Multi Stream Test - Mobile Hotspot</h3>
-        <div id="2.7.2"></div>
+        <DynamicHeader level={3}>HTTP Multi Stream Test - Mobile Hotspot</DynamicHeader>
         <h4>MHS Http Multi Stream Overview </h4>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}

@@ -13,6 +13,7 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../../Constants/ChartCol
 import DpNSAUDPComponent from './DpNSAUDPComponent';
 import { ReportContext } from '../../../../Contexts/ReportContext';
 import { useContext } from 'react';
+import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 
 function DpNSAStationaryDetails() {
   const { reportData } = useContext(ReportContext);
@@ -126,9 +127,8 @@ function DpNSAStationaryDetails() {
   return (
     <>
       <div className='page-content'>
-        <h1>3. Data Performance - 5G NSA</h1>
-        <h2>3.1 HTTP Single Stream Test Download & Upload - 5G NSA</h2>
-        <div id='3.1'></div>
+        <DynamicHeader level={1}>Data Performance - 5G NSA</DynamicHeader>
+        <DynamicHeader level={2}>HTTP Single Stream Test Download & Upload - 5G NSA</DynamicHeader>
         <h4>Http Single Stream Overview </h4>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}
@@ -194,8 +194,7 @@ function DpNSAStationaryDetails() {
         />
       </div>
       <div className='page-content'>
-        <h2>3.2 HTTP Multi Stream Test Download & Upload - 5G NSA</h2>
-        <div id='3.2'></div>
+        <DynamicHeader level={2}>HTTP Multi Stream Test Download & Upload - 5G NSA</DynamicHeader>
         <h4>Http Multi Stream Overview</h4>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}
@@ -262,8 +261,7 @@ function DpNSAStationaryDetails() {
       </div>
       <DpNSAUDPComponent />
       <div className='page-content'>
-        <h2>3.4 Ping Test - 5G NSA</h2>
-        <div id='3.4'></div>
+        <DynamicHeader level={2}>Ping Test - 5G NSA</DynamicHeader>
         <h4>Ping Test Overview</h4>
         <DpNSAPingOverallTable data={pingData} />
         <DpNSAPingTable data={pingData} tableName="Ping Test Details" />

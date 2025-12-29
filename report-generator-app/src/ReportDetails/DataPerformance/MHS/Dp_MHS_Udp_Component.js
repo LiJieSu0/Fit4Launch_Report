@@ -7,6 +7,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import '../../../StyleScript/Restricted_Report_Style.css';
+import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 function Dp_MHS_Udp_Component() {
   const { reportData } = useContext(ReportContext);
@@ -437,8 +438,7 @@ function Dp_MHS_Udp_Component() {
   return (
     <>
       <div className="page-content">
-        <h3>2.7.3 UDP Test - Mobile Hotspot</h3>
-        <div id="2.7.3DL"></div>
+        <DynamicHeader level={3}>UDP Test - Mobile Hotspot</DynamicHeader>
         <h4>MHS UDP Test DL Overview</h4>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>
@@ -475,7 +475,6 @@ function Dp_MHS_Udp_Component() {
       ))}
 
       <div className="page-content">
-        <div id="2.7.3UL"></div>
         <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP Test UL Details" />
       </div>
       {uploadHistogramData.reduce((acc, histogram, index) => {

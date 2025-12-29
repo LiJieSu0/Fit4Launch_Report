@@ -5,6 +5,7 @@ import '../../StyleScript/Restricted_Report_Style.css';
 import DpHistogramComponent from './DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../Constants/ChartColors';
 import { getKpiCellColor } from '../../Utils/KpiRules';
+import DynamicHeader from '../../CommonPage/DynamicHeader';
 
 const DpMrabDetailsPage = () => {
   const { reportData } = useContext(ReportContext);
@@ -21,8 +22,7 @@ const DpMrabDetailsPage = () => {
   }
   return (
     <div className="page-content">
-      <h2>2.9 VoNR M-RAB Stationary Test - 5G Auto</h2>
-      <div id='2.9'></div>
+      <DynamicHeader level={2}>VoNR M-RAB Stationary Test - 5G Auto</DynamicHeader>
       <h4>VoNR M-RAB Overview</h4>
       <table className="general-table-style">
         <thead>

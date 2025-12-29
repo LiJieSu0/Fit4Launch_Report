@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './LegalPage.module.css';
+import DynamicHeader from './DynamicHeader';
 
-const LegalPage = ({ number }) => {
+const LegalPage = () => {
   return (
     <div className='page-content'>
-      <h2>{number}. Legal Notice</h2>
+      <DynamicHeader level={1}>Legal Notice</DynamicHeader>
       <p>
         This report contains confidential and proprietary information belonging to ATMC Labs
         and is provided exclusively for the intended recipient for internal evaluation and TMO Field Performance Test

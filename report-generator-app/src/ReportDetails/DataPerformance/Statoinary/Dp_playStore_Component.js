@@ -5,6 +5,7 @@ import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
+import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 const Dp_playStore_Component = () => {
   const { reportData } = useContext(ReportContext);
@@ -89,8 +90,7 @@ const Dp_playStore_Component = () => {
   return (
     <>
       <div className='page-content'>
-        <h2>2.6 Play-store App Download Test - 5G Auto</h2>
-        <div id='2.6'></div>
+        <DynamicHeader level={2}>Play-store App Download Test - 5G Auto</DynamicHeader>
         <h4>Play-store App Download Test Overview</h4>
         <DpPlayStoreOverallTable tableData={tableData} />
         <h4>Play-store App Download Test Details</h4>

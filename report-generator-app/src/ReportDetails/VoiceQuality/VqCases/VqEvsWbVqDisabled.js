@@ -3,6 +3,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import VqLineChart from './VqLineChart';
 import VqMosTable from './VqMosTable';
+import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -125,8 +126,7 @@ const VqEvsWbVqDisabled = () => {
   return (
     <>
       <div className="page-content">
-        <h2>2.3 5G Auto VoNR Disabled EVS WB VQ</h2>
-        <div id='2.3'></div>
+        <DynamicHeader level={2}>5G Auto VoNR Disabled EVS WB VQ</DynamicHeader>
         <h4>Results</h4>
         <div className="two-column-layout">
           <table className="general-table-style half-width-table vq-summary-table">

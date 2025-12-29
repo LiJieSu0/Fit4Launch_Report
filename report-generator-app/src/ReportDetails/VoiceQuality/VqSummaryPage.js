@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
+import DynamicHeader from '../../CommonPage/DynamicHeader';
 
 const VqSummaryPage = () => {
   const VqSummaryData = [
@@ -13,7 +14,7 @@ const VqSummaryPage = () => {
 
   return (
     <div className="page-content">
-      <h1>1. Voice Quality Test Overview</h1>
+      <DynamicHeader level={1}>Voice Quality Test Overview</DynamicHeader>
       <table className="general-table-style">
         <thead>
           <tr>

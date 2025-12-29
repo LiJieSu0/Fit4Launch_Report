@@ -9,6 +9,7 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors
 // import TestDriveMHSData from '../../../DataFiles/SA/DpMobilityMHSResults/MHS Test Drive.json'; // Removed direct import
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
+import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 const DpDriveTestDetailPage = () => {
   const { reportData } = useContext(ReportContext);
@@ -44,9 +45,8 @@ const DpDriveTestDetailPage = () => {
     <>
       {/* TODO add 2.8.1 */}
       <div className='page-content'>
-        <h2 style={{ textAlign: 'center' }}>2.8 Mobility Test</h2>
-        <h3>2.8.1 Mobility Test - 5G Auto</h3>
-        <div id='2.8.1'></div>
+        <DynamicHeader level={2}>Mobility Test</DynamicHeader>
+        <DynamicHeader level={3}>Mobility Test - 5G Auto</DynamicHeader>
         <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overview" />
         <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Details" />
       </div>
@@ -80,8 +80,7 @@ const DpDriveTestDetailPage = () => {
         />
       </div>
       <div className='page-content'>
-        <h3>2.8.2 Mobility Test - Mobile Hotspot</h3>
-        <div id='2.8.2'></div>
+        <DynamicHeader level={3}>Mobility Test - Mobile Hotspot</DynamicHeader>
         <DpMHSTestDriveOverallTable data={TestDriveMHSData} tableName="MHS Test Drive Overall Data" />
         <DpMHSTestDriveTable data={TestDriveMHSData} tableName="MHS Test Drive Data" />
       </div>

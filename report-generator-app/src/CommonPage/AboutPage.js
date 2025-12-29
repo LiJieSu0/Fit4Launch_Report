@@ -1,9 +1,10 @@
 import React from 'react';
+import DynamicHeader from './DynamicHeader';
 
-const AboutPage = ({ number }) => {
+const AboutPage = () => {
   return (
     <div className='page-content'>
-      <h2>{number}. About ATMC Labs</h2>
+      <DynamicHeader level={1}>About ATMC Labs</DynamicHeader>
       <p>
         Advanced Test Management and Certification Labs (ATMC Labs)
         is a Seattle-based wireless device testing laboratory offering test products and services to the wireless industry.

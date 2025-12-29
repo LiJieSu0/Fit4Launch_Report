@@ -1,5 +1,7 @@
 import React from 'react';
 import '../StyleScript/Restricted_Report_Style.css';
+import DynamicHeader from './DynamicHeader';
+
 const deviceData = [
     {
         market: "Seattle",
@@ -30,8 +32,8 @@ const deviceData = [
 const DeviceInfoPage = () => {
     return (
         <div className="page-content device-info-page">
-            <h2>Device Information</h2>
-            
+            <DynamicHeader level={2}>Device Information</DynamicHeader>
+
             <table className="device-info-table general-table-style">
                 <thead>
                     <tr>
@@ -59,7 +61,7 @@ const DeviceInfoPage = () => {
                 </tbody>
             </table>
 
-            
+
         </div>
     );
 };

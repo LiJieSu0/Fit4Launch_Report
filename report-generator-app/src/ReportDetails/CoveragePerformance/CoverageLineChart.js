@@ -31,12 +31,12 @@ const CoverageLineChart = ({ analysisType, run }) => {
     let chartTitleContext = "";
 
     if (analysisType === 'RSRP') {
-        dataFolderPath = "/AnalyzeResults/Seattle/cv_rsrp_data";
+        dataFolderPath = "/AnalyzeResults/Seattle/rsrp_data";
         fileNamePart = "_PC2_PC3_RSRP_Analysis.csv";
         yAxisLabel = "RSRP Value";
         chartTitleContext = "RSRP Analysis";
     } else if (analysisType === 'TxPower') {
-        dataFolderPath = "/AnalyzeResults/Seattle/cv_tx_power_data";
+        dataFolderPath = "/AnalyzeResults/Seattle/tx_power_data";
         fileNamePart = "_PC2_PC3_TxPower_Analysis.csv";
         yAxisLabel = "Tx Power Value (dBm)";
         chartTitleContext = "Tx Power Analysis";

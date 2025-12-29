@@ -5,6 +5,7 @@ import DpHistogramComponent from "../DpHistogramComponent";
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
+import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 function Dp_Webbrowser_Component() {
     const { reportData } = useContext(ReportContext);
@@ -46,7 +47,7 @@ function Dp_Webbrowser_Component() {
 
     return (
         <div className='page-content'>
-            <h2>2.5 Web Browser Test - 5G Auto</h2>
+            <DynamicHeader level={2}>Web Browser Test - 5G Auto</DynamicHeader>
             <div id="2.5"></div>
             <h4>Web Browser Test Overview</h4>
             <DpWebOverallTable data={overallTableData} />

@@ -3,6 +3,7 @@ import DpSummaryTable from './DpSummaryTable';
 import { ReportContext } from '../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { getKpiCellColor } from '../../Utils/KpiRules';
+import DynamicHeader from '../../CommonPage/DynamicHeader';
 
 
 //TODO summary page cell link
@@ -606,7 +607,7 @@ function DpSummaryPage() {
   return (
     <div>
       <div className='page-content'>
-        <h1>1. Data Performance Overview – All Network</h1>
+        <DynamicHeader level={1}>Data Performance Overview – All Network</DynamicHeader>
         <h4>Data Performance Overview – 5G Auto</h4>
         <DpSummaryTable tableData={httpSSData} />
         <DpSummaryTable tableData={httpMSData} />

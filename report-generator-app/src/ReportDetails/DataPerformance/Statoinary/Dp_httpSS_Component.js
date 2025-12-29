@@ -7,6 +7,7 @@ import DpHistogramComponent from '../DpHistogramComponent';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
+import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 function Dp_httpSS_Component() {
   const { reportData } = useContext(ReportContext);
@@ -160,8 +161,8 @@ function Dp_httpSS_Component() {
   return (
     <>
       <div className='page-content'>
-        <h1 style={{ textAlign: 'center' }}>2. Data Performance - 5G Auto - Seattle</h1>
-        <h2>2.1 HTTP Single Stream Test Download & Upload - 5G Auto</h2>
+        <DynamicHeader level={1} style={{ textAlign: 'center' }}>Data Performance - 5G Auto - Seattle</DynamicHeader>
+        <DynamicHeader level={2}>HTTP Single Stream Test Download & Upload - 5G Auto</DynamicHeader>
         <div id="2.1"></div>
         <h4>Http Single Stream Overview</h4>
         <DpThroughputOverallTable

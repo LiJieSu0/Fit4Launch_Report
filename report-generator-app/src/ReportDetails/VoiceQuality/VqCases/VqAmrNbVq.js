@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
+import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -145,9 +146,8 @@ const VqAmrNbVq = () => {
   ];
   return (
     <div className="page-content">
-      <h1 style={{ textAlign: 'center' }}>2. Voice Quality Test - Seattle</h1>
-      <h2>2.1 5G Auto VoNR Enabled AMR NB VQ</h2>
-      <div id='2.1'></div>
+      <DynamicHeader level={1} style={{ textAlign: 'center' }}>Voice Quality Test - Seattle</DynamicHeader>
+      <DynamicHeader level={2}>5G Auto VoNR Enabled AMR NB VQ</DynamicHeader>
       <h4>Results</h4>
       <table className="general-table-style performance-table">
         <thead>

@@ -5,6 +5,7 @@ import DpHistogramComponent from '../DpHistogramComponent';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
+import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 function Dp_Ping_Component() {
     const { reportData } = useContext(ReportContext);
@@ -88,8 +89,7 @@ function Dp_Ping_Component() {
     return (
         <>
             <div className='page-content'>
-                <h2>2.4 Ping Test - 5G Auto</h2>
-                <div id='2.4'></div>
+                <DynamicHeader level={2}>Ping Test - 5G Auto</DynamicHeader>
                 <h4>Ping Test Overview</h4>
                 <DpPingOverallTable data={processedPingData} />
             </div>

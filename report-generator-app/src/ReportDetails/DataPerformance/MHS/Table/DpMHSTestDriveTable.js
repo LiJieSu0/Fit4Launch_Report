@@ -93,7 +93,7 @@ function DpMHSTestDriveTable({ data, tableName }) {
 
   return (
     <div className="table-container">
-      <h3>{tableName}</h3>
+      <h4>{tableName}</h4>
       <table className="general-table-style">
         <thead>
           <tr>

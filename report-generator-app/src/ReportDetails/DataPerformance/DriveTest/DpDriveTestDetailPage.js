@@ -66,7 +66,6 @@ const DpDriveTestDetailPage = () => {
         />
       </div>
       <div className='page-content'>
-
         <DpHistogramComponent
           data={driveTestErrorRatioData}
           title="Mobility Test Drive Packet Failure Rate"

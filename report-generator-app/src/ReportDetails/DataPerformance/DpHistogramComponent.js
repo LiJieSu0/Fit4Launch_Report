@@ -16,7 +16,7 @@ const DpHistogramComponent = ({ data, title, yAxisLabel, barKeys }) => {
   return (
     <div>
 
-      <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>{title}</h3>
+      <h4 style={{ textAlign: 'center', marginBottom: '20px' }}>{title}</h4>
       {/* <div style={{ width: '100%', height: '400px', minHeight: '250px' }}> */}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <BarChart

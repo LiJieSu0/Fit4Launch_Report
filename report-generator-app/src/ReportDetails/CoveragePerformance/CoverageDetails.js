@@ -236,7 +236,7 @@ function CoverageDetails() {
         <h2>2.1 5G VoNR Coverage Test - N25, N41, N71</h2>
         <div id='2.1DL'></div>
         {/* ------NR25 */}
-        <h3>5G VoNR Coverage Test NR25- DL Throughput &lt; 1Mbps Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR25- DL Throughput &lt; 1Mbps Distance (km)</h4>
         {/* NR25 DL table */}
         <CoverageTestTable tableData={NR25_DL.slice(0, -1)} status={NR25_DL[NR25_Audio.length - 1]} />
         {/* map picture */}
@@ -248,7 +248,7 @@ function CoverageDetails() {
         />
       </div>
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR25- UL Throughput &lt; 1Mbps Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR25- UL Throughput &lt; 1Mbps Distance (km)</h4>
         <div id='2.1UL'></div>
 
         {/* NR25 UL table */}
@@ -261,7 +261,7 @@ function CoverageDetails() {
 
       </div>
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR25- Last MOS Before Silence Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR25- Last MOS Before Silence Distance (km)</h4>
         <div id='2.1MOS'></div>
         {/* NR25 MOS table */}
         <CoverageTestTable tableData={NR25_MOS.slice(0, -1)} status={NR25_MOS[NR25_Audio.length - 1]} />
@@ -273,7 +273,7 @@ function CoverageDetails() {
 
       </div>
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR25- Audio Call Drop Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR25- Audio Call Drop Distance (km)</h4>
         <div id='2.1Call'></div>
         {/* NR25 Audio table */}
         <CoverageTestTable tableData={NR25_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
@@ -284,7 +284,7 @@ function CoverageDetails() {
         />
       </div>
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR25 - Secondary KPI</h3>
+        <h4>5G VoNR Coverage Test NR25 - Secondary KPI</h4>
         <SecondaryKpiTable data={n25SecondaryKpi} />
       </div>
 
@@ -292,7 +292,7 @@ function CoverageDetails() {
 
       {/* ------NR41 */}
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR41- DL Throughput &lt; 1Mbps Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR41- DL Throughput &lt; 1Mbps Distance (km)</h4>
         <div id='2.2DL'></div>
         {/* NR41 DL table */}
         <CoverageTestTable tableData={NR41_DL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
@@ -304,7 +304,7 @@ function CoverageDetails() {
 
       </div>
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR41- UL Throughput &lt; 1Mbps Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR41- UL Throughput &lt; 1Mbps Distance (km)</h4>
         <div id='2.2UL'></div>
         {/* NR41 UL table */}
         <CoverageTestTable tableData={NR41_UL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
@@ -316,7 +316,7 @@ function CoverageDetails() {
 
       </div>
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR41- Last MOS Before Silence Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR41- Last MOS Before Silence Distance (km)</h4>
         <div id='2.2MOS'></div>
         {/* NR41 MOS table */}
         <CoverageTestTable tableData={NR41_MOS.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
@@ -328,7 +328,7 @@ function CoverageDetails() {
 
       </div>
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR41- Audio Call Drop Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR41- Audio Call Drop Distance (km)</h4>
         <div id='2.2Call'></div>
         {/* NR41 Audio table */}
         <CoverageTestTable tableData={NR41_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
@@ -339,12 +339,12 @@ function CoverageDetails() {
         />
       </div>
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR41- Secondary KPI</h3>
+        <h4>5G VoNR Coverage Test NR41- Secondary KPI</h4>
         <SecondaryKpiTable data={n41SecondaryKpi} />
       </div>
       {/* ------NR71 */}
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR71- DL Throughput &lt; 1Mbps Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR71- DL Throughput &lt; 1Mbps Distance (km)</h4>
         <div id='2.3DL'></div>
         {/* NR71 DL table */}
         <CoverageTestTable tableData={NR71_DL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
@@ -356,7 +356,7 @@ function CoverageDetails() {
 
       </div>
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR71- UL Throughput &lt; 1Mbps Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR71- UL Throughput &lt; 1Mbps Distance (km)</h4>
         <div id='2.3UL'></div>
         {/* NR71 UL table */}
         <CoverageTestTable tableData={NR71_UL.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
@@ -368,7 +368,7 @@ function CoverageDetails() {
 
       </div>
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR71- Last MOS Before Silence Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR71- Last MOS Before Silence Distance (km)</h4>
         <div id='2.3MOS'></div>
         {/* NR71 MOS table */}
         <CoverageTestTable tableData={NR71_MOS.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
@@ -380,7 +380,7 @@ function CoverageDetails() {
 
       </div>
       <div className='page-content'>
-        <h3>5G VoNR Coverage Test NR71- Audio Call Drop Distance (km)</h3>
+        <h4>5G VoNR Coverage Test NR71- Audio Call Drop Distance (km)</h4>
         <div id='2.3Call'></div>
         {/* NR71 Audio table */}
         <CoverageTestTable tableData={NR71_Audio.slice(0, -1)} status={NR25_Audio[NR25_Audio.length - 1]} />
@@ -391,12 +391,12 @@ function CoverageDetails() {
         />
       </div>
       <div className='page-content'>
-        <h3>NR71 Secondary KPI</h3>
+        <h4>NR71 Secondary KPI</h4>
         <SecondaryKpiTable data={n71SecondaryKpi} />
       </div>
       <HPUECoverageTable n41Data={n41HPUEData} />
       <div className='page-content'>
-        <h2>2.2.1 5G n41 HPUE Coverage Test-RSRP Analysis</h2>
+        <h3>2.2.1 5G n41 HPUE Coverage Test-RSRP Analysis</h3>
         <CoverageLineChart analysisType="RSRP" run={1} />
         <CoverageLineChart analysisType="RSRP" run={2} />
       </div>
@@ -408,7 +408,7 @@ function CoverageDetails() {
         <CoverageLineChart analysisType="RSRP" run={5} />
       </div>
       <div className='page-content'>
-        <h2>2.2.2 5G n41 HPUE Coverage Test-Tx Power Analysis</h2>
+        <h3>2.2.2 5G n41 HPUE Coverage Test-Tx Power Analysis</h3>
         <CoverageLineChart analysisType="TxPower" run={1} />
         <CoverageLineChart analysisType="TxPower" run={2} />
       </div>

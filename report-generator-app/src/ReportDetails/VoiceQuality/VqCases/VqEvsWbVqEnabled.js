@@ -127,7 +127,7 @@ const VqEvsWbVqEnabled = () => {
       <div className="page-content">
         <h2>2.4 5G Auto VoNR Enabled EVS WB VQ</h2>
         <div id='2.4'></div>
-        <h3>Results</h3>
+        <h4>Results</h4>
         <div className="two-column-layout">
           <table className="general-table-style half-width-table vq-summary-table">
             <thead>
@@ -180,7 +180,7 @@ const VqEvsWbVqEnabled = () => {
           </table>
         </div>
 
-        <h3>Details</h3>
+        <h4>Details</h4>
         <table className="general-table-style vq-details-table">
           <thead>
             <tr>
@@ -217,10 +217,10 @@ const VqEvsWbVqEnabled = () => {
         </table>
       </div>
       <div className="page-content">
-        <h3>VoNR Enabled EVS WB VQ Downlink MOS Distribution</h3>
+        <h4>VoNR Enabled EVS WB VQ Downlink MOS Distribution</h4>
         <VqLineChart dataSource="vonr_enabled_evs_wb_vq_mobile" />
         <VqMosTable dataSource="vonr_enabled_evs_wb_vq_mobile" />
-        <h3>VoNR Enabled EVS WB VQ Uplink MOS Distribution</h3>
+        <h4>VoNR Enabled EVS WB VQ Uplink MOS Distribution</h4>
         <VqLineChart dataSource="vonr_enabled_evs_wb_vq_base" />
         <VqMosTable dataSource="vonr_enabled_evs_wb_vq_base" />
       </div>

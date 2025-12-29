@@ -7,7 +7,7 @@ const ContentsIndexPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (contentsRef.current) {
-        const allHeadings = Array.from(document.querySelectorAll('h1, h2'));
+        const allHeadings = Array.from(document.querySelectorAll('h1, h2, h3'));
         const contentsIndexPageElement = contentsRef.current;
 
         // Filter out headings that are children of ContentsIndexPage, DeviceInfoPage, CoverPage, or ReportHeader components
@@ -51,7 +51,7 @@ const ContentsIndexPage = () => {
         <ul style={{ listStyleType: 'none', padding: 0 }}>
           {headings.length > 0 ? (
             headings.map((heading) => (
-              <li key={heading.id} style={{ paddingLeft: `${heading.level * 20}px`, marginTop:5, marginBottom:5, fontSize:20}}>
+              <li key={heading.id} style={{ paddingLeft: `${heading.level * 20}px`, marginTop: 5, marginBottom: 5, fontSize: 20 }}>
                 <a href={`#${heading.id}`}>{heading.text}</a>
               </li>
             ))

@@ -6,7 +6,7 @@ function DpNSAUDPULTable({ data, tableName }) {
     const moderateVal = parseFloat(moderate);
     const poorVal = parseFloat(poor);
     if (isNaN(moderateVal) || isNaN(poorVal)) {
-        return "N/A";
+      return "N/A";
     }
     return ((moderateVal + poorVal) / 2).toFixed(2);
   };
@@ -36,7 +36,7 @@ function DpNSAUDPULTable({ data, tableName }) {
 
   return (
     <div className="">
-      <h3>{tableName}</h3>
+      <h4>{tableName}</h4>
       <table className="general-table-style udp-stationary-details-table">
         <thead>
           <tr>
@@ -85,12 +85,12 @@ function DpNSAUDPULTable({ data, tableName }) {
                 <td style={{
                   backgroundColor: row.deviceName === 'DUT' && refOverallValue !== null && row.metric !== 'Max Throughput (kbps)'
                     ? getKpiCellColor(
-                        row.metric === 'Mean Jitter (s)' ? 'Jitter' :
+                      row.metric === 'Mean Jitter (s)' ? 'Jitter' :
                         row.metric === 'Packet Failure Rate (%)' ? 'ErrorRatio' :
-                        'Throughput',
-                        parseFloat(currentOverallValue),
-                        parseFloat(refOverallValue)
-                      )
+                          'Throughput',
+                      parseFloat(currentOverallValue),
+                      parseFloat(refOverallValue)
+                    )
                     : 'inherit'
                 }}>
                   {currentOverallValue}

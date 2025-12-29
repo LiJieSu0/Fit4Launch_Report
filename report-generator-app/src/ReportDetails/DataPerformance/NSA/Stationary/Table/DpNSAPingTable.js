@@ -38,7 +38,7 @@ const DpNSAPingTable = ({ data, tableName }) => {
 
     return (
         <div className="">
-            <h3>{tableName}</h3>
+            <h4>{tableName}</h4>
             <table className="general-table-style dp-details-table">
                 <thead>
                     <tr>

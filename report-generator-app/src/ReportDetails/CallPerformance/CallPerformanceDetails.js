@@ -84,7 +84,7 @@ const CallPerformanceDetails = () => {
 
         return (
             <div className="call-categories-chart-container">
-                <h3>Call Categories</h3>
+                <h4>Call Categories</h4>
                 <div className="chart-legend">
                     {categoryOrder.map(category => (
                         <div key={category} className="legend-item">
@@ -267,91 +267,91 @@ const CallPerformanceDetails = () => {
         );
     };
 
-   const PValueTable = ({ data }) => {
-       return (
-           <div className="p-value-table-container">
-               <h3>P-Value Table</h3>
-               <table className="general-table-style">
-                   <thead>
-                       <tr>
-                           <th style={{ width: '50%' }}>Metrics</th>
-                           <th style={{ width: '50%' }}>P-Value</th>
-                       </tr>
-                   </thead>
-                   <tbody>
-                       <tr>
-                           <td>Call Initiation</td>
-                           <td style={{ backgroundColor: getKpiCellColor('CallInitiation', data.initiation_p_value || 1, null) }}>
-                               {(data.initiation_p_value || 1).toFixed(3)}
-                           </td>
-                       </tr>
-                       <tr>
-                           <td>Call Retention</td>
-                           <td style={{ backgroundColor: getKpiCellColor('CallRetention', data.retention_p_value || 1, null) }}>
-                               {(data.retention_p_value || 1).toFixed(3)}
-                           </td>
-                       </tr>
-                   </tbody>
-               </table>
-           </div>
-       );
-   };
+    const PValueTable = ({ data }) => {
+        return (
+            <div className="p-value-table-container">
+                <h4>P-Value Table</h4>
+                <table className="general-table-style">
+                    <thead>
+                        <tr>
+                            <th style={{ width: '50%' }}>Metrics</th>
+                            <th style={{ width: '50%' }}>P-Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Call Initiation</td>
+                            <td style={{ backgroundColor: getKpiCellColor('CallInitiation', data.initiation_p_value || 1, null) }}>
+                                {(data.initiation_p_value || 1).toFixed(3)}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Call Retention</td>
+                            <td style={{ backgroundColor: getKpiCellColor('CallRetention', data.retention_p_value || 1, null) }}>
+                                {(data.retention_p_value || 1).toFixed(3)}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        );
+    };
 
-     return (
-         <div>
-             {/* Explicitly rendering components for each call performance category */}
-             {/* Explicitly rendering components for each call performance category */}
-             {callPerformanceData["5G Auto VoNR Disabled CP MO Drive"] && (
-                 <React.Fragment key="5G Auto VoNR Disabled CP MO Drive">
-                     <div className='page-content'>
-                         <h1 style={{textAlign: 'center'}}>2. Call Performance Test - Seattle</h1>
+    return (
+        <div>
+            {/* Explicitly rendering components for each call performance category */}
+            {/* Explicitly rendering components for each call performance category */}
+            {callPerformanceData["5G Auto VoNR Disabled CP MO Drive"] && (
+                <React.Fragment key="5G Auto VoNR Disabled CP MO Drive">
+                    <div className='page-content'>
+                        <h1 style={{ textAlign: 'center' }}>2. Call Performance Test - Seattle</h1>
                         <div id='2.1'></div>
-                         <CpCaseTable title="2.1 5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
-                         <PValueTable data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
-                         <CallSummaryChart title="5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
-                         <CallCategoriesChart title="5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
-                         <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
-                     </div>
-                 </React.Fragment>
-             )}
-             {callPerformanceData["5G Auto VoNR Disabled CP MT Drive"] && (
-                 <React.Fragment key="5G Auto VoNR Disabled CP MT Drive">
-                     <div className='page-content'>
+                        <CpCaseTable title="2.1 5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
+                        <PValueTable data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
+                        <CallSummaryChart title="5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
+                        <CallCategoriesChart title="5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
+                        <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
+                    </div>
+                </React.Fragment>
+            )}
+            {callPerformanceData["5G Auto VoNR Disabled CP MT Drive"] && (
+                <React.Fragment key="5G Auto VoNR Disabled CP MT Drive">
+                    <div className='page-content'>
                         <div id='2.2'></div>
-                         <CpCaseTable title="2.2 5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
-                         <PValueTable data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
-                         <CallSummaryChart title="5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
-                         <CallCategoriesChart title="5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
-                         <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
-                     </div>
-                 </React.Fragment>
-             )}
-             {callPerformanceData["5G Auto VoNR Enabled CP MO Drive"] && (
-                 <React.Fragment key="5G Auto VoNR Enabled CP MO Drive">
-                     <div className='page-content'>
+                        <CpCaseTable title="2.2 5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
+                        <PValueTable data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
+                        <CallSummaryChart title="5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
+                        <CallCategoriesChart title="5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
+                        <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
+                    </div>
+                </React.Fragment>
+            )}
+            {callPerformanceData["5G Auto VoNR Enabled CP MO Drive"] && (
+                <React.Fragment key="5G Auto VoNR Enabled CP MO Drive">
+                    <div className='page-content'>
                         <div id='2.3'></div>
-                         <CpCaseTable title="2.3 5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
-                         <PValueTable data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
-                         <CallSummaryChart title="5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
-                         <CallCategoriesChart title="5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
-                         <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
-                     </div>
-                 </React.Fragment>
-             )}
-             {callPerformanceData["5G Auto VoNR Enabled CP MT Drive"] && (
-                 <React.Fragment key="5G Auto VoNR Enabled CP MT Drive">
-                     <div className='page-content'>
+                        <CpCaseTable title="2.3 5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
+                        <PValueTable data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
+                        <CallSummaryChart title="5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
+                        <CallCategoriesChart title="5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
+                        <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
+                    </div>
+                </React.Fragment>
+            )}
+            {callPerformanceData["5G Auto VoNR Enabled CP MT Drive"] && (
+                <React.Fragment key="5G Auto VoNR Enabled CP MT Drive">
+                    <div className='page-content'>
                         <div id='2.4'></div>
-                         <CpCaseTable title="2.4 5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
-                         <PValueTable data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
-                         <CallSummaryChart title="5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
-                         <CallCategoriesChart title="5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
-                         <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
-                     </div>
-                 </React.Fragment>
-             )}
-         </div>
-     );
+                        <CpCaseTable title="2.4 5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
+                        <PValueTable data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
+                        <CallSummaryChart title="5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
+                        <CallCategoriesChart title="5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
+                        <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
+                    </div>
+                </React.Fragment>
+            )}
+        </div>
+    );
 };
 
 export default CallPerformanceDetails;

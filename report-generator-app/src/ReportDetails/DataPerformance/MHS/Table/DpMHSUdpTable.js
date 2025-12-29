@@ -48,7 +48,7 @@ function DpMHSUdpTable({ data, tableName }) {
   }
   return (
     <div className="">
-      <h3>{tableName}</h3>
+      <h4>{tableName}</h4>
       <table className="general-table-style udp-stationary-details-table">
         <thead>
           <tr>

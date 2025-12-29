@@ -196,7 +196,7 @@ function DpNSAStationaryDetails() {
       <div className='page-content'>
         <h2>3.2 HTTP Multi Stream Test Download & Upload - 5G NSA</h2>
         <div id='3.2'></div>
-        <h3>Http Multi Stream Overview</h3>
+        <h4>Http Multi Stream Overview</h4>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}
           tableData={combinedOverallMsHttpTableData}
@@ -264,7 +264,7 @@ function DpNSAStationaryDetails() {
       <div className='page-content'>
         <h2>3.4 Ping Test - 5G NSA</h2>
         <div id='3.4'></div>
-        <h3>Ping Test Overview</h3>
+        <h4>Ping Test Overview</h4>
         <DpNSAPingOverallTable data={pingData} />
         <DpNSAPingTable data={pingData} tableName="Ping Test Details" />
         <DpHistogramComponent

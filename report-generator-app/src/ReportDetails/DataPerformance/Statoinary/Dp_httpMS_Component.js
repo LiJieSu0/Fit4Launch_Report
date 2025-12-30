@@ -13,39 +13,41 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 function Dp_httpMS_Component() {
     const { reportData } = useContext(ReportContext);
 
-    if (!reportData || !reportData.dataPerformanceDetails) {
+    // Update to use dataPerformance from the fetched JSON
+    if (!reportData || !reportData.dataPerformance) {
         return <div className="page-content">Loading...</div>;
     }
 
-    const httpMS_Stationary_Data = reportData.dataPerformanceDetails.SA.Stationary.HttpMulti;
+    // Path: ["Data Performance"]["5G AUTO DP"]["HTTP Multi Stream"]
+    const httpMS_Data_Source = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["HTTP Multi Stream"];
 
     const httpMS_Stationary_DL = {
         Good: {
-            DUT: httpMS_Stationary_Data.Good["Multi Stream HTTP Download for 30 seconds"]["dut_5G auto_MS HTTP DL_Good"].Throughput,
-            REF: httpMS_Stationary_Data.Good["Multi Stream HTTP Download for 30 seconds"]["ref_5G auto_MS HTTP DL_Good"].Throughput,
+            DUT: httpMS_Data_Source.DL.Good.DUT.Throughput,
+            REF: httpMS_Data_Source.DL.Good.REF.Throughput,
         },
         Moderate: {
-            DUT: httpMS_Stationary_Data.Moderate["Multi Stream HTTP Download for 30 seconds"]["dut_5G auto_Multi Stream HTTP Download for 30 seconds"].Throughput,
-            REF: httpMS_Stationary_Data.Moderate["Multi Stream HTTP Download for 30 seconds"]["ref_5G auto_Multi Stream HTTP Download for 30 seconds"].Throughput,
+            DUT: httpMS_Data_Source.DL.Moderate.DUT.Throughput,
+            REF: httpMS_Data_Source.DL.Moderate.REF.Throughput,
         },
         Poor: {
-            DUT: httpMS_Stationary_Data.Poor["Multi Stream HTTP Download for 30 seconds"]["_CH01_TMO-dut_5G auto_Multi Stream HTTP Download for 30 seconds_Poor Coverage_DA Test"].Throughput,
-            REF: httpMS_Stationary_Data.Poor["Multi Stream HTTP Download for 30 seconds"]["_CH02_TMO-ref_5G auto_Multi Stream HTTP Download for 30 seconds_Poor Coverage_DA Test"].Throughput,
+            DUT: httpMS_Data_Source.DL.Poor.DUT.Throughput,
+            REF: httpMS_Data_Source.DL.Poor.REF.Throughput,
         },
     };
 
     const httpMS_Stationary_UL = {
         Good: {
-            DUT: httpMS_Stationary_Data.Good["Multi Stream HTTP Upload for 30 seconds"]["_CH01_TMO-dut_5G auto_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput,
-            REF: httpMS_Stationary_Data.Good["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO-ref_5G auto_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput,
+            DUT: httpMS_Data_Source.UL.Good.DUT.Throughput,
+            REF: httpMS_Data_Source.UL.Good.REF.Throughput,
         },
         Moderate: {
-            DUT: httpMS_Stationary_Data.Moderate["Multi Stream HTTP Upload for 30 seconds"]["_CH01_TMO_5G auto_Multi Stream HTTP Upload for 30 seconds_DUT_"].Throughput,
-            REF: httpMS_Stationary_Data.Moderate["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO_5G auto_Multi Stream HTTP Upload for 30 seconds_REF_"].Throughput,
+            DUT: httpMS_Data_Source.UL.Moderate.DUT.Throughput,
+            REF: httpMS_Data_Source.UL.Moderate.REF.Throughput,
         },
         Poor: {
-            DUT: httpMS_Stationary_Data.Poor["Multi Stream HTTP Upload for 30 seconds"]["dut_5g auto_Multi Stream HTTP Upload for 30 seconds_poor Coverage_DA Test"].Throughput,
-            REF: httpMS_Stationary_Data.Poor["Multi Stream HTTP Upload for 30 seconds"]["ref_5g auto_Multi Stream HTTP Upload for 30 seconds_poor Coverage_DA Test"].Throughput,
+            DUT: httpMS_Data_Source.UL.Poor.DUT.Throughput,
+            REF: httpMS_Data_Source.UL.Poor.REF.Throughput,
         },
     };
 

@@ -12,39 +12,41 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 function Dp_httpSS_Component() {
   const { reportData } = useContext(ReportContext);
 
-  if (!reportData || !reportData.dataPerformanceDetails) {
+  // Update to use dataPerformance from the fetched JSON
+  if (!reportData || !reportData.dataPerformance) {
     return <div className="page-content">Loading...</div>;
   }
 
-  const httpSS_Stationary_DL_Data = reportData.dataPerformanceDetails.SA.Stationary.HttpSingle;
+  // Path: ["Data Performance"]["5G AUTO DP"]["HTTP Single Stream"]
+  const httpSS_Data_Source = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["HTTP Single Stream"];
 
   const httpSS_Stationary_DL = {
     Good: {
-      DUT: httpSS_Stationary_DL_Data.Good["Single Stream HTTP Download for 60 seconds"]["dut_5G auto_SS HTTP DL_Good"].Throughput,
-      REF: httpSS_Stationary_DL_Data.Good["Single Stream HTTP Download for 60 seconds"]["ref_5G auto_SS HTTP DL_Good"].Throughput,
+      DUT: httpSS_Data_Source.DL.Good.DUT.Throughput,
+      REF: httpSS_Data_Source.DL.Good.REF.Throughput,
     },
     Moderate: {
-      DUT: httpSS_Stationary_DL_Data.Moderate["Single Stream HTTP Download for 60 seconds"]["dut_5G auto_Single Stream HTTP Download for 60 seconds"].Throughput,
-      REF: httpSS_Stationary_DL_Data.Moderate["Single Stream HTTP Download for 60 seconds"]["ref_5G auto_Single Stream HTTP Download for 60 seconds"].Throughput,
+      DUT: httpSS_Data_Source.DL.Moderate.DUT.Throughput,
+      REF: httpSS_Data_Source.DL.Moderate.REF.Throughput,
     },
     Poor: {
-      DUT: httpSS_Stationary_DL_Data.Poor["Single Stream HTTP Download for 60 seconds"]["dut_5G auto_Single Stream HTTP Download for 60 seconds_Poor"].Throughput,
-      REF: httpSS_Stationary_DL_Data.Poor["Single Stream HTTP Download for 60 seconds"]["ref_5G auto_Single Stream HTTP Download for 60 seconds_Poor"].Throughput,
+      DUT: httpSS_Data_Source.DL.Poor.DUT.Throughput,
+      REF: httpSS_Data_Source.DL.Poor.REF.Throughput,
     },
   };
 
   const httpSS_Stationary_UL = {
     Good: {
-      DUT: httpSS_Stationary_DL_Data.Good["Single Stream HTTP Upload of a 15 MB file"]["_CH01_TMO-dut_5G auto_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput,
-      REF: httpSS_Stationary_DL_Data.Good["Single Stream HTTP Upload of a 15 MB file"]["_CH02_TMO-ref_5G auto_Single Stream HTTP Upload of a 15 MB file_Good Coverage_DA Test"].Throughput,
+      DUT: httpSS_Data_Source.UL.Good.DUT.Throughput,
+      REF: httpSS_Data_Source.UL.Good.REF.Throughput,
     },
     Moderate: {
-      DUT: httpSS_Stationary_DL_Data.Moderate["Single Stream HTTP Upload of a 15 MB file"]["_20250919_110731_CH01_TMO-dut_5G Auto_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput,
-      REF: httpSS_Stationary_DL_Data.Moderate["Single Stream HTTP Upload of a 15 MB file"]["_20250919_110731_CH02_TMO-ref_5G Auto_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput,
+      DUT: httpSS_Data_Source.UL.Moderate.DUT.Throughput,
+      REF: httpSS_Data_Source.UL.Moderate.REF.Throughput,
     },
     Poor: {
-      DUT: httpSS_Stationary_DL_Data.Poor["Single Stream HTTP Upload of a 15 MB file"]["dut_5g auto_Single Stream HTTP Upload of a 15 MB file_poor Coverage_DA Test"].Throughput,
-      REF: httpSS_Stationary_DL_Data.Poor["Single Stream HTTP Upload of a 15 MB file"]["ref_5g auto_Single Stream HTTP Upload of a 15 MB file_poor Coverage_DA Test"].Throughput,
+      DUT: httpSS_Data_Source.UL.Poor.DUT.Throughput,
+      REF: httpSS_Data_Source.UL.Poor.REF.Throughput,
     },
   };
 

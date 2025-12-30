@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import DpMHSPingTable from "./Table/DpMHSPingTable";
-import DpPingOverallTable from "../Statoinary/Table/DpPingOverallTable"; // Import DpPingOverallTable
-// import PingData from "../../../DataFiles/SA/DpMHSResults/Ping.json"; // Removed direct import
+import DpPingOverallTable from "../Statoinary/Table/DpPingOverallTable";
 import { ReportContext } from '../../../Contexts/ReportContext';
-import { useContext } from 'react';
 import DpHistogramComponent from "../DpHistogramComponent";
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from "../../../Constants/ChartColors";
 import DynamicHeader from "../../../CommonPage/DynamicHeader";
@@ -15,70 +13,81 @@ function Dp_MHS_Ping_Component() {
     return <div className="page-content">Loading...</div>;
   }
 
-  const PingData = reportData.dataPerformanceDetails.SA.MHS.Ping;
+  const pingDataRaw = reportData.dataPerformanceDetails.SA?.["Mobile Hotspot Test"]?.["Ping"];
 
-  const goodPingData = PingData.Good["25x64 bytes PING (ICMP)"];
-  const moderatePingData = PingData.Moderate["25x64 bytes PING (ICMP)"];
+  if (!pingDataRaw) {
+    return <div className="page-content">No MHS Ping Data available</div>;
+  }
 
-  const getPingValue = (locationData, deviceType, metric) => {
-    const key = Object.keys(locationData).find(k => locationData[k]["Device Type"] === deviceType);
-    return key ? locationData[key]["Ping RTT"][metric] : 0;
+  const getPingMetrics = (coverage, device) => {
+    const metrics = pingDataRaw?.[coverage]?.[device]?.["Ping RTT"];
+    return metrics || { min: 0, max: 0, avg: 0, std_dev: 0 };
   };
 
-  const calculateOverall = (goodValue, moderateValue) => {
-    if (goodValue === 0 && moderateValue === 0) return 0;
-    if (goodValue === 0) return moderateValue;
-    if (moderateValue === 0) return goodValue;
-    return ((goodValue + moderateValue) / 2).toFixed(2);
+  const goodDUT = getPingMetrics("Good", "DUT");
+  const goodREF = getPingMetrics("Good", "REF");
+  const modDUT = getPingMetrics("Moderate", "DUT");
+  const modREF = getPingMetrics("Moderate", "REF");
+
+  // Note: Previous code didn't use Poor data for calculation, sticking to existing logic for consistency
+  // but if needed, Poor data is available via "Poor" key.
+
+  const calculateOverall = (val1, val2) => {
+    const v1 = parseFloat(val1 || 0);
+    const v2 = parseFloat(val2 || 0);
+    if (v1 === 0 && v2 === 0) return 0;
+    if (v1 === 0) return v2.toFixed(2);
+    if (v2 === 0) return v1.toFixed(2);
+    return ((v1 + v2) / 2).toFixed(2);
   };
 
   const data = {
     average: {
       DUT: {
-        Good: getPingValue(goodPingData, "DUT", "avg"),
-        Moderate: getPingValue(moderatePingData, "DUT", "avg"),
-        Overall: calculateOverall(getPingValue(goodPingData, "DUT", "avg"), getPingValue(moderatePingData, "DUT", "avg")),
+        Good: goodDUT.avg,
+        Moderate: modDUT.avg,
+        Overall: calculateOverall(goodDUT.avg, modDUT.avg),
       },
       REF: {
-        Good: getPingValue(goodPingData, "REF", "avg"),
-        Moderate: getPingValue(moderatePingData, "REF", "avg"),
-        Overall: calculateOverall(getPingValue(goodPingData, "REF", "avg"), getPingValue(moderatePingData, "REF", "avg")),
+        Good: goodREF.avg,
+        Moderate: modREF.avg,
+        Overall: calculateOverall(goodREF.avg, modREF.avg),
       },
     },
     std_dev: {
       DUT: {
-        Good: getPingValue(goodPingData, "DUT", "std_dev"),
-        Moderate: getPingValue(moderatePingData, "DUT", "std_dev"),
-        Overall: calculateOverall(getPingValue(goodPingData, "DUT", "std_dev"), getPingValue(moderatePingData, "DUT", "std_dev")),
+        Good: goodDUT.std_dev,
+        Moderate: modDUT.std_dev,
+        Overall: calculateOverall(goodDUT.std_dev, modDUT.std_dev),
       },
       REF: {
-        Good: getPingValue(goodPingData, "REF", "std_dev"),
-        Moderate: getPingValue(moderatePingData, "REF", "std_dev"),
-        Overall: calculateOverall(getPingValue(goodPingData, "REF", "std_dev"), getPingValue(moderatePingData, "REF", "std_dev")),
+        Good: goodREF.std_dev,
+        Moderate: modREF.std_dev,
+        Overall: calculateOverall(goodREF.std_dev, modREF.std_dev),
       },
     },
     max: {
       DUT: {
-        Good: getPingValue(goodPingData, "DUT", "max"),
-        Moderate: getPingValue(moderatePingData, "DUT", "max"),
-        Overall: calculateOverall(getPingValue(goodPingData, "DUT", "max"), getPingValue(moderatePingData, "DUT", "max")),
+        Good: goodDUT.max,
+        Moderate: modDUT.max,
+        Overall: calculateOverall(goodDUT.max, modDUT.max),
       },
       REF: {
-        Good: getPingValue(goodPingData, "REF", "max"),
-        Moderate: getPingValue(moderatePingData, "REF", "max"),
-        Overall: calculateOverall(getPingValue(goodPingData, "REF", "max"), getPingValue(moderatePingData, "REF", "max")),
+        Good: goodREF.max,
+        Moderate: modREF.max,
+        Overall: calculateOverall(goodREF.max, modREF.max),
       },
     },
     min: {
       DUT: {
-        Good: getPingValue(goodPingData, "DUT", "min"),
-        Moderate: getPingValue(moderatePingData, "DUT", "min"),
-        Overall: calculateOverall(getPingValue(goodPingData, "DUT", "min"), getPingValue(moderatePingData, "DUT", "min")),
+        Good: goodDUT.min,
+        Moderate: modDUT.min,
+        Overall: calculateOverall(goodDUT.min, modDUT.min),
       },
       REF: {
-        Good: getPingValue(goodPingData, "REF", "min"),
-        Moderate: getPingValue(moderatePingData, "REF", "min"),
-        Overall: calculateOverall(getPingValue(goodPingData, "REF", "min"), getPingValue(moderatePingData, "REF", "min")),
+        Good: goodREF.min,
+        Moderate: modREF.min,
+        Overall: calculateOverall(goodREF.min, modREF.min),
       },
     },
   };
@@ -99,7 +108,7 @@ function Dp_MHS_Ping_Component() {
       <div className="page-content">
         <DynamicHeader level={3}>Ping Test - Mobile Hotspot</DynamicHeader>
         <h4>MHS Ping Test Overview</h4>
-        <DpPingOverallTable data={data} /> {/* Add DpPingOverallTable */}
+        <DpPingOverallTable data={data} />
       </div>
       <div className="page-content">
         <h4>MHS Ping Test Details</h4>

@@ -5,7 +5,6 @@ import ContentsIndexPage from './CommonPage/ContentsIndexPage';
 import DeviceInfoPage from './CommonPage/DeviceInfoPage';
 import LegalPage from './CommonPage/LegalPage';
 
-
 import { useState } from 'react';
 
 import { ReportDataProvider } from './Contexts/ReportDataProvider';
@@ -41,7 +40,7 @@ const reportType = {
   'WFC': "WFC"
 }
 // Report Type Setup-------------------------------------------------------------------------
-const reportTypeNo = "CV";
+const reportTypeNo = "DP";
 // Report Type Setup-------------------------------------------------------------------------
 //TODO Summary page results and link need to be loaded from file
 

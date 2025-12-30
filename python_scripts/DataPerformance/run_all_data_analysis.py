@@ -219,6 +219,14 @@ if __name__ == "__main__":
             
             # The last component is the filename, remove .csv extension
             filename_without_ext = os.path.splitext(path_components[-1])[0]
+            
+            # User request: simplify names for Data Performance keys
+            if params["analysis_type_detected"] in ["data_performance", "mrab_performance"]:
+                if "REF" in filename_without_ext.upper():
+                    filename_without_ext = "REF"
+                elif "DUT" in filename_without_ext.upper():
+                    filename_without_ext = "DUT"
+            
             path_components[-1] = filename_without_ext
             
             # Direct to the appropriate dictionary based on analysis_type_detected
@@ -591,7 +599,13 @@ if __name__ == "__main__":
                                     if test_content not in google_throughput_results[location][device_type]:
                                         google_throughput_results[location][device_type][test_content] = {}
                                     
-                                    google_throughput_results[location][device_type][test_content][os.path.splitext(file_name)[0]] = {
+                                    filename_without_ext = os.path.splitext(file_name)[0]
+                                    if "REF" in filename_without_ext.upper():
+                                        filename_without_ext = "REF"
+                                    elif "DUT" in filename_without_ext.upper():
+                                        filename_without_ext = "DUT"
+                                        
+                                    google_throughput_results[location][device_type][test_content][filename_without_ext] = {
                                         "overall_average_throughput": throughput_analysis_results["overall_average"]
                                     }
                                 else:
@@ -641,7 +655,12 @@ if __name__ == "__main__":
                                         current_level[comp] = {}
                                     current_level = current_level[comp]
                                 
-                                current_level[os.path.splitext(file_name)[0]] = {
+                                filename_without_ext = os.path.splitext(file_name)[0]
+                                if "REF" in filename_without_ext.upper():
+                                    filename_without_ext = "REF"
+                                elif "DUT" in filename_without_ext.upper():
+                                    filename_without_ext = "DUT"
+                                current_level[filename_without_ext] = {
                                     "Device Type": device_type,
                                     "Network Type": "5G", # Assuming 5G for MHS Drive based on context
                                     "Analysis Type": "mhs_drive_performance",

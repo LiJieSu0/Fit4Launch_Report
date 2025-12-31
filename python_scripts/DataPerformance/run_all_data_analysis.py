@@ -35,7 +35,9 @@ from Coverage.coverage_secondary_kpi_analyzer import analyze_secondary_kpis # Im
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
     
-    base_raw_data_dir = "Raw Data" # Changed to "Raw Data" as per user's path
+    base_raw_data_dir = os.path.join(os.path.dirname(os.path.dirname(script_dir)), "Raw Data") # Changed to absolute path relative to script
+    print(f"DEBUG: script_dir = {script_dir}")
+    print(f"DEBUG: base_raw_data_dir = {base_raw_data_dir}")
     output_dir = os.path.join(os.path.dirname(script_dir), "Analyze Summary") # Define output directory
     os.makedirs(output_dir, exist_ok=True) # Ensure the output directory exists
     
@@ -52,7 +54,7 @@ if __name__ == "__main__":
         {"path": "Coverage Performance", "analysis_type": "coverage_coordinate"}, # Add Coverage Coordinate directory
         {"path": "Coverage Performance/5G n41 HPUE Coverage Test", "analysis_type": "n41_coverage"}, # Add N41 Coverage directory
         {"path": "Coverage Performance/5G VoNR Coverage Test", "analysis_type": "vonr_coverage_performance"}, # Add 5G VoNR Coverage Test directory
-        {"path": "Data Performance/5G AUTO DP/5G Auto Data Play-store app DL Stationary", "analysis_type": "google_throughput_analysis"}, # Add Google Throughput Analysis directory
+        {"path": "Data Performance/5G AUTO DP/5G Auto Data Play-store app Download", "analysis_type": "google_throughput_analysis"}, # Corrected path for Google Throughput Analysis
         {"path": "Data Performance/5G AUTO DP/5G Auto Data Test MHS Drive", "analysis_type": "mhs_drive_performance"}, # Add MHS Drive Performance directory
     ]
     
@@ -570,13 +572,22 @@ if __name__ == "__main__":
                 # Regex to extract Location from directory path
                 # Example path: ...5G Auto Data Play-store app DL Stationary Location 1
                 location_pattern = re.compile(r"Location (\d+)", re.IGNORECASE)
+                # New regex for detecting Good, Moderate, Poor from directory path
+                quality_location_pattern = re.compile(r"(Good|Moderate|Poor)", re.IGNORECASE)
 
                 for root, _, files in os.walk(google_throughput_base_path):
                     # Extract location from the current root directory path
                     location = "unknown_location"
-                    location_match = location_pattern.search(root)
-                    if location_match:
-                        location = f"location{location_match.group(1)}"
+                    
+                    # Check for Good/Moderate/Poor first
+                    quality_match = quality_location_pattern.search(root)
+                    if quality_match:
+                         location = quality_match.group(1) # e.g., "Good", "Moderate", "Poor"
+                    else:
+                        # Fallback to old "Location X" logic
+                        location_match = location_pattern.search(root)
+                        if location_match:
+                            location = f"location{location_match.group(1)}"
 
                     for file_name in files:
                         if file_name.lower().endswith(".csv"):

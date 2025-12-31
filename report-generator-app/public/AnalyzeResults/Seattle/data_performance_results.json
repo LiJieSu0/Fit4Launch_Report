@@ -1131,12 +1131,6 @@
                         },
                         "Error Ratio": {
                             "Mean": 3.9628764489323385
-                        },
-                        "Ping RTT": {
-                            "min": 38.0,
-                            "max": 1052.0,
-                            "avg": 115.558,
-                            "std_dev": 70.44666138434384
                         }
                     },
                     "REF": {
@@ -1157,12 +1151,6 @@
                         },
                         "Error Ratio": {
                             "Mean": 2.347114968588957
-                        },
-                        "Ping RTT": {
-                            "min": 43.0,
-                            "max": 788.0,
-                            "avg": 148.088,
-                            "std_dev": 106.62866218422886
                         }
                     }
                 }
@@ -1764,6 +1752,116 @@
                         }
                     }
                 }
+            },
+            "Play-store app Download": {
+                "Good": {
+                    "DUT": {
+                        "100M": {
+                            "DUT": {
+                                "overall_average_throughput": 160.24095453102453
+                            }
+                        },
+                        "60M": {
+                            "DUT": {
+                                "overall_average_throughput": 218.9020091666667
+                            }
+                        },
+                        "30M": {
+                            "DUT": {
+                                "overall_average_throughput": 77.13687753968254
+                            }
+                        }
+                    },
+                    "REF": {
+                        "100M": {
+                            "REF": {
+                                "overall_average_throughput": 385.16610785714283
+                            }
+                        },
+                        "60M": {
+                            "REF": {
+                                "overall_average_throughput": 302.13023333333336
+                            }
+                        },
+                        "30M": {
+                            "REF": {
+                                "overall_average_throughput": 104.79456613095238
+                            }
+                        }
+                    }
+                },
+                "Moderate": {
+                    "DUT": {
+                        "30M": {
+                            "DUT": {
+                                "overall_average_throughput": 30.510859684891827
+                            }
+                        },
+                        "60M": {
+                            "DUT": {
+                                "overall_average_throughput": 54.4106702534581
+                            }
+                        },
+                        "100M": {
+                            "DUT": {
+                                "overall_average_throughput": 57.230706291351304
+                            }
+                        }
+                    },
+                    "REF": {
+                        "30M": {
+                            "REF": {
+                                "overall_average_throughput": 23.04017608872609
+                            }
+                        },
+                        "60M": {
+                            "REF": {
+                                "overall_average_throughput": 107.5267632001507
+                            }
+                        },
+                        "100M": {
+                            "REF": {
+                                "overall_average_throughput": 134.8502865438927
+                            }
+                        }
+                    }
+                },
+                "Poor": {
+                    "DUT": {
+                        "100M": {
+                            "DUT": {
+                                "overall_average_throughput": 176.4487095021645
+                            }
+                        },
+                        "60M": {
+                            "DUT": {
+                                "overall_average_throughput": 189.93027083333334
+                            }
+                        },
+                        "30M": {
+                            "DUT": {
+                                "overall_average_throughput": 63.491279404761904
+                            }
+                        }
+                    },
+                    "REF": {
+                        "100M": {
+                            "REF": {
+                                "overall_average_throughput": 295.1449812358277
+                            }
+                        },
+                        "60M": {
+                            "REF": {
+                                "overall_average_throughput": 261.0141291666667
+                            }
+                        },
+                        "30M": {
+                            "REF": {
+                                "overall_average_throughput": 102.93887222222223
+                            }
+                        }
+                    }
+                }
             }
         },
         "5G NSA DP": {
@@ -2038,12 +2136,6 @@
                     },
                     "Error Ratio": {
                         "Mean": 1.0425411406088754
-                    },
-                    "Ping RTT": {
-                        "min": 38.0,
-                        "max": 1052.0,
-                        "avg": 115.558,
-                        "std_dev": 70.44666138434384
                     }
                 },
                 "REF": {
@@ -2064,12 +2156,6 @@
                     },
                     "Error Ratio": {
                         "Mean": 1.1761252791537666
-                    },
-                    "Ping RTT": {
-                        "min": 43.0,
-                        "max": 788.0,
-                        "avg": 148.088,
-                        "std_dev": 106.62866218422886
                     }
                 }
             },

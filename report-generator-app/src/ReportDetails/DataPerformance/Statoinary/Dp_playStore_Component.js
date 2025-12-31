@@ -10,17 +10,17 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 const Dp_playStore_Component = () => {
   const { reportData } = useContext(ReportContext);
 
-  if (!reportData || !reportData.dataPerformanceDetails) {
+  if (!reportData || !reportData.dataPerformance) {
     return <div className="page-content">Loading...</div>;
   }
 
-  const playStoreData = reportData.dataPerformanceDetails.SA.Stationary.PlayStore;
+  const playStoreData = reportData.dataPerformance['Data Performance']?.['5G AUTO DP']?.['Play-store app Download'];
 
   const processData = () => {
     const processed = [];
     const throughputCategories = ['30M', '60M', '100M'];
     const deviceTypes = ['DUT', 'REF'];
-    const locations = ['location1', 'location2', 'location3'];
+    const locations = ['Good', 'Moderate', 'Poor'];
 
     throughputCategories.forEach(throughput => {
       deviceTypes.forEach(device => {
@@ -69,9 +69,9 @@ const Dp_playStore_Component = () => {
     const refData = tableData.find(d => d.throughput === throughputCategory && d.deviceName === 'REF');
 
     const histogramData = [
-      { name: 'Location 1', DUT: parseFloat(dutData?.site1), REF: parseFloat(refData?.site1) },
-      { name: 'Location 2', DUT: parseFloat(dutData?.site2), REF: parseFloat(refData?.site2) },
-      { name: 'Location 3', DUT: parseFloat(dutData?.site3), REF: parseFloat(refData?.site3) },
+      { name: 'Good', DUT: parseFloat(dutData?.site1), REF: parseFloat(refData?.site1) },
+      { name: 'Moderate', DUT: parseFloat(dutData?.site2), REF: parseFloat(refData?.site2) },
+      { name: 'Poor', DUT: parseFloat(dutData?.site3), REF: parseFloat(refData?.site3) },
       { name: 'Overall', DUT: parseFloat(dutData?.overall), REF: parseFloat(refData?.overall) },
     ].filter(item => !isNaN(item.DUT) || !isNaN(item.REF)); // Filter out rows with no valid data
 

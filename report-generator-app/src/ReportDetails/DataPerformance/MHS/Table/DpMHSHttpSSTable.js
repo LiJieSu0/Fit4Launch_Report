@@ -2,64 +2,53 @@ import React from 'react';
 import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
 function DpMHSHttpSSTable({ data, tableName, kpiRule }) {
-  const tableData = [
-    {
-      category: "Average",
-      deviceName: "DUT",
-      overall: ((data.Good.DUT.Mean + data.Moderate.DUT.Mean) / 2).toFixed(2),
-      site1: data.Good.DUT.Mean.toFixed(2),
-      site2: data.Moderate.DUT.Mean.toFixed(2),
-    },
-    {
-      category: "Average",
-      deviceName: "REF",
-      overall: ((data.Good.REF.Mean + data.Moderate.REF.Mean) / 2).toFixed(2),
-      site1: data.Good.REF.Mean.toFixed(2),
-      site2: data.Moderate.REF.Mean.toFixed(2),
-    },
-    {
-      category: "Standard Deviation",
-      deviceName: "DUT",
-      overall: ((data.Good.DUT["Standard Deviation"] + data.Moderate.DUT["Standard Deviation"]) / 2).toFixed(2),
-      site1: data.Good.DUT["Standard Deviation"].toFixed(2),
-      site2: data.Moderate.DUT["Standard Deviation"].toFixed(2),
-    },
-    {
-      category: "Standard Deviation",
-      deviceName: "REF",
-      overall: ((data.Good.REF["Standard Deviation"] + data.Moderate.REF["Standard Deviation"]) / 2).toFixed(2),
-      site1: data.Good.REF["Standard Deviation"].toFixed(2),
-      site2: data.Moderate.REF["Standard Deviation"].toFixed(2),
-    },
-    {
-      category: "Maximum",
-      deviceName: "DUT",
-      overall: ((data.Good.DUT.Maximum + data.Moderate.DUT.Maximum) / 2).toFixed(2),
-      site1: data.Good.DUT.Maximum.toFixed(2),
-      site2: data.Moderate.DUT.Maximum.toFixed(2),
-    },
-    {
-      category: "Maximum",
-      deviceName: "REF",
-      overall: ((data.Good.REF.Maximum + data.Moderate.REF.Maximum) / 2).toFixed(2),
-      site1: data.Good.REF.Maximum.toFixed(2),
-      site2: data.Moderate.REF.Maximum.toFixed(2),
-    },
-    {
-      category: "Minimum",
-      deviceName: "DUT",
-      overall: ((data.Good.DUT.Minimum + data.Moderate.DUT.Minimum) / 2).toFixed(2),
-      site1: data.Good.DUT.Minimum.toFixed(2),
-      site2: data.Moderate.DUT.Minimum.toFixed(2),
-    },
-    {
-      category: "Minimum",
-      deviceName: "REF",
-      overall: ((data.Good.REF.Minimum + data.Moderate.REF.Minimum) / 2).toFixed(2),
-      site1: data.Good.REF.Minimum.toFixed(2),
-      site2: data.Moderate.REF.Minimum.toFixed(2),
-    },
+  const allCategories = ["Good", "Moderate", "Poor"];
+
+  // Determine available categories (columns where at least one device has data)
+  const availableCategories = allCategories.filter(cat => {
+    const hasDUT = data?.[cat]?.['DUT']?.['Mean'] !== undefined;
+    const hasREF = data?.[cat]?.['REF']?.['Mean'] !== undefined;
+    return hasDUT || hasREF;
+  });
+
+  const metrics = [
+    { label: "Average", key: "Mean" },
+    { label: "Standard Deviation", key: "Standard Deviation" },
+    { label: "Maximum", key: "Maximum" },
+    { label: "Minimum", key: "Minimum" },
   ];
+
+  const tableData = [];
+
+  metrics.forEach(metric => {
+    ["DUT", "REF"].forEach(device => {
+      const row = {
+        category: metric.label,
+        deviceName: device,
+        overall: "N/A",
+        sites: {}
+      };
+
+      let sum = 0;
+      let count = 0;
+
+      availableCategories.forEach(cat => {
+        const val = data?.[cat]?.[device]?.[metric.key];
+        if (val !== undefined && val !== null) {
+          row.sites[cat] = val.toFixed(2);
+          sum += val;
+          count++;
+        } else {
+          row.sites[cat] = "N/A";
+        }
+      });
+
+      if (count > 0) {
+        row.overall = (sum / count).toFixed(2);
+      }
+      tableData.push(row);
+    });
+  });
 
   return (
     <div className="">
@@ -70,17 +59,19 @@ function DpMHSHttpSSTable({ data, tableName, kpiRule }) {
             <th rowSpan="2">Throughput (Mbps)</th>
             <th rowSpan="2">Device Name</th>
             <th rowSpan="2">Overall</th>
-            <th colSpan="2">Location</th>
+            <th colSpan={availableCategories.length}>Location</th>
           </tr>
           <tr>
-            <th>Good</th>
-            <th>Moderate</th>
+            {availableCategories.map(cat => (
+              <th key={cat}>{cat}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {tableData.map((row, index) => {
+            // Determine background color for DUT Average Overall
             const overallColor =
-              row.deviceName === "DUT" && row.category === "Average"
+              row.deviceName === "DUT" && row.category === "Average" && !isNaN(parseFloat(row.overall)) && !isNaN(parseFloat(tableData[index + 1]?.overall))
                 ? getKpiCellColor(
                   kpiRule,
                   parseFloat(row.overall),
@@ -95,8 +86,9 @@ function DpMHSHttpSSTable({ data, tableName, kpiRule }) {
                 )}
                 <td>{row.deviceName}</td>
                 <td style={{ backgroundColor: overallColor }}>{row.overall}</td>
-                <td>{row.site1}</td>
-                <td>{row.site2}</td>
+                {availableCategories.map(cat => (
+                  <td key={cat}>{row.sites[cat]}</td>
+                ))}
               </tr>
             );
           })}

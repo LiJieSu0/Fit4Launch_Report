@@ -4,15 +4,17 @@ import Dp_MHS_httpMS_Component from "./Dp_MHS_httpMS_Component";
 import Dp_MHS_Udp_Component from "./Dp_MHS_Udp_Component";
 import Dp_MHS_Ping_Component from "./Dp_MHS_Ping_Component";
 
-function Dp_MHS_Page(){
-    return(
-      <>
-        <Dp_MHS_httpSS_Component />
-        <Dp_MHS_httpMS_Component />
-        <Dp_MHS_Udp_Component />
-        <Dp_MHS_Ping_Component />
-      </>
-    );
+
+//TODO MHS location is good or moderate or poor need to be determined
+function Dp_MHS_Page() {
+  return (
+    <>
+      <Dp_MHS_httpSS_Component />
+      <Dp_MHS_httpMS_Component />
+      <Dp_MHS_Udp_Component />
+      <Dp_MHS_Ping_Component />
+    </>
+  );
 };
 
 export default Dp_MHS_Page;

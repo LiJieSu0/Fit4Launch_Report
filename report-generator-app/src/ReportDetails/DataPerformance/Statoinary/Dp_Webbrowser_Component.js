@@ -14,13 +14,12 @@ function Dp_Webbrowser_Component() {
         return <div className="page-content">Loading...</div>;
     }
 
-    const WebBrowserData = reportData.dataPerformanceDetails.SA.Stationary.WebBrowser;
+    // Update to use dataPerformance from the fetched JSON
+    // Path: ["Data Performance"]["5G AUTO DP"]["5G Auto Data Web-Kepler"]
+    const WebBrowserData = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["5G Auto Data Web-Kepler"];
 
-    const dutKey = "_CH01_TMO-dut_5G auto_ETSI Kepler web page hosted on Spirent mediaserver_Good Coverage_DA Test";
-    const refKey = "_CH02_TMO-ref_5G auto_ETSI Kepler web page hosted on Spirent mediaserver_Good Coverage_DA Test";
-
-    const dutData = WebBrowserData[dutKey];
-    const refData = WebBrowserData[refKey];
+    const dutData = WebBrowserData.DUT;
+    const refData = WebBrowserData.REF;
 
     const Dp_WebData = [
         { category: "Average", dut: { device: "DUT", overall: dutData["Web Page Load Time"]["Mean"].toFixed(3) }, ref: { device: "REF", overall: refData["Web Page Load Time"]["Mean"].toFixed(3) } },

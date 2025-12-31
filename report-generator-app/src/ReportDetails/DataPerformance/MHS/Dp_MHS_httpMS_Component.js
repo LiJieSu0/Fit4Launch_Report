@@ -13,123 +13,143 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 function Dp_MHS_httpMS_Component() {
   const { reportData } = useContext(ReportContext);
 
-  if (!reportData || !reportData.dataPerformanceDetails) {
+  if (!reportData || !reportData.dataPerformance) {
     return <div className="page-content">Loading...</div>;
   }
 
-  const MultiStreamHTTPData = reportData.dataPerformanceDetails.SA.MHS.HttpMulti;
+  const nsaData = reportData.dataPerformance['Data Performance']?.['5G AUTO DP']?.['Mobile Hotspot Test']?.['HTTP Multi Stream'];
 
-  const goodDownloadData = MultiStreamHTTPData.Good["Multi Stream HTTP Download for 30 seconds"];
-  const moderateDownloadData = MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"];
-
-  const data = {
-    Good: {
-      DUT: goodDownloadData["DUT MS HTTP DL for 30 seconds"].Throughput,
-      REF: goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput,
-    },
-    Moderate: {
-      DUT: moderateDownloadData["DUT MS HTTP DL 30s"].Throughput,
-      REF: moderateDownloadData["REF MS HTTP DL 30s"].Throughput,
-    },
+  // Helper to extract throughput stats safely
+  const getStats = (direction, coverage, device) => {
+    return nsaData?.[direction]?.[coverage]?.[device]?.['Throughput'] || {};
   };
 
-  const overallDownloadDUTMean = (data.Good.DUT["Mean"] + data.Moderate.DUT["Mean"]) / 2;
-  const overallDownloadREFMean = (data.Good.REF["Mean"] + data.Moderate.REF["Mean"]) / 2;
-
-  const uploadGoodData = MultiStreamHTTPData.Good["Multi Stream HTTP Upload for 30 seconds"];
-  const uploadModerateData = MultiStreamHTTPData.Moderate["Multi Stream HTTP Upload for 30 seconds"];
+  const dataDL = {
+    Good: {
+      DUT: getStats('DL', 'Good', 'DUT'),
+      REF: getStats('DL', 'Good', 'REF'),
+    },
+    Moderate: {
+      DUT: getStats('DL', 'Moderate', 'DUT'),
+      REF: getStats('DL', 'Moderate', 'REF'),
+    },
+    Poor: {
+      DUT: getStats('DL', 'Poor', 'DUT'),
+      REF: getStats('DL', 'Poor', 'REF'),
+    }
+  };
 
   const dataUL = {
     Good: {
-      DUT: uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput,
-      REF: uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput,
+      DUT: getStats('UL', 'Good', 'DUT'),
+      REF: getStats('UL', 'Good', 'REF'),
     },
     Moderate: {
-      DUT: uploadModerateData["DUT MS HTTP UL 30S"].Throughput,
-      REF: uploadModerateData["REF MS HTTP UL 30S"].Throughput,
+      DUT: getStats('UL', 'Moderate', 'DUT'),
+      REF: getStats('UL', 'Moderate', 'REF'),
     },
+    Poor: {
+      DUT: getStats('UL', 'Poor', 'DUT'),
+      REF: getStats('UL', 'Poor', 'REF'),
+    }
   };
 
-  const overallUploadDUTMean = (dataUL.Good.DUT["Mean"] + dataUL.Moderate.DUT["Mean"]) / 2;
-  const overallUploadREFMean = (dataUL.Good.REF["Mean"] + dataUL.Moderate.REF["Mean"]) / 2;
+  const calculateOverall = (dataObj, metric) => {
+    const validValues = ['Good', 'Moderate', 'Poor']
+      .map(cov => dataObj[cov]?.DUT?.[metric])
+      .filter(val => val !== undefined && val !== null);
+
+    if (validValues.length === 0) return 0;
+    return validValues.reduce((a, b) => a + b, 0) / validValues.length;
+  };
+
+  const calculateOverallRef = (dataObj, metric) => {
+    const validValues = ['Good', 'Moderate', 'Poor']
+      .map(cov => dataObj[cov]?.REF?.[metric])
+      .filter(val => val !== undefined && val !== null);
+
+    if (validValues.length === 0) return 0;
+    return validValues.reduce((a, b) => a + b, 0) / validValues.length;
+  };
+
+  const overallDownloadDUTMean = calculateOverall(dataDL, 'Mean');
+  const overallDownloadREFMean = calculateOverallRef(dataDL, 'Mean');
+  const overallUploadDUTMean = calculateOverall(dataUL, 'Mean');
+  const overallUploadREFMean = calculateOverallRef(dataUL, 'Mean');
 
   const overallTableHeader = ["Throughput (Mbps)", "Device Name", "Download", "Upload"];
+
+  // Helper for aggregating stats for table (Average of available coverages)
+  const getAggregatedStat = (dataObj, metric, device) => {
+    const validValues = ['Good', 'Moderate', 'Poor']
+      .map(cov => dataObj[cov]?.[device]?.[metric])
+      .filter(val => val !== undefined && val !== null);
+    if (validValues.length === 0) return 'N/A';
+    return (validValues.reduce((a, b) => a + b, 0) / validValues.length).toFixed(2);
+  };
+
   const combinedOverallTableData = [
     ["Average", "DUT", overallDownloadDUTMean.toFixed(2), overallUploadDUTMean.toFixed(2)],
     ["Average", "REF", overallDownloadREFMean.toFixed(2), overallUploadREFMean.toFixed(2)],
-    ["Standard Deviation", "DUT", ((goodDownloadData["DUT MS HTTP DL for 30 seconds"].Throughput["Standard Deviation"] + moderateDownloadData["DUT MS HTTP DL 30s"].Throughput["Standard Deviation"]) / 2).toFixed(2), ((uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput["Standard Deviation"] + uploadModerateData["DUT MS HTTP UL 30S"].Throughput["Standard Deviation"]) / 2).toFixed(2)],
-    ["Standard Deviation", "REF", ((goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput["Standard Deviation"] + moderateDownloadData["REF MS HTTP DL 30s"].Throughput["Standard Deviation"]) / 2).toFixed(2), ((uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput["Standard Deviation"] + uploadModerateData["REF MS HTTP UL 30S"].Throughput["Standard Deviation"]) / 2).toFixed(2)],
-    ["Maximum", "DUT", ((goodDownloadData["DUT MS HTTP DL for 30 seconds"].Throughput.Maximum + moderateDownloadData["DUT MS HTTP DL 30s"].Throughput.Maximum) / 2).toFixed(2), ((uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Maximum + uploadModerateData["DUT MS HTTP UL 30S"].Throughput.Maximum) / 2).toFixed(2)],
-    ["Maximum", "REF", ((goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput.Maximum + moderateDownloadData["REF MS HTTP DL 30s"].Throughput.Maximum) / 2).toFixed(2), ((uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Maximum + uploadModerateData["REF MS HTTP UL 30S"].Throughput.Maximum) / 2).toFixed(2)],
-    ["Minimum", "DUT", ((goodDownloadData["DUT MS HTTP DL for 30 seconds"].Throughput.Minimum + moderateDownloadData["DUT MS HTTP DL 30s"].Throughput.Minimum) / 2).toFixed(2), ((uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Minimum + uploadModerateData["DUT MS HTTP UL 30S"].Throughput.Minimum) / 2).toFixed(2)],
-    ["Minimum", "REF", ((goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput.Minimum + moderateDownloadData["REF MS HTTP DL 30s"].Throughput.Minimum) / 2).toFixed(2), ((uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Minimum + uploadModerateData["REF MS HTTP UL 30S"].Throughput.Minimum) / 2).toFixed(2)],
+    ["Standard Deviation", "DUT", getAggregatedStat(dataDL, 'Standard Deviation', 'DUT'), getAggregatedStat(dataUL, 'Standard Deviation', 'DUT')],
+    ["Standard Deviation", "REF", getAggregatedStat(dataDL, 'Standard Deviation', 'REF'), getAggregatedStat(dataUL, 'Standard Deviation', 'REF')],
+    ["Maximum", "DUT", getAggregatedStat(dataDL, 'Maximum', 'DUT'), getAggregatedStat(dataUL, 'Maximum', 'DUT')],
+    ["Maximum", "REF", getAggregatedStat(dataDL, 'Maximum', 'REF'), getAggregatedStat(dataUL, 'Maximum', 'REF')],
+    ["Minimum", "DUT", getAggregatedStat(dataDL, 'Minimum', 'DUT'), getAggregatedStat(dataUL, 'Minimum', 'DUT')],
+    ["Minimum", "REF", getAggregatedStat(dataDL, 'Minimum', 'REF'), getAggregatedStat(dataUL, 'Minimum', 'REF')],
   ];
 
-  const downloadRangeChartData = {
-    Good: {
-      dutMin: goodDownloadData["DUT MS HTTP DL for 30 seconds"].Throughput.Minimum,
-      dutMax: goodDownloadData["DUT MS HTTP DL for 30 seconds"].Throughput.Maximum,
-      dutMean: goodDownloadData["DUT MS HTTP DL for 30 seconds"].Throughput.Mean,
-      refMin: goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput.Minimum,
-      refMax: goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput.Maximum,
-      refMean: goodDownloadData["REF MS HTTP DL for 30 seconds"].Throughput.Mean,
-    },
-    Moderate: {
-      dutMin: moderateDownloadData["DUT MS HTTP DL 30s"].Throughput.Minimum,
-      dutMax: moderateDownloadData["DUT MS HTTP DL 30s"].Throughput.Maximum,
-      dutMean: moderateDownloadData["DUT MS HTTP DL 30s"].Throughput.Mean,
-      refMin: moderateDownloadData["REF MS HTTP DL 30s"].Throughput.Minimum,
-      refMax: moderateDownloadData["REF MS HTTP DL 30s"].Throughput.Maximum,
-      refMean: moderateDownloadData["REF MS HTTP DL 30s"].Throughput.Mean,
-    },
+  // Helper to filter and construct chart data
+  const getChartData = (dataObj, overallDUT, overallREF) => {
+    const chartData = ['Good', 'Moderate', 'Poor']
+      .filter(cov => dataObj[cov]?.DUT?.['Mean'] !== undefined || dataObj[cov]?.REF?.['Mean'] !== undefined)
+      .map(cov => ({
+        name: cov,
+        DUT: dataObj[cov]?.DUT?.['Mean'],
+        REF: dataObj[cov]?.REF?.['Mean']
+      }));
+
+    chartData.push({ name: 'Overall', DUT: overallDUT, REF: overallREF });
+    return chartData;
   };
 
-  const overallDownloadDUTMin = (downloadRangeChartData.Good.dutMin + downloadRangeChartData.Moderate.dutMin) / 2;
-  const overallDownloadDUTMax = (downloadRangeChartData.Good.dutMax + downloadRangeChartData.Moderate.dutMax) / 2;
-  const overallDownloadREFMin = (downloadRangeChartData.Good.refMin + downloadRangeChartData.Moderate.refMin) / 2;
-  const overallDownloadREFMax = (downloadRangeChartData.Good.refMax + downloadRangeChartData.Moderate.refMax) / 2;
-
-  downloadRangeChartData.Overall = {
-    dutMin: overallDownloadDUTMin,
-    dutMax: overallDownloadDUTMax,
-    dutMean: overallDownloadDUTMean,
-    refMin: overallDownloadREFMin,
-    refMax: overallDownloadREFMax,
-    refMean: overallDownloadREFMean,
+  const getRangeChartData = (dataObj) => {
+    const rangeData = {};
+    ['Good', 'Moderate', 'Poor'].forEach(cov => {
+      if (dataObj[cov]?.DUT?.['Mean'] !== undefined || dataObj[cov]?.REF?.['Mean'] !== undefined) {
+        rangeData[cov] = {
+          dutMin: dataObj[cov]?.DUT?.Minimum, dutMax: dataObj[cov]?.DUT?.Maximum, dutMean: dataObj[cov]?.DUT?.Mean,
+          refMin: dataObj[cov]?.REF?.Minimum, refMax: dataObj[cov]?.REF?.Maximum, refMean: dataObj[cov]?.REF?.Mean,
+        };
+      }
+    });
+    return rangeData;
   };
 
-  const uploadRangeChartData = {
-    Good: {
-      dutMin: uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Minimum,
-      dutMax: uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Maximum,
-      dutMean: uploadGoodData["_20250915_120237_CH01_TMO-DUT_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Mean,
-      refMin: uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Minimum,
-      refMax: uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Maximum,
-      refMean: uploadGoodData["_20250915_120237_CH02_TMO-Ref_5G MHS_Multi Stream HTTP Upload for 30 seconds_Good Coverage_DA Test"].Throughput.Mean,
-    },
-    Moderate: {
-      dutMin: uploadModerateData["DUT MS HTTP UL 30S"].Throughput.Minimum,
-      dutMax: uploadModerateData["DUT MS HTTP UL 30S"].Throughput.Maximum,
-      dutMean: uploadModerateData["DUT MS HTTP UL 30S"].Throughput.Mean,
-      refMin: uploadModerateData["REF MS HTTP UL 30S"].Throughput.Minimum,
-      refMax: uploadModerateData["REF MS HTTP UL 30S"].Throughput.Maximum,
-      refMean: uploadModerateData["REF MS HTTP UL 30S"].Throughput.Mean,
-    },
+  const downloadRangeChartData = getRangeChartData(dataDL);
+
+  // Calculate Overall Range Data
+  const calculateOverallRange = (rangeData) => {
+    const metrics = ['dutMin', 'dutMax', 'dutMean', 'refMin', 'refMax', 'refMean'];
+    const result = {};
+    metrics.forEach(metric => {
+      const values = Object.keys(rangeData)
+        .map(cov => rangeData[cov]?.[metric])
+        .filter(val => val !== undefined && val !== null);
+      result[metric] = values.length > 0 ? values.reduce((a, b) => a + b, 0) / values.length : 0;
+    });
+    return result;
   };
 
-  const overallUploadDUTMin = (uploadRangeChartData.Good.dutMin + uploadRangeChartData.Moderate.dutMin) / 2;
-  const overallUploadDUTMax = (uploadRangeChartData.Good.dutMax + uploadRangeChartData.Moderate.dutMax) / 2;
-  const overallUploadREFMin = (uploadRangeChartData.Good.refMin + uploadRangeChartData.Moderate.refMin) / 2;
-  const overallUploadREFMax = (uploadRangeChartData.Good.refMax + uploadRangeChartData.Moderate.refMax) / 2;
+  if (Object.keys(downloadRangeChartData).length > 0) {
+    downloadRangeChartData.Overall = calculateOverallRange(downloadRangeChartData);
+  }
 
-  uploadRangeChartData.Overall = {
-    dutMin: overallUploadDUTMin,
-    dutMax: overallUploadDUTMax,
-    dutMean: overallUploadDUTMean,
-    refMin: overallUploadREFMin,
-    refMax: overallUploadREFMax,
-    refMean: overallUploadREFMean,
-  };
+  const uploadRangeChartData = getRangeChartData(dataUL);
+
+  if (Object.keys(uploadRangeChartData).length > 0) {
+    uploadRangeChartData.Overall = calculateOverallRange(uploadRangeChartData);
+  }
 
   return (
     <>
@@ -155,16 +175,12 @@ function Dp_MHS_httpMS_Component() {
             },
           ]}
         />
-        <DpMHSHttpMSTable data={data} tableName="MHS Http Multi Stream DL Details" kpiRule="Throughput" />
+        <DpMHSHttpMSTable data={dataDL} tableName="MHS Http Multi Stream DL Details" kpiRule="Throughput" />
       </div>
 
       <div className='page-content'>
         <DpHistogramComponent
-          data={[
-            { name: 'Good', DUT: data.Good.DUT["Mean"], REF: data.Good.REF["Mean"] },
-            { name: 'Moderate', DUT: data.Moderate.DUT["Mean"], REF: data.Moderate.REF["Mean"] },
-            { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
-          ]}
+          data={getChartData(dataDL, overallDownloadDUTMean, overallDownloadREFMean)}
           title="MHS Http Multi Stream Download Throughput"
           yAxisLabel="Throughput"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
@@ -182,11 +198,7 @@ function Dp_MHS_httpMS_Component() {
 
       <div className='page-content'>
         <DpHistogramComponent
-          data={[
-            { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },
-            { name: 'Moderate', DUT: dataUL.Moderate.DUT["Mean"], REF: dataUL.Moderate.REF["Mean"] },
-            { name: 'Overall', DUT: overallUploadDUTMean, REF: overallUploadREFMean },
-          ]}
+          data={getChartData(dataUL, overallUploadDUTMean, overallUploadREFMean)}
           title="MHS Multi Stream HTTP Upload Throughput"
           yAxisLabel="Throughput"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}

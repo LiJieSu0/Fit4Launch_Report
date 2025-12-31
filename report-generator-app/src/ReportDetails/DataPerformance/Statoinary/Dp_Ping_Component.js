@@ -14,7 +14,9 @@ function Dp_Ping_Component() {
         return <div className="page-content">Loading...</div>;
     }
 
-    const Dp_Ping_Data = reportData.dataPerformanceDetails.SA.Stationary.Ping;
+    // Update to use dataPerformance from the fetched JSON
+    // Path: ["Data Performance"]["5G AUTO DP"]["Ping"]
+    const Dp_Ping_Data = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["Ping"];
 
 
     const processedPingData = {
@@ -28,24 +30,24 @@ function Dp_Ping_Component() {
     const deviceTypes = ["DUT", "REF"];
 
     locations.forEach(location => {
-        const pingCategory = Dp_Ping_Data[location]["25x64 bytes PING"];
-        for (const key in pingCategory) {
-            if (pingCategory.hasOwnProperty(key)) {
-                const deviceData = pingCategory[key];
-                const deviceType = deviceData["Device Type"];
-                const pingRTT = deviceData["Ping RTT"];
+        // Direct access to nested structure: Location -> Device Type -> Ping RTT
+        if (Dp_Ping_Data[location]) {
+            // DUT Data
+            if (Dp_Ping_Data[location].DUT && Dp_Ping_Data[location].DUT["Ping RTT"]) {
+                const pingRTT = Dp_Ping_Data[location].DUT["Ping RTT"];
+                processedPingData.average.DUT[location] = pingRTT.avg.toFixed(2);
+                processedPingData.std_dev.DUT[location] = pingRTT.std_dev.toFixed(2);
+                processedPingData.max.DUT[location] = pingRTT.max.toFixed(2);
+                processedPingData.min.DUT[location] = pingRTT.min.toFixed(2);
+            }
 
-                if (deviceType === "DUT") {
-                    processedPingData.average.DUT[location] = pingRTT.avg.toFixed(2);
-                    processedPingData.std_dev.DUT[location] = pingRTT.std_dev.toFixed(2);
-                    processedPingData.max.DUT[location] = pingRTT.max.toFixed(2);
-                    processedPingData.min.DUT[location] = pingRTT.min.toFixed(2);
-                } else if (deviceType === "REF") {
-                    processedPingData.average.REF[location] = pingRTT.avg.toFixed(2);
-                    processedPingData.std_dev.REF[location] = pingRTT.std_dev.toFixed(2);
-                    processedPingData.max.REF[location] = pingRTT.max.toFixed(2);
-                    processedPingData.min.REF[location] = pingRTT.min.toFixed(2);
-                }
+            // REF Data
+            if (Dp_Ping_Data[location].REF && Dp_Ping_Data[location].REF["Ping RTT"]) {
+                const pingRTT = Dp_Ping_Data[location].REF["Ping RTT"];
+                processedPingData.average.REF[location] = pingRTT.avg.toFixed(2);
+                processedPingData.std_dev.REF[location] = pingRTT.std_dev.toFixed(2);
+                processedPingData.max.REF[location] = pingRTT.max.toFixed(2);
+                processedPingData.min.REF[location] = pingRTT.min.toFixed(2);
             }
         }
     });

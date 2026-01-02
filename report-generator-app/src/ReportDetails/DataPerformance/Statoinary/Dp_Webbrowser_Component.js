@@ -10,7 +10,7 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 function Dp_Webbrowser_Component() {
     const { reportData } = useContext(ReportContext);
 
-    if (!reportData || !reportData.dataPerformanceDetails) {
+    if (!reportData || !reportData.dataPerformance) {
         return <div className="page-content">Loading...</div>;
     }
 

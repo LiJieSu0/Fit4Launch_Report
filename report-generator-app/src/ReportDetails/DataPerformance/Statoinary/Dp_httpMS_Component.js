@@ -5,7 +5,6 @@ import DpThroughputOverallTable from '../DpThroughputOverallTable';
 import DpRangeChart from '../DpRangeChart';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
-// import httpMS_Stationary_Data from '../../../DataFiles/SA/DpStationaryResults/Multi Stream HTTP.json'; // Removed direct import
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';

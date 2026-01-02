@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import MrabData from '../../DataFiles/SA/DpMrabResults/Mrab.json'; // Removed direct import
 import { ReportContext } from '../../Contexts/ReportContext';
 import '../../StyleScript/Restricted_Report_Style.css';
 import DpHistogramComponent from './DpHistogramComponent';

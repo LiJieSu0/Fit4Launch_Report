@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import DpMHSUdpTable from "./Table/DpMHSUdpTable";
 import DpHistogramComponent from "../DpHistogramComponent";
 import DpUdpOverallTable from '../DpUdpOverallTable';
-// import udpDataRaw from '../../../DataFiles/SA/DpMHSResults/UDP.json'; // Removed direct import
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';

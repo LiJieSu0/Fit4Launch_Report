@@ -3,7 +3,6 @@ import DpMHSHttpSSTable from "./Table/DpMHSHttpSSTable";
 import DpHistogramComponent from "../DpHistogramComponent";
 import DpRangeChart from "../DpRangeChart";
 import DpThroughputOverallTable from "../DpThroughputOverallTable";
-// import SingleStreamHTTPData from "../../../DataFiles/SA/DpMHSResults/Single Stream HTTP.json"; // Removed direct import
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';

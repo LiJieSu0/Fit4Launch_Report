@@ -3,7 +3,6 @@ import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
 import DpThroughputOverallTable from '../DpThroughputOverallTable';
 import DpRangeChart from '../DpRangeChart';
 import DpHistogramComponent from '../DpHistogramComponent';
-// import httpSS_Stationary_DL_Data from '../../../DataFiles/SA/DpStationaryResults/Single Stream HTTP.json'; // Removed direct import
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';

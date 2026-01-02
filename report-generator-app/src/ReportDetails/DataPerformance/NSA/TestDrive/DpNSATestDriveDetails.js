@@ -2,7 +2,6 @@ import React from 'react';
 import DpNSATestDriveTable from './DpNSATestDriveTable';
 import DpNSATestDriveOverallTable from './DpNSATestDriveOverallTable';
 import DpHistogramComponent from '../../DpHistogramComponent';
-// import TestDriveData from '../../../../DataFiles/NSA/DpMobilityResults/Test Drive.json'; // Removed direct import
 import { ReportContext } from '../../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../../Constants/ChartColors';

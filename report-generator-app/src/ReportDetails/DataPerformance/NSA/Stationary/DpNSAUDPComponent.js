@@ -4,7 +4,6 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../../Constants/ChartCol
 import DpNSAUDPDLTable from './Table/DpNSAUDPDLTable';
 import DpNSAUDPULTable from './Table/DpNSAUDPULTable';
 import DpUdpOverallTable from '../../DpUdpOverallTable';
-// import UDPData from '../../../../DataFiles/NSA/DpStationaryResults/UDP.json'; // Removed direct import
 import { ReportContext } from '../../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import '../../../../StyleScript/Restricted_Report_Style.css';

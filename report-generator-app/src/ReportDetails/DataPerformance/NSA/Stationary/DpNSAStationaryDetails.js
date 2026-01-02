@@ -7,9 +7,6 @@ import DpThroughputOverallTable from '../../DpThroughputOverallTable';
 import processPingData from './NSAPingData';
 import DpHistogramComponent from '../../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../../Constants/ChartColors';
-// import MultiStreamHTTPData from '../../../../DataFiles/NSA/DpStationaryResults/Multi Stream HTTP.json'; // Removed direct import
-// import SingleStreamHTTPData from '../../../../DataFiles/NSA/DpStationaryResults/Single Stream HTTP.json'; // Removed direct import
-// import PingData from '../../../../DataFiles/NSA/DpStationaryResults/Ping.json'; // Removed direct import
 import DpNSAUDPComponent from './DpNSAUDPComponent';
 import { ReportContext } from '../../../../Contexts/ReportContext';
 import { useContext } from 'react';

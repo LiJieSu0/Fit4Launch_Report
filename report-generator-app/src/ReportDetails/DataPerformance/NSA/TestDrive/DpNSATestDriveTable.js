@@ -16,7 +16,6 @@ function DpNSATestDriveTable({ data, tableName }) {
           { key: "Throughput.Standard Deviation", label: "Standard Deviation" },
           { key: "Throughput.Minimum", label: "Minimum" },
           { key: "Throughput.Maximum", label: "Maximum" },
-          { key: "Throughput.Number of Intervals", label: "Number of Intervals" },
         ],
         kpiType: "Throughput",
       },
@@ -52,13 +51,13 @@ function DpNSATestDriveTable({ data, tableName }) {
 
     metrics.forEach(metric => {
       metric.subMetrics.forEach(subMetric => {
-        const dutValue = getNestedValue(rawData["UDP DL DUT1_Data Test Drive"], subMetric.key);
-        const refValue = getNestedValue(rawData["UDP DL REF1_Data Test Drive"], subMetric.key);
+        const dutValue = getNestedValue(rawData["DUT"], subMetric.key);
+        const refValue = getNestedValue(rawData["REF"], subMetric.key);
         processed.push({
           metric: `${metric.name.replace(" (Mbps)", "").replace(" (s)", "").replace(" (%)", "")} ${subMetric.label}`,
           kpiType: metric.kpiType,
-          dutValue: typeof dutValue === 'number' ? dutValue.toFixed(2) : dutValue,
-          refValue: typeof refValue === 'number' ? refValue.toFixed(2) : refValue,
+          dutValue: typeof dutValue === 'number' ? dutValue.toFixed(2) : (dutValue || "N/A"),
+          refValue: typeof refValue === 'number' ? refValue.toFixed(2) : (refValue || "N/A"),
         });
       });
     });

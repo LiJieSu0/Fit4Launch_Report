@@ -9,39 +9,44 @@ const DpNSATestDriveOverallTable = ({ data, tableName }) => {
     const processOverallData = (rawData) => {
         const overallMetrics = [];
 
-        const dutDl = rawData["UDP DL DUT1_Data Test Drive"];
-        const refDl = rawData["UDP DL REF1_Data Test Drive"];
+        const dutDl = rawData["DUT"] || {};
+        const refDl = rawData["REF"] || {};
+
+        const getSafeValue = (obj, path) => {
+            const val = path.split('.').reduce((acc, part) => acc && acc[part], obj);
+            return typeof val === 'number' ? val.toFixed(2) : "N/A";
+        };
 
         // Throughput
         overallMetrics.push({
             metric: "Mean Throughput (Mbps)",
             kpiType: "Throughput",
-            dutValue: dutDl.Throughput.Mean.toFixed(2),
-            refValue: refDl.Throughput.Mean.toFixed(2),
+            dutValue: getSafeValue(dutDl, 'Throughput.Mean'),
+            refValue: getSafeValue(refDl, 'Throughput.Mean'),
         });
 
         // Jitter
         overallMetrics.push({
             metric: "Mean Jitter (s)",
             kpiType: "Jitter",
-            dutValue: dutDl.Jitter.Mean.toFixed(2),
-            refValue: refDl.Jitter.Mean.toFixed(2),
+            dutValue: getSafeValue(dutDl, 'Jitter.Mean'),
+            refValue: getSafeValue(refDl, 'Jitter.Mean'),
         });
 
         // Error Ratio
         overallMetrics.push({
             metric: "Packet Failure Rate (%)",
             kpiType: "ErrorRatio",
-            dutValue: dutDl['Error Ratio'].Mean.toFixed(2),
-            refValue: refDl['Error Ratio'].Mean.toFixed(2),
+            dutValue: getSafeValue(dutDl, 'Error Ratio.Mean'),
+            refValue: getSafeValue(refDl, 'Error Ratio.Mean'),
         });
 
         // Ping RTT
         overallMetrics.push({
             metric: "Mean Round Trip Time (ms)",
             kpiType: "PingLatency",
-            dutValue: dutDl['Ping RTT'].avg.toFixed(2),
-            refValue: refDl['Ping RTT'].avg.toFixed(2),
+            dutValue: getSafeValue(dutDl, 'Ping RTT.avg'),
+            refValue: getSafeValue(refDl, 'Ping RTT.avg'),
         });
 
         return overallMetrics;

@@ -36,88 +36,52 @@ function DpNSAUDPComponent() {
   const tasksDL = ["UDP Download Task at 200 Mbps for 10 seconds", "UDP Download Task at 400 Mbps for 10 seconds"];
   const tasksUL = ["5G NSA_UDP Upload Task at 10 Mbps for 10 seconds", "5G NSA_UDP Upload Task at 20 Mbps for 10 seconds"];
 
+  const metricsDL = [
+    { name: "Throughput (Mbps)", type: "Throughput", sub: "Mean" },
+    { name: "Max Throughput (Mbps)", type: "Throughput", sub: "Maximum" },
+    { name: "Mean Jitter (s)", type: "Jitter", sub: "Mean" },
+    { name: "Packet Failure Rate (%)", type: "Error Ratio", sub: "Mean" }
+  ];
+
   const udp_Stationary_DL = [];
-  tasksDL.forEach(task => {
-    const ideal = task.includes("200") ? "200000" : "400000";
-    ["DUT", "REF"].forEach(dev => {
-      udp_Stationary_DL.push({
-        metric: "Throughput (Mbps)",
-        idealThroughput: ideal,
-        deviceName: dev,
-        location: {
-          moderate: getMetric("DL", task, "Moderate", dev, "Throughput"),
-          poor: getMetric("DL", task, "Poor", dev, "Throughput"),
-        }
-      });
-      udp_Stationary_DL.push({
-        metric: "Max Throughput (Mbps)",
-        idealThroughput: ideal,
-        deviceName: dev,
-        location: {
-          moderate: getMetric("DL", task, "Moderate", dev, "Throughput", "Maximum"),
-          poor: getMetric("DL", task, "Poor", dev, "Throughput", "Maximum"),
-        }
-      });
-      udp_Stationary_DL.push({
-        metric: "Mean Jitter (s)",
-        idealThroughput: ideal,
-        deviceName: dev,
-        location: {
-          moderate: getMetric("DL", task, "Moderate", dev, "Jitter"),
-          poor: getMetric("DL", task, "Poor", dev, "Jitter"),
-        }
-      });
-      udp_Stationary_DL.push({
-        metric: "Packet Failure Rate (%)",
-        idealThroughput: ideal,
-        deviceName: dev,
-        location: {
-          moderate: getMetric("DL", task, "Moderate", dev, "Error Ratio"),
-          poor: getMetric("DL", task, "Poor", dev, "Error Ratio"),
-        }
+  metricsDL.forEach(m => {
+    tasksDL.forEach(task => {
+      const ideal = task.includes("200") ? "200000" : "400000";
+      ["DUT", "REF"].forEach(dev => {
+        udp_Stationary_DL.push({
+          metric: m.name,
+          idealThroughput: ideal,
+          deviceName: dev,
+          location: {
+            moderate: getMetric("DL", task, "Moderate", dev, m.type, m.sub),
+            poor: getMetric("DL", task, "Poor", dev, m.type, m.sub),
+          }
+        });
       });
     });
   });
 
+  const metricsUL = [
+    { name: "Throughput (Mbps)", type: "Throughput", sub: "Mean" },
+    { name: "Max Throughput (Mbps)", type: "Throughput", sub: "Maximum" },
+    { name: "Mean Jitter (s)", type: "Jitter", sub: "Mean" },
+    { name: "Packet Failure Rate (%)", type: "Error Ratio", sub: "Mean" }
+  ];
+
   const udp_Stationary_UL = [];
-  tasksUL.forEach(task => {
-    const ideal = task.includes("10 Mbps") ? "10000" : "20000";
-    ["DUT", "REF"].forEach(dev => {
-      udp_Stationary_UL.push({
-        metric: "Throughput (Mbps)",
-        idealThroughput: ideal,
-        deviceName: dev,
-        location: {
-          moderate: getMetric("UL", task, "Moderate", dev, "Throughput"),
-          poor: getMetric("UL", task, "Poor", dev, "Throughput"),
-        }
-      });
-      udp_Stationary_UL.push({
-        metric: "Max Throughput (Mbps)",
-        idealThroughput: ideal,
-        deviceName: dev,
-        location: {
-          moderate: getMetric("UL", task, "Moderate", dev, "Throughput", "Maximum"),
-          poor: getMetric("UL", task, "Poor", dev, "Throughput", "Maximum"),
-        }
-      });
-      udp_Stationary_UL.push({
-        metric: "Mean Jitter (s)",
-        idealThroughput: ideal,
-        deviceName: dev,
-        location: {
-          moderate: getMetric("UL", task, "Moderate", dev, "Jitter"),
-          poor: getMetric("UL", task, "Poor", dev, "Jitter"),
-        }
-      });
-      udp_Stationary_UL.push({
-        metric: "Packet Failure Rate (%)",
-        idealThroughput: ideal,
-        deviceName: dev,
-        location: {
-          moderate: getMetric("UL", task, "Moderate", dev, "Error Ratio"),
-          poor: getMetric("UL", task, "Poor", dev, "Error Ratio"),
-        }
+  metricsUL.forEach(m => {
+    tasksUL.forEach(task => {
+      const ideal = task.includes("10 Mbps") ? "10000" : "20000";
+      ["DUT", "REF"].forEach(dev => {
+        udp_Stationary_UL.push({
+          metric: m.name,
+          idealThroughput: ideal,
+          deviceName: dev,
+          location: {
+            moderate: getMetric("UL", task, "Moderate", dev, m.type, m.sub),
+            poor: getMetric("UL", task, "Poor", dev, m.type, m.sub),
+          }
+        });
       });
     });
   });

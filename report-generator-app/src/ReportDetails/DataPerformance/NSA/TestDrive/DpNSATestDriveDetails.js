@@ -12,69 +12,59 @@ import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 function DpNSATestDriveDetails() {
   const { reportData } = useContext(ReportContext);
 
-  if (!reportData || !reportData.dataPerformanceDetails) {
+  if (!reportData || !reportData.dataPerformance) {
     return <div className="page-content">Loading...</div>;
   }
 
-  const TestDriveData = reportData.dataPerformanceDetails.NSA.Mobility.TestDrive;
+  const mobilityData = reportData.dataPerformance['Data Performance']?.['5G NSA DP']?.['Mobility Test'];
 
-  const processHistogramData = (data, metricKey) => {
-    const aggregatedData = {};
+  if (!mobilityData) {
+    return <div className="page-content">No NSA Test Drive Data available</div>;
+  }
 
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        const deviceData = data[key];
-        const deviceType = deviceData["Device Type"]; // "DUT" or "REF"
-        const name = key.replace(/ (DUT|REF)\d+_Data Test Drive/g, ''); // Extract common name like "UDP DL"
+  const dutDriveTest = mobilityData['DUT'];
+  const refDriveTest = mobilityData['REF'];
 
-        let value;
-        if (metricKey === "Ping RTT") {
-          value = deviceData[metricKey] ? deviceData[metricKey].avg : 0;
-        } else {
-          value = deviceData[metricKey] ? deviceData[metricKey].Mean : 0;
-        }
-
-        if (!aggregatedData[name]) {
-          aggregatedData[name] = { name: name };
-        }
-        aggregatedData[name][`${metricKey} ${deviceType}`] = parseFloat(value.toFixed(2));
-      }
+  const getHistogramData = (metricKey) => {
+    let dutVal, refVal;
+    if (metricKey === "Ping RTT") {
+      dutVal = dutDriveTest?.[metricKey]?.avg || 0;
+      refVal = refDriveTest?.[metricKey]?.avg || 0;
+    } else {
+      dutVal = dutDriveTest?.[metricKey]?.Mean || 0;
+      refVal = refDriveTest?.[metricKey]?.Mean || 0;
     }
-    return Object.values(aggregatedData);
+    return [{
+      name: "Mobility Test",
+      [`${metricKey} DUT`]: parseFloat(dutVal.toFixed(2)),
+      [`${metricKey} REF`]: parseFloat(refVal.toFixed(2)),
+    }];
   };
 
-  const throughputData = processHistogramData(TestDriveData, "Throughput");
-  const jitterData = processHistogramData(TestDriveData, "Jitter");
-  const errorRatioData = processHistogramData(TestDriveData, "Error Ratio");
-  const pingRttData = processHistogramData(TestDriveData, "Ping RTT");
+  const throughputData = getHistogramData("Throughput");
+  const jitterData = getHistogramData("Jitter");
+  const errorRatioData = getHistogramData("Error Ratio");
+  const pingRttData = getHistogramData("Ping RTT");
 
-  const barKeysThroughput = [
-    { key: "Throughput DUT", fill: CHART_COLOR_DUT },
-    { key: "Throughput REF", fill: CHART_COLOR_REF }
-  ];
-  const barKeysJitter = [
-    { key: "Jitter DUT", fill: CHART_COLOR_DUT },
-    { key: "Jitter REF", fill: CHART_COLOR_REF }
-  ];
-  const barKeysErrorRatio = [
-    { key: "Error Ratio DUT", fill: CHART_COLOR_DUT },
-    { key: "Error Ratio REF", fill: CHART_COLOR_REF }
-  ];
-  const barKeysPingRtt = [
-    { key: "Ping RTT DUT", fill: CHART_COLOR_DUT },
-    { key: "Ping RTT REF", fill: CHART_COLOR_REF }
-  ];
+  const formattedTestDriveData = {
+    DUT: dutDriveTest,
+    REF: refDriveTest,
+  };
+
+  const barKeysThroughput = [{ key: "Throughput DUT", fill: CHART_COLOR_DUT }, { key: "Throughput REF", fill: CHART_COLOR_REF }];
+  const barKeysJitter = [{ key: "Jitter DUT", fill: CHART_COLOR_DUT }, { key: "Jitter REF", fill: CHART_COLOR_REF }];
+  const barKeysErrorRatio = [{ key: "Error Ratio DUT", fill: CHART_COLOR_DUT }, { key: "Error Ratio REF", fill: CHART_COLOR_REF }];
+  const barKeysPingRtt = [{ key: "Ping RTT DUT", fill: CHART_COLOR_DUT }, { key: "Ping RTT REF", fill: CHART_COLOR_REF }];
 
   return (
     <>
       <div className='page-content'>
         <DynamicHeader level={2}>Mobility Test - 5G NSA</DynamicHeader>
-        <DpNSATestDriveOverallTable data={TestDriveData} tableName="Drive Test Overview" />
-        <DpNSATestDriveTable data={TestDriveData} tableName="Drive Test Details" />
+        <DpNSATestDriveOverallTable data={formattedTestDriveData} tableName="Drive Test Overview" />
+        <DpNSATestDriveTable data={formattedTestDriveData} tableName="Drive Test Details" />
       </div>
 
       <div className='page-content'>
-
         <DpHistogramComponent
           data={throughputData}
           title="Drive Test Throughput"
@@ -90,7 +80,6 @@ function DpNSATestDriveDetails() {
       </div>
 
       <div className='page-content'>
-
         <DpHistogramComponent
           data={errorRatioData}
           title="Packet Failure Rate"
@@ -105,7 +94,6 @@ function DpNSATestDriveDetails() {
         />
       </div>
     </>
-
   );
 }
 

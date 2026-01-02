@@ -70,8 +70,8 @@ function DpNSAUDPDLTable({ data, tableName }) {
                 item.deviceName === 'REF'
             );
 
-            const refOverallValue = refRow ? calculateOverallAverage(refRow.location.moderate, refRow.location.poor) : null;
-            const currentOverallValue = calculateOverallAverage(row.location.moderate, row.location.poor);
+            const refOverallValue = refRow ? calculateOverallAverage(refRow.location?.moderate, refRow.location?.poor) : null;
+            const currentOverallValue = calculateOverallAverage(row.location?.moderate, row.location?.poor);
 
             return (
               <tr key={index}>
@@ -83,7 +83,7 @@ function DpNSAUDPDLTable({ data, tableName }) {
                 )}
                 <td>{row.deviceName}</td>
                 <td style={{
-                  backgroundColor: row.deviceName === 'DUT' && refOverallValue !== null && row.metric !== 'Max Throughput (kbps)'
+                  backgroundColor: row.deviceName === 'DUT' && refOverallValue !== null && !row.metric.includes('Max Throughput')
                     ? getKpiCellColor(
                       row.metric === 'Mean Jitter (s)' ? 'Jitter' :
                         row.metric === 'Packet Failure Rate (%)' ? 'ErrorRatio' :
@@ -95,10 +95,11 @@ function DpNSAUDPDLTable({ data, tableName }) {
                 }}>
                   {currentOverallValue}
                 </td>
-                <td>{row.location.moderate.toFixed(2)}</td>
-                <td>{row.location.poor.toFixed(2)}</td>
+                <td>{typeof row.location?.moderate === 'number' ? row.location.moderate.toFixed(2) : (row.location?.moderate || "0.00")}</td>
+                <td>{typeof row.location?.poor === 'number' ? row.location.poor.toFixed(2) : (row.location?.poor || "0.00")}</td>
               </tr>
             );
+
           })}
         </tbody>
       </table>

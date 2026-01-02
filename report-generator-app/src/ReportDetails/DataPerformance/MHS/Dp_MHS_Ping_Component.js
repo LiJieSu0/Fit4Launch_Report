@@ -9,11 +9,11 @@ import DynamicHeader from "../../../CommonPage/DynamicHeader";
 function Dp_MHS_Ping_Component() {
   const { reportData } = useContext(ReportContext);
 
-  if (!reportData || !reportData.dataPerformanceDetails) {
+  if (!reportData || !reportData.dataPerformance) {
     return <div className="page-content">Loading...</div>;
   }
 
-  const pingDataRaw = reportData.dataPerformanceDetails.SA?.["Mobile Hotspot Test"]?.["Ping"];
+  const pingDataRaw = reportData.dataPerformance?.['Data Performance']?.['5G AUTO DP']?.['Mobile Hotspot Test']?.['Ping'];
 
   if (!pingDataRaw) {
     return <div className="page-content">No MHS Ping Data available</div>;
@@ -24,13 +24,12 @@ function Dp_MHS_Ping_Component() {
     return metrics || { min: 0, max: 0, avg: 0, std_dev: 0 };
   };
 
-  const goodDUT = getPingMetrics("Good", "DUT");
-  const goodREF = getPingMetrics("Good", "REF");
+  // MHS Ping data only has Moderate and Poor in the JSON
   const modDUT = getPingMetrics("Moderate", "DUT");
   const modREF = getPingMetrics("Moderate", "REF");
+  const poorDUT = getPingMetrics("Poor", "DUT");
+  const poorREF = getPingMetrics("Poor", "REF");
 
-  // Note: Previous code didn't use Poor data for calculation, sticking to existing logic for consistency
-  // but if needed, Poor data is available via "Poor" key.
 
   const calculateOverall = (val1, val2) => {
     const v1 = parseFloat(val1 || 0);
@@ -44,57 +43,57 @@ function Dp_MHS_Ping_Component() {
   const data = {
     average: {
       DUT: {
-        Good: goodDUT.avg,
         Moderate: modDUT.avg,
-        Overall: calculateOverall(goodDUT.avg, modDUT.avg),
+        Poor: poorDUT.avg,
+        Overall: calculateOverall(modDUT.avg, poorDUT.avg),
       },
       REF: {
-        Good: goodREF.avg,
         Moderate: modREF.avg,
-        Overall: calculateOverall(goodREF.avg, modREF.avg),
+        Poor: poorREF.avg,
+        Overall: calculateOverall(modREF.avg, poorREF.avg),
       },
     },
     std_dev: {
       DUT: {
-        Good: goodDUT.std_dev,
         Moderate: modDUT.std_dev,
-        Overall: calculateOverall(goodDUT.std_dev, modDUT.std_dev),
+        Poor: poorDUT.std_dev,
+        Overall: calculateOverall(modDUT.std_dev, poorDUT.std_dev),
       },
       REF: {
-        Good: goodREF.std_dev,
         Moderate: modREF.std_dev,
-        Overall: calculateOverall(goodREF.std_dev, modREF.std_dev),
+        Poor: poorREF.std_dev,
+        Overall: calculateOverall(modREF.std_dev, poorREF.std_dev),
       },
     },
     max: {
       DUT: {
-        Good: goodDUT.max,
         Moderate: modDUT.max,
-        Overall: calculateOverall(goodDUT.max, modDUT.max),
+        Poor: poorDUT.max,
+        Overall: calculateOverall(modDUT.max, poorDUT.max),
       },
       REF: {
-        Good: goodREF.max,
         Moderate: modREF.max,
-        Overall: calculateOverall(goodREF.max, modREF.max),
+        Poor: poorREF.max,
+        Overall: calculateOverall(modREF.max, poorREF.max),
       },
     },
     min: {
       DUT: {
-        Good: goodDUT.min,
         Moderate: modDUT.min,
-        Overall: calculateOverall(goodDUT.min, modDUT.min),
+        Poor: poorDUT.min,
+        Overall: calculateOverall(modDUT.min, poorDUT.min),
       },
       REF: {
-        Good: goodREF.min,
         Moderate: modREF.min,
-        Overall: calculateOverall(goodREF.min, modREF.min),
+        Poor: poorREF.min,
+        Overall: calculateOverall(modREF.min, poorREF.min),
       },
     },
   };
 
   const histogramData = [
-    { name: "Good", DUT: data.average.DUT.Good, REF: data.average.REF.Good },
     { name: "Moderate", DUT: data.average.DUT.Moderate, REF: data.average.REF.Moderate },
+    { name: "Poor", DUT: data.average.DUT.Poor, REF: data.average.REF.Poor },
     { name: "Overall", DUT: data.average.DUT.Overall, REF: data.average.REF.Overall },
   ];
 

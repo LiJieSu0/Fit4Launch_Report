@@ -468,7 +468,6 @@ function Dp_MHS_Udp_Component() {
       title: title,
       yAxisLabel: yAxisLabel,
       data: [
-        { name: 'Good', DUT: dutGood, REF: refGood },
         { name: 'Moderate', DUT: dutModerate, REF: refModerate },
         { name: 'Poor', DUT: dutPoor, REF: refPoor },
         { name: 'Overall', DUT: overallDUT, REF: overallREF },

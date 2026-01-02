@@ -164,16 +164,20 @@ if __name__ == "__main__":
                     if ping_stats_result and "Ping RTT" in ping_stats_result:
                         all_file_stats["Ping RTT"] = ping_stats_result["Ping RTT"]
                 
-                # Additionally, check for related ping files if it's a "drive" path and not already a PING protocol
                 if params["is_drive_path"] and params["protocol_type_detected"] != "PING":
+                    # Additionally, check for related ping files if it's a "drive" path and not already a PING protocol
                     related_ping_file = data_performance_statics._find_related_ping_file(csv_file_path, params["device_type_detected"])
+                    ping_stats_result = None
                     if related_ping_file:
                         print(f"Found related Ping file for drive path: {related_ping_file}")
                         ping_stats_result = ping_statics.calculate_ping_statistics(related_ping_file, params["device_type_detected"])
-                        if ping_stats_result and "Ping RTT" in ping_stats_result:
-                            all_file_stats["Ping RTT"] = ping_stats_result["Ping RTT"]
                     else:
-                        print(f"No related Ping file found for drive path: {csv_file_path}")
+                        # For cases like Mobility Test, Ping data might be in the same file as UDP/HTTP
+                        print(f"No separate Ping file found for drive path: {csv_file_path}. Checking current file for Ping data.")
+                        ping_stats_result = ping_statics.calculate_ping_statistics(csv_file_path, params["device_type_detected"])
+                    
+                    if ping_stats_result and "Ping RTT" in ping_stats_result:
+                        all_file_stats["Ping RTT"] = ping_stats_result["Ping RTT"]
             
             # Add MRAB statistics collection
             elif params["analysis_type_detected"] == "mrab_performance":

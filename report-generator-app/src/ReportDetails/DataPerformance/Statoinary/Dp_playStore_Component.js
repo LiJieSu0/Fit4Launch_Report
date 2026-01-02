@@ -14,9 +14,11 @@ const Dp_playStore_Component = () => {
     return <div className="page-content">Loading...</div>;
   }
 
-  const playStoreData = reportData.dataPerformance['Data Performance']?.['5G AUTO DP']?.['Play-store app Download'];
+  const playStoreData = reportData.dataPerformance['Data Performance']?.['5G AUTO DP']?.['5G Auto Data Play-store app Download'];
 
   const processData = () => {
+    if (!playStoreData) return [];
+
     const processed = [];
     const throughputCategories = ['30M', '60M', '100M'];
     const deviceTypes = ['DUT', 'REF'];
@@ -38,7 +40,7 @@ const Dp_playStore_Component = () => {
 
         locations.forEach((location, index) => {
           const siteKey = `site${index + 1}`;
-          if (playStoreData[location] && playStoreData[location][device] && playStoreData[location][device][throughput]) {
+          if (playStoreData[location]?.[device]?.[throughput]) {
             const dataKey = Object.keys(playStoreData[location][device][throughput])[0];
             const value = playStoreData[location][device][throughput][dataKey].overall_average_throughput;
             rowData[siteKey] = value !== undefined ? value.toFixed(2) : 'N/A';

@@ -464,7 +464,7 @@
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Throughput": {
-                                    "Mean": 278.4484949324324,
+                                    "Mean": 267.4484949324324,
                                     "Standard Deviation": 99.98545611466113,
                                     "Minimum": 22.926,
                                     "Maximum": 540.668,
@@ -1131,6 +1131,12 @@
                         },
                         "Error Ratio": {
                             "Mean": 3.9628764489323385
+                        },
+                        "Ping RTT": {
+                            "min": 29.0,
+                            "max": 922.0,
+                            "avg": 57.90610610610611,
+                            "std_dev": 29.173500038187505
                         }
                     },
                     "REF": {
@@ -1151,6 +1157,12 @@
                         },
                         "Error Ratio": {
                             "Mean": 2.347114968588957
+                        },
+                        "Ping RTT": {
+                            "min": 28.0,
+                            "max": 920.0,
+                            "avg": 40.356750392464676,
+                            "std_dev": 27.234097385621556
                         }
                     }
                 },
@@ -1829,7 +1841,7 @@
                     }
                 }
             },
-            "Play-store app Download": {
+            "5G Auto Data Play-store app Download": {
                 "Good": {
                     "DUT": {
                         "100M": {
@@ -2077,7 +2089,7 @@
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Throughput": {
-                                "Mean": 40.75297958026092,
+                                "Mean": 39.75297958026092,
                                 "Standard Deviation": 32.015392447158185,
                                 "Minimum": 0.0,
                                 "Maximum": 112.752,
@@ -2212,6 +2224,12 @@
                     },
                     "Error Ratio": {
                         "Mean": 1.0425411406088754
+                    },
+                    "Ping RTT": {
+                        "min": 30.0,
+                        "max": 429.0,
+                        "avg": 53.72744186046511,
+                        "std_dev": 19.26967663827729
                     }
                 },
                 "REF": {
@@ -2232,6 +2250,12 @@
                     },
                     "Error Ratio": {
                         "Mean": 1.1761252791537666
+                    },
+                    "Ping RTT": {
+                        "min": 29.0,
+                        "max": 224.0,
+                        "avg": 45.4146511627907,
+                        "std_dev": 13.834647056254926
                     }
                 }
             },

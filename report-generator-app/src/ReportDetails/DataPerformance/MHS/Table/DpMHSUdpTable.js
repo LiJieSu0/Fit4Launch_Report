@@ -2,17 +2,30 @@ import React from 'react';
 import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
 function DpMHSUdpTable({ data, tableName }) {
-  const calculateOverallAverage = (good, moderate) => {
+  // Detect which locations have data
+  const getAvailableLocations = (data) => {
+    const locations = new Set();
+    data.forEach(row => {
+      Object.keys(row.location).forEach(loc => {
+        if (row.location[loc] !== undefined) {
+          locations.add(loc);
+        }
+      });
+    });
+    return Array.from(locations).sort(); // Sort for consistent order
+  };
+
+  const availableLocations = getAvailableLocations(data);
+
+  const calculateOverallAverage = (locationData) => {
     let sum = 0;
     let count = 0;
-    if (good !== undefined) {
-      sum += parseFloat(good);
-      count++;
-    }
-    if (moderate !== undefined) {
-      sum += parseFloat(moderate);
-      count++;
-    }
+    availableLocations.forEach(loc => {
+      if (locationData[loc] !== undefined) {
+        sum += parseFloat(locationData[loc]);
+        count++;
+      }
+    });
     return count > 0 ? (sum / count).toFixed(2) : 'N/A';
   };
 
@@ -56,11 +69,12 @@ function DpMHSUdpTable({ data, tableName }) {
             <th rowSpan="2">Ideal Throughput</th>
             <th rowSpan="2">Device Name</th>
             <th rowSpan="2">Overall</th>
-            <th colSpan="2">Location</th>
+            <th colSpan={availableLocations.length}>Location</th>
           </tr>
           <tr>
-            <th>Good</th>
-            <th>Moderate</th>
+            {availableLocations.map(loc => (
+              <th key={loc}>{loc.charAt(0).toUpperCase() + loc.slice(1)}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -82,8 +96,8 @@ function DpMHSUdpTable({ data, tableName }) {
                 item.deviceName === 'REF'
             );
 
-            const refOverallValue = refRow ? calculateOverallAverage(refRow.location.good, refRow.location.moderate) : null;
-            const currentOverallValue = calculateOverallAverage(row.location.good, row.location.moderate);
+            const refOverallValue = refRow ? calculateOverallAverage(refRow.location) : null;
+            const currentOverallValue = calculateOverallAverage(row.location);
 
             return (
               <tr key={index}>
@@ -107,8 +121,11 @@ function DpMHSUdpTable({ data, tableName }) {
                 }}>
                   {currentOverallValue}
                 </td>
-                <td>{row.location.good !== undefined ? row.location.good.toFixed(2) : 'N/A'}</td>
-                <td>{row.location.moderate !== undefined ? row.location.moderate.toFixed(2) : 'N/A'}</td>
+                {availableLocations.map(loc => (
+                  <td key={loc}>
+                    {row.location[loc] !== undefined ? row.location[loc].toFixed(2) : 'N/A'}
+                  </td>
+                ))}
               </tr>
             );
           })}

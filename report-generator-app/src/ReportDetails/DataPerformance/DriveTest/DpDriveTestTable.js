@@ -9,6 +9,10 @@ const DpDriveTestTable = ({ data, tableName }) => {
 
     const processData = (rawData) => {
         const processed = [];
+
+        const dutDl = rawData?.["DUT UDP DL"];
+        const refDl = rawData?.["REF UDP DL"];
+
         const metrics = [
             {
                 name: "Throughput (Mbps)",
@@ -17,7 +21,6 @@ const DpDriveTestTable = ({ data, tableName }) => {
                     { key: "Standard Deviation", label: "Standard Deviation (Mbps)" },
                     { key: "Minimum", label: "Minimum (Mbps)" },
                     { key: "Maximum", label: "Maximum (Mbps)" },
-                    { key: "Number of Intervals", label: "Number of Intervals" },
                 ],
                 path: "Throughput",
                 kpiType: "Throughput",
@@ -38,7 +41,11 @@ const DpDriveTestTable = ({ data, tableName }) => {
                 path: "Error Ratio",
                 kpiType: "ErrorRatio",
             },
-            {
+        ];
+
+        // Only add Ping RTT if it exists in the data
+        if (dutDl?.['Ping RTT'] || refDl?.['Ping RTT']) {
+            metrics.push({
                 name: "Ping RTT (ms)",
                 subMetrics: [
                     { key: "min", label: "Minimum" },
@@ -48,8 +55,8 @@ const DpDriveTestTable = ({ data, tableName }) => {
                 ],
                 path: "Ping RTT",
                 kpiType: "PingLatency",
-            },
-        ];
+            });
+        }
 
         const getNestedValue = (obj, path) => {
             return path.split('.').reduce((acc, part) => acc && acc[part], obj);
@@ -57,15 +64,19 @@ const DpDriveTestTable = ({ data, tableName }) => {
 
         metrics.forEach(metric => {
             metric.subMetrics.forEach(subMetric => {
-                let dutValue = getNestedValue(rawData["DUT UDP DL"], `${metric.path}.${subMetric.key}`);
-                let refValue = getNestedValue(rawData["REF UDP DL"], `${metric.path}.${subMetric.key}`);
+                let dutValue = getNestedValue(dutDl, `${metric.path}.${subMetric.key}`);
+                let refValue = getNestedValue(refDl, `${metric.path}.${subMetric.key}`);
 
                 if (subMetric.label !== "DL Number of Intervals") {
                     if (typeof dutValue === 'number') {
                         dutValue = dutValue.toFixed(2);
+                    } else if (dutValue === undefined || dutValue === null) {
+                        dutValue = 'N/A';
                     }
                     if (typeof refValue === 'number') {
                         refValue = refValue.toFixed(2);
+                    } else if (refValue === undefined || refValue === null) {
+                        refValue = 'N/A';
                     }
                 }
 

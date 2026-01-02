@@ -16,33 +16,35 @@ const DpDriveTestOverallTable = ({ data, tableName }) => {
         overallMetrics.push({
             metric: "Throughput (Mbps)",
             kpiType: "Throughput",
-            dutValue: dutDl.Throughput.Mean.toFixed(2),
-            refValue: refDl.Throughput.Mean.toFixed(2),
+            dutValue: (dutDl?.Throughput?.Mean || 0).toFixed(2),
+            refValue: (refDl?.Throughput?.Mean || 0).toFixed(2),
         });
 
         // Jitter
         overallMetrics.push({
             metric: "Jitter (s)",
             kpiType: "Jitter",
-            dutValue: dutDl.Jitter.Mean.toFixed(2),
-            refValue: refDl.Jitter.Mean.toFixed(2),
+            dutValue: (dutDl?.Jitter?.Mean || 0).toFixed(2),
+            refValue: (refDl?.Jitter?.Mean || 0).toFixed(2),
         });
 
         // Error Ratio
         overallMetrics.push({
             metric: "Packet Failure Rate (%)",
             kpiType: "ErrorRatio",
-            dutValue: dutDl['Error Ratio'].Mean.toFixed(2),
-            refValue: refDl['Error Ratio'].Mean.toFixed(2),
+            dutValue: (dutDl?.['Error Ratio']?.Mean || 0).toFixed(2),
+            refValue: (refDl?.['Error Ratio']?.Mean || 0).toFixed(2),
         });
 
-        // Ping RTT
-        overallMetrics.push({
-            metric: "Ping RTT (ms)",
-            kpiType: "PingLatency",
-            dutValue: dutDl['Ping RTT'].avg.toFixed(2),
-            refValue: refDl['Ping RTT'].avg.toFixed(2),
-        });
+        // Ping RTT - only add if data exists
+        if (dutDl?.['Ping RTT'] || refDl?.['Ping RTT']) {
+            overallMetrics.push({
+                metric: "Ping RTT (ms)",
+                kpiType: "PingLatency",
+                dutValue: (dutDl?.['Ping RTT']?.avg || 0).toFixed(2),
+                refValue: (refDl?.['Ping RTT']?.avg || 0).toFixed(2),
+            });
+        }
 
         return overallMetrics;
     };

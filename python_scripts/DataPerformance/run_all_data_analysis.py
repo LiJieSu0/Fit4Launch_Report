@@ -55,7 +55,7 @@ if __name__ == "__main__":
         {"path": "Coverage Performance/5G n41 HPUE Coverage Test", "analysis_type": "n41_coverage"}, # Add N41 Coverage directory
         {"path": "Coverage Performance/5G VoNR Coverage Test", "analysis_type": "vonr_coverage_performance"}, # Add 5G VoNR Coverage Test directory
         {"path": "Data Performance/5G AUTO DP/5G Auto Data Play-store app Download", "analysis_type": "google_throughput_analysis"}, # Corrected path for Google Throughput Analysis
-        {"path": "Data Performance/5G AUTO DP/5G Auto Data Test MHS Drive", "analysis_type": "mhs_drive_performance"}, # Add MHS Drive Performance directory
+        {"path": "Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive", "analysis_type": "mhs_drive_performance"}, # Add MHS Drive Performance directory
     ]
     
     data_performance_results = {}

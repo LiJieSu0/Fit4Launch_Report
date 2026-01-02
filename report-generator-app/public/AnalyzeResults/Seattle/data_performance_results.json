@@ -1153,6 +1153,82 @@
                             "Mean": 2.347114968588957
                         }
                     }
+                },
+                "5G Auto Data Test MHS Drive": {
+                    "DUT": {
+                        "Device Type": "DUT",
+                        "Network Type": "5G",
+                        "Analysis Type": "mhs_drive_performance",
+                        "DL Throughput": {
+                            "Mean": 8.551996261682243,
+                            "Standard Deviation": 3.271599361523098,
+                            "Minimum": 0.0,
+                            "Maximum": 19.364,
+                            "Number of Data Points": 4280
+                        },
+                        "UL Throughput": {
+                            "Mean": 7.557662446428572,
+                            "Standard Deviation": 3.5474203485217197,
+                            "Minimum": 0.0,
+                            "Maximum": 10.000107,
+                            "Number of Data Points": 56
+                        },
+                        "DL Jitter": {
+                            "Mean": 32.18264369158879
+                        },
+                        "UL Jitter": {
+                            "Mean": 2.061875
+                        },
+                        "DL Error Ratio": {
+                            "Mean": 11.695616839485984
+                        },
+                        "UL Error Ratio": {
+                            "Mean": 15.34987402
+                        },
+                        "Ping RTT": {
+                            "Mean": 117.08741594620557,
+                            "Min": 34.0,
+                            "Max": 843.0,
+                            "Std Dev": 58.700794116663204
+                        }
+                    },
+                    "REF": {
+                        "Device Type": "REF",
+                        "Network Type": "5G",
+                        "Analysis Type": "mhs_drive_performance",
+                        "DL Throughput": {
+                            "Mean": 8.957230285961872,
+                            "Standard Deviation": 3.0027988493440763,
+                            "Minimum": 0.0,
+                            "Maximum": 20.285,
+                            "Number of Data Points": 4616
+                        },
+                        "UL Throughput": {
+                            "Mean": 7.834380395833333,
+                            "Standard Deviation": 3.6875610844655746,
+                            "Minimum": 0.0,
+                            "Maximum": 10.000169,
+                            "Number of Data Points": 48
+                        },
+                        "DL Jitter": {
+                            "Mean": 23.852765164644715
+                        },
+                        "UL Jitter": {
+                            "Mean": 3.426416666666667
+                        },
+                        "DL Error Ratio": {
+                            "Mean": 9.068985512781628
+                        },
+                        "UL Error Ratio": {
+                            "Mean": 14.530980431818183
+                        },
+                        "Ping RTT": {
+                            "Mean": 98.23293079424059,
+                            "Min": 36.0,
+                            "Max": 1159.0,
+                            "Std Dev": 92.95520304132387
+                        }
+                    }
                 }
             },
             "Ping": {

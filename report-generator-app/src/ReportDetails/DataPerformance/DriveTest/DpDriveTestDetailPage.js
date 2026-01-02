@@ -5,8 +5,6 @@ import DpDriveTestOverallTable from './DpDriveTestOverallTable';
 import DpMHSTestDriveOverallTable from '../MHS/Table/DpMHSTestDriveOverallTable';
 import DpHistogramComponent from '../DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
-// import TestDriveData from '../../../DataFiles/SA/DpMobilityResults/Test Drive.json'; // Removed direct import
-// import TestDriveMHSData from '../../../DataFiles/SA/DpMobilityMHSResults/MHS Test Drive.json'; // Removed direct import
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
@@ -14,44 +12,176 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 const DpDriveTestDetailPage = () => {
   const { reportData } = useContext(ReportContext);
 
-  if (!reportData || !reportData.dataPerformanceDetails) {
+  if (!reportData || !reportData.dataPerformance) {
     return <div className="page-content">Loading...</div>;
   }
 
-  const TestDriveData = reportData.dataPerformanceDetails.SA.Mobility.TestDrive;
-  const TestDriveMHSData = reportData.dataPerformanceDetails.SA.Mobility.MhsTestDrive;
+  // Access Mobility Test data from the new JSON structure
+  const mobilityTestData = reportData.dataPerformance?.['Data Performance']?.['5G AUTO DP']?.['Mobility Test'];
+
+  if (!mobilityTestData) {
+    return <div className="page-content">No Mobility Test Data available</div>;
+  }
+
+  // Get the 5G Auto Data Test Drive data
+  const testDriveData = mobilityTestData?.['5G Auto Data Test Drive'];
+  const dutDriveTest = testDriveData?.['DUT'];
+  const refDriveTest = testDriveData?.['REF'];
 
   const getDriveTestMetricData = (metricName, dutValue, refValue) => {
-    return [{ name: metricName, DUT: dutValue, REF: refValue }];
+    return [{ name: metricName, DUT: dutValue || 0, REF: refValue || 0 }];
   };
 
-  const dutDriveTest = TestDriveData["DUT UDP DL"];
-  const refDriveTest = TestDriveData["REF UDP DL"];
+  // Prepare data for tables and charts - handle the new simpler structure
+  const driveTestThroughputData = getDriveTestMetricData(
+    "Throughput",
+    dutDriveTest?.Throughput?.Mean,
+    refDriveTest?.Throughput?.Mean
+  );
+  const driveTestJitterData = getDriveTestMetricData(
+    "Jitter",
+    dutDriveTest?.Jitter?.Mean,
+    refDriveTest?.Jitter?.Mean
+  );
+  const driveTestErrorRatioData = getDriveTestMetricData(
+    "Error Ratio",
+    dutDriveTest?.['Error Ratio']?.Mean,
+    refDriveTest?.['Error Ratio']?.Mean
+  );
 
-  const driveTestThroughputData = getDriveTestMetricData("Throughput", dutDriveTest.Throughput.Mean, refDriveTest.Throughput.Mean);
-  const driveTestJitterData = getDriveTestMetricData("Jitter", dutDriveTest.Jitter.Mean, refDriveTest.Jitter.Mean);
-  const driveTestErrorRatioData = getDriveTestMetricData("Error Ratio", dutDriveTest['Error Ratio'].Mean, refDriveTest['Error Ratio'].Mean);
-  const driveTestPingRttData = getDriveTestMetricData("Ping RTT", dutDriveTest['Ping RTT'].avg, refDriveTest['Ping RTT'].avg);
+  // Format the TestDriveData for the table components (matching expected structure)
+  const formattedTestDriveData = {
+    "DUT UDP DL": {
+      Throughput: {
+        Mean: dutDriveTest?.Throughput?.Mean || 0,
+        Minimum: dutDriveTest?.Throughput?.Minimum || 0,
+        Maximum: dutDriveTest?.Throughput?.Maximum || 0,
+        'Standard Deviation': dutDriveTest?.Throughput?.['Standard Deviation'] || 0,
+      },
+      Jitter: {
+        Mean: dutDriveTest?.Jitter?.Mean || 0,
+      },
+      'Error Ratio': {
+        Mean: dutDriveTest?.['Error Ratio']?.Mean || 0,
+      },
+    },
+    "REF UDP DL": {
+      Throughput: {
+        Mean: refDriveTest?.Throughput?.Mean || 0,
+        Minimum: refDriveTest?.Throughput?.Minimum || 0,
+        Maximum: refDriveTest?.Throughput?.Maximum || 0,
+        'Standard Deviation': refDriveTest?.Throughput?.['Standard Deviation'] || 0,
+      },
+      Jitter: {
+        Mean: refDriveTest?.Jitter?.Mean || 0,
+      },
+      'Error Ratio': {
+        Mean: refDriveTest?.['Error Ratio']?.Mean || 0,
+      },
+    },
+  };
 
-  const dutMHS = TestDriveMHSData["DUT UDP DL"];
-  const refMHS = TestDriveMHSData["REF UDP DL"];
+  // Check if MHS Test Drive data exists - use the correct key from JSON
+  const mhsTestDriveData = mobilityTestData?.['5G Auto Data Test MHS Drive'];
+  const dutMHS = mhsTestDriveData?.['DUT'];
+  const refMHS = mhsTestDriveData?.['REF'];
+  const hasMhsData = dutMHS && refMHS;
 
-  const mhsThroughputData = getDriveTestMetricData("Throughput", dutMHS.Throughput.DL.Mean, refMHS.Throughput.DL.Mean);
-  const mhsJitterData = getDriveTestMetricData("Jitter", dutMHS.Jitter["DL Mean"], refMHS.Jitter["DL Mean"]);
-  const mhsErrorRatioData = getDriveTestMetricData("Error Ratio", dutMHS['Error Ratio']["DL Mean"], refMHS['Error Ratio']["DL Mean"]);
-  const mhsPingRttData = getDriveTestMetricData("Ping RTT", dutMHS['Ping RTT'].avg, refMHS['Ping RTT'].avg);
+  // Format MHS data for table components (matching expected structure)
+  const formattedMhsTestDriveData = hasMhsData ? {
+    "DUT UDP DL": {
+      Throughput: {
+        DL: {
+          Mean: dutMHS?.['DL Throughput']?.Mean || 0,
+          Minimum: dutMHS?.['DL Throughput']?.Minimum || 0,
+          Maximum: dutMHS?.['DL Throughput']?.Maximum || 0,
+          'Standard Deviation': dutMHS?.['DL Throughput']?.['Standard Deviation'] || 0,
+        },
+        UL: {
+          Mean: dutMHS?.['UL Throughput']?.Mean || 0,
+          Minimum: dutMHS?.['UL Throughput']?.Minimum || 0,
+          Maximum: dutMHS?.['UL Throughput']?.Maximum || 0,
+          'Standard Deviation': dutMHS?.['UL Throughput']?.['Standard Deviation'] || 0,
+        },
+      },
+      Jitter: {
+        'DL Mean': dutMHS?.['DL Jitter']?.Mean || 0,
+        'UL Mean': dutMHS?.['UL Jitter']?.Mean || 0,
+      },
+      'Error Ratio': {
+        'DL Mean': dutMHS?.['DL Error Ratio']?.Mean || 0,
+        'UL Mean': dutMHS?.['UL Error Ratio']?.Mean || 0,
+      },
+      'Ping RTT': {
+        avg: dutMHS?.['Ping RTT']?.Mean || 0,
+        min: dutMHS?.['Ping RTT']?.Min || 0,
+        max: dutMHS?.['Ping RTT']?.Max || 0,
+        std_dev: dutMHS?.['Ping RTT']?.['Std Dev'] || 0,
+      },
+    },
+    "REF UDP DL": {
+      Throughput: {
+        DL: {
+          Mean: refMHS?.['DL Throughput']?.Mean || 0,
+          Minimum: refMHS?.['DL Throughput']?.Minimum || 0,
+          Maximum: refMHS?.['DL Throughput']?.Maximum || 0,
+          'Standard Deviation': refMHS?.['DL Throughput']?.['Standard Deviation'] || 0,
+        },
+        UL: {
+          Mean: refMHS?.['UL Throughput']?.Mean || 0,
+          Minimum: refMHS?.['UL Throughput']?.Minimum || 0,
+          Maximum: refMHS?.['UL Throughput']?.Maximum || 0,
+          'Standard Deviation': refMHS?.['UL Throughput']?.['Standard Deviation'] || 0,
+        },
+      },
+      Jitter: {
+        'DL Mean': refMHS?.['DL Jitter']?.Mean || 0,
+        'UL Mean': refMHS?.['UL Jitter']?.Mean || 0,
+      },
+      'Error Ratio': {
+        'DL Mean': refMHS?.['DL Error Ratio']?.Mean || 0,
+        'UL Mean': refMHS?.['UL Error Ratio']?.Mean || 0,
+      },
+      'Ping RTT': {
+        avg: refMHS?.['Ping RTT']?.Mean || 0,
+        min: refMHS?.['Ping RTT']?.Min || 0,
+        max: refMHS?.['Ping RTT']?.Max || 0,
+        std_dev: refMHS?.['Ping RTT']?.['Std Dev'] || 0,
+      },
+    },
+  } : null;
+
+  // MHS histogram data
+  const mhsDLThroughputData = hasMhsData ? getDriveTestMetricData(
+    "DL Throughput",
+    dutMHS?.['DL Throughput']?.Mean,
+    refMHS?.['DL Throughput']?.Mean
+  ) : [];
+  const mhsDLJitterData = hasMhsData ? getDriveTestMetricData(
+    "DL Jitter",
+    dutMHS?.['DL Jitter']?.Mean,
+    refMHS?.['DL Jitter']?.Mean
+  ) : [];
+  const mhsDLErrorRatioData = hasMhsData ? getDriveTestMetricData(
+    "DL Error Ratio",
+    dutMHS?.['DL Error Ratio']?.Mean,
+    refMHS?.['DL Error Ratio']?.Mean
+  ) : [];
+  const mhsPingRttData = hasMhsData ? getDriveTestMetricData(
+    "Ping RTT",
+    dutMHS?.['Ping RTT']?.Mean,
+    refMHS?.['Ping RTT']?.Mean
+  ) : [];
 
   return (
     <>
-      {/* TODO add 2.8.1 */}
       <div className='page-content'>
         <DynamicHeader level={2}>Mobility Test</DynamicHeader>
         <DynamicHeader level={3}>Mobility Test - 5G Auto</DynamicHeader>
-        <DpDriveTestOverallTable data={TestDriveData} tableName="Mobility Test Drive Overview" />
-        <DpDriveTestTable data={TestDriveData} tableName="Mobility Test Drive Details" />
+        <DpDriveTestOverallTable data={formattedTestDriveData} tableName="Mobility Test Drive Overview" />
+        <DpDriveTestTable data={formattedTestDriveData} tableName="Mobility Test Drive Details" />
       </div>
       <div className='page-content'>
-
         <DpHistogramComponent
           data={driveTestThroughputData}
           title="Mobility Test Drive Throughput"
@@ -72,50 +202,53 @@ const DpDriveTestDetailPage = () => {
           yAxisLabel="Packet Failure Rate (%)"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
         />
-        <DpHistogramComponent
-          data={driveTestPingRttData}
-          title="Mobility Test Drive Ping RTT"
-          yAxisLabel="RTT (ms)"
-          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-        />
-      </div>
-      <div className='page-content'>
-        <DynamicHeader level={3}>Mobility Test - Mobile Hotspot</DynamicHeader>
-        <DpMHSTestDriveOverallTable data={TestDriveMHSData} tableName="MHS Test Drive Overall Data" />
-        <DpMHSTestDriveTable data={TestDriveMHSData} tableName="MHS Test Drive Data" />
-      </div>
-      <div className='page-content'>
-        <DpHistogramComponent
-          data={mhsThroughputData}
-          title="MHS Test Drive - Mean Throughput"
-          yAxisLabel="Throughput (Mbps)"
-          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-        />
-        <DpHistogramComponent
-          data={mhsJitterData}
-          title="MHS Test Drive - Mean Jitter"
-          yAxisLabel="Jitter (ms)"
-          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-        />
-      </div>
-      <div className='page-content'>
-
-        <DpHistogramComponent
-          data={mhsErrorRatioData}
-          title="MHS Test Drive - Packet Failure Rate"
-          yAxisLabel="Packet Failure Rate (%)"
-          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-        />
-        <DpHistogramComponent
-          data={mhsPingRttData}
-          title="MHS Test Drive - Mean Ping RTT"
-          yAxisLabel="RTT (ms)"
-          barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
-        />
       </div>
 
+      {hasMhsData ? (
+        <>
+          <div className='page-content'>
+            <DynamicHeader level={3}>Mobility Test - Mobile Hotspot</DynamicHeader>
+            <DpMHSTestDriveOverallTable data={formattedMhsTestDriveData} tableName="MHS Test Drive Overall Data" />
+            <DpMHSTestDriveTable data={formattedMhsTestDriveData} tableName="MHS Test Drive Data" />
+          </div>
+          <div className='page-content'>
+            <DpHistogramComponent
+              data={mhsDLThroughputData}
+              title="MHS Test Drive - DL Throughput"
+              yAxisLabel="Throughput (Mbps)"
+              barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+            />
+            <DpHistogramComponent
+              data={mhsDLJitterData}
+              title="MHS Test Drive - DL Jitter"
+              yAxisLabel="Jitter (ms)"
+              barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+            />
+          </div>
+          <div className='page-content'>
+            <DpHistogramComponent
+              data={mhsDLErrorRatioData}
+              title="MHS Test Drive - DL Packet Failure Rate"
+              yAxisLabel="Packet Failure Rate (%)"
+              barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+            />
+            <DpHistogramComponent
+              data={mhsPingRttData}
+              title="MHS Test Drive - Mean Ping RTT"
+              yAxisLabel="RTT (ms)"
+              barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+            />
+          </div>
+        </>
+      ) : (
+        <div className='page-content'>
+          <DynamicHeader level={3}>Mobility Test - Mobile Hotspot</DynamicHeader>
+          <p>No MHS Test Drive Data available</p>
+        </div>
+      )}
     </>
   );
 };
 
 export default DpDriveTestDetailPage;
+

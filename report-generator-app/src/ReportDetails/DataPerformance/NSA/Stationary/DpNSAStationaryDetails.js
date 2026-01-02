@@ -18,63 +18,78 @@ import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 function DpNSAStationaryDetails() {
   const { reportData } = useContext(ReportContext);
 
-  if (!reportData || !reportData.dataPerformanceDetails) {
+  if (!reportData || !reportData.dataPerformance) {
     return <div className="page-content">Loading...</div>;
   }
 
-  const MultiStreamHTTPData = reportData.dataPerformanceDetails.NSA.Stationary.HttpMulti;
-  const SingleStreamHTTPData = reportData.dataPerformanceDetails.NSA.Stationary.HttpSingle;
-  const PingData = reportData.dataPerformanceDetails.NSA.Stationary.Ping;
+  const nsaStationaryData = reportData.dataPerformance['Data Performance']?.['5G NSA DP'];
 
-  const pingData = processPingData(PingData);
+  if (!nsaStationaryData) {
+    return <div className="page-content">No NSA Stationary Data available</div>;
+  }
 
+  const MultiStreamHTTPData = nsaStationaryData['HTTP Multi Stream'];
+  const SingleStreamHTTPData = nsaStationaryData['HTTP Single Stream'];
+  const PingData = nsaStationaryData['Ping'];
+
+  // Helper to extract stats safely for HTTP Single Stream
+  const getSSStats = (dir, cov, dev) => SingleStreamHTTPData?.[dir]?.[cov]?.[dev]?.Throughput || {};
+  const getMSStats = (dir, cov, dev) => MultiStreamHTTPData?.[dir]?.[cov]?.[dev]?.Throughput || {};
 
   const ssHttpDlHistogramData = [
-    { name: 'Moderate', DUT: SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["DUT_Single Stream HTTP Download for 60 seconds"].Throughput.Mean, REF: SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["REF Single Stream HTTP Download for 60 seconds"].Throughput.Mean },
-    { name: 'Poor', DUT: SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["DUT HTTP DL"].Throughput.Mean, REF: SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["REF HTTP DL"].Throughput.Mean },
+    { name: 'Moderate', DUT: getSSStats('DL', 'Moderate', 'DUT').Mean, REF: getSSStats('DL', 'Moderate', 'REF').Mean },
+    { name: 'Poor', DUT: getSSStats('DL', 'Poor', 'DUT').Mean, REF: getSSStats('DL', 'Poor', 'REF').Mean },
   ];
 
   const ssHttpUlHistogramData = [
-    { name: 'Moderate', DUT: SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput.Mean, REF: SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput.Mean },
-    { name: 'Poor', DUT: SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput.Mean, REF: SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput.Mean },
+    { name: 'Moderate', DUT: getSSStats('UL', 'Moderate', 'DUT').Mean, REF: getSSStats('UL', 'Moderate', 'REF').Mean },
+    { name: 'Poor', DUT: getSSStats('UL', 'Poor', 'DUT').Mean, REF: getSSStats('UL', 'Poor', 'REF').Mean },
   ];
 
   const msHttpDlHistogramData = [
-    { name: 'Moderate', DUT: MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["DUT_Multi Stream HTTP Download for 30 seconds"].Throughput.Mean, REF: MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["REF_Multi Stream HTTP Download for 30 seconds"].Throughput.Mean },
-    { name: 'Poor', DUT: MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["DUT HTTP DL"].Throughput.Mean, REF: MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["REF HTTP DL"].Throughput.Mean },
+    { name: 'Moderate', DUT: getMSStats('DL', 'Moderate', 'DUT').Mean, REF: getMSStats('DL', 'Moderate', 'REF').Mean },
+    { name: 'Poor', DUT: getMSStats('DL', 'Poor', 'DUT').Mean, REF: getMSStats('DL', 'Poor', 'REF').Mean },
   ];
 
   const msHttpUlHistogramData = [
-    { name: 'Moderate', DUT: MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["DUT 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput.Mean, REF: MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["REF 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput.Mean },
-    { name: 'Poor', DUT: MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH01_TMO-dut_5G NSA_Multi Stream HTTP Upload for 30 seconds_Poor Coverage_DA Test"].Throughput.Mean, REF: MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO-ref_5G NSA_UDP UMulti Stream HTTP Upload for 30 second_Poor Coverage_DA Test"].Throughput.Mean },
+    { name: 'Moderate', DUT: getMSStats('UL', 'Moderate', 'DUT').Mean, REF: getMSStats('UL', 'Moderate', 'REF').Mean },
+    { name: 'Poor', DUT: getMSStats('UL', 'Poor', 'DUT').Mean, REF: getMSStats('UL', 'Poor', 'REF').Mean },
   ];
 
+  // Ping processing
+  const pingData = processPingData(PingData);
   const pingHistogramData = [
-    { name: 'Moderate', DUT: pingData.average.DUT.Moderate, REF: pingData.average.REF.Moderate },
-    { name: 'Poor', DUT: pingData.average.DUT.Poor, REF: pingData.average.REF.Poor },
+    { name: 'Moderate', DUT: pingData?.average?.DUT?.Moderate, REF: pingData?.average?.REF?.Moderate },
+    { name: 'Poor', DUT: pingData?.average?.DUT?.Poor, REF: pingData?.average?.REF?.Poor },
   ];
 
   const overallTableHeader = ["Throughput", "Device Name", "Download", "Upload"];
 
-  const ssHttpDlOverallMean = (SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["DUT_Single Stream HTTP Download for 60 seconds"].Throughput.Mean + SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["DUT HTTP DL"].Throughput.Mean) / 2;
-  const ssHttpDlOverallRefMean = (SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["REF Single Stream HTTP Download for 60 seconds"].Throughput.Mean + SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["REF HTTP DL"].Throughput.Mean) / 2;
-  const ssHttpUlOverallMean = (SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput.Mean + SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput.Mean) / 2;
-  const ssHttpUlOverallRefMean = (SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput.Mean + SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput.Mean) / 2;
+  const calculateOverall = (moderate, poor) => {
+    const vals = [moderate, poor].filter(v => v !== undefined && v !== null);
+    if (vals.length === 0) return 0;
+    return vals.reduce((a, b) => a + b, 0) / vals.length;
+  };
 
-  const ssHttpDlOverallStdDev = (SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["DUT_Single Stream HTTP Download for 60 seconds"].Throughput["Standard Deviation"] + SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["DUT HTTP DL"].Throughput["Standard Deviation"]) / 2;
-  const ssHttpDlOverallRefStdDev = (SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["REF Single Stream HTTP Download for 60 seconds"].Throughput["Standard Deviation"] + SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["REF HTTP DL"].Throughput["Standard Deviation"]) / 2;
-  const ssHttpUlOverallStdDev = (SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput["Standard Deviation"] + SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput["Standard Deviation"]) / 2;
-  const ssHttpUlOverallRefStdDev = (SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput["Standard Deviation"] + SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput["Standard Deviation"]) / 2;
+  const ssHttpDlOverallMean = calculateOverall(getSSStats('DL', 'Moderate', 'DUT').Mean, getSSStats('DL', 'Poor', 'DUT').Mean);
+  const ssHttpDlOverallRefMean = calculateOverall(getSSStats('DL', 'Moderate', 'REF').Mean, getSSStats('DL', 'Poor', 'REF').Mean);
+  const ssHttpUlOverallMean = calculateOverall(getSSStats('UL', 'Moderate', 'DUT').Mean, getSSStats('UL', 'Poor', 'DUT').Mean);
+  const ssHttpUlOverallRefMean = calculateOverall(getSSStats('UL', 'Moderate', 'REF').Mean, getSSStats('UL', 'Poor', 'REF').Mean);
 
-  const ssHttpDlOverallMax = (SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["DUT_Single Stream HTTP Download for 60 seconds"].Throughput.Maximum + SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["DUT HTTP DL"].Throughput.Maximum) / 2;
-  const ssHttpDlOverallRefMax = (SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["REF Single Stream HTTP Download for 60 seconds"].Throughput.Maximum + SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["REF HTTP DL"].Throughput.Maximum) / 2;
-  const ssHttpUlOverallMax = (SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput.Maximum + SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput.Maximum) / 2;
-  const ssHttpUlOverallRefMax = (SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput.Maximum + SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput.Maximum) / 2;
+  const ssHttpDlOverallStdDev = calculateOverall(getSSStats('DL', 'Moderate', 'DUT')['Standard Deviation'], getSSStats('DL', 'Poor', 'DUT')['Standard Deviation']);
+  const ssHttpDlOverallRefStdDev = calculateOverall(getSSStats('DL', 'Moderate', 'REF')['Standard Deviation'], getSSStats('DL', 'Poor', 'REF')['Standard Deviation']);
+  const ssHttpUlOverallStdDev = calculateOverall(getSSStats('UL', 'Moderate', 'DUT')['Standard Deviation'], getSSStats('UL', 'Poor', 'DUT')['Standard Deviation']);
+  const ssHttpUlOverallRefStdDev = calculateOverall(getSSStats('UL', 'Moderate', 'REF')['Standard Deviation'], getSSStats('UL', 'Poor', 'REF')['Standard Deviation']);
 
-  const ssHttpDlOverallMin = (SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["DUT_Single Stream HTTP Download for 60 seconds"].Throughput.Minimum + SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["DUT HTTP DL"].Throughput.Minimum) / 2;
-  const ssHttpDlOverallRefMin = (SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["REF Single Stream HTTP Download for 60 seconds"].Throughput.Minimum + SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["REF HTTP DL"].Throughput.Minimum) / 2;
-  const ssHttpUlOverallMin = (SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput.Minimum + SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput.Minimum) / 2;
-  const ssHttpUlOverallRefMin = (SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput.Minimum + SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput.Minimum) / 2;
+  const ssHttpDlOverallMax = calculateOverall(getSSStats('DL', 'Moderate', 'DUT').Maximum, getSSStats('DL', 'Poor', 'DUT').Maximum);
+  const ssHttpDlOverallRefMax = calculateOverall(getSSStats('DL', 'Moderate', 'REF').Maximum, getSSStats('DL', 'Poor', 'REF').Maximum);
+  const ssHttpUlOverallMax = calculateOverall(getSSStats('UL', 'Moderate', 'DUT').Maximum, getSSStats('UL', 'Poor', 'DUT').Maximum);
+  const ssHttpUlOverallRefMax = calculateOverall(getSSStats('UL', 'Moderate', 'REF').Maximum, getSSStats('UL', 'Poor', 'REF').Maximum);
+
+  const ssHttpDlOverallMin = calculateOverall(getSSStats('DL', 'Moderate', 'DUT').Minimum, getSSStats('DL', 'Poor', 'DUT').Minimum);
+  const ssHttpDlOverallRefMin = calculateOverall(getSSStats('DL', 'Moderate', 'REF').Minimum, getSSStats('DL', 'Poor', 'REF').Minimum);
+  const ssHttpUlOverallMin = calculateOverall(getSSStats('UL', 'Moderate', 'DUT').Minimum, getSSStats('UL', 'Poor', 'DUT').Minimum);
+  const ssHttpUlOverallRefMin = calculateOverall(getSSStats('UL', 'Moderate', 'REF').Minimum, getSSStats('UL', 'Poor', 'REF').Minimum);
 
 
   const combinedOverallSsHttpTableData = [
@@ -88,25 +103,25 @@ function DpNSAStationaryDetails() {
     ["Minimum (Mbps)", "REF", ssHttpDlOverallRefMin.toFixed(2), ssHttpUlOverallRefMin.toFixed(2)],
   ];
 
-  const msHttpDlOverallMean = (MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["DUT_Multi Stream HTTP Download for 30 seconds"].Throughput.Mean + MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["DUT HTTP DL"].Throughput.Mean) / 2;
-  const msHttpDlOverallRefMean = (MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["REF_Multi Stream HTTP Download for 30 seconds"].Throughput.Mean + MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["REF HTTP DL"].Throughput.Mean) / 2;
-  const msHttpUlOverallMean = (MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["DUT 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput.Mean + MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH01_TMO-dut_5G NSA_Multi Stream HTTP Upload for 30 seconds_Poor Coverage_DA Test"].Throughput.Mean) / 2;
-  const msHttpUlOverallRefMean = (MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["REF 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput.Mean + MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO-ref_5G NSA_UDP UMulti Stream HTTP Upload for 30 second_Poor Coverage_DA Test"].Throughput.Mean) / 2;
+  const msHttpDlOverallMean = calculateOverall(getMSStats('DL', 'Moderate', 'DUT').Mean, getMSStats('DL', 'Poor', 'DUT').Mean);
+  const msHttpDlOverallRefMean = calculateOverall(getMSStats('DL', 'Moderate', 'REF').Mean, getMSStats('DL', 'Poor', 'REF').Mean);
+  const msHttpUlOverallMean = calculateOverall(getMSStats('UL', 'Moderate', 'DUT').Mean, getMSStats('UL', 'Poor', 'DUT').Mean);
+  const msHttpUlOverallRefMean = calculateOverall(getMSStats('UL', 'Moderate', 'REF').Mean, getMSStats('UL', 'Poor', 'REF').Mean);
 
-  const msHttpDlOverallStdDev = (MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["DUT_Multi Stream HTTP Download for 30 seconds"].Throughput["Standard Deviation"] + MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["DUT HTTP DL"].Throughput["Standard Deviation"]) / 2;
-  const msHttpDlOverallRefStdDev = (MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["REF_Multi Stream HTTP Download for 30 seconds"].Throughput["Standard Deviation"] + MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["REF HTTP DL"].Throughput["Standard Deviation"]) / 2;
-  const msHttpUlOverallStdDev = (MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["DUT 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput["Standard Deviation"] + MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH01_TMO-dut_5G NSA_Multi Stream HTTP Upload for 30 seconds_Poor Coverage_DA Test"].Throughput["Standard Deviation"]) / 2;
-  const msHttpUlOverallRefStdDev = (MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["REF 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput["Standard Deviation"] + MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO-ref_5G NSA_UDP UMulti Stream HTTP Upload for 30 second_Poor Coverage_DA Test"].Throughput["Standard Deviation"]) / 2;
+  const msHttpDlOverallStdDev = calculateOverall(getMSStats('DL', 'Moderate', 'DUT')['Standard Deviation'], getMSStats('DL', 'Poor', 'DUT')['Standard Deviation']);
+  const msHttpDlOverallRefStdDev = calculateOverall(getMSStats('DL', 'Moderate', 'REF')['Standard Deviation'], getMSStats('DL', 'Poor', 'REF')['Standard Deviation']);
+  const msHttpUlOverallStdDev = calculateOverall(getMSStats('UL', 'Moderate', 'DUT')['Standard Deviation'], getMSStats('UL', 'Poor', 'DUT')['Standard Deviation']);
+  const msHttpUlOverallRefStdDev = calculateOverall(getMSStats('UL', 'Moderate', 'REF')['Standard Deviation'], getMSStats('UL', 'Poor', 'REF')['Standard Deviation']);
 
-  const msHttpDlOverallMax = (MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["DUT_Multi Stream HTTP Download for 30 seconds"].Throughput.Maximum + MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["DUT HTTP DL"].Throughput.Maximum) / 2;
-  const msHttpDlOverallRefMax = (MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["REF_Multi Stream HTTP Download for 30 seconds"].Throughput.Maximum + MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["REF HTTP DL"].Throughput.Maximum) / 2;
-  const msHttpUlOverallMax = (MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["DUT 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput.Maximum + MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH01_TMO-dut_5G NSA_Multi Stream HTTP Upload for 30 seconds_Poor Coverage_DA Test"].Throughput.Maximum) / 2;
-  const msHttpUlOverallRefMax = (MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["REF 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput.Maximum + MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO-ref_5G NSA_UDP UMulti Stream HTTP Upload for 30 second_Poor Coverage_DA Test"].Throughput.Maximum) / 2;
+  const msHttpDlOverallMax = calculateOverall(getMSStats('DL', 'Moderate', 'DUT').Maximum, getMSStats('DL', 'Poor', 'DUT').Maximum);
+  const msHttpDlOverallRefMax = calculateOverall(getMSStats('DL', 'Moderate', 'REF').Maximum, getMSStats('DL', 'Poor', 'REF').Maximum);
+  const msHttpUlOverallMax = calculateOverall(getMSStats('UL', 'Moderate', 'DUT').Maximum, getMSStats('UL', 'Poor', 'DUT').Maximum);
+  const msHttpUlOverallRefMax = calculateOverall(getMSStats('UL', 'Moderate', 'REF').Maximum, getMSStats('UL', 'Poor', 'REF').Maximum);
 
-  const msHttpDlOverallMin = (MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["DUT_Multi Stream HTTP Download for 30 seconds"].Throughput.Minimum + MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["DUT HTTP DL"].Throughput.Minimum) / 2;
-  const msHttpDlOverallRefMin = (MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["REF_Multi Stream HTTP Download for 30 seconds"].Throughput.Minimum + MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["REF HTTP DL"].Throughput.Minimum) / 2;
-  const msHttpUlOverallMin = (MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["DUT 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput.Minimum + MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH01_TMO-dut_5G NSA_Multi Stream HTTP Upload for 30 seconds_Poor Coverage_DA Test"].Throughput.Minimum) / 2;
-  const msHttpUlOverallRefMin = (MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["REF 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput.Minimum + MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO-ref_5G NSA_UDP UMulti Stream HTTP Upload for 30 second_Poor Coverage_DA Test"].Throughput.Minimum) / 2;
+  const msHttpDlOverallMin = calculateOverall(getMSStats('DL', 'Moderate', 'DUT').Minimum, getMSStats('DL', 'Poor', 'DUT').Minimum);
+  const msHttpDlOverallRefMin = calculateOverall(getMSStats('DL', 'Moderate', 'REF').Minimum, getMSStats('DL', 'Poor', 'REF').Minimum);
+  const msHttpUlOverallMin = calculateOverall(getMSStats('UL', 'Moderate', 'DUT').Minimum, getMSStats('UL', 'Poor', 'DUT').Minimum);
+  const msHttpUlOverallRefMin = calculateOverall(getMSStats('UL', 'Moderate', 'REF').Minimum, getMSStats('UL', 'Poor', 'REF').Minimum);
 
   const combinedOverallMsHttpTableData = [
     ["Average (Mbps)", "DUT", msHttpDlOverallMean.toFixed(2), msHttpUlOverallMean.toFixed(2)],
@@ -153,12 +168,12 @@ function DpNSAStationaryDetails() {
         <DpNSAHttpSSTable
           data={{
             Moderate: {
-              DUT: SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["DUT_Single Stream HTTP Download for 60 seconds"].Throughput,
-              REF: SingleStreamHTTPData.Moderate["Single Stream HTTP Download for 60 seconds"]["REF Single Stream HTTP Download for 60 seconds"].Throughput,
+              DUT: getSSStats('DL', 'Moderate', 'DUT'),
+              REF: getSSStats('DL', 'Moderate', 'REF'),
             },
             Poor: {
-              DUT: SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["DUT HTTP DL"].Throughput,
-              REF: SingleStreamHTTPData.Poor["Single Stream HTTP Download for 60 seconds"]["REF HTTP DL"].Throughput,
+              DUT: getSSStats('DL', 'Poor', 'DUT'),
+              REF: getSSStats('DL', 'Poor', 'REF'),
             },
           }}
           tableName="Http Single Stream DL Details"
@@ -168,12 +183,12 @@ function DpNSAStationaryDetails() {
         <DpNSAHttpSSTable
           data={{
             Moderate: {
-              DUT: SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput,
-              REF: SingleStreamHTTPData.Moderate["5G NSA_Single Stream HTTP Upload of a 15 MB file"]["_20250925_125722_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_location2_DA Test"].Throughput,
+              DUT: getSSStats('UL', 'Moderate', 'DUT'),
+              REF: getSSStats('UL', 'Moderate', 'REF'),
             },
             Poor: {
-              DUT: SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH01_TMO-dut_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput,
-              REF: SingleStreamHTTPData.Poor["Single Stream HTTP Upload of a 15 MB file"]["_CH02_TMO-ref_5G NSA_Single Stream HTTP Upload of a 15 MB file_Poor Coverage_DA Test"].Throughput,
+              DUT: getSSStats('UL', 'Poor', 'DUT'),
+              REF: getSSStats('UL', 'Poor', 'REF'),
             },
           }}
           tableName="Http Single Stream UL Details"
@@ -218,12 +233,12 @@ function DpNSAStationaryDetails() {
         <DpNSAHttpMSTable
           data={{
             Moderate: {
-              DUT: MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["DUT_Multi Stream HTTP Download for 30 seconds"].Throughput,
-              REF: MultiStreamHTTPData.Moderate["Multi Stream HTTP Download for 30 seconds"]["REF_Multi Stream HTTP Download for 30 seconds"].Throughput,
+              DUT: getMSStats('DL', 'Moderate', 'DUT'),
+              REF: getMSStats('DL', 'Moderate', 'REF'),
             },
             Poor: {
-              DUT: MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["DUT HTTP DL"].Throughput,
-              REF: MultiStreamHTTPData.Poor["Multi Stream HTTP Download for 30 seconds"]["REF HTTP DL"].Throughput,
+              DUT: getMSStats('DL', 'Poor', 'DUT'),
+              REF: getMSStats('DL', 'Poor', 'REF'),
             },
           }}
           tableName="Http Multi Stream DL Details"
@@ -233,12 +248,12 @@ function DpNSAStationaryDetails() {
         <DpNSAHttpMSTable
           data={{
             Moderate: {
-              DUT: MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["DUT 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput,
-              REF: MultiStreamHTTPData.Moderate["5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate"]["REF 5G NSA_Multi Stream HTTP Upload for 30 seconds_moderate_"].Throughput,
+              DUT: getMSStats('UL', 'Moderate', 'DUT'),
+              REF: getMSStats('UL', 'Moderate', 'REF'),
             },
             Poor: {
-              DUT: MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH01_TMO-dut_5G NSA_Multi Stream HTTP Upload for 30 seconds_Poor Coverage_DA Test"].Throughput,
-              REF: MultiStreamHTTPData.Poor["Multi Stream HTTP Upload for 30 seconds"]["_CH02_TMO-ref_5G NSA_UDP UMulti Stream HTTP Upload for 30 second_Poor Coverage_DA Test"].Throughput,
+              DUT: getMSStats('UL', 'Poor', 'DUT'),
+              REF: getMSStats('UL', 'Poor', 'REF'),
             },
           }}
           tableName="Http Multi Stream UL Details"

@@ -13,322 +13,115 @@ import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 function DpNSAUDPComponent() {
   const { reportData } = useContext(ReportContext);
 
-  if (!reportData || !reportData.dataPerformanceDetails) {
+  if (!reportData || !reportData.dataPerformance) {
     return <div className="page-content">Loading...</div>;
   }
 
-  const UDPData = reportData.dataPerformanceDetails.NSA.Stationary.UDP;
+  const udpData = reportData.dataPerformance['Data Performance']?.['5G NSA DP']?.['Udp Test'];
 
+  if (!udpData) {
+    return <div className="page-content">No NSA UDP Data available</div>;
+  }
 
-  const udp_Stationary_DL = [
-    // Mean Throughput - 200 Mbps
-    {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "200000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH01_TMO-dut_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Throughput?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["dut_5G NSA_UDP Download Task at 200 Mbps for 10 seconds_Poor"]?.Throughput?.Mean,
-      },
-    },
-    {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "200000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH02_TMO-ref_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Throughput?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["ref_5G NSA_UDP Download Task at 200 Mbps for 10 seconds_Poor"]?.Throughput?.Mean,
-      },
-    },
-    // Mean Throughput - 400 Mbps
-    {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "400000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.Throughput?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL"]?.Throughput?.Mean,
-      },
-    },
-    {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "400000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.Throughput?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL"]?.Throughput?.Mean,
-      },
-    },
-    // Max Throughput - 200 Mbps
-    {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "200000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH01_TMO-dut_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Throughput?.Maximum,
-        poor: UDPData.Poor?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["dut_5G NSA_UDP Download Task at 200 Mbps for 10 seconds_Poor"]?.Throughput?.Maximum,
-      },
-    },
-    {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "200000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH02_TMO-ref_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Throughput?.Maximum,
-        poor: UDPData.Poor?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["ref_5G NSA_UDP Download Task at 200 Mbps for 10 seconds_Poor"]?.Throughput?.Maximum,
-      },
-    },
-    // Max Throughput - 400 Mbps
-    {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "400000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.Throughput?.Maximum,
-        poor: UDPData.Poor?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL"]?.Throughput?.Maximum,
-      },
-    },
-    {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "400000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.Throughput?.Maximum,
-        poor: UDPData.Poor?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL"]?.Throughput?.Maximum,
-      },
-    },
-    // Mean Jitter - 200 Mbps
-    {
-      metric: "Mean Jitter (s)",
-      idealThroughput: "200000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH01_TMO-dut_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Jitter?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["dut_5G NSA_UDP Download Task at 200 Mbps for 10 seconds_Poor"]?.Jitter?.Mean,
-      },
-    },
-    {
-      metric: "Mean Jitter (s)",
-      idealThroughput: "200000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH02_TMO-ref_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.Jitter?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["ref_5G NSA_UDP Download Task at 200 Mbps for 10 seconds_Poor"]?.Jitter?.Mean,
-      },
-    },
-    // Mean Jitter - 400 Mbps
-    {
-      metric: "Mean Jitter (s)",
-      idealThroughput: "400000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.Jitter?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL"]?.Jitter?.Mean,
-      },
-    },
-    {
-      metric: "Mean Jitter (s)",
-      idealThroughput: "400000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.Jitter?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL"]?.Jitter?.Mean,
-      },
-    },
-    // Packet Failure Rate - 200 Mbps
-    {
-      metric: "Packet Failure Rate (%)",
-      idealThroughput: "200000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH01_TMO-dut_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.["Error Ratio"]?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["dut_5G NSA_UDP Download Task at 200 Mbps for 10 seconds_Poor"]?.["Error Ratio"]?.Mean,
-      },
-    },
-    {
-      metric: "Packet Failure Rate (%)",
-      idealThroughput: "200000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["_20250919_121427_CH02_TMO-ref_5G NSA_UDP DL 200 Mbps 10 s_location2_DA Test"]?.["Error Ratio"]?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 200 Mbps for 10 seconds"]?.["ref_5G NSA_UDP Download Task at 200 Mbps for 10 seconds_Poor"]?.["Error Ratio"]?.Mean,
-      },
-    },
-    // Packet Failure Rate - 400 Mbps
-    {
-      metric: "Packet Failure Rate (%)",
-      idealThroughput: "400000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL 400 M 10s"]?.["Error Ratio"]?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["DUT UDP DL"]?.["Error Ratio"]?.Mean,
-      },
-    },
-    {
-      metric: "Packet Failure Rate (%)",
-      idealThroughput: "400000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL 400 M 10s"]?.["Error Ratio"]?.Mean,
-        poor: UDPData.Poor?.["UDP Download Task at 400 Mbps for 10 seconds"]?.["REF UDP DL"]?.["Error Ratio"]?.Mean,
-      },
-    },
-  ];
+  // Helper to safely extract metrics
+  const getMetric = (dir, task, cov, dev, metric, subMetric = "Mean") => {
+    const taskData = udpData[dir]?.[task]?.[cov]?.[dev];
+    if (!taskData) return 0;
+    if (metric === "Throughput") return taskData.Throughput?.[subMetric] || 0;
+    if (metric === "Jitter") return taskData.Jitter?.[subMetric] || 0;
+    if (metric === "Error Ratio") return taskData["Error Ratio"]?.[subMetric] || 0;
+    return 0;
+  };
 
-  const udp_Stationary_UL = [
-    // Mean Throughput - 10 Mbps
-    {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "10000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 10 Mbps for 10 seconds"]?.["_20250930_144823_CH01_TMO-dut_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_location2_DA Test"]?.Throughput?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.["dut_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_Poor"]?.Throughput?.Mean,
-      },
-    },
-    {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "10000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 10 Mbps for 10 seconds"]?.["_20250930_144823_CH02_TMO-ref_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_location2_DA Test"]?.Throughput?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.["ref_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_Poor"]?.Throughput?.Mean,
-      },
-    },
-    // Mean Throughput - 20 Mbps
-    {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "20000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250930_145837_CH01_TMO-dut_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_location2_DA Test"]?.Throughput?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250914_144028_CH01_TMO-dut_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_Poor Coverage_DA Test"]?.Throughput?.Mean,
-      },
-    },
-    {
-      metric: "Throughput (Mbps)",
-      idealThroughput: "20000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250930_145837_CH02_TMO-ref_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_location2_DA Test"]?.Throughput?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250914_144028_CH02_TMO-ref_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_Poor Coverage_DA Test"]?.Throughput?.Mean,
-      },
-    },
-    // Max Throughput - 10 Mbps
-    {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "10000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 10 Mbps for 10 seconds"]?.["_20250930_144823_CH01_TMO-dut_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_location2_DA Test"]?.Throughput?.Maximum,
-        poor: UDPData.Poor?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.["dut_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_Poor"]?.Throughput?.Maximum,
-      },
-    },
-    {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "10000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 10 Mbps for 10 seconds"]?.["_20250930_144823_CH02_TMO-ref_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_location2_DA Test"]?.Throughput?.Maximum,
-        poor: UDPData.Poor?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.["ref_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_Poor"]?.Throughput?.Maximum,
-      },
-    },
-    // Max Throughput - 20 Mbps
-    {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "20000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250930_145837_CH01_TMO-dut_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_location2_DA Test"]?.Throughput?.Maximum,
-        poor: UDPData.Poor?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250914_144028_CH01_TMO-dut_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_Poor Coverage_DA Test"]?.Throughput?.Maximum,
-      },
-    },
-    {
-      metric: "Max Throughput (Mbps)",
-      idealThroughput: "20000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250930_145837_CH02_TMO-ref_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_location2_DA Test"]?.Throughput?.Maximum,
-        poor: UDPData.Poor?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250914_144028_CH02_TMO-ref_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_Poor Coverage_DA Test"]?.Throughput?.Maximum,
-      },
-    },
-    // Mean Jitter - 10 Mbps
-    {
-      metric: "Mean Jitter (s)",
-      idealThroughput: "10000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 10 Mbps for 10 seconds"]?.["_20250930_144823_CH01_TMO-dut_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_location2_DA Test"]?.Jitter?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.["dut_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_Poor"]?.Jitter?.Mean,
-      },
-    },
-    {
-      metric: "Mean Jitter (s)",
-      idealThroughput: "10000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 10 Mbps for 10 seconds"]?.["_20250930_144823_CH02_TMO-ref_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_location2_DA Test"]?.Jitter?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.["ref_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_Poor"]?.Jitter?.Mean,
-      },
-    },
-    // Mean Jitter - 20 Mbps
-    {
-      metric: "Mean Jitter (s)",
-      idealThroughput: "20000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250930_145837_CH01_TMO-dut_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_location2_DA Test"]?.Jitter?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250914_144028_CH01_TMO-dut_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_Poor Coverage_DA Test"]?.Jitter?.Mean,
-      },
-    },
-    {
-      metric: "Mean Jitter (s)",
-      idealThroughput: "20000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250930_145837_CH02_TMO-ref_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_location2_DA Test"]?.Jitter?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250914_144028_CH02_TMO-ref_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_Poor Coverage_DA Test"]?.Jitter?.Mean,
-      },
-    },
-    // Packet Failure Rate - 10 Mbps
-    {
-      metric: "Packet Failure Rate (%)",
-      idealThroughput: "10000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 10 Mbps for 10 seconds"]?.["_20250930_144823_CH01_TMO-dut_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_location2_DA Test"]?.["Error Ratio"]?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.["dut_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_Poor"]?.["Error Ratio"]?.Mean,
-      },
-    },
-    {
-      metric: "Packet Failure Rate (%)",
-      idealThroughput: "10000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 10 Mbps for 10 seconds"]?.["_20250930_144823_CH02_TMO-ref_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_location2_DA Test"]?.["Error Ratio"]?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.["ref_5G NSA_UDP Upload Task at 10 Mbps for 10 seconds_Poor"]?.["Error Ratio"]?.Mean,
-      },
-    },
-    // Packet Failure Rate - 20 Mbps
-    {
-      metric: "Packet Failure Rate (%)",
-      idealThroughput: "20000",
-      deviceName: "DUT",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250930_145837_CH01_TMO-dut_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_location2_DA Test"]?.["Error Ratio"]?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250914_144028_CH01_TMO-dut_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_Poor Coverage_DA Test"]?.["Error Ratio"]?.Mean,
-      },
-    },
-    {
-      metric: "Packet Failure Rate (%)",
-      idealThroughput: "20000",
-      deviceName: "REF",
-      location: {
-        moderate: UDPData.Moderate?.["5G NSA_UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250930_145837_CH02_TMO-ref_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_location2_DA Test"]?.["Error Ratio"]?.Mean,
-        poor: UDPData.Poor?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.["_20250914_144028_CH02_TMO-ref_5G NSA_UDP Upload Task at 20 Mbps for 10 seconds_Poor Coverage_DA Test"]?.["Error Ratio"]?.Mean,
-      },
-    },
-  ];
+  const tasksDL = ["UDP Download Task at 200 Mbps for 10 seconds", "UDP Download Task at 400 Mbps for 10 seconds"];
+  const tasksUL = ["5G NSA_UDP Upload Task at 10 Mbps for 10 seconds", "5G NSA_UDP Upload Task at 20 Mbps for 10 seconds"];
+
+  const udp_Stationary_DL = [];
+  tasksDL.forEach(task => {
+    const ideal = task.includes("200") ? "200000" : "400000";
+    ["DUT", "REF"].forEach(dev => {
+      udp_Stationary_DL.push({
+        metric: "Throughput (Mbps)",
+        idealThroughput: ideal,
+        deviceName: dev,
+        location: {
+          moderate: getMetric("DL", task, "Moderate", dev, "Throughput"),
+          poor: getMetric("DL", task, "Poor", dev, "Throughput"),
+        }
+      });
+      udp_Stationary_DL.push({
+        metric: "Max Throughput (Mbps)",
+        idealThroughput: ideal,
+        deviceName: dev,
+        location: {
+          moderate: getMetric("DL", task, "Moderate", dev, "Throughput", "Maximum"),
+          poor: getMetric("DL", task, "Poor", dev, "Throughput", "Maximum"),
+        }
+      });
+      udp_Stationary_DL.push({
+        metric: "Mean Jitter (s)",
+        idealThroughput: ideal,
+        deviceName: dev,
+        location: {
+          moderate: getMetric("DL", task, "Moderate", dev, "Jitter"),
+          poor: getMetric("DL", task, "Poor", dev, "Jitter"),
+        }
+      });
+      udp_Stationary_DL.push({
+        metric: "Packet Failure Rate (%)",
+        idealThroughput: ideal,
+        deviceName: dev,
+        location: {
+          moderate: getMetric("DL", task, "Moderate", dev, "Error Ratio"),
+          poor: getMetric("DL", task, "Poor", dev, "Error Ratio"),
+        }
+      });
+    });
+  });
+
+  const udp_Stationary_UL = [];
+  tasksUL.forEach(task => {
+    const ideal = task.includes("10 Mbps") ? "10000" : "20000";
+    ["DUT", "REF"].forEach(dev => {
+      udp_Stationary_UL.push({
+        metric: "Throughput (Mbps)",
+        idealThroughput: ideal,
+        deviceName: dev,
+        location: {
+          moderate: getMetric("UL", task, "Moderate", dev, "Throughput"),
+          poor: getMetric("UL", task, "Poor", dev, "Throughput"),
+        }
+      });
+      udp_Stationary_UL.push({
+        metric: "Max Throughput (Mbps)",
+        idealThroughput: ideal,
+        deviceName: dev,
+        location: {
+          moderate: getMetric("UL", task, "Moderate", dev, "Throughput", "Maximum"),
+          poor: getMetric("UL", task, "Poor", dev, "Throughput", "Maximum"),
+        }
+      });
+      udp_Stationary_UL.push({
+        metric: "Mean Jitter (s)",
+        idealThroughput: ideal,
+        deviceName: dev,
+        location: {
+          moderate: getMetric("UL", task, "Moderate", dev, "Jitter"),
+          poor: getMetric("UL", task, "Poor", dev, "Jitter"),
+        }
+      });
+      udp_Stationary_UL.push({
+        metric: "Packet Failure Rate (%)",
+        idealThroughput: ideal,
+        deviceName: dev,
+        location: {
+          moderate: getMetric("UL", task, "Moderate", dev, "Error Ratio"),
+          poor: getMetric("UL", task, "Poor", dev, "Error Ratio"),
+        }
+      });
+    });
+  });
+
 
   // Helper to extract data for a specific metric and idealThroughput, structured for location comparison
   const extractHistogramDataByLocation = (dataArray, metricName, idealThroughputValue) => {

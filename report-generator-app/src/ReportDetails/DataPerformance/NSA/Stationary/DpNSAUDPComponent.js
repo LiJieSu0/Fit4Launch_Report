@@ -9,11 +9,22 @@ import { useContext } from 'react';
 import '../../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 
-function DpNSAUDPComponent() {
-  const { reportData } = useContext(ReportContext);
+import { useEffect } from 'react';
+
+function DpNSAUDPComponent({ city: propCity }) {
+  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const city = propCity || globalCity;
+
+  useEffect(() => {
+    if (city) {
+      loadCityData(city);
+    }
+  }, [city, loadCityData]);
+
+  const reportData = allReportData[city];
 
   if (!reportData || !reportData.dataPerformance) {
-    return <div className="page-content">Loading...</div>;
+    return <div className="page-content">Loading {city} NSA UDP data...</div>;
   }
 
   const udpData = reportData.dataPerformance['Data Performance']?.['5G NSA DP']?.['Udp Test'];
@@ -147,7 +158,7 @@ function DpNSAUDPComponent() {
   return (
     <>
       <div className='page-content'>
-        <DynamicHeader level={2}>UDP Test - 5G NSA</DynamicHeader>
+        <DynamicHeader level={2}>UDP Test - 5G NSA - {city}</DynamicHeader>
         <h4>NSA UDP Test DL Overview</h4>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>

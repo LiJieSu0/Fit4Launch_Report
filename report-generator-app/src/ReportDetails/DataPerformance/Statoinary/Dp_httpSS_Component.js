@@ -8,12 +8,23 @@ import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
-function Dp_httpSS_Component() {
-  const { reportData } = useContext(ReportContext);
+import { useEffect } from 'react';
+
+function Dp_httpSS_Component({ city: propCity }) {
+  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const city = propCity || globalCity;
+
+  useEffect(() => {
+    if (city) {
+      loadCityData(city);
+    }
+  }, [city, loadCityData]);
+
+  const reportData = allReportData[city];
 
   // Update to use dataPerformance from the fetched JSON
   if (!reportData || !reportData.dataPerformance) {
-    return <div className="page-content">Loading...</div>;
+    return <div className="page-content">Loading {city} data...</div>;
   }
 
   // Path: ["Data Performance"]["5G AUTO DP"]["HTTP Single Stream"]
@@ -162,8 +173,7 @@ function Dp_httpSS_Component() {
   return (
     <>
       <div className='page-content'>
-        <DynamicHeader level={1} style={{ textAlign: 'center' }}>Data Performance - 5G Auto - Seattle</DynamicHeader>
-        <DynamicHeader level={2}>HTTP Single Stream Test Download & Upload - 5G Auto</DynamicHeader>
+        <DynamicHeader level={2}>HTTP Single Stream Test Download & Upload - 5G Auto - {city}</DynamicHeader>
         <h4>Http Single Stream Overview</h4>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}

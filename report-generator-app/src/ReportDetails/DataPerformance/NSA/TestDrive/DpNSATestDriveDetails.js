@@ -7,12 +7,23 @@ import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../../Constants/ChartColors';
 import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 
+import { useEffect } from 'react';
+
 // Define additional colors for the histogram bars
-function DpNSATestDriveDetails() {
-  const { reportData } = useContext(ReportContext);
+function DpNSATestDriveDetails({ city: propCity }) {
+  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const city = propCity || globalCity;
+
+  useEffect(() => {
+    if (city) {
+      loadCityData(city);
+    }
+  }, [city, loadCityData]);
+
+  const reportData = allReportData[city];
 
   if (!reportData || !reportData.dataPerformance) {
-    return <div className="page-content">Loading...</div>;
+    return <div className="page-content">Loading {city} NSA Test Drive data...</div>;
   }
 
   const mobilityData = reportData.dataPerformance['Data Performance']?.['5G NSA DP']?.['Mobility Test'];
@@ -58,7 +69,7 @@ function DpNSATestDriveDetails() {
   return (
     <>
       <div className='page-content'>
-        <DynamicHeader level={2}>Mobility Test - 5G NSA</DynamicHeader>
+        <DynamicHeader level={2}>Mobility Test - 5G NSA - {city}</DynamicHeader>
         <DpNSATestDriveOverallTable data={formattedTestDriveData} tableName="Drive Test Overview" />
         <DpNSATestDriveTable data={formattedTestDriveData} tableName="Drive Test Details" />
       </div>

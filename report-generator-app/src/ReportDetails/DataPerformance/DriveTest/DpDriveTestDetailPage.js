@@ -9,11 +9,22 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
-const DpDriveTestDetailPage = () => {
-  const { reportData } = useContext(ReportContext);
+import { useEffect } from 'react';
+
+const DpDriveTestDetailPage = ({ city: propCity }) => {
+  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const city = propCity || globalCity;
+
+  useEffect(() => {
+    if (city) {
+      loadCityData(city);
+    }
+  }, [city, loadCityData]);
+
+  const reportData = allReportData[city];
 
   if (!reportData || !reportData.dataPerformance) {
-    return <div className="page-content">Loading...</div>;
+    return <div className="page-content">Loading {city} data...</div>;
   }
 
   // Access Mobility Test data from the new JSON structure
@@ -177,7 +188,7 @@ const DpDriveTestDetailPage = () => {
     <>
       <div className='page-content'>
         <DynamicHeader level={2}>Mobility Test</DynamicHeader>
-        <DynamicHeader level={3}>Mobility Test - 5G Auto</DynamicHeader>
+        <DynamicHeader level={3}>Mobility Test - 5G Auto - {city}</DynamicHeader>
         <DpDriveTestOverallTable data={formattedTestDriveData} tableName="Mobility Test Drive Overview" />
         <DpDriveTestTable data={formattedTestDriveData} tableName="Mobility Test Drive Details" />
       </div>

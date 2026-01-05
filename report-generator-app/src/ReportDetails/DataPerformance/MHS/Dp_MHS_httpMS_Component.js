@@ -9,11 +9,22 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 
-function Dp_MHS_httpMS_Component() {
-  const { reportData } = useContext(ReportContext);
+import { useEffect } from 'react';
+
+function Dp_MHS_httpMS_Component({ city: propCity }) {
+  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const city = propCity || globalCity;
+
+  useEffect(() => {
+    if (city) {
+      loadCityData(city);
+    }
+  }, [city, loadCityData]);
+
+  const reportData = allReportData[city];
 
   if (!reportData || !reportData.dataPerformance) {
-    return <div className="page-content">Loading...</div>;
+    return <div className="page-content">Loading {city} data...</div>;
   }
 
   const nsaData = reportData.dataPerformance['Data Performance']?.['5G AUTO DP']?.['Mobile Hotspot Test']?.['HTTP Multi Stream'];
@@ -153,7 +164,7 @@ function Dp_MHS_httpMS_Component() {
   return (
     <>
       <div className='page-content'>
-        <DynamicHeader level={3}>HTTP Multi Stream Test - Mobile Hotspot</DynamicHeader>
+        <DynamicHeader level={3}>HTTP Multi Stream Test - Mobile Hotspot - {city}</DynamicHeader>
         <h4>MHS Http Multi Stream Overview </h4>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}

@@ -6,11 +6,22 @@ import DpHistogramComponent from "../DpHistogramComponent";
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from "../../../Constants/ChartColors";
 import DynamicHeader from "../../../CommonPage/DynamicHeader";
 
-function Dp_MHS_Ping_Component() {
-  const { reportData } = useContext(ReportContext);
+import { useEffect } from 'react';
+
+function Dp_MHS_Ping_Component({ city: propCity }) {
+  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const city = propCity || globalCity;
+
+  useEffect(() => {
+    if (city) {
+      loadCityData(city);
+    }
+  }, [city, loadCityData]);
+
+  const reportData = allReportData[city];
 
   if (!reportData || !reportData.dataPerformance) {
-    return <div className="page-content">Loading...</div>;
+    return <div className="page-content">Loading {city} data...</div>;
   }
 
   const pingDataRaw = reportData.dataPerformance?.['Data Performance']?.['5G AUTO DP']?.['Mobile Hotspot Test']?.['Ping'];
@@ -105,7 +116,7 @@ function Dp_MHS_Ping_Component() {
   return (
     <>
       <div className="page-content">
-        <DynamicHeader level={3}>Ping Test - Mobile Hotspot</DynamicHeader>
+        <DynamicHeader level={3}>Ping Test - Mobile Hotspot - {city}</DynamicHeader>
         <h4>MHS Ping Test Overview</h4>
         <DpPingOverallTable data={data} />
       </div>

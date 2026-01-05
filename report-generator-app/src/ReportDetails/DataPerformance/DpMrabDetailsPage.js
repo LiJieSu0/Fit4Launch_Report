@@ -6,8 +6,17 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../Constants/ChartColors';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 
-const DpMrabDetailsPage = () => {
-  const { reportData } = useContext(ReportContext);
+const DpMrabDetailsPage = ({ city: propCity }) => {
+  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const city = propCity || globalCity;
+
+  useEffect(() => {
+    if (city) {
+      loadCityData(city);
+    }
+  }, [city, loadCityData]);
+
+  const reportData = allReportData[city];
   const [mrabData, setMrabData] = useState(null);
 
   useEffect(() => {
@@ -18,11 +27,11 @@ const DpMrabDetailsPage = () => {
   }, [reportData]);
 
   if (!mrabData) {
-    return <div>Loading MRAB data...</div>;
+    return <div className="page-content">Loading {city} MRAB data...</div>;
   }
   return (
     <div className="page-content">
-      <DynamicHeader level={2}>VoNR M-RAB Stationary Test - 5G Auto</DynamicHeader>
+      <DynamicHeader level={2}>VoNR M-RAB Stationary Test - 5G Auto - {city}</DynamicHeader>
       <h4>VoNR M-RAB Overview</h4>
       <table className="general-table-style">
         <thead>

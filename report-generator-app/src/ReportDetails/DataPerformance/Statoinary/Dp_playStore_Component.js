@@ -7,11 +7,22 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
-const Dp_playStore_Component = () => {
-  const { reportData } = useContext(ReportContext);
+import { useEffect } from 'react';
+
+const Dp_playStore_Component = ({ city: propCity }) => {
+  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const city = propCity || globalCity;
+
+  useEffect(() => {
+    if (city) {
+      loadCityData(city);
+    }
+  }, [city, loadCityData]);
+
+  const reportData = allReportData[city];
 
   if (!reportData || !reportData.dataPerformance) {
-    return <div className="page-content">Loading...</div>;
+    return <div className="page-content">Loading {city} data...</div>;
   }
 
   const playStoreData = reportData.dataPerformance['Data Performance']?.['5G AUTO DP']?.['5G Auto Data Play-store app Download'];
@@ -27,7 +38,7 @@ const Dp_playStore_Component = () => {
     throughputCategories.forEach(throughput => {
       deviceTypes.forEach(device => {
         const rowData = {
-          market: 'Seattle', // Assuming market is always Seattle for now
+          market: city,
           throughput: throughput,
           deviceName: device,
           site1: null,
@@ -92,7 +103,7 @@ const Dp_playStore_Component = () => {
   return (
     <>
       <div className='page-content'>
-        <DynamicHeader level={2}>Play-store App Download Test - 5G Auto</DynamicHeader>
+        <DynamicHeader level={2}>Play-store App Download Test - 5G Auto - {city}</DynamicHeader>
         <h4>Play-store App Download Test Overview</h4>
         <DpPlayStoreOverallTable tableData={tableData} />
         <h4>Play-store App Download Test Details</h4>

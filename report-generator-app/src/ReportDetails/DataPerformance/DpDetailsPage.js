@@ -1,5 +1,4 @@
 import React from 'react';
-import DpRangeChart from './DpRangeChart';
 import '../../StyleScript/Restricted_Report_Style.css';
 import Dp_httpSS_Component from './Statoinary/Dp_httpSS_Component';
 import Dp_httpMS_Component from './Statoinary/Dp_httpMS_Component';
@@ -12,24 +11,25 @@ import DpDriveTestDetailPage from './DriveTest/DpDriveTestDetailPage';
 import DpMrabDetailsPage from './DpMrabDetailsPage';
 import DpNSAStationaryDetails from './NSA/Stationary/DpNSAStationaryDetails';
 import DpNSATestDriveDetails from './NSA/TestDrive/DpNSATestDriveDetails';
-import DpHistogramComponent from './DpHistogramComponent';
-
+import DynamicHeader from '../../CommonPage/DynamicHeader';
 function DpDetailsPage() {
   return (
     <div>
-      <Dp_httpSS_Component />
-      <Dp_httpMS_Component />
-      <Dp_Udp_Component />
-      <Dp_Ping_Component />
-      <Dp_Webbrowser_Component />
-      <Dp_playStore_Component />
-      <Dp_MHS_Page />
+      <DynamicHeader level={1} style={{ textAlign: 'center' }}>Data Performance - 5G Auto </DynamicHeader>
+      <Dp_httpSS_Component city="Seattle" />
+      <Dp_httpSS_Component city="New York" />
+      <Dp_httpMS_Component city="Seattle" />
+      <Dp_Udp_Component city="Seattle" />
+      <Dp_Ping_Component city="Seattle" />
+      <Dp_Webbrowser_Component city="Seattle" />
+      <Dp_playStore_Component city="Seattle" />
+      <Dp_MHS_Page city="Seattle" />
 
-      <DpDriveTestDetailPage />
-      <DpMrabDetailsPage />
-
-      <DpNSAStationaryDetails />
-      <DpNSATestDriveDetails />
+      <DpDriveTestDetailPage city="Seattle" />
+      <DpMrabDetailsPage city="Seattle" />
+      <DynamicHeader level={1}>Data Performance - 5G NSA</DynamicHeader>
+      <DpNSAStationaryDetails city="Seattle" />
+      <DpNSATestDriveDetails city="Seattle" />
 
     </div>
   );

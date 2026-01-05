@@ -8,11 +8,20 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
-function Dp_MHS_Udp_Component() {
-  const { reportData } = useContext(ReportContext);
+function Dp_MHS_Udp_Component({ city: propCity }) {
+  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const city = propCity || globalCity;
+
+  useEffect(() => {
+    if (city) {
+      loadCityData(city);
+    }
+  }, [city, loadCityData]);
+
+  const reportData = allReportData[city];
 
   if (!reportData || !reportData.dataPerformance) {
-    return <div className="page-content">Loading...</div>;
+    return <div className="page-content">Loading {city} data...</div>;
   }
 
   const udpDataRaw = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["Mobile Hotspot Test"]["Udp Test"];
@@ -477,7 +486,7 @@ function Dp_MHS_Udp_Component() {
   return (
     <>
       <div className="page-content">
-        <DynamicHeader level={3}>UDP Test - Mobile Hotspot</DynamicHeader>
+        <DynamicHeader level={3}>UDP Test - Mobile Hotspot - {city}</DynamicHeader>
         <h4>MHS UDP Test DL Overview</h4>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>

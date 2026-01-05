@@ -5,61 +5,70 @@ import { loadAllData, getAvailableCities } from '../Utils/DataLoader'; // Assumi
 export const ReportDataProvider = ({ children }) => {
   const [city, setCity] = useState('Seattle'); // Default city
   const [availableCities, setAvailableCities] = useState([]);
-  const [reportData, setReportData] = useState(null);
+  const [allReportData, setAllReportData] = useState({}); // Cache for all cities' data
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const loadCityData = async (targetCity) => {
+    if (allReportData[targetCity]) return; // Already loaded
+
+    try {
+      const data = await loadAllData(targetCity);
+      setAllReportData(prev => ({
+        ...prev,
+        [targetCity]: data
+      }));
+    } catch (err) {
+      console.error(`Failed to load data for ${targetCity}:`, err);
+      throw err;
+    }
+  };
+
   useEffect(() => {
-    const initializeData = async () => {
+    const initialize = async () => {
       setLoading(true);
-      setError(null);
       try {
         const cities = await getAvailableCities();
         setAvailableCities(cities);
-        if (cities.length > 0 && !cities.includes(city)) {
-          setCity(cities[0]); // Set default city if current city is not available
-        }
+
+        // Initial load of the default city
         const data = await loadAllData(city);
-        setReportData(data);
+        setAllReportData({ [city]: data });
       } catch (err) {
         setError(err);
       } finally {
         setLoading(false);
       }
     };
+    initialize();
+  }, []); // Only on mount
 
-    initializeData();
-  }, [city]); // Re-run effect when city changes
-
-  // This useEffect is for initial load and when city changes
+  // effect to handle city change from global selector
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const data = await loadAllData(city);
-        setReportData(data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    if (availableCities.length > 0) { // Only fetch data if cities are loaded
-      fetchData();
+    if (city && !allReportData[city] && !loading) {
+      loadCityData(city);
     }
-  }, [city, availableCities]); // Re-run effect when city or availableCities change
+  }, [city]);
 
-  if (loading) {
+  if (loading && Object.keys(allReportData).length === 0) {
     return <div>Loading report data...</div>;
   }
 
-  if (error) {
+  if (error && Object.keys(allReportData).length === 0) {
     return <div>Error: {error.message}</div>;
   }
 
   return (
-    <ReportContext.Provider value={{ reportData, loading, error, city, setCity, availableCities }}>
+    <ReportContext.Provider value={{
+      reportData: allReportData[city], // For backward compatibility
+      allReportData,
+      loading,
+      error,
+      city,
+      setCity,
+      availableCities,
+      loadCityData
+    }}>
       {children}
     </ReportContext.Provider>
   );

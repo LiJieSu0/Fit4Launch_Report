@@ -6,13 +6,13 @@ import Dp_MHS_Ping_Component from "./Dp_MHS_Ping_Component";
 
 
 //TODO MHS location is good or moderate or poor need to be determined
-function Dp_MHS_Page() {
+function Dp_MHS_Page({ city }) {
   return (
     <>
-      <Dp_MHS_httpSS_Component />
-      <Dp_MHS_httpMS_Component />
-      <Dp_MHS_Udp_Component />
-      <Dp_MHS_Ping_Component />
+      <Dp_MHS_httpSS_Component city={city} />
+      <Dp_MHS_httpMS_Component city={city} />
+      <Dp_MHS_Udp_Component city={city} />
+      <Dp_MHS_Ping_Component city={city} />
     </>
   );
 };

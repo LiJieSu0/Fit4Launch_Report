@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
-import { useReportData } from '../../Contexts/ReportContext';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 
 

@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useReportData } from '../../Contexts/ReportContext';
-import CpCaseTable from './CpCaseTable'; // Import the new component
-import '../../StyleScript/Restricted_Report_Style.css'; // Import the restricted report style
-import { getKpiCellColor } from '../../Utils/KpiRules'; // Import KpiRules
-import { Bar } from 'react-chartjs-2';
+import '../../StyleScript/Restricted_Report_Style.css';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -13,8 +10,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import { writeToFile } from '../../Utils/ErrorLogger'; // Assuming an ErrorLogger utility
-import DynamicHeader from '../../CommonPage/DynamicHeader';
+import CpScenarioSection from './CpScenarioSection';
 
 ChartJS.register(
     CategoryScale,
@@ -26,327 +22,34 @@ ChartJS.register(
 );
 
 const CallPerformanceDetails = () => {
-    const { reportData, loading, error } = useReportData();
-
-    useEffect(() => {
-        if (!loading && !error && reportData && reportData.callPerformance) {
-            // Perform data consistency checks here if needed
-            // For now, just ensure data is loaded
-            console.log("Call Performance Data Loaded:", reportData.callPerformance);
-        }
-    }, [reportData, loading, error]);
-
-    if (loading) return <div>Loading Call Performance Details...</div>;
-    if (error) return <div>Error: {error.message}</div>;
-    if (!reportData || !reportData.callPerformance) return <div>No Call Performance data available.</div>;
-
-    const callPerformanceData = reportData.callPerformance['Call Performance'];
-
-    const processRatDistribution = (ratDistribution) => {
-        const safeRatDistribution = ratDistribution || {};
-        const total = Object.values(safeRatDistribution).reduce((sum, value) => sum + value, 0);
-        const categories = {
-            VoLTE: 0,
-            '5G SA': 0,
-            EPSFB: 0,
-            Unknown: 0,
-        };
-
-        for (const [rat, count] of Object.entries(safeRatDistribution)) {
-            if (rat === 'VoLTE') {
-                categories.VoLTE += count;
-            } else if (rat === 'VoNR' || rat === 'VoNR-VoLTE') {
-                categories['5G SA'] += count;
-            } else if (rat === 'EPSFB') {
-                categories.EPSFB += count;
-            } else {
-                categories.Unknown += count;
-            }
-        }
-
-        const percentages = {};
-        for (const [category, count] of Object.entries(categories)) {
-            percentages[category] = total > 0 ? (count / total) * 100 : 0;
-        }
-        return percentages;
-    };
-
-    const CallCategoriesChart = ({ title, data }) => {
-        const dutPercentages = processRatDistribution(data.DUT?.rat_distribution);
-        const refPercentages = processRatDistribution(data.REF?.rat_distribution);
-
-        const categoryOrder = ['VoLTE', '5G SA', 'EPSFB', 'Unknown'];
-        const categoryColors = {
-            VoLTE: '#3f51b5', // Dark blue
-            '5G SA': '#64b5f6', // Light blue
-            EPSFB: '#4caf50', // Green
-            Unknown: '#9e9e9e', // Grey
-        };
-
-        return (
-            <div className="call-categories-chart-container">
-                <h4>Call Categories</h4>
-                <div className="chart-legend">
-                    {categoryOrder.map(category => (
-                        <div key={category} className="legend-item">
-                            <span className="legend-color-box" style={{ backgroundColor: categoryColors[category] }}></span>
-                            {category}
-                        </div>
-                    ))}
-                </div>
-                <div className="chart-row">
-                    <div className="chart-label">DUT</div>
-                    <div className="chart-bar-wrapper">
-                        {categoryOrder.map(category => {
-                            const percentage = dutPercentages[category];
-                            return percentage > 0 ? (
-                                <div
-                                    key={category}
-                                    className="chart-bar"
-                                    style={{ width: `${percentage}%`, backgroundColor: categoryColors[category] }}
-                                >
-                                    {percentage > 5 && `${percentage.toFixed(1)}%`}
-                                </div>
-                            ) : null;
-                        })}
-                    </div>
-                </div>
-                <div className="chart-row">
-                    <div className="chart-label">REF</div>
-                    <div className="chart-bar-wrapper">
-                        {categoryOrder.map(category => {
-                            const percentage = refPercentages[category];
-                            return percentage > 0 ? (
-                                <div
-                                    key={category}
-                                    className="chart-bar"
-                                    style={{ width: `${percentage}%`, backgroundColor: categoryColors[category] }}
-                                >
-                                    {percentage > 5 && `${percentage.toFixed(1)}%`}
-                                </div>
-                            ) : null;
-                        })}
-                    </div>
-                </div>
-            </div>
-        );
-    };
-
-    const processRatDistributionCounts = (ratDistribution) => {
-        const safeRatDistribution = ratDistribution || {};
-        const categories = {
-            VoLTE: 0,
-            '5G SA': 0,
-            EPSFB: 0,
-            Unknown: 0,
-        };
-
-        for (const [rat, count] of Object.entries(safeRatDistribution)) {
-            if (rat === 'VoLTE') {
-                categories.VoLTE += count;
-            } else if (rat === 'VoNR' || rat === 'VoNR-VoLTE') {
-                categories['5G SA'] += count;
-            } else if (rat === 'EPSFB') {
-                categories.EPSFB += count;
-            } else {
-                categories.Unknown += count;
-            }
-        }
-        const total = Object.values(categories).reduce((sum, value) => sum + value, 0);
-        return { ...categories, Total: total };
-    };
-
-    const CallCategoriesTable = ({ data }) => {
-        const dutCounts = processRatDistributionCounts(data.DUT?.rat_distribution);
-        const refCounts = processRatDistributionCounts(data.REF?.rat_distribution);
-
-        const categoryOrder = ['VoLTE', '5G SA', 'EPSFB', 'Unknown', 'Total'];
-
-        return (
-            <div className="call-categories-table-container">
-                <table className="general-table-style">
-                    <thead>
-                        <tr>
-                            <th>Device</th>
-                            {categoryOrder.map(category => (
-                                <th key={category}>{category}</th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>DUT</td>
-                            {categoryOrder.map(category => (
-                                <td key={`dut-${category}`}>{dutCounts[category]}</td>
-                            ))}
-                        </tr>
-                        <tr>
-                            <td>REF</td>
-                            {categoryOrder.map(category => (
-                                <td key={`ref-${category}`}>{refCounts[category]}</td>
-                            ))}
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        );
-    };
-
-    const CallSummaryChart = ({ title, data }) => {
-        const chartData = {
-            labels: ['DUT', 'REF'],
-            datasets: [
-                {
-                    label: 'Total Calls',
-                    data: [data.DUT?.total_attempts || 0, data.REF?.total_attempts || 0],
-                    backgroundColor: 'rgba(0, 0, 255, 0.6)', // Blue for Total Calls
-                    borderColor: 'rgba(0, 0, 255, 1)',
-                    borderWidth: 1,
-                },
-                {
-                    label: 'Successful Calls',
-                    data: [data.DUT?.total_initiation_successes || 0, data.REF?.total_initiation_successes || 0],
-                    backgroundColor: 'rgba(0, 128, 0, 0.6)', // Green for Successful Calls
-                    borderColor: 'rgba(0, 128, 0, 1)',
-                    borderWidth: 1,
-                },
-                {
-                    label: 'Init Failures Calls',
-                    data: [data.DUT?.total_initiation_failures || 0, data.REF?.total_initiation_failures || 0],
-                    backgroundColor: 'rgba(255, 0, 0, 1)', // Red for Init Failures
-                    borderColor: 'rgba(255, 0, 0, 1)',
-                    borderWidth: 1,
-                },
-                {
-                    label: 'Dropped Calls',
-                    data: [data.DUT?.call_result_distribution?.Drop || 0, data.REF?.call_result_distribution?.Drop || 0],
-                    backgroundColor: 'rgba(255, 255, 0, 0.6)', // Yellow for Dropped Calls
-                    borderColor: 'rgba(255, 255, 0, 1)',
-                    borderWidth: 1,
-                },
-            ],
-        };
-
-        const options = {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'right', // Position legend to the bottom
-                    align: 'center', // Align legend items to the start (left)
-                    labels: {
-                        font: {
-                            size: 12, // Set legend font size to 12
-                        },
-                    },
-                },
-
-            },
-            scales: {
-
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Calls',
-                        font: {
-                            size: 18, // Increase y-axis title font size by 50%
-                        },
-                    },
-                    ticks: {
-                        font: {
-                            size: 18, // Increase y-axis tick font size by 50%
-                        },
-                    },
-                },
-            },
-        };
-
-        return (
-            <div className="chart-container">
-                <Bar data={chartData} options={options} />
-            </div>
-        );
-    };
-
-    const PValueTable = ({ data }) => {
-        return (
-            <div className="p-value-table-container">
-                <h4>P-Value Table</h4>
-                <table className="general-table-style">
-                    <thead>
-                        <tr>
-                            <th style={{ width: '50%' }}>Metrics</th>
-                            <th style={{ width: '50%' }}>P-Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Call Initiation</td>
-                            <td style={{ backgroundColor: getKpiCellColor('CallInitiation', data.initiation_p_value || 1, null) }}>
-                                {(data.initiation_p_value || 1).toFixed(3)}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Call Retention</td>
-                            <td style={{ backgroundColor: getKpiCellColor('CallRetention', data.retention_p_value || 1, null) }}>
-                                {(data.retention_p_value || 1).toFixed(3)}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        );
-    };
+    // We no longer need to load city data here if we specify it in the sections below
+    // However, if we want to "map" over scenarios, we still need to know which city's scenarios to use as a template.
+    // For this example, I'll show how to call them manually with different cities.
 
     return (
         <div>
-            {/* Explicitly rendering components for each call performance category */}
-            {/* Explicitly rendering components for each call performance category */}
-            {callPerformanceData["5G Auto VoNR Disabled CP MO Drive"] && (
-                <React.Fragment key="5G Auto VoNR Disabled CP MO Drive">
-                    <div className='page-content'>
-                        <DynamicHeader level={1}>Call Performance Test - Seattle</DynamicHeader>
-                        <CpCaseTable title="5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
-                        <PValueTable data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
-                        <CallSummaryChart title="5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
-                        <CallCategoriesChart title="5G Auto VoNR Disabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
-                        <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Disabled CP MO Drive"]} />
-                    </div>
-                </React.Fragment>
-            )}
-            {callPerformanceData["5G Auto VoNR Disabled CP MT Drive"] && (
-                <React.Fragment key="5G Auto VoNR Disabled CP MT Drive">
-                    <div className='page-content'>
-                        <CpCaseTable title="5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
-                        <PValueTable data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
-                        <CallSummaryChart title="5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
-                        <CallCategoriesChart title="5G Auto VoNR Disabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
-                        <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Disabled CP MT Drive"]} />
-                    </div>
-                </React.Fragment>
-            )}
-            {callPerformanceData["5G Auto VoNR Enabled CP MO Drive"] && (
-                <React.Fragment key="5G Auto VoNR Enabled CP MO Drive">
-                    <div className='page-content'>
-                        <CpCaseTable title="5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
-                        <PValueTable data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
-                        <CallSummaryChart title="5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
-                        <CallCategoriesChart title="5G Auto VoNR Enabled CP MO Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
-                        <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Enabled CP MO Drive"]} />
-                    </div>
-                </React.Fragment>
-            )}
-            {callPerformanceData["5G Auto VoNR Enabled CP MT Drive"] && (
-                <React.Fragment key="5G Auto VoNR Enabled CP MT Drive">
-                    <div className='page-content'>
-                        <CpCaseTable title="5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
-                        <PValueTable data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
-                        <CallSummaryChart title="5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
-                        <CallCategoriesChart title="5G Auto VoNR Enabled CP MT Drive" data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
-                        <CallCategoriesTable data={callPerformanceData["5G Auto VoNR Enabled CP MT Drive"]} />
-                    </div>
-                </React.Fragment>
-            )}
+            <CpScenarioSection
+                title="5G Auto VoNR Disabled CP MO Drive"
+                city="Seattle"
+                isFirst={true}
+            />
+            <CpScenarioSection
+                title="5G Auto VoNR Disabled CP MT Drive"
+                city="Seattle"
+                isFirst={false}
+            />
+
+            <CpScenarioSection
+                title="5G Auto VoNR Enabled CP MO Drive"
+                city="Seattle"
+                isFirst={false}
+            />
+
+            <CpScenarioSection
+                title="5G Auto VoNR Enabled CP MT Drive"
+                city="Seattle"
+                isFirst={false}
+            />
         </div>
     );
 };

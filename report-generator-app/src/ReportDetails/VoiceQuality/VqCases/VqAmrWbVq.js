@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
@@ -21,18 +21,27 @@ const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   return value;
 };
 
-const VqAmrWbVq = () => {
-  const { reportData } = useContext(ReportContext);
+const VqAmrWbVq = ({ city: propCity }) => {
+  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const city = propCity || globalCity;
+
+  useEffect(() => {
+    if (city) {
+      loadCityData(city);
+    }
+  }, [city, loadCityData]);
+
+  const reportData = allReportData[city];
 
   if (!reportData || !reportData.voiceQuality || !reportData.voiceQuality["Voice Quality"]) {
-    return <div>Loading voice quality data...</div>;
+    return <div>Loading {city} voice quality data...</div>;
   }
 
   const amrWbKey = "5G Auto VoNR Enabled AMR WB VQ";
   const amrWbDataPath = reportData.voiceQuality["Voice Quality"][amrWbKey];
 
   if (!amrWbDataPath) {
-    return <div>Loading {amrWbKey} data...</div>;
+    return <div>Loading {amrWbKey} data for {city}...</div>;
   }
 
   const getAmrWbValue = (category, device, stat, isPercentage = false, decimals = 2) => {
@@ -100,7 +109,7 @@ const VqAmrWbVq = () => {
 
   return (
     <div className="page-content">
-      <DynamicHeader level={2}>5G Auto VoNR Enabled AMR WB VQ</DynamicHeader>
+      <DynamicHeader level={2}>5G Auto VoNR Enabled AMR WB VQ - {city}</DynamicHeader>
       <h4>Results</h4>
       <table className="general-table-style performance-table">
         <thead>
@@ -149,9 +158,6 @@ const VqAmrWbVq = () => {
           ))}
         </tbody>
       </table>
-
-      {/* New table for Voice Quality Performance EVS to EVS Call Scenario */}
-
     </div>
   );
 };

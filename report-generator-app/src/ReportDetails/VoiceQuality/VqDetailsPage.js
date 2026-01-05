@@ -12,13 +12,13 @@ import AutoVoNREnabledAudioDelay from './VqCases/AutoVoNREnabledAudioDelay';
 const VqDetailsPage = () => {
   return (
     <div>
-      <VqAmrNbVq />
-      <VqAmrWbVq />
-      <VqEvsWbVqDisabled />
-      <VqEvsWbVqEnabled />
+      <VqAmrNbVq city='Seattle' />
+      <VqAmrWbVq city='Seattle' />
+      <VqEvsWbVqDisabled city='Seattle' />
+      <VqEvsWbVqEnabled city='Seattle' />
       <div className='page-content'>
-        <AutoVoNRDisabledAudioDelay />
-        <AutoVoNREnabledAudioDelay />
+        <AutoVoNRDisabledAudioDelay city='Seattle' />
+        <AutoVoNREnabledAudioDelay city='Seattle' />
       </div>
 
     </div>

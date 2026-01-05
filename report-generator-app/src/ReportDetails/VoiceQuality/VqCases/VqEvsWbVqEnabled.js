@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import VqLineChart from './VqLineChart';
@@ -23,18 +23,27 @@ const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   return value;
 };
 
-const VqEvsWbVqEnabled = () => {
-  const { reportData } = useContext(ReportContext);
+const VqEvsWbVqEnabled = ({ city: propCity }) => {
+  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const city = propCity || globalCity;
+
+  useEffect(() => {
+    if (city) {
+      loadCityData(city);
+    }
+  }, [city, loadCityData]);
+
+  const reportData = allReportData[city];
 
   if (!reportData || !reportData.voiceQuality || !reportData.voiceQuality["Voice Quality"]) {
-    return <div>Loading voice quality data...</div>;
+    return <div>Loading {city} voice quality data...</div>;
   }
 
   const evsWbKey = "5G Auto VoNR Enabled EVS WB VQ";
   const evsWbDataPath = reportData.voiceQuality["Voice Quality"][evsWbKey];
 
   if (!evsWbDataPath) {
-    return <div>Loading {evsWbKey} data...</div>;
+    return <div>Loading {evsWbKey} data for {city}...</div>;
   }
 
   const getEvsWbValue = (category, device, stat, isPercentage = false, decimals = 2) => {
@@ -126,7 +135,7 @@ const VqEvsWbVqEnabled = () => {
   return (
     <>
       <div className="page-content">
-        <DynamicHeader level={2} id='2.4'>5G Auto VoNR Enabled EVS WB VQ</DynamicHeader>
+        <DynamicHeader level={2} id='2.4'>5G Auto VoNR Enabled EVS WB VQ - {city}</DynamicHeader>
         <h4>Results</h4>
         <div className="two-column-layout">
           <table className="general-table-style half-width-table vq-summary-table">
@@ -217,10 +226,10 @@ const VqEvsWbVqEnabled = () => {
         </table>
       </div>
       <div className="page-content">
-        <h4>VoNR Enabled EVS WB VQ Downlink MOS Distribution</h4>
+        <h4>VoNR Enabled EVS WB VQ Downlink MOS Distribution - {city}</h4>
         <VqLineChart dataSource="vonr_enabled_evs_wb_vq_mobile" />
         <VqMosTable dataSource="vonr_enabled_evs_wb_vq_mobile" />
-        <h4>VoNR Enabled EVS WB VQ Uplink MOS Distribution</h4>
+        <h4>VoNR Enabled EVS WB VQ Uplink MOS Distribution - {city}</h4>
         <VqLineChart dataSource="vonr_enabled_evs_wb_vq_base" />
         <VqMosTable dataSource="vonr_enabled_evs_wb_vq_base" />
       </div>

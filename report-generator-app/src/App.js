@@ -49,9 +49,9 @@ function App() {
     <ReportDataProvider>
       <HeaderProvider>
         <div className="App">
-          {/* <CoverPage reportType={reportType[reportTypeNo]} />
+          <CoverPage reportType={reportType[reportTypeNo]} />
           <ReportHeader />
-          <DeviceInfoPage />*/}
+          <DeviceInfoPage />
           <ContentsIndexPage />
           {reportTypeNo === "CV" && (
             <>

@@ -32,8 +32,7 @@ const deviceData = [
 const DeviceInfoPage = () => {
     return (
         <div className="page-content device-info-page">
-            <DynamicHeader level={2}>Device Information</DynamicHeader>
-
+            <h2>Device Information</h2>
             <table className="device-info-table general-table-style">
                 <thead>
                     <tr>

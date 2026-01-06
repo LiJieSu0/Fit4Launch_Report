@@ -4,13 +4,11 @@ import { HeaderContext } from '../Contexts/HeaderContext';
 const ContentsIndexPage = () => {
   const { numberedHeaders } = useContext(HeaderContext);
 
+  const ITEMS_PER_PAGE = 24; // Adjusted to 25 based on common page height
+
   const handleLinkClick = (e, heading) => {
     e.preventDefault();
     if (heading.ref && heading.ref.current) {
-      // Small offset for fixed headers or margins if needed
-      // heading.ref.current.scrollIntoView({ behavior: 'smooth' });
-
-      // Using scrollTo for more control if scroll-margin-top is used in CSS
       const element = heading.ref.current;
       const rect = element.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -26,14 +24,37 @@ const ContentsIndexPage = () => {
     }
   };
 
+  const chunkArray = (array, size) => {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += size) {
+      chunks.push(array.slice(i, i + size));
+    }
+    return chunks;
+  };
+
+  const headerChunks = chunkArray(numberedHeaders, ITEMS_PER_PAGE);
+
+  if (headerChunks.length === 0) {
+    return (
+      <div className="contents-index-page">
+        <div className="page-content">
+          <h2 id="table-of-contents">Table of Contents</h2>
+          <ul style={{ listStyleType: 'none', padding: 0 }}>
+            <li>No sections found.</li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="contents-index-page">
-      <div className="page-content">
-        <h2 id="table-of-contents">Table of Contents</h2>
-        <ul style={{ listStyleType: 'none', padding: 0 }}>
-          {numberedHeaders.length > 0 ? (
-            numberedHeaders.map((heading, index) => (
-              <li key={index} style={{ paddingLeft: `${(heading.level - 1) * 20}px`, marginTop: 5, marginBottom: 5, fontSize: 20 }}>
+      {headerChunks.map((chunk, chunkIndex) => (
+        <div key={chunkIndex} className="page-content">
+          {chunkIndex === 0 && <h2 id="table-of-contents">Table of Contents</h2>}
+          <ul style={{ listStyleType: 'none', padding: 0 }}>
+            {chunk.map((heading, index) => (
+              <li key={index} style={{ paddingLeft: `${(heading.level - 1) * 20}px`, marginTop: 5, marginBottom: 5, fontSize: 18 }}>
                 <a
                   href={`#${heading.id}`}
                   onClick={(e) => handleLinkClick(e, heading)}
@@ -41,12 +62,10 @@ const ContentsIndexPage = () => {
                   {heading.number} {heading.text}
                 </a>
               </li>
-            ))
-          ) : (
-            <li>No sections found.</li>
-          )}
-        </ul>
-      </div>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 };

@@ -155,7 +155,7 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
   ];
   return (
     <div className="page-content">
-      {firstSection && <DynamicHeader level={1} style={{ textAlign: 'center' }}>Voice Quality Test - {city}</DynamicHeader>}
+      {firstSection && <DynamicHeader level={1} style={{ textAlign: 'center' }}>Voice Quality Test</DynamicHeader>}
       <DynamicHeader level={2}>5G Auto VoNR Enabled AMR NB VQ - {city}</DynamicHeader>
       <h4>Results</h4>
       <table className="general-table-style performance-table">

@@ -108,7 +108,14 @@ const markets = ["Seattle", "New York"];
 
 const CoverageSummaryTable = () => {
     return (
-        <table className={`general-table-style `}>
+        <table className={`general-table-style ${styles['coverage-summary-table']}`}>
+            <colgroup>
+                <col style={{ width: '25%' }} />
+                <col style={{ width: '35%' }} />
+                {markets.map(market => (
+                    <col key={market} style={{ width: `${40 / markets.length}%` }} />
+                ))}
+            </colgroup>
             <thead>
                 <tr>
                     <th rowSpan="2">Device</th>

@@ -10,7 +10,7 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 import { useEffect } from 'react';
 
-function Dp_httpSS_Component({ city: propCity }) {
+function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
   const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
@@ -173,6 +173,7 @@ function Dp_httpSS_Component({ city: propCity }) {
   return (
     <>
       <div className='page-content'>
+        {firstSection && <DynamicHeader level={1} style={{ textAlign: 'center' }}>Data Performance - 5G Auto </DynamicHeader>}
         <DynamicHeader level={2}>HTTP Single Stream Test Download & Upload - 5G Auto - {city}</DynamicHeader>
         <h4>Http Single Stream Overview</h4>
         <DpThroughputOverallTable

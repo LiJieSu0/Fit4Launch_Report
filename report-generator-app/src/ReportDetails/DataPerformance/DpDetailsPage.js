@@ -15,8 +15,7 @@ import DynamicHeader from '../../CommonPage/DynamicHeader';
 function DpDetailsPage() {
   return (
     <div>
-      <DynamicHeader level={1} style={{ textAlign: 'center' }}>Data Performance - 5G Auto </DynamicHeader>
-      <Dp_httpSS_Component city="Seattle" />
+      <Dp_httpSS_Component city="Seattle" firstSection={true} />
       <Dp_httpSS_Component city="New York" />
       <Dp_httpMS_Component city="Seattle" />
       <Dp_httpMS_Component city="New York" />

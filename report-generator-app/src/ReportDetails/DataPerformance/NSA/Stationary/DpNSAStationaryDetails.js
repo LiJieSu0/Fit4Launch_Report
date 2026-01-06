@@ -14,7 +14,7 @@ import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 
 import { useEffect } from 'react';
 
-function DpNSAStationaryDetails({ city: propCity }) {
+function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
   const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
@@ -150,6 +150,7 @@ function DpNSAStationaryDetails({ city: propCity }) {
   return (
     <>
       <div className='page-content'>
+        {firstSection && <DynamicHeader level={1}>Data Performance - 5G NSA</DynamicHeader>}
         <DynamicHeader level={2}>HTTP Single Stream Test Download & Upload - 5G NSA - {city}</DynamicHeader>
         <h4>Http Single Stream Overview </h4>
         <DpThroughputOverallTable

@@ -33,8 +33,8 @@ function DpDetailsPage() {
       <DpDriveTestDetailPage city="New York" />
       <DpMrabDetailsPage city="Seattle" />
       <DpMrabDetailsPage city="New York" />
-      <DynamicHeader level={1}>Data Performance - 5G NSA</DynamicHeader>
-      <DpNSAStationaryDetails city="Seattle" />
+
+      <DpNSAStationaryDetails city="Seattle" firstSection={true} />
       <DpNSAStationaryDetails city="New York" />
       <DpNSATestDriveDetails city="Seattle" />
       <DpNSATestDriveDetails city="New York" />

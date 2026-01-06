@@ -12,15 +12,22 @@ import AutoVoNREnabledAudioDelay from './VqCases/AutoVoNREnabledAudioDelay';
 const VqDetailsPage = () => {
   return (
     <div>
-      <VqAmrNbVq city='Seattle' />
+      <VqAmrNbVq city='Seattle' firstSection={true} />
+      <VqAmrNbVq city='New York' />
       <VqAmrWbVq city='Seattle' />
+      <VqAmrWbVq city='New York' />
       <VqEvsWbVqDisabled city='Seattle' />
+      <VqEvsWbVqDisabled city='New York' />
       <VqEvsWbVqEnabled city='Seattle' />
+      <VqEvsWbVqEnabled city='New York' />
       <div className='page-content'>
         <AutoVoNRDisabledAudioDelay city='Seattle' />
-        <AutoVoNREnabledAudioDelay city='Seattle' />
+        <AutoVoNRDisabledAudioDelay city='New York' />
       </div>
-
+      <div className='page-content'>
+        <AutoVoNREnabledAudioDelay city='Seattle' />
+        <AutoVoNREnabledAudioDelay city='New York' />
+      </div>
     </div>
   );
 };

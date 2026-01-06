@@ -19,17 +19,26 @@ function DpDetailsPage() {
       <Dp_httpSS_Component city="Seattle" />
       <Dp_httpSS_Component city="New York" />
       <Dp_httpMS_Component city="Seattle" />
+      <Dp_httpMS_Component city="New York" />
       <Dp_Udp_Component city="Seattle" />
+      <Dp_Udp_Component city="New York" />
       <Dp_Ping_Component city="Seattle" />
+      <Dp_Ping_Component city="New York" />
       <Dp_Webbrowser_Component city="Seattle" />
+      <Dp_Webbrowser_Component city="New York" />
       <Dp_playStore_Component city="Seattle" />
+      <Dp_playStore_Component city="New York" />
       <Dp_MHS_Page city="Seattle" />
-
+      <Dp_MHS_Page city="New York" />
       <DpDriveTestDetailPage city="Seattle" />
+      <DpDriveTestDetailPage city="New York" />
       <DpMrabDetailsPage city="Seattle" />
+      <DpMrabDetailsPage city="New York" />
       <DynamicHeader level={1}>Data Performance - 5G NSA</DynamicHeader>
       <DpNSAStationaryDetails city="Seattle" />
+      <DpNSAStationaryDetails city="New York" />
       <DpNSATestDriveDetails city="Seattle" />
+      <DpNSATestDriveDetails city="New York" />
 
     </div>
   );

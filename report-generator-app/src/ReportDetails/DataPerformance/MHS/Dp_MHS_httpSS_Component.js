@@ -166,7 +166,7 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
     <>
       <div className='page-content'>
         <DynamicHeader level={2}>Mobile Hotspot Test-5G Auto - {city}</DynamicHeader>
-        <DynamicHeader level={3}>HTTP Single Stream Test - Mobile Hotspot</DynamicHeader>
+        <DynamicHeader level={3}>HTTP Single Stream Test - Mobile Hotspot - {city}</DynamicHeader>
         <h4>MHS Http Single Stream Overview</h4>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}

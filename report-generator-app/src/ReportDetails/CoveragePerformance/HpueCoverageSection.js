@@ -80,9 +80,10 @@ const HpueCoverageSection = ({ city: propCity }) => {
 
     return (
         <>
+            <DynamicHeader level={2}>5G n41 HPUE Coverage Test - {city} </DynamicHeader>
             <HPUECoverageTable n41Data={n41HPUEData} />
             <div className='page-content'>
-                <DynamicHeader level={3}>5G n41 HPUE Coverage Test-RSRP Analysis - {city}</DynamicHeader>
+                <DynamicHeader level={3}>5G n41 HPUE Coverage Test-RSRP Analysis </DynamicHeader>
                 <CoverageLineChart analysisType="RSRP" run={1} />
                 <CoverageLineChart analysisType="RSRP" run={2} />
             </div>
@@ -94,7 +95,7 @@ const HpueCoverageSection = ({ city: propCity }) => {
                 <CoverageLineChart analysisType="RSRP" run={5} />
             </div>
             <div className='page-content'>
-                <DynamicHeader level={3}>5G n41 HPUE Coverage Test-Tx Power Analysis - {city}</DynamicHeader>
+                <DynamicHeader level={3}>5G n41 HPUE Coverage Test-Tx Power Analysis </DynamicHeader>
                 <CoverageLineChart analysisType="TxPower" run={1} />
                 <CoverageLineChart analysisType="TxPower" run={2} />
             </div>

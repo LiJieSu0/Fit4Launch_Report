@@ -5,7 +5,6 @@ import DynamicHeader from '../../CommonPage/DynamicHeader';
 const HPUECoverageTable = ({ n41Data }) => {
     return (
         <div className='page-content'>
-            <DynamicHeader level={2}>5G n41 HPUE Coverage Test</DynamicHeader>
             <table className="general-table-style">
                 <thead>
                     <tr>

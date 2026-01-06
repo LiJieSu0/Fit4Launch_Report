@@ -7,9 +7,10 @@ import HpueCoverageSection from './HpueCoverageSection';
 function CoverageDetails() {
   return (
     <div>
-      <DynamicHeader level={1}>Coverage Test - All Networks</DynamicHeader>
-      <VonrCoverageSection city="Seattle" />
+      <VonrCoverageSection city="Seattle" firstSection={true} />
+      <VonrCoverageSection city="New York" />
       <HpueCoverageSection city="Seattle" />
+      <HpueCoverageSection city="New York" />
     </div>
   );
 }

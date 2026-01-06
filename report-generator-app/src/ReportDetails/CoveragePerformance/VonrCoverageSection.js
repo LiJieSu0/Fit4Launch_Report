@@ -9,7 +9,7 @@ const CITY_COORDS = {
     // Add other cities here as needed
 };
 
-const VonrCoverageSection = ({ city: propCity }) => {
+const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
     const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
     const city = propCity || globalCity;
 
@@ -176,6 +176,8 @@ const VonrCoverageSection = ({ city: propCity }) => {
         return (
             <div key={band}>
                 <div className='page-content'>
+                    {firstSection && band === 'n25' && <DynamicHeader level={1}>Coverage Test - All Networks</DynamicHeader>}
+                    {band === 'n25' && <DynamicHeader level={2}>5G VoNR Coverage Test - N25, N41, N71 - {city}</DynamicHeader>}
                     <h4>5G VoNR Coverage Test {bandLabel}- DL Throughput &lt; 1Mbps Distance (km)</h4>
                     <CoverageTestTable tableData={dataDL.slice(0, -1)} status={dataDL[dataDL.length - 1]} />
                     <CoverageMap
@@ -221,9 +223,6 @@ const VonrCoverageSection = ({ city: propCity }) => {
 
     return (
         <>
-            <div className='page-content'>
-                <DynamicHeader level={2}>5G VoNR Coverage Test - N25, N41, N71 - {city}</DynamicHeader>
-            </div>
             {['n25', 'n41', 'n71'].map(band => renderBandSection(band))}
         </>
     );

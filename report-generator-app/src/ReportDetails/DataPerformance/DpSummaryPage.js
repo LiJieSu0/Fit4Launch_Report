@@ -623,6 +623,9 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={mhsUdpData} />
         <DpSummaryTable tableData={mhsPingData} />
         <DpSummaryTable tableData={mobiltyData} />
+      </div>
+      <div className='page-content'>
+        <div style={{ marginTop: 10 }}></div>
         <DpSummaryTable tableData={mobiltyMHSData} />
         <DpSummaryTable tableData={mrabData} />
       </div>
@@ -634,7 +637,6 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={pingNSAData} />
         <DpSummaryTable tableData={mobiltyNSAData} />
       </div>
-
     </div >
   );
 }

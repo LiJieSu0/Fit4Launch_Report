@@ -3,7 +3,7 @@ import '../../StyleScript/Restricted_Report_Style.css';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 
-const CpCaseTable = ({ title, data }) => {
+const CpCaseTable = ({ title, data, city }) => {
     const dut = data?.DUT || {};
     const ref = data?.REF || {};
 
@@ -23,7 +23,7 @@ const CpCaseTable = ({ title, data }) => {
 
     return (
         <div className="">
-            <DynamicHeader level={2}>{title}</DynamicHeader>
+            <DynamicHeader level={2}>{title} - {city}</DynamicHeader>
             <table className="performance-table general-table-style">
                 <thead>
                     <tr>

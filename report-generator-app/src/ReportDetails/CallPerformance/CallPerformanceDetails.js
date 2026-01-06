@@ -33,22 +33,43 @@ const CallPerformanceDetails = () => {
                 city="Seattle"
                 isFirst={true}
             />
+
+            <CpScenarioSection
+                title="5G Auto VoNR Disabled CP MO Drive"
+                city="New York"
+            />
+
+
             <CpScenarioSection
                 title="5G Auto VoNR Disabled CP MT Drive"
                 city="Seattle"
-                isFirst={false}
+            />
+
+            <CpScenarioSection
+                title="5G Auto VoNR Disabled CP MT Drive"
+                city="New York"
             />
 
             <CpScenarioSection
                 title="5G Auto VoNR Enabled CP MO Drive"
                 city="Seattle"
-                isFirst={false}
+            />
+
+            <CpScenarioSection
+                title="5G Auto VoNR Enabled CP MO Drive"
+                city="New York"
             />
 
             <CpScenarioSection
                 title="5G Auto VoNR Enabled CP MT Drive"
                 city="Seattle"
-                isFirst={false}
+            />
+
+
+
+            <CpScenarioSection
+                title="5G Auto VoNR Enabled CP MT Drive"
+                city="New York"
             />
         </div>
     );

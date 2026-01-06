@@ -7,7 +7,7 @@ import CallCategoriesTable from './CallCategoriesTable';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 import { useReportData } from '../../Contexts/ReportContext';
 
-const CpScenarioSection = ({ title, city, isFirst }) => {
+const CpScenarioSection = ({ title, city, isFirst = false }) => {
     const { allReportData, loadCityData, loading } = useReportData();
 
     // Ensure data for the specified city is loaded
@@ -31,8 +31,8 @@ const CpScenarioSection = ({ title, city, isFirst }) => {
 
     return (
         <div className='page-content'>
-            {isFirst && <DynamicHeader level={1}>Call Performance Test - {city}</DynamicHeader>}
-            <CpCaseTable title={title} data={data} />
+            {isFirst && <DynamicHeader level={1}>Call Performance Test </DynamicHeader>}
+            <CpCaseTable title={title} data={data} city={city} />
             <PValueTable data={data} />
             <CallSummaryChart data={data} />
             <CallCategoriesChart data={data} />

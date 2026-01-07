@@ -350,16 +350,41 @@ function DpSummaryPage() {
 
   const getMobilityResult = (cityData, network, caseName, metricType) => {
     const cityBase = cityData?.dataPerformance?.["Data Performance"]?.[network];
-    const base = getMetricValue(cityBase, ["Mobility Test", caseName]);
+    let base = getMetricValue(cityBase, ["Mobility Test", caseName]);
+    if (!base) {
+      // Fallback for cases where caseName is missing in JSON (e.g. NSA)
+      const mobTest = getMetricValue(cityBase, ["Mobility Test"]);
+      if (mobTest && (mobTest.DUT || mobTest.REF)) {
+        base = mobTest;
+      }
+    }
     if (!base) return 'default';
     const dut = base.DUT;
     const ref = base.REF;
     if (!dut || !ref) return 'default';
 
-    if (metricType === 'Throughput') return getKpiCellColor('Throughput', dut.Throughput?.Mean, ref.Throughput?.Mean);
-    if (metricType === 'Jitter') return getKpiCellColor('Jitter', dut.Jitter?.Mean, ref.Jitter?.Mean);
-    if (metricType === 'ErrorRatio') return getKpiCellColor('ErrorRatio', dut["Error Ratio"]?.Mean, ref["Error Ratio"]?.Mean);
-    if (metricType === 'PingLatency') return getKpiCellColor('PingLatency', dut["Ping RTT"]?.avg, ref["Ping RTT"]?.avg);
+    const isMHS = caseName && caseName.includes("MHS");
+
+    if (metricType === 'Throughput') {
+      const dutVal = isMHS ? dut["DL Throughput"]?.Mean : dut.Throughput?.Mean;
+      const refVal = isMHS ? ref["DL Throughput"]?.Mean : ref.Throughput?.Mean;
+      return getKpiCellColor('Throughput', dutVal, refVal);
+    }
+    if (metricType === 'Jitter') {
+      const dutVal = isMHS ? dut["DL Jitter"]?.Mean : dut.Jitter?.Mean;
+      const refVal = isMHS ? ref["DL Jitter"]?.Mean : ref.Jitter?.Mean;
+      return getKpiCellColor('Jitter', dutVal, refVal);
+    }
+    if (metricType === 'ErrorRatio') {
+      const dutVal = isMHS ? dut["DL Error Ratio"]?.Mean : dut["Error Ratio"]?.Mean;
+      const refVal = isMHS ? ref["DL Error Ratio"]?.Mean : ref["Error Ratio"]?.Mean;
+      return getKpiCellColor('ErrorRatio', dutVal, refVal);
+    }
+    if (metricType === 'PingLatency') {
+      const dutVal = isMHS ? dut["Ping RTT"]?.Mean : dut["Ping RTT"]?.avg;
+      const refVal = isMHS ? ref["Ping RTT"]?.Mean : ref["Ping RTT"]?.avg;
+      return getKpiCellColor('PingLatency', dutVal, refVal);
+    }
     return 'default';
   };
 

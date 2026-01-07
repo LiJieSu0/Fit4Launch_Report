@@ -50,7 +50,7 @@ function DpSummaryPage() {
     if (!baseData) return 'default';
 
     locations.forEach(loc => {
-      const locPath = direction ? [direction, loc] : [loc];
+      const locPath = direction ? (Array.isArray(direction) ? [...direction, loc] : [direction, loc]) : [loc];
       const dutVal = getMetricValue(baseData, [...locPath, 'DUT', ...metricPath]);
       const refVal = getMetricValue(baseData, [...locPath, 'REF', ...metricPath]);
 
@@ -256,8 +256,8 @@ function DpSummaryPage() {
     rows: NR_MARKETS.map(market => {
       const cityData = allReportData[market.city];
       const base = ["Mobile Hotspot Test", "HTTP Single Stream"];
-      const dl = getAveragedKPI(cityData, market.network, base[0], [base[1], "DL", "Throughput", "Mean"], "Throughput");
-      const ul = getAveragedKPI(cityData, market.network, base[0], [base[1], "UL", "Throughput", "Mean"], "Throughput");
+      const dl = getAveragedKPI(cityData, market.network, base[0], ["Throughput", "Mean"], "Throughput", [base[1], "DL"]);
+      const ul = getAveragedKPI(cityData, market.network, base[0], ["Throughput", "Mean"], "Throughput", [base[1], "UL"]);
       return {
         cells: [
           { label: market.label },
@@ -275,8 +275,8 @@ function DpSummaryPage() {
     rows: NR_MARKETS.map(market => {
       const cityData = allReportData[market.city];
       const base = ["Mobile Hotspot Test", "HTTP Multi Stream"];
-      const dl = getAveragedKPI(cityData, market.network, base[0], [base[1], "DL", "Throughput", "Mean"], "Throughput");
-      const ul = getAveragedKPI(cityData, market.network, base[0], [base[1], "UL", "Throughput", "Mean"], "Throughput");
+      const dl = getAveragedKPI(cityData, market.network, base[0], ["Throughput", "Mean"], "Throughput", [base[1], "DL"]);
+      const ul = getAveragedKPI(cityData, market.network, base[0], ["Throughput", "Mean"], "Throughput", [base[1], "UL"]);
       return {
         cells: [
           { label: market.label },
@@ -337,7 +337,7 @@ function DpSummaryPage() {
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "RTT" }],
     rows: NR_MARKETS.map(market => {
       const cityData = allReportData[market.city];
-      const res = getAveragedKPI(cityData, market.network, "Mobile Hotspot Test", ["Ping", "Moderate", "Ping RTT", "avg"], "PingLatency");
+      const res = getAveragedKPI(cityData, market.network, "Mobile Hotspot Test", ["Ping RTT", "avg"], "PingLatency", "Ping");
       return {
         cells: [
           { label: market.label },
@@ -402,7 +402,7 @@ function DpSummaryPage() {
   };
 
   const mrabData = {
-    headers: [{ label: "MRAB Test (Data + VoNR) - 5G Auto", colSpan: 5 }],
+    headers: [{ label: "MRAB Test - 5G Auto", colSpan: 5 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Pre Call" }, { label: "In Call" }, { label: "Post Call" }],
     rows: NR_MARKETS.map(market => {
       const cityData = allReportData[market.city];

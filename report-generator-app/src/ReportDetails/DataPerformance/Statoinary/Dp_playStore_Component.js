@@ -52,8 +52,7 @@ const Dp_playStore_Component = ({ city: propCity }) => {
         locations.forEach((location, index) => {
           const siteKey = `site${index + 1}`;
           if (playStoreData[location]?.[device]?.[throughput]) {
-            const dataKey = Object.keys(playStoreData[location][device][throughput])[0];
-            const value = playStoreData[location][device][throughput][dataKey].overall_average_throughput;
+            const value = playStoreData[location][device][throughput]?.overall_average_throughput;
             rowData[siteKey] = value !== undefined ? value.toFixed(2) : 'N/A';
             if (value !== undefined) {
               siteThroughputs.push(value);

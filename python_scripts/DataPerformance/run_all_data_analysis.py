@@ -620,7 +620,7 @@ if __name__ == "__main__":
                                     elif "DUT" in filename_without_ext.upper():
                                         filename_without_ext = "DUT"
                                         
-                                    google_throughput_results[location][device_type][test_content][filename_without_ext] = {
+                                    google_throughput_results[location][device_type][test_content] = {
                                         "overall_average_throughput": throughput_analysis_results["overall_average"]
                                     }
                                 else:

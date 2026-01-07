@@ -234,9 +234,9 @@ function DpSummaryPage() {
     rows: NR_MARKETS.map(market => {
       const cityData = allReportData[market.city];
       // Play-store data structure usually multiple tasks or aggregated? Assume similar averaging
-      const r30m = getAveragedKPI(cityData, market.network, "5G Auto Data Play-store app Download", ["Mean Throughput", "30M"], "Throughput");
-      const r60m = getAveragedKPI(cityData, market.network, "5G Auto Data Play-store app Download", ["Mean Throughput", "60M"], "Throughput");
-      const r100m = getAveragedKPI(cityData, market.network, "5G Auto Data Play-store app Download", ["Mean Throughput", "100M"], "Throughput");
+      const r30m = getAveragedKPI(cityData, market.network, "5G Auto Data Play-store app Download", ["30M", "overall_average_throughput"], "Throughput");
+      const r60m = getAveragedKPI(cityData, market.network, "5G Auto Data Play-store app Download", ["60M", "overall_average_throughput"], "Throughput");
+      const r100m = getAveragedKPI(cityData, market.network, "5G Auto Data Play-store app Download", ["100M", "overall_average_throughput"], "Throughput");
 
       return {
         cells: [

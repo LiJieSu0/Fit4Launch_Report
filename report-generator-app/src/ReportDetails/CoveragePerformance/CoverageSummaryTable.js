@@ -1,112 +1,80 @@
 import React from 'react';
 import styles from './CoverageSummaryTable.module.css';
 import '.././../StyleScript/Restricted_Report_Style.css';
+import { useReportData } from '../../Contexts/ReportContext';
+import { getKpiCellColor } from '../../Utils/KpiRules';
 
-const summaryData = [
-    {
-        deviceName: "Samsung XCover Pro 7(NR 25)",
-        kpis: [
-            {
-                name: "DL Throughput < 1Mbps",
-                results: {
-                    "Seattle": { status: "Fail", link: '#2.1DL' },
-                    "New York": { status: "Pass", link: '#NY2.1DL' }
-                }
-            },
-            {
-                name: "UL Throughput < 1Mbps",
-                results: {
-                    "Seattle": { status: "Pass", link: '#2.1UL' },
-                    "New York": { status: "Pass", link: '#NY2.1UL' }
-                }
-            },
-            {
-                name: "Last MOS Before Silence",
-                results: {
-                    "Seattle": { status: "Fail", link: '#2.1MOS' },
-                    "New York": { status: "Fail", link: '#NY2.1MOS' }
-                }
-            },
-            {
-                name: "Audio Call Drop",
-                results: {
-                    "Seattle": { status: "Pass", link: '#2.1Call' },
-                    "New York": { status: "Pass", link: '#NY2.1Call' }
-                }
-            },
-        ]
-    },
-    {
-        deviceName: "Samsung XCover Pro 7(NR 41)",
-        kpis: [
-            {
-                name: "DL Throughput < 1Mbps",
-                results: {
-                    "Seattle": { status: "Pass", link: '#2.2DL' },
-                    "New York": { status: "Pass", link: '#NY2.2DL' }
-                }
-            },
-            {
-                name: "UL Throughput < 1Mbps",
-                results: {
-                    "Seattle": { status: "Pass", link: '#2.2UL' },
-                    "New York": { status: "Pass", link: '#NY2.2UL' }
-                }
-            },
-            {
-                name: "Last MOS Before Silence",
-                results: {
-                    "Seattle": { status: "Pass", link: '#2.2MOS' },
-                    "New York": { status: "Pass", link: '#NY2.2MOS' }
-                }
-            },
-            {
-                name: "Audio Call Drop",
-                results: {
-                    "Seattle": { status: "Pass", link: '#2.2Call' },
-                    "New York": { status: "Pass", link: '#NY2.2Call' }
-                }
-            },
-        ]
-    },
-    {
-        deviceName: "Samsung XCover Pro 7(NR 71)",
-        kpis: [
-            {
-                name: "DL Throughput < 1Mbps",
-                results: {
-                    "Seattle": { status: "Pass", link: '#2.3DL' },
-                    "New York": { status: "Pass", link: '#NY2.3DL' }
-                }
-            },
-            {
-                name: "UL Throughput < 1Mbps",
-                results: {
-                    "Seattle": { status: "Pass", link: '#2.3UL' },
-                    "New York": { status: "Pass", link: '#NY2.3UL' }
-                }
-            },
-            {
-                name: "Last MOS Before Silence",
-                results: {
-                    "Seattle": { status: "Pass", link: '#2.3MOS' },
-                    "New York": { status: "Pass", link: '#NY2.3MOS' }
-                }
-            },
-            {
-                name: "Audio Call Drop",
-                results: {
-                    "Seattle": { status: "Pass", link: '#2.3Call' },
-                    "New York": { status: "Pass", link: '#NY2.3Call' }
-                }
-            },
-        ]
-    }
+const KPI_CONFIG = [
+    { name: "DL Throughput < 1Mbps", key: "first_dl_tp_gt_1", link: "DL" },
+    { name: "UL Throughput < 1Mbps", key: "first_ul_tp_gt_1", link: "UL" },
+    { name: "Last MOS Before Silence", key: "mos_before_drop", link: "MOS" },
+    { name: "Audio Call Drop", key: "call_drop", link: "Call" }
 ];
 
-const markets = ["Seattle", "New York"];
+const BANDS = [
+    { name: "Samsung XCover Pro 7(NR 25)", key: "n25", anchor: "2.1" },
+    { name: "Samsung XCover Pro 7(NR 41)", key: "n41", anchor: "2.2" },
+    { name: "Samsung XCover Pro 7(NR 71)", key: "n71", anchor: "2.3" }
+];
 
 const CoverageSummaryTable = () => {
+    const { allReportData, availableCities, loadCityData } = useReportData();
+    const markets = availableCities || ["Seattle", "New York"];
+
+    React.useEffect(() => {
+        markets.forEach(market => {
+            if (!allReportData[market]) {
+                loadCityData(market).catch(err => console.error(`Failed to load ${market}:`, err));
+            }
+        });
+    }, [markets, allReportData, loadCityData]);
+
+    const calculateAvgDistance = (cityData, band, deviceType, kpiKey) => {
+        const bandData = cityData?.coveragePerformance?.["Coverage Performance"]?.["5G VoNR Coverage Test"]?.[band]?.[deviceType];
+        if (!bandData) return null;
+
+        const runs = Object.keys(bandData).filter(key => key.startsWith('Run'));
+        if (runs.length === 0) return null;
+
+        let sum = 0;
+        let count = 0;
+        runs.forEach(runKey => {
+            const val = bandData[runKey]?.[kpiKey]?.distance_km;
+            if (typeof val === 'number') {
+                sum += val;
+                count++;
+            }
+        });
+
+        return count > 0 ? sum / count : null;
+    };
+
+    const getResult = (market, band, kpi) => {
+        const cityData = allReportData[market];
+        if (!cityData) return { status: "N/A", color: "default", link: "#" };
+
+        const dutAvg = calculateAvgDistance(cityData, band.key, "DUT", kpi.key);
+        const refAvg = calculateAvgDistance(cityData, band.key, "REF", kpi.key);
+
+        if (dutAvg === null || refAvg === null) return { status: "N/A", color: "default", link: "#" };
+
+        const color = getKpiCellColor('CoverageDistance', dutAvg, refAvg);
+        const status = color === 'var(--performance-pass)' || color === 'var(--performance-excellent)' ? "Pass" : "Fail";
+
+        // Construct anchor link: e.g. #2.1DL or #NY2.1DL
+        const marketPrefix = market === "Seattle" ? "" : (market === "New York" ? "NY" : market.substring(0, 2).toUpperCase());
+        const link = `#${marketPrefix}${band.anchor}${kpi.link}`;
+
+        return { status, color, link };
+    };
+
+    const mapColorToClass = (color) => {
+        if (color === 'var(--performance-pass)') return styles['result-pass'];
+        if (color === 'var(--performance-fail)') return styles['result-fail'];
+        if (color === 'var(--performance-excellent)') return styles['result-excellent'];
+        return '';
+    };
+
     return (
         <table className={`general-table-style ${styles['coverage-summary-table']}`}>
             <colgroup>
@@ -129,23 +97,26 @@ const CoverageSummaryTable = () => {
                 </tr>
             </thead>
             <tbody>
-                {summaryData.map((deviceData, deviceIndex) => (
-                    deviceData.kpis.map((kpiData, kpiIndex) => (
-                        <tr key={`${deviceIndex}-${kpiIndex}`}>
+                {BANDS.map((band, bandIndex) => (
+                    KPI_CONFIG.map((kpi, kpiIndex) => (
+                        <tr key={`${band.key}-${kpi.key}`}>
                             {kpiIndex === 0 && (
-                                <td rowSpan={deviceData.kpis.length}>
-                                    {deviceData.deviceName}
+                                <td rowSpan={KPI_CONFIG.length}>
+                                    {band.name}
                                 </td>
                             )}
-                            <td>{kpiData.name}</td>
+                            <td>{kpi.name}</td>
                             {markets.map(market => {
-                                const result = kpiData.results[market];
+                                const result = getResult(market, band, kpi);
                                 return (
                                     <td
-                                        key={`${market}-${result.status}`}
-                                        className={result.status === "Pass" ? styles['result-pass'] : styles['result-fail']}
+                                        key={`${market}-${band.key}-${kpi.key}`}
+                                        className={mapColorToClass(result.color)}
+                                        style={{ backgroundColor: result.color !== 'default' ? result.color : '' }}
                                     >
-                                        <a href={result.link} style={{ color: 'black' }}>Results</a>
+                                        <a href={result.link} style={{ color: 'black' }}>
+                                            Results
+                                        </a>
                                     </td>
                                 );
                             })}

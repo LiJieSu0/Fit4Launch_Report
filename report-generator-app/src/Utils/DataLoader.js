@@ -36,5 +36,5 @@ export const loadAllData = async (city) => {
 };
 
 export const getAvailableCities = async () => {
-  return ['Seattle']; // To add data folders, need to hard coded the data path through here. 
+  return ['Seattle', 'New York']; // To add data folders, need to hard coded the data path through here. 
 };

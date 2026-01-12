@@ -4,7 +4,7 @@ import { HeaderContext } from '../Contexts/HeaderContext';
 const ContentsIndexPage = () => {
   const { numberedHeaders } = useContext(HeaderContext);
 
-  const ITEMS_PER_PAGE = 24; // Adjusted to 25 based on common page height
+  const ITEMS_PER_PAGE = 32; // Adjusted to 25 based on common page height
 
   const handleLinkClick = (e, heading) => {
     e.preventDefault();

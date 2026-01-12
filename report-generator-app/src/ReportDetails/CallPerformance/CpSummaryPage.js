@@ -1,97 +1,55 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
+import { useReportData } from '../../Contexts/ReportContext';
+import { getKpiCellColor } from '../../Utils/KpiRules';
+
 
 
 const CpSummaryPage = () => {
 
 
 
-    const CpSummaryData = [
-        {
-            test: 'VoNR Disabled CP MO Drive',
-            market: 'Seattle',
-            callInitiationLink: '#2.1',
-            callRetentionLink: '#2.1',
-            callSetupTimeLink: '#2.1',
-            callInitiationClassName: 'bg-performance-pass',
-            callRetentionClassName: 'bg-performance-pass',
-            callSetupTimeClassName: 'bg-performance-pass'
-        },
-        {
-            test: 'VoNR Disabled CP MO Drive',
-            market: 'New York',
-            callInitiationLink: '#2.1',
-            callRetentionLink: '#2.1',
-            callSetupTimeLink: '#2.1',
-            callInitiationClassName: 'bg-performance-pass',
-            callRetentionClassName: 'bg-performance-pass',
-            callSetupTimeClassName: 'bg-performance-pass'
-        },
-        {
-            test: 'VoNR Disabled CP MT Drive',
-            market: 'Seattle',
-            callInitiationLink: '#2.2',
-            callRetentionLink: '#2.2',
-            callSetupTimeLink: '#2.2',
-            callInitiationClassName: 'bg-performance-pass',
-            callRetentionClassName: 'bg-performance-fail',
-            callSetupTimeClassName: 'bg-performance-pass'
-        },
-        {
-            test: 'VoNR Disabled CP MT Drive',
-            market: 'New York',
-            callInitiationLink: '#2.2',
-            callRetentionLink: '#2.2',
-            callSetupTimeLink: '#2.2',
-            callInitiationClassName: 'bg-performance-pass',
-            callRetentionClassName: 'bg-performance-fail',
-            callSetupTimeClassName: 'bg-performance-pass'
-        },
-        {
-            test: 'VoNR Enabled CP MO Drive',
-            market: 'Seattle',
-            callInitiationLink: '#2.3',
-            callRetentionLink: '#2.3',
-            callSetupTimeLink: '#2.3',
-            callInitiationClassName: 'bg-performance-pass',
-            callRetentionClassName: 'bg-performance-pass',
-            callSetupTimeClassName: 'bg-performance-pass'
-        },
-        {
-            test: 'VoNR Enabled CP MO Drive',
-            market: 'New York',
-            callInitiationLink: '#2.3',
-            callRetentionLink: '#2.3',
-            callSetupTimeLink: '#2.3',
-            callInitiationClassName: 'bg-performance-pass',
-            callRetentionClassName: 'bg-performance-pass',
-            callSetupTimeClassName: 'bg-performance-pass'
-        },
-        {
-            test: 'VoNR Enabled CP MT Drive',
-            market: 'Seattle',
-            callInitiationLink: '#2.4',
-            callRetentionLink: '#2.4',
-            callSetupTimeLink: '#2.4',
-            callInitiationClassName: 'bg-performance-pass',
-            callRetentionClassName: 'bg-performance-pass',
-            callSetupTimeClassName: 'bg-performance-pass'
-        },
-        {
-            test: 'VoNR Enabled CP MT Drive',
-            market: 'New York',
-            callInitiationLink: '#2.4',
-            callRetentionLink: '#2.4',
-            callSetupTimeLink: '#2.4',
-            callInitiationClassName: 'bg-performance-pass',
-            callRetentionClassName: 'bg-performance-pass',
-            callSetupTimeClassName: 'bg-performance-pass'
-        },
-    ];
+    const { allReportData } = useReportData();
 
-    const seattleData = CpSummaryData.filter(row => row.market === 'Seattle');
-    const newYorkData = CpSummaryData.filter(row => row.market === 'New York');
+    const getMarketRows = (marketName) => {
+        const marketData = allReportData[marketName]?.callPerformance?.['Call Performance'];
+        if (!marketData) return [];
+
+        const scenarios = [
+            { key: '5G Auto VoNR Disabled CP MO Drive', label: 'VoNR Disabled CP MO Drive', link: '#2.1' },
+            { key: '5G Auto VoNR Disabled CP MT Drive', label: 'VoNR Disabled CP MT Drive', link: '#2.2' },
+            { key: '5G Auto VoNR Enabled CP MO Drive', label: 'VoNR Enabled CP MO Drive', link: '#2.3' },
+            { key: '5G Auto VoNR Enabled CP MT Drive', label: 'VoNR Enabled CP MT Drive', link: '#2.4' }
+        ];
+
+        return scenarios.map(s => {
+            const data = marketData[s.key];
+            if (!data) return null;
+
+            const mapExcellentToPass = (color) => {
+                if (color === 'var(--performance-excellent)') {
+                    return 'var(--performance-pass)';
+                }
+                return color;
+            };
+
+            return {
+                test: s.label,
+                market: marketName,
+                callInitiationLink: s.link,
+                callRetentionLink: s.link,
+                callSetupTimeLink: s.link,
+                callInitiationColor: mapExcellentToPass(getKpiCellColor('CallInitiation', data.initiation_p_value)),
+                callRetentionColor: mapExcellentToPass(getKpiCellColor('CallRetention', data.retention_p_value)),
+                callSetupTimeColor: mapExcellentToPass(getKpiCellColor('CallSetupTime', data.DUT.mean_setup_time, data.REF.mean_setup_time))
+            };
+        }).filter(row => row !== null);
+
+    };
+
+    const seattleData = getMarketRows('Seattle');
+    const newYorkData = getMarketRows('New York');
 
 
     return (
@@ -111,9 +69,9 @@ const CpSummaryPage = () => {
                     {seattleData.map((row, index) => (
                         <tr key={index}>
                             <td>{row.test}</td>
-                            <td className={row.callInitiationClassName}><a href={row.callInitiationLink}>Result</a></td>
-                            <td className={row.callRetentionClassName}><a href={row.callRetentionLink}>Result</a></td>
-                            <td className={row.callSetupTimeClassName}><a href={row.callSetupTimeLink}>Result</a></td>
+                            <td style={{ backgroundColor: row.callInitiationColor }}><a href={row.callInitiationLink}>Result</a></td>
+                            <td style={{ backgroundColor: row.callRetentionColor }}><a href={row.callRetentionLink}>Result</a></td>
+                            <td style={{ backgroundColor: row.callSetupTimeColor }}><a href={row.callSetupTimeLink}>Result</a></td>
                         </tr>
                     ))}
                 </tbody>
@@ -133,13 +91,14 @@ const CpSummaryPage = () => {
                     {newYorkData.map((row, index) => (
                         <tr key={index}>
                             <td>{row.test}</td>
-                            <td className={row.callInitiationClassName}><a href={row.callInitiationLink}>Result</a></td>
-                            <td className={row.callRetentionClassName}><a href={row.callRetentionLink}>Result</a></td>
-                            <td className={row.callSetupTimeClassName}><a href={row.callSetupTimeLink}>Result</a></td>
+                            <td style={{ backgroundColor: row.callInitiationColor }}><a href={row.callInitiationLink}>Result</a></td>
+                            <td style={{ backgroundColor: row.callRetentionColor }}><a href={row.callRetentionLink}>Result</a></td>
+                            <td style={{ backgroundColor: row.callSetupTimeColor }}><a href={row.callSetupTimeLink}>Result</a></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+
 
         </div>
     );

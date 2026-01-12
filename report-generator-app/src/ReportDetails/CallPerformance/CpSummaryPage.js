@@ -90,24 +90,27 @@ const CpSummaryPage = () => {
         },
     ];
 
+    const seattleData = CpSummaryData.filter(row => row.market === 'Seattle');
+    const newYorkData = CpSummaryData.filter(row => row.market === 'New York');
+
+
     return (
         <div className="page-content">
             <DynamicHeader level={1}>Call Performance Test Overview</DynamicHeader>
+            <DynamicHeader level={2}>Seattle</DynamicHeader>
             <table className="general-table-style">
                 <thead>
                     <tr>
                         <th>Test</th>
-                        <th>Market</th>
                         <th>Call Initiation</th>
                         <th>Call Retention</th>
                         <th>Call Setup Time</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {CpSummaryData.map((row, index) => (
+                    {seattleData.map((row, index) => (
                         <tr key={index}>
                             <td>{row.test}</td>
-                            <td>{row.market}</td>
                             <td className={row.callInitiationClassName}><a href={row.callInitiationLink}>Result</a></td>
                             <td className={row.callRetentionClassName}><a href={row.callRetentionLink}>Result</a></td>
                             <td className={row.callSetupTimeClassName}><a href={row.callSetupTimeLink}>Result</a></td>
@@ -115,6 +118,29 @@ const CpSummaryPage = () => {
                     ))}
                 </tbody>
             </table>
+
+            <DynamicHeader level={2}>New York</DynamicHeader>
+            <table className="general-table-style">
+                <thead>
+                    <tr>
+                        <th>Test</th>
+                        <th>Call Initiation</th>
+                        <th>Call Retention</th>
+                        <th>Call Setup Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {newYorkData.map((row, index) => (
+                        <tr key={index}>
+                            <td>{row.test}</td>
+                            <td className={row.callInitiationClassName}><a href={row.callInitiationLink}>Result</a></td>
+                            <td className={row.callRetentionClassName}><a href={row.callRetentionLink}>Result</a></td>
+                            <td className={row.callSetupTimeClassName}><a href={row.callSetupTimeLink}>Result</a></td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
         </div>
     );
 };

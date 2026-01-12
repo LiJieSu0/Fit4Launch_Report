@@ -167,5 +167,29 @@
 
 .cover-title-right-align {
   text-align: right;
-  width: 100%; /* Ensure it takes full width to apply text-align effectively */
+  width: 100%;
+  /* Ensure it takes full width to apply text-align effectively */
+}
+
+/* Hide the ReportHeader on the first page during print */
+.print-header-cover {
+  display: none;
+}
+
+@media print {
+  .print-header-cover {
+    display: block;
+    position: absolute;
+    top: -50px;
+    /* Offset the padding of .cover-page */
+    left: -50px;
+    /* Offset the padding of .cover-page */
+    width: calc(100% + 100px);
+    /* Fill entire width including padding */
+    height: 110px;
+    /* Cover the header area */
+    background-color: white;
+    z-index: 2000;
+    /* Higher than ReportHeader's 1000 */
+  }
 }

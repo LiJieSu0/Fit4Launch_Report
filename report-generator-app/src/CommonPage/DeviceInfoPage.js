@@ -4,7 +4,6 @@ import DynamicHeader from './DynamicHeader';
 
 const deviceData = [
     {
-        market: "Seattle",
         testDeviceLabel: "Samsung XCover Pro7",
         role: "Device Under Test",
         softwareVersion: "SP1A.210812.016.A125USQU3CVG4",
@@ -16,7 +15,6 @@ const deviceData = [
         ]
     },
     {
-        market: "",
         testDeviceLabel: "Samsung GS25 FE",
         role: "Reference",
         softwareVersion: "BP2A.250605.031.A3.S731USQU1AYH5",
@@ -36,7 +34,6 @@ const DeviceInfoPage = () => {
             <table className="device-info-table general-table-style">
                 <thead>
                     <tr>
-                        <th>Market</th>
                         <th>Test Device Label</th>
                         <th>Role</th>
                         <th>Software Version</th>
@@ -46,7 +43,6 @@ const DeviceInfoPage = () => {
                 <tbody>
                     {deviceData.map((device, index) => (
                         <tr key={index}>
-                            <td>{device.market}</td>
                             <td>{device.testDeviceLabel}</td>
                             <td>{device.role}</td>
                             <td>{device.softwareVersion}</td>

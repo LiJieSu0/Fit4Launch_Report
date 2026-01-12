@@ -39,21 +39,47 @@ const reportType = {
   'DP': "Data Performance",
   'WFC': "WFC"
 }
-// Report Type Setup-------------------------------------------------------------------------
-const reportTypeNo = "CP";
-// Report Type Setup-------------------------------------------------------------------------
-//TODO Summary page results and link need to be loaded from file
 
 function App() {
+  const [currentReport, setCurrentReport] = useState(null);
+
+  if (!currentReport) {
+    return (
+      <div className="App-Home" style={{ padding: '50px', textAlign: 'center' }}>
+        <h1>Report Generator</h1>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', maxWidth: '300px', margin: '0 auto' }}>
+          {Object.entries(reportType).map(([key, value]) => (
+            <button
+              key={key}
+              onClick={() => setCurrentReport(key)}
+              style={{ padding: '15px', fontSize: '18px', cursor: 'pointer', borderRadius: '8px', border: '1px solid #ccc' }}
+            >
+              {value}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <ReportDataProvider>
       <HeaderProvider>
         <div className="App">
-          {/* <CoverPage reportType={reportType[reportTypeNo]} />
-          <DeviceInfoPage /> */}
+          <div style={{ position: 'fixed', top: '10px', left: '10px', zIndex: 1000 }}>
+            <button
+              onClick={() => setCurrentReport(null)}
+              style={{ padding: '8px 16px', cursor: 'pointer' }}
+            >
+              ← Back to Main Menu
+            </button>
+          </div>
+          <CoverPage reportType={reportType[currentReport]} />
           <ReportHeader />
+          <DeviceInfoPage />
           <ContentsIndexPage />
-          {reportTypeNo === "CV" && (
+
+          {currentReport === "CV" && (
             <>
               <CoverageSummaryPage />
               <CoverageDetails />
@@ -61,7 +87,7 @@ function App() {
             </>
           )}
 
-          {reportTypeNo === "VQ" && (
+          {currentReport === "VQ" && (
             <>
               <VqSummaryPage />
               <VqDetailsPage />
@@ -69,7 +95,7 @@ function App() {
             </>
           )}
 
-          {reportTypeNo === "CP" && (
+          {currentReport === "CP" && (
             <>
               <CpSummaryPage />
               <CallPerformanceDetails />
@@ -77,7 +103,7 @@ function App() {
             </>
           )}
 
-          {reportTypeNo === "DP" && (
+          {currentReport === "DP" && (
             <>
               <DpSummaryPage />
               <DpDetailsPage />
@@ -85,15 +111,16 @@ function App() {
             </>
           )}
 
-          {reportTypeNo === "WFC" && (
+          {currentReport === "WFC" && (
             <>
               <WfcSummaryPage />
               <WfcDetailsPage />
             </>
           )}
+
           <LegalPage />
           <AboutPage />
-          <ReportFooter reportType={reportType[reportTypeNo]} />
+          <ReportFooter reportType={reportType[currentReport]} />
         </div>
       </HeaderProvider>
     </ReportDataProvider>

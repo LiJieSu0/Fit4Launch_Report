@@ -69,18 +69,18 @@ const CpSummaryPage = () => {
                 <thead>
                     <tr>
                         <th>Test</th>
+                        <th>Call Setup Time</th>
                         <th>Call Initiation</th>
                         <th>Call Retention</th>
-                        <th>Call Setup Time</th>
                     </tr>
                 </thead>
                 <tbody>
                     {seattleData.map((row, index) => (
                         <tr key={index}>
                             <td>{row.test}</td>
+                            <td style={{ backgroundColor: row.callSetupTimeColor }}><a href={row.callSetupTimeLink}>Result</a></td>
                             <td style={{ backgroundColor: row.callInitiationColor }}><a href={row.callInitiationLink}>Result</a></td>
                             <td style={{ backgroundColor: row.callRetentionColor }}><a href={row.callRetentionLink}>Result</a></td>
-                            <td style={{ backgroundColor: row.callSetupTimeColor }}><a href={row.callSetupTimeLink}>Result</a></td>
                         </tr>
                     ))}
                 </tbody>
@@ -91,18 +91,18 @@ const CpSummaryPage = () => {
                 <thead>
                     <tr>
                         <th>Test</th>
+                        <th>Call Setup Time</th>
                         <th>Call Initiation</th>
                         <th>Call Retention</th>
-                        <th>Call Setup Time</th>
                     </tr>
                 </thead>
                 <tbody>
                     {newYorkData.map((row, index) => (
                         <tr key={index}>
                             <td>{row.test}</td>
+                            <td style={{ backgroundColor: row.callSetupTimeColor }}><a href={row.callSetupTimeLink}>Result</a></td>
                             <td style={{ backgroundColor: row.callInitiationColor }}><a href={row.callInitiationLink}>Result</a></td>
                             <td style={{ backgroundColor: row.callRetentionColor }}><a href={row.callRetentionLink}>Result</a></td>
-                            <td style={{ backgroundColor: row.callSetupTimeColor }}><a href={row.callSetupTimeLink}>Result</a></td>
                         </tr>
                     ))}
                 </tbody>

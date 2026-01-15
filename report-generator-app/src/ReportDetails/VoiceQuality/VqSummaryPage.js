@@ -1,8 +1,18 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
+import { HeaderContext } from '../../Contexts/HeaderContext';
+import { useContext } from 'react';
 
 const VqSummaryPage = () => {
+  const { numberedHeaders } = useContext(HeaderContext);
+
+  const getDynamicLink = (testCase, market) => {
+    const searchText = `${testCase} - ${market}`.toLowerCase();
+    const header = numberedHeaders.find(h => h.text.toLowerCase().includes(searchText));
+    return header ? `#${header.id}` : '#';
+  };
+
   const VqSummaryData = [
     {
       testCase: '5G Auto VoNR Enabled AMR NB VQ',
@@ -71,7 +81,7 @@ const VqSummaryPage = () => {
               <td>{data.testCase}</td>
               {markets.map(market => (
                 <td key={market} className={data.results[market].cellColor}>
-                  <a href={data.results[market].link}>Results</a>
+                  <a href={getDynamicLink(data.testCase, market)}>Results</a>
                 </td>
               ))}
             </tr>

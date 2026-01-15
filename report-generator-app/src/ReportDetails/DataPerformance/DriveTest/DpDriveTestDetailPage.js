@@ -187,7 +187,6 @@ const DpDriveTestDetailPage = ({ city: propCity }) => {
   return (
     <>
       <div className='page-content'>
-        <DynamicHeader level={2}>Mobility Test</DynamicHeader>
         <DynamicHeader level={3}>Mobility Test - 5G Auto - {city}</DynamicHeader>
         <DpDriveTestOverallTable data={formattedTestDriveData} tableName="Mobility Test Drive Overview" />
         <DpDriveTestTable data={formattedTestDriveData} tableName="Mobility Test Drive Details" />
@@ -218,7 +217,7 @@ const DpDriveTestDetailPage = ({ city: propCity }) => {
       {hasMhsData ? (
         <>
           <div className='page-content'>
-            <DynamicHeader level={3}>Mobility Test - Mobile Hotspot</DynamicHeader>
+            <DynamicHeader level={3}>Mobility Test - Mobile Hotspot - 5G Auto - {city}</DynamicHeader>
             <DpMHSTestDriveOverallTable data={formattedMhsTestDriveData} tableName="MHS Test Drive Overall Data" />
             <DpMHSTestDriveTable data={formattedMhsTestDriveData} tableName="MHS Test Drive Data" />
           </div>

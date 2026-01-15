@@ -725,6 +725,7 @@ function Dp_Udp_Component({ city: propCity }) {
     <>
       <div className='page-content'>
         <DynamicHeader level={2}>UDP Test - 5G Auto - {city}</DynamicHeader>
+        <DynamicHeader level={3}>UDP Download Details - 5G Auto - {city}</DynamicHeader>
         {/* dp udp overall  table */}
         <DpUdpTableLoc3 data={udp_Stationary_DL} tableName="UDP Test DL Details" />
       </div>
@@ -774,6 +775,7 @@ function Dp_Udp_Component({ city: propCity }) {
 
 
       <div className='page-content'>
+        <DynamicHeader level={3}>UDP Upload Details - 5G Auto - {city}</DynamicHeader>
         <DpUdpTableLoc3 data={udp_Stationary_UL} tableName="UDP Test UL Details" />
       </div>
 

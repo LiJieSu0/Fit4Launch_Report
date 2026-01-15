@@ -164,7 +164,7 @@ function Dp_MHS_httpMS_Component({ city: propCity }) {
   return (
     <>
       <div className='page-content'>
-        <DynamicHeader level={3}>HTTP Multi Stream Test - Mobile Hotspot - {city}</DynamicHeader>
+        <DynamicHeader level={3}>HTTP Multi Stream Test - Mobile Hotspot - 5G Auto - {city}</DynamicHeader>
         <h4>MHS Http Multi Stream Overview </h4>
         <DpThroughputOverallTable
           tableHeader={overallTableHeader}

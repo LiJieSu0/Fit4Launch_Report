@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './CoverageSummaryTable.module.css';
 import '.././../StyleScript/Restricted_Report_Style.css';
 import { useReportData } from '../../Contexts/ReportContext';
+import { HeaderContext } from '../../Contexts/HeaderContext';
+import { useContext } from 'react';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const KPI_CONFIG = [
@@ -19,7 +21,21 @@ const BANDS = [
 
 const CoverageSummaryTable = () => {
     const { allReportData, availableCities, loadCityData } = useReportData();
+    const { numberedHeaders } = useContext(HeaderContext);
     const markets = availableCities || ["Seattle", "New York"];
+
+    const getDynamicLink = (market, bandKey, kpiLink) => {
+        // Band headers are e.g. "5G VoNR Coverage Test - N25, N41, N71 - Seattle"
+        const searchText = `Coverage Test - N25, N41, N71 - ${market}`.toLowerCase();
+        const header = numberedHeaders.find(h => h.text.toLowerCase().includes(searchText));
+
+        // Coverage headers for HPUE etc.
+        const hpueSearch = `HPUE VoNR Coverage Test - ${market}`.toLowerCase();
+        const hpueHeader = numberedHeaders.find(h => h.text.toLowerCase().includes(hpueSearch));
+
+        const baseHeader = bandKey === 'hpue' ? hpueHeader : header;
+        return baseHeader ? `#${baseHeader.id}` : '#';
+    };
 
     React.useEffect(() => {
         markets.forEach(market => {
@@ -61,9 +77,7 @@ const CoverageSummaryTable = () => {
         const color = getKpiCellColor('CoverageDistance', dutAvg, refAvg);
         const status = color === 'var(--performance-pass)' || color === 'var(--performance-excellent)' ? "Pass" : "Fail";
 
-        // Construct anchor link: e.g. #2.1DL or #NY2.1DL
-        const marketPrefix = market === "Seattle" ? "" : (market === "New York" ? "NY" : market.substring(0, 2).toUpperCase());
-        const link = `#${marketPrefix}${band.anchor}${kpi.link}`;
+        const link = getDynamicLink(market, band.key, kpi.link);
 
         return { status, color, link };
     };

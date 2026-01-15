@@ -4,11 +4,13 @@ import { ReportContext } from '../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
+import { HeaderContext } from '../../Contexts/HeaderContext';
 
 
 //TODO summary page cell link
 function DpSummaryPage() {
   const { allReportData } = useContext(ReportContext);
+  const { numberedHeaders } = useContext(HeaderContext);
 
   const MARKETS_CONFIG = [
     { label: "Seattle (5G NR)", city: "Seattle", network: "5G AUTO DP" },
@@ -125,18 +127,46 @@ function DpSummaryPage() {
     };
   };
 
-  // const extractThroughput = (path, direction) => { 
-  //   const value = path?.Throughput?.[direction]?.Mean || path?.Throughput?.Mean;
-  //   const className = value > 100 ? 'average-fail' : 'average-pass'; // Placeholder logic
-  //   return { label: value ? value.toFixed(2) : 'N/A', className, link: "#" };
-  // };
+  const getLink = (caseName, market, subId = '') => {
+    const city = market.city;
+    const network = market.network.includes("AUTO") ? "5G Auto" : "5G NSA";
+    const isMHS = caseName.startsWith("MHS");
+    const cleanCaseName = caseName.replace("MHS-", "").replace("Play-store", "Play-store");
+
+    // Find header that matches city, network, case name, and subId
+    const header = numberedHeaders.find(h => {
+      const text = h.text.toLowerCase();
+      const matchesCity = text.includes(city.toLowerCase());
+      const matchesNetwork = text.includes(network.toLowerCase());
+      const matchesCase = text.includes(cleanCaseName.toLowerCase()) ||
+        (cleanCaseName === "Web Browser" && text.includes("web browser")) ||
+        (cleanCaseName === "Play-store App Download" && text.includes("play-store")) ||
+        (caseName === "Mobility" && text.includes("mobility test"));
+      const matchesMHS = isMHS ?
+        (text.includes("mobile hotspot") || text.includes("mhs")) :
+        (!text.includes("mobile hotspot") && !text.includes("mhs"));
+
+      const matchesSub = !subId ||
+        (subId === 'DL' && (text.includes("download") || text.includes("dl"))) ||
+        (subId === 'UL' && (text.includes("upload") || text.includes("ul")));
+
+      return matchesCity && matchesNetwork && matchesCase && matchesMHS && matchesSub;
+    });
+
+    if (header) {
+      return `#${header.id}`;
+    }
+
+    return '#';
+  };
+
   const NR_MARKETS = MARKETS_CONFIG.filter(m => m.network === "5G AUTO DP");
   const NSA_MARKETS = MARKETS_CONFIG.filter(m => m.network === "5G NSA DP");
 
   const httpSSData = {
     headers: [{ label: "HTTP Single Stream Test Download & Upload - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
-    rows: NR_MARKETS.map(market => {
+    rows: NR_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const dlResult = getAveragedKPI(cityData, market.network, "HTTP Single Stream", ["Throughput", "Mean"], "Throughput", "DL");
       const ulResult = getAveragedKPI(cityData, market.network, "HTTP Single Stream", ["Throughput", "Mean"], "Throughput", "UL");
@@ -144,8 +174,8 @@ function DpSummaryPage() {
         cells: [
           { label: market.label },
           { label: "Mean Throughput" },
-          { label: 'Result', className: mapColorVarToClass(dlResult), link: '#2.1' },
-          { label: 'Result', className: mapColorVarToClass(ulResult), link: '#2.1' }
+          { label: 'Result', className: mapColorVarToClass(dlResult), link: getLink("HTTP Single Stream", market) },
+          { label: 'Result', className: mapColorVarToClass(ulResult), link: getLink("HTTP Single Stream", market) }
         ]
       };
     })
@@ -154,7 +184,7 @@ function DpSummaryPage() {
   const httpMSData = {
     headers: [{ label: "HTTP Multi Stream Test Download & Upload - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
-    rows: NR_MARKETS.map(market => {
+    rows: NR_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const dlResult = getAveragedKPI(cityData, market.network, "HTTP Multi Stream", ["Throughput", "Mean"], "Throughput", "DL");
       const ulResult = getAveragedKPI(cityData, market.network, "HTTP Multi Stream", ["Throughput", "Mean"], "Throughput", "UL");
@@ -162,8 +192,8 @@ function DpSummaryPage() {
         cells: [
           { label: market.label },
           { label: "Mean Throughput" },
-          { label: 'Result', className: mapColorVarToClass(dlResult), link: '#2.2' },
-          { label: 'Result', className: mapColorVarToClass(ulResult), link: '#2.2' }
+          { label: 'Result', className: mapColorVarToClass(dlResult), link: getLink("HTTP Multi Stream", market) },
+          { label: 'Result', className: mapColorVarToClass(ulResult), link: getLink("HTTP Multi Stream", market) }
         ]
       };
     })
@@ -172,7 +202,7 @@ function DpSummaryPage() {
   const udpData = {
     headers: [{ label: "UDP Test - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
-    rows: NR_MARKETS.flatMap(market => {
+    rows: NR_MARKETS.flatMap((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const dlTput = getUdpResult(cityData, market.network, "DL", "Throughput");
       const ulTput = getUdpResult(cityData, market.network, "UL", "Throughput");
@@ -181,9 +211,9 @@ function DpSummaryPage() {
       const dlErr = getUdpResult(cityData, market.network, "DL", "ErrorRatio");
       const ulErr = getUdpResult(cityData, market.network, "UL", "ErrorRatio");
       return [
-        { cells: [{ label: market.label, rowSpan: 3 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(dlTput), link: '#2.3DL' }, { label: 'Result', className: mapColorVarToClass(ulTput), link: '#2.3UL' }] },
-        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(dlJitter), link: '#2.3DL' }, { label: 'Result', className: mapColorVarToClass(ulJitter), link: '#2.3UL' }] },
-        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(dlErr), link: '#2.3DL' }, { label: 'Result', className: mapColorVarToClass(ulErr), link: '#2.3UL' }] }
+        { cells: [{ label: market.label, rowSpan: 3 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(dlTput), link: getLink("UDP", market, 'DL') }, { label: 'Result', className: mapColorVarToClass(ulTput), link: getLink("UDP", market, 'UL') }] },
+        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(dlJitter), link: getLink("UDP", market, 'DL') }, { label: 'Result', className: mapColorVarToClass(ulJitter), link: getLink("UDP", market, 'UL') }] },
+        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(dlErr), link: getLink("UDP", market, 'DL') }, { label: 'Result', className: mapColorVarToClass(ulErr), link: getLink("UDP", market, 'UL') }] }
       ];
     })
   };
@@ -195,14 +225,14 @@ function DpSummaryPage() {
       { label: "Metrics" },
       { label: "RTT" }
     ],
-    rows: NR_MARKETS.map(market => {
+    rows: NR_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const result = getAveragedKPI(cityData, market.network, "Ping", ["Ping RTT", "avg"], "PingLatency");
       return {
         cells: [
           { label: market.label },
           { label: "Mean Round Trip Time" },
-          { label: 'Result', className: mapColorVarToClass(result), link: '#2.4' }
+          { label: 'Result', className: mapColorVarToClass(result), link: getLink("Ping", market) }
         ]
       };
     })
@@ -215,14 +245,14 @@ function DpSummaryPage() {
       { label: "Metrics" },
       { label: "Load Time" }
     ],
-    rows: NR_MARKETS.map(market => {
+    rows: NR_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const result = getAveragedKPI(cityData, market.network, "5G Auto Data Web-Kepler", ["Web Page Load Time", "Mean"], "WebPageLoadTime");
       return {
         cells: [
           { label: market.label },
           { label: "Average Page Load Time" },
-          { label: 'Result', className: mapColorVarToClass(result), link: '#2.5' }
+          { label: 'Result', className: mapColorVarToClass(result), link: getLink("Web Browser", market) }
         ]
       };
     })
@@ -231,7 +261,7 @@ function DpSummaryPage() {
   const playStoreData = {
     headers: [{ label: "Play-store App Download Test - 5G Auto", colSpan: 5 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "30M" }, { label: "60M" }, { label: "100M" }],
-    rows: NR_MARKETS.map(market => {
+    rows: NR_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       // Play-store data structure usually multiple tasks or aggregated? Assume similar averaging
       const r30m = getAveragedKPI(cityData, market.network, "5G Auto Data Play-store app Download", ["30M", "overall_average_throughput"], "Throughput");
@@ -242,9 +272,9 @@ function DpSummaryPage() {
         cells: [
           { label: market.label },
           { label: "Mean Throughput" },
-          { label: 'Result', className: mapColorVarToClass(r30m), link: '#2.6' },
-          { label: 'Result', className: mapColorVarToClass(r60m), link: '#2.6' },
-          { label: 'Result', className: mapColorVarToClass(r100m), link: '#2.6' }
+          { label: 'Result', className: mapColorVarToClass(r30m), link: getLink("Play-store App Download", market) },
+          { label: 'Result', className: mapColorVarToClass(r60m), link: getLink("Play-store App Download", market) },
+          { label: 'Result', className: mapColorVarToClass(r100m), link: getLink("Play-store App Download", market) }
         ]
       };
     })
@@ -253,7 +283,7 @@ function DpSummaryPage() {
   const mhsHttpSSData = {
     headers: [{ label: "MHS-HTTP Single Stream Test Download & Upload - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
-    rows: NR_MARKETS.map(market => {
+    rows: NR_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const base = ["Mobile Hotspot Test", "HTTP Single Stream"];
       const dl = getAveragedKPI(cityData, market.network, base[0], ["Throughput", "Mean"], "Throughput", [base[1], "DL"]);
@@ -262,8 +292,8 @@ function DpSummaryPage() {
         cells: [
           { label: market.label },
           { label: "Mean Throughput" },
-          { label: 'Result', className: mapColorVarToClass(dl), link: '#2.7' },
-          { label: 'Result', className: mapColorVarToClass(ul), link: '#2.7' }
+          { label: 'Result', className: mapColorVarToClass(dl), link: getLink("MHS-HTTP Single Stream", market) },
+          { label: 'Result', className: mapColorVarToClass(ul), link: getLink("MHS-HTTP Single Stream", market) }
         ]
       };
     })
@@ -272,7 +302,7 @@ function DpSummaryPage() {
   const mhsHttpMSData = {
     headers: [{ label: "MHS-HTTP Multi Stream Test Download & Upload - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
-    rows: NR_MARKETS.map(market => {
+    rows: NR_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const base = ["Mobile Hotspot Test", "HTTP Multi Stream"];
       const dl = getAveragedKPI(cityData, market.network, base[0], ["Throughput", "Mean"], "Throughput", [base[1], "DL"]);
@@ -281,8 +311,8 @@ function DpSummaryPage() {
         cells: [
           { label: market.label },
           { label: "Mean Throughput" },
-          { label: 'Result', className: mapColorVarToClass(dl), link: '#2.8' },
-          { label: 'Result', className: mapColorVarToClass(ul), link: '#2.8' }
+          { label: 'Result', className: mapColorVarToClass(dl), link: getLink("MHS-HTTP Multi Stream", market) },
+          { label: 'Result', className: mapColorVarToClass(ul), link: getLink("MHS-HTTP Multi Stream", market) }
         ]
       };
     })
@@ -316,7 +346,7 @@ function DpSummaryPage() {
   const mhsUdpData = {
     headers: [{ label: "MHS-UDP Test - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
-    rows: NR_MARKETS.flatMap(market => {
+    rows: NR_MARKETS.flatMap((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const dlTput = getMhsUdpResult(cityData, market.network, "DL", "Throughput");
       const ulTput = getMhsUdpResult(cityData, market.network, "UL", "Throughput");
@@ -325,9 +355,9 @@ function DpSummaryPage() {
       const dlErr = getMhsUdpResult(cityData, market.network, "DL", "ErrorRatio");
       const ulErr = getMhsUdpResult(cityData, market.network, "UL", "ErrorRatio");
       return [
-        { cells: [{ label: market.label, rowSpan: 3 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(dlTput), link: '#2.9DL' }, { label: 'Result', className: mapColorVarToClass(ulTput), link: '#2.9UL' }] },
-        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(dlJitter), link: '#2.9DL' }, { label: 'Result', className: mapColorVarToClass(ulJitter), link: '#2.9UL' }] },
-        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(dlErr), link: '#2.9DL' }, { label: 'Result', className: mapColorVarToClass(ulErr), link: '#2.9UL' }] }
+        { cells: [{ label: market.label, rowSpan: 3 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(dlTput), link: getLink("MHS-UDP", market, 'DL') }, { label: 'Result', className: mapColorVarToClass(ulTput), link: getLink("MHS-UDP", market, 'UL') }] },
+        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(dlJitter), link: getLink("MHS-UDP", market, 'DL') }, { label: 'Result', className: mapColorVarToClass(ulJitter), link: getLink("MHS-UDP", market, 'UL') }] },
+        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(dlErr), link: getLink("MHS-UDP", market, 'DL') }, { label: 'Result', className: mapColorVarToClass(ulErr), link: getLink("MHS-UDP", market, 'UL') }] }
       ];
     })
   };
@@ -335,14 +365,14 @@ function DpSummaryPage() {
   const mhsPingData = {
     headers: [{ label: "MHS-Ping Test - 5G Auto", colSpan: 3 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "RTT" }],
-    rows: NR_MARKETS.map(market => {
+    rows: NR_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const res = getAveragedKPI(cityData, market.network, "Mobile Hotspot Test", ["Ping RTT", "avg"], "PingLatency", "Ping");
       return {
         cells: [
           { label: market.label },
           { label: "Mean Round Trip Time" },
-          { label: 'Result', className: mapColorVarToClass(res), link: '#2.10' }
+          { label: 'Result', className: mapColorVarToClass(res), link: getLink("MHS-Ping", market) }
         ]
       };
     })
@@ -391,7 +421,7 @@ function DpSummaryPage() {
   const mobiltyData = {
     headers: [{ label: "Mobility Test - 5G Auto", colSpan: 3 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Value" }],
-    rows: NR_MARKETS.flatMap(market => {
+    rows: NR_MARKETS.flatMap((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const caseName = "5G Auto Data Test Drive";
       const tput = getMobilityResult(cityData, market.network, caseName, "Throughput");
@@ -399,10 +429,10 @@ function DpSummaryPage() {
       const err = getMobilityResult(cityData, market.network, caseName, "ErrorRatio");
       const rtt = getMobilityResult(cityData, market.network, caseName, "PingLatency");
       return [
-        { cells: [{ label: market.label, rowSpan: 4 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(tput), link: '#2.11' }] },
-        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(jitter), link: '#2.11' }] },
-        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(err), link: '#2.11' }] },
-        { cells: [null, { label: "Mean Round Trip Time" }, { label: 'Result', className: mapColorVarToClass(rtt), link: '#2.11' }] }
+        { cells: [{ label: market.label, rowSpan: 4 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(tput), link: getLink("Mobility", market) }] },
+        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(jitter), link: getLink("Mobility", market) }] },
+        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(err), link: getLink("Mobility", market) }] },
+        { cells: [null, { label: "Mean Round Trip Time" }, { label: 'Result', className: mapColorVarToClass(rtt), link: getLink("Mobility", market) }] }
       ];
     })
   };
@@ -410,7 +440,7 @@ function DpSummaryPage() {
   const mobiltyMHSData = {
     headers: [{ label: "Mobility Test - Mobile Hotspot", colSpan: 3 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Value" }],
-    rows: NR_MARKETS.flatMap(market => {
+    rows: NR_MARKETS.flatMap((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const caseName = "5G Auto Data Test MHS Drive";
       const tput = getMobilityResult(cityData, market.network, caseName, "Throughput");
@@ -418,10 +448,10 @@ function DpSummaryPage() {
       const err = getMobilityResult(cityData, market.network, caseName, "ErrorRatio");
       const rtt = getMobilityResult(cityData, market.network, caseName, "PingLatency");
       return [
-        { cells: [{ label: market.label, rowSpan: 4 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(tput), link: '#2.12' }] },
-        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(jitter), link: '#2.12' }] },
-        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(err), link: '#2.12' }] },
-        { cells: [null, { label: "Mean Round Trip Time" }, { label: 'Result', className: mapColorVarToClass(rtt), link: '#2.12' }] }
+        { cells: [{ label: market.label, rowSpan: 4 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(tput), link: getLink("MHS-Mobility", market) }] },
+        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(jitter), link: getLink("MHS-Mobility", market) }] },
+        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(err), link: getLink("MHS-Mobility", market) }] },
+        { cells: [null, { label: "Mean Round Trip Time" }, { label: 'Result', className: mapColorVarToClass(rtt), link: getLink("MHS-Mobility", market) }] }
       ];
     })
   };
@@ -429,7 +459,7 @@ function DpSummaryPage() {
   const mrabData = {
     headers: [{ label: "MRAB Test - 5G Auto", colSpan: 5 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Pre Call" }, { label: "In Call" }, { label: "Post Call" }],
-    rows: NR_MARKETS.map(market => {
+    rows: NR_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const base = cityData?.dataPerformance?.["Data Performance"]?.[market.network]?.["5G VoNR MRAB Stationary"];
       const getMrabRes = (sub) => {
@@ -441,9 +471,9 @@ function DpSummaryPage() {
         cells: [
           { label: market.label },
           { label: "Mean Throughput" },
-          { label: 'Result', className: mapColorVarToClass(getMrabRes("Pre Call")), link: '#2.13' },
-          { label: 'Result', className: mapColorVarToClass(getMrabRes("In Call")), link: '#2.13' },
-          { label: 'Result', className: mapColorVarToClass(getMrabRes("Post Call")), link: '#2.13' }
+          { label: 'Result', className: mapColorVarToClass(getMrabRes("Pre Call")), link: getLink("MRAB", market) },
+          { label: 'Result', className: mapColorVarToClass(getMrabRes("In Call")), link: getLink("MRAB", market) },
+          { label: 'Result', className: mapColorVarToClass(getMrabRes("Post Call")), link: getLink("MRAB", market) }
         ]
       };
     })
@@ -452,7 +482,7 @@ function DpSummaryPage() {
   const httpNSASSData = {
     headers: [{ label: "HTTP Single Stream Test Download & Upload - 5G NSA", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
-    rows: NSA_MARKETS.map(market => {
+    rows: NSA_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const dl = getAveragedKPI(cityData, market.network, "HTTP Single Stream", ["Throughput", "Mean"], "Throughput", "DL");
       const ul = getAveragedKPI(cityData, market.network, "HTTP Single Stream", ["Throughput", "Mean"], "Throughput", "UL");
@@ -460,8 +490,8 @@ function DpSummaryPage() {
         cells: [
           { label: market.label },
           { label: "Data Throughput Average" },
-          { label: 'Result', className: mapColorVarToClass(dl), link: '#3.1' },
-          { label: 'Result', className: mapColorVarToClass(ul), link: '#3.1' }
+          { label: 'Result', className: mapColorVarToClass(dl), link: getLink("HTTP Single Stream", market) },
+          { label: 'Result', className: mapColorVarToClass(ul), link: getLink("HTTP Single Stream", market) }
         ]
       };
     })
@@ -470,7 +500,7 @@ function DpSummaryPage() {
   const httpNSAMSData = {
     headers: [{ label: "HTTP Multi Stream Test Download & Upload - 5G NSA", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
-    rows: NSA_MARKETS.map(market => {
+    rows: NSA_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const dl = getAveragedKPI(cityData, market.network, "HTTP Multi Stream", ["Throughput", "Mean"], "Throughput", "DL");
       const ul = getAveragedKPI(cityData, market.network, "HTTP Multi Stream", ["Throughput", "Mean"], "Throughput", "UL");
@@ -478,8 +508,8 @@ function DpSummaryPage() {
         cells: [
           { label: market.label },
           { label: "Data Throughput Average" },
-          { label: 'Result', className: mapColorVarToClass(dl), link: '#3.2' },
-          { label: 'Result', className: mapColorVarToClass(ul), link: '#3.2' }
+          { label: 'Result', className: mapColorVarToClass(dl), link: getLink("HTTP Multi Stream", market) },
+          { label: 'Result', className: mapColorVarToClass(ul), link: getLink("HTTP Multi Stream", market) }
         ]
       };
     })
@@ -488,7 +518,7 @@ function DpSummaryPage() {
   const udpNSAData = {
     headers: [{ label: "UDP Test - 5G NSA", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
-    rows: NSA_MARKETS.flatMap(market => {
+    rows: NSA_MARKETS.flatMap((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const dlTput = getUdpResult(cityData, market.network, "DL", "Throughput");
       const ulTput = getUdpResult(cityData, market.network, "UL", "Throughput");
@@ -497,9 +527,9 @@ function DpSummaryPage() {
       const dlErr = getUdpResult(cityData, market.network, "DL", "ErrorRatio");
       const ulErr = getUdpResult(cityData, market.network, "UL", "ErrorRatio");
       return [
-        { cells: [{ label: market.label, rowSpan: 3 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(dlTput), link: '#3.3DL' }, { label: 'Result', className: mapColorVarToClass(ulTput), link: '#3.3UL' }] },
-        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(dlJitter), link: '#3.3DL' }, { label: 'Result', className: mapColorVarToClass(ulJitter), link: '#3.3UL' }] },
-        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(dlErr), link: '#3.3DL' }, { label: 'Result', className: mapColorVarToClass(ulErr), link: '#3.3UL' }] }
+        { cells: [{ label: market.label, rowSpan: 3 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(dlTput), link: getLink("UDP", market, 'DL') }, { label: 'Result', className: mapColorVarToClass(ulTput), link: getLink("UDP", market, 'UL') }] },
+        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(dlJitter), link: getLink("UDP", market, 'DL') }, { label: 'Result', className: mapColorVarToClass(ulJitter), link: getLink("UDP", market, 'UL') }] },
+        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(dlErr), link: getLink("UDP", market, 'DL') }, { label: 'Result', className: mapColorVarToClass(ulErr), link: getLink("UDP", market, 'UL') }] }
       ];
     })
   };
@@ -507,14 +537,14 @@ function DpSummaryPage() {
   const pingNSAData = {
     headers: [{ label: "Ping Test - 5G NSA", colSpan: 3 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "RTT" }],
-    rows: NSA_MARKETS.map(market => {
+    rows: NSA_MARKETS.map((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const res = getAveragedKPI(cityData, market.network, "Ping", ["Ping RTT", "avg"], "PingLatency");
       return {
         cells: [
           { label: market.label },
           { label: "Mean Round Trip Time" },
-          { label: 'Result', className: mapColorVarToClass(res), link: '#3.4' }
+          { label: 'Result', className: mapColorVarToClass(res), link: getLink("Ping", market) }
         ]
       };
     })
@@ -523,7 +553,7 @@ function DpSummaryPage() {
   const mobiltyNSAData = {
     headers: [{ label: "Mobility Test - 5G NSA", colSpan: 3 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Value" }],
-    rows: NSA_MARKETS.flatMap(market => {
+    rows: NSA_MARKETS.flatMap((market, marketIdx) => {
       const cityData = allReportData[market.city];
       const caseName = "5G NSA Data Test Drive"; // Placeholder case name for NSA
       const tput = getMobilityResult(cityData, market.network, caseName, "Throughput");
@@ -531,10 +561,10 @@ function DpSummaryPage() {
       const err = getMobilityResult(cityData, market.network, caseName, "ErrorRatio");
       const rtt = getMobilityResult(cityData, market.network, caseName, "PingLatency");
       return [
-        { cells: [{ label: market.label, rowSpan: 4 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(tput), link: '#3.5' }] },
-        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(jitter), link: '#3.5' }] },
-        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(err), link: '#3.5' }] },
-        { cells: [null, { label: "Mean Round Trip Time" }, { label: 'Result', className: mapColorVarToClass(rtt), link: '#3.5' }] }
+        { cells: [{ label: market.label, rowSpan: 4 }, { label: "Mean Throughput" }, { label: 'Result', className: mapColorVarToClass(tput), link: getLink("Mobility", market) }] },
+        { cells: [null, { label: "Mean Jitter" }, { label: 'Result', className: mapColorVarToClass(jitter), link: getLink("Mobility", market) }] },
+        { cells: [null, { label: "Packet Failure Rate" }, { label: 'Result', className: mapColorVarToClass(err), link: getLink("Mobility", market) }] },
+        { cells: [null, { label: "Mean Round Trip Time" }, { label: 'Result', className: mapColorVarToClass(rtt), link: getLink("Mobility", market) }] }
       ];
     })
   };

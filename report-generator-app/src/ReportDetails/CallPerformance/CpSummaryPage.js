@@ -2,6 +2,8 @@ import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 import { useReportData } from '../../Contexts/ReportContext';
+import { HeaderContext } from '../../Contexts/HeaderContext';
+import { useContext } from 'react';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 
 
@@ -11,6 +13,13 @@ const CpSummaryPage = () => {
 
 
     const { allReportData } = useReportData();
+    const { numberedHeaders } = useContext(HeaderContext);
+
+    const getDynamicLink = (scenarioKey, marketName) => {
+        const searchText = `${scenarioKey} - ${marketName}`.toLowerCase();
+        const header = numberedHeaders.find(h => h.text.toLowerCase().includes(searchText));
+        return header ? `#${header.id}` : '#';
+    };
 
     const getMarketRows = (marketName) => {
         const marketData = allReportData[marketName]?.callPerformance?.['Call Performance'];
@@ -37,9 +46,9 @@ const CpSummaryPage = () => {
             return {
                 test: s.label,
                 market: marketName,
-                callInitiationLink: s.link,
-                callRetentionLink: s.link,
-                callSetupTimeLink: s.link,
+                callInitiationLink: getDynamicLink(s.key, marketName),
+                callRetentionLink: getDynamicLink(s.key, marketName),
+                callSetupTimeLink: getDynamicLink(s.key, marketName),
                 callInitiationColor: mapExcellentToPass(getKpiCellColor('CallInitiation', data.initiation_p_value)),
                 callRetentionColor: mapExcellentToPass(getKpiCellColor('CallRetention', data.retention_p_value)),
                 callSetupTimeColor: mapExcellentToPass(getKpiCellColor('CallSetupTime', data.DUT.mean_setup_time, data.REF.mean_setup_time))

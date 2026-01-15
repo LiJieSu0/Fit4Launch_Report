@@ -35,6 +35,10 @@ export const HeaderProvider = ({ children }) => {
 
         const counts = { h1: 0, h2: 0, h3: 0 };
         return sorted.map((header) => {
+            if (header.hideInTOC) {
+                return { ...header, number: '' };
+            }
+
             let number = '';
             if (header.level === 1) {
                 counts.h1++;

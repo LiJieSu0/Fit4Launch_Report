@@ -8,7 +8,7 @@ const extractText = (children) => {
     return '';
 };
 
-const DynamicHeader = ({ level, children, id, className, ...props }) => {
+const DynamicHeader = ({ level, children, id, className, hideInTOC = false, ...props }) => {
     const { registerHeader, unregisterHeader, numberedHeaders } = useContext(HeaderContext);
     const headerRef = useRef(null);
     const [number, setNumber] = useState('');
@@ -21,7 +21,8 @@ const DynamicHeader = ({ level, children, id, className, ...props }) => {
             level,
             ref: headerRef,
             text: extractText(children),
-            id: headerId
+            id: headerId,
+            hideInTOC
         };
 
         registerHeader(headerInfo);
@@ -42,7 +43,7 @@ const DynamicHeader = ({ level, children, id, className, ...props }) => {
 
     return (
         <Tag ref={headerRef} id={headerId} className={className} {...props}>
-            {number} {children}
+            {!hideInTOC && number} {children}
         </Tag>
     );
 };

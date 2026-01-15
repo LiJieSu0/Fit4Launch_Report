@@ -25,16 +25,28 @@ const CoverageSummaryTable = () => {
     const markets = availableCities || ["Seattle", "New York"];
 
     const getDynamicLink = (market, bandKey, kpiLink) => {
-        // Band headers are e.g. "5G VoNR Coverage Test - N25, N41, N71 - Seattle"
-        const searchText = `Coverage Test - N25, N41, N71 - ${market}`.toLowerCase();
-        const header = numberedHeaders.find(h => h.text.toLowerCase().includes(searchText));
+        const citySearch = market.toLowerCase();
+        const bandLabel = bandKey.toUpperCase(); // e.g. N25
+        const kpiSearch = kpiLink === 'DL' ? 'dl' :
+            kpiLink === 'UL' ? 'ul' :
+                kpiLink === 'MOS' ? 'mos' :
+                    kpiLink === 'Call' ? 'call drop' : '';
 
-        // Coverage headers for HPUE etc.
-        const hpueSearch = `HPUE VoNR Coverage Test - ${market}`.toLowerCase();
-        const hpueHeader = numberedHeaders.find(h => h.text.toLowerCase().includes(hpueSearch));
+        // Find header that matches city, band, and kpi keyword
+        const header = numberedHeaders.find(h => {
+            const text = h.text.toLowerCase();
+            const matchesCity = text.includes(citySearch);
+            const matchesBand = text.includes(bandLabel.toLowerCase());
+            const matchesKPI = kpiSearch ? text.includes(kpiSearch) : true;
 
-        const baseHeader = bandKey === 'hpue' ? hpueHeader : header;
-        return baseHeader ? `#${baseHeader.id}` : '#';
+            // For HPUE, it might be different, but BANDS currently doesn't have HPUE.
+            // If it did, bandKey would be 'hpue'.
+            const matchesHPUE = bandKey === 'hpue' ? text.includes('hpue') : !text.includes('hpue');
+
+            return matchesCity && matchesBand && matchesKPI && matchesHPUE;
+        });
+
+        return header ? `#${header.id}` : '#';
     };
 
     React.useEffect(() => {

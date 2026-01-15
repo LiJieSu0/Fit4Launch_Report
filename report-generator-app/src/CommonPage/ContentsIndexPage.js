@@ -32,7 +32,8 @@ const ContentsIndexPage = () => {
     return chunks;
   };
 
-  const headerChunks = chunkArray(numberedHeaders, ITEMS_PER_PAGE);
+  const visibleHeaders = numberedHeaders.filter(h => !h.hideInTOC);
+  const headerChunks = chunkArray(visibleHeaders, ITEMS_PER_PAGE);
 
   if (headerChunks.length === 0) {
     return (

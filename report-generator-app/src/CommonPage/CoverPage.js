@@ -46,7 +46,7 @@ const CoverPage = ({ reportType }) => {
       <div className="footer-logos">
         <div className="footer-left-content">
           <p className="footer-comment-text">DOCUMENT CONTROL NUMBER NA</p>
-          <p className="footer-comment-text">© 2025 ATMC Labs</p>
+          <p className="footer-comment-text">© 2026 ATMC Labs</p>
           <img src="/CoverPagePic/other-logo.png" alt="other-logo" style={{ maxWidth: '60%', height: '60%' }} />
           <p className="footer-text">ATMC Labs One Stop Test Service</p>
         </div>

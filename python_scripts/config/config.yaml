@@ -1,0 +1,40 @@
+project:
+  name: "ReportGenerator"
+  market: "Seattle"
+  base_raw_data_dir: "D:/ReportGenerator/Raw Data"
+  output_dir: "D:/ReportGenerator/python_scripts/Analyze Summary"
+
+logging:
+  level: "INFO"
+  log_file: "logs/report_generator.log"
+
+analysis:
+  directories:
+    - path: "Data Performance/5G AUTO DP"
+      analysis_type: "data_performance"
+    - path: "Data Performance/5G NSA DP"
+      analysis_type: "data_performance"
+    - path: "5G VoNR MRAB Stationary"
+      analysis_type: "mrab_performance"
+    - path: "Call Performance"
+      analysis_type: "call_performance"
+    - path: "Voice Quality"
+      analysis_type: "voice_quality_combined"
+    - path: "Coverage Performance"
+      analysis_type: "coverage_coordinate"
+    - path: "Coverage Performance/5G n41 HPUE Coverage Test"
+      analysis_type: "n41_coverage"
+    - path: "Coverage Performance/5G VoNR Coverage Test"
+      analysis_type: "vonr_coverage_performance"
+    - path: "Data Performance/5G AUTO DP/5G Auto Data Play-store app Download"
+      analysis_type: "google_throughput_analysis"
+    - path: "Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive"
+      analysis_type: "mhs_drive_performance"
+
+auto_call:
+  phone_number: "922"
+  call_duration: 50
+  wait_time_after_hangup: 5
+  num_calls: 300
+  specific_devices:
+    - "R5CR31GAESR"

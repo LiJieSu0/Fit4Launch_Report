@@ -23,53 +23,63 @@ def check_empty_collections(data, path_parts=None, empty_collections_found=None)
             check_empty_collections(item, path_parts + [f"[{index}]"], empty_collections_found)
     return empty_collections_found
 
-def main(output_dir):
+def validate_json_results(output_dir):
+    """
+    Checks JSON results for empty collections and returns a list of finding strings.
+    """
     json_files_to_check = [
         "data_performance_results.json",
         "call_performance_results.json",
         "voice_quality_results.json",
         "coverage_performance_results.json"
     ]
-    output_file_path = os.path.join(output_dir, "Empty_Json.txt")
+    
+    findings = []
+    all_empty_collections = []
+    
+    for json_filename in json_files_to_check:
+        json_file_path = os.path.join(output_dir, json_filename)
+        if not os.path.exists(json_file_path):
+            continue
+            
+        try:
+            with open(json_file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            empty_collections = check_empty_collections(data, path_parts=[json_filename])
+            if empty_collections:
+                all_empty_collections.extend(empty_collections)
+            
+        except json.JSONDecodeError:
+            findings.append(f"Error: Could not decode JSON from '{json_filename}'. Check file format.")
+        except Exception as e:
+            findings.append(f"An unexpected error occurred with {json_filename}: {e}")
+    
+    if all_empty_collections:
+        findings.append("Summary of Empty collections found in JSON files:")
+        for item_path in all_empty_collections:
+            path_str = " -> ".join(item_path)
+            findings.append(f"  - {path_str}")
+    
+    return findings
 
-    with open(output_file_path, 'w', encoding='utf-8') as out_f:
-        all_empty_collections = []
-        for json_filename in json_files_to_check:
-            json_file_path = os.path.join(output_dir, json_filename)
-            try:
-                with open(json_file_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                
-                print(f"Checking '{json_file_path}' for empty collections...")
-                empty_collections = check_empty_collections(data, path_parts=[json_filename])
-                if empty_collections:
-                    all_empty_collections.extend(empty_collections)
-                
-            except FileNotFoundError:
-                print(f"Error: The file '{json_file_path}' was not found.")
-                out_f.write(f"Error: The file '{json_file_path}' was not found.\n")
-            except json.JSONDecodeError:
-                print(f"Error: Could not decode JSON from '{json_file_path}'. Check file format.")
-                out_f.write(f"Error: Could not decode JSON from '{json_file_path}'. Check file format.\n")
-            except Exception as e:
-                print(f"An unexpected error occurred with {json_file_path}: {e}")
-                out_f.write(f"An unexpected error occurred with {json_file_path}: {e}\n")
-        
-        if all_empty_collections:
-            out_f.write("\nSummary of Empty collections found in JSON files:\n")
-            for item_path in all_empty_collections:
-                for i, part in enumerate(item_path):
-                    out_f.write("    " * i + f"- {part}\n")
-            print(f"Empty collections found. Details written to '{output_file_path}'.")
-        else:
-            out_f.write("No empty collections found in any JSON file.\n")
-            print("No empty collections found in any JSON file.")
-        
-        print("Check complete.")
+def main(output_dir):
+    """
+    Main entry point for command-line usage. Now uses the new validation logic.
+    """
+    findings = validate_json_results(output_dir)
+    if findings:
+        for line in findings:
+            print(line)
+    else:
+        print("No empty collections found in any JSON file.")
+    print("Check complete.")
 
 if __name__ == "__main__":
     # For independent testing, define a dummy output_dir
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    test_output_dir = os.path.join(os.path.dirname(script_dir), "TestOutput")
-    os.makedirs(test_output_dir, exist_ok=True)
-    main(test_output_dir)
+    test_output_dir = os.path.join(os.path.dirname(script_dir), "Analyze Summary")
+    if os.path.isdir(test_output_dir):
+        main(test_output_dir)
+    else:
+        print(f"Directory not found: {test_output_dir}")

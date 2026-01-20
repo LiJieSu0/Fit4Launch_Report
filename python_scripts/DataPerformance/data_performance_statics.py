@@ -3,6 +3,18 @@ import sys
 import argparse
 import os
 import re
+import logging
+
+# Add src to sys.path to enable imports from it
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'src'))
+try:
+    from report_generator.utils.logger import setup_logger
+    logger = logging.getLogger("data_performance")
+except ImportError:
+    # Fallback if the package structure is not yet fully in place during development
+    logger = logging.getLogger("data_performance")
+    if not logger.handlers:
+        logging.basicConfig(level=logging.INFO)
 
 def _clean_header(header):
     """
@@ -28,9 +40,9 @@ def _determine_analysis_parameters(file_path):
     current_file_dir = os.path.dirname(file_path)
     parent_dir_of_file_dir = os.path.basename(os.path.dirname(current_file_dir)).lower()
     
-    print(f"DEBUG: _determine_analysis_parameters - file_path: {file_path}")
-    print(f"DEBUG: _determine_analysis_parameters - file_name (from basename): {file_name}")
-    print(f"DEBUG: _determine_analysis_parameters - parent_dir_of_file_dir: {parent_dir_of_file_dir}")
+    logger.debug(f"_determine_analysis_parameters - file_path: {file_path}")
+    logger.debug(f"_determine_analysis_parameters - file_name (from basename): {file_name}")
+    logger.debug(f"_determine_analysis_parameters - parent_dir_of_file_dir: {parent_dir_of_file_dir}")
 
     params = {
         "event_col": None,
@@ -105,8 +117,8 @@ def _determine_analysis_parameters(file_path):
     elif "coverage" in file_path_lower: # Generic condition for other coverage analysis
         params["analysis_type_detected"] = "coverage_coordinate"
 
-    print(f"DEBUG: _determine_analysis_parameters - 'dut' in file_name: {'dut' in file_name}")
-    print(f"DEBUG: _determine_analysis_parameters - 'ref' in file_name: {'ref' in file_name}")
+    logger.debug(f"_determine_analysis_parameters - 'dut' in file_name: {'dut' in file_name}")
+    logger.debug(f"_determine_analysis_parameters - 'ref' in file_name: {'ref' in file_name}")
 
     device_type_match = re.search(r'(DUT|REF|PC\d+)', file_name, re.IGNORECASE) # Modified regex to match DUT/REF without digits
     if device_type_match:
@@ -114,8 +126,8 @@ def _determine_analysis_parameters(file_path):
     else:
         params["device_type_detected"] = "Unknown" # Default to Unknown if no match
 
-    print(f"DEBUG: _determine_analysis_parameters - device_type_detected (after logic): {params['device_type_detected']}")
-    print(f"DEBUG: _determine_analysis_parameters - is_drive_path: {params['is_drive_path']}")
+    logger.debug(f"_determine_analysis_parameters - device_type_detected (after logic): {params['device_type_detected']}")
+    logger.debug(f"_determine_analysis_parameters - is_drive_path: {params['is_drive_path']}")
 
     # If essential parameters are not detected, return None
     # For WEB_PAGE, analysis_direction_detected is not strictly necessary as it's a single metric
@@ -187,7 +199,7 @@ def _determine_analysis_parameters(file_path):
         params["start_event"] = "PING Traffic Start"
         params["end_event"] = "PING Traffic End"
         params["column_to_analyze_ping_rtt"] = _clean_header("[Call Test] [PING] [RTT] RTT")
-    print(f"DEBUG: _determine_analysis_parameters returning: {params}")
+    logger.debug(f"_determine_analysis_parameters returning: {params}")
     return params
 
 def _find_related_ping_file(current_file_path, device_type):
@@ -253,14 +265,14 @@ def analyze_throughput(file_path, column_name_to_analyze, event_col_name, start_
         else:
             # Primary column is not good, try fallbacks
             if fallback_column_name in data.columns and not data[fallback_column_name].dropna().empty:
-                print(f"Warning: Primary throughput column '{current_column_to_use}' is empty or not found. Using fallback column '{fallback_column_name}'.")
+                logger.warning(f"Primary throughput column '{current_column_to_use}' is empty or not found. Using fallback column '{fallback_column_name}'.")
                 current_column_to_use = fallback_column_name
             elif third_fallback_column_name in data.columns and not data[third_fallback_column_name].dropna().empty:
-                print(f"Warning: Primary throughput column '{column_name_to_analyze}' and first fallback '{fallback_column_name}' are empty or not found. Using third fallback column '{third_fallback_column_name}'.")
+                logger.warning(f"Primary throughput column '{column_name_to_analyze}' and first fallback '{fallback_column_name}' are empty or not found. Using third fallback column '{third_fallback_column_name}'.")
                 current_column_to_use = third_fallback_column_name
             else:
-                print(f"Error: Primary throughput column '{column_name_to_analyze}' is empty or not found, and fallback column '{fallback_column_name}' is also empty or not found, and third fallback '{third_fallback_column_name}' is also empty or not found.")
-                print(f"Available columns: {data.columns.tolist()}")
+                logger.error(f"Primary throughput column '{column_name_to_analyze}' is empty or not found, and fallback column '{fallback_column_name}' is also empty or not found, and third fallback '{third_fallback_column_name}' is also empty or not found.")
+                logger.debug(f"Available columns: {data.columns.tolist()}")
                 return {} # Return empty dict instead of None
         
         # Check if primary event column exists, otherwise try fallback

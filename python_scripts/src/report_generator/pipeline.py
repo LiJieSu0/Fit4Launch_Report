@@ -1,0 +1,258 @@
+import os
+import sys
+import json
+import logging
+import re
+
+# Ensure the 'src' and all script directories are in the python path
+current_file_dir = os.path.dirname(os.path.abspath(__file__)) # D:\ReportGenerator\python_scripts\src\report_generator
+project_root = os.path.dirname(os.path.dirname(current_file_dir)) # D:\ReportGenerator\python_scripts
+
+# Add key directories to sys.path to resolve imports between scripts
+dirs_to_add = [
+    project_root,
+    os.path.join(project_root, 'src'),
+    os.path.join(project_root, 'DataPerformance'),
+    os.path.join(project_root, 'CallPerformance'),
+    os.path.join(project_root, 'VoiceQuality'),
+    os.path.join(project_root, 'Coverage'),
+]
+
+for d in dirs_to_add:
+    if os.path.isdir(d) and d not in sys.path:
+        sys.path.insert(0, d)
+
+from report_generator.utils.logger import setup_logger
+from report_generator.utils.config_loader import Config
+from report_generator.analyzers.data_performance_analyzer import DataPerformanceAnalyzer
+from report_generator.analyzers.mrab_performance_analyzer import MrabPerformanceAnalyzer
+from report_generator.analyzers.call_performance_analyzer import CallPerformanceAnalyzer
+from report_generator.analyzers.voice_quality_analyzer import VoiceQualityAnalyzer
+from report_generator.analyzers.coverage_performance_analyzer import CoveragePerformanceAnalyzer
+from report_generator.analyzers.google_throughput_analyzer import GoogleThroughputAnalyzer
+from report_generator.analyzers.mhs_drive_analyzer import MHSDriveAnalyzer
+
+import data_path_reader
+import check_empty_data
+from VoiceQuality.VqLineChartAnalyzer import calculate_vq_statistics
+from Coverage.n41_coverage_analyzer import extract_coverage_data_to_csv
+
+class DataAnalysisPipeline:
+    def __init__(self, config_path="config/config.yaml"):
+        self.config = Config(config_path)
+        log_config = self.config.get("logging")
+        self.logger = setup_logger(
+            name="pipeline", 
+            log_file=log_config.get("log_file"), 
+            level=log_config.get("level")
+        )
+        self.base_raw_data_dir = self.config.get("project.base_raw_data_dir")
+        self.output_dir = self.config.get("project.output_dir")
+        os.makedirs(self.output_dir, exist_ok=True)
+        
+        self.results = {
+            "data_performance": {},
+            "call_performance": {},
+            "voice_quality": {},
+            "coverage": {}
+        }
+        
+        # Mapping of analysis types to analyzer instances
+        self.analyzers = {
+            "data_performance": DataPerformanceAnalyzer(self.config, self.logger),
+            "mrab_performance": MrabPerformanceAnalyzer(self.config, self.logger),
+            "call_performance": CallPerformanceAnalyzer(self.config, self.logger),
+            "voice_quality_combined": VoiceQualityAnalyzer(self.config, self.logger),
+            "coverage_coordinate": CoveragePerformanceAnalyzer(self.config, self.logger),
+            "n41_coverage": CoveragePerformanceAnalyzer(self.config, self.logger),
+            "vonr_coverage_performance": CoveragePerformanceAnalyzer(self.config, self.logger),
+            "google_throughput_analysis": GoogleThroughputAnalyzer(self.config, self.logger),
+            "mhs_drive_performance": MHSDriveAnalyzer(self.config, self.logger)
+        }
+
+    def _insert_into_nested_dict(self, data_dict, path_components, value):
+        """Inserts a value into a nested dictionary based on a list of path components."""
+        current_level = data_dict
+        for i, component in enumerate(path_components):
+            if i == len(path_components) - 1:
+                current_level[component] = value
+            else:
+                if component not in current_level:
+                    current_level[component] = {}
+                current_level = current_level[component]
+
+    def _get_params(self, file_path):
+        from DataPerformance import data_performance_statics
+        return data_performance_statics._determine_analysis_parameters(file_path)
+
+    def run(self):
+        self.logger.info("Starting analysis pipeline...")
+        
+        directories_config = self.config.get("analysis.directories")
+        if not directories_config:
+            self.logger.error("No analysis directories configured in config.yaml")
+            return
+
+        # 1. Process individual CSV files
+        excluded_types = [
+            "call_performance", "voice_quality_combined", "coverage_coordinate", 
+            "n41_coverage", "vonr_coverage_performance", "google_throughput_analysis", 
+            "mhs_drive_performance"
+        ]
+        
+        all_csv_files = data_path_reader.get_csv_file_paths(
+            self.base_raw_data_dir, 
+            directories_config, 
+            excluded_analysis_types=excluded_types
+        )
+        
+        self.logger.info(f"Processing {len(all_csv_files)} individual CSV files...")
+        for csv_file_path in all_csv_files:
+            params = self._get_params(csv_file_path)
+            if not params: continue
+            
+            ana_type = params.get("analysis_type_detected")
+            if ana_type in excluded_types:
+                self.logger.debug(f"Skipping {csv_file_path} in file loop as it is a directory-based type ({ana_type})")
+                continue
+            
+            analyzer = self.analyzers.get(ana_type)
+            if not analyzer: continue
+
+            stats = analyzer.analyze(csv_file_path)
+            if stats and analyzer.validate(stats):
+                relative_path = os.path.relpath(csv_file_path, self.base_raw_data_dir)
+                path_components = relative_path.replace("\\", "/").split('/')
+                
+                # Strip leading category directories to avoid double nesting at export
+                if path_components[0] in ["Data Performance", "Voice Quality", "Call Performance", "Coverage Performance"]:
+                    path_components = path_components[1:]
+                
+                # Use DUT/REF as the final key instead of filename
+                device_type = stats.get("Device Type", "DUT").upper()
+                filename_without_ext = os.path.splitext(path_components[-1])[0].upper()
+                if "REF" in filename_without_ext: device_type = "REF"
+                elif "DUT" in filename_without_ext: device_type = "DUT"
+                
+                path_components[-1] = device_type
+                
+                # Insert into data_performance results
+                self._insert_into_nested_dict(self.results["data_performance"], path_components, stats)
+
+        # 2. Process directory-based analysis
+        self.logger.info("Processing directory-level analyses...")
+        for dir_info in directories_config:
+            ana_type = dir_info["analysis_type"]
+            if ana_type not in excluded_types: continue
+            
+            analyzer = self.analyzers.get(ana_type)
+            if not analyzer: continue
+            
+            full_path = os.path.join(self.base_raw_data_dir, dir_info["path"])
+            if not os.path.isdir(full_path): continue
+
+            if isinstance(analyzer, CoveragePerformanceAnalyzer):
+                stats = analyzer.analyze(full_path, analysis_type=ana_type)
+            else:
+                stats = analyzer.analyze(full_path)
+
+            if stats and analyzer.validate(stats):
+                # Use the leaf directory name as the nesting key if it's not a root category name
+                dir_name = os.path.basename(dir_info["path"])
+                root_categories = ["Data Performance", "Voice Quality", "Call Performance", "Coverage Performance"]
+                
+                if ana_type == "call_performance":
+                    dest = self.results["call_performance"]
+                    if dir_name not in root_categories:
+                        if dir_name not in dest: dest[dir_name] = {}
+                        dest[dir_name].update(stats)
+                    else:
+                        dest.update(stats)
+                elif ana_type == "voice_quality_combined":
+                    dest = self.results["voice_quality"]
+                    if dir_name not in root_categories:
+                        if dir_name not in dest: dest[dir_name] = {}
+                        dest[dir_name].update(stats)
+                    else:
+                        dest.update(stats)
+                elif ana_type in ["coverage_coordinate", "n41_coverage", "vonr_coverage_performance"]:
+                    dest = self.results["coverage"]
+                    if dir_name not in root_categories:
+                        if dir_name not in dest: dest[dir_name] = {}
+                        dest[dir_name].update(stats)
+                    else:
+                        dest.update(stats)
+                elif ana_type in ["google_throughput_analysis", "mhs_drive_performance"]:
+                    path_components = dir_info["path"].replace("\\", "/").split('/')
+                    if path_components[0] in root_categories:
+                        path_components = path_components[1:]
+                    self._insert_into_nested_dict(self.results["data_performance"], path_components, stats)
+
+        # 3. Post-processing steps
+        self._run_post_processing()
+
+        # 4. Export results
+        self._export_all()
+        
+        # 5. Final validation
+        self.logger.info("Running final data validation...")
+        findings = check_empty_data.validate_json_results(self.output_dir)
+        if findings:
+            for line in findings:
+                self.logger.warning(line)
+        else:
+            self.logger.info("No empty collections found in any JSON file.")
+        
+        self.logger.info(f"Pipeline execution completed. Results in: {self.output_dir}")
+
+    def _run_post_processing(self):
+        self.logger.info("Running post-processing (VqLineChart, Coverage extraction)...")
+        
+        # VQ Line Chart
+        vq_linechart_dir = os.path.join(self.output_dir, "vq_linechart_data")
+        os.makedirs(vq_linechart_dir, exist_ok=True)
+        evs_wb_vq_paths = [
+            os.path.join(self.base_raw_data_dir, r"Voice Quality\5G Auto VoNR Disabled EVS WB VQ\Base"),
+            os.path.join(self.base_raw_data_dir, r"Voice Quality\5G Auto VoNR Disabled EVS WB VQ\Mobile"),
+            os.path.join(self.base_raw_data_dir, r"Voice Quality\5G Auto VoNR Enabled EVS WB VQ\Base"),
+            os.path.join(self.base_raw_data_dir, r"Voice Quality\5G Auto VoNR Enabled EVS WB VQ\Mobile"),
+        ]
+        for p in evs_wb_vq_paths:
+            if os.path.isdir(p):
+                scenario = os.path.basename(os.path.dirname(p)) + "_" + os.path.basename(p)
+                out_path = os.path.join(vq_linechart_dir, f"vq_mos_statistics_{scenario.replace(' ', '_').lower()}.json")
+                calculate_vq_statistics(p, output_json_path=out_path)
+
+        # RSRP & Tx Power Extraction
+        rsrp_dir = os.path.join(self.output_dir, "rsrp_data")
+        tx_dir = os.path.join(self.output_dir, "tx_power_data")
+        os.makedirs(rsrp_dir, exist_ok=True)
+        os.makedirs(tx_dir, exist_ok=True)
+        
+        n41_path = os.path.join(self.base_raw_data_dir, "Coverage Performance", "5G n41 HPUE Coverage Test")
+        if os.path.isdir(n41_path):
+            for run in os.listdir(n41_path):
+                run_p = os.path.join(n41_path, run)
+                if os.path.isdir(run_p) and run.startswith("Run"):
+                    extract_coverage_data_to_csv(run_p, rsrp_dir, ['PC2', 'PC3'], '[NR5G] [RF] RSRP', 'RSRP_Analysis')
+                    extract_coverage_data_to_csv(run_p, tx_dir, ['PC2', 'PC3'], '[NR5G] [Power] Tx power (PUSCH Actual)', 'TxPower_Analysis')
+
+    def _export_all(self):
+        export_map = {
+            "data_performance": ("data_performance_results.json", "Data Performance"),
+            "call_performance": ("call_performance_results.json", "Call Performance"),
+            "voice_quality": ("voice_quality_results.json", "Voice Quality"),
+            "coverage": ("coverage_performance_results.json", "Coverage Performance")
+        }
+        for category, (filename, root_key) in export_map.items():
+            if self.results[category]:
+                path = os.path.join(self.output_dir, filename)
+                # Wrap the results in the category root key
+                final_output = {root_key: self.results[category]}
+                with open(path, 'w', encoding='utf-8') as f:
+                    json.dump(final_output, f, ensure_ascii=False, indent=4)
+                self.logger.info(f"{root_key} results exported to {path}")
+
+if __name__ == "__main__":
+    pipeline = DataAnalysisPipeline()
+    pipeline.run()

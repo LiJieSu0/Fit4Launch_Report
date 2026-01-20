@@ -1,0 +1,75 @@
+import os
+import logging
+from report_generator.base_analyzer import BaseAnalyzer
+from VoiceQuality.VqAmrNb import process_directory as analyze_vq_amr_nb
+from VoiceQuality.audio_delay_analyzer import process_directory as analyze_audio_delay_directory
+from VoiceQuality.VqAmrWb import analyze_wb_voice_quality as analyze_vq_amr_wb
+from VoiceQuality.VQEVSanalyzer import analyze_vqe_vs_quality
+
+class VoiceQualityAnalyzer(BaseAnalyzer):
+    def __init__(self, config, logger):
+        self.config = config
+        self.logger = logger
+
+    def analyze(self, directory_path: str):
+        self.logger.info(f"Analyzing Voice Quality directory: {directory_path}")
+        
+        if not os.path.isdir(directory_path):
+            self.logger.error(f"Directory not found: {directory_path}")
+            return None
+
+        results = {}
+        
+        for sub_dir_name in os.listdir(directory_path):
+            sub_dir_full_path = os.path.join(directory_path, sub_dir_name)
+            
+            if os.path.isdir(sub_dir_full_path):
+                self.logger.info(f"Processing Voice Quality subfolder: {sub_dir_name}")
+                
+                if "5G Auto VoNR Enabled AMR NB VQ" in sub_dir_name:
+                    nb_vq_results = analyze_vq_amr_nb(sub_dir_full_path, subdir_filter="VQ")
+                    if nb_vq_results:
+                        organized_nb_vq_results = {}
+                        for file_stats in nb_vq_results:
+                            organized_nb_vq_results[file_stats["device_type"]] = {
+                                "ul_mos_stats": file_stats["ul_mos_stats"],
+                                "dl_mos_stats": file_stats["dl_mos_stats"]
+                            }
+                        results[sub_dir_name] = organized_nb_vq_results
+
+                elif "Audio Delay" in sub_dir_name:
+                    ad_results = analyze_audio_delay_directory(sub_dir_full_path, subdir_filter="Audio Delay")
+                    if ad_results:
+                        organized_ad_results = {}
+                        for file_stats in ad_results:
+                            if file_stats["device_type"] not in organized_ad_results:
+                                organized_ad_results[file_stats["device_type"]] = {}
+                            organized_ad_results[file_stats["device_type"]][os.path.splitext(os.path.basename(file_stats["file_path"]))[0]] = {
+                                "mean": file_stats["mean"],
+                                "std_dev": file_stats["std_dev"],
+                                "min": file_stats["min"],
+                                "max": file_stats["max"],
+                                "occurrences": file_stats["occurrences"]
+                            }
+                        results[sub_dir_name] = organized_ad_results
+
+                elif "5G Auto VoNR Enabled AMR WB VQ" in sub_dir_name:
+                    wb_vq_results = analyze_vq_amr_wb(sub_dir_full_path)
+                    if wb_vq_results:
+                        results[sub_dir_name] = wb_vq_results
+
+                elif "EVS WB VQ" in sub_dir_name:
+                    evs_vq_results = analyze_vqe_vs_quality([sub_dir_full_path])
+                    if evs_vq_results:
+                        results.update(evs_vq_results)
+        
+        return results
+
+    def validate(self, results) -> bool:
+        return bool(results)
+
+    def export(self, results, output_path: str):
+        with open(output_path, 'w') as f:
+            import json
+            json.dump(results, f, indent=4)
+        self.logger.info(f"Voice Quality results exported to {output_path}")

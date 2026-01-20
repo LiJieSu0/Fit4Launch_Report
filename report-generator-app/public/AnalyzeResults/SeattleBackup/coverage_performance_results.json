@@ -1,0 +1,1296 @@
+{
+    "Coverage Performance": {
+        "5G VoNR Coverage Test": {
+            "n25": {
+                "DUT": {
+                    "Run1": {
+                        "mos_before_drop": {
+                            "latitude": 47.146212,
+                            "longitude": -122.35731,
+                            "distance_km": 1.999446329912468
+                        },
+                        "call_drop": {
+                            "latitude": 47.147595,
+                            "longitude": -122.357257,
+                            "distance_km": 2.153132266606282
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.14415,
+                            "longitude": -122.357327,
+                            "distance_km": 1.7702410668954354
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.14415,
+                            "longitude": -122.357327,
+                            "distance_km": 1.7702410668954354
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.91,
+                                "AVG MCS": 22.54,
+                                "AVG CQI": 11.21
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.78,
+                                "AVG MCS": 23.11,
+                                "AVG CQI": 13.03
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.68,
+                                "AVG MCS": 17.13,
+                                "AVG CQI": 12.27
+                            }
+                        }
+                    },
+                    "Run2": {
+                        "mos_before_drop": {
+                            "latitude": 47.148943,
+                            "longitude": -122.35721,
+                            "distance_km": 2.3029527740450657
+                        },
+                        "call_drop": {
+                            "latitude": 47.149857,
+                            "longitude": -122.357205,
+                            "distance_km": 2.4045708172663485
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.145997,
+                            "longitude": -122.357313,
+                            "distance_km": 1.975548582054853
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.145685,
+                            "longitude": -122.357318,
+                            "distance_km": 1.9408705100062769
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.72,
+                                "AVG MCS": 22.31,
+                                "AVG CQI": 11.72
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.95,
+                                "AVG MCS": 20.05,
+                                "AVG CQI": 12.6
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.64,
+                                "AVG MCS": 12.33,
+                                "AVG CQI": 10.32
+                            }
+                        }
+                    },
+                    "Run3": {
+                        "mos_before_drop": {
+                            "latitude": 47.149588,
+                            "longitude": -122.357208,
+                            "distance_km": 2.374664934842879
+                        },
+                        "call_drop": {
+                            "latitude": 47.14999,
+                            "longitude": -122.357202,
+                            "distance_km": 2.4193555824386777
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.147635,
+                            "longitude": -122.357265,
+                            "distance_km": 2.1575894203109978
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.147347,
+                            "longitude": -122.357282,
+                            "distance_km": 2.1255917846670713
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.65,
+                                "AVG MCS": 22.02,
+                                "AVG CQI": 11.19
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.7,
+                                "AVG MCS": 21.36,
+                                "AVG CQI": 12.73
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.47,
+                                "AVG MCS": 9.86,
+                                "AVG CQI": 9.16
+                            }
+                        }
+                    },
+                    "Run4": {
+                        "mos_before_drop": {
+                            "latitude": 47.15021,
+                            "longitude": -122.357212,
+                            "distance_km": 2.4438261909730916
+                        },
+                        "call_drop": {
+                            "latitude": 47.150355,
+                            "longitude": -122.357207,
+                            "distance_km": 2.4599432466653592
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.14683,
+                            "longitude": -122.357288,
+                            "distance_km": 2.068121176668293
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.146405,
+                            "longitude": -122.357303,
+                            "distance_km": 2.020892676021095
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 2.0,
+                                "AVG MCS": 23.28,
+                                "AVG CQI": 11.41
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.8,
+                                "AVG MCS": 20.49,
+                                "AVG CQI": 13.37
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.62,
+                                "AVG MCS": 8.74,
+                                "AVG CQI": 8.37
+                            }
+                        }
+                    },
+                    "Run5": {
+                        "mos_before_drop": {
+                            "latitude": 47.147903,
+                            "longitude": -122.357212,
+                            "distance_km": 2.187323721431919
+                        },
+                        "call_drop": {
+                            "latitude": 47.149065,
+                            "longitude": -122.357143,
+                            "distance_km": 2.316453659937113
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.146368,
+                            "longitude": -122.357287,
+                            "distance_km": 2.0167563867746545
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.1462,
+                            "longitude": -122.357295,
+                            "distance_km": 1.998090320737716
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 2.16,
+                                "AVG MCS": 24.19,
+                                "AVG CQI": 11.51
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 2.76,
+                                "AVG MCS": 20.08,
+                                "AVG CQI": 12.4
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.49,
+                                "AVG MCS": 12.0,
+                                "AVG CQI": 10.22
+                            }
+                        }
+                    }
+                },
+                "REF": {
+                    "Run1": {
+                        "mos_before_drop": {
+                            "latitude": 47.150115,
+                            "longitude": -122.357223,
+                            "distance_km": 2.433274574224882
+                        },
+                        "call_drop": {
+                            "latitude": 47.150115,
+                            "longitude": -122.357223,
+                            "distance_km": 2.433274574224882
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.148357,
+                            "longitude": -122.357232,
+                            "distance_km": 2.2378229982269593
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.143685,
+                            "longitude": -122.357327,
+                            "distance_km": 1.718549348813673
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 2.15,
+                                "AVG MCS": 21.64,
+                                "AVG CQI": 12.09
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.94,
+                                "AVG MCS": 22.11,
+                                "AVG CQI": 14.67
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 14.51,
+                                "AVG MCS": 5.23,
+                                "AVG CQI": 6.77
+                            }
+                        }
+                    },
+                    "Run2": {
+                        "mos_before_drop": {
+                            "latitude": 47.149915,
+                            "longitude": -122.357213,
+                            "distance_km": 2.4110274957975864
+                        },
+                        "call_drop": {
+                            "latitude": 47.149915,
+                            "longitude": -122.357213,
+                            "distance_km": 2.4110274957975864
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.148252,
+                            "longitude": -122.357233,
+                            "distance_km": 2.226149961502694
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.145408,
+                            "longitude": -122.357322,
+                            "distance_km": 1.9100824205127644
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 3.38,
+                                "AVG MCS": 24.1,
+                                "AVG CQI": 10.53
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 2.18,
+                                "AVG MCS": 21.0,
+                                "AVG CQI": 10.1
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 7.72,
+                                "AVG MCS": 5.6,
+                                "AVG CQI": 5.84
+                            }
+                        }
+                    },
+                    "Run3": {
+                        "mos_before_drop": {
+                            "latitude": 47.150025,
+                            "longitude": -122.357193,
+                            "distance_km": 2.4232384695270377
+                        },
+                        "call_drop": {
+                            "latitude": 47.150025,
+                            "longitude": -122.357193,
+                            "distance_km": 2.4232384695270377
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.148292,
+                            "longitude": -122.357238,
+                            "distance_km": 2.2306029475933355
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.144018,
+                            "longitude": -122.357358,
+                            "distance_km": 1.7556228232091218
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.93,
+                                "AVG MCS": 22.68,
+                                "AVG CQI": 10.34
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.72,
+                                "AVG MCS": 16.46,
+                                "AVG CQI": 10.61
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 23.86,
+                                "AVG MCS": 2.18,
+                                "AVG CQI": 4.25
+                            }
+                        }
+                    },
+                    "Run4": {
+                        "mos_before_drop": {
+                            "latitude": 47.150355,
+                            "longitude": -122.357202,
+                            "distance_km": 2.459938450039336
+                        },
+                        "call_drop": {
+                            "latitude": 47.150355,
+                            "longitude": -122.357202,
+                            "distance_km": 2.459938450039336
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.148438,
+                            "longitude": -122.35722,
+                            "distance_km": 2.2468155335562643
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.145,
+                            "longitude": -122.35735,
+                            "distance_km": 1.8647718658639865
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.79,
+                                "AVG MCS": 21.74,
+                                "AVG CQI": 10.73
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 2.14,
+                                "AVG MCS": 19.5,
+                                "AVG CQI": 12.21
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 7.84,
+                                "AVG MCS": 2.81,
+                                "AVG CQI": 6.15
+                            }
+                        }
+                    },
+                    "Run5": {
+                        "mos_before_drop": {
+                            "latitude": 47.1485,
+                            "longitude": -122.357162,
+                            "distance_km": 2.253650157626519
+                        },
+                        "call_drop": {
+                            "latitude": 47.150073,
+                            "longitude": -122.357145,
+                            "distance_km": 2.428532779798981
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.147258,
+                            "longitude": -122.357242,
+                            "distance_km": 2.1156461087844294
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.143857,
+                            "longitude": -122.357312,
+                            "distance_km": 1.7376435760086983
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.91,
+                                "AVG MCS": 24.16,
+                                "AVG CQI": 10.82
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 2.46,
+                                "AVG MCS": 20.5,
+                                "AVG CQI": 12.03
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 5.92,
+                                "AVG MCS": 9.13,
+                                "AVG CQI": 8.83
+                            }
+                        }
+                    }
+                }
+            },
+            "n41": {
+                "DUT": {
+                    "Run1": {
+                        "mos_before_drop": {
+                            "latitude": 47.153447,
+                            "longitude": -122.357128,
+                            "distance_km": 2.8036728639963595
+                        },
+                        "call_drop": {
+                            "latitude": 47.153982,
+                            "longitude": -122.357142,
+                            "distance_km": 2.863169349784437
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.150115,
+                            "longitude": -122.357223,
+                            "distance_km": 2.433274574224882
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.149238,
+                            "longitude": -122.357208,
+                            "distance_km": 2.335750185459279
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.34,
+                                "AVG MCS": 24.45,
+                                "AVG CQI": 10.39
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.74,
+                                "AVG MCS": 15.38,
+                                "AVG CQI": 12.08
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 2.44,
+                                "AVG MCS": 0.91,
+                                "AVG CQI": 6.05
+                            }
+                        }
+                    },
+                    "Run2": {
+                        "mos_before_drop": {
+                            "latitude": 47.153057,
+                            "longitude": -122.35715,
+                            "distance_km": 2.7603244741222004
+                        },
+                        "call_drop": {
+                            "latitude": 47.153587,
+                            "longitude": -122.357118,
+                            "distance_km": 2.819232801029553
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.150577,
+                            "longitude": -122.357187,
+                            "distance_km": 2.484607879294723
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.149915,
+                            "longitude": -122.357213,
+                            "distance_km": 2.4110274957975864
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 0.94,
+                                "AVG MCS": 23.32,
+                                "AVG CQI": 10.96
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.86,
+                                "AVG MCS": 13.52,
+                                "AVG CQI": 11.14
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.91,
+                                "AVG MCS": 0.93,
+                                "AVG CQI": 6.02
+                            }
+                        }
+                    },
+                    "Run3": {
+                        "mos_before_drop": {
+                            "latitude": 47.150025,
+                            "longitude": -122.357193,
+                            "distance_km": 2.4232384695270377
+                        },
+                        "call_drop": {
+                            "latitude": 47.150025,
+                            "longitude": -122.357193,
+                            "distance_km": 2.4232384695270377
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.150508,
+                            "longitude": -122.35725,
+                            "distance_km": 2.476998045001702
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.150508,
+                            "longitude": -122.35725,
+                            "distance_km": 2.476998045001702
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.36,
+                                "AVG MCS": 24.59,
+                                "AVG CQI": 10.03
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.3,
+                                "AVG MCS": 8.34,
+                                "AVG CQI": 10.43
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 2.16,
+                                "AVG MCS": 4.16,
+                                "AVG CQI": 6.34
+                            }
+                        }
+                    },
+                    "Run4": {
+                        "mos_before_drop": {
+                            "latitude": 47.153377,
+                            "longitude": -122.357125,
+                            "distance_km": 2.7958874866968526
+                        },
+                        "call_drop": {
+                            "latitude": 47.153743,
+                            "longitude": -122.357128,
+                            "distance_km": 2.836585225200065
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.15052,
+                            "longitude": -122.35719,
+                            "distance_km": 2.4782729739519347
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.150442,
+                            "longitude": -122.357187,
+                            "distance_km": 2.4695976565480917
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.51,
+                                "AVG MCS": 25.56,
+                                "AVG CQI": 10.71
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.9,
+                                "AVG MCS": 11.73,
+                                "AVG CQI": 12.19
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 2.48,
+                                "AVG MCS": 1.46,
+                                "AVG CQI": 6.3
+                            }
+                        }
+                    },
+                    "Run5": {
+                        "mos_before_drop": {
+                            "latitude": 47.150565,
+                            "longitude": -122.357137,
+                            "distance_km": 2.483231016514379
+                        },
+                        "call_drop": {
+                            "latitude": 47.150565,
+                            "longitude": -122.357137,
+                            "distance_km": 2.483231016514379
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.148665,
+                            "longitude": -122.357153,
+                            "distance_km": 2.2719876333984743
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.147835,
+                            "longitude": -122.357215,
+                            "distance_km": 2.1797665859267155
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.81,
+                                "AVG MCS": 24.5,
+                                "AVG CQI": 11.23
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.6,
+                                "AVG MCS": 17.57,
+                                "AVG CQI": 12.78
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.46,
+                                "AVG MCS": 2.85,
+                                "AVG CQI": 7.26
+                            }
+                        }
+                    }
+                },
+                "REF": {
+                    "Run1": {
+                        "mos_before_drop": {
+                            "latitude": 47.150115,
+                            "longitude": -122.357223,
+                            "distance_km": 2.433274574224882
+                        },
+                        "call_drop": {
+                            "latitude": 47.150115,
+                            "longitude": -122.357223,
+                            "distance_km": 2.433274574224882
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.148512,
+                            "longitude": -122.357228,
+                            "distance_km": 2.255051874733711
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.14382,
+                            "longitude": -122.357325,
+                            "distance_km": 1.733553011301319
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 2.31,
+                                "AVG MCS": 24.29,
+                                "AVG CQI": 11.86
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.84,
+                                "AVG MCS": 17.06,
+                                "AVG CQI": 14.11
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 2.97,
+                                "AVG MCS": 4.82,
+                                "AVG CQI": 8.1
+                            }
+                        }
+                    },
+                    "Run2": {
+                        "mos_before_drop": {
+                            "latitude": 47.149915,
+                            "longitude": -122.357213,
+                            "distance_km": 2.4110274957975864
+                        },
+                        "call_drop": {
+                            "latitude": 47.149915,
+                            "longitude": -122.357213,
+                            "distance_km": 2.4110274957975864
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.149627,
+                            "longitude": -122.357207,
+                            "distance_km": 2.3790001576221136
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.148822,
+                            "longitude": -122.357212,
+                            "distance_km": 2.2895015579028613
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.66,
+                                "AVG MCS": 24.4,
+                                "AVG CQI": 12.39
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.87,
+                                "AVG MCS": 17.31,
+                                "AVG CQI": 13.05
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 11.83,
+                                "AVG MCS": 3.43,
+                                "AVG CQI": 5.2
+                            }
+                        }
+                    },
+                    "Run3": {
+                        "mos_before_drop": {
+                            "latitude": 47.150027,
+                            "longitude": -122.357197,
+                            "distance_km": 2.423464647333355
+                        },
+                        "call_drop": {
+                            "latitude": 47.150025,
+                            "longitude": -122.357193,
+                            "distance_km": 2.4232384695270377
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.149655,
+                            "longitude": -122.357207,
+                            "distance_km": 2.3821133447872787
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.148478,
+                            "longitude": -122.35723,
+                            "distance_km": 2.2512738734415643
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.5,
+                                "AVG MCS": 24.74,
+                                "AVG CQI": 10.55
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.7,
+                                "AVG MCS": 15.29,
+                                "AVG CQI": 13.19
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 14.39,
+                                "AVG MCS": 3.6,
+                                "AVG CQI": 4.83
+                            }
+                        }
+                    },
+                    "Run4": {
+                        "mos_before_drop": {
+                            "latitude": 47.150355,
+                            "longitude": -122.357202,
+                            "distance_km": 2.459938450039336
+                        },
+                        "call_drop": {
+                            "latitude": 47.150355,
+                            "longitude": -122.357202,
+                            "distance_km": 2.459938450039336
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.149763,
+                            "longitude": -122.357213,
+                            "distance_km": 2.3941273521300293
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.14683,
+                            "longitude": -122.357288,
+                            "distance_km": 2.068121176668293
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 2.42,
+                                "AVG MCS": 22.9,
+                                "AVG CQI": 12.0
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.83,
+                                "AVG MCS": 17.72,
+                                "AVG CQI": 12.74
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.87,
+                                "AVG MCS": 3.38,
+                                "AVG CQI": 6.46
+                            }
+                        }
+                    },
+                    "Run5": {
+                        "mos_before_drop": {
+                            "latitude": 47.150565,
+                            "longitude": -122.357137,
+                            "distance_km": 2.483231016514379
+                        },
+                        "call_drop": {
+                            "latitude": 47.150565,
+                            "longitude": -122.357137,
+                            "distance_km": 2.483231016514379
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.148427,
+                            "longitude": -122.357165,
+                            "distance_km": 2.2455363958909924
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.148018,
+                            "longitude": -122.357203,
+                            "distance_km": 2.2001000723350073
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.83,
+                                "AVG MCS": 24.33,
+                                "AVG CQI": 13.31
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.73,
+                                "AVG MCS": 17.35,
+                                "AVG CQI": 12.94
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 2.28,
+                                "AVG MCS": 3.42,
+                                "AVG CQI": 5.71
+                            }
+                        }
+                    }
+                }
+            },
+            "n71": {
+                "DUT": {
+                    "Run1": {
+                        "mos_before_drop": {
+                            "latitude": 47.149363,
+                            "longitude": -122.357208,
+                            "distance_km": 2.349648297025474
+                        },
+                        "call_drop": {
+                            "latitude": 47.150112,
+                            "longitude": -122.357222,
+                            "distance_km": 2.4329400070981344
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.147123,
+                            "longitude": -122.357272,
+                            "distance_km": 2.10067474492016
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.146212,
+                            "longitude": -122.35731,
+                            "distance_km": 1.999446329912468
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.91,
+                                "AVG MCS": 22.06,
+                                "AVG CQI": 11.87
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.18,
+                                "AVG MCS": 19.85,
+                                "AVG CQI": 11.38
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.19,
+                                "AVG MCS": 8.18,
+                                "AVG CQI": 9.01
+                            }
+                        }
+                    },
+                    "Run2": {
+                        "mos_before_drop": {
+                            "latitude": 47.148943,
+                            "longitude": -122.35721,
+                            "distance_km": 2.3029527740450657
+                        },
+                        "call_drop": {
+                            "latitude": 47.149857,
+                            "longitude": -122.357205,
+                            "distance_km": 2.4045708172663485
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.145837,
+                            "longitude": -122.357317,
+                            "distance_km": 1.9577670810020824
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.14466,
+                            "longitude": -122.357317,
+                            "distance_km": 1.8269195169048589
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 2.02,
+                                "AVG MCS": 19.06,
+                                "AVG CQI": 11.75
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.36,
+                                "AVG MCS": 18.81,
+                                "AVG CQI": 11.02
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.82,
+                                "AVG MCS": 6.44,
+                                "AVG CQI": 7.58
+                            }
+                        }
+                    },
+                    "Run3": {
+                        "mos_before_drop": {
+                            "latitude": 47.149588,
+                            "longitude": -122.357208,
+                            "distance_km": 2.374664934842879
+                        },
+                        "call_drop": {
+                            "latitude": 47.149973,
+                            "longitude": -122.357202,
+                            "distance_km": 2.4174654241661178
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.144538,
+                            "longitude": -122.357355,
+                            "distance_km": 1.8134221897612766
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.144193,
+                            "longitude": -122.357358,
+                            "distance_km": 1.775076210196034
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.75,
+                                "AVG MCS": 20.15,
+                                "AVG CQI": 12.32
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.56,
+                                "AVG MCS": 17.98,
+                                "AVG CQI": 11.15
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.29,
+                                "AVG MCS": 6.87,
+                                "AVG CQI": 7.2
+                            }
+                        }
+                    },
+                    "Run4": {
+                        "mos_before_drop": {
+                            "latitude": 47.15021,
+                            "longitude": -122.357212,
+                            "distance_km": 2.4438261909730916
+                        },
+                        "call_drop": {
+                            "latitude": 47.150357,
+                            "longitude": -122.357203,
+                            "distance_km": 2.460161776803299
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.144723,
+                            "longitude": -122.357368,
+                            "distance_km": 1.8340107367357248
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.144028,
+                            "longitude": -122.357372,
+                            "distance_km": 1.7567605690275414
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.48,
+                                "AVG MCS": 22.53,
+                                "AVG CQI": 11.57
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.66,
+                                "AVG MCS": 16.34,
+                                "AVG CQI": 10.51
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 2.35,
+                                "AVG MCS": 4.81,
+                                "AVG CQI": 5.94
+                            }
+                        }
+                    },
+                    "Run5": {
+                        "mos_before_drop": {
+                            "latitude": 47.149548,
+                            "longitude": -122.357143,
+                            "distance_km": 2.370157360637832
+                        },
+                        "call_drop": {
+                            "latitude": 47.149815,
+                            "longitude": -122.357147,
+                            "distance_km": 2.3998479318470487
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.144938,
+                            "longitude": -122.357303,
+                            "distance_km": 1.8578021880856386
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.143677,
+                            "longitude": -122.357317,
+                            "distance_km": 1.7176423814983304
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.78,
+                                "AVG MCS": 22.31,
+                                "AVG CQI": 11.92
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.79,
+                                "AVG MCS": 19.94,
+                                "AVG CQI": 10.74
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 1.37,
+                                "AVG MCS": 10.05,
+                                "AVG CQI": 8.83
+                            }
+                        }
+                    }
+                },
+                "REF": {
+                    "Run1": {
+                        "mos_before_drop": {
+                            "latitude": 47.149363,
+                            "longitude": -122.357208,
+                            "distance_km": 2.349648297025474
+                        },
+                        "call_drop": {
+                            "latitude": 47.150115,
+                            "longitude": -122.357223,
+                            "distance_km": 2.433274574224882
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.144788,
+                            "longitude": -122.357325,
+                            "distance_km": 1.8411622808694674
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.143685,
+                            "longitude": -122.357327,
+                            "distance_km": 1.718549348813673
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.54,
+                                "AVG MCS": 17.2,
+                                "AVG CQI": 10.62
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 2.31,
+                                "AVG MCS": 15.46,
+                                "AVG CQI": 10.73
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 16.1,
+                                "AVG MCS": 6.81,
+                                "AVG CQI": 6.11
+                            }
+                        }
+                    },
+                    "Run2": {
+                        "mos_before_drop": {
+                            "latitude": 47.148943,
+                            "longitude": -122.35721,
+                            "distance_km": 2.3029527740450657
+                        },
+                        "call_drop": {
+                            "latitude": 47.149928,
+                            "longitude": -122.357207,
+                            "distance_km": 2.412466956271034
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.145997,
+                            "longitude": -122.357313,
+                            "distance_km": 1.975548582054853
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.144793,
+                            "longitude": -122.357317,
+                            "distance_km": 1.8417049749082302
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 4.21,
+                                "AVG MCS": 14.77,
+                                "AVG CQI": 11.33
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 2.08,
+                                "AVG MCS": 15.45,
+                                "AVG CQI": 12.48
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 5.52,
+                                "AVG MCS": 4.36,
+                                "AVG CQI": 7.94
+                            }
+                        }
+                    },
+                    "Run3": {
+                        "mos_before_drop": {
+                            "latitude": 47.149588,
+                            "longitude": -122.357208,
+                            "distance_km": 2.374664934842879
+                        },
+                        "call_drop": {
+                            "latitude": 47.15001,
+                            "longitude": -122.357203,
+                            "distance_km": 2.421580268166885
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.144712,
+                            "longitude": -122.357352,
+                            "distance_km": 1.8327595672380992
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.14296,
+                            "longitude": -122.357353,
+                            "distance_km": 1.6380062585025181
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 2.56,
+                                "AVG MCS": 15.72,
+                                "AVG CQI": 10.95
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 2.03,
+                                "AVG MCS": 14.68,
+                                "AVG CQI": 13.19
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 12.87,
+                                "AVG MCS": 4.53,
+                                "AVG CQI": 5.62
+                            }
+                        }
+                    },
+                    "Run4": {
+                        "mos_before_drop": {
+                            "latitude": 47.15021,
+                            "longitude": -122.357212,
+                            "distance_km": 2.4438261909730916
+                        },
+                        "call_drop": {
+                            "latitude": 47.150357,
+                            "longitude": -122.357205,
+                            "distance_km": 2.4601636929551476
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.143407,
+                            "longitude": -122.357368,
+                            "distance_km": 1.6877231050805068
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.143092,
+                            "longitude": -122.357368,
+                            "distance_km": 1.6527086275241574
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 2.32,
+                                "AVG MCS": 15.54,
+                                "AVG CQI": 11.43
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 1.97,
+                                "AVG MCS": 14.14,
+                                "AVG CQI": 11.35
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 21.3,
+                                "AVG MCS": 3.32,
+                                "AVG CQI": 2.95
+                            }
+                        }
+                    },
+                    "Run5": {
+                        "mos_before_drop": {
+                            "latitude": 47.1485,
+                            "longitude": -122.357162,
+                            "distance_km": 2.253650157626519
+                        },
+                        "call_drop": {
+                            "latitude": 47.150515,
+                            "longitude": -122.357142,
+                            "distance_km": 2.4776755898390825
+                        },
+                        "first_dl_tp_gt_1": {
+                            "latitude": 47.143677,
+                            "longitude": -122.357317,
+                            "distance_km": 1.7176423814983304
+                        },
+                        "first_ul_tp_gt_1": {
+                            "latitude": 47.142942,
+                            "longitude": -122.357317,
+                            "distance_km": 1.6359370544577592
+                        },
+                        "secondary_kpi": {
+                            "First 30%": {
+                                "AVG BLER": 1.94,
+                                "AVG MCS": 16.77,
+                                "AVG CQI": 11.21
+                            },
+                            "Middle 40%": {
+                                "AVG BLER": 2.04,
+                                "AVG MCS": 15.87,
+                                "AVG CQI": 11.44
+                            },
+                            "Last 30%": {
+                                "AVG BLER": 12.91,
+                                "AVG MCS": 6.73,
+                                "AVG CQI": 5.86
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "5G n41 HPUE Coverage Test": {
+            "Run1": [
+                {
+                    "Device type": "PC2",
+                    "latitude": 47.149765,
+                    "longitude": -122.357163,
+                    "ul_tp_value": 3.145,
+                    "rsrp_value": -127.79,
+                    "tx_power_value": 25.0,
+                    "distance_km": 2.3943024122689365
+                },
+                {
+                    "Device type": "PC3",
+                    "latitude": 47.149302,
+                    "longitude": -122.357162,
+                    "ul_tp_value": 8.388,
+                    "rsrp_value": -101.89,
+                    "tx_power_value": 21.1,
+                    "distance_km": 2.342821871654297
+                }
+            ],
+            "Run2": [
+                {
+                    "Device type": "PC2",
+                    "latitude": 47.148687,
+                    "longitude": -122.357158,
+                    "ul_tp_value": 6.291,
+                    "rsrp_value": -111.31,
+                    "tx_power_value": 24.8,
+                    "distance_km": 2.2744383169651914
+                },
+                {
+                    "Device type": "PC3",
+                    "latitude": 47.14715,
+                    "longitude": -122.357228,
+                    "ul_tp_value": 4.194,
+                    "rsrp_value": -101.4,
+                    "tx_power_value": 21.3,
+                    "distance_km": 2.1036217527779484
+                }
+            ],
+            "Run3": [
+                {
+                    "Device type": "PC2",
+                    "latitude": 47.146057,
+                    "longitude": -122.35728,
+                    "ul_tp_value": 6.291,
+                    "rsrp_value": -101.67,
+                    "tx_power_value": 23.7,
+                    "distance_km": 1.9821709000283196
+                },
+                {
+                    "Device type": "PC3",
+                    "latitude": 47.14912,
+                    "longitude": -122.357163,
+                    "ul_tp_value": 6.291,
+                    "rsrp_value": -105.15,
+                    "tx_power_value": 22.1,
+                    "distance_km": 2.322586764706155
+                }
+            ],
+            "Run4": [
+                {
+                    "Device type": "PC2",
+                    "latitude": 47.149653,
+                    "longitude": -122.357147,
+                    "ul_tp_value": 9.437,
+                    "rsrp_value": -115.47,
+                    "tx_power_value": 24.7,
+                    "distance_km": 2.3818354902903476
+                },
+                {
+                    "Device type": "PC3",
+                    "latitude": 47.149213,
+                    "longitude": -122.357152,
+                    "ul_tp_value": 9.437,
+                    "rsrp_value": -102.75,
+                    "tx_power_value": 21.1,
+                    "distance_km": 2.332917281611617
+                }
+            ],
+            "Run5": [
+                {
+                    "Device type": "PC2",
+                    "latitude": 47.14905,
+                    "longitude": -122.357127,
+                    "ul_tp_value": 9.437,
+                    "rsrp_value": -102.66,
+                    "tx_power_value": 24.1,
+                    "distance_km": 2.31477228189511
+                },
+                {
+                    "Device type": "PC3",
+                    "latitude": 47.148877,
+                    "longitude": -122.357128,
+                    "ul_tp_value": 5.242,
+                    "rsrp_value": -107.23,
+                    "tx_power_value": 21.2,
+                    "distance_km": 2.295537558415942
+                }
+            ]
+        }
+    }
+}

@@ -26,6 +26,44 @@ graph TD
     P --> CED[check_empty_data.py]
 ```
 
+### Directory Structure
+
+The project is organized into several key directories containing analysis scripts, configuration, and source code.
+
+```text
+python_scripts/
+├── config/                 # Configuration files
+│   └── config.yaml         # Main project configuration (paths, analysis types)
+├── src/                    # Main source code (Modularized)
+│   └── report_generator/   # Core logic package
+│       ├── pipeline.py     # Main orchestration pipeline
+│       ├── base_analyzer.py # Abstract base class for all analyzers
+│       ├── analyzers/      # Category-specific analyzer implementations
+│       │   ├── call_performance_analyzer.py
+│       │   ├── coverage_performance_analyzer.py
+│       │   ├── data_performance_analyzer.py
+│       │   ├── google_throughput_analyzer.py
+│       │   ├── mhs_drive_analyzer.py
+│       │   ├── mrab_performance_analyzer.py
+│       │   └── voice_quality_analyzer.py
+│       └── utils/          # Utility functions (logger, config loader)
+├── DataPerformance/        # Data-related logic (legacy/underlying stats)
+│   ├── data_performance_statics.py # Core parameter determination & stats logic
+│   ├── data_path_reader.py         # File discovery logic
+│   ├── ping_statics.py             # Ping analysis
+│   └── mrab_statistics.py          # MRAB analysis
+├── CallPerformance/        # Call performance specific scripts
+├── VoiceQuality/           # Audio quality analysis scripts (MOS, delay)
+├── Coverage/               # Coverage and RF metric analysis scripts
+├── Wfc/                    # Wi-Fi Calling specific analyzers
+├── Analyze Summary/        # Default output directory for JSON results
+│   ├── rsrp_data/          # Extracted RSRP CSVs
+│   ├── tx_power_data/      # Extracted Tx power CSVs
+│   └── vq_linechart_data/  # MOS line chart JSONs
+├── logs/                   # System runtime logs
+└── requirements.txt        # Python dependencies
+```
+
 ### Component Description
 
 *   **`pipeline.py` (DataAnalysisPipeline)**: The entry point and orchestration center of the system. It is responsible for reading configurations, scanning directories, dispatching the corresponding Analyzers, and aggregating the final results for output.

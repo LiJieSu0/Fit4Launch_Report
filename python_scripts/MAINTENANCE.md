@@ -110,6 +110,43 @@ python_scripts/
 *   **Logging**: During development, set `logging.level` to `DEBUG` in `config.yaml` to observe the detailed filename determination process.
 *   **Dependencies**: Refer to `requirements.txt`.
 
+## 6. Testing
+
+The project uses `pytest` for unit and module-based testing. Tests are organized by the core functional modules.
+
+### Prerequisites
+
+Ensure you have installed the testing dependencies:
+```powershell
+python -m pip install pytest pytest-cov
+```
+
+### Execution
+
+To run the tests successfully, you must be in the `python_scripts/` directory and set the `PYTHONPATH` to include all analysis modules:
+
+```powershell
+cd d:\ReportGenerator\python_scripts
+$env:PYTHONPATH = ".;src;DataPerformance;CallPerformance;VoiceQuality;Coverage"
+python -m pytest tests
+```
+
+### Test Organization
+
+*   **`tests/conftest.py`**: Contains shared fixtures, mock configurations, and temporary file system setups.
+*   **`tests/test_data_performance.py`**: Tests for throughput, ping, and other data KPIs.
+*   **`tests/test_coverage_performance.py`**: Tests for N41 and coordinate-based coverage analysis.
+*   **`tests/test_voice_quality.py`**: Tests for AMR-NB/WB and Audio Delay.
+*   **`tests/test_call_performance.py`**: Tests for call setup, retention, and Fisher's exact statistics.
+*   **`tests/test_pipeline_core.py`**: Tests for orchestration logic and configuration loading.
+
+### Code Coverage
+
+To generate a coverage report and see which parts of the code are not yet tested:
+```powershell
+python -m pytest tests --cov=src --cov-report=term-missing
+```
+
 ---
 > [!IMPORTANT]
-> For any modifications involving filename determination, ensure you test the output of `_determine_analysis_parameters` first, as this is the most critical part of the system's operation.
+> For any modifications involving filename determination, ensure you test the output of `_determine_analysis_parameters` first, and run the existing test suite to prevent regressions.

@@ -23,13 +23,13 @@ const WfcSummaryPage = () => {
     // Define WFC scenarios based on wfc_performance_results.json structure
     const scenarios = [
       { tc: 'TC150', subKey: 'DUT MO', label: 'TC150 - WFC MO Call' },
-      { tc: 'TC150', subKey: 'DUT MT', label: 'TC150 - WFC MT Call' },
       { tc: 'TC151', subKey: 'DUT MO', label: 'TC151 - WFC MO Call' },
-      { tc: 'TC151', subKey: 'DUT MT', label: 'TC151 - WFC MT Call' },
       { tc: 'TC152', subKey: 'DUT MO', label: 'TC152 - WFC MO Call' },
-      { tc: 'TC152', subKey: 'DUT MT', label: 'TC152 - WFC MT Call' },
       { tc: 'TC153', subKey: 'DUT MO', label: 'TC153 - WFC MO Call' },
-      { tc: 'TC153', subKey: 'DUT MT', label: 'TC153 - WFC MT Call' },
+      { tc: 'TC154', subKey: 'DUT MO', label: 'TC154 - WFC MO Call' },
+      { tc: 'TC155', subKey: 'DUT MO', label: 'TC155 - WFC MO Call' },
+      { tc: 'TC156', subKey: 'DUT MO', label: 'TC156 - WFC MO Call' },
+      { tc: 'TC157', subKey: 'DUT MO', label: 'TC157 - WFC MO Call' },
     ];
 
     return scenarios.map(s => {

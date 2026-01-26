@@ -3,6 +3,7 @@ import DynamicHeader from '../../CommonPage/DynamicHeader';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 
 import PValueTable from '../CallPerformance/PValueTable';
+import WfcPerformanceChart from './WfcPerformanceChart';
 
 const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
     const { allReportData, availableCities } = useReportData();
@@ -20,7 +21,7 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
         const moRetFailureRate = cityData['DUT MO']?.total_mo_attempts > 0 ? cityData['DUT MO']?.total_retention_failures / cityData['DUT MO']?.total_mo_attempts : 0;
 
         return (
-            <div key={city} className="market-section" style={{ marginBottom: '40px' }}>
+            <div key={city} className="market-section" style={{ marginBottom: '60px', pageBreakAfter: 'always' }}>
                 {isFirst && <DynamicHeader level={1}>WFC Performance Test Details</DynamicHeader>}
                 <DynamicHeader level={2}>{label} - {city} ({tc})</DynamicHeader>
                 <table className="performance-table general-table-style">
@@ -67,12 +68,32 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                         })}
                     </tbody>
                 </table>
-                <PValueTable
-                    data={cityData}
-                    kpiType="WfcCallCriteria"
-                    initFailureRate={moInitFailureRate}
-                    retFailureRate={moRetFailureRate}
-                />
+
+                <div className="charts-flex-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', justifyContent: 'center', marginTop: '30px' }}>
+                    <WfcPerformanceChart
+                        title="Mean Setup Time Comparison"
+                        labels={['Setup Time']}
+                        yAxisTitle="Time (s)"
+                        dutValues={[cityData['DUT MO']?.mean_setup_time || 0]}
+                        refValues={[cityData['REF MO']?.mean_setup_time || 0]}
+                    />
+                    <WfcPerformanceChart
+                        title="MOS Comparison"
+                        labels={['MO MOS', 'MT MOS']}
+                        yAxisTitle="Score"
+                        dutValues={[cityData['DUT MO']?.mos_average || 0, cityData['DUT MT']?.mos_average || 0]}
+                        refValues={[cityData['REF MO']?.mos_average || 0, cityData['REF MT']?.mos_average || 0]}
+                    />
+                </div>
+
+                <div style={{ marginTop: '30px' }}>
+                    <PValueTable
+                        data={cityData}
+                        kpiType="WfcCallCriteria"
+                        initFailureRate={moInitFailureRate}
+                        retFailureRate={moRetFailureRate}
+                    />
+                </div>
             </div>
         );
     };

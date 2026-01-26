@@ -54,7 +54,11 @@ const WfcSummaryPage = () => {
         link: getDynamicLink(s.tc, marketName),
         callSetupTimeColor: mapExcellentToPass(getKpiCellColor('CallSetupTime', data.mean_setup_time, refData?.mean_setup_time)),
         callInitiationColor: 'var(--performance-pass)',
-        callRetentionColor: 'var(--performance-pass)'
+        callRetentionColor: 'var(--performance-pass)',
+        moMosValue: data.mos_average?.toFixed(2),
+        moMosColor: mapExcellentToPass(data.mos_average >= (refData?.mos_average || 0) ? 'var(--performance-pass)' : 'var(--performance-fail)'),
+        mtMosValue: tcData['DUT MT']?.mos_average?.toFixed(2),
+        mtMosColor: mapExcellentToPass(tcData['DUT MT']?.mos_average >= (tcData['REF MT']?.mos_average || 0) ? 'var(--performance-pass)' : 'var(--performance-fail)')
       };
     }).filter(row => row !== null);
   };
@@ -74,6 +78,8 @@ const WfcSummaryPage = () => {
             <th>Call Setup Time</th>
             <th>Call Initiation</th>
             <th>Call Retention</th>
+            <th>MO MOS</th>
+            <th>MT MOS</th>
           </tr>
         </thead>
         <tbody>
@@ -83,9 +89,11 @@ const WfcSummaryPage = () => {
               <td style={{ backgroundColor: row.callSetupTimeColor }}><a href={row.link}>Result</a></td>
               <td style={{ backgroundColor: row.callInitiationColor }}><a href={row.link}>Result</a></td>
               <td style={{ backgroundColor: row.callRetentionColor }}><a href={row.link}>Result</a></td>
+              <td style={{ backgroundColor: row.moMosColor }}><a href={row.link}>Result</a></td>
+              <td style={{ backgroundColor: row.mtMosColor }}><a href={row.link}>Result</a></td>
             </tr>
           ))}
-          {seattleData.length === 0 && <tr><td colSpan="4" style={{ textAlign: 'center' }}>No data available</td></tr>}
+          {seattleData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
         </tbody>
       </table>
 
@@ -97,6 +105,8 @@ const WfcSummaryPage = () => {
             <th>Call Setup Time</th>
             <th>Call Initiation</th>
             <th>Call Retention</th>
+            <th>MO MOS</th>
+            <th>MT MOS</th>
           </tr>
         </thead>
         <tbody>
@@ -106,9 +116,11 @@ const WfcSummaryPage = () => {
               <td style={{ backgroundColor: row.callSetupTimeColor }}><a href={row.link}>Result</a></td>
               <td style={{ backgroundColor: row.callInitiationColor }}><a href={row.link}>Result</a></td>
               <td style={{ backgroundColor: row.callRetentionColor }}><a href={row.link}>Result</a></td>
+              <td style={{ backgroundColor: row.moMosColor }}><a href={row.link}>{row.moMosValue}</a></td>
+              <td style={{ backgroundColor: row.mtMosColor }}><a href={row.link}>{row.mtMosValue}</a></td>
             </tr>
           ))}
-          {newYorkData.length === 0 && <tr><td colSpan="4" style={{ textAlign: 'center' }}>No data available</td></tr>}
+          {newYorkData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
         </tbody>
       </table> */}
 

@@ -31,6 +31,7 @@ from report_generator.analyzers.voice_quality_analyzer import VoiceQualityAnalyz
 from report_generator.analyzers.coverage_performance_analyzer import CoveragePerformanceAnalyzer
 from report_generator.analyzers.google_throughput_analyzer import GoogleThroughputAnalyzer
 from report_generator.analyzers.mhs_drive_analyzer import MHSDriveAnalyzer
+from report_generator.analyzers.wfc_performance_analyzer import WfcPerformanceAnalyzer
 
 import data_path_reader
 import check_empty_data
@@ -54,7 +55,8 @@ class DataAnalysisPipeline:
             "data_performance": {},
             "call_performance": {},
             "voice_quality": {},
-            "coverage": {}
+            "coverage": {},
+            "wfc_performance": {}
         }
         
         # Mapping of analysis types to analyzer instances
@@ -67,7 +69,8 @@ class DataAnalysisPipeline:
             "n41_coverage": CoveragePerformanceAnalyzer(self.config, self.logger),
             "vonr_coverage_performance": CoveragePerformanceAnalyzer(self.config, self.logger),
             "google_throughput_analysis": GoogleThroughputAnalyzer(self.config, self.logger),
-            "mhs_drive_performance": MHSDriveAnalyzer(self.config, self.logger)
+            "mhs_drive_performance": MHSDriveAnalyzer(self.config, self.logger),
+            "wfc_performance": WfcPerformanceAnalyzer(self.config, self.logger)
         }
 
     def _insert_into_nested_dict(self, data_dict, path_components, value):
@@ -97,7 +100,7 @@ class DataAnalysisPipeline:
         excluded_types = [
             "call_performance", "voice_quality_combined", "coverage_coordinate", 
             "n41_coverage", "vonr_coverage_performance", "google_throughput_analysis", 
-            "mhs_drive_performance"
+            "mhs_drive_performance", "wfc_performance"
         ]
         
         all_csv_files = data_path_reader.get_csv_file_paths(
@@ -187,6 +190,13 @@ class DataAnalysisPipeline:
                     if path_components[0] in root_categories:
                         path_components = path_components[1:]
                     self._insert_into_nested_dict(self.results["data_performance"], path_components, stats)
+                elif ana_type == "wfc_performance":
+                    dest = self.results["wfc_performance"]
+                    if dir_name not in root_categories:
+                        if dir_name not in dest: dest[dir_name] = {}
+                        dest[dir_name].update(stats)
+                    else:
+                        dest.update(stats)
 
         # 3. Post-processing steps
         self._run_post_processing()
@@ -242,7 +252,8 @@ class DataAnalysisPipeline:
             "data_performance": ("data_performance_results.json", "Data Performance"),
             "call_performance": ("call_performance_results.json", "Call Performance"),
             "voice_quality": ("voice_quality_results.json", "Voice Quality"),
-            "coverage": ("coverage_performance_results.json", "Coverage Performance")
+            "coverage": ("coverage_performance_results.json", "Coverage Performance"),
+            "wfc_performance": ("wfc_performance_results.json", "WFC Performance")
         }
         for category, (filename, root_key) in export_map.items():
             if self.results[category]:

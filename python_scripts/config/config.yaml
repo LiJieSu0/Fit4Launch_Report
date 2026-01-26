@@ -30,6 +30,8 @@ analysis:
       analysis_type: "google_throughput_analysis"
     - path: "Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive"
       analysis_type: "mhs_drive_performance"
+    - path: "WFC"
+      analysis_type: "wfc_performance"
 
 auto_call:
   phone_number: "922"

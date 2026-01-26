@@ -69,16 +69,16 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                     </tbody>
                 </table>
 
-                <div className="charts-flex-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', justifyContent: 'center', marginTop: '30px' }}>
+                <div className="charts-grid-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '30px', width: '100%', boxSizing: 'border-box' }}>
                     <WfcPerformanceChart
-                        title="Mean Setup Time Comparison"
+                        title="Mean Setup Time"
                         labels={['Setup Time']}
                         yAxisTitle="Time (s)"
                         dutValues={[cityData['DUT MO']?.mean_setup_time || 0]}
                         refValues={[cityData['REF MO']?.mean_setup_time || 0]}
                     />
                     <WfcPerformanceChart
-                        title="MOS Comparison"
+                        title="Average MOS"
                         labels={['MO MOS', 'MT MOS']}
                         yAxisTitle="Score"
                         dutValues={[cityData['DUT MO']?.mos_average || 0, cityData['DUT MT']?.mos_average || 0]}

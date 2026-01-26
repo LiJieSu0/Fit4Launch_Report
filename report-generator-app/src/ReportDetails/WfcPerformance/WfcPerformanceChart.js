@@ -11,8 +11,8 @@ const WfcPerformanceChart = ({ labels, dutValues, refValues, title, yAxisTitle }
                 backgroundColor: '#4472c4',
                 borderColor: '#4472c4',
                 borderWidth: 1,
-                barPercentage: 0.8,
-                categoryPercentage: 0.6,
+                barPercentage: 0.5,
+                categoryPercentage: 0.5,
             },
             {
                 label: 'REF',
@@ -20,8 +20,8 @@ const WfcPerformanceChart = ({ labels, dutValues, refValues, title, yAxisTitle }
                 backgroundColor: '#70ad47',
                 borderColor: '#70ad47',
                 borderWidth: 1,
-                barPercentage: 0.8,
-                categoryPercentage: 0.6,
+                barPercentage: 0.5,
+                categoryPercentage: 0.5,
             }
         ],
     };
@@ -83,7 +83,7 @@ const WfcPerformanceChart = ({ labels, dutValues, refValues, title, yAxisTitle }
     };
 
     return (
-        <div className="wfc-chart-wrapper" style={{ height: '300px', width: '100%', maxWidth: '600px', margin: '20px 0' }}>
+        <div className="wfc-chart-wrapper" style={{ height: '200px', width: '50%', flex: '1', margin: '20px 0', boxSizing: 'border-box' }}>
             <h4 style={{ textAlign: 'center', marginBottom: '10px' }}>{title}</h4>
             <Bar data={chartData} options={options} />
         </div>

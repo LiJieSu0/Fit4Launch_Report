@@ -32,6 +32,8 @@ import DpDetailsPage from './ReportDetails/DataPerformance/DpDetailsPage';
 
 import WfcSummaryPage from './ReportDetails/WfcPerformance/WfcSummaryPage';
 import WfcDetailsPage from './ReportDetails/WfcPerformance/WfcDetailsPage';
+import WfcKpiPage from './ReportDetails/WfcPerformance/WfcKpiPage';
+
 const reportType = {
   'CV': "Coverage Performance",
   'VQ': "Voice Quality",
@@ -115,7 +117,7 @@ function App() {
             <>
               <WfcSummaryPage />
               <WfcDetailsPage />
-              {/* <WfcKpiPage /> */}
+              <WfcKpiPage />
             </>
           )}
 

@@ -1,52 +1,148 @@
 {
     "WFC": {
         "TC150": {
-            "DUT MO": 3.8548,
-            "DUT MT": 3.8305,
-            "REF MO": 3.5612,
-            "REF MT": 3.7578
+            "DUT MO": {
+                "mos_average": 3.8548,
+                "mean_setup_time": 1.9525
+            },
+            "DUT MT": {
+                "mos_average": 3.8305,
+                "mean_setup_time": 0.9287
+            },
+            "REF MO": {
+                "mos_average": 3.5612,
+                "mean_setup_time": 3.465
+            },
+            "REF MT": {
+                "mos_average": 3.7578,
+                "mean_setup_time": 1.7922
+            }
         },
         "TC151": {
-            "DUT MO": 3.7493,
-            "DUT MT": 3.8232,
-            "REF MO": 3.6015,
-            "REF MT": 3.3527
+            "DUT MO": {
+                "mos_average": 3.7493,
+                "mean_setup_time": 3.609
+            },
+            "DUT MT": {
+                "mos_average": 3.8232,
+                "mean_setup_time": 2.9062
+            },
+            "REF MO": {
+                "mos_average": 3.6015,
+                "mean_setup_time": 4.2004
+            },
+            "REF MT": {
+                "mos_average": 3.3527,
+                "mean_setup_time": 1.805
+            }
         },
         "TC152": {
-            "DUT MO": 3.7647,
-            "DUT MT": 3.8139,
-            "REF MO": 3.6851,
-            "REF MT": 3.7565
+            "DUT MO": {
+                "mos_average": 3.7647,
+                "mean_setup_time": 2.8887
+            },
+            "DUT MT": {
+                "mos_average": 3.8139,
+                "mean_setup_time": 2.3335
+            },
+            "REF MO": {
+                "mos_average": 3.6851,
+                "mean_setup_time": 4.139
+            },
+            "REF MT": {
+                "mos_average": 3.7565,
+                "mean_setup_time": 3.4452
+            }
         },
         "TC153": {
-            "DUT MO": 3.4834,
-            "DUT MT": 3.1105,
-            "REF MO": 3.2566,
-            "REF MT": 3.1825
+            "DUT MO": {
+                "mos_average": 3.4834,
+                "mean_setup_time": 3.1075
+            },
+            "DUT MT": {
+                "mos_average": 3.1105,
+                "mean_setup_time": 1.8985
+            },
+            "REF MO": {
+                "mos_average": 3.2566,
+                "mean_setup_time": 4.6018
+            },
+            "REF MT": {
+                "mos_average": 3.1825,
+                "mean_setup_time": 3.831
+            }
         },
         "TC154": {
-            "DUT MO": 2.7891,
-            "DUT MT": 2.7298,
-            "REF MO": 2.8003,
-            "REF MT": 2.7291
+            "DUT MO": {
+                "mos_average": 2.7891,
+                "mean_setup_time": 4.3528
+            },
+            "DUT MT": {
+                "mos_average": 2.7298,
+                "mean_setup_time": 3.3886
+            },
+            "REF MO": {
+                "mos_average": 2.8003,
+                "mean_setup_time": 4.2669
+            },
+            "REF MT": {
+                "mos_average": 2.7291,
+                "mean_setup_time": 3.5662
+            }
         },
         "TC155": {
-            "DUT MO": 2.2013,
-            "DUT MT": 2.1961,
-            "REF MO": 2.3841,
-            "REF MT": 2.227
+            "DUT MO": {
+                "mos_average": 2.2013,
+                "mean_setup_time": 4.9277
+            },
+            "DUT MT": {
+                "mos_average": 2.1961,
+                "mean_setup_time": 4.0077
+            },
+            "REF MO": {
+                "mos_average": 2.3841,
+                "mean_setup_time": 5.453
+            },
+            "REF MT": {
+                "mos_average": 2.227,
+                "mean_setup_time": 4.4637
+            }
         },
         "TC156": {
-            "DUT MO": 2.9591,
-            "DUT MT": 2.9129,
-            "REF MO": 2.6698,
-            "REF MT": 2.5824
+            "DUT MO": {
+                "mos_average": 2.9591,
+                "mean_setup_time": 2.73
+            },
+            "DUT MT": {
+                "mos_average": 2.9129,
+                "mean_setup_time": 1.3638
+            },
+            "REF MO": {
+                "mos_average": 2.6698,
+                "mean_setup_time": 4.5514
+            },
+            "REF MT": {
+                "mos_average": 2.5824,
+                "mean_setup_time": 3.5996
+            }
         },
         "TC157": {
-            "DUT MO": 2.3618,
-            "DUT MT": 2.4024,
-            "REF MO": 2.1277,
-            "REF MT": 2.1541
+            "DUT MO": {
+                "mos_average": 2.3618,
+                "mean_setup_time": 2.995
+            },
+            "DUT MT": {
+                "mos_average": 2.4024,
+                "mean_setup_time": 3.9494
+            },
+            "REF MO": {
+                "mos_average": 2.1277,
+                "mean_setup_time": 5.706
+            },
+            "REF MT": {
+                "mos_average": 2.1541,
+                "mean_setup_time": 4.6602
+            }
         }
     }
 }

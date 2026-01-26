@@ -137,3 +137,43 @@
 2026-01-26 11:27:48,157 - pipeline - INFO - Running final data validation...
 2026-01-26 11:27:48,184 - pipeline - INFO - No empty collections found in any JSON file.
 2026-01-26 11:27:48,185 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary
+2026-01-26 11:33:27,911 - pipeline - INFO - Starting analysis pipeline...
+2026-01-26 11:33:27,916 - pipeline - INFO - Processing 154 individual CSV files...
+2026-01-26 11:33:27,953 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\DUT MRAB.csv
+2026-01-26 11:33:27,956 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\REF MRAB.csv
+2026-01-26 11:33:39,308 - pipeline - INFO - Processing directory-level analyses...
+2026-01-26 11:33:39,308 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\Call Performance
+2026-01-26 11:33:39,308 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-01-26 11:33:42,405 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-01-26 11:33:43,761 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-01-26 11:33:46,265 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-01-26 11:33:47,612 - pipeline - INFO - Analyzing Voice Quality directory: D:/ReportGenerator/Raw Data\Voice Quality
+2026-01-26 11:33:47,612 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled Audio Delay
+2026-01-26 11:33:47,626 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled EVS WB VQ
+2026-01-26 11:33:47,681 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR NB VQ
+2026-01-26 11:33:47,700 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR WB VQ
+2026-01-26 11:33:47,735 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled Audio Delay
+2026-01-26 11:33:47,749 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled EVS WB VQ
+2026-01-26 11:33:47,798 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Coverage Performance (Type: coverage_coordinate)
+2026-01-26 11:33:47,799 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-26 11:33:47,830 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-26 11:33:48,149 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-01-26 11:33:48,225 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-01-26 11:33:51,525 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\WFC
+2026-01-26 11:33:51,526 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-01-26 11:33:51,544 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-01-26 11:33:51,587 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-01-26 11:33:51,677 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-01-26 11:33:51,748 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-01-26 11:33:51,838 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-01-26 11:33:51,942 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-01-26 11:33:52,022 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-01-26 11:33:52,121 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-26 11:33:52,365 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\data_performance_results.json
+2026-01-26 11:33:52,366 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\call_performance_results.json
+2026-01-26 11:33:52,367 - pipeline - INFO - Voice Quality results exported to D:/ReportGenerator/python_scripts/Analyze Summary\voice_quality_results.json
+2026-01-26 11:33:52,370 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\coverage_performance_results.json
+2026-01-26 11:33:52,370 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\wfc_performance_results.json
+2026-01-26 11:33:52,371 - pipeline - INFO - Running final data validation...
+2026-01-26 11:33:52,401 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-26 11:33:52,402 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary

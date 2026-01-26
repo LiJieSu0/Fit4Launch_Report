@@ -29,8 +29,8 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                             <th>Device</th>
                             <th>Attempts</th>
                             <th>Mean Setup Time (s)</th>
-                            <th>Init Failure (%)</th>
-                            <th>Ret Failure (%)</th>
+                            <th>Initiations Failure (%)</th>
+                            <th>Retention Failure (%)</th>
                             <th>MO MOS</th>
                             <th>MT MOS</th>
                         </tr>

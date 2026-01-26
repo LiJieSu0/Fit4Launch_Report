@@ -192,11 +192,7 @@ class DataAnalysisPipeline:
                     self._insert_into_nested_dict(self.results["data_performance"], path_components, stats)
                 elif ana_type == "wfc_performance":
                     dest = self.results["wfc_performance"]
-                    if dir_name not in root_categories:
-                        if dir_name not in dest: dest[dir_name] = {}
-                        dest[dir_name].update(stats)
-                    else:
-                        dest.update(stats)
+                    dest.update(stats)
 
         # 3. Post-processing steps
         self._run_post_processing()
@@ -253,7 +249,7 @@ class DataAnalysisPipeline:
             "call_performance": ("call_performance_results.json", "Call Performance"),
             "voice_quality": ("voice_quality_results.json", "Voice Quality"),
             "coverage": ("coverage_performance_results.json", "Coverage Performance"),
-            "wfc_performance": ("wfc_performance_results.json", "WFC Performance")
+            "wfc_performance": ("wfc_performance_results.json", "WFC")
         }
         for category, (filename, root_key) in export_map.items():
             if self.results[category]:

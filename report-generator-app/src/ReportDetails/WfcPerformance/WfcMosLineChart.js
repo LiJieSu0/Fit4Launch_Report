@@ -48,7 +48,7 @@ const WfcMosLineChart = ({ tc, city = 'Seattle' }) => {
                     "DUT MO": { color: '#0a18e2ff' },
                     "DUT MT": { color: '#0de70dff' },
                     "REF MO": { color: '#e6141eff' },
-                    "REF MT": { color: '#eee239ff' }
+                    "REF MT": { color: '#ff39e5ff' }
                 };
 
                 const loadedEntities = Object.keys(wfcMosStatistics).map(entity => {
@@ -84,7 +84,7 @@ const WfcMosLineChart = ({ tc, city = 'Seattle' }) => {
     }
 
     return (
-        <div style={{ width: '100%', height: 400, marginTop: '20px' }}>
+        <div style={{ width: '50%', height: 300, marginTop: '20px' }}>
             <h4 style={{ textAlign: 'center', marginBottom: '10px' }}>MOS Distribution</h4>
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart

@@ -13,6 +13,9 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
         self.secondary_mos_column = "[Call Test] [Voice Quality] [Sampled Values] MOS (POLQA)"
         # Setup Time Headers
         self.sip_setup_header = '[Call Test] [VoNR VoLTE] [Duration] SIP Setup Duration (Invite~200OK)'
+        # Call Performance Headers
+        self.call_type_header = '[Call Test] Call Type'
+        self.call_result_header = '[Call Test] Call Result'
 
     def _determine_category(self, filename):
         """
@@ -47,7 +50,6 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
             target_column = self.secondary_mos_column
 
         if target_column:
-            # Ensure numeric conversion
             mos_values = pd.to_numeric(df[target_column], errors='coerce').dropna()
             if not mos_values.empty:
                 return round(float(mos_values.mean()), 4)
@@ -111,6 +113,34 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
             return round(sum(setup_times) / len(setup_times), 4)
         return None
 
+    def _calculate_call_performance(self, df):
+        """Calculates call performance metrics for MO calls."""
+        if self.call_type_header not in df.columns or self.call_result_header not in df.columns:
+            return None
+
+        # Filter for Voice calls
+        voice_calls = df[df[self.call_type_header].astype(str).str.contains('Voice', na=False)]
+        if voice_calls.empty:
+            return None
+
+        # In WFC MO files, all "Voice" calls are MO calls.
+        total_mo_attempts = voice_calls.shape[0]
+        
+        # Call results
+        results = voice_calls[self.call_result_header].value_counts().to_dict()
+        
+        total_initiation_failures = results.get('Orig. Fail', 0)
+        total_retention_failures = results.get('Drop', 0)
+        total_attempts = voice_calls.shape[0]
+        total_initiation_successes = total_attempts - total_initiation_failures
+
+        return {
+            "total_mo_attempts": int(total_mo_attempts),
+            "total_initiation_failures": int(total_initiation_failures),
+            "total_retention_failures": int(total_retention_failures),
+            "total_initiation_successes": int(total_initiation_successes)
+        }
+
     def analyze(self, root_directory: str):
         """
         Analyzes a WFC directory. Groups results by TC -> Category -> Metrics.
@@ -142,16 +172,28 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                 try:
                     df = pd.read_csv(file_path, low_memory=False)
                     
+                    # 1. MOS
                     mos_avg = self._calculate_mos_average(df)
+                    # 2. Setup Time
                     setup_time = self._calculate_setup_time(df)
+                    # 3. Call Performance (MO Only)
+                    cp_stats = None
+                    if "MO" in category:
+                        cp_stats = self._calculate_call_performance(df)
                     
                     if category not in tc_stats:
-                        tc_stats[category] = {"mos": [], "setup_time": []}
+                        tc_stats[category] = {
+                            "mos": [], 
+                            "setup_time": [],
+                            "cp": []
+                        }
                     
                     if mos_avg is not None:
                         tc_stats[category]["mos"].append(mos_avg)
                     if setup_time is not None:
                         tc_stats[category]["setup_time"].append(setup_time)
+                    if cp_stats is not None:
+                        tc_stats[category]["cp"].append(cp_stats)
                         
                 except Exception as e:
                     self.logger.error(f"Error processing {file_path}: {e}")
@@ -160,10 +202,27 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                 final_tc_results = {}
                 for category, metrics in tc_stats.items():
                     final_tc_results[category] = {}
+                    
+                    # Metric: MOS
                     if metrics["mos"]:
                         final_tc_results[category]["mos_average"] = round(sum(metrics["mos"]) / len(metrics["mos"]), 4)
+                    
+                    # Metric: Setup Time
                     if metrics["setup_time"]:
                         final_tc_results[category]["mean_setup_time"] = round(sum(metrics["setup_time"]) / len(metrics["setup_time"]), 4)
+                    
+                    # Metric: Call Performance (MO Only)
+                    if metrics["cp"]:
+                        agg_cp = {
+                            "total_mo_attempts": 0,
+                            "total_initiation_failures": 0,
+                            "total_retention_failures": 0,
+                            "total_initiation_successes": 0
+                        }
+                        for entry in metrics["cp"]:
+                            for k in agg_cp:
+                                agg_cp[k] += entry.get(k, 0)
+                        final_tc_results[category].update(agg_cp)
                 
                 if final_tc_results:
                     results[tc_dir_name] = final_tc_results

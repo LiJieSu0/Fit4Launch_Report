@@ -115,6 +115,7 @@ function App() {
             <>
               <WfcSummaryPage />
               <WfcDetailsPage />
+              <WfcKpiPage />
             </>
           )}
 

@@ -3,28 +3,36 @@ import { useContext } from 'react';
 
 const BASE_DATA_PATH = '/AnalyzeResults/';
 
+const safeFetchJson = async (url) => {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      console.warn(`File not found or error loading: ${url}`);
+      return {};
+    }
+    return await response.json();
+  } catch (error) {
+    console.warn(`Error fetching ${url}:`, error);
+    return {};
+  }
+};
+
 export const loadAllData = async (city) => {
   const cityDataPath = `${BASE_DATA_PATH}${city}/`;
   try {
     const [
-      callPerformanceRes,
-      coveragePerformanceRes,
-      dataPerformanceRes,
-      voiceQualityRes,
-      wfcPerformanceRes,
+      callPerformance,
+      coveragePerformance,
+      dataPerformance,
+      voiceQuality,
+      wfcPerformance,
     ] = await Promise.all([
-      fetch(`${cityDataPath}call_performance_results.json`),
-      fetch(`${cityDataPath}coverage_performance_results.json`),
-      fetch(`${cityDataPath}data_performance_results.json`),
-      fetch(`${cityDataPath}voice_quality_results.json`),
-      fetch(`${cityDataPath}wfc_performance_results.json`),
+      safeFetchJson(`${cityDataPath}call_performance_results.json`),
+      safeFetchJson(`${cityDataPath}coverage_performance_results.json`),
+      safeFetchJson(`${cityDataPath}data_performance_results.json`),
+      safeFetchJson(`${cityDataPath}voice_quality_results.json`),
+      safeFetchJson(`${cityDataPath}wfc_performance_results.json`),
     ]);
-
-    const callPerformance = await callPerformanceRes.json();
-    const coveragePerformance = await coveragePerformanceRes.json();
-    const dataPerformance = await dataPerformanceRes.json();
-    const voiceQuality = await voiceQualityRes.json();
-    const wfcPerformance = await wfcPerformanceRes.json();
 
     return {
       callPerformance,

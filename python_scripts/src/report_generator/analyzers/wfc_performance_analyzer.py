@@ -3,6 +3,7 @@ import logging
 import pandas as pd
 import re
 from report_generator.base_analyzer import BaseAnalyzer
+from CallPerformance.call_analyze import _calculate_fisher_exact_criteria
 
 class WfcPerformanceAnalyzer(BaseAnalyzer):
     def __init__(self, config, logger):
@@ -224,6 +225,34 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                                 agg_cp[k] += entry.get(k, 0)
                         final_tc_results[category].update(agg_cp)
                 
+                # Calculate p-values for MO calls if both DUT MO and REF MO exist
+                if "DUT MO" in final_tc_results and "REF MO" in final_tc_results:
+                    dut_mo = final_tc_results["DUT MO"]
+                    ref_mo = final_tc_results["REF MO"]
+                    
+                    # initiation_p_value
+                    if "total_mo_attempts" in dut_mo and "total_mo_attempts" in ref_mo:
+                        _, p_init = _calculate_fisher_exact_criteria(
+                            dut_mo.get('total_initiation_failures', 0), 
+                            dut_mo.get('total_mo_attempts', 0) - dut_mo.get('total_initiation_failures', 0),
+                            ref_mo.get('total_initiation_failures', 0), 
+                            ref_mo.get('total_mo_attempts', 0) - ref_mo.get('total_initiation_failures', 0),
+                            criteria_type="WFC MO Initiation"
+                        )
+                        if p_init is not None:
+                            final_tc_results["initiation_p_value"] = p_init
+                            
+                        # retention_p_value
+                        _, p_ret = _calculate_fisher_exact_criteria(
+                            dut_mo.get('total_retention_failures', 0), 
+                            dut_mo.get('total_initiation_successes', 0),
+                            ref_mo.get('total_retention_failures', 0), 
+                            ref_mo.get('total_initiation_successes', 0),
+                            criteria_type="WFC MO Retention"
+                        )
+                        if p_ret is not None:
+                            final_tc_results["retention_p_value"] = p_ret
+
                 if final_tc_results:
                     results[tc_dir_name] = final_tc_results
 

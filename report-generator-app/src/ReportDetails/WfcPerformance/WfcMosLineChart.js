@@ -84,7 +84,7 @@ const WfcMosLineChart = ({ tc, city = 'Seattle' }) => {
     }
 
     return (
-        <div style={{ width: '50%', height: 300, marginTop: '20px' }}>
+        <div style={{ width: '50%', height: 300, marginTop: '5px' }}>
             <h4 style={{ textAlign: 'center', marginBottom: '10px' }}>MOS Distribution</h4>
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart

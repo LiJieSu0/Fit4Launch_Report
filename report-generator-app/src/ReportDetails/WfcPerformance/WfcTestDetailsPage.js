@@ -69,8 +69,15 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                         })}
                     </tbody>
                 </table>
-
-                <div className="charts-grid-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '30px', width: '100%', boxSizing: 'border-box' }}>
+                <div style={{ marginTop: '10px' }}>
+                    <PValueTable
+                        data={cityData}
+                        kpiType="WfcCallCriteria"
+                        initFailureRate={moInitFailureRate}
+                        retFailureRate={moRetFailureRate}
+                    />
+                </div>
+                <div className="charts-grid-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '10px', width: '100%', boxSizing: 'border-box' }}>
                     <WfcPerformanceChart
                         title="Mean Setup Time"
                         labels={['Setup Time']}
@@ -80,25 +87,18 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                     />
                     <WfcPerformanceChart
                         title="Average MOS"
-                        labels={['MO MOS', 'MT MOS']}
+                        labels={['MO', 'MT']}
                         yAxisTitle="Score"
                         dutValues={[cityData['DUT MO']?.mos_average || 0, cityData['DUT MT']?.mos_average || 0]}
                         refValues={[cityData['REF MO']?.mos_average || 0, cityData['REF MT']?.mos_average || 0]}
                     />
                 </div>
 
-                <div>
+                <div style={{ marginBottom: '-10px' }}>
                     <WfcMosLineChart tc={tc} city={city} />
                 </div>
 
-                <div style={{ marginTop: '30px' }}>
-                    <PValueTable
-                        data={cityData}
-                        kpiType="WfcCallCriteria"
-                        initFailureRate={moInitFailureRate}
-                        retFailureRate={moRetFailureRate}
-                    />
-                </div>
+
             </div>
         );
     };

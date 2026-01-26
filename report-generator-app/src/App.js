@@ -39,7 +39,7 @@ const reportType = {
   'VQ': "Voice Quality",
   'CP': "Call Performance",
   'DP': "Data Performance",
-  'WFC': "WFC"
+  'WFC': "Wifi Call"
 }
 
 function App() {

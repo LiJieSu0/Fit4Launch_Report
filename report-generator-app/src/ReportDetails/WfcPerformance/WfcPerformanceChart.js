@@ -87,7 +87,7 @@ const WfcPerformanceChart = ({ labels, dutValues, refValues, title, yAxisTitle }
     };
 
     return (
-        <div className="wfc-chart-wrapper" style={{ height: '250px', width: '50%', flex: '1', margin: '20px 0', boxSizing: 'border-box' }}>
+        <div className="wfc-chart-wrapper" style={{ height: '250px', width: '50%', flex: '1', margin: '0px 0', boxSizing: 'border-box' }}>
             <h4 style={{ textAlign: 'center', marginBottom: '10px' }}>{title}</h4>
             <Bar data={chartData} options={options} />
         </div>

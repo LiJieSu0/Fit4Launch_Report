@@ -11,8 +11,10 @@ const WfcSummaryPage = () => {
   const { numberedHeaders } = useContext(HeaderContext);
 
   const getDynamicLink = (scenarioKey, marketName) => {
-    const searchText = `${scenarioKey} - ${marketName}`.toLowerCase();
-    const header = numberedHeaders.find(h => h.text.toLowerCase().includes(searchText));
+    const header = numberedHeaders.find(h =>
+      h.text.toLowerCase().includes(scenarioKey.toLowerCase()) &&
+      h.text.toLowerCase().includes(marketName.toLowerCase())
+    );
     return header ? `#${header.id}` : '#';
   };
 

@@ -22,14 +22,14 @@ const WfcSummaryPage = () => {
 
     // Define WFC scenarios based on wfc_performance_results.json structure
     const scenarios = [
-      { tc: 'TC150', subKey: 'DUT MO', label: 'TC150 - WFC MO Call' },
-      { tc: 'TC151', subKey: 'DUT MO', label: 'TC151 - WFC MO Call' },
-      { tc: 'TC152', subKey: 'DUT MO', label: 'TC152 - WFC MO Call' },
-      { tc: 'TC153', subKey: 'DUT MO', label: 'TC153 - WFC MO Call' },
-      { tc: 'TC154', subKey: 'DUT MO', label: 'TC154 - WFC MO Call' },
-      { tc: 'TC155', subKey: 'DUT MO', label: 'TC155 - WFC MO Call' },
-      { tc: 'TC156', subKey: 'DUT MO', label: 'TC156 - WFC MO Call' },
-      { tc: 'TC157', subKey: 'DUT MO', label: 'TC157 - WFC MO Call' },
+      { tc: 'TC150', subKey: 'DUT MO', label: 'TC150 - Call Performance Baseline' },
+      { tc: 'TC151', subKey: 'DUT MO', label: 'TC151 - Call Performance Baseline' },
+      { tc: 'TC152', subKey: 'DUT MO', label: 'TC152 - Call Performance' },
+      { tc: 'TC153', subKey: 'DUT MO', label: 'TC153 - Call Performance' },
+      { tc: 'TC154', subKey: 'DUT MO', label: 'TC154 - Call Performance' },
+      { tc: 'TC155', subKey: 'DUT MO', label: 'TC155 - Call Performance' },
+      { tc: 'TC156', subKey: 'DUT MO', label: 'TC156 - Call Performance' },
+      { tc: 'TC157', subKey: 'DUT MO', label: 'TC157 - Call Performance' },
     ];
 
     return scenarios.map(s => {
@@ -47,18 +47,21 @@ const WfcSummaryPage = () => {
         return color;
       };
 
+      const initiationFailureRate = data.total_mo_attempts > 0 ? data.total_initiation_failures / data.total_mo_attempts : 0;
+      const retentionFailureRate = data.total_mo_attempts > 0 ? data.total_retention_failures / data.total_mo_attempts : 0;
+
       // Mapping to existing KPI rules as a placeholder
       return {
         test: s.label,
         market: marketName,
         link: getDynamicLink(s.tc, marketName),
         callSetupTimeColor: mapExcellentToPass(getKpiCellColor('CallSetupTime', data.mean_setup_time, refData?.mean_setup_time)),
-        callInitiationColor: 'var(--performance-pass)',
-        callRetentionColor: 'var(--performance-pass)',
+        callInitiationColor: mapExcellentToPass(getKpiCellColor('WfcCallCriteria', tcData.initiation_p_value, initiationFailureRate)),
+        callRetentionColor: mapExcellentToPass(getKpiCellColor('WfcCallCriteria', tcData.retention_p_value, retentionFailureRate)),
         moMosValue: data.mos_average?.toFixed(2),
-        moMosColor: mapExcellentToPass(data.mos_average >= (refData?.mos_average || 0) ? 'var(--performance-pass)' : 'var(--performance-fail)'),
+        moMosColor: mapExcellentToPass(getKpiCellColor('WfcMOS', data.mos_average, refData?.mos_average)),
         mtMosValue: tcData['DUT MT']?.mos_average?.toFixed(2),
-        mtMosColor: mapExcellentToPass(tcData['DUT MT']?.mos_average >= (tcData['REF MT']?.mos_average || 0) ? 'var(--performance-pass)' : 'var(--performance-fail)')
+        mtMosColor: mapExcellentToPass(getKpiCellColor('WfcMOS', tcData['DUT MT']?.mos_average, tcData['REF MT']?.mos_average))
       };
     }).filter(row => row !== null);
   };

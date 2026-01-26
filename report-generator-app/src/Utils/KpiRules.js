@@ -92,6 +92,31 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => { // only
         return 'var(--performance-fail)';
       }
       break;
+    case 'WfcCallCriteria':
+      // dutValue: p-value
+      // refValue: failureRate
+      if (dutValue > 0.95) {
+        return 'var(--performance-excellent)';
+      } else if (dutValue >= 0.05 && dutValue <= 0.95) {
+        return 'var(--performance-pass)';
+      } else if (dutValue < 0.05 && refValue < 0.01) {
+        return 'var(--performance-marginal-fail)';
+      } else if (dutValue < 0.05) {
+        return 'var(--performance-fail)';
+      }
+      break;
+      break;
+    case 'WfcMOS':
+      if (dutValue > refValue) {
+        return 'var(--performance-excellent)';
+      } else if (dutValue > refValue - 0.1) {
+        return 'var(--performance-pass)';
+      } else if (dutValue < refValue - 0.25) {
+        return 'var(--performance-fail)';
+      } else {
+        return 'var(--performance-marginal-fail)';
+      }
+      break;
     case 'CoverageDistance':
       if (dutValue >= 0.95 * refValue) {
         return 'var(--performance-pass)';

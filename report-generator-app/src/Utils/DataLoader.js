@@ -11,23 +11,27 @@ export const loadAllData = async (city) => {
       coveragePerformanceRes,
       dataPerformanceRes,
       voiceQualityRes,
+      wfcPerformanceRes,
     ] = await Promise.all([
       fetch(`${cityDataPath}call_performance_results.json`),
       fetch(`${cityDataPath}coverage_performance_results.json`),
       fetch(`${cityDataPath}data_performance_results.json`),
       fetch(`${cityDataPath}voice_quality_results.json`),
+      fetch(`${cityDataPath}wfc_performance_results.json`),
     ]);
 
     const callPerformance = await callPerformanceRes.json();
     const coveragePerformance = await coveragePerformanceRes.json();
     const dataPerformance = await dataPerformanceRes.json();
     const voiceQuality = await voiceQualityRes.json();
+    const wfcPerformance = await wfcPerformanceRes.json();
 
     return {
       callPerformance,
       coveragePerformance,
       dataPerformance,
       voiceQuality,
+      wfcPerformance,
     };
   } catch (error) {
     console.error(`Failed to load all report data for ${city}:`, error);

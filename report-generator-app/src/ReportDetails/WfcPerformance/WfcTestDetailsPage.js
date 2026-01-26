@@ -4,7 +4,7 @@ import { getKpiCellColor } from '../../Utils/KpiRules';
 
 import PValueTable from '../CallPerformance/PValueTable';
 
-const WfcTestDetailsPage = ({ tc, label }) => {
+const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
     const { allReportData, availableCities } = useReportData();
 
     const renderMarketTable = (city) => {
@@ -21,6 +21,7 @@ const WfcTestDetailsPage = ({ tc, label }) => {
 
         return (
             <div key={city} className="market-section" style={{ marginBottom: '40px' }}>
+                {isFirst && <DynamicHeader level={1}>WFC Performance Test Details</DynamicHeader>}
                 <DynamicHeader level={2}>{label} - {city} ({tc})</DynamicHeader>
                 <table className="performance-table general-table-style">
                     <thead>

@@ -5,7 +5,7 @@ const WfcDetailsPage = () => {
 
   return (
     <>
-      <WfcTestDetailsPage tc="TC150" label="Call Performance Baseline" />
+      <WfcTestDetailsPage tc="TC150" label="Call Performance Baseline" isFirst={true} />
       <WfcTestDetailsPage tc="TC151" label="Call Performance Baseline" />
       <WfcTestDetailsPage tc="TC152" label="Call Performance" />
       <WfcTestDetailsPage tc="TC153" label="Call Performance" />

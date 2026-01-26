@@ -4,6 +4,7 @@ import { getKpiCellColor } from '../../Utils/KpiRules';
 
 import PValueTable from '../CallPerformance/PValueTable';
 import WfcPerformanceChart from './WfcPerformanceChart';
+import WfcMosLineChart from './WfcMosLineChart';
 
 const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
     const { allReportData, availableCities } = useReportData();
@@ -84,6 +85,10 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                         dutValues={[cityData['DUT MO']?.mos_average || 0, cityData['DUT MT']?.mos_average || 0]}
                         refValues={[cityData['REF MO']?.mos_average || 0, cityData['REF MT']?.mos_average || 0]}
                     />
+                </div>
+
+                <div>
+                    <WfcMosLineChart tc={tc} city={city} />
                 </div>
 
                 <div style={{ marginTop: '30px' }}>

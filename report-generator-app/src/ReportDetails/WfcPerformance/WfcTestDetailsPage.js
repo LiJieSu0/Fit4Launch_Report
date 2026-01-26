@@ -24,7 +24,7 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
         return (
             <div key={city} className="market-section" style={{ marginBottom: '60px', pageBreakAfter: 'always' }}>
                 {isFirst && <DynamicHeader level={1}>WFC Performance Test Details</DynamicHeader>}
-                <DynamicHeader level={2}>{label} - {city} ({tc})</DynamicHeader>
+                <DynamicHeader level={2}>{tc} - {label} - {city} </DynamicHeader>
                 <table className="performance-table general-table-style">
                     <thead>
                         <tr>

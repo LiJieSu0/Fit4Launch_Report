@@ -20,6 +20,8 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
         # RSSI/RSRP Headers
         self.rssi_header = '[WiFi] [Serving AP] RSSI'
         self.rsrp_header = '[Call Test] [Voice Quality] [Per Rx Clip] [RF Quality] 5G RSRP'
+        # Handover Header
+        self.network_type_header = '[Mobile Info] [Android] [Radio] Network Type (Data Svc)'
 
     def _calculate_column_average(self, df, header):
         """Calculates the average of a specific column, handling numeric conversion."""
@@ -28,6 +30,41 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
             if not values.empty:
                 return round(float(values.mean()), 4)
         return None
+
+    def _extract_tc_number(self, dirname):
+        """Extracts the numeric part of the TC name (e.g., 'TC164' -> 164)."""
+        match = re.search(r'TC(\d+)', dirname, re.IGNORECASE)
+        if match:
+            return int(match.group(1))
+        return None
+
+    def _calculate_handover_count(self, df):
+        """Counts transitions between NR (NR_SA) and IWLAN, ignoring blanks."""
+        if self.network_type_header not in df.columns:
+            return 0
+        
+        # Get values, strip whitespace, and filter out empty ones
+        types = df[self.network_type_header].astype(str).str.strip()
+        filtered_types = [t for t in types if t and t.lower() != 'nan' and t != '']
+        
+        count = 0
+        if len(filtered_types) < 2:
+            return 0
+            
+        for i in range(len(filtered_types) - 1):
+            prev = filtered_types[i]
+            curr = filtered_types[i+1]
+            
+            # Check for transition between NR and IWLAN
+            # NR might be "NR (NR_SA)" or just "NR"
+            is_nr_prev = "NR" in prev.upper()
+            is_iwlan_prev = "IWLAN" in prev.upper()
+            is_nr_curr = "NR" in curr.upper()
+            is_iwlan_curr = "IWLAN" in curr.upper()
+            
+            if (is_nr_prev and is_iwlan_curr) or (is_iwlan_prev and is_nr_curr):
+                count += 1
+        return count
 
     def _determine_category(self, filename):
         """
@@ -203,7 +240,8 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                             "setup_time": [],
                             "cp": [],
                             "rssi": [],
-                            "rsrp": []
+                            "rsrp": [],
+                            "handover_counts": []
                         }
                     
                     if mos_avg is not None:
@@ -216,6 +254,12 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                         tc_stats[category]["rssi"].append(rssi_avg)
                     if rsrp_avg is not None:
                         tc_stats[category]["rsrp"].append(rsrp_avg)
+                        
+                    # Handle Handover Counts (TC162-TC170)
+                    tc_num = self._extract_tc_number(tc_dir_name)
+                    if tc_num and 162 <= tc_num <= 170:
+                        ho_count = self._calculate_handover_count(df)
+                        tc_stats[category]["handover_counts"].append(ho_count)
                         
                 except Exception as e:
                     self.logger.error(f"Error processing {file_path}: {e}")
@@ -240,6 +284,13 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                     # Metric: RSRP
                     rsrp_values = metrics["rsrp"]
                     final_tc_results[category]["rsrp_average"] = round(sum(rsrp_values) / len(rsrp_values), 4) if rsrp_values else "N/A"
+
+                    # Rule: MinimumHandover (TC162-TC170)
+                    tc_num = self._extract_tc_number(tc_dir_name)
+                    if tc_num and 162 <= tc_num <= 170:
+                        ho_values = metrics["handover_counts"]
+                        # Sum total transitions across all runs
+                        final_tc_results[category]["minimum_handover"] = sum(ho_values) if ho_values else 0
 
                     # Metric: Call Performance (MO/DUT with CP only)
                     if metrics["cp"]:

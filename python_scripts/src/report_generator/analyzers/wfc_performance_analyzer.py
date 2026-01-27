@@ -17,10 +17,23 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
         # Call Performance Headers
         self.call_type_header = '[Call Test] Call Type'
         self.call_result_header = '[Call Test] Call Result'
+        # RSSI/RSRP Headers
+        self.rssi_header = '[WiFi] [Serving AP] RSSI'
+        self.rsrp_header = '[Call Test] [Voice Quality] [Per Rx Clip] [RF Quality] 5G RSRP'
+
+    def _calculate_column_average(self, df, header):
+        """Calculates the average of a specific column, handling numeric conversion."""
+        if header in df.columns:
+            values = pd.to_numeric(df[header], errors='coerce').dropna()
+            if not values.empty:
+                return round(float(values.mean()), 4)
+        return None
 
     def _determine_category(self, filename):
         """
-        Determines the category (DUT MO, DUT MT, REF MO, REF MT) from the filename.
+        Determines the category from the filename.
+        Prioritizes [Device] [Orientation] (e.g., DUT MO), 
+        falls back to [Device] (e.g., DUT) if MO/MT is missing.
         """
         filename_upper = filename.upper()
         
@@ -34,13 +47,11 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
         # Determine MO/MT
         call_type = ""
         if "_MO_" in filename_upper or "_MO-" in filename_upper:
-            call_type = "MO"
+            call_type = " MO"
         elif "_MT_" in filename_upper or "_MT-" in filename_upper:
-            call_type = "MT"
+            call_type = " MT"
             
-        if call_type:
-            return f"{device} {call_type}"
-        return None
+        return f"{device}{call_type}"
 
     def _calculate_mos_average(self, df):
         """Calculates the average MOS value from a DataFrame."""
@@ -182,11 +193,17 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                     if "MO" in category:
                         cp_stats = self._calculate_call_performance(df)
                     
+                    # 4. RSSI and RSRP
+                    rssi_avg = self._calculate_column_average(df, self.rssi_header)
+                    rsrp_avg = self._calculate_column_average(df, self.rsrp_header)
+                    
                     if category not in tc_stats:
                         tc_stats[category] = {
                             "mos": [], 
                             "setup_time": [],
-                            "cp": []
+                            "cp": [],
+                            "rssi": [],
+                            "rsrp": []
                         }
                     
                     if mos_avg is not None:
@@ -195,6 +212,10 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                         tc_stats[category]["setup_time"].append(setup_time)
                     if cp_stats is not None:
                         tc_stats[category]["cp"].append(cp_stats)
+                    if rssi_avg is not None:
+                        tc_stats[category]["rssi"].append(rssi_avg)
+                    if rsrp_avg is not None:
+                        tc_stats[category]["rsrp"].append(rsrp_avg)
                         
                 except Exception as e:
                     self.logger.error(f"Error processing {file_path}: {e}")
@@ -205,14 +226,22 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                     final_tc_results[category] = {}
                     
                     # Metric: MOS
-                    if metrics["mos"]:
-                        final_tc_results[category]["mos_average"] = round(sum(metrics["mos"]) / len(metrics["mos"]), 4)
+                    mos_values = metrics["mos"]
+                    final_tc_results[category]["mos_average"] = round(sum(mos_values) / len(mos_values), 4) if mos_values else "N/A"
                     
                     # Metric: Setup Time
-                    if metrics["setup_time"]:
-                        final_tc_results[category]["mean_setup_time"] = round(sum(metrics["setup_time"]) / len(metrics["setup_time"]), 4)
+                    setup_values = metrics["setup_time"]
+                    final_tc_results[category]["mean_setup_time"] = round(sum(setup_values) / len(setup_values), 4) if setup_values else "N/A"
                     
-                    # Metric: Call Performance (MO Only)
+                    # Metric: RSSI
+                    rssi_values = metrics["rssi"]
+                    final_tc_results[category]["rssi_average"] = round(sum(rssi_values) / len(rssi_values), 4) if rssi_values else "N/A"
+
+                    # Metric: RSRP
+                    rsrp_values = metrics["rsrp"]
+                    final_tc_results[category]["rsrp_average"] = round(sum(rsrp_values) / len(rsrp_values), 4) if rsrp_values else "N/A"
+
+                    # Metric: Call Performance (MO/DUT with CP only)
                     if metrics["cp"]:
                         agg_cp = {
                             "total_mo_attempts": 0,

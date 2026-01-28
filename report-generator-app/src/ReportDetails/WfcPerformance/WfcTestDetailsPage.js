@@ -113,12 +113,12 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                                     <tbody>
                                         <tr>
                                             <td>DUT</td>
-                                            <td>{parseFloat(cityData['DUT MO']?.rssi_average) || parseFloat(cityData['DUT']?.rssi_average) || 'N/A'}</td>
-                                            <td>{parseFloat(cityData['DUT MT']?.rssi_average) || 'N/A'}</td>
+                                            <td>{parseFloat(cityData['DUT MO']?.rssi_average).toFixed(2) || parseFloat(cityData['DUT']?.rssi_average).toFixed(2) || 'N/A'}</td>
+                                            <td>{parseFloat(cityData['DUT MT']?.rssi_average).toFixed(2) || 'N/A'}</td>
                                         </tr>
                                         <tr>
                                             <td>REF</td>
-                                            <td>{parseFloat(cityData['REF MO']?.rssi_average) || parseFloat(cityData['REF']?.rssi_average) || 'N/A'}</td>
+                                            <td>{parseFloat(cityData['REF MO']?.rssi_average).toFixed(2) || parseFloat(cityData['REF']?.rssi_average).toFixed(2) || 'N/A'}</td>
                                             <td>{parseFloat(cityData['REF MT']?.rssi_average) || 'N/A'}</td>
                                         </tr>
                                     </tbody>
@@ -128,12 +128,12 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                                     labels={['MO', 'MT']}
                                     yAxisTitle="RSSI (dBm)"
                                     dutValues={[
-                                        parseFloat(cityData['DUT MO']?.rssi_average) || parseFloat(cityData['DUT']?.rssi_average) || 0,
-                                        parseFloat(cityData['DUT MT']?.rssi_average) || 0
+                                        parseFloat(cityData['DUT MO']?.rssi_average).toFixed(2) || parseFloat(cityData['DUT']?.rssi_average).toFixed(2) || 0,
+                                        parseFloat(cityData['DUT MT']?.rssi_average).toFixed(2) || 0
                                     ]}
                                     refValues={[
-                                        parseFloat(cityData['REF MO']?.rssi_average) || parseFloat(cityData['REF']?.rssi_average) || 0,
-                                        parseFloat(cityData['REF MT']?.rssi_average) || 0
+                                        parseFloat(cityData['REF MO']?.rssi_average).toFixed(2) || parseFloat(cityData['REF']?.rssi_average).toFixed(2) || 0,
+                                        parseFloat(cityData['REF MT']?.rssi_average).toFixed(2) || 0
                                     ]}
                                 />
                             </div>
@@ -149,12 +149,12 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                                     <tbody>
                                         <tr>
                                             <td>DUT</td>
-                                            <td>{parseFloat(cityData['DUT MO']?.rsrp_average) || parseFloat(cityData['DUT']?.rsrp_average).toFixed(2) || 'N/A'}</td>
+                                            <td>{parseFloat(cityData['DUT MO']?.rsrp_average).toFixed(2) || parseFloat(cityData['DUT']?.rsrp_average).toFixed(2) || 'N/A'}</td>
                                             <td>{parseFloat(cityData['DUT MT']?.rsrp_average).toFixed(2) || 'N/A'}</td>
                                         </tr>
                                         <tr>
                                             <td>REF</td>
-                                            <td>{parseFloat(cityData['REF MO']?.rsrp_average) || parseFloat(cityData['REF']?.rsrp_average).toFixed(2) || 'N/A'}</td>
+                                            <td>{parseFloat(cityData['REF MO']?.rsrp_average).toFixed(2) || parseFloat(cityData['REF']?.rsrp_average).toFixed(2) || 'N/A'}</td>
                                             <td>{parseFloat(cityData['REF MT']?.rsrp_average).toFixed(2) || 'N/A'}</td>
                                         </tr>
                                     </tbody>
@@ -164,11 +164,11 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                                     labels={['MO', 'MT']}
                                     yAxisTitle="RSRP (dBm)"
                                     dutValues={[
-                                        parseFloat(cityData['DUT MO']?.rsrp_average) || parseFloat(cityData['DUT']?.rsrp_average).toFixed(2) || 0,
+                                        parseFloat(cityData['DUT MO']?.rsrp_average).toFixed(2) || parseFloat(cityData['DUT']?.rsrp_average).toFixed(2) || 0,
                                         parseFloat(cityData['DUT MT']?.rsrp_average).toFixed(2) || 0
                                     ]}
                                     refValues={[
-                                        parseFloat(cityData['REF MO']?.rsrp_average) || parseFloat(cityData['REF']?.rsrp_average).toFixed(2) || 0,
+                                        parseFloat(cityData['REF MO']?.rsrp_average).toFixed(2) || parseFloat(cityData['REF']?.rsrp_average).toFixed(2) || 0,
                                         parseFloat(cityData['REF MT']?.rsrp_average).toFixed(2) || 0
                                     ]}
                                 />

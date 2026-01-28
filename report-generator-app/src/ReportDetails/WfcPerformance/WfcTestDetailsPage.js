@@ -23,7 +23,8 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
 
         return (
             <>
-                <div className="page-content">
+                <div className='page-content'>
+
                     <div key={city} className="market-section" style={{ marginBottom: '60px', pageBreakAfter: 'always' }}>
                         {isFirst && <DynamicHeader level={1}>WFC Performance Test Details</DynamicHeader>}
                         <DynamicHeader level={2}>{tc} - {label} - {city} </DynamicHeader>
@@ -148,39 +149,38 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                                     <tbody>
                                         <tr>
                                             <td>DUT</td>
-                                            <td>{parseFloat(cityData['DUT MO']?.rsrp_average) || parseFloat(cityData['DUT']?.rsrp_average) || 'N/A'}</td>
-                                            <td>{parseFloat(cityData['DUT MT']?.rsrp_average) || 'N/A'}</td>
+                                            <td>{parseFloat(cityData['DUT MO']?.rsrp_average) || parseFloat(cityData['DUT']?.rsrp_average).toFixed(2) || 'N/A'}</td>
+                                            <td>{parseFloat(cityData['DUT MT']?.rsrp_average).toFixed(2) || 'N/A'}</td>
                                         </tr>
                                         <tr>
                                             <td>REF</td>
-                                            <td>{parseFloat(cityData['REF MO']?.rsrp_average) || parseFloat(cityData['REF']?.rsrp_average) || 'N/A'}</td>
-                                            <td>{parseFloat(cityData['REF MT']?.rsrp_average) || 'N/A'}</td>
+                                            <td>{parseFloat(cityData['REF MO']?.rsrp_average) || parseFloat(cityData['REF']?.rsrp_average).toFixed(2) || 'N/A'}</td>
+                                            <td>{parseFloat(cityData['REF MT']?.rsrp_average).toFixed(2) || 'N/A'}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <WfcPerformanceChart
-                                    style={{ marginLeft: '-50px' }}
                                     title="Average RSRP"
                                     labels={['MO', 'MT']}
                                     yAxisTitle="RSRP (dBm)"
                                     dutValues={[
-                                        parseFloat(cityData['DUT MO']?.rsrp_average) || parseFloat(cityData['DUT']?.rsrp_average) || 0,
-                                        parseFloat(cityData['DUT MT']?.rsrp_average) || 0
+                                        parseFloat(cityData['DUT MO']?.rsrp_average) || parseFloat(cityData['DUT']?.rsrp_average).toFixed(2) || 0,
+                                        parseFloat(cityData['DUT MT']?.rsrp_average).toFixed(2) || 0
                                     ]}
                                     refValues={[
-                                        parseFloat(cityData['REF MO']?.rsrp_average) || parseFloat(cityData['REF']?.rsrp_average) || 0,
-                                        parseFloat(cityData['REF MT']?.rsrp_average) || 0
+                                        parseFloat(cityData['REF MO']?.rsrp_average) || parseFloat(cityData['REF']?.rsrp_average).toFixed(2) || 0,
+                                        parseFloat(cityData['REF MT']?.rsrp_average).toFixed(2) || 0
                                     ]}
                                 />
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div className='page-content'>
-                    <div style={{ marginTop: '20px' }}></div>
-                    <div style={{ marginLeft: '-20px' }}>
-                        <WfcMosLineChart tc={tc} city={city} />
+                <div>
+                    <div className='page-content'>
+                        <div style={{ marginTop: '40px' }}>
+                            <WfcMosLineChart tc={tc} city={city} />
+                        </div>
                     </div>
                 </div>
             </>

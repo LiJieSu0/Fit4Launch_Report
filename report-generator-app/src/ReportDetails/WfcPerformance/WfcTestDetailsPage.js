@@ -82,20 +82,55 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                         title="Mean Setup Time"
                         labels={['Setup Time']}
                         yAxisTitle="Time (s)"
-                        dutValues={[cityData['DUT MO']?.mean_setup_time || 0]}
-                        refValues={[cityData['REF MO']?.mean_setup_time || 0]}
+                        dutValues={[cityData['DUT MO']?.mean_setup_time || cityData['DUT']?.mean_setup_time || 0]}
+                        refValues={[cityData['REF MO']?.mean_setup_time || cityData['REF']?.mean_setup_time || 0]}
                     />
                     <WfcPerformanceChart
                         title="Average MOS"
                         labels={['MO', 'MT']}
                         yAxisTitle="Score"
-                        dutValues={[cityData['DUT MO']?.mos_average || 0, cityData['DUT MT']?.mos_average || 0]}
-                        refValues={[cityData['REF MO']?.mos_average || 0, cityData['REF MT']?.mos_average || 0]}
+                        dutValues={[
+                            cityData['DUT MO']?.mos_average || cityData['DUT']?.mos_average || 0,
+                            cityData['DUT MT']?.mos_average || 0
+                        ]}
+                        refValues={[
+                            cityData['REF MO']?.mos_average || cityData['REF']?.mos_average || 0,
+                            cityData['REF MT']?.mos_average || 0
+                        ]}
+                    />
+                    <WfcPerformanceChart
+                        title="Average RSSI"
+                        labels={['MO', 'MT']}
+                        yAxisTitle="RSSI (dBm)"
+                        dutValues={[
+                            parseFloat(cityData['DUT MO']?.rssi_average) || parseFloat(cityData['DUT']?.rssi_average) || 0,
+                            parseFloat(cityData['DUT MT']?.rssi_average) || 0
+                        ]}
+                        refValues={[
+                            parseFloat(cityData['REF MO']?.rssi_average) || parseFloat(cityData['REF']?.rssi_average) || 0,
+                            parseFloat(cityData['REF MT']?.rssi_average) || 0
+                        ]}
+                    />
+                    <WfcPerformanceChart
+                        title="Average RSRP"
+                        labels={['MO', 'MT']}
+                        yAxisTitle="RSRP (dBm)"
+                        dutValues={[
+                            parseFloat(cityData['DUT MO']?.rsrp_average) || parseFloat(cityData['DUT']?.rsrp_average) || 0,
+                            parseFloat(cityData['DUT MT']?.rsrp_average) || 0
+                        ]}
+                        refValues={[
+                            parseFloat(cityData['REF MO']?.rsrp_average) || parseFloat(cityData['REF']?.rsrp_average) || 0,
+                            parseFloat(cityData['REF MT']?.rsrp_average) || 0
+                        ]}
                     />
                 </div>
 
-                <div style={{ marginBottom: '-10px' }}>
-                    <WfcMosLineChart tc={tc} city={city} />
+
+                <div className='page-content'>
+                    <div style={{ marginTop: '45px', marginLeft: '-100px' }}>
+                        <WfcMosLineChart tc={tc} city={city} />
+                    </div>
                 </div>
 
 

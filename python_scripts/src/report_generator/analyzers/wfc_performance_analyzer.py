@@ -20,6 +20,7 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
         # RSSI/RSRP Headers
         self.rssi_header = '[WiFi] [Serving AP] RSSI'
         self.rsrp_header = '[Call Test] [Voice Quality] [Per Rx Clip] [RF Quality] 5G RSRP'
+        self.rsrp_fallback_header = '[NR5G] [RF] RSRP'
         # Handover Header
         self.network_type_header = '[Mobile Info] [Android] [Radio] Network Type (Data Svc)'
 
@@ -235,6 +236,8 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                     # 4. RSSI and RSRP
                     rssi_avg = self._calculate_column_average(df, self.rssi_header)
                     rsrp_avg = self._calculate_column_average(df, self.rsrp_header)
+                    if rsrp_avg is None:
+                        rsrp_avg = self._calculate_column_average(df, self.rsrp_fallback_header)
                     
                     if category not in tc_stats:
                         tc_stats[category] = {
@@ -259,7 +262,7 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                         
                     # Handle Handover Counts (TC162-TC170)
                     tc_num = self._extract_tc_number(tc_dir_name)
-                    if tc_num and 162 <= tc_num <= 170:
+                    if tc_num and tc_num >= 162:
                         ho_count = self._calculate_handover_count(df)
                         tc_stats[category]["handover_counts"].append(ho_count)
                         
@@ -289,7 +292,7 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
 
                     # Rule: MinimumHandover (TC162-TC170)
                     tc_num = self._extract_tc_number(tc_dir_name)
-                    if tc_num and 162 <= tc_num <= 170:
+                    if tc_num and tc_num >= 162:
                         ho_values = metrics["handover_counts"]
                         # Sum total transitions across all runs
                         final_tc_results[category]["minimum_handover"] = sum(ho_values) if ho_values else 0

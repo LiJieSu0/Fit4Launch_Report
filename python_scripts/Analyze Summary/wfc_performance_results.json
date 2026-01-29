@@ -434,18 +434,26 @@
         },
         "TC164": {
             "DUT": {
-                "mos_average": 3.7254,
-                "mean_setup_time": 3.218,
-                "rssi_average": -55.3505,
-                "rsrp_average": -93.7288,
-                "minimum_handover": 24
+                "mos_average": 3.7217,
+                "mean_setup_time": 3.1087,
+                "rssi_average": -54.7683,
+                "rsrp_average": -90.1846,
+                "minimum_handover": 17,
+                "total_mo_attempts": 2,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 2,
+                "total_initiation_successes": 2
             },
             "REF": {
                 "mos_average": 4.1313,
-                "mean_setup_time": 1.9434,
-                "rssi_average": -62.8289,
-                "rsrp_average": -93.7657,
-                "minimum_handover": 16
+                "mean_setup_time": 1.8046,
+                "rssi_average": -61.9412,
+                "rsrp_average": -94.0292,
+                "minimum_handover": 12,
+                "total_mo_attempts": 1,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 1,
+                "total_initiation_successes": 1
             }
         },
         "TC167": {
@@ -453,14 +461,18 @@
                 "mos_average": 3.5479,
                 "mean_setup_time": 2.96,
                 "rssi_average": -57.1582,
-                "rsrp_average": -107.5969,
-                "minimum_handover": 11
+                "rsrp_average": -105.9317,
+                "minimum_handover": 11,
+                "total_mo_attempts": 1,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 1,
+                "total_initiation_successes": 1
             },
             "REF": {
                 "mos_average": "N/A",
                 "mean_setup_time": 2.048,
                 "rssi_average": -60.6109,
-                "rsrp_average": "N/A",
+                "rsrp_average": -107.9266,
                 "minimum_handover": 12
             }
         },
@@ -469,14 +481,14 @@
                 "mos_average": "N/A",
                 "mean_setup_time": 2.64,
                 "rssi_average": -67.0085,
-                "rsrp_average": "N/A",
+                "rsrp_average": -111.9195,
                 "minimum_handover": 16
             },
             "REF": {
                 "mos_average": "N/A",
                 "mean_setup_time": 2.642,
                 "rssi_average": -59.9926,
-                "rsrp_average": "N/A",
+                "rsrp_average": -112.9905,
                 "minimum_handover": 19
             }
         },
@@ -485,13 +497,19 @@
                 "mos_average": "N/A",
                 "mean_setup_time": 2.8843,
                 "rssi_average": -59.6576,
-                "rsrp_average": "N/A"
+                "rsrp_average": -115.4513,
+                "minimum_handover": 4
             },
             "REF": {
                 "mos_average": 3.4893,
                 "mean_setup_time": 2.589,
                 "rssi_average": -64.2495,
-                "rsrp_average": -118.2074
+                "rsrp_average": -116.4461,
+                "minimum_handover": 18,
+                "total_mo_attempts": 1,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 1,
+                "total_initiation_successes": 1
             }
         },
         "TC175": {
@@ -499,13 +517,15 @@
                 "mos_average": "N/A",
                 "mean_setup_time": 2.0225,
                 "rssi_average": -69.2487,
-                "rsrp_average": "N/A"
+                "rsrp_average": -115.8631,
+                "minimum_handover": 10
             },
             "REF": {
                 "mos_average": "N/A",
                 "mean_setup_time": 2.0945,
                 "rssi_average": -63.8272,
-                "rsrp_average": "N/A"
+                "rsrp_average": -115.7679,
+                "minimum_handover": 4
             }
         },
         "TC178": {
@@ -513,13 +533,15 @@
                 "mos_average": "N/A",
                 "mean_setup_time": 2.75,
                 "rssi_average": -54.3807,
-                "rsrp_average": "N/A"
+                "rsrp_average": -117.6707,
+                "minimum_handover": 4
             },
             "REF": {
                 "mos_average": "N/A",
                 "mean_setup_time": 2.321,
                 "rssi_average": -62.3358,
-                "rsrp_average": "N/A"
+                "rsrp_average": -118.2741,
+                "minimum_handover": 2
             }
         }
     }

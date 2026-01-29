@@ -165,7 +165,7 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
         return None
 
     def _calculate_call_performance(self, df):
-        """Calculates call performance metrics for MO calls."""
+        """Calculates call performance metrics (Drop/Block) for non-MT calls."""
         if self.call_type_header not in df.columns or self.call_result_header not in df.columns:
             return None
 
@@ -229,7 +229,7 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                     setup_time = self._calculate_setup_time(df)
                     # 3. Call Performance (MO Only)
                     cp_stats = None
-                    if "MO" in category:
+                    if "MT" not in category:
                         cp_stats = self._calculate_call_performance(df)
                     
                     # 4. RSSI and RSRP

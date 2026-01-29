@@ -254,6 +254,17 @@ class DataAnalysisPipeline:
                 if os.path.isdir(run_p) and run.startswith("Run"):
                     extract_coverage_data_to_csv(run_p, rsrp_dir, ['PC2', 'PC3'], '[NR5G] [RF] RSRP', 'RSRP_Analysis')
                     extract_coverage_data_to_csv(run_p, tx_dir, ['PC2', 'PC3'], '[NR5G] [Power] Tx power (PUSCH Actual)', 'TxPower_Analysis')
+        
+        # TEMPORARY MOS PATCH - Export MOS patch line chart data (overwrites histogram files)
+        try:
+            from report_generator.analyzers.wfc_mos_patch import apply_mos_patch
+            patch_dir = r"D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH"
+            wfc_linechart_dir = os.path.join(self.output_dir, "wfc_linechart_data")
+            # Re-apply patch to export line chart data (this will overwrite histogram files)
+            if os.path.isdir(patch_dir) and "wfc_performance" in self.results:
+                apply_mos_patch(self.results["wfc_performance"], patch_dir, output_dir=wfc_linechart_dir, logger=self.logger)
+        except Exception as e:
+            self.logger.warning(f"Failed to export MOS patch line chart data: {e}")
 
     def _export_all(self):
         export_map = {

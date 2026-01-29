@@ -5,6 +5,11 @@ import re
 from report_generator.base_analyzer import BaseAnalyzer
 from CallPerformance.call_analyze import _calculate_fisher_exact_criteria
 
+# TEMPORARY MOS PATCH - Feature flag and import
+ENABLE_MOS_PATCH = True
+if ENABLE_MOS_PATCH:
+    from report_generator.analyzers.wfc_mos_patch import apply_mos_patch
+
 class WfcPerformanceAnalyzer(BaseAnalyzer):
     def __init__(self, config, logger):
         self.config = config
@@ -341,6 +346,12 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                 if final_tc_results:
                     results[tc_dir_name] = final_tc_results
 
+        # TEMPORARY MOS PATCH - Apply MOS patch if enabled
+        if ENABLE_MOS_PATCH:
+            patch_dir = r"D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH"
+            output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Analyze Summary", "wfc_linechart_data")
+            results = apply_mos_patch(results, patch_dir, output_dir=output_dir, logger=self.logger)
+        
         return results
 
     def validate(self, results) -> bool:

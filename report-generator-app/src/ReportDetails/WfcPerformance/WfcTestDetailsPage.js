@@ -15,15 +15,26 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
         const cityData = allReportData[city]?.wfcPerformance?.['WFC']?.[tc];
         if (!cityData) return null;
 
-
+        const hasMoMt = cityData['DUT MO'] || cityData['DUT MT'] || cityData['REF MO'] || cityData['REF MT'];
 
         const moInitFailureRate = cityData['DUT MO']?.total_mo_attempts > 0 ? cityData['DUT MO']?.total_initiation_failures / cityData['DUT MO']?.total_mo_attempts : 0;
         const moRetFailureRate = cityData['DUT MO']?.total_mo_attempts > 0 ? cityData['DUT MO']?.total_retention_failures / cityData['DUT MO']?.total_mo_attempts : 0;
 
+        const formatVal = (val) => {
+            if (val === undefined || val === null || val === 'N/A') return 'N/A';
+            const num = parseFloat(val);
+            return isNaN(num) ? 'N/A' : num.toFixed(2);
+        };
+
+        const getChartValue = (val) => {
+            if (val === undefined || val === null || val === 'N/A') return 0;
+            const num = parseFloat(val);
+            return isNaN(num) ? 0 : num;
+        };
+
         return (
             <>
                 <div className='page-content'>
-
                     <div key={city} className="market-section" style={{ marginBottom: '60px', pageBreakAfter: 'always' }}>
                         {isFirst && <DynamicHeader level={1}>WFC Performance Test Details</DynamicHeader>}
                         <DynamicHeader level={2}>{tc} - {label} - {city} </DynamicHeader>
@@ -43,97 +54,144 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                         {(label !== 'Call Performance' && label !== 'Call Performance Baseline') && (
                             <WfcHandoverTable cityData={cityData} />
                         )}
+
                         <div className="charts-grid-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '10px', width: '100%', boxSizing: 'border-box' }}>
                             <WfcPerformanceChart
                                 title="Mean Setup Time"
-                                labels={['Setup Time']}
+                                labels={hasMoMt ? ['MO', 'MT'] : ['Result']}
                                 yAxisTitle="Time (s)"
-                                dutValues={[cityData['DUT MO']?.mean_setup_time || cityData['DUT']?.mean_setup_time || 0]}
-                                refValues={[cityData['REF MO']?.mean_setup_time || cityData['REF']?.mean_setup_time || 0]}
+                                dutValues={hasMoMt ? [
+                                    getChartValue(cityData['DUT MO']?.mean_setup_time),
+                                    getChartValue(cityData['DUT MT']?.mean_setup_time)
+                                ] : [getChartValue(cityData['DUT']?.mean_setup_time)]}
+                                refValues={hasMoMt ? [
+                                    getChartValue(cityData['REF MO']?.mean_setup_time),
+                                    getChartValue(cityData['REF MT']?.mean_setup_time)
+                                ] : [getChartValue(cityData['REF']?.mean_setup_time)]}
                             />
                             <WfcPerformanceChart
                                 title="Average MOS"
-                                labels={['MO', 'MT']}
+                                labels={hasMoMt ? ['MO', 'MT'] : ['Result']}
                                 yAxisTitle="Score"
-                                dutValues={[
-                                    cityData['DUT MO']?.mos_average || cityData['DUT']?.mos_average || 0,
-                                    cityData['DUT MT']?.mos_average || 0
-                                ]}
-                                refValues={[
-                                    cityData['REF MO']?.mos_average || cityData['REF']?.mos_average || 0,
-                                    cityData['REF MT']?.mos_average || 0
-                                ]}
+                                dutValues={hasMoMt ? [
+                                    getChartValue(cityData['DUT MO']?.mos_average),
+                                    getChartValue(cityData['DUT MT']?.mos_average)
+                                ] : [getChartValue(cityData['DUT']?.mos_average)]}
+                                refValues={hasMoMt ? [
+                                    getChartValue(cityData['REF MO']?.mos_average),
+                                    getChartValue(cityData['REF MT']?.mos_average)
+                                ] : [getChartValue(cityData['REF']?.mos_average)]}
                             />
+
+                            {/* RSSI Section */}
                             <div className="metric-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                 <table className="mini-performance-table general-table-style" style={{ width: '100%', marginBottom: '10px', fontSize: '12px' }}>
                                     <thead>
                                         <tr>
                                             <th>RSSI (dBm)</th>
-                                            <th>MO</th>
-                                            <th>MT</th>
+                                            {hasMoMt ? (
+                                                <>
+                                                    <th>MO</th>
+                                                    <th>MT</th>
+                                                </>
+                                            ) : (
+                                                <th>Result</th>
+                                            )}
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>DUT</td>
-                                            <td>{parseFloat(cityData['DUT MO']?.rssi_average).toFixed(2) || parseFloat(cityData['DUT']?.rssi_average).toFixed(2) || 'N/A'}</td>
-                                            <td>{parseFloat(cityData['DUT MT']?.rssi_average).toFixed(2) || 'N/A'}</td>
+                                            {hasMoMt ? (
+                                                <>
+                                                    <td>{formatVal(cityData['DUT MO']?.rssi_average)}</td>
+                                                    <td>{formatVal(cityData['DUT MT']?.rssi_average)}</td>
+                                                </>
+                                            ) : (
+                                                <td>{formatVal(cityData['DUT']?.rssi_average)}</td>
+                                            )}
                                         </tr>
                                         <tr>
                                             <td>REF</td>
-                                            <td>{parseFloat(cityData['REF MO']?.rssi_average).toFixed(2) || parseFloat(cityData['REF']?.rssi_average).toFixed(2) || 'N/A'}</td>
-                                            <td>{parseFloat(cityData['REF MT']?.rssi_average).toFixed(2) || 'N/A'}</td>
+                                            {hasMoMt ? (
+                                                <>
+                                                    <td>{formatVal(cityData['REF MO']?.rssi_average)}</td>
+                                                    <td>{formatVal(cityData['REF MT']?.rssi_average)}</td>
+                                                </>
+                                            ) : (
+                                                <td>{formatVal(cityData['REF']?.rssi_average)}</td>
+                                            )}
                                         </tr>
                                     </tbody>
                                 </table>
                                 <WfcPerformanceChart
                                     title="Average RSSI"
-                                    labels={['MO', 'MT']}
+                                    labels={hasMoMt ? ['MO', 'MT'] : ['Result']}
                                     yAxisTitle="RSSI (dBm)"
-                                    dutValues={[
-                                        parseFloat(cityData['DUT MO']?.rssi_average).toFixed(2) || parseFloat(cityData['DUT']?.rssi_average).toFixed(2) || 0,
-                                        parseFloat(cityData['DUT MT']?.rssi_average).toFixed(2) || 0
-                                    ]}
-                                    refValues={[
-                                        parseFloat(cityData['REF MO']?.rssi_average).toFixed(2) || parseFloat(cityData['REF']?.rssi_average).toFixed(2) || 0,
-                                        parseFloat(cityData['REF MT']?.rssi_average).toFixed(2) || 0
-                                    ]}
+                                    dutValues={hasMoMt ? [
+                                        getChartValue(cityData['DUT MO']?.rssi_average),
+                                        getChartValue(cityData['DUT MT']?.rssi_average)
+                                    ] : [getChartValue(cityData['DUT']?.rssi_average)]}
+                                    refValues={hasMoMt ? [
+                                        getChartValue(cityData['REF MO']?.rssi_average),
+                                        getChartValue(cityData['REF MT']?.rssi_average)
+                                    ] : [getChartValue(cityData['REF']?.rssi_average)]}
                                 />
                             </div>
+
+                            {/* RSRP Section */}
                             <div className="metric-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                 <table className="mini-performance-table general-table-style" style={{ width: '100%', marginBottom: '10px', fontSize: '12px' }}>
                                     <thead>
                                         <tr>
                                             <th>RSRP (dBm)</th>
-                                            <th>MO</th>
-                                            <th>MT</th>
+                                            {hasMoMt ? (
+                                                <>
+                                                    <th>MO</th>
+                                                    <th>MT</th>
+                                                </>
+                                            ) : (
+                                                <th>Result</th>
+                                            )}
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>DUT</td>
-                                            <td>{parseFloat(cityData['DUT MO']?.rsrp_average).toFixed(2) || parseFloat(cityData['DUT']?.rsrp_average).toFixed(2) || 'N/A'}</td>
-                                            <td>{parseFloat(cityData['DUT MT']?.rsrp_average).toFixed(2) || 'N/A'}</td>
+                                            {hasMoMt ? (
+                                                <>
+                                                    <td>{formatVal(cityData['DUT MO']?.rsrp_average)}</td>
+                                                    <td>{formatVal(cityData['DUT MT']?.rsrp_average)}</td>
+                                                </>
+                                            ) : (
+                                                <td>{formatVal(cityData['DUT']?.rsrp_average)}</td>
+                                            )}
                                         </tr>
                                         <tr>
                                             <td>REF</td>
-                                            <td>{parseFloat(cityData['REF MO']?.rsrp_average).toFixed(2) || parseFloat(cityData['REF']?.rsrp_average).toFixed(2) || 'N/A'}</td>
-                                            <td>{parseFloat(cityData['REF MT']?.rsrp_average).toFixed(2) || 'N/A'}</td>
+                                            {hasMoMt ? (
+                                                <>
+                                                    <td>{formatVal(cityData['REF MO']?.rsrp_average)}</td>
+                                                    <td>{formatVal(cityData['REF MT']?.rsrp_average)}</td>
+                                                </>
+                                            ) : (
+                                                <td>{formatVal(cityData['REF']?.rsrp_average)}</td>
+                                            )}
                                         </tr>
                                     </tbody>
                                 </table>
                                 <WfcPerformanceChart
                                     title="Average RSRP"
-                                    labels={['MO', 'MT']}
+                                    labels={hasMoMt ? ['MO', 'MT'] : ['Result']}
                                     yAxisTitle="RSRP (dBm)"
-                                    dutValues={[
-                                        parseFloat(cityData['DUT MO']?.rsrp_average).toFixed(2) || parseFloat(cityData['DUT']?.rsrp_average).toFixed(2) || 0,
-                                        parseFloat(cityData['DUT MT']?.rsrp_average).toFixed(2) || 0
-                                    ]}
-                                    refValues={[
-                                        parseFloat(cityData['REF MO']?.rsrp_average).toFixed(2) || parseFloat(cityData['REF']?.rsrp_average).toFixed(2) || 0,
-                                        parseFloat(cityData['REF MT']?.rsrp_average).toFixed(2) || 0
-                                    ]}
+                                    dutValues={hasMoMt ? [
+                                        getChartValue(cityData['DUT MO']?.rsrp_average),
+                                        getChartValue(cityData['DUT MT']?.rsrp_average)
+                                    ] : [getChartValue(cityData['DUT']?.rsrp_average)]}
+                                    refValues={hasMoMt ? [
+                                        getChartValue(cityData['REF MO']?.rsrp_average),
+                                        getChartValue(cityData['REF MT']?.rsrp_average)
+                                    ] : [getChartValue(cityData['REF']?.rsrp_average)]}
                                 />
                             </div>
                         </div>

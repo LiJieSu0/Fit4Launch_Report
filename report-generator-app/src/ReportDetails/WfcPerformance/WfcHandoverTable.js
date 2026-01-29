@@ -13,6 +13,7 @@ const WfcHandoverTable = ({ cityData }) => {
                     <th>Device</th>
                     <th>Handovers</th>
                     <th>Mean Setup Time (s)</th>
+                    <th>Average MOS</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +27,9 @@ const WfcHandoverTable = ({ cityData }) => {
                             <td>{deviceData.minimum_handover || 'N/A'}</td>
                             <td style={{ backgroundColor: getKpiCellColor('CallSetupTime', deviceData.mean_setup_time, cityData[device === 'DUT' ? 'REF' : 'DUT']?.mean_setup_time) }}>
                                 {deviceData.mean_setup_time?.toFixed(2) || 'N/A'}
+                            </td>
+                            <td style={{ backgroundColor: getKpiCellColor('WfcMOS', deviceData.mos_average, cityData[device === 'DUT' ? 'REF' : 'DUT']?.mos_average) }}>
+                                {deviceData.mos_average?.toFixed(2) || 'N/A'}
                             </td>
                         </tr>
                     );

@@ -868,3 +868,92 @@
 2026-01-29 15:11:55,467 - pipeline - INFO - Running final data validation...
 2026-01-29 15:11:55,500 - pipeline - INFO - No empty collections found in any JSON file.
 2026-01-29 15:11:55,501 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary
+2026-01-29 15:15:43,575 - pipeline - INFO - Starting analysis pipeline...
+2026-01-29 15:15:43,581 - pipeline - INFO - Processing 154 individual CSV files...
+2026-01-29 15:15:43,619 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\DUT MRAB.csv
+2026-01-29 15:15:43,622 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\REF MRAB.csv
+2026-01-29 15:15:54,702 - pipeline - INFO - Processing directory-level analyses...
+2026-01-29 15:15:54,702 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\Call Performance
+2026-01-29 15:15:54,703 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-01-29 15:15:57,641 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-01-29 15:15:59,059 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-01-29 15:16:01,684 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-01-29 15:16:03,094 - pipeline - INFO - Analyzing Voice Quality directory: D:/ReportGenerator/Raw Data\Voice Quality
+2026-01-29 15:16:03,094 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled Audio Delay
+2026-01-29 15:16:03,110 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled EVS WB VQ
+2026-01-29 15:16:03,168 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR NB VQ
+2026-01-29 15:16:03,189 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR WB VQ
+2026-01-29 15:16:03,226 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled Audio Delay
+2026-01-29 15:16:03,241 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled EVS WB VQ
+2026-01-29 15:16:03,295 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Coverage Performance (Type: coverage_coordinate)
+2026-01-29 15:16:03,295 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-29 15:16:03,332 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-29 15:16:03,655 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-01-29 15:16:03,738 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-01-29 15:16:07,038 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\WFC
+2026-01-29 15:16:07,039 - pipeline - INFO - Processing WFC Test Case: MOS PATCH
+2026-01-29 15:16:07,039 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-01-29 15:16:07,061 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-01-29 15:16:07,096 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-01-29 15:16:07,186 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-01-29 15:16:07,269 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-01-29 15:16:07,369 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-01-29 15:16:07,460 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-01-29 15:16:07,540 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-01-29 15:16:07,632 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-01-29 15:16:07,728 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-01-29 15:16:07,828 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-01-29 15:16:07,923 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-01-29 15:16:08,006 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-01-29 15:16:08,060 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-01-29 15:16:08,077 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-01-29 15:16:08,093 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-01-29 15:16:08,140 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-01-29 15:16:08,161 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-01-29 15:16:08,185 - pipeline - INFO - Applying MOS patch from: D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH
+2026-01-29 15:16:08,190 - pipeline - INFO - Patched TC164 DUT MOS: 3.7326
+2026-01-29 15:16:08,190 - pipeline - INFO - Patched TC164 REF MOS: 4.0775
+2026-01-29 15:16:08,192 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc164.json
+2026-01-29 15:16:08,194 - pipeline - INFO - Patched TC167 DUT MOS: 3.4792
+2026-01-29 15:16:08,195 - pipeline - INFO - Patched TC167 REF MOS: 3.625
+2026-01-29 15:16:08,195 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc167.json
+2026-01-29 15:16:08,198 - pipeline - INFO - Patched TC170 DUT MOS: 3.3235
+2026-01-29 15:16:08,198 - pipeline - INFO - Patched TC170 REF MOS: 3.821
+2026-01-29 15:16:08,198 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc170.json
+2026-01-29 15:16:08,202 - pipeline - INFO - Patched TC172 DUT MOS: 3.9607
+2026-01-29 15:16:08,203 - pipeline - INFO - Patched TC172 REF MOS: 3.9051
+2026-01-29 15:16:08,203 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc172.json
+2026-01-29 15:16:08,206 - pipeline - INFO - Patched TC175 DUT MOS: 3.3154
+2026-01-29 15:16:08,207 - pipeline - INFO - Patched TC175 REF MOS: 3.7154
+2026-01-29 15:16:08,208 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc175.json
+2026-01-29 15:16:08,211 - pipeline - INFO - Patched TC178 DUT MOS: 3.2343
+2026-01-29 15:16:08,211 - pipeline - INFO - Patched TC178 REF MOS: 3.5062
+2026-01-29 15:16:08,212 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc178.json
+2026-01-29 15:16:08,213 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-29 15:16:09,157 - pipeline - INFO - Applying MOS patch from: D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH
+2026-01-29 15:16:09,163 - pipeline - INFO - Patched TC164 DUT MOS: 3.7326
+2026-01-29 15:16:09,163 - pipeline - INFO - Patched TC164 REF MOS: 4.0775
+2026-01-29 15:16:09,164 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc164.json
+2026-01-29 15:16:09,166 - pipeline - INFO - Patched TC167 DUT MOS: 3.4792
+2026-01-29 15:16:09,167 - pipeline - INFO - Patched TC167 REF MOS: 3.625
+2026-01-29 15:16:09,167 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc167.json
+2026-01-29 15:16:09,170 - pipeline - INFO - Patched TC170 DUT MOS: 3.3235
+2026-01-29 15:16:09,170 - pipeline - INFO - Patched TC170 REF MOS: 3.821
+2026-01-29 15:16:09,171 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc170.json
+2026-01-29 15:16:09,176 - pipeline - INFO - Patched TC172 DUT MOS: 3.9607
+2026-01-29 15:16:09,176 - pipeline - INFO - Patched TC172 REF MOS: 3.9051
+2026-01-29 15:16:09,177 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc172.json
+2026-01-29 15:16:09,179 - pipeline - INFO - Patched TC175 DUT MOS: 3.3154
+2026-01-29 15:16:09,179 - pipeline - INFO - Patched TC175 REF MOS: 3.7154
+2026-01-29 15:16:09,180 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc175.json
+2026-01-29 15:16:09,181 - pipeline - INFO - Patched TC178 DUT MOS: 3.2343
+2026-01-29 15:16:09,182 - pipeline - INFO - Patched TC178 REF MOS: 3.5062
+2026-01-29 15:16:09,182 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc178.json
+2026-01-29 15:16:09,187 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\data_performance_results.json
+2026-01-29 15:16:09,188 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\call_performance_results.json
+2026-01-29 15:16:09,190 - pipeline - INFO - Voice Quality results exported to D:/ReportGenerator/python_scripts/Analyze Summary\voice_quality_results.json
+2026-01-29 15:16:09,192 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\coverage_performance_results.json
+2026-01-29 15:16:09,193 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\wfc_performance_results.json
+2026-01-29 15:16:09,194 - pipeline - INFO - Running final data validation...
+2026-01-29 15:16:09,233 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-29 15:16:09,234 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary

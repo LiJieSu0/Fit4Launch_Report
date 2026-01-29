@@ -1,157 +1,222 @@
-[
-    {
-        "index": 1,
-        "DUT": 4.39,
-        "REF": 4.42
+{
+    "DUT": {
+        "< 2.0": {
+            "count": 7,
+            "percentage": 22.58
+        },
+        "[2.0, 2.1)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.1, 2.2)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.2, 2.3)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[2.3, 2.4)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.4, 2.5)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.5, 2.6)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[2.6, 2.7)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[2.7, 2.8)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.8, 2.9)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.9, 3.0)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[3.0, 3.1)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.1, 3.2)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.2, 3.3)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.3, 3.4)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[3.4, 3.5)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.5, 3.6)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.6, 3.7)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.7, 3.8)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.8, 3.9)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.9, 4.0)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[4.0, 4.1)": {
+            "count": 2,
+            "percentage": 6.45
+        },
+        "[4.1, 4.2)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[4.2, 4.3)": {
+            "count": 2,
+            "percentage": 6.45
+        },
+        "[4.3, 4.4)": {
+            "count": 13,
+            "percentage": 41.94
+        },
+        "[4.4, 4.5)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        ">= 4.5": {
+            "count": 0,
+            "percentage": 0.0
+        }
     },
-    {
-        "index": 2,
-        "DUT": 3.36,
-        "REF": 3.9
-    },
-    {
-        "index": 3,
-        "DUT": 1.07,
-        "REF": 1.02
-    },
-    {
-        "index": 4,
-        "DUT": 4.31,
-        "REF": 4.32
-    },
-    {
-        "index": 5,
-        "DUT": 4.38,
-        "REF": 4.38
-    },
-    {
-        "index": 6,
-        "DUT": 4.38,
-        "REF": 4.29
-    },
-    {
-        "index": 7,
-        "DUT": 4.0,
-        "REF": 4.28
-    },
-    {
-        "index": 8,
-        "DUT": 4.08,
-        "REF": 4.42
-    },
-    {
-        "index": 9,
-        "DUT": 3.91,
-        "REF": 4.38
-    },
-    {
-        "index": 10,
-        "DUT": 1.26,
-        "REF": 3.61
-    },
-    {
-        "index": 11,
-        "DUT": 4.34,
-        "REF": 4.39
-    },
-    {
-        "index": 12,
-        "DUT": 4.38,
-        "REF": 1.04
-    },
-    {
-        "index": 13,
-        "DUT": 4.29,
-        "REF": 4.33
-    },
-    {
-        "index": 14,
-        "DUT": 1.09,
-        "REF": 4.38
-    },
-    {
-        "index": 15,
-        "DUT": 2.58,
-        "REF": 1.41
-    },
-    {
-        "index": 16,
-        "DUT": 4.39,
-        "REF": 3.15
-    },
-    {
-        "index": 17,
-        "DUT": 4.35,
-        "REF": 4.39
-    },
-    {
-        "index": 18,
-        "DUT": 4.37,
-        "REF": 4.24
-    },
-    {
-        "index": 19,
-        "DUT": 1.11,
-        "REF": 1.02
-    },
-    {
-        "index": 20,
-        "DUT": 4.33,
-        "REF": 4.37
-    },
-    {
-        "index": 21,
-        "DUT": 4.27,
-        "REF": 4.41
-    },
-    {
-        "index": 22,
-        "DUT": 4.35,
-        "REF": 4.32
-    },
-    {
-        "index": 23,
-        "DUT": 1.1,
-        "REF": 4.39
-    },
-    {
-        "index": 24,
-        "DUT": 2.62,
-        "REF": 3.42
-    },
-    {
-        "index": 25,
-        "DUT": 2.22,
-        "REF": 4.36
-    },
-    {
-        "index": 26,
-        "DUT": 1.32,
-        "REF": 4.41
-    },
-    {
-        "index": 27,
-        "DUT": 4.31,
-        "REF": 4.38
-    },
-    {
-        "index": 28,
-        "DUT": 1.07,
-        "REF": 4.16
-    },
-    {
-        "index": 29,
-        "DUT": 2.9,
-        "REF": 4.08
-    },
-    {
-        "index": 30,
-        "DUT": 4.11,
-        "REF": 4.41
-    },
-    {
-        "index": 31,
-        "DUT": 4.39,
-        "REF": 4.37
+    "REF": {
+        "< 2.0": {
+            "count": 4,
+            "percentage": 12.9
+        },
+        "[2.0, 2.1)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.1, 2.2)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.2, 2.3)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.3, 2.4)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.4, 2.5)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.5, 2.6)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.6, 2.7)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.7, 2.8)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.8, 2.9)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[2.9, 3.0)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.0, 3.1)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.1, 3.2)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[3.2, 3.3)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.3, 3.4)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.4, 3.5)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[3.5, 3.6)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.6, 3.7)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[3.7, 3.8)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.8, 3.9)": {
+            "count": 0,
+            "percentage": 0.0
+        },
+        "[3.9, 4.0)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[4.0, 4.1)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[4.1, 4.2)": {
+            "count": 1,
+            "percentage": 3.23
+        },
+        "[4.2, 4.3)": {
+            "count": 3,
+            "percentage": 9.68
+        },
+        "[4.3, 4.4)": {
+            "count": 13,
+            "percentage": 41.94
+        },
+        "[4.4, 4.5)": {
+            "count": 5,
+            "percentage": 16.13
+        },
+        ">= 4.5": {
+            "count": 0,
+            "percentage": 0.0
+        }
     }
-]
+}

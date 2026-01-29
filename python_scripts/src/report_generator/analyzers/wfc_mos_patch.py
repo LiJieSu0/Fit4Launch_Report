@@ -144,33 +144,62 @@ def calculate_patch_mos_average(mos_values):
     return round(sum(valid_values) / len(valid_values), 4)
 
 
-def generate_mos_linechart_data(dut_values, ref_values):
+def generate_mos_histogram_stats(mos_values):
     """
-    Generate line chart data for MOS visualization.
+    Generate histogram statistics for MOS values.
+    
+    Format:
+    {
+        "< 2.0": {"count": X, "percentage": Y},
+        "[2.0, 2.1)": {"count": X, "percentage": Y},
+        ...
+        ">= 4.5": {"count": X, "percentage": Y}
+    }
     
     Args:
-        dut_values: List of DUT MOS values
-        ref_values: List of REF MOS values
+        mos_values: List of float MOS values
         
     Returns:
-        list: Array of data points [{"index": i, "DUT": x, "REF": y}, ...]
+        dict: Histogram statistics
     """
-    # Determine the maximum length
-    max_len = max(len(dut_values), len(ref_values))
+    if not mos_values:
+        return {}
     
-    chart_data = []
-    for i in range(max_len):
-        data_point = {"index": i + 1}
-        
-        if i < len(dut_values):
-            data_point["DUT"] = dut_values[i]
-        
-        if i < len(ref_values):
-            data_point["REF"] = ref_values[i]
-        
-        chart_data.append(data_point)
+    total_count = len(mos_values)
     
-    return chart_data
+    # Initialize bins
+    bins = {}
+    bins["< 2.0"] = {"count": 0, "percentage": 0.0}
+    
+    # [2.0, 2.1) to [4.4, 4.5)
+    for i in range(20, 45):
+        lower = i / 10.0
+        upper = (i + 1) / 10.0
+        bins[f"[{lower:.1f}, {upper:.1f})"] = {"count": 0, "percentage": 0.0}
+    
+    bins[">= 4.5"] = {"count": 0, "percentage": 0.0}
+    
+    # Count values
+    for val in mos_values:
+        if val < 2.0:
+            bins["< 2.0"]["count"] += 1
+        elif val >= 4.5:
+            bins[">= 4.5"]["count"] += 1
+        else:
+            # For 2.0 <= val < 4.5
+            idx = int(val * 10)
+            lower = idx / 10.0
+            upper = (idx + 1) / 10.0
+            key = f"[{lower:.1f}, {upper:.1f})"
+            if key in bins:
+                bins[key]["count"] += 1
+    
+    # Calculate percentages
+    for key in bins:
+        count = bins[key]["count"]
+        bins[key]["percentage"] = round((count / total_count) * 100, 2)
+        
+    return bins
 
 
 def extract_tc_number(filename):
@@ -248,13 +277,10 @@ def apply_mos_patch(results, patch_directory, output_dir=None, logger=None):
         dut_avg = calculate_patch_mos_average(dut_values)
         ref_avg = calculate_patch_mos_average(ref_values)
         
-        # Generate line chart data
-        linechart_data = generate_mos_linechart_data(dut_values, ref_values)
-        
         # Apply patch to results
         tc_results = results[tc_name]
         
-        # Update DUT categories (DUT, DUT MO, DUT MT)
+        # Update DUT/REF categories (DUT, DUT MO, DUT MT, etc.)
         for category in tc_results:
             if "DUT" in category and dut_avg is not None:
                 tc_results[category]["mos_average"] = dut_avg
@@ -264,8 +290,29 @@ def apply_mos_patch(results, patch_directory, output_dir=None, logger=None):
                 tc_results[category]["mos_average"] = ref_avg
                 log_func(f"Patched {tc_name} {category} MOS: {ref_avg}")
         
+        # Prepare statistics for export
+        export_data = {}
+        
+        # Check existing categories in results to use correct labels
+        has_mo_mt = any("MO" in cat or "MT" in cat for cat in tc_results)
+        
+        if has_mo_mt:
+            # If results have MO/MT breakdown, we apply same stats to all relevant categories
+            # since the patch doesn't distinguish them
+            for category in tc_results:
+                if "DUT" in category:
+                    export_data[category] = generate_mos_histogram_stats(dut_values)
+                elif "REF" in category:
+                    export_data[category] = generate_mos_histogram_stats(ref_values)
+        else:
+            # Standard DUT/REF
+            if dut_values:
+                export_data["DUT"] = generate_mos_histogram_stats(dut_values)
+            if ref_values:
+                export_data["REF"] = generate_mos_histogram_stats(ref_values)
+        
         # Export line chart data to separate file if output_dir is provided
-        if output_dir and linechart_data:
+        if output_dir and export_data:
             os.makedirs(output_dir, exist_ok=True)
             output_filename = f"wfc_mos_statistics_{tc_name.lower()}.json"
             output_path = os.path.join(output_dir, output_filename)
@@ -273,9 +320,9 @@ def apply_mos_patch(results, patch_directory, output_dir=None, logger=None):
             try:
                 import json
                 with open(output_path, 'w', encoding='utf-8') as f:
-                    json.dump(linechart_data, f, indent=4, ensure_ascii=False)
-                log_func(f"Exported MOS line chart data to: {output_path}")
+                    json.dump(export_data, f, indent=4, ensure_ascii=False)
+                log_func(f"Exported MOS histogram statistics to: {output_path}")
             except Exception as e:
-                log_warn(f"Failed to export line chart data for {tc_name}: {e}")
+                log_warn(f"Failed to export statistics for {tc_name}: {e}")
     
     return results

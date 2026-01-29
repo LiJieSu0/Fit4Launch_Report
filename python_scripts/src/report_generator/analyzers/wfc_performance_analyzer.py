@@ -83,9 +83,11 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
             
         # Determine MO/MT
         call_type = ""
-        if "_MO_" in filename_upper or "_MO-" in filename_upper:
+        # Check for MO indicators with various delimiters
+        if any(x in filename_upper for x in ["_MO_", "_MO-", "-MO_", "-MO-"]):
             call_type = " MO"
-        elif "_MT_" in filename_upper or "_MT-" in filename_upper:
+        # Check for MT indicators with various delimiters
+        elif any(x in filename_upper for x in ["_MT_", "_MT-", "-MT_", "-MT-"]):
             call_type = " MT"
             
         return f"{device}{call_type}"

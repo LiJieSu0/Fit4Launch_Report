@@ -13,17 +13,18 @@ const WfcDetailsPage = () => {
       <WfcTestDetailsPage tc="TC155" label="Call Performance" />
       <WfcTestDetailsPage tc="TC156" label="Call Performance" />
       <WfcTestDetailsPage tc="TC157" label="Call Performance" />
-
+      {/* new data from here */}
       <WfcTestDetailsPage tc="TC158" label="Call Performance" />
       <WfcTestDetailsPage tc="TC159" label="Call Performance" />
       <WfcTestDetailsPage tc="TC160" label="Call Performance" />
       <WfcTestDetailsPage tc="TC161" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC164" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC167" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC170" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC172" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC175" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC178" label="Call Performance" />
+
+      <WfcTestDetailsPage tc="TC164" label="Multi Handovers" />
+      <WfcTestDetailsPage tc="TC167" label="Multi Handovers" />
+      <WfcTestDetailsPage tc="TC170" label="Multi Handovers" />
+      <WfcTestDetailsPage tc="TC172" label="IP Impairments" />
+      <WfcTestDetailsPage tc="TC175" label="In of WFC Coverage" />
+      <WfcTestDetailsPage tc="TC178" label="Out of WFC Coverage" />
 
 
 

@@ -26,15 +26,19 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                     <div key={city} className="market-section" style={{ marginBottom: '60px', pageBreakAfter: 'always' }}>
                         {isFirst && <DynamicHeader level={1}>WFC Performance Test Details</DynamicHeader>}
                         <DynamicHeader level={2}>{tc} - {label} - {city} </DynamicHeader>
-                        <WfcCpTable cityData={cityData} />
-                        <div style={{ marginTop: '10px' }}>
-                            <PValueTable
-                                data={cityData}
-                                kpiType="WfcCallCriteria"
-                                initFailureRate={moInitFailureRate}
-                                retFailureRate={moRetFailureRate}
-                            />
-                        </div>
+                        {(label === 'Call Performance' || label === 'Call Performance Baseline') && (
+                            <>
+                                <WfcCpTable cityData={cityData} />
+                                <div style={{ marginTop: '10px' }}>
+                                    <PValueTable
+                                        data={cityData}
+                                        kpiType="WfcCallCriteria"
+                                        initFailureRate={moInitFailureRate}
+                                        retFailureRate={moRetFailureRate}
+                                    />
+                                </div>
+                            </>
+                        )}
                         <div className="charts-grid-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '10px', width: '100%', boxSizing: 'border-box' }}>
                             <WfcPerformanceChart
                                 title="Mean Setup Time"
@@ -74,7 +78,7 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                                         <tr>
                                             <td>REF</td>
                                             <td>{parseFloat(cityData['REF MO']?.rssi_average).toFixed(2) || parseFloat(cityData['REF']?.rssi_average).toFixed(2) || 'N/A'}</td>
-                                            <td>{parseFloat(cityData['REF MT']?.rssi_average) || 'N/A'}</td>
+                                            <td>{parseFloat(cityData['REF MT']?.rssi_average).toFixed(2) || 'N/A'}</td>
                                         </tr>
                                     </tbody>
                                 </table>

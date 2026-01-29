@@ -36,15 +36,15 @@ const WfcCpTable = ({ cityData }) => {
                         <tr key={name}>
                             <td>{name}</td>
                             <td>{moData?.total_mo_attempts || 'N/A'}</td>
-                            <td style={{ backgroundColor: getKpiCellColor('CallSetupTime', moData?.mean_setup_time, refMoData?.mean_setup_time) }}>
+                            <td style={name === 'DUT' ? { backgroundColor: getKpiCellColor('CallSetupTime', moData?.mean_setup_time, refMoData?.mean_setup_time) } : {}}>
                                 {moData?.mean_setup_time?.toFixed(2) || 'N/A'}
                             </td>
                             <td>{initFailPct}%</td>
                             <td>{retFailPct}%</td>
-                            <td style={{ backgroundColor: getKpiCellColor('WfcMOS', moData?.mos_average, refMoData?.mos_average) }}>
+                            <td style={name === 'DUT' ? { backgroundColor: getKpiCellColor('WfcMOS', moData?.mos_average, refMoData?.mos_average) } : {}}>
                                 {moData?.mos_average?.toFixed(2) || 'N/A'}
                             </td>
-                            <td style={{ backgroundColor: getKpiCellColor('WfcMOS', mtData?.mos_average, refMtData?.mos_average) }}>
+                            <td style={name === 'DUT' ? { backgroundColor: getKpiCellColor('WfcMOS', mtData?.mos_average, refMtData?.mos_average) } : {}}>
                                 {mtData?.mos_average?.toFixed(2) || 'N/A'}
                             </td>
                         </tr>

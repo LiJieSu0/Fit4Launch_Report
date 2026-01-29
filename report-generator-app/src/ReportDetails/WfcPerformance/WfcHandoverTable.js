@@ -25,10 +25,10 @@ const WfcHandoverTable = ({ cityData }) => {
                         <tr key={device}>
                             <td>{device}</td>
                             <td>{deviceData.minimum_handover || 'N/A'}</td>
-                            <td style={{ backgroundColor: getKpiCellColor('CallSetupTime', deviceData.mean_setup_time, cityData[device === 'DUT' ? 'REF' : 'DUT']?.mean_setup_time) }}>
+                            <td style={device === 'DUT' ? { backgroundColor: getKpiCellColor('CallSetupTime', deviceData.mean_setup_time, cityData['REF']?.mean_setup_time) } : {}}>
                                 {deviceData.mean_setup_time?.toFixed(2) || 'N/A'}
                             </td>
-                            <td style={{ backgroundColor: getKpiCellColor('WfcMOS', deviceData.mos_average, cityData[device === 'DUT' ? 'REF' : 'DUT']?.mos_average) }}>
+                            <td style={device === 'DUT' ? { backgroundColor: getKpiCellColor('WfcMOS', deviceData.mos_average, cityData['REF']?.mos_average) } : {}}>
                                 {deviceData.mos_average?.toFixed(2) || 'N/A'}
                             </td>
                         </tr>

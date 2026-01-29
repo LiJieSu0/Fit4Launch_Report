@@ -6,6 +6,7 @@ import PValueTable from '../CallPerformance/PValueTable';
 import WfcPerformanceChart from './WfcPerformanceChart';
 import WfcMosLineChart from './WfcMosLineChart';
 import WfcCpTable from './WfcCpTable';
+import WfcHandoverTable from './WfcHandoverTable';
 
 const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
     const { allReportData, availableCities } = useReportData();
@@ -38,6 +39,9 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
                                     />
                                 </div>
                             </>
+                        )}
+                        {(label !== 'Call Performance' && label !== 'Call Performance Baseline') && (
+                            <WfcHandoverTable cityData={cityData} />
                         )}
                         <div className="charts-grid-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '10px', width: '100%', boxSizing: 'border-box' }}>
                             <WfcPerformanceChart

@@ -34,18 +34,30 @@ def calculate_wfc_statistics(directory_path, output_json_path="wfc_statistics.js
             elif "DUT" in filename_upper:
                 device = "DUT"
             
+            # Extract TC Number
+            tc_num = None
+            dir_name = os.path.basename(directory_path)
+            match = re.search(r'TC(\d+)', dir_name, re.IGNORECASE)
+            if match:
+                tc_num = int(match.group(1))
+
             # 2. Determine MO/MT
             call_type = ""
-            if "_MO_" in filename_upper or "_MO-" in filename_upper:
-                call_type = "MO"
-            elif "_MT_" in filename_upper or "_MT-" in filename_upper:
-                call_type = "MT"
             
-            if not call_type:
-                # If no MO/MT in filename, skip or use a generic key
+            # For TC164+, we only want DUT/REF, no MO/MT separation
+            if tc_num and tc_num >= 164:
+                call_type = "" # No suffix
+            else:
+                if any(x in filename_upper for x in ["_MO_", "_MO-", "-MO_", "-MO-"]):
+                    call_type = "MO"
+                elif any(x in filename_upper for x in ["_MT_", "_MT-", "-MT_", "-MT-"]):
+                    call_type = "MT"
+            
+            if not call_type and (not tc_num or tc_num < 164):
+                # If no MO/MT in filename and it's an old TC, skip
                 continue
                 
-            json_key = f"{device} {call_type}"
+            json_key = f"{device} {call_type}".strip()
 
             try:
                 df = pd.read_csv(csv_file_path, low_memory=False)

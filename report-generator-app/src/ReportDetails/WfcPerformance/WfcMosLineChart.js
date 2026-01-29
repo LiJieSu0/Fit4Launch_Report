@@ -48,7 +48,9 @@ const WfcMosLineChart = ({ tc, city = 'Seattle' }) => {
                     "DUT MO": { color: '#0a18e2ff' },
                     "DUT MT": { color: '#0de70dff' },
                     "REF MO": { color: '#e6141eff' },
-                    "REF MT": { color: '#ff39e5ff' }
+                    "REF MT": { color: '#ff39e5ff' },
+                    "DUT": { color: '#0a18e2ff' },
+                    "REF": { color: '#e6141eff' }
                 };
 
                 const loadedEntities = Object.keys(wfcMosStatistics).map(entity => {

@@ -131,6 +131,15 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => { // only
         return 'var(--performance-fail)';
       }
       break;
+    case 'WfcCallDrop':
+      if (dutValue === 0) {
+        return 'var(--performance-pass)';
+      } else if (dutValue === 1) {
+        return 'var(--performance-marginal-fail)';
+      } else if (dutValue >= 2) {
+        return 'var(--performance-fail)';
+      }
+      break;
     default:
       if (refValue === null) { // Apply refValue check for other KPI types
         return;

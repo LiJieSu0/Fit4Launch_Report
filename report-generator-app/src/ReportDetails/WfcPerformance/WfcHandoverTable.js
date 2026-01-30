@@ -25,8 +25,12 @@ const WfcHandoverTable = ({ cityData }) => {
                     return (
                         <tr key={device}>
                             <td>{device}</td>
-                            <td>{deviceData.minimum_handover || 'N/A'}</td>
-                            <td>{0}</td>
+                            <td style={device === 'DUT' ? { backgroundColor: getKpiCellColor('MinimumHandovers', deviceData.minimum_handover) } : {}}>
+                                {deviceData.minimum_handover || 'N/A'}
+                            </td>
+                            <td style={device === 'DUT' ? { backgroundColor: 'var(--performance-pass)' } : {}}>
+                                {deviceData.total_retention_failures || 0}
+                            </td>
                             <td style={device === 'DUT' ? { backgroundColor: getKpiCellColor('CallSetupTime', deviceData.mean_setup_time, cityData['REF']?.mean_setup_time) } : {}}>
                                 {deviceData.mean_setup_time?.toFixed(2) || 'N/A'}
                             </td>

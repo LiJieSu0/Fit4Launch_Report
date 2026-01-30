@@ -8,7 +8,7 @@ import WfcMosLineChart from './WfcMosLineChart';
 import WfcCpTable from './WfcCpTable';
 import WfcHandoverTable from './WfcHandoverTable';
 
-const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
+const WfcTestDetailsPage = ({ tc, label, sectionNumber = 0 }) => {
     const { allReportData, availableCities } = useReportData();
 
     const renderMarketTable = (city) => {
@@ -36,8 +36,10 @@ const WfcTestDetailsPage = ({ tc, label, isFirst = false }) => {
             <>
                 <div className='page-content'>
                     <div key={city} className="market-section" style={{ marginBottom: '60px', pageBreakAfter: 'always' }}>
-                        {isFirst && <DynamicHeader level={1}>WFC Performance Test Details</DynamicHeader>}
-                        <DynamicHeader level={2}>{tc} - {label} - {city} </DynamicHeader>
+                        {sectionNumber == 1 && <DynamicHeader level={1}>WFC Performance Test Details</DynamicHeader>}
+                        {sectionNumber == 1 && <DynamicHeader level={2}>Call Performance </DynamicHeader>}
+                        {sectionNumber == 2 && <DynamicHeader level={2}>Handover </DynamicHeader>}
+                        <DynamicHeader level={3}>{tc} - {label} - {city} </DynamicHeader>
                         {(label === 'Call Performance' || label === 'Call Performance Baseline') && (
                             <>
                                 <WfcCpTable cityData={cityData} />

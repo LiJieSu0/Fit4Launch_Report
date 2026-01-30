@@ -115,7 +115,8 @@ const WfcSummaryPage = () => {
         rssi: formatVal(data.rssi_average),
         rsrp: formatVal(data.rsrp_average),
         callDrops: data.total_retention_failures || 0,
-        handovers: data.minimum_handover || 'N/A'
+        handovers: data.minimum_handover || 'N/A',
+        handoversColor: getKpiCellColor('MinimumHandovers', data.minimum_handover)
       };
     }).filter(row => row !== null);
   };
@@ -178,7 +179,7 @@ const WfcSummaryPage = () => {
               <td style={{ backgroundColor: "var(--performance-pass)" }}><a href={row.link}>Result</a></td>
               <td style={{ backgroundColor: "var(--performance-pass)" }}><a href={row.link}>Result</a></td>
               <td style={{ backgroundColor: "var(--performance-pass)" }}><a href={row.link}>Result</a></td>
-              <td>{row.handovers}</td>
+              <td style={{ backgroundColor: row.handoversColor }}><a href={row.link}>Result</a></td>
             </tr>
           ))}
           {seattleHandoverData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}

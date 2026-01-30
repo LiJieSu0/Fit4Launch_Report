@@ -32,6 +32,10 @@ const WfcSummaryPage = () => {
       { tc: 'TC155', subKey: 'DUT MO', label: 'TC155 - Call Performance' },
       { tc: 'TC156', subKey: 'DUT MO', label: 'TC156 - Call Performance' },
       { tc: 'TC157', subKey: 'DUT MO', label: 'TC157 - Call Performance' },
+      { tc: 'TC158', subKey: 'DUT MO', label: 'TC158 - Call Performance' },
+      { tc: 'TC159', subKey: 'DUT MO', label: 'TC159 - Call Performance' },
+      { tc: 'TC160', subKey: 'DUT MO', label: 'TC160 - Call Performance' },
+      { tc: 'TC161', subKey: 'DUT MO', label: 'TC161 - Call Performance' },
     ];
 
     return scenarios.map(s => {

@@ -159,7 +159,7 @@ const WfcSummaryPage = () => {
         </tbody>
       </table>
 
-      <h4>Handover Case</h4>
+      <h4>Handover Performance and Voice Quality</h4>
       <table className="general-table-style">
         <thead>
           <tr>

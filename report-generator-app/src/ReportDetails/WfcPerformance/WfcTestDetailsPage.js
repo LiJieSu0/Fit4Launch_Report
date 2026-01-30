@@ -110,7 +110,7 @@ const WfcTestDetailsPage = ({ tc, label, sectionNumber = 0 }) => {
                                                     <td>{formatVal(cityData['DUT MT']?.rssi_average)}</td>
                                                 </>
                                             ) : (
-                                                <td>{formatVal(cityData['DUT']?.rssi_average)}</td>
+                                                <td style={{ backgroundColor: 'var(--performance-pass)' }}>{formatVal(cityData['DUT']?.rssi_average)}</td>
                                             )}
                                         </tr>
                                         <tr>
@@ -166,7 +166,7 @@ const WfcTestDetailsPage = ({ tc, label, sectionNumber = 0 }) => {
                                                     <td>{formatVal(cityData['DUT MT']?.rsrp_average)}</td>
                                                 </>
                                             ) : (
-                                                <td>{formatVal(cityData['DUT']?.rsrp_average)}</td>
+                                                <td style={{ backgroundColor: 'var(--performance-pass)' }}>{formatVal(cityData['DUT']?.rsrp_average)}</td>
                                             )}
                                         </tr>
                                         <tr>

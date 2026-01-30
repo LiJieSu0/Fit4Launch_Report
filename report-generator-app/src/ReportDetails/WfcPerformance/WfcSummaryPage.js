@@ -79,7 +79,8 @@ const WfcSummaryPage = () => {
     <div className="page-content">
       <DynamicHeader level={1}>WFC Performance Test Overview</DynamicHeader>
 
-      <DynamicHeader level={2}>Seattle</DynamicHeader>
+      <DynamicHeader level={2}>Seattle Market</DynamicHeader>
+      <h4>Call Performance and Voice Quality</h4>
       <table className="general-table-style">
         <thead>
           <tr>
@@ -105,34 +106,7 @@ const WfcSummaryPage = () => {
           {seattleData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
         </tbody>
       </table>
-
-      {/* <DynamicHeader level={2}>New York</DynamicHeader>
-      <table className="general-table-style">
-        <thead>
-          <tr>
-            <th>Test</th>
-            <th>Call Setup Time</th>
-            <th>Call Initiation</th>
-            <th>Call Retention</th>
-            <th>MO MOS</th>
-            <th>MT MOS</th>
-          </tr>
-        </thead>
-        <tbody>
-          {newYorkData.map((row, index) => (
-            <tr key={index}>
-              <td>{row.test}</td>
-              <td style={{ backgroundColor: row.callSetupTimeColor }}><a href={row.link}>Result</a></td>
-              <td style={{ backgroundColor: row.callInitiationColor }}><a href={row.link}>Result</a></td>
-              <td style={{ backgroundColor: row.callRetentionColor }}><a href={row.link}>Result</a></td>
-              <td style={{ backgroundColor: row.moMosColor }}><a href={row.link}>{row.moMosValue}</a></td>
-              <td style={{ backgroundColor: row.mtMosColor }}><a href={row.link}>{row.mtMosValue}</a></td>
-            </tr>
-          ))}
-          {newYorkData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
-        </tbody>
-      </table> */}
-
+      {/* Handover Performance and Voice Quality */}
     </div>
   );
 };

@@ -72,8 +72,59 @@ const WfcSummaryPage = () => {
     }).filter(row => row !== null);
   };
 
+  const getHandoverMarketRows = (marketName) => {
+    const marketData = allReportData[marketName]?.wfcPerformance?.['WFC'];
+    if (!marketData) return [];
+
+    const scenarios = [
+      { tc: 'TC164', label: 'TC164 - WFC to VoLTE Signal Loss' },
+      { tc: 'TC167', label: 'TC167 - LTE to WFC (Idle)' },
+      { tc: 'TC170', label: 'TC170 - LTE to WFC (In-Call)' },
+      { tc: 'TC172', label: 'TC172 - WFC to LTE (Idle)' },
+      { tc: 'TC175', label: 'TC175 - WFC to LTE (In-Call)' },
+      { tc: 'TC178', label: 'TC178 - WFC to WFC' },
+    ];
+
+    return scenarios.map(s => {
+      const tcData = marketData[s.tc];
+      if (!tcData) return null;
+      const data = tcData['DUT'];
+      if (!data) return null;
+
+      const refData = tcData['REF'];
+
+      const mapExcellentToPass = (color) => {
+        if (color === 'var(--performance-excellent)') {
+          return 'var(--performance-pass)';
+        }
+        return color;
+      };
+
+      const formatVal = (val) => {
+        if (val === undefined || val === null || val === 'N/A') return 'N/A';
+        const num = parseFloat(val);
+        return isNaN(num) ? 'N/A' : num.toFixed(2);
+      };
+
+      return {
+        test: s.label,
+        market: marketName,
+        link: getDynamicLink(s.tc, marketName),
+        mosValue: formatVal(data.mos_average),
+        mosColor: mapExcellentToPass(getKpiCellColor('WfcMOS', data.mos_average, refData?.mos_average)),
+        rssi: formatVal(data.rssi_average),
+        rsrp: formatVal(data.rsrp_average),
+        callDrops: data.total_retention_failures || 0,
+        handovers: data.minimum_handover || 'N/A'
+      };
+    }).filter(row => row !== null);
+  };
+
   const seattleData = getMarketRows('Seattle');
   const newYorkData = getMarketRows('New York');
+
+  const seattleHandoverData = getHandoverMarketRows('Seattle');
+  const newYorkHandoverData = getHandoverMarketRows('New York');
 
   return (
     <div className="page-content">
@@ -106,7 +157,88 @@ const WfcSummaryPage = () => {
           {seattleData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
         </tbody>
       </table>
-      {/* Handover Performance and Voice Quality */}
+
+      <h4>Handover Case</h4>
+      <table className="general-table-style">
+        <thead>
+          <tr>
+            <th>Test</th>
+            <th>Average MOS</th>
+            <th>Average RSSI</th>
+            <th>Average RSRP</th>
+            <th>Call Drops</th>
+            <th>Handovers</th>
+          </tr>
+        </thead>
+        <tbody>
+          {seattleHandoverData.map((row, index) => (
+            <tr key={index}>
+              <td>{row.test}</td>
+              <td style={{ backgroundColor: row.mosColor }}><a href={row.link}>Result</a></td>
+              <td style={{ backgroundColor: "var(--performance-pass)" }}><a href={row.link}>Result</a></td>
+              <td style={{ backgroundColor: "var(--performance-pass)" }}><a href={row.link}>Result</a></td>
+              <td style={{ backgroundColor: "var(--performance-pass)" }}><a href={row.link}>Result</a></td>
+              <td>{row.handovers}</td>
+            </tr>
+          ))}
+          {seattleHandoverData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
+        </tbody>
+      </table>
+      {/* 
+      <DynamicHeader level={2}>New York Market</DynamicHeader>
+      <h4>Call Performance and Voice Quality</h4>
+      <table className="general-table-style">
+        <thead>
+          <tr>
+            <th>Test</th>
+            <th>Call Setup Time</th>
+            <th>Call Initiation</th>
+            <th>Call Retention</th>
+            <th>MO MOS</th>
+            <th>MT MOS</th>
+          </tr>
+        </thead>
+        <tbody>
+          {newYorkData.map((row, index) => (
+            <tr key={index}>
+              <td>{row.test}</td>
+              <td style={{ backgroundColor: row.callSetupTimeColor }}><a href={row.link}>Result</a></td>
+              <td style={{ backgroundColor: row.callInitiationColor }}><a href={row.link}>Result</a></td>
+              <td style={{ backgroundColor: row.callRetentionColor }}><a href={row.link}>Result</a></td>
+              <td style={{ backgroundColor: row.moMosColor }}><a href={row.link}>Result</a></td>
+              <td style={{ backgroundColor: row.mtMosColor }}><a href={row.link}>Result</a></td>
+            </tr>
+          ))}
+          {newYorkData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
+        </tbody>
+      </table>
+
+      <h4>Handover Case</h4>
+      <table className="general-table-style">
+        <thead>
+          <tr>
+            <th>Test</th>
+            <th>Average MOS</th>
+            <th>Average RSSI</th>
+            <th>Average RSRP</th>
+            <th>Call Drops</th>
+            <th>Handovers</th>
+          </tr>
+        </thead>
+        <tbody>
+          {newYorkHandoverData.map((row, index) => (
+            <tr key={index}>
+              <td>{row.test}</td>
+              <td style={{ backgroundColor: row.mosColor }}><a href={row.link}>Result</a></td>
+              <td>{row.rssi}</td>
+              <td>{row.rsrp}</td>
+              <td>{row.callDrops}</td>
+              <td>{row.handovers}</td>
+            </tr>
+          ))}
+          {newYorkHandoverData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
+        </tbody>
+      </table> */}
     </div>
   );
 };

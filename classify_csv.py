@@ -13,20 +13,18 @@ def normalize_string(s):
     normalized = re.sub(r'[^a-zA-Z0-9]', '', s)
     return normalized
 
-def classify_files():
-    source_dir = r"D:\ReportGenerator\Raw Data\DataStructureFolder\DataPerformance_sea"
+def classify_files(source_dir=None):
+    if source_dir is None:
+        # Default to SEA if not specified, but we'll likely want to point this to ny
+        source_dir = r"D:\ReportGenerator\Raw Data\DataStructureFolder\ny"
+    
     target_root = r"D:\ReportGenerator\Raw Data\DataStructureFolder"
     
     # Manual keyword to folder path mappings
-    # Keys should be normalized (lowercase, no spaces/special chars EXCEPT for specific keywords I might rely on, 
-    # but my normalized_filename has no spaces. So keys here should effectively be "5gautomshttp" etc.
-    # WAIT: normalize_string returns "5gautomshttp...".
-    # So my keys in manual_mappings MUST match that format.
-    
-    # helper to make readable keys
     def k(s): return normalize_string(s)
 
     manual_mappings = {
+        # Original SEA Mappings (keeping for compatibility)
         k("5ga_app dl"): "Data Performance\\5G AUTO DP\\5G Auto Data Play-store app Download",
         k("5ga_web page"): "Data Performance\\5G AUTO DP\\5G Auto Data Web-Kepler",
         k("5gn_app dl"): "Data Performance\\5G NSA DP\\5G NSA Data Play-store app Download",
@@ -63,95 +61,102 @@ def classify_files():
         # Catch variations like "UDP UL 10 FOR 10" -> "UDP Upload Task at 10 Mbps for 10 seconds"
         k("5gauto udp ul 10 for 10"): "Data Performance\\5G AUTO DP\\Udp Test\\UL\\UDP Upload Task at 10 Mbps for 10 seconds",
         k("5gauto udp ul 20 for 10"): "Data Performance\\5G AUTO DP\\Udp Test\\UL\\UDP Upload Task at 20 Mbps for 10 seconds",
+        
+        # Test Type Mappings
+        k("http ms"): "Data Performance\\{net_type} DP\\HTTP Multi Stream",
+        k("http ss"): "Data Performance\\{net_type} DP\\HTTP Single Stream",
+        k("ping"): "Data Performance\\{net_type} DP\\Ping",
+        k("web"): "Data Performance\\{net_type} DP\\5G Auto Data Web-Kepler",
+        k("playstore"): "Data Performance\\{net_type} DP\\5G Auto Data Play-store app Download",
+        k("play store"): "Data Performance\\{net_type} DP\\5G Auto Data Play-store app Download",
+        k("udp"): "Data Performance\\{net_type} DP\\Udp Test",
+        k("mobility"): "Data Performance\\{net_type} DP\\Mobility Test",
     }
 
     if not os.path.exists(source_dir):
         print(f"[Error] Source directory {source_dir} does not exist.")
         return
 
-    # 1. Gather all subdirectories in target_root
-    all_folders = []
-    for root, dirs, files in os.walk(target_root):
-        if os.path.abspath(root) != os.path.abspath(source_dir):
-            all_folders.append(root)
-
-    print(f"Scanning {len(all_folders)} folders for potential matches...")
-
-    # 2. Get all CSV files in source_dir
-    files_to_move = [f for f in os.listdir(source_dir) if f.endswith('.csv')]
+    # 1. Get all CSV files recursively from source_dir
+    files_to_process = []
+    for root, dirs, files in os.walk(source_dir):
+        for f in files:
+            if f.lower().endswith('.csv'):
+                files_to_process.append(os.path.join(root, f))
     
-    if not files_to_move:
+    if not files_to_process:
         print(f"No CSV files found in {source_dir}.")
         return
+
+    print(f"Processing {len(files_to_process)} files from {source_dir}...")
 
     moved_count = 0
     not_found_count = 0
 
-    for filename in files_to_move:
-        file_path = os.path.join(source_dir, filename)
+    for file_path in files_to_process:
+        filename = os.path.basename(file_path)
         normalized_filename = normalize_string(filename)
+        
+        # Determine Network Type (AUTO vs NSA)
+        net_type = "5G AUTO"
+        if "nsa" in normalized_filename:
+            net_type = "5G NSA"
         
         target_folder = None
         
-        # 3. Check manual mappings first
-        for key, relative_path in manual_mappings.items():
-            if key in normalized_filename: # key is already normalized
-                possible_target = os.path.join(target_root, relative_path)
+        # 2. Check mappings
+        for key, relative_template in manual_mappings.items():
+            if key in normalized_filename:
+                relative_path = relative_template.format(net_type=net_type)
+                target_folder = os.path.join(target_root, relative_path)
+                
+                # DL/UL Subfolder Logic
+                if "dl" in normalized_filename or "downlink" in normalized_filename:
+                    target_folder = os.path.join(target_folder, "DL")
+                elif "ul" in normalized_filename or "uplink" in normalized_filename:
+                    target_folder = os.path.join(target_folder, "UL")
                 
                 # Quality Subfolder Logic (L1/L2/L3)
-                if "udp" in key:
-                    quality_sub = None
-                    if "l1" in normalized_filename: quality_sub = "Good"
-                    elif "l2" in normalized_filename: quality_sub = "Moderate"
-                    elif "l3" in normalized_filename: quality_sub = "Poor"
-                    
-                    if quality_sub:
-                         possible_quality_target = os.path.join(possible_target, quality_sub)
-                         if os.path.exists(possible_quality_target):
-                             possible_target = possible_quality_target
+                quality_sub = None
+                if "l1" in normalized_filename: quality_sub = "Good"
+                elif "l2" in normalized_filename: quality_sub = "Moderate"
+                elif "l3" in normalized_filename: quality_sub = "Poor"
                 
-                if os.path.exists(possible_target):
-                    target_folder = possible_target
-                    break
-        
-        # 4. If no manual mapping or folder doesn't exist, search through folder tree
-        if not target_folder:
-            potential_matches = []
-            for folder_path in all_folders:
-                folder_name = os.path.basename(folder_path)
-                if not folder_name: continue
+                if quality_sub:
+                    target_folder = os.path.join(target_folder, quality_sub)
                 
-                normalized_folder = normalize_string(folder_name)
-                
-                # We want to match folders with meaningful names (longer than 3 chars)
-                if len(normalized_folder) > 3 and normalized_folder in normalized_filename:
-                    potential_matches.append(folder_path)
-            
-            if potential_matches:
-                # Pick the deepest path (most segments) as it's likely the specific test task
-                target_folder = max(potential_matches, key=lambda p: (len(p.split(os.sep)), len(os.path.basename(p))))
+                break
 
-        # 5. Move file if target found
+        # 3. Move file if target found
         if target_folder:
+            # Create target folder if it doesn't exist
+            if not os.path.exists(target_folder):
+                os.makedirs(target_folder, exist_ok=True)
+                print(f"[Info] Created directory: {os.path.relpath(target_folder, target_root)}")
+            
             dest_path = os.path.join(target_folder, filename)
             try:
-                shutil.move(file_path, dest_path)
-                print(f"[Success] Moved '{filename}' to '{os.path.relpath(target_folder, target_root)}'")
-                moved_count += 1
+                # If target file exists, don't overwrite blindly? 
+                # Let's use shutil.move which might overwrite or error depending on OS.
+                # To be safe, let's check.
+                if os.path.exists(dest_path):
+                    print(f"[Skip] '{filename}' already exists in target.")
+                else:
+                    shutil.move(file_path, dest_path)
+                    print(f"[Success] Moved '{filename}' -> '{os.path.relpath(target_folder, target_root)}'")
+                    moved_count += 1
             except Exception as e:
                 print(f"[Error] Failed to move '{filename}': {str(e)}")
         else:
-            # For debugging, maybe show the normalized filename
-            # print(f"[Debug] Normalized: {normalized_filename}")
             print(f"[Warning] 找不到相對應的路徑: {filename}")
             not_found_count += 1
 
     print("\nSummary:")
-    print(f"Total files processed: {len(files_to_move)}")
+    print(f"Total files processed: {len(files_to_process)}")
     print(f"Files moved: {moved_count}")
     print(f"Files not matched: {not_found_count}")
 
 if __name__ == "__main__":
-    classify_files()
-
-
+    # Check if user wants to process SEA or NY or both
+    # For now, let's process the ny directory the user just mentioned
+    classify_files(r"D:\ReportGenerator\Raw Data\DataStructureFolder\ny")

@@ -8,12 +8,12 @@ const safeFetchJson = async (url) => {
     const response = await fetch(url);
     if (!response.ok) {
       console.warn(`File not found or error loading: ${url}`);
-      return {};
+      return null;
     }
     return await response.json();
   } catch (error) {
     console.warn(`Error fetching ${url}:`, error);
-    return {};
+    return null;
   }
 };
 

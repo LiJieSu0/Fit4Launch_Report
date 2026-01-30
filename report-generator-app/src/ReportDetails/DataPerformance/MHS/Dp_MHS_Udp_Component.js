@@ -20,8 +20,12 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
   const reportData = allReportData[city];
 
-  if (!reportData || !reportData.dataPerformance) {
+  if (!reportData) {
     return <div className="page-content">Loading {city} data...</div>;
+  }
+
+  if (reportData.dataPerformance === null) {
+    return null; // Hide if data is missing
   }
 
   const udpDataRaw = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["Mobile Hotspot Test"]["Udp Test"];

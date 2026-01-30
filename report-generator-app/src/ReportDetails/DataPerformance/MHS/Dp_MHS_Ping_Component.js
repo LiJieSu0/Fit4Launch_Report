@@ -20,8 +20,12 @@ function Dp_MHS_Ping_Component({ city: propCity }) {
 
   const reportData = allReportData[city];
 
-  if (!reportData || !reportData.dataPerformance) {
+  if (!reportData) {
     return <div className="page-content">Loading {city} data...</div>;
+  }
+
+  if (reportData.dataPerformance === null) {
+    return null; // Hide if data is missing
   }
 
   const pingDataRaw = reportData.dataPerformance?.['Data Performance']?.['5G AUTO DP']?.['Mobile Hotspot Test']?.['Ping'];

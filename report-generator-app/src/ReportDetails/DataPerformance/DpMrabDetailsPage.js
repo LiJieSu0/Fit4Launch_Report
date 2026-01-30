@@ -17,17 +17,18 @@ const DpMrabDetailsPage = ({ city: propCity }) => {
   }, [city, loadCityData]);
 
   const reportData = allReportData[city];
-  const [mrabData, setMrabData] = useState(null);
+  if (!reportData) {
+    return <div className="page-content">Loading {city} MRAB data...</div>;
+  }
 
-  useEffect(() => {
-    const data = reportData?.dataPerformance?.['Data Performance']?.['5G AUTO DP']?.['5G VoNR MRAB Stationary'];
-    if (data) {
-      setMrabData(data);
-    }
-  }, [reportData]);
+  if (reportData.dataPerformance === null) {
+    return null; // Hide if data is missing
+  }
+
+  const mrabData = reportData.dataPerformance?.['Data Performance']?.['5G AUTO DP']?.['5G VoNR MRAB Stationary'];
 
   if (!mrabData) {
-    return <div className="page-content">Loading {city} MRAB data...</div>;
+    return null; // Hide if specific MRAB data is not in the JSON
   }
   return (
     <div className="page-content">

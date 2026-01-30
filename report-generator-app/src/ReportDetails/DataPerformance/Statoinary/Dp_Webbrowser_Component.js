@@ -21,8 +21,12 @@ function Dp_Webbrowser_Component({ city: propCity }) {
 
     const reportData = allReportData[city];
 
-    if (!reportData || !reportData.dataPerformance) {
+    if (!reportData) {
         return <div className="page-content">Loading {city} data...</div>;
+    }
+
+    if (reportData.dataPerformance === null) {
+        return null; // Hide the component if the data file is missing
     }
 
     // Update to use dataPerformance from the fetched JSON

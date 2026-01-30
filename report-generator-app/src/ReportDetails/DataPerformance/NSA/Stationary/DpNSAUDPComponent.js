@@ -23,8 +23,12 @@ function DpNSAUDPComponent({ city: propCity }) {
 
   const reportData = allReportData[city];
 
-  if (!reportData || !reportData.dataPerformance) {
+  if (!reportData) {
     return <div className="page-content">Loading {city} NSA UDP data...</div>;
+  }
+
+  if (reportData.dataPerformance === null) {
+    return null; // Hide if data is missing
   }
 
   const udpData = reportData.dataPerformance['Data Performance']?.['5G NSA DP']?.['Udp Test'];

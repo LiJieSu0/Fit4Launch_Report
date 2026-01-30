@@ -26,8 +26,12 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
 
   const reportData = allReportData[city];
 
-  if (!reportData || !reportData.dataPerformance) {
+  if (!reportData) {
     return <div className="page-content">Loading {city} NSA data...</div>;
+  }
+
+  if (reportData.dataPerformance === null) {
+    return null; // Hide if data is missing
   }
 
   const nsaStationaryData = reportData.dataPerformance['Data Performance']?.['5G NSA DP'];

@@ -22,8 +22,12 @@ function DpNSATestDriveDetails({ city: propCity }) {
 
   const reportData = allReportData[city];
 
-  if (!reportData || !reportData.dataPerformance) {
+  if (!reportData) {
     return <div className="page-content">Loading {city} NSA Test Drive data...</div>;
+  }
+
+  if (reportData.dataPerformance === null) {
+    return null; // Hide if data is missing
   }
 
   const mobilityData = reportData.dataPerformance['Data Performance']?.['5G NSA DP']?.['Mobility Test'];

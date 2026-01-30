@@ -77,12 +77,12 @@ const WfcSummaryPage = () => {
     if (!marketData) return [];
 
     const scenarios = [
-      { tc: 'TC164', label: 'TC164 - WFC to VoLTE Signal Loss' },
-      { tc: 'TC167', label: 'TC167 - LTE to WFC (Idle)' },
-      { tc: 'TC170', label: 'TC170 - LTE to WFC (In-Call)' },
-      { tc: 'TC172', label: 'TC172 - WFC to LTE (Idle)' },
-      { tc: 'TC175', label: 'TC175 - WFC to LTE (In-Call)' },
-      { tc: 'TC178', label: 'TC178 - WFC to WFC' },
+      { tc: 'TC164', label: 'TC164 - Multi Handovers' },
+      { tc: 'TC167', label: 'TC167 - Multi Handovers' },
+      { tc: 'TC170', label: 'TC170 - Multi Handovers' },
+      { tc: 'TC172', label: 'TC172 - IP Impairments' },
+      { tc: 'TC175', label: 'TC175 - In of WFC Coverage' },
+      { tc: 'TC178', label: 'TC178 - Out of WFC Coverage' },
     ];
 
     return scenarios.map(s => {

@@ -17,8 +17,8 @@ const BANDS = [
     { name: "Samsung XCover Pro 7(NR 25)", key: "n25", anchor: "2.1" },
     { name: "Samsung XCover Pro 7(NR 41)", key: "n41", anchor: "2.2" },
     { name: "Samsung XCover Pro 7(NR 71)", key: "n71", anchor: "2.3" },
-    { name: "Samsung XCover Pro 7(LTE 66)", key: "b66", anchor: "2.4" },
-    { name: "Samsung XCover Pro 7(LTE 2)", key: "b2", anchor: "2.5" }
+    { name: "Samsung XCover Pro 7(LTE B66)", key: "b66", anchor: "2.4" },
+    { name: "Samsung XCover Pro 7(LTE B2)", key: "b2", anchor: "2.5" }
 
 
 ];
@@ -149,9 +149,9 @@ const CoverageSummaryTable = () => {
                                         className={mapColorToClass(result.color)}
                                         style={{ backgroundColor: result.color !== 'default' ? result.color : '' }}
                                     >
-                                        <a href={result.link} style={{ color: 'black' }}>
+                                        {mapColorToClass(result.color) === '' ? "N/A" : <a href={result.link} style={{ color: 'black' }}>
                                             Results
-                                        </a>
+                                        </a>}
                                     </td>
                                 );
                             })}

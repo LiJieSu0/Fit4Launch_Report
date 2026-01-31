@@ -29,6 +29,8 @@ def classify_files(source_dir, target_dir):
         k("5gn_app dl"): "Data Performance\\5G NSA DP\\5G NSA Data Play-store app Download",
         k("5gn_web page"): "Data Performance\\5G NSA DP\\5G NSA Data Web-Kepler",
         k("mhs"): "Data Performance\\5G AUTO DP\\Mobile Hotspot Test",
+        k("mhs drive"): "Data Performance\\5G AUTO DP\\5G Auto Data Test MHS Drive",
+        k("mhs driving"): "Data Performance\\5G AUTO DP\\5G Auto Data Test MHS Drive",
         
         # HTTP Tests
         k("5gauto ms http"): "Data Performance\\5G AUTO DP\\HTTP Multi Stream",
@@ -72,6 +74,15 @@ def classify_files(source_dir, target_dir):
         k("mobility"): "Data Performance\\{net_type} DP\\Mobility Test",
     }
     
+    # Define test types that don't require DL/UL classification
+    no_dl_ul_required = [
+        k("ping"),
+        k("web"),
+        k("kepler"),
+        k("mhs drive"),
+        k("mhs driving")
+    ]
+    
     # 1. Get all CSV files recursively from source_dir
     files_to_process = []
     for root, dirs, files in os.walk(source_dir):
@@ -100,38 +111,69 @@ def classify_files(source_dir, target_dir):
         
         target_folder = None
         
-        # 2. Check mappings
-        for key, relative_template in manual_mappings.items():
-            if key in normalized_filename:
-                relative_path = relative_template.format(net_type=net_type)
-                current_target_folder = os.path.join(target_dir, relative_path)
-                
-                # DL/UL Subfolder Logic
-                is_dl_ul = False
-                if "dl" in normalized_filename or "downlink" in normalized_filename or "download" in normalized_filename:
-                    current_target_folder = os.path.join(current_target_folder, "DL")
-                    is_dl_ul = True
-                elif "ul" in normalized_filename or "uplink" in normalized_filename or "upload" in normalized_filename:
-                    current_target_folder = os.path.join(current_target_folder, "UL")
-                    is_dl_ul = True
-                
-                if not is_dl_ul:
-                    print(f"[Warning] 無法分辨 DL 或 UL: {filename}")
-                    target_folder = None
-                    break
+        # 2. Check mappings - find the longest matching key
+        matched_keys = [(key, template) for key, template in manual_mappings.items() if key in normalized_filename]
+        
+        if not matched_keys:
+            print(f"[Warning] 找不到相對應的路徑: {filename}")
+            not_found_count += 1
+            continue
+        
+        # Sort by key length (descending) to get the most specific match
+        matched_keys.sort(key=lambda x: len(x[0]), reverse=True)
+        best_key, relative_template = matched_keys[0]
+        
+        relative_path = relative_template.format(net_type=net_type)
+        current_target_folder = os.path.join(target_dir, relative_path)
+        
+        # Check if this test type requires DL/UL classification
+        requires_dl_ul = best_key not in no_dl_ul_required
+        
+        # DL/UL Subfolder Logic (only if required)
+        is_dl_ul = False
+        if requires_dl_ul:
+            if "dl" in normalized_filename or "downlink" in normalized_filename or "download" in normalized_filename:
+                current_target_folder = os.path.join(current_target_folder, "DL")
+                is_dl_ul = True
+            elif "ul" in normalized_filename or "uplink" in normalized_filename or "upload" in normalized_filename:
+                current_target_folder = os.path.join(current_target_folder, "UL")
+                is_dl_ul = True
+            
+            if not is_dl_ul:
+                print(f"[Warning] 無法分辨 DL 或 UL: {filename}")
+                not_found_count += 1
+                continue
 
-                target_folder = current_target_folder
+        target_folder = current_target_folder
+        
+        # Rename CH01 to DUT and CH02 to REF in filename FIRST
+        new_filename = filename
+        if "CH01" in filename or "ch01" in filename:
+            # Replace CH01 (case insensitive) with DUT
+            new_filename = re.sub(r'CH01', 'DUT', new_filename, flags=re.IGNORECASE)
+        elif "CH02" in filename or "ch02" in filename:
+            # Replace CH02 (case insensitive) with REF
+            new_filename = re.sub(r'CH02', 'REF', new_filename, flags=re.IGNORECASE)
+        
+        # DUT/REF Check - ensure file can be identified as DUT or REF (check renamed filename)
+        normalized_new_filename = normalize_string(new_filename)
+        is_dut_ref = False
+        if "dut" in normalized_new_filename or "ref" in normalized_new_filename:
+            is_dut_ref = True
+        
+        if not is_dut_ref:
+            print(f"[Warning] 無法分辨 DUT 或 REF: {filename}")
+            not_found_count += 1
+            continue
 
-                # Quality Subfolder Logic (L1/L2/L3)
-                quality_sub = None
-                if "l1" in normalized_filename: quality_sub = "Good"
-                elif "l2" in normalized_filename: quality_sub = "Moderate"
-                elif "l3" in normalized_filename: quality_sub = "Poor"
-                
-                if quality_sub:
-                    target_folder = os.path.join(target_folder, quality_sub)
-                
-                break
+        # Quality Subfolder Logic (L1/L2/L3)
+        quality_sub = None
+        if "l1" in normalized_filename: quality_sub = "Good"
+        elif "l2" in normalized_filename: quality_sub = "Moderate"
+        elif "l3" in normalized_filename: quality_sub = "Poor"
+        
+        if quality_sub:
+            target_folder = os.path.join(target_folder, quality_sub)
 
         # 3. Move file if target found
         if target_folder:
@@ -140,7 +182,7 @@ def classify_files(source_dir, target_dir):
                 os.makedirs(target_folder, exist_ok=True)
                 print(f"[Info] Created directory: {target_folder}")
             
-            dest_path = os.path.join(target_folder, filename)
+            dest_path = os.path.join(target_folder, new_filename)
             try:
                 # If target file exists, check before overwrite
                 if os.path.exists(dest_path):

@@ -134,11 +134,27 @@ def extract_coverage_data_to_csv(folder_path, output_folder='.', device_type_fil
 
         try:
             df = pd.read_csv(file_path)
-            filename_without_ext = os.path.splitext(filename)[0]
             
+            # Determine short header name (PC2, PC3, DUT, REF, etc.)
+            # Prioritize PC2/PC3 if they exist anywhere in the name
+            pc_match = re.search(r'PC\d+', filename, re.IGNORECASE)
+            header_name = os.path.splitext(filename)[0] # Fallback
+            
+            if pc_match:
+                header_name = pc_match.group(0).upper()
+            else:
+                device_match = re.search(r'(DUT|REF|CH(\d+))', filename, re.IGNORECASE)
+                if device_match:
+                    matched_val = device_match.group(1).upper()
+                    if matched_val.startswith("CH"):
+                        ch_num = int(device_match.group(2))
+                        header_name = "REF" if ch_num % 2 != 0 else "DUT"
+                    else:
+                        header_name = matched_val
+
             serving_network_column = '[General] Serving Network'
             if serving_network_column not in df.columns:
-                print(f"Warning: '{serving_network_column}' not found in {filename_without_ext}. Cannot filter data by 'No service'. Extracting full column.")
+                print(f"Warning: '{serving_network_column}' not found in {header_name}. Cannot filter data by 'No service'. Extracting full column.")
                 no_service_idx = len(df) # Process entire column if 'No service' column is missing
             else:
                 no_service_indices = df[df[serving_network_column].astype(str).str.contains('No service', case=False, na=False)].index
@@ -160,7 +176,7 @@ def extract_coverage_data_to_csv(folder_path, output_folder='.', device_type_fil
                 target_col = fallback_column_name
 
             if target_col:
-                extracted_data = df.iloc[:no_service_idx, :][[target_col]].rename(columns={target_col: filename_without_ext})
+                extracted_data = df.iloc[:no_service_idx, :][[target_col]].rename(columns={target_col: header_name})
                 
                 if all_extracted_data.empty:
                     all_extracted_data = extracted_data
@@ -170,7 +186,7 @@ def extract_coverage_data_to_csv(folder_path, output_folder='.', device_type_fil
                 error_msg = f"Column '{data_column_name}'"
                 if fallback_column_name:
                     error_msg += f" or fallback '{fallback_column_name}'"
-                print(f"Warning: {error_msg} not found in {filename_without_ext}. Skipping.")
+                print(f"Warning: {error_msg} not found in {header_name}. Skipping.")
 
         except Exception as e:
             print(f"Error processing file {file_path}: {e}")

@@ -1863,3 +1863,60 @@
 2026-01-31 14:08:58,754 - pipeline - INFO - Running final data validation...
 2026-01-31 14:08:58,775 - pipeline - INFO - No empty collections found in any JSON file.
 2026-01-31 14:08:58,776 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 14:15:58,241 - pipeline - INFO - Market: New York
+2026-01-31 14:15:58,241 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\New York
+2026-01-31 14:15:58,241 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 14:15:58,242 - pipeline - INFO - Starting analysis pipeline...
+2026-01-31 14:15:58,246 - pipeline - INFO - Processing 96 individual CSV files...
+2026-01-31 14:16:04,778 - pipeline - INFO - Processing directory-level analyses...
+2026-01-31 14:16:04,778 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance (Type: coverage_coordinate)
+2026-01-31 14:16:04,779 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-31 14:16:04,810 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 14:16:05,105 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 14:16:05,394 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-01-31 14:16:05,395 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-01-31 14:16:05,395 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-31 14:16:05,485 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\data_performance_results.json
+2026-01-31 14:16:05,488 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\coverage_performance_results.json
+2026-01-31 14:16:05,489 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\processing_summary.json
+2026-01-31 14:16:05,489 - pipeline - INFO - Running final data validation...
+2026-01-31 14:16:05,508 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-31 14:16:05,509 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 14:16:19,477 - pipeline - INFO - Market: New York
+2026-01-31 14:16:19,478 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\New York
+2026-01-31 14:16:19,478 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 14:16:19,478 - pipeline - INFO - Starting analysis pipeline...
+2026-01-31 14:16:19,483 - pipeline - INFO - Processing 96 individual CSV files...
+2026-01-31 14:16:25,998 - pipeline - INFO - Processing directory-level analyses...
+2026-01-31 14:16:25,999 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance (Type: coverage_coordinate)
+2026-01-31 14:16:26,000 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-31 14:16:26,031 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 14:16:26,326 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 14:16:26,646 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-01-31 14:16:26,647 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-01-31 14:16:26,648 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-31 14:16:26,738 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\data_performance_results.json
+2026-01-31 14:16:26,742 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\coverage_performance_results.json
+2026-01-31 14:16:26,743 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\processing_summary.json
+2026-01-31 14:16:26,743 - pipeline - INFO - Running final data validation...
+2026-01-31 14:16:26,762 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-31 14:16:26,762 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 14:16:42,870 - pipeline - INFO - Market: New York
+2026-01-31 14:16:42,871 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\New York
+2026-01-31 14:16:42,871 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 14:16:42,871 - pipeline - INFO - Starting analysis pipeline...
+2026-01-31 14:16:42,876 - pipeline - INFO - Processing 96 individual CSV files...
+2026-01-31 14:16:49,498 - pipeline - INFO - Processing directory-level analyses...
+2026-01-31 14:16:49,498 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance (Type: coverage_coordinate)
+2026-01-31 14:16:49,499 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-31 14:16:49,531 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 14:16:49,823 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 14:16:50,113 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-01-31 14:16:50,114 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-01-31 14:16:50,115 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-31 14:16:50,205 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\data_performance_results.json
+2026-01-31 14:16:50,208 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\coverage_performance_results.json
+2026-01-31 14:16:50,209 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\processing_summary.json
+2026-01-31 14:16:50,209 - pipeline - INFO - Running final data validation...
+2026-01-31 14:16:50,228 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-31 14:16:50,229 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York

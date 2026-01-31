@@ -29,7 +29,7 @@ from Coverage.coverage_performance_analyzer import analyze_csv as analyze_vonr_c
 from DataPerformance.google_throughput_analyzer import analyze_throughput as google_analyze_throughput # Import the google throughput analyzer
 from DataPerformance.mhs_drive_analyzer import analyze_mhs_drive_data # Import the new MHS Drive analyzer
 from VoiceQuality.VqLineChartAnalyzer import calculate_vq_statistics # Import the VqLineChartAnalyzer
-from Coverage.coverage_coordinate_analyzer import haversine_distance, BASE_STATION_COORDS # Import haversine_distance and BASE_STATION_COORDS
+from Coverage.coverage_coordinate_analyzer import haversine_distance, DEFAULT_BASE_STATION_COORDS as BASE_STATION_COORDS
 from Coverage.coverage_secondary_kpi_analyzer import analyze_secondary_kpis # Import the new secondary KPI analyzer
 
 if __name__ == "__main__":
@@ -417,10 +417,6 @@ if __name__ == "__main__":
                     run_pattern = re.compile(r"(DUT|REF)\d+_Run(\d+)\.csv", re.IGNORECASE)
 
                     for dut_file, ref_file in paired_files:
-                        print(f"Processing DUT: {os.path.basename(dut_file)} and REF: {os.path.basename(ref_file)}")
-                        dut_results = analyze_coverage_coordinates(dut_file)
-                        ref_results = analyze_coverage_coordinates(ref_file)
-                        
                         # Extract run number for structuring JSON
                         dut_match = run_pattern.match(os.path.basename(dut_file))
                         ref_match = run_pattern.match(os.path.basename(ref_file))
@@ -428,9 +424,12 @@ if __name__ == "__main__":
                         run_name = "UnknownRun"
                         if dut_match:
                             run_name = f"Run{int(dut_match.group(2))}"
-                        elif ref_match: # Fallback if only ref_file matches (shouldn't happen with paired_files)
+                        elif ref_match: 
                             run_name = f"Run{int(ref_match.group(2))}"
 
+                        dut_results = analyze_coverage_coordinates(dut_file, base_coords=BASE_STATION_COORDS)
+                        ref_results = analyze_coverage_coordinates(ref_file, base_coords=BASE_STATION_COORDS)
+                        
                         subfolder_comparison_results["DUT"][run_name] = dut_results
                         subfolder_comparison_results["REF"][run_name] = ref_results
                         

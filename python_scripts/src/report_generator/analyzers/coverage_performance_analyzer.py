@@ -4,7 +4,7 @@ import re
 from report_generator.base_analyzer import BaseAnalyzer
 from Coverage.coverage_coordinate_analyzer import (
     analyze_coverage_coordinates, find_dut_ref_files, compare_analysis_results, 
-    haversine_distance, BASE_STATION_COORDS
+    haversine_distance
 )
 from Coverage.n41_coverage_analyzer import analyze_n41_coverage
 from Coverage.coverage_performance_analyzer import analyze_csv as analyze_vonr_coverage_performance
@@ -21,6 +21,13 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
         if not os.path.isdir(directory_path):
             self.logger.error(f"Directory not found: {directory_path}")
             return None
+
+        # Get market-specific coordinates from config
+        market = self.config.get("project.market", "Seattle")
+        self.coords = self.config.get(f"markets.{market}")
+        if not self.coords:
+            self.logger.warning(f"No coordinates found for market: {market}. Using Seattle defaults.")
+            self.coords = self.config.get("markets.Seattle", {"latitude": 47.128234, "longitude": -122.356792})
 
         if analysis_type == "coverage_coordinate":
             return self._analyze_coordinate(directory_path)
@@ -43,8 +50,8 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
 
             subfolder_results = {"DUT": {}, "REF": {}}
             for dut_file, ref_file in paired_files:
-                dut_res = analyze_coverage_coordinates(dut_file)
-                ref_res = analyze_coverage_coordinates(ref_file)
+                dut_res = analyze_coverage_coordinates(dut_file, base_coords=self.coords)
+                ref_res = analyze_coverage_coordinates(ref_file, base_coords=self.coords)
                 
                 dut_match = run_pattern.match(os.path.basename(dut_file))
                 run_name = f"Run{int(dut_match.group(2))}" if dut_match else "UnknownRun"
@@ -65,7 +72,7 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
                         if res.get('latitude') is not None and res.get('longitude') is not None:
                             res['distance_km'] = haversine_distance(
                                 res['latitude'], res['longitude'],
-                                BASE_STATION_COORDS["latitude"], BASE_STATION_COORDS["longitude"]
+                                self.coords["latitude"], self.coords["longitude"]
                             )
                     results[run_folder_name] = n41_res
         return results
@@ -84,7 +91,7 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
                             enriched = {}
                             for key, coords in analysis_res.items():
                                 if coords and coords[0] is not None and coords[1] is not None:
-                                    dist = haversine_distance(coords[0], coords[1], BASE_STATION_COORDS["latitude"], BASE_STATION_COORDS["longitude"])
+                                    dist = haversine_distance(coords[0], coords[1], self.coords["latitude"], self.coords["longitude"])
                                     enriched[key] = {"latitude": coords[0], "longitude": coords[1], "distance_km": dist}
                                 else:
                                     enriched[key] = {"latitude": None, "longitude": None, "distance_km": None}

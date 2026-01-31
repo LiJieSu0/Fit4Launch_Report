@@ -4,10 +4,8 @@ import os
 import json
 import math
 
-BASE_STATION_COORDS = {"latitude": 47.128234
-,
-                       "longitude": -122.356792
-                       }
+# Default Seattle coordinates (can be overridden)
+DEFAULT_BASE_STATION_COORDS = {"latitude": 47.128234, "longitude": -122.356792}
 
 def haversine_distance(lat1, lon1, lat2, lon2):
     R = 6371  # Radius of Earth in kilometers
@@ -26,11 +24,14 @@ def haversine_distance(lat1, lon1, lat2, lon2):
     distance = R * c
     return distance
 
-def analyze_coverage_coordinates(file_path):
+def analyze_coverage_coordinates(file_path, base_coords=None):
     """
     Analyzes a CSV file to find the last valid GPS coordinate and calculates
     its distance to the base station. Returns a dictionary with the distance.
     """
+    if base_coords is None:
+        base_coords = DEFAULT_BASE_STATION_COORDS
+
     results = {
         "last_valid_coords_distance_to_base_station_km": None
     }
@@ -57,7 +58,7 @@ def analyze_coverage_coordinates(file_path):
                     try:
                         lat = float(row[latitude_col_idx])
                         lon = float(row[longitude_col_idx])
-                        distance = haversine_distance(lat, lon, BASE_STATION_COORDS["latitude"], BASE_STATION_COORDS["longitude"])
+                        distance = haversine_distance(lat, lon, base_coords["latitude"], base_coords["longitude"])
                         results["last_valid_coords_distance_to_base_station_km"] = distance
                         break # Found the last valid coordinate, stop searching
                     except ValueError:

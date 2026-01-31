@@ -404,6 +404,50 @@
                     }
                 }
             },
+            "Mobility Test": {
+                "5G Auto Data Test Drive": {
+                    "DUT": {
+                        "Device Type": "DUT",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "UDP",
+                        "Throughput": {
+                            "Mean": 9.915710253500858,
+                            "Standard Deviation": 0.38490895345396925,
+                            "Minimum": 8.290561797752808,
+                            "Maximum": 10.117573033707865,
+                            "Number of Intervals": 20
+                        },
+                        "Jitter": {
+                            "Mean": 1.2046199546485261
+                        },
+                        "Error Ratio": {
+                            "Mean": 0.18770236621315192
+                        }
+                    },
+                    "REF": {
+                        "Device Type": "REF",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "UDP",
+                        "Throughput": {
+                            "Mean": 9.794970960647742,
+                            "Standard Deviation": 0.9198477282178452,
+                            "Minimum": 5.887620689655173,
+                            "Maximum": 10.024707865168539,
+                            "Number of Intervals": 20
+                        },
+                        "Jitter": {
+                            "Mean": 1.277759964373191
+                        },
+                        "Error Ratio": {
+                            "Mean": 1.2130870904030282
+                        }
+                    }
+                }
+            },
             "Ping": {
                 "Good": {
                     "REF": {
@@ -1087,6 +1131,48 @@
                                 "Number of Intervals": 14
                             }
                         }
+                    }
+                }
+            },
+            "Mobility Test": {
+                "DUT": {
+                    "Device Type": "DUT",
+                    "Network Type": "5G NSA",
+                    "Analysis Type": "data_performance",
+                    "Analysis Direction": "DL",
+                    "Protocol Type": "UDP",
+                    "Throughput": {
+                        "Mean": 9.908629660122648,
+                        "Standard Deviation": 0.30171775374444554,
+                        "Minimum": 8.64135593220339,
+                        "Maximum": 10.012749999999999,
+                        "Number of Intervals": 20
+                    },
+                    "Jitter": {
+                        "Mean": 1.2266636878814299
+                    },
+                    "Error Ratio": {
+                        "Mean": 1.1966673770706189
+                    }
+                },
+                "REF": {
+                    "Device Type": "REF",
+                    "Network Type": "5G NSA",
+                    "Analysis Type": "data_performance",
+                    "Analysis Direction": "DL",
+                    "Protocol Type": "UDP",
+                    "Throughput": {
+                        "Mean": 9.71616844397616,
+                        "Standard Deviation": 1.3001246773537765,
+                        "Minimum": 4.192988095238095,
+                        "Maximum": 10.022550561797752,
+                        "Number of Intervals": 20
+                    },
+                    "Jitter": {
+                        "Mean": 1.5665479416362689
+                    },
+                    "Error Ratio": {
+                        "Mean": 2.677541280875456
                     }
                 }
             },

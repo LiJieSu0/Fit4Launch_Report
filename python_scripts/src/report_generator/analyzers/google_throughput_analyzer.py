@@ -43,7 +43,7 @@ class GoogleThroughputAnalyzer(BaseAnalyzer):
         dev_pattern = re.compile(r"(DUT|REF)", re.IGNORECASE)
         size_pattern = re.compile(r"(?:APP-|Playstore |Play Store )(\d+)\s*M[B]?", re.IGNORECASE)
         quality_location_pattern = re.compile(r"(Good|Moderate|Poor)", re.IGNORECASE)
-        location_pattern = re.compile(r"Location (\d+)", re.IGNORECASE)
+        location_pattern = re.compile(r"L(\d+)", re.IGNORECASE)
 
         for root, _, files in os.walk(directory_path):
             location = "unknown_location"

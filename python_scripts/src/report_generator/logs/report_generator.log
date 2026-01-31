@@ -1499,3 +1499,183 @@
 2026-01-31 09:19:08,390 - pipeline - INFO - Running final data validation...
 2026-01-31 09:19:08,416 - pipeline - INFO - No empty collections found in any JSON file.
 2026-01-31 09:19:08,416 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 09:47:06,317 - pipeline - INFO - Market: New York
+2026-01-31 09:47:06,317 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\New York
+2026-01-31 09:47:06,318 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 09:47:06,318 - pipeline - INFO - Starting analysis pipeline...
+2026-01-31 09:47:06,323 - pipeline - INFO - Processing 114 individual CSV files...
+2026-01-31 09:47:15,020 - pipeline - INFO - Processing directory-level analyses...
+2026-01-31 09:47:15,020 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\New York\Call Performance
+2026-01-31 09:47:15,021 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-01-31 09:47:17,745 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-01-31 09:47:19,061 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-01-31 09:47:21,527 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-01-31 09:47:22,818 - pipeline - INFO - Analyzing Voice Quality directory: D:/ReportGenerator/Raw Data\New York\Voice Quality
+2026-01-31 09:47:22,819 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled Audio Delay
+2026-01-31 09:47:22,834 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled EVS WB VQ
+2026-01-31 09:47:22,886 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR NB VQ
+2026-01-31 09:47:22,906 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR WB VQ
+2026-01-31 09:47:22,940 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled Audio Delay
+2026-01-31 09:47:22,953 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled EVS WB VQ
+2026-01-31 09:47:23,001 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance (Type: coverage_coordinate)
+2026-01-31 09:47:23,001 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-31 09:47:23,033 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 09:47:23,337 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-01-31 09:47:23,338 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH01_REF_TMO_Playstore 100MB_NJ_L1.csv (Size: 100M, Device: REF, Location: Good)
+2026-01-31 09:47:23,339 - pipeline - WARNING - Failed to analyze _20260122_162123_CH01_REF_TMO_Playstore 100MB_NJ_L1.csv (likely no valid throughput data)
+2026-01-31 09:47:23,339 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH02_DUT_TMO_Playstore 100MB_NJ_L1.csv (Size: 100M, Device: DUT, Location: Good)
+2026-01-31 09:47:23,340 - pipeline - WARNING - Failed to analyze _20260122_162123_CH02_DUT_TMO_Playstore 100MB_NJ_L1.csv (likely no valid throughput data)
+2026-01-31 09:47:23,340 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: REF, Location: Good)
+2026-01-31 09:47:23,342 - pipeline - WARNING - Failed to analyze _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (likely no valid throughput data)
+2026-01-31 09:47:23,342 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: DUT, Location: Good)
+2026-01-31 09:47:23,343 - pipeline - WARNING - Failed to analyze _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (likely no valid throughput data)
+2026-01-31 09:47:23,343 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: REF, Location: Good)
+2026-01-31 09:47:23,344 - pipeline - WARNING - Failed to analyze _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (likely no valid throughput data)
+2026-01-31 09:47:23,344 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: DUT, Location: Good)
+2026-01-31 09:47:23,345 - pipeline - WARNING - Failed to analyze _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (likely no valid throughput data)
+2026-01-31 09:47:23,345 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-01-31 09:47:23,348 - pipeline - WARNING - Failed to analyze _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (likely no valid throughput data)
+2026-01-31 09:47:23,349 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-01-31 09:47:23,352 - pipeline - WARNING - Failed to analyze _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (likely no valid throughput data)
+2026-01-31 09:47:23,352 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-01-31 09:47:23,355 - pipeline - WARNING - Failed to analyze _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (likely no valid throughput data)
+2026-01-31 09:47:23,356 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-01-31 09:47:23,359 - pipeline - WARNING - Failed to analyze _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (likely no valid throughput data)
+2026-01-31 09:47:23,359 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-01-31 09:47:23,362 - pipeline - WARNING - Failed to analyze _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (likely no valid throughput data)
+2026-01-31 09:47:23,362 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-01-31 09:47:23,365 - pipeline - WARNING - Failed to analyze _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (likely no valid throughput data)
+2026-01-31 09:47:23,365 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: REF, Location: Poor)
+2026-01-31 09:47:23,369 - pipeline - WARNING - Failed to analyze _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-01-31 09:47:23,369 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-01-31 09:47:23,373 - pipeline - WARNING - Failed to analyze _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-01-31 09:47:23,373 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: REF, Location: Poor)
+2026-01-31 09:47:23,377 - pipeline - WARNING - Failed to analyze _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-01-31 09:47:23,377 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-01-31 09:47:23,381 - pipeline - WARNING - Failed to analyze _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-01-31 09:47:23,381 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: REF, Location: Poor)
+2026-01-31 09:47:23,384 - pipeline - WARNING - Failed to analyze _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-01-31 09:47:23,385 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-01-31 09:47:23,388 - pipeline - WARNING - Failed to analyze _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-01-31 09:47:23,388 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-01-31 09:47:23,389 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\New York\WFC
+2026-01-31 09:47:23,389 - pipeline - INFO - Processing WFC Test Case: MOS PATCH
+2026-01-31 09:47:23,389 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-01-31 09:47:23,409 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-01-31 09:47:23,439 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-01-31 09:47:23,527 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-01-31 09:47:23,599 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-01-31 09:47:23,688 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-01-31 09:47:23,776 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-01-31 09:47:23,851 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-01-31 09:47:23,935 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-01-31 09:47:24,025 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-01-31 09:47:24,112 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-01-31 09:47:24,198 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-01-31 09:47:24,276 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-01-31 09:47:24,327 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-01-31 09:47:24,343 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-01-31 09:47:24,357 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-01-31 09:47:24,402 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-01-31 09:47:24,420 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-01-31 09:47:24,442 - pipeline - WARNING - MOS patch directory not found: D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH
+2026-01-31 09:47:24,442 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-31 09:47:25,306 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\data_performance_results.json
+2026-01-31 09:47:25,307 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\call_performance_results.json
+2026-01-31 09:47:25,308 - pipeline - INFO - Voice Quality results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\voice_quality_results.json
+2026-01-31 09:47:25,310 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\coverage_performance_results.json
+2026-01-31 09:47:25,311 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\wfc_performance_results.json
+2026-01-31 09:47:25,312 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\processing_summary.json
+2026-01-31 09:47:25,312 - pipeline - INFO - Running final data validation...
+2026-01-31 09:47:25,339 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-31 09:47:25,340 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 10:17:33,651 - pipeline - INFO - Market: New York
+2026-01-31 10:17:33,651 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\New York
+2026-01-31 10:17:33,652 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 10:17:33,652 - pipeline - INFO - Starting analysis pipeline...
+2026-01-31 10:17:33,656 - pipeline - INFO - Processing 114 individual CSV files...
+2026-01-31 10:17:43,198 - pipeline - INFO - Processing directory-level analyses...
+2026-01-31 10:17:43,198 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\New York\Call Performance
+2026-01-31 10:17:43,198 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-01-31 10:17:46,045 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-01-31 10:17:47,387 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-01-31 10:17:49,940 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-01-31 10:17:51,339 - pipeline - INFO - Analyzing Voice Quality directory: D:/ReportGenerator/Raw Data\New York\Voice Quality
+2026-01-31 10:17:51,339 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled Audio Delay
+2026-01-31 10:17:51,390 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled EVS WB VQ
+2026-01-31 10:17:51,540 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR NB VQ
+2026-01-31 10:17:51,592 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR WB VQ
+2026-01-31 10:17:51,691 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled Audio Delay
+2026-01-31 10:17:51,744 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled EVS WB VQ
+2026-01-31 10:17:51,880 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance (Type: coverage_coordinate)
+2026-01-31 10:17:51,881 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-31 10:17:51,991 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 10:17:52,517 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-01-31 10:17:52,518 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH01_REF_TMO_Playstore 100MB_NJ_L1.csv (Size: 100M, Device: REF, Location: Good)
+2026-01-31 10:17:52,535 - pipeline - INFO - Successfully analyzed _20260122_162123_CH01_REF_TMO_Playstore 100MB_NJ_L1.csv: 2.4303999999999997
+2026-01-31 10:17:52,535 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH02_DUT_TMO_Playstore 100MB_NJ_L1.csv (Size: 100M, Device: DUT, Location: Good)
+2026-01-31 10:17:52,552 - pipeline - INFO - Successfully analyzed _20260122_162123_CH02_DUT_TMO_Playstore 100MB_NJ_L1.csv: 2.52
+2026-01-31 10:17:52,553 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: REF, Location: Good)
+2026-01-31 10:17:52,571 - pipeline - INFO - Successfully analyzed _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv: 2.4553333333333334
+2026-01-31 10:17:52,571 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: DUT, Location: Good)
+2026-01-31 10:17:52,590 - pipeline - INFO - Successfully analyzed _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv: 2.298
+2026-01-31 10:17:52,590 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: REF, Location: Good)
+2026-01-31 10:17:52,608 - pipeline - INFO - Successfully analyzed _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv: 2.3975
+2026-01-31 10:17:52,608 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: DUT, Location: Good)
+2026-01-31 10:17:52,626 - pipeline - INFO - Successfully analyzed _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv: 2.7056
+2026-01-31 10:17:52,626 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-01-31 10:17:52,642 - pipeline - INFO - Successfully analyzed _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv: 2.5693333333333337
+2026-01-31 10:17:52,643 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-01-31 10:17:52,658 - pipeline - INFO - Successfully analyzed _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv: 2.3915238095238096
+2026-01-31 10:17:52,659 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-01-31 10:17:52,675 - pipeline - INFO - Successfully analyzed _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv: 2.346
+2026-01-31 10:17:52,675 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-01-31 10:17:52,692 - pipeline - INFO - Successfully analyzed _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv: 2.888463157894737
+2026-01-31 10:17:52,692 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-01-31 10:17:52,708 - pipeline - INFO - Successfully analyzed _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv: 0.301757225433526
+2026-01-31 10:17:52,709 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-01-31 10:17:52,725 - pipeline - INFO - Successfully analyzed _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv: 2.194666666666667
+2026-01-31 10:17:52,726 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: REF, Location: Poor)
+2026-01-31 10:17:52,745 - pipeline - INFO - Successfully analyzed _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 0.43166666666666664
+2026-01-31 10:17:52,746 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-01-31 10:17:52,764 - pipeline - INFO - Successfully analyzed _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 2.7635555555555555
+2026-01-31 10:17:52,764 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: REF, Location: Poor)
+2026-01-31 10:17:52,782 - pipeline - INFO - Successfully analyzed _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 2.1973333333333334
+2026-01-31 10:17:52,782 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-01-31 10:17:52,803 - pipeline - INFO - Successfully analyzed _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 0.4668268551236749
+2026-01-31 10:17:52,803 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: REF, Location: Poor)
+2026-01-31 10:17:52,821 - pipeline - INFO - Successfully analyzed _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 0.3133799126637554
+2026-01-31 10:17:52,821 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-01-31 10:17:52,839 - pipeline - INFO - Successfully analyzed _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 0.26265298507462687
+2026-01-31 10:17:52,839 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-01-31 10:17:52,839 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\New York\WFC
+2026-01-31 10:17:52,840 - pipeline - INFO - Processing WFC Test Case: MOS PATCH
+2026-01-31 10:17:52,840 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-01-31 10:17:52,903 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-01-31 10:17:53,010 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-01-31 10:17:53,171 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-01-31 10:17:53,282 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-01-31 10:17:53,410 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-01-31 10:17:53,536 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-01-31 10:17:53,647 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-01-31 10:17:53,770 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-01-31 10:17:53,897 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-01-31 10:17:54,021 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-01-31 10:17:54,146 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-01-31 10:17:54,258 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-01-31 10:17:54,368 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-01-31 10:17:54,402 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-01-31 10:17:54,435 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-01-31 10:17:54,540 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-01-31 10:17:54,598 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-01-31 10:17:54,654 - pipeline - WARNING - MOS patch directory not found: D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH
+2026-01-31 10:17:54,654 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-31 10:17:55,561 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\data_performance_results.json
+2026-01-31 10:17:55,562 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\call_performance_results.json
+2026-01-31 10:17:55,563 - pipeline - INFO - Voice Quality results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\voice_quality_results.json
+2026-01-31 10:17:55,566 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\coverage_performance_results.json
+2026-01-31 10:17:55,567 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\wfc_performance_results.json
+2026-01-31 10:17:55,567 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\processing_summary.json
+2026-01-31 10:17:55,568 - pipeline - INFO - Running final data validation...
+2026-01-31 10:17:55,605 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-31 10:17:55,606 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York

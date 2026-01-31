@@ -15,15 +15,6 @@ def analyze_throughput(file_path):
     Returns:
         float: The overall average of all interval averages, or None if no data/intervals found.
     """
-    try:
-        df = pd.read_csv(file_path)
-    except FileNotFoundError:
-        print(f"Error: File not found at {file_path}")
-        return None
-    except Exception as e:
-        print(f"Error reading CSV file: {e}")
-        return None
-
     # Define the possible column names for Throughput
     possible_columns = [
         '[Call Test] [Throughput] Application DL TP',
@@ -31,20 +22,87 @@ def analyze_throughput(file_path):
         '[NR5G] [Throughput] PDSCH TP',
         '[LTE] [Data Throughput] [Downlink (All)] [PDSCH] PDSCH TP (Total)'
     ]
-    
-    throughput_column = None
-    for col in possible_columns:
-        if col in df.columns:
-            throughput_column = col
-            break
 
-    if not throughput_column:
-        print(f"Error: None of the expected throughput columns found in the CSV file. Checked: {possible_columns}")
+    # Try to find the header row by searching for known column names
+    header_row = 0
+    header_found = False
+    
+    # Read first 20 rows to find the header
+    try:
+        temp_df = pd.read_csv(file_path, nrows=20, header=None)
+        for i, row in temp_df.iterrows():
+            row_items = [str(x).strip() for x in row.tolist()]
+            
+            # Check if any known column is in this row
+            for col in possible_columns:
+                if col in row_items:
+                    header_row = i
+                    header_found = True
+                    break
+            
+            if not header_found:
+                 # Fuzzy check
+                 for item in row_items:
+                    item_lower = item.lower()
+                    if ("throughput" in item_lower or "dl tp" in item_lower or "ul tp" in item_lower):
+                         header_row = i
+                         header_found = True
+                         break
+            
+            if header_found:
+                break
+    except Exception as e:
+        print(f"Error during header detection: {e}")
+
+    try:
+        if header_found:
+            df = pd.read_csv(file_path, skiprows=header_row)
+        else:
+            # Fallback
+            df = pd.read_csv(file_path)
+
+        # Iterate through possible columns to find one with VALID DATA
+        throughput_column = None
+        
+        # 1. Check known columns
+        for col in possible_columns:
+            if col in df.columns:
+                # Check if column has non-null, non-empty data
+                valid_data = pd.to_numeric(df[col], errors='coerce').dropna()
+                if len(valid_data) > 0:
+                    throughput_column = col
+                    print(f"DEBUG: Found valid throughput column: {col} with {len(valid_data)} data points")
+                    break
+                else:
+                    # verbose debug removed
+                    pass
+
+        # 2. Fuzzy match if no known column with data found
+        if not throughput_column:
+             # Trying fuzzy match on all columns
+             for col in df.columns:
+                 col_lower = str(col).lower()
+                 if ("throughput" in col_lower or "dl tp" in col_lower or "ul tp" in col_lower):
+                      # Check validity
+                      valid_data = pd.to_numeric(df[col], errors='coerce').dropna()
+                      if len(valid_data) > 0:
+                          throughput_column = col
+                          print(f"DEBUG: Found likely throughput column via fuzzy match: {col} with {len(valid_data)} data points")
+                          break
+    except FileNotFoundError:
+        print(f"Error: File not found at {file_path}")
+        return None
+    except Exception as e:
+        print(f"Error reading CSV file: {e}")
         return None
 
-    print(f"DEBUG: Analyzing file: {file_path}")
+    if not throughput_column:
+        print(f"Error: None of the expected throughput columns found in the CSV file (or all were empty). Checked: {possible_columns}")
+        return None
+
+    print(f"Analyzing file: {file_path}")
+    
     throughput_data = df[throughput_column].dropna().tolist()
-    print(f"DEBUG: Raw throughput_data length: {len(throughput_data)}")
     
     # Convert throughput data to numeric, handling potential non-numeric values
     numeric_throughput_data = []
@@ -54,9 +112,6 @@ def analyze_throughput(file_path):
         except ValueError:
             # Skip non-numeric values
             continue
-    print(f"DEBUG: Numeric throughput_data length: {len(numeric_throughput_data)}")
-    print(f"DEBUG: First 20 numeric throughput values: {numeric_throughput_data[:20]}")
-    print(f"DEBUG: Last 20 numeric throughput values: {numeric_throughput_data[-20:]}")
 
     if not numeric_throughput_data:
         print("No valid numeric throughput data found.")
@@ -108,11 +163,6 @@ def analyze_throughput(file_path):
         interval_averages.append(sum(current_interval_data) / len(current_interval_data))
         interval_counts.append(len(current_interval_data)) # Store the count for the last interval
 
-    print(f"DEBUG: Final interval_averages: {interval_averages}")
-
-    print(f"DEBUG: Final interval_averages: {interval_averages}")
-    print(f"DEBUG: Final interval_counts: {interval_counts}")
-
     if interval_averages:
         overall_average = sum(interval_averages) / len(interval_averages)
         print(f"Individual interval averages: {interval_averages}")
@@ -125,7 +175,6 @@ def analyze_throughput(file_path):
     else:
         # Fallback: If no valid intervals are found, calculate the average of all non-zero throughput values
         non_zero_throughput = [val for val in numeric_throughput_data if val > 0]
-        print(f"DEBUG: Non-zero throughput for fallback: {non_zero_throughput[:20]}...")
         if non_zero_throughput:
             overall_average = sum(non_zero_throughput) / len(non_zero_throughput)
             print("No valid intervals found using the defined criteria. Calculating overall average of all non-zero throughput values as a fallback.")

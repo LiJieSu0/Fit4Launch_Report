@@ -25,14 +25,14 @@ function DpDetailsPage() {
       <Dp_Ping_Component city="New York" />
       <Dp_Webbrowser_Component city="Seattle" />
       <Dp_Webbrowser_Component city="New York" />
-      <Dp_playStore_Component city="Seattle" />
-      <Dp_playStore_Component city="New York" />
-      <Dp_MHS_Page city="Seattle" />
-      <Dp_MHS_Page city="New York" />
+      {/* <Dp_playStore_Component city="Seattle" />
+      <Dp_playStore_Component city="New York" /> */}
+      {/* <Dp_MHS_Page city="Seattle" />
+      <Dp_MHS_Page city="New York" /> */}
       <DpDriveTestDetailPage city="Seattle" />
       <DpDriveTestDetailPage city="New York" />
-      <DpMrabDetailsPage city="Seattle" />
-      <DpMrabDetailsPage city="New York" />
+      {/* <DpMrabDetailsPage city="Seattle" />
+      <DpMrabDetailsPage city="New York" /> */}
 
       <DpNSAStationaryDetails city="Seattle" firstSection={true} />
       <DpNSAStationaryDetails city="New York" />

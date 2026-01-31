@@ -111,9 +111,9 @@ def classify_files(source_dir=None):
                 target_folder = os.path.join(target_root, relative_path)
                 
                 # DL/UL Subfolder Logic
-                if "dl" in normalized_filename or "downlink" in normalized_filename:
+                if "dl" in normalized_filename or "downlink" in normalized_filename or "download" in normalized_filename:
                     target_folder = os.path.join(target_folder, "DL")
-                elif "ul" in normalized_filename or "uplink" in normalized_filename:
+                elif "ul" in normalized_filename or "uplink" in normalized_filename or "upload" in normalized_filename:
                     target_folder = os.path.join(target_folder, "UL")
                 
                 # Quality Subfolder Logic (L1/L2/L3)

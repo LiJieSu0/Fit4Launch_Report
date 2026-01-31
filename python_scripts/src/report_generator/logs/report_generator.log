@@ -943,3 +943,56 @@
 2026-01-30 18:17:31,425 - pipeline - INFO - Running final data validation...
 2026-01-30 18:17:31,454 - pipeline - INFO - No empty collections found in any JSON file.
 2026-01-30 18:17:31,455 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary
+2026-01-30 20:51:19,377 - pipeline - INFO - Market: New York
+2026-01-30 20:51:19,377 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\New York
+2026-01-30 20:51:19,377 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-30 20:51:19,377 - pipeline - INFO - Starting analysis pipeline...
+2026-01-30 20:51:19,381 - pipeline - INFO - Processing 114 individual CSV files...
+2026-01-30 20:51:25,674 - pipeline - INFO - Processing directory-level analyses...
+2026-01-30 20:51:25,674 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\New York\Call Performance
+2026-01-30 20:51:25,675 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-01-30 20:51:28,381 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-01-30 20:51:29,674 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-01-30 20:51:32,149 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-01-30 20:51:33,430 - pipeline - INFO - Analyzing Voice Quality directory: D:/ReportGenerator/Raw Data\New York\Voice Quality
+2026-01-30 20:51:33,431 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled Audio Delay
+2026-01-30 20:51:33,445 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled EVS WB VQ
+2026-01-30 20:51:33,506 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR NB VQ
+2026-01-30 20:51:33,528 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR WB VQ
+2026-01-30 20:51:33,567 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled Audio Delay
+2026-01-30 20:51:33,583 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled EVS WB VQ
+2026-01-30 20:51:33,638 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance (Type: coverage_coordinate)
+2026-01-30 20:51:33,639 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-30 20:51:33,676 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-30 20:51:33,968 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-01-30 20:51:33,969 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\New York\WFC
+2026-01-30 20:51:33,970 - pipeline - INFO - Processing WFC Test Case: MOS PATCH
+2026-01-30 20:51:33,970 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-01-30 20:51:33,989 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-01-30 20:51:34,023 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-01-30 20:51:34,114 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-01-30 20:51:34,190 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-01-30 20:51:34,281 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-01-30 20:51:34,369 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-01-30 20:51:34,449 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-01-30 20:51:34,538 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-01-30 20:51:34,630 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-01-30 20:51:34,719 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-01-30 20:51:34,808 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-01-30 20:51:34,888 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-01-30 20:51:34,941 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-01-30 20:51:34,957 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-01-30 20:51:34,973 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-01-30 20:51:35,022 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-01-30 20:51:35,041 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-01-30 20:51:35,064 - pipeline - WARNING - MOS patch directory not found: D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH
+2026-01-30 20:51:35,065 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-30 20:51:35,999 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\data_performance_results.json
+2026-01-30 20:51:36,000 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\call_performance_results.json
+2026-01-30 20:51:36,001 - pipeline - INFO - Voice Quality results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\voice_quality_results.json
+2026-01-30 20:51:36,004 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\coverage_performance_results.json
+2026-01-30 20:51:36,005 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\wfc_performance_results.json
+2026-01-30 20:51:36,006 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\processing_summary.json
+2026-01-30 20:51:36,006 - pipeline - INFO - Running final data validation...
+2026-01-30 20:51:36,043 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-30 20:51:36,043 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York

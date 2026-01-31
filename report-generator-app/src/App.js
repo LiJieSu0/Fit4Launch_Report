@@ -83,7 +83,7 @@ function App() {
 
           {currentReport === "CV" && (
             <>
-              <CoverageSummaryPage />
+              {/* <CoverageSummaryPage /> */}
               <CoverageDetails />
               <CoverageKpiPage />
             </>

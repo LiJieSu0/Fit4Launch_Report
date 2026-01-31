@@ -3,7 +3,7 @@ import { useContext } from 'react';
 
 const BASE_DATA_PATH = '/AnalyzeResults/';
 
-const safeFetchJson = async (url) => {
+export const safeFetchJson = async (url) => {
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -15,6 +15,10 @@ const safeFetchJson = async (url) => {
     console.warn(`Error fetching ${url}:`, error);
     return null;
   }
+};
+
+export const loadAppConfig = async () => {
+  return await safeFetchJson('/config.json');
 };
 
 export const loadAllData = async (city) => {

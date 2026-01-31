@@ -80,8 +80,17 @@ const CoverageMap = ({ bandData, metric, baseStation }) => {
   if (!bsPos || bsPos.length < 2) {
     return <div>No base station coordinates provided.</div>;
   }
+
   const longitudeOffset = 0.05; // Adjust this value as needed, to make sure the map is centered on printing
-  const newCenter = [(bsPos[0] + dutPos[0] + refPos[0]) / 3, (bsPos[1] + dutPos[1] + refPos[1]) / 3 + longitudeOffset];
+
+  // Calculate center based on available positions to avoid null errors
+  const positions = [bsPos];
+  if (dutPos) positions.push(dutPos);
+  if (refPos) positions.push(refPos);
+
+  const avgLat = positions.reduce((sum, pos) => sum + pos[0], 0) / positions.length;
+  const avgLon = positions.reduce((sum, pos) => sum + pos[1], 0) / positions.length;
+  const newCenter = [avgLat, avgLon + longitudeOffset];
   return (
     <div style={{ position: 'relative', width: '80%', height: '400px', margin: '0 auto' }}>
       <MapContainer

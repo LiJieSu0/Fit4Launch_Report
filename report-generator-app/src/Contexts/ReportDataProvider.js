@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ReportContext } from './ReportContext';
-import { loadAllData, getAvailableCities } from '../Utils/DataLoader'; // Assuming DataLoader exists
+import { loadAllData, getAvailableCities, loadAppConfig } from '../Utils/DataLoader'; // Assuming DataLoader exists
 
 export const ReportDataProvider = ({ children }) => {
   const [city, setCity] = useState('Seattle'); // Default city
@@ -8,6 +8,7 @@ export const ReportDataProvider = ({ children }) => {
   const [allReportData, setAllReportData] = useState({}); // Cache for all cities' data
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [appConfig, setAppConfig] = useState(null);
 
   const loadCityData = async (targetCity) => {
     if (allReportData[targetCity]) return; // Already loaded
@@ -30,6 +31,9 @@ export const ReportDataProvider = ({ children }) => {
       try {
         const cities = await getAvailableCities();
         setAvailableCities(cities);
+
+        const config = await loadAppConfig();
+        setAppConfig(config);
 
         // Initial load of the default city
         const data = await loadAllData(city);
@@ -67,7 +71,8 @@ export const ReportDataProvider = ({ children }) => {
       city,
       setCity,
       availableCities,
-      loadCityData
+      loadCityData,
+      appConfig
     }}>
       {children}
     </ReportContext.Provider>

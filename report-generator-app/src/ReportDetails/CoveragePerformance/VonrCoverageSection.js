@@ -4,13 +4,10 @@ import CoverageMap from './CoverageMap';
 import { ReportContext } from '../../Contexts/ReportContext';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 
-const CITY_COORDS = {
-    'Seattle': { latitude: 47.128234, longitude: -122.356792 },
-    // Add other cities here as needed
-};
+// CITY_COORDS removed - now fetched from config.json
 
 const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
-    const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+    const { city: globalCity, allReportData, loadCityData, appConfig } = useContext(ReportContext);
     const city = propCity || globalCity;
 
     useEffect(() => {
@@ -20,7 +17,23 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
     }, [city, loadCityData]);
 
     const reportData = allReportData[city];
-    const BASE_STATION_COORDS = CITY_COORDS[city] || CITY_COORDS['Seattle'];
+
+    // Dynamically determine Base Station coordinates from appConfig
+    // Logic: Prefer "${city}_LTE" if it exists, otherwise use "${city}", fallback to "Seattle"
+    const getBaseStationCoords = () => {
+        if (!appConfig || !appConfig.coverage_station) {
+            return { latitude: 47.409192, longitude: -121.973509 }; // Hard fallback to Seattle
+        }
+
+        const stations = appConfig.coverage_station;
+        const lteKey = `${city}_LTE`;
+
+        if (stations[lteKey]) return stations[lteKey];
+        if (stations[city]) return stations[city];
+        return stations['Seattle'] || { latitude: 47.409192, longitude: -121.973509 };
+    };
+
+    const BASE_STATION_COORDS = getBaseStationCoords();
 
     const processVoNRCoverageData = (band, metric) => {
         const defaultRows = [
@@ -195,7 +208,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
                     />
                 </div>
-                <div className='page-content'>
+                {/* <div className='page-content'>
                     <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - Last MOS Before Silence - {city}</DynamicHeader>
                     <CoverageTestTable tableData={dataMOS.slice(0, -1)} status={dataMOS[dataMOS.length - 1]} />
                     <CoverageMap
@@ -212,7 +225,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         metric="call_drop"
                         baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
                     />
-                </div>
+                </div> */}
                 <div className='page-content'>
                     <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - Secondary KPI - {city}</DynamicHeader>
                     <SecondaryKpiTable data={secondaryKpi} />

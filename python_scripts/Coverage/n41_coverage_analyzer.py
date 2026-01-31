@@ -38,7 +38,8 @@ def analyze_n41_coverage(folder_path, device_type_filter=None):
             ul_tp_column = '[Call Test] [Throughput] Application UL TP'
             serving_network_column = '[General] Serving Network'
             rsrp_column = '[NR5G] [RF] RSRP'
-            tx_power_column = '[NR5G] [Power] Tx power (PUSCH Actual)'
+            tx_power_column_primary = '[NR5G] [Power] Tx power (PUSCH Actual)'
+            tx_power_column_fallback = '[NR5G] [Power] Tx power (Total)'
             latitude_column = '[General] [GPS] Latitude'
             longitude_column = '[General] [GPS] Longitude'
 
@@ -63,7 +64,20 @@ def analyze_n41_coverage(folder_path, device_type_filter=None):
                         latitude = df.loc[ul_tp_idx, latitude_column]
                         longitude = df.loc[ul_tp_idx, longitude_column]
                         rsrp_value = df.loc[ul_tp_idx, rsrp_column]
-                        tx_power_value = df.loc[ul_tp_idx, tx_power_column] if tx_power_column in df.columns else None
+                        
+                        tx_power_value = None
+                        # Search upwards from the current point for the nearest valid tx power
+                        for search_idx in range(ul_tp_idx, -1, -1):
+                            # Check primary column first, then fallback
+                            for col in [tx_power_column_primary, tx_power_column_fallback]:
+                                if col in df.columns:
+                                    val = df.loc[search_idx, col]
+                                    num_val = pd.to_numeric(val, errors='coerce')
+                                    if pd.notna(num_val) and num_val != 0:
+                                        tx_power_value = num_val
+                                        break
+                            if tx_power_value is not None:
+                                break
                         
                         results.append({
                             'Device type': device_type,
@@ -85,7 +99,7 @@ def analyze_n41_coverage(folder_path, device_type_filter=None):
     
     return results
 
-def extract_coverage_data_to_csv(folder_path, output_folder='.', device_type_filters=None, data_column_name='[NR5G] [RF] RSRP', output_suffix='Analysis'):
+def extract_coverage_data_to_csv(folder_path, output_folder='.', device_type_filters=None, data_column_name='[NR5G] [RF] RSRP', output_suffix='Analysis', fallback_column_name=None):
     """
     Extracts a specified column from all CSV files in a specified folder,
     uses the filename as the new header, and saves all extracted columns to a new CSV file.
@@ -134,22 +148,36 @@ def extract_coverage_data_to_csv(folder_path, output_folder='.', device_type_fil
                     no_service_idx = len(df) # No 'No service' found, process entire column
 
             # Extract data up to the first 'No service' entry (exclusive of the 'No service' row)
-            if data_column_name in df.columns:
-                extracted_data = df.iloc[:no_service_idx, :][[data_column_name]].rename(columns={data_column_name: filename_without_ext})
+            # Determine which column to use: prioritize data_column_name if it has any non-null data
+            target_col = None
+            if data_column_name in df.columns and not df[data_column_name].dropna().empty:
+                target_col = data_column_name
+            elif fallback_column_name and fallback_column_name in df.columns and not df[fallback_column_name].dropna().empty:
+                target_col = fallback_column_name
+            elif data_column_name in df.columns:
+                target_col = data_column_name
+            elif fallback_column_name and fallback_column_name in df.columns:
+                target_col = fallback_column_name
+
+            if target_col:
+                extracted_data = df.iloc[:no_service_idx, :][[target_col]].rename(columns={target_col: filename_without_ext})
                 
                 if all_extracted_data.empty:
                     all_extracted_data = extracted_data
                 else:
                     all_extracted_data = pd.concat([all_extracted_data, extracted_data], axis=1)
             else:
-                print(f"Warning: Column '{data_column_name}' not found in {filename_without_ext}. Skipping.")
+                error_msg = f"Column '{data_column_name}'"
+                if fallback_column_name:
+                    error_msg += f" or fallback '{fallback_column_name}'"
+                print(f"Warning: {error_msg} not found in {filename_without_ext}. Skipping.")
 
         except Exception as e:
             print(f"Error processing file {file_path}: {e}")
     
     if not all_extracted_data.empty:
         # Clean up Tx Power data: remove rows where Tx Power is 0 or NaN
-        if data_column_name == '[NR5G] [Power] Tx power (PUSCH Actual)':
+        if data_column_name == '[NR5G] [Power] Tx power (PUSCH Actual)' or output_suffix == 'TxPower_Analysis':
             # Create a copy to avoid SettingWithCopyWarning and ensure independent operation
             temp_df = all_extracted_data.copy()
             
@@ -212,7 +240,8 @@ def run_all_coverage_analysis(base_folder, output_base_folder='public'):
             output_folder=os.path.join(output_base_folder, 'cv_tx_power_data'),
             device_type_filters=device_filters,
             data_column_name='[NR5G] [Power] Tx power (PUSCH Actual)',
-            output_suffix='TxPower_Analysis'
+            output_suffix='TxPower_Analysis',
+            fallback_column_name='[NR5G] [Power] Tx power (Total)'
         )
 
 if __name__ == '__main__':

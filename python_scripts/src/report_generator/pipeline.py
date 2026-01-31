@@ -267,7 +267,7 @@ class DataAnalysisPipeline:
                 run_p = os.path.join(n41_path, run)
                 if os.path.isdir(run_p) and run.startswith("Run"):
                     extract_coverage_data_to_csv(run_p, rsrp_dir, ['PC2', 'PC3'], '[NR5G] [RF] RSRP', 'RSRP_Analysis')
-                    extract_coverage_data_to_csv(run_p, tx_dir, ['PC2', 'PC3'], '[NR5G] [Power] Tx power (PUSCH Actual)', 'TxPower_Analysis')
+                    extract_coverage_data_to_csv(run_p, tx_dir, ['PC2', 'PC3'], '[NR5G] [Power] Tx power (PUSCH Actual)', 'TxPower_Analysis', fallback_column_name='[NR5G] [Power] Tx power (Total)')
         
         # TEMPORARY MOS PATCH - Export MOS patch line chart data (overwrites histogram files)
         try:

@@ -1,0 +1,548 @@
+{
+    "WFC": {
+        "TC150": {
+            "DUT MO": {
+                "mos_average": 3.8548,
+                "mean_setup_time": 1.9525,
+                "rssi_average": "N/A",
+                "rsrp_average": -70.0583,
+                "total_mo_attempts": 5,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 5
+            },
+            "DUT MT": {
+                "mos_average": 3.8305,
+                "mean_setup_time": 0.9287,
+                "rssi_average": "N/A",
+                "rsrp_average": -74.3695
+            },
+            "REF MO": {
+                "mos_average": 3.5612,
+                "mean_setup_time": 3.465,
+                "rssi_average": "N/A",
+                "rsrp_average": -70.6337,
+                "total_mo_attempts": 5,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 5
+            },
+            "REF MT": {
+                "mos_average": 3.7578,
+                "mean_setup_time": 1.7922,
+                "rssi_average": "N/A",
+                "rsrp_average": -69.6781
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC151": {
+            "DUT MO": {
+                "mos_average": 3.7493,
+                "mean_setup_time": 3.609,
+                "rssi_average": -62.5443,
+                "rsrp_average": -66.9427,
+                "total_mo_attempts": 5,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 5
+            },
+            "DUT MT": {
+                "mos_average": 3.8232,
+                "mean_setup_time": 2.9062,
+                "rssi_average": -64.5925,
+                "rsrp_average": -64.4414
+            },
+            "REF MO": {
+                "mos_average": 3.6015,
+                "mean_setup_time": 4.2004,
+                "rssi_average": -52.7981,
+                "rsrp_average": -64.0681,
+                "total_mo_attempts": 5,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 5
+            },
+            "REF MT": {
+                "mos_average": 3.3527,
+                "mean_setup_time": 1.805,
+                "rssi_average": -56.4519,
+                "rsrp_average": -70.463
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC152": {
+            "DUT MO": {
+                "mos_average": 3.7647,
+                "mean_setup_time": 2.8887,
+                "rssi_average": -68.3306,
+                "rsrp_average": -74.9264,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "DUT MT": {
+                "mos_average": 3.8139,
+                "mean_setup_time": 2.3335,
+                "rssi_average": -67.8479,
+                "rsrp_average": -73.4555
+            },
+            "REF MO": {
+                "mos_average": 3.6851,
+                "mean_setup_time": 4.139,
+                "rssi_average": -69.8901,
+                "rsrp_average": -68.4673,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "REF MT": {
+                "mos_average": 3.7565,
+                "mean_setup_time": 3.4452,
+                "rssi_average": -68.3636,
+                "rsrp_average": -67.7984
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC153": {
+            "DUT MO": {
+                "mos_average": 3.4834,
+                "mean_setup_time": 3.1075,
+                "rssi_average": -69.2616,
+                "rsrp_average": -65.8374,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "DUT MT": {
+                "mos_average": 3.1105,
+                "mean_setup_time": 1.8985,
+                "rssi_average": -70.6472,
+                "rsrp_average": -74.2557
+            },
+            "REF MO": {
+                "mos_average": 3.2566,
+                "mean_setup_time": 4.6018,
+                "rssi_average": -71.6397,
+                "rsrp_average": -65.2132,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "REF MT": {
+                "mos_average": 3.1825,
+                "mean_setup_time": 3.831,
+                "rssi_average": -73.988,
+                "rsrp_average": -71.4174
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC154": {
+            "DUT MO": {
+                "mos_average": 2.7891,
+                "mean_setup_time": 4.3528,
+                "rssi_average": -66.4678,
+                "rsrp_average": -69.9281,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "DUT MT": {
+                "mos_average": 2.7298,
+                "mean_setup_time": 3.3886,
+                "rssi_average": -73.8018,
+                "rsrp_average": -68.8389
+            },
+            "REF MO": {
+                "mos_average": 2.8003,
+                "mean_setup_time": 4.2669,
+                "rssi_average": -75.061,
+                "rsrp_average": -70.6737,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 1,
+                "total_initiation_successes": 24
+            },
+            "REF MT": {
+                "mos_average": 2.7291,
+                "mean_setup_time": 3.5662,
+                "rssi_average": -70.1591,
+                "rsrp_average": -70.6575
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC155": {
+            "DUT MO": {
+                "mos_average": 2.2013,
+                "mean_setup_time": 4.9277,
+                "rssi_average": -72.3343,
+                "rsrp_average": -81.475,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "DUT MT": {
+                "mos_average": 2.1961,
+                "mean_setup_time": 4.0077,
+                "rssi_average": -68.8785,
+                "rsrp_average": -79.8294
+            },
+            "REF MO": {
+                "mos_average": 2.3841,
+                "mean_setup_time": 5.453,
+                "rssi_average": -69.1658,
+                "rsrp_average": "N/A",
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "REF MT": {
+                "mos_average": 2.227,
+                "mean_setup_time": 4.4637,
+                "rssi_average": -66.8791,
+                "rsrp_average": -76.6877
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC156": {
+            "DUT MO": {
+                "mos_average": 2.9591,
+                "mean_setup_time": 2.73,
+                "rssi_average": -62.772,
+                "rsrp_average": -81.142,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "DUT MT": {
+                "mos_average": 2.9129,
+                "mean_setup_time": 1.3638,
+                "rssi_average": -57.5194,
+                "rsrp_average": -78.7676
+            },
+            "REF MO": {
+                "mos_average": 2.6698,
+                "mean_setup_time": 4.5514,
+                "rssi_average": -54.9666,
+                "rsrp_average": -73.1071,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "REF MT": {
+                "mos_average": 2.5824,
+                "mean_setup_time": 3.5996,
+                "rssi_average": -52.9009,
+                "rsrp_average": -77.993
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC157": {
+            "DUT MO": {
+                "mos_average": 2.3618,
+                "mean_setup_time": 2.995,
+                "rssi_average": -51.2223,
+                "rsrp_average": -79.3565,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "DUT MT": {
+                "mos_average": 2.4024,
+                "mean_setup_time": 3.9494,
+                "rssi_average": -54.7246,
+                "rsrp_average": -77.7117
+            },
+            "REF MO": {
+                "mos_average": 2.1277,
+                "mean_setup_time": 5.706,
+                "rssi_average": -57.8742,
+                "rsrp_average": -73.2943,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "REF MT": {
+                "mos_average": 2.1541,
+                "mean_setup_time": 4.6602,
+                "rssi_average": -54.4139,
+                "rsrp_average": -76.0795
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC158": {
+            "DUT MO": {
+                "mos_average": 2.2535,
+                "mean_setup_time": 5.9525,
+                "rssi_average": -50.7117,
+                "rsrp_average": -92.1562,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "DUT MT": {
+                "mos_average": 2.1385,
+                "mean_setup_time": 4.8341,
+                "rssi_average": -52.2279,
+                "rsrp_average": -89.2413
+            },
+            "REF MO": {
+                "mos_average": 2.2289,
+                "mean_setup_time": 6.6196,
+                "rssi_average": -60.7974,
+                "rsrp_average": -92.2818,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 1,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 23
+            },
+            "REF MT": {
+                "mos_average": 2.2849,
+                "mean_setup_time": 4.9063,
+                "rssi_average": -58.9043,
+                "rsrp_average": -93.3262
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC159": {
+            "DUT MO": {
+                "mos_average": 3.6132,
+                "mean_setup_time": 3.4401,
+                "rssi_average": -73.835,
+                "rsrp_average": -94.2356,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "DUT MT": {
+                "mos_average": 3.5905,
+                "mean_setup_time": 2.8132,
+                "rssi_average": -70.7754,
+                "rsrp_average": -94.0891
+            },
+            "REF MO": {
+                "mos_average": 3.6639,
+                "mean_setup_time": 3.198,
+                "rssi_average": -73.3559,
+                "rsrp_average": -90.4856,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "REF MT": {
+                "mos_average": 3.6969,
+                "mean_setup_time": 2.519,
+                "rssi_average": -60.726,
+                "rsrp_average": -92.0074
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC160": {
+            "DUT MO": {
+                "mos_average": 3.0075,
+                "mean_setup_time": 3.6295,
+                "rssi_average": -73.0611,
+                "rsrp_average": -91.9866,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "DUT MT": {
+                "mos_average": 2.9766,
+                "mean_setup_time": 2.9544,
+                "rssi_average": -71.6567,
+                "rsrp_average": -92.3254
+            },
+            "REF MO": {
+                "mos_average": 3.078,
+                "mean_setup_time": 3.521,
+                "rssi_average": -73.1409,
+                "rsrp_average": -90.4303,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "REF MT": {
+                "mos_average": 3.1236,
+                "mean_setup_time": 2.8907,
+                "rssi_average": -60.317,
+                "rsrp_average": -95.6495
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC161": {
+            "DUT MO": {
+                "mos_average": 2.2829,
+                "mean_setup_time": 4.552,
+                "rssi_average": -73.3485,
+                "rsrp_average": -89.8012,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "DUT MT": {
+                "mos_average": 2.2931,
+                "mean_setup_time": 1.7612,
+                "rssi_average": -68.0534,
+                "rsrp_average": -93.5256
+            },
+            "REF MO": {
+                "mos_average": 2.3464,
+                "mean_setup_time": 4.1718,
+                "rssi_average": -71.6813,
+                "rsrp_average": -90.5474,
+                "total_mo_attempts": 24,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 0,
+                "total_initiation_successes": 24
+            },
+            "REF MT": {
+                "mos_average": 2.4264,
+                "mean_setup_time": 3.3385,
+                "rssi_average": -57.3297,
+                "rsrp_average": -96.3907
+            },
+            "initiation_p_value": 1.0,
+            "retention_p_value": 1.0
+        },
+        "TC164": {
+            "DUT": {
+                "mos_average": 3.7326,
+                "mean_setup_time": 3.1087,
+                "rssi_average": -54.7683,
+                "rsrp_average": -90.1846,
+                "minimum_handover": 17,
+                "total_mo_attempts": 2,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 2,
+                "total_initiation_successes": 2
+            },
+            "REF": {
+                "mos_average": 4.0775,
+                "mean_setup_time": 1.8046,
+                "rssi_average": -61.9412,
+                "rsrp_average": -94.0292,
+                "minimum_handover": 12,
+                "total_mo_attempts": 1,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 1,
+                "total_initiation_successes": 1
+            }
+        },
+        "TC167": {
+            "DUT": {
+                "mos_average": 3.4792,
+                "mean_setup_time": 2.96,
+                "rssi_average": -57.1582,
+                "rsrp_average": -105.9317,
+                "minimum_handover": 11,
+                "total_mo_attempts": 1,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 1,
+                "total_initiation_successes": 1
+            },
+            "REF": {
+                "mos_average": 3.625,
+                "mean_setup_time": 2.048,
+                "rssi_average": -60.6109,
+                "rsrp_average": -107.9266,
+                "minimum_handover": 12
+            }
+        },
+        "TC170": {
+            "DUT": {
+                "mos_average": 3.3235,
+                "mean_setup_time": 2.64,
+                "rssi_average": -67.0085,
+                "rsrp_average": -111.9195,
+                "minimum_handover": 16
+            },
+            "REF": {
+                "mos_average": 3.821,
+                "mean_setup_time": 2.642,
+                "rssi_average": -59.9926,
+                "rsrp_average": -112.9905,
+                "minimum_handover": 19
+            }
+        },
+        "TC172": {
+            "DUT": {
+                "mos_average": 3.9607,
+                "mean_setup_time": 2.8843,
+                "rssi_average": -59.6576,
+                "rsrp_average": -115.4513,
+                "minimum_handover": 4
+            },
+            "REF": {
+                "mos_average": 3.9051,
+                "mean_setup_time": 2.589,
+                "rssi_average": -64.2495,
+                "rsrp_average": -116.4461,
+                "minimum_handover": 18,
+                "total_mo_attempts": 1,
+                "total_initiation_failures": 0,
+                "total_retention_failures": 1,
+                "total_initiation_successes": 1
+            }
+        },
+        "TC175": {
+            "DUT": {
+                "mos_average": 3.3154,
+                "mean_setup_time": 2.0225,
+                "rssi_average": -69.2487,
+                "rsrp_average": -115.8631,
+                "minimum_handover": 10
+            },
+            "REF": {
+                "mos_average": 3.7154,
+                "mean_setup_time": 2.0945,
+                "rssi_average": -63.8272,
+                "rsrp_average": -115.7679,
+                "minimum_handover": 4
+            }
+        },
+        "TC178": {
+            "DUT": {
+                "mos_average": 3.2343,
+                "mean_setup_time": 2.75,
+                "rssi_average": -54.3807,
+                "rsrp_average": -117.6707,
+                "minimum_handover": 4
+            },
+            "REF": {
+                "mos_average": 3.5062,
+                "mean_setup_time": 2.321,
+                "rssi_average": -62.3358,
+                "rsrp_average": -118.2741,
+                "minimum_handover": 2
+            }
+        }
+    }
+}

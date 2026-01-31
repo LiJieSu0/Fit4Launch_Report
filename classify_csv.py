@@ -1,6 +1,7 @@
 import os
 import shutil
 import re
+import argparse
 
 def normalize_string(s):
     """Normalize string by lowercasing and removing non-alphanumeric characters."""
@@ -13,13 +14,11 @@ def normalize_string(s):
     normalized = re.sub(r'[^a-zA-Z0-9]', '', s)
     return normalized
 
-def classify_files(source_dir=None):
-    if source_dir is None:
-        # Default to SEA if not specified, but we'll likely want to point this to ny
-        source_dir = r"D:\ReportGenerator\Raw Data\DataStructureFolder\ny"
-    
-    target_root = r"D:\ReportGenerator\Raw Data\DataStructureFolder"
-    
+def classify_files(source_dir, target_dir):
+    if not os.path.exists(source_dir):
+        print(f"[Error] Source directory {source_dir} does not exist.")
+        return
+
     # Manual keyword to folder path mappings
     def k(s): return normalize_string(s)
 
@@ -72,11 +71,7 @@ def classify_files(source_dir=None):
         k("udp"): "Data Performance\\{net_type} DP\\Udp Test",
         k("mobility"): "Data Performance\\{net_type} DP\\Mobility Test",
     }
-
-    if not os.path.exists(source_dir):
-        print(f"[Error] Source directory {source_dir} does not exist.")
-        return
-
+    
     # 1. Get all CSV files recursively from source_dir
     files_to_process = []
     for root, dirs, files in os.walk(source_dir):
@@ -89,6 +84,7 @@ def classify_files(source_dir=None):
         return
 
     print(f"Processing {len(files_to_process)} files from {source_dir}...")
+    print(f"Target directory: {target_dir}")
 
     moved_count = 0
     not_found_count = 0
@@ -108,7 +104,7 @@ def classify_files(source_dir=None):
         for key, relative_template in manual_mappings.items():
             if key in normalized_filename:
                 relative_path = relative_template.format(net_type=net_type)
-                target_folder = os.path.join(target_root, relative_path)
+                target_folder = os.path.join(target_dir, relative_path)
                 
                 # DL/UL Subfolder Logic
                 if "dl" in normalized_filename or "downlink" in normalized_filename or "download" in normalized_filename:
@@ -132,18 +128,16 @@ def classify_files(source_dir=None):
             # Create target folder if it doesn't exist
             if not os.path.exists(target_folder):
                 os.makedirs(target_folder, exist_ok=True)
-                print(f"[Info] Created directory: {os.path.relpath(target_folder, target_root)}")
+                print(f"[Info] Created directory: {target_folder}")
             
             dest_path = os.path.join(target_folder, filename)
             try:
-                # If target file exists, don't overwrite blindly? 
-                # Let's use shutil.move which might overwrite or error depending on OS.
-                # To be safe, let's check.
+                # If target file exists, check before overwrite
                 if os.path.exists(dest_path):
                     print(f"[Skip] '{filename}' already exists in target.")
                 else:
                     shutil.move(file_path, dest_path)
-                    print(f"[Success] Moved '{filename}' -> '{os.path.relpath(target_folder, target_root)}'")
+                    print(f"[Success] Moved '{filename}' -> '{target_folder}'")
                     moved_count += 1
             except Exception as e:
                 print(f"[Error] Failed to move '{filename}': {str(e)}")
@@ -157,6 +151,10 @@ def classify_files(source_dir=None):
     print(f"Files not matched: {not_found_count}")
 
 if __name__ == "__main__":
-    # Check if user wants to process SEA or NY or both
-    # For now, let's process the ny directory the user just mentioned
-    classify_files(r"D:\ReportGenerator\Raw Data\DataStructureFolder\ny")
+    parser = argparse.ArgumentParser(description="Classify and move CSV files to structured directories.")
+    parser.add_argument("--input", "-i", required=True, help="Input directory containing CSV files (recursively scanned).")
+    parser.add_argument("--output", "-o", required=True, help="Output root directory where files will be organized.")
+    
+    args = parser.parse_args()
+    
+    classify_files(args.input, args.output)

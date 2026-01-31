@@ -4,6 +4,7 @@ import sys
 import pandas as pd
 import json # Import the json module
 import re # Import the re module for regex operations
+import yaml # Import yaml for config loading
 # Add the 'Scripts' directory to sys.path to enable imports from it
 script_dir = os.path.dirname(os.path.abspath(__file__))
 scripts_parent_dir = os.path.dirname(script_dir) # This is 'Scripts' directory
@@ -41,6 +42,32 @@ if __name__ == "__main__":
     output_dir = os.path.join(os.path.dirname(script_dir), "Analyze Summary") # Define output directory
     os.makedirs(output_dir, exist_ok=True) # Ensure the output directory exists
     
+    # Load configuration from config.yaml
+    config_path = os.path.join(os.path.dirname(script_dir), "config", "config.yaml")
+    market_name = "Seattle" # Default
+    market_coords = {"latitude": 47.128234, "longitude": -122.356792} # Default Seattle coordinates
+    
+    if os.path.exists(config_path):
+        try:
+            with open(config_path, 'r', encoding='utf-8') as f:
+                config = yaml.safe_load(f)
+                market_name = config.get('project', {}).get('market', 'Seattle')
+                market_data = config.get('markets', {}).get(market_name)
+                if market_data:
+                    market_coords = {
+                        "latitude": market_data.get('latitude'),
+                        "longitude": market_data.get('longitude')
+                    }
+                    print(f"Loaded coordinates for market {market_name}: {market_coords}")
+                else:
+                    print(f"Warning: Market {market_name} coordinates not found in config. Using defaults.")
+        except Exception as e:
+            print(f"Error loading config.yaml: {e}. Using defaults.")
+    else:
+        print(f"Warning: config.yaml not found at {config_path}. Using defaults.")
+
+    BASE_STATION_COORDS = market_coords
+    
     # Define a list of directories to process, along with their analysis type
     # These paths are relative to base_raw_data_dir
     # This list can be easily extended for future additions
@@ -54,6 +81,7 @@ if __name__ == "__main__":
         {"path": "Coverage Performance", "analysis_type": "coverage_coordinate"}, # Add Coverage Coordinate directory
         {"path": "Coverage Performance/5G n41 HPUE Coverage Test", "analysis_type": "n41_coverage"}, # Add N41 Coverage directory
         {"path": "Coverage Performance/5G VoNR Coverage Test", "analysis_type": "vonr_coverage_performance"}, # Add 5G VoNR Coverage Test directory
+        {"path": "Coverage Performance/LTE Coverage Test", "analysis_type": "vonr_coverage_performance"}, # Add LTE Coverage Test directory
         {"path": "Data Performance/5G AUTO DP/5G Auto Data Play-store app Download", "analysis_type": "google_throughput_analysis"}, # Corrected path for Google Throughput Analysis
         {"path": "Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive", "analysis_type": "mhs_drive_performance"}, # Add MHS Drive Performance directory
     ]
@@ -391,8 +419,7 @@ if __name__ == "__main__":
                 print(f"Warning: Voice Quality base directory not found at {base_voice_quality_path}. Skipping analysis.")
         
         elif directory_info["analysis_type"] == "coverage_coordinate":
-            # The user specified the target directory as D:\Fit4Launch\Raw Data\Coverage Performance\5G VoNR Coverage Test
-            base_coverage_test_path = os.path.join(base_raw_data_dir, "Coverage Performance", "5G VoNR Coverage Test")
+            base_coverage_test_path = os.path.join(base_raw_data_dir, directory_info["path"])
             
             if os.path.isdir(base_coverage_test_path):
                 print(f"\n--- Starting Coverage Coordinate analysis for base directory: {base_coverage_test_path} ---")
@@ -439,9 +466,11 @@ if __name__ == "__main__":
 
                     coverage_comparisons[subfolder] = subfolder_comparison_results
                 
-                # Insert the structured comparison results into coverage_performance_results
                 # Path components: ['Coverage Performance', '5G VoNR Coverage Test']
-                _insert_into_nested_dict(coverage_performance_results, ["Coverage Performance", "5G VoNR Coverage Test"], coverage_comparisons)
+                # The user might have multiple coverage test directories using this analysis type
+                # We should use the specific relative path from directory_info["path"]
+                rel_path_components = directory_info["path"].replace("\\", "/").split('/')
+                _insert_into_nested_dict(coverage_performance_results, rel_path_components, coverage_comparisons)
                 print(f"Coverage Coordinate analysis for {base_coverage_test_path} completed and added to results.")
             else:
                 print(f"Warning: Coverage base directory not found at {base_coverage_test_path}. Skipping analysis.")
@@ -497,8 +526,8 @@ if __name__ == "__main__":
                 # Iterate through subdirectories (n25, n41, n71)
                 for band_folder_name in os.listdir(vonr_coverage_base_path):
                     band_folder_path = os.path.join(vonr_coverage_base_path, band_folder_name)
-                    if os.path.isdir(band_folder_path) and band_folder_name.startswith("n"): # Assuming bands are named nXX
-                        print(f"Analyzing VoNR coverage performance data in band: {band_folder_path}")
+                    if os.path.isdir(band_folder_path): # Check if it's a directory, band names can vary
+                        print(f"Analyzing coverage performance data in band: {band_folder_path}")
                         
                         band_results = {"DUT": {}, "REF": {}}
                         
@@ -530,8 +559,14 @@ if __name__ == "__main__":
                                     analysis_results = enriched_results
 
                                     # Determine device type (DUT or REF) from filename
-                                    device_type_match = re.match(r"(DUT|REF)\d+", file_name, re.IGNORECASE)
-                                    device_type = device_type_match.group(1).upper() if device_type_match else "Unknown"
+                                    device_type_match = re.search(r"(DUT|REF|CH0\d)", file_name, re.IGNORECASE)
+                                    device_type = "Unknown"
+                                    if device_type_match:
+                                        matched_val = device_type_match.group(1).upper()
+                                        if matched_val in ["CH01", "REF"]:
+                                            device_type = "REF"
+                                        elif matched_val in ["CH02", "DUT"]:
+                                            device_type = "DUT"
 
                                     # Extract run number from filename (e.g., DUT1_Run1.csv -> Run1)
                                     run_match = re.search(r"Run(\d+)\.csv", file_name, re.IGNORECASE)

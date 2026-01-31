@@ -50,14 +50,16 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
 
             subfolder_results = {"DUT": {}, "REF": {}}
             for dut_file, ref_file in paired_files:
-                dut_res = analyze_coverage_coordinates(dut_file, base_coords=self.coords)
-                ref_res = analyze_coverage_coordinates(ref_file, base_coords=self.coords)
+                dut_res = analyze_coverage_coordinates(dut_file, base_coords=self.coords) if dut_file else {}
+                ref_res = analyze_coverage_coordinates(ref_file, base_coords=self.coords) if ref_file else {}
                 
-                dut_match = run_pattern.match(os.path.basename(dut_file))
-                run_name = f"Run{int(dut_match.group(2))}" if dut_match else "UnknownRun"
+                # Extract run name from either file if available
+                sample_file = dut_file if dut_file else ref_file
+                run_match = re.search(r"Run(\d+)", os.path.basename(sample_file), re.IGNORECASE) if sample_file else None
+                run_name = f"Run{run_match.group(1)}" if run_match else os.path.splitext(os.path.basename(sample_file))[0] if sample_file else "UnknownRun"
 
-                subfolder_results["DUT"][run_name] = dut_res
-                subfolder_results["REF"][run_name] = ref_res
+                if dut_file: subfolder_results["DUT"][run_name] = dut_res
+                if ref_file: subfolder_results["REF"][run_name] = ref_res
             results[subfolder] = subfolder_results
         return results
 
@@ -81,7 +83,7 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
         results = {}
         for band_folder_name in os.listdir(path):
             band_folder_path = os.path.join(path, band_folder_name)
-            if os.path.isdir(band_folder_path) and band_folder_name.startswith("n"):
+            if os.path.isdir(band_folder_path):
                 band_results = {"DUT": {}, "REF": {}}
                 for file_name in os.listdir(band_folder_path):
                     if file_name.lower().endswith(".csv"):
@@ -96,8 +98,14 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
                                 else:
                                     enriched[key] = {"latitude": None, "longitude": None, "distance_km": None}
                             
-                            device_match = re.match(r"(DUT|REF)\d+", file_name, re.IGNORECASE)
-                            device_type = device_match.group(1).upper() if device_match else "Unknown"
+                            device_match = re.search(r"(DUT|REF|CH0\d)", file_name, re.IGNORECASE)
+                            device_type = "Unknown"
+                            if device_match:
+                                matched_val = device_match.group(1).upper()
+                                if matched_val in ["CH01", "REF"]:
+                                    device_type = "REF"
+                                elif matched_val in ["CH02", "DUT"]:
+                                    device_type = "DUT"
                             run_match = re.search(r"Run(\d+)\.csv", file_name, re.IGNORECASE)
                             run_name = f"Run{run_match.group(1)}" if run_match else os.path.splitext(file_name)[0]
                             

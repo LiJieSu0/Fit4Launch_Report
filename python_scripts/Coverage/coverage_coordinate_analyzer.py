@@ -75,24 +75,58 @@ import re
 
 def find_dut_ref_files(directory):
     """
-    Finds PC2.csv and PC3.csv in the given directory and treats them as DUT and REF.
+    Finds pairs of DUT/REF or CH01/CH02 files in the given directory.
+    Aggregates files by their timestamp or base name to correctly pair them.
     """
-    pc2_file = None
-    pc3_file = None
-
-    for filename in os.listdir(directory):
-        if filename.lower() == "pc2.csv":
-            pc2_file = os.path.join(directory, filename)
-        elif filename.lower() == "pc3.csv":
-            pc3_file = os.path.join(directory, filename)
+    files = [f for f in os.listdir(directory) if f.lower().endswith(".csv")]
     
+    # Try to group files by timestamp/prefix if available
+    # Pattern to extract common prefix: _YYYYMMDD_HHMMSS_CHXX_...
+    prefix_pattern = re.compile(r"(_\d{8}_\d{6}_).*")
+    
+    groups = {}
+    ungrouped = []
+    
+    for f in files:
+        match = prefix_pattern.match(f)
+        if match:
+            prefix = match.group(1)
+            if prefix not in groups:
+                groups[prefix] = []
+            groups[prefix].append(f)
+        else:
+            ungrouped.append(f)
+            
     paired_files = []
-    if pc2_file and pc3_file:
-        paired_files.append((pc2_file, pc3_file)) # Treat PC2 as DUT, PC3 as REF
-    elif pc2_file:
-        paired_files.append((pc2_file, None)) # Only PC2 found
-    elif pc3_file:
-        paired_files.append((None, pc3_file)) # Only PC3 found
+    
+    # Process grouped files (likely timestamped pairs)
+    for prefix, group_files in groups.items():
+        dut = None
+        ref = None
+        for f in group_files:
+            if "CH02" in f.upper() or "DUT" in f.upper():
+                dut = os.path.join(directory, f)
+            elif "CH01" in f.upper() or "REF" in f.upper():
+                ref = os.path.join(directory, f)
+        
+        if dut or ref:
+            paired_files.append((dut, ref))
+
+    # Process ungrouped files (like pc2.csv, pc3.csv)
+    # Simple logic for leftover or non-timestamped files
+    pc2 = None
+    pc3 = None
+    for f in ungrouped:
+        if f.lower() == "pc2.csv":
+            pc2 = os.path.join(directory, f)
+        elif f.lower() == "pc3.csv":
+            pc3 = os.path.join(directory, f)
+            
+    if pc2 or pc3:
+        # Check if already paired
+        if not any(p[0] == pc2 or p[1] == pc3 for p in paired_files):
+            paired_files.append((pc2, pc3))
+
     return paired_files
 
 def compare_analysis_results(dut_results, ref_results, file_pair_name):

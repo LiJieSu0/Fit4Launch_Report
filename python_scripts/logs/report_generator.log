@@ -957,3 +957,67 @@
 2026-01-29 15:16:09,194 - pipeline - INFO - Running final data validation...
 2026-01-29 15:16:09,233 - pipeline - INFO - No empty collections found in any JSON file.
 2026-01-29 15:16:09,234 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary
+2026-01-30 20:49:07,379 - pipeline - INFO - Market: Seattle
+2026-01-30 20:49:07,379 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\Seattle
+2026-01-30 20:49:07,379 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-01-30 20:49:07,380 - pipeline - INFO - Starting analysis pipeline...
+2026-01-30 20:49:07,382 - pipeline - INFO - Processing 0 individual CSV files...
+2026-01-30 20:49:07,382 - pipeline - INFO - Processing directory-level analyses...
+2026-01-30 20:49:07,382 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-30 20:49:07,384 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\processing_summary.json
+2026-01-30 20:49:07,384 - pipeline - INFO - Running final data validation...
+2026-01-30 20:49:07,385 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-30 20:49:07,385 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-01-30 20:49:33,482 - pipeline - INFO - Market: New York
+2026-01-30 20:49:33,482 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\New York
+2026-01-30 20:49:33,482 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-30 20:49:33,483 - pipeline - INFO - Starting analysis pipeline...
+2026-01-30 20:49:33,488 - pipeline - INFO - Processing 114 individual CSV files...
+2026-01-30 20:49:40,062 - pipeline - INFO - Processing directory-level analyses...
+2026-01-30 20:49:40,063 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\New York\Call Performance
+2026-01-30 20:49:40,063 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-01-30 20:49:43,061 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-01-30 20:49:44,633 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-01-30 20:49:47,834 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-01-30 20:49:49,318 - pipeline - INFO - Analyzing Voice Quality directory: D:/ReportGenerator/Raw Data\New York\Voice Quality
+2026-01-30 20:49:49,319 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled Audio Delay
+2026-01-30 20:49:49,335 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled EVS WB VQ
+2026-01-30 20:49:49,399 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR NB VQ
+2026-01-30 20:49:49,422 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR WB VQ
+2026-01-30 20:49:49,463 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled Audio Delay
+2026-01-30 20:49:49,479 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled EVS WB VQ
+2026-01-30 20:49:49,537 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance (Type: coverage_coordinate)
+2026-01-30 20:49:49,538 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-30 20:49:49,575 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-30 20:49:49,928 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-01-30 20:49:49,929 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\New York\WFC
+2026-01-30 20:49:49,930 - pipeline - INFO - Processing WFC Test Case: MOS PATCH
+2026-01-30 20:49:49,930 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-01-30 20:49:49,957 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-01-30 20:49:49,994 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-01-30 20:49:50,095 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-01-30 20:49:50,180 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-01-30 20:49:50,292 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-01-30 20:49:50,390 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-01-30 20:49:50,479 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-01-30 20:49:50,582 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-01-30 20:49:50,739 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-01-30 20:49:50,858 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-01-30 20:49:50,956 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-01-30 20:49:51,042 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-01-30 20:49:51,100 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-01-30 20:49:51,118 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-01-30 20:49:51,136 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-01-30 20:49:51,189 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-01-30 20:49:51,212 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-01-30 20:49:51,239 - pipeline - WARNING - MOS patch directory not found: D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH
+2026-01-30 20:49:51,239 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-30 20:49:52,286 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\data_performance_results.json
+2026-01-30 20:49:52,287 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\call_performance_results.json
+2026-01-30 20:49:52,289 - pipeline - INFO - Voice Quality results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\voice_quality_results.json
+2026-01-30 20:49:52,292 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\coverage_performance_results.json
+2026-01-30 20:49:52,293 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\wfc_performance_results.json
+2026-01-30 20:49:52,295 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\processing_summary.json
+2026-01-30 20:49:52,295 - pipeline - INFO - Running final data validation...
+2026-01-30 20:49:52,333 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-30 20:49:52,333 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York

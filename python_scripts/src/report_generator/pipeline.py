@@ -48,8 +48,12 @@ class DataAnalysisPipeline:
             log_file=log_config.get("log_file"), 
             level=log_config.get("level")
         )
-        self.base_raw_data_dir = self.config.get("project.base_raw_data_dir")
-        self.output_dir = self.config.get("project.output_dir")
+        self.market = self.config.get("project.market", "Seattle")
+        self.base_raw_data_dir = os.path.join(self.config.get("project.base_raw_data_dir"), self.market)
+        self.output_dir = os.path.join(self.config.get("project.output_dir"), self.market)
+        self.logger.info(f"Market: {self.market}")
+        self.logger.info(f"Reading from: {self.base_raw_data_dir}")
+        self.logger.info(f"Writing to: {self.output_dir}")
         os.makedirs(self.output_dir, exist_ok=True)
         
         self.results = {
@@ -58,6 +62,12 @@ class DataAnalysisPipeline:
             "voice_quality": {},
             "coverage": {},
             "wfc_performance": {}
+        }
+        
+        self.processing_stats = {
+            "valid_files": [],
+            "invalid_files": [],
+            "total_count": 0
         }
         
         # Mapping of analysis types to analyzer instances
@@ -142,6 +152,9 @@ class DataAnalysisPipeline:
                 
                 # Insert into data_performance results
                 self._insert_into_nested_dict(self.results["data_performance"], path_components, stats)
+                self.processing_stats["valid_files"].append(csv_file_path)
+            else:
+                self.processing_stats["invalid_files"].append(csv_file_path)
 
         # 2. Process directory-based analysis
         self.logger.info("Processing directory-level analyses...")
@@ -200,6 +213,7 @@ class DataAnalysisPipeline:
 
         # 4. Export results
         self._export_all()
+        self._export_processing_summary()
         
         # 5. Final validation
         self.logger.info("Running final data validation...")
@@ -282,6 +296,28 @@ class DataAnalysisPipeline:
                 with open(path, 'w', encoding='utf-8') as f:
                     json.dump(final_output, f, ensure_ascii=False, indent=4)
                 self.logger.info(f"{root_key} results exported to {path}")
+
+    def _export_processing_summary(self):
+        summary_path = os.path.join(self.output_dir, "processing_summary.json")
+        summary_data = {
+            "market": self.market,
+            "total_files_processed": len(self.processing_stats["valid_files"]) + len(self.processing_stats["invalid_files"]),
+            "successfully_processed": len(self.processing_stats["valid_files"]),
+            "failed_or_skipped": len(self.processing_stats["invalid_files"]),
+            "valid_files": self.processing_stats["valid_files"],
+            "invalid_files": self.processing_stats["invalid_files"]
+        }
+        with open(summary_path, 'w', encoding='utf-8') as f:
+            json.dump(summary_data, f, ensure_ascii=False, indent=4)
+        
+        # Also generate the simple count text file for quick reference
+        count_path = os.path.join(self.output_dir, "Processed File Count.txt")
+        with open(count_path, 'w', encoding='utf-8') as f:
+            f.write(f"Total files processed: {summary_data['total_files_processed']}\n")
+            f.write(f"Correctly processed statistics: {summary_data['successfully_processed']}\n")
+            f.write(f"Incorrect paths/Invalid data: {summary_data['failed_or_skipped']}\n")
+        
+        self.logger.info(f"Processing summary exported to {summary_path}")
 
 if __name__ == "__main__":
     pipeline = DataAnalysisPipeline()

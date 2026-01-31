@@ -24,11 +24,22 @@ def analyze_throughput(file_path):
         print(f"Error reading CSV file: {e}")
         return None
 
-    # Define the column name for PDSCH Throughput
-    throughput_column = '[NR5G] [(NR + LTE)] [Throughput] PDSCH TP'
+    # Define the possible column names for Throughput
+    possible_columns = [
+        '[Call Test] [Throughput] Application DL TP',
+        '[NR5G] [(NR + LTE)] [Throughput] PDSCH TP',
+        '[NR5G] [Throughput] PDSCH TP',
+        '[LTE] [Data Throughput] [Downlink (All)] [PDSCH] PDSCH TP (Total)'
+    ]
+    
+    throughput_column = None
+    for col in possible_columns:
+        if col in df.columns:
+            throughput_column = col
+            break
 
-    if throughput_column not in df.columns:
-        print(f"Error: Column '{throughput_column}' not found in the CSV file.")
+    if not throughput_column:
+        print(f"Error: None of the expected throughput columns found in the CSV file. Checked: {possible_columns}")
         return None
 
     print(f"DEBUG: Analyzing file: {file_path}")

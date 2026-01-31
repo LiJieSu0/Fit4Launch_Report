@@ -570,8 +570,9 @@ if __name__ == "__main__":
                 google_throughput_results = {}
                 
                 # Regex to extract Test Content and Device Type from filenames
-                # Example filename: _20251003_153046_CH01_TMO_5GNR_APP-100M_DUT_TC-115.csv
-                filename_pattern = re.compile(r".*APP-(\d+M)_(DUT|REF)_.*\.csv", re.IGNORECASE)
+                # Supports APP-100M, Playstore 100MB, Play Store 100 MB
+                dev_pattern = re.compile(r"(DUT|REF)", re.IGNORECASE)
+                size_pattern = re.compile(r"(?:APP-|Playstore |Play Store )(\d+)\s*M[B]?", re.IGNORECASE)
                 # Regex to extract Location from directory path
                 # Example path: ...5G Auto Data Play-store app DL Stationary Location 1
                 location_pattern = re.compile(r"Location (\d+)", re.IGNORECASE)
@@ -594,10 +595,11 @@ if __name__ == "__main__":
 
                     for file_name in files:
                         if file_name.lower().endswith(".csv"):
-                            match = filename_pattern.match(file_name)
-                            if match:
-                                test_content = match.group(1).upper()
-                                device_type = match.group(2).upper()
+                            dev_match = dev_pattern.search(file_name)
+                            size_match = size_pattern.search(file_name)
+                            if dev_match and size_match:
+                                test_content = size_match.group(1).upper() + "M"
+                                device_type = dev_match.group(1).upper()
                                 
                                 file_path = os.path.join(root, file_name)
                                 print(f"Analyzing Google Throughput for: {file_path}")

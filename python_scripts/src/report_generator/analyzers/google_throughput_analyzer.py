@@ -19,12 +19,14 @@ class GoogleThroughputAnalyzer(BaseAnalyzer):
         return None
 
     def _analyze_file(self, file_path):
-        filename_pattern = re.compile(r".*APP-(\d+M)_(DUT|REF)_.*\.csv", re.IGNORECASE)
+        dev_pattern = re.compile(r"(DUT|REF)", re.IGNORECASE)
+        size_pattern = re.compile(r"(?:APP-|Playstore |Play Store )(\d+)\s*M[B]?", re.IGNORECASE)
         file_name = os.path.basename(file_path)
-        match = filename_pattern.match(file_name)
-        if match:
-            test_content = match.group(1).upper()
-            device_type = match.group(2).upper()
+        dev_match = dev_pattern.search(file_name)
+        size_match = size_pattern.search(file_name)
+        if dev_match and size_match:
+            test_content = size_match.group(1).upper() + "M"
+            device_type = dev_match.group(1).upper()
             analysis_res = google_analyze_throughput(file_path)
             if analysis_res:
                 return {
@@ -38,7 +40,8 @@ class GoogleThroughputAnalyzer(BaseAnalyzer):
 
     def _analyze_directory(self, directory_path):
         results = {}
-        filename_pattern = re.compile(r".*APP-(\d+M)_(DUT|REF)_.*\.csv", re.IGNORECASE)
+        dev_pattern = re.compile(r"(DUT|REF)", re.IGNORECASE)
+        size_pattern = re.compile(r"(?:APP-|Playstore |Play Store )(\d+)\s*M[B]?", re.IGNORECASE)
         quality_location_pattern = re.compile(r"(Good|Moderate|Poor)", re.IGNORECASE)
         location_pattern = re.compile(r"Location (\d+)", re.IGNORECASE)
 
@@ -54,14 +57,17 @@ class GoogleThroughputAnalyzer(BaseAnalyzer):
 
             for file_name in files:
                 if file_name.lower().endswith(".csv"):
-                    match = filename_pattern.match(file_name)
-                    if match:
-                        test_content = match.group(1).upper()
-                        device_type = match.group(2).upper()
+                    dev_match = dev_pattern.search(file_name)
+                    size_match = size_pattern.search(file_name)
+                    if dev_match and size_match:
+                        test_content = size_match.group(1).upper() + "M"
+                        device_type = dev_match.group(1).upper()
                         file_path = os.path.join(root, file_name)
                         
+                        self.logger.info(f"Processing Play Store file: {file_name} (Size: {test_content}, Device: {device_type}, Location: {location})")
                         analysis_res = google_analyze_throughput(file_path)
                         if analysis_res:
+                            self.logger.info(f"Successfully analyzed {file_name}: {analysis_res['overall_average']}")
                             if location not in results:
                                 results[location] = {}
                             if device_type not in results[location]:
@@ -70,6 +76,11 @@ class GoogleThroughputAnalyzer(BaseAnalyzer):
                             results[location][device_type][test_content] = {
                                 "overall_average_throughput": analysis_res["overall_average"]
                             }
+                        else:
+                            self.logger.warning(f"Failed to analyze {file_name} (likely no valid throughput data)")
+                    else:
+                        self.logger.debug(f"File {file_name} did not match Play Store pattern")
+        self.logger.info(f"Google Throughput analysis directory processing complete. Results found: {bool(results)}")
         return results
 
     def validate(self, results) -> bool:

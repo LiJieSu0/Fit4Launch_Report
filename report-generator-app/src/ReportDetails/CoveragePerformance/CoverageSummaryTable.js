@@ -16,7 +16,11 @@ const KPI_CONFIG = [
 const BANDS = [
     { name: "Samsung XCover Pro 7(NR 25)", key: "n25", anchor: "2.1" },
     { name: "Samsung XCover Pro 7(NR 41)", key: "n41", anchor: "2.2" },
-    { name: "Samsung XCover Pro 7(NR 71)", key: "n71", anchor: "2.3" }
+    { name: "Samsung XCover Pro 7(NR 71)", key: "n71", anchor: "2.3" },
+    { name: "Samsung XCover Pro 7(LTE 66)", key: "b66", anchor: "2.4" },
+    { name: "Samsung XCover Pro 7(LTE 2)", key: "b2", anchor: "2.5" }
+
+
 ];
 
 const CoverageSummaryTable = () => {
@@ -58,7 +62,12 @@ const CoverageSummaryTable = () => {
     }, [markets, allReportData, loadCityData]);
 
     const calculateAvgDistance = (cityData, band, deviceType, kpiKey) => {
-        const bandData = cityData?.coveragePerformance?.["Coverage Performance"]?.["5G VoNR Coverage Test"]?.[band]?.[deviceType];
+        const root = cityData?.coveragePerformance?.["Coverage Performance"];
+        if (!root) return null;
+
+        const isLte = band && band.toLowerCase().startsWith('b');
+        const sectionName = isLte ? "LTE Coverage Test" : "5G VoNR Coverage Test";
+        const bandData = root[sectionName]?.[band]?.[deviceType];
         if (!bandData) return null;
 
         const runs = Object.keys(bandData).filter(key => key.startsWith('Run'));

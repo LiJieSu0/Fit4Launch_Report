@@ -5,6 +5,7 @@ import { getKpiCellColor } from '../../Utils/KpiRules';
 import PValueTable from '../CallPerformance/PValueTable';
 import WfcPerformanceChart from './WfcPerformanceChart';
 import WfcMosLineChart from './WfcMosLineChart';
+import WfcRssiLineChart from './WfcRssiLineChart';
 import WfcCpTable from './WfcCpTable';
 import WfcHandoverTable from './WfcHandoverTable';
 
@@ -201,9 +202,8 @@ const WfcTestDetailsPage = ({ tc, label, sectionNumber = 0 }) => {
                 </div>
                 <div>
                     <div className='page-content'>
-                        <div style={{ marginTop: '40px' }}>
-                            <WfcMosLineChart tc={tc} city={city} />
-                        </div>
+                        <WfcRssiLineChart tc={tc} city={city} />
+                        <WfcMosLineChart tc={tc} city={city} />
                     </div>
                 </div>
             </>

@@ -36,7 +36,7 @@ from report_generator.analyzers.wfc_performance_analyzer import WfcPerformanceAn
 import data_path_reader
 import check_empty_data
 from VoiceQuality.VqLineChartAnalyzer import calculate_vq_statistics
-from Wfc.WfcLineChartAnalyzer import calculate_wfc_statistics
+from Wfc.WfcLineChartAnalyzer import calculate_wfc_statistics, calculate_wfc_rssi_statistics
 from Coverage.n41_coverage_analyzer import extract_coverage_data_to_csv
 
 class DataAnalysisPipeline:
@@ -254,6 +254,16 @@ class DataAnalysisPipeline:
                 if os.path.isdir(tc_path):
                     out_path = os.path.join(wfc_linechart_dir, f"wfc_mos_statistics_{tc_dir.lower()}.json")
                     calculate_wfc_statistics(tc_path, output_json_path=out_path)
+
+        # WFC RSSI Line Chart
+        wfc_rssi_linechart_dir = os.path.join(self.output_dir, "wfc_rssi_linechart_data")
+        os.makedirs(wfc_rssi_linechart_dir, exist_ok=True)
+        if os.path.isdir(wfc_base_path):
+            for tc_dir in os.listdir(wfc_base_path):
+                tc_path = os.path.join(wfc_base_path, tc_dir)
+                if os.path.isdir(tc_path):
+                    out_path = os.path.join(wfc_rssi_linechart_dir, f"wfc_rssi_statistics_{tc_dir.lower()}.json")
+                    calculate_wfc_rssi_statistics(tc_path, output_json_path=out_path)
 
         # RSRP & Tx Power Extraction
         rsrp_dir = os.path.join(self.output_dir, "rsrp_data")

@@ -24,7 +24,14 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
 
         # Get market-specific coordinates from config
         market = self.config.get("project.market", "Seattle")
-        self.coords = self.config.get(f"markets.{market}")
+        
+        # Specific logic for Seattle LTE: Use special coordinates if path contains "LTE Coverage Test"
+        effective_market = market
+        if "LTE Coverage Test" in directory_path and market == "Seattle":
+            effective_market = "Seattle_LTE"
+            self.logger.info("Using Seattle_LTE coordinates for LTE Coverage Test")
+
+        self.coords = self.config.get(f"markets.{effective_market}")
         if not self.coords:
             self.logger.warning(f"No coordinates found for market: {market}. Using Seattle defaults.")
             self.coords = self.config.get("markets.Seattle", {"latitude": 47.128234, "longitude": -122.356792})
@@ -105,16 +112,17 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
                             else:
                                 enriched[key] = {"latitude": None, "longitude": None, "distance_km": None}
                         
-                        device_match = re.search(r"(DUT|REF|CH(\d+))", file_name, re.IGNORECASE)
+                        # Prioritize literal DUT/REF in filename
                         device_type = "Unknown"
-                        if device_match:
-                            matched_val = device_match.group(1).upper()
-                            if matched_val == "REF":
-                                device_type = "REF"
-                            elif matched_val == "DUT":
-                                device_type = "DUT"
-                            elif matched_val.startswith("CH"):
-                                ch_num = int(device_match.group(2))
+                        if re.search(r"DUT", file_name, re.IGNORECASE):
+                            device_type = "DUT"
+                        elif re.search(r"REF", file_name, re.IGNORECASE):
+                            device_type = "REF"
+                        else:
+                            # Fallback to CHxx logic if no literal DUT/REF found
+                            ch_match = re.search(r"CH(\d+)", file_name, re.IGNORECASE)
+                            if ch_match:
+                                ch_num = int(ch_match.group(1))
                                 device_type = "REF" if ch_num % 2 != 0 else "DUT"
                         
                         if device_type in band_results:

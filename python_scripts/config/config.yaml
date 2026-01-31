@@ -1,6 +1,6 @@
 project:
   name: "ReportGenerator"
-  market: "New York"
+  market: "Seattle"
   base_raw_data_dir: "D:/ReportGenerator/Raw Data"
   output_dir: "D:/ReportGenerator/python_scripts/Analyze Summary"
 
@@ -47,9 +47,9 @@ markets:
   Seattle:
     latitude: 47.409192
     longitude: -121.973509
-  # LTE:
-  #   latitude:47.570236
-  #   longitude:-121.888454
   "New York":
     latitude: 40.562337
     longitude: -74.695998
+  Seattle_LTE:
+    latitude: 47.570236
+    longitude: -121.888454

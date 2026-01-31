@@ -1939,3 +1939,86 @@
 2026-01-31 14:22:44,817 - pipeline - INFO - Running final data validation...
 2026-01-31 14:22:44,836 - pipeline - INFO - No empty collections found in any JSON file.
 2026-01-31 14:22:44,836 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 14:29:19,094 - pipeline - INFO - Market: Seattle
+2026-01-31 14:29:19,094 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\Seattle
+2026-01-31 14:29:19,094 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-01-31 14:29:19,095 - pipeline - INFO - Starting analysis pipeline...
+2026-01-31 14:29:19,100 - pipeline - INFO - Processing 116 individual CSV files...
+2026-01-31 14:29:20,487 - pipeline - INFO - Processing directory-level analyses...
+2026-01-31 14:29:20,488 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-01-31 14:29:20,488 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-31 14:29:20,535 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 14:29:20,753 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 14:29:20,754 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-01-31 14:29:20,858 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-01-31 14:29:20,859 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\Seattle\WFC
+2026-01-31 14:29:20,859 - pipeline - INFO - Processing WFC Test Case: MOS PATCH
+2026-01-31 14:29:20,859 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-01-31 14:29:20,879 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-01-31 14:29:20,911 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-01-31 14:29:21,002 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-01-31 14:29:21,105 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-01-31 14:29:21,212 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-01-31 14:29:21,299 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-01-31 14:29:21,374 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-01-31 14:29:21,462 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-01-31 14:29:21,558 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-01-31 14:29:21,648 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-01-31 14:29:21,737 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-01-31 14:29:21,817 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-01-31 14:29:21,868 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-01-31 14:29:21,884 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-01-31 14:29:21,900 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-01-31 14:29:21,946 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-01-31 14:29:21,965 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-01-31 14:29:21,988 - pipeline - WARNING - MOS patch directory not found: D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH
+2026-01-31 14:29:21,989 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-31 14:29:22,753 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\coverage_performance_results.json
+2026-01-31 14:29:22,754 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_performance_results.json
+2026-01-31 14:29:22,755 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\processing_summary.json
+2026-01-31 14:29:22,755 - pipeline - INFO - Running final data validation...
+2026-01-31 14:29:22,764 - pipeline - WARNING - Summary of Empty collections found in JSON files:
+2026-01-31 14:29:22,765 - pipeline - WARNING -   - coverage_performance_results.json -> Coverage Performance -> 5G VoNR Coverage Test -> n25 -> DUT -> Empty Dictionary
+2026-01-31 14:29:22,765 - pipeline - WARNING -   - coverage_performance_results.json -> Coverage Performance -> 5G VoNR Coverage Test -> n41 -> DUT -> Empty Dictionary
+2026-01-31 14:29:22,765 - pipeline - WARNING -   - coverage_performance_results.json -> Coverage Performance -> 5G VoNR Coverage Test -> n71 -> DUT -> Empty Dictionary
+2026-01-31 14:29:22,765 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-01-31 14:35:03,075 - pipeline - INFO - Market: Seattle
+2026-01-31 14:35:03,075 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\Seattle
+2026-01-31 14:35:03,075 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-01-31 14:35:03,075 - pipeline - INFO - Starting analysis pipeline...
+2026-01-31 14:35:03,081 - pipeline - INFO - Processing 116 individual CSV files...
+2026-01-31 14:35:03,373 - pipeline - INFO - Processing directory-level analyses...
+2026-01-31 14:35:03,373 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-01-31 14:35:03,374 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-31 14:35:03,415 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 14:35:03,645 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 14:35:03,645 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-01-31 14:35:03,754 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-01-31 14:35:03,755 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\Seattle\WFC
+2026-01-31 14:35:03,755 - pipeline - INFO - Processing WFC Test Case: MOS PATCH
+2026-01-31 14:35:03,756 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-01-31 14:35:03,777 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-01-31 14:35:03,811 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-01-31 14:35:03,908 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-01-31 14:35:03,985 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-01-31 14:35:04,080 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-01-31 14:35:04,174 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-01-31 14:35:04,269 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-01-31 14:35:04,368 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-01-31 14:35:04,473 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-01-31 14:35:04,574 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-01-31 14:35:04,668 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-01-31 14:35:04,757 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-01-31 14:35:04,810 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-01-31 14:35:04,828 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-01-31 14:35:04,844 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-01-31 14:35:04,894 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-01-31 14:35:04,914 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-01-31 14:35:04,939 - pipeline - WARNING - MOS patch directory not found: D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH
+2026-01-31 14:35:04,939 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-31 14:35:05,755 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\coverage_performance_results.json
+2026-01-31 14:35:05,756 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_performance_results.json
+2026-01-31 14:35:05,757 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\processing_summary.json
+2026-01-31 14:35:05,758 - pipeline - INFO - Running final data validation...
+2026-01-31 14:35:05,768 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-31 14:35:05,768 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle

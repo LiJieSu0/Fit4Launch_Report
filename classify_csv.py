@@ -104,14 +104,24 @@ def classify_files(source_dir, target_dir):
         for key, relative_template in manual_mappings.items():
             if key in normalized_filename:
                 relative_path = relative_template.format(net_type=net_type)
-                target_folder = os.path.join(target_dir, relative_path)
+                current_target_folder = os.path.join(target_dir, relative_path)
                 
                 # DL/UL Subfolder Logic
+                is_dl_ul = False
                 if "dl" in normalized_filename or "downlink" in normalized_filename or "download" in normalized_filename:
-                    target_folder = os.path.join(target_folder, "DL")
+                    current_target_folder = os.path.join(current_target_folder, "DL")
+                    is_dl_ul = True
                 elif "ul" in normalized_filename or "uplink" in normalized_filename or "upload" in normalized_filename:
-                    target_folder = os.path.join(target_folder, "UL")
+                    current_target_folder = os.path.join(current_target_folder, "UL")
+                    is_dl_ul = True
                 
+                if not is_dl_ul:
+                    print(f"[Warning] 無法分辨 DL 或 UL: {filename}")
+                    target_folder = None
+                    break
+
+                target_folder = current_target_folder
+
                 # Quality Subfolder Logic (L1/L2/L3)
                 quality_sub = None
                 if "l1" in normalized_filename: quality_sub = "Good"

@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
+import React, { useMemo, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Tooltip, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -30,12 +30,14 @@ const greenPinIcon = new L.DivIcon({
 // Dot Icons for DUT and REF
 const dutIcon = L.divIcon({
   className: 'dut-icon',
+  html: '<div></div>',
   iconSize: [15, 15],
   iconAnchor: [7.5, 7.5] // Center
 });
 
 const refIcon = L.divIcon({
   className: 'ref-icon',
+  html: '<div></div>',
   iconSize: [15, 15],
   iconAnchor: [7.5, 7.5] // Center
 });
@@ -68,6 +70,18 @@ const calculateAverageCoords = (bandData, metric, device) => {
   return [sumLat / count, sumLon / count];
 };
 
+// Internal component to handle map bounds automatically
+const MapAutoBounds = ({ positions }) => {
+  const map = useMap();
+  useEffect(() => {
+    if (positions && positions.length > 0) {
+      const bounds = L.latLngBounds(positions);
+      map.fitBounds(bounds, { padding: [80, 80], maxZoom: 13 });
+    }
+  }, [positions, map]);
+  return null;
+};
+
 const CoverageMap = ({ bandData, metric, baseStation }) => {
   // If baseStation is passed as 'baseStationCoords' (legacy support or typo in user example), handle it
   // The example usage uses 'baseStation={BASE_STATION_COORDS}'
@@ -90,28 +104,26 @@ const CoverageMap = ({ bandData, metric, baseStation }) => {
 
   const avgLat = positions.reduce((sum, pos) => sum + pos[0], 0) / positions.length;
   const avgLon = positions.reduce((sum, pos) => sum + pos[1], 0) / positions.length;
-  const newCenter = [avgLat, avgLon + longitudeOffset];
+
+  const newCenter = [avgLat, avgLon];
   return (
     <div style={{ position: 'relative', width: '80%', height: '400px', margin: '0 auto' }}>
       <MapContainer
         center={newCenter}
         zoom={13}
-        zoomControl={false}
-        dragging={false}
-        scrollWheelZoom={false}
-        doubleClickZoom={false}
-        boxZoom={false}
-        attributionControl={false}
         style={{ height: '100%', width: '100%' }}
+        scrollWheelZoom={false}
+        dragging={false}
+        zoomControl={false}
       >
+        <MapAutoBounds positions={positions} />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution=""
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
-        {/* Base Station Marker */}
         <Marker position={bsPos} icon={greenPinIcon}>
-          {/* Optional: Add permanent tooltip if desired, though Legend explains it */}
+          <Tooltip permanent direction="top" offset={[0, -20]}>Base Station</Tooltip>
         </Marker>
 
         {/* DUT Marker */}

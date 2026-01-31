@@ -19,21 +19,20 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
     const reportData = allReportData[city];
 
     // Dynamically determine Base Station coordinates from appConfig
-    // Logic: Prefer "${city}_LTE" if it exists, otherwise use "${city}", fallback to "Seattle"
-    const getBaseStationCoords = () => {
+    // Logic: If band is LTE (starts with 'b'), use ${city}_LTE if available. Otherwise use ${city}.
+    const getBaseStationCoords = (targetBand) => {
         if (!appConfig || !appConfig.coverage_station) {
             return { latitude: 47.409192, longitude: -121.973509 }; // Hard fallback to Seattle
         }
 
         const stations = appConfig.coverage_station;
+        const isLte = targetBand && targetBand.toLowerCase().startsWith('b');
         const lteKey = `${city}_LTE`;
 
-        if (stations[lteKey]) return stations[lteKey];
+        if (isLte && stations[lteKey]) return stations[lteKey];
         if (stations[city]) return stations[city];
         return stations['Seattle'] || { latitude: 47.409192, longitude: -121.973509 };
     };
-
-    const BASE_STATION_COORDS = getBaseStationCoords();
 
     const processVoNRCoverageData = (band, metric) => {
         const defaultRows = [
@@ -183,6 +182,9 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
         const dataAudio = processVoNRCoverageData(band, 'call_drop');
         const secondaryKpi = processSecondaryKpiData(band);
 
+        const coords = getBaseStationCoords(band);
+        const BASE_STATION_COORDS = [coords.latitude, coords.longitude];
+
         // Use specific audio status for each band
         const bandStatus = dataAudio[dataAudio.length - 1];
 
@@ -196,7 +198,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                     <CoverageMap
                         bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.[band]}
                         metric="first_dl_tp_gt_1"
-                        baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+                        baseStation={BASE_STATION_COORDS}
                     />
                 </div>
                 <div className='page-content'>
@@ -205,7 +207,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                     <CoverageMap
                         bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.[band]}
                         metric="first_ul_tp_gt_1"
-                        baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+                        baseStation={BASE_STATION_COORDS}
                     />
                 </div>
                 {/* <div className='page-content'>
@@ -214,7 +216,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                     <CoverageMap
                         bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.[band]}
                         metric="mos_before_drop"
-                        baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+                        baseStation={BASE_STATION_COORDS}
                     />
                 </div>
                 <div className='page-content'>
@@ -223,7 +225,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                     <CoverageMap
                         bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.[band]}
                         metric="call_drop"
-                        baseStation={[BASE_STATION_COORDS.latitude, BASE_STATION_COORDS.longitude]}
+                        baseStation={BASE_STATION_COORDS}
                     />
                 </div> */}
                 <div className='page-content'>

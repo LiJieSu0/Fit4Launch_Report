@@ -7,6 +7,12 @@ const WfcCpTable = ({ cityData }) => {
         { name: 'REF', moKey: 'REF MO', mtKey: 'REF MT' }
     ];
 
+    const formatVal = (val) => {
+        if (val === undefined || val === null || val === 'N/A') return 'N/A';
+        const num = parseFloat(val);
+        return isNaN(num) ? 'N/A' : num.toFixed(2);
+    };
+
     return (
         <table className="performance-table general-table-style">
             <thead>
@@ -37,15 +43,15 @@ const WfcCpTable = ({ cityData }) => {
                             <td>{name}</td>
                             <td>{moData?.total_mo_attempts || 'N/A'}</td>
                             <td style={name === 'DUT' ? { backgroundColor: getKpiCellColor('CallSetupTime', moData?.mean_setup_time, refMoData?.mean_setup_time) } : {}}>
-                                {moData?.mean_setup_time?.toFixed(2) || 'N/A'}
+                                {formatVal(moData?.mean_setup_time)}
                             </td>
                             <td>{initFailPct}%</td>
                             <td>{retFailPct}%</td>
                             <td style={name === 'DUT' ? { backgroundColor: getKpiCellColor('WfcMOS', moData?.mos_average, refMoData?.mos_average) } : {}}>
-                                {moData?.mos_average?.toFixed(2) || 'N/A'}
+                                {formatVal(moData?.mos_average)}
                             </td>
                             <td style={name === 'DUT' ? { backgroundColor: getKpiCellColor('WfcMOS', mtData?.mos_average, refMtData?.mos_average) } : {}}>
-                                {mtData?.mos_average?.toFixed(2) || 'N/A'}
+                                {formatVal(mtData?.mos_average)}
                             </td>
                         </tr>
                     );

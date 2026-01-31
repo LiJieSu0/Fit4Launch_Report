@@ -6,6 +6,12 @@ const WfcHandoverTable = ({ cityData }) => {
 
     const devices = ['DUT', 'REF'];
 
+    const formatVal = (val) => {
+        if (val === undefined || val === null || val === 'N/A') return 'N/A';
+        const num = parseFloat(val);
+        return isNaN(num) ? 'N/A' : num.toFixed(2);
+    };
+
     return (
         <table className="performance-table general-table-style">
             <thead>
@@ -32,10 +38,10 @@ const WfcHandoverTable = ({ cityData }) => {
                                 {deviceData.total_retention_failures || 0}
                             </td>
                             <td style={device === 'DUT' ? { backgroundColor: getKpiCellColor('CallSetupTime', deviceData.mean_setup_time, cityData['REF']?.mean_setup_time) } : {}}>
-                                {deviceData.mean_setup_time?.toFixed(2) || 'N/A'}
+                                {formatVal(deviceData.mean_setup_time)}
                             </td>
                             <td style={device === 'DUT' ? { backgroundColor: getKpiCellColor('WfcMOS', deviceData.mos_average, cityData['REF']?.mos_average) } : {}}>
-                                {deviceData.mos_average?.toFixed(2) || 'N/A'}
+                                {formatVal(deviceData.mos_average)}
                             </td>
                         </tr>
                     );

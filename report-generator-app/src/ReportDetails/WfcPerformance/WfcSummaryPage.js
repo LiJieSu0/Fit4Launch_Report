@@ -56,6 +56,12 @@ const WfcSummaryPage = () => {
       const initiationFailureRate = data.total_mo_attempts > 0 ? data.total_initiation_failures / data.total_mo_attempts : 0;
       const retentionFailureRate = data.total_mo_attempts > 0 ? data.total_retention_failures / data.total_mo_attempts : 0;
 
+      const formatVal = (val) => {
+        if (val === undefined || val === null || val === 'N/A') return 'N/A';
+        const num = parseFloat(val);
+        return isNaN(num) ? 'N/A' : num.toFixed(2);
+      };
+
       // Mapping to existing KPI rules as a placeholder
       return {
         test: s.label,
@@ -64,9 +70,9 @@ const WfcSummaryPage = () => {
         callSetupTimeColor: mapExcellentToPass(getKpiCellColor('CallSetupTime', data.mean_setup_time, refData?.mean_setup_time)),
         callInitiationColor: mapExcellentToPass(getKpiCellColor('WfcCallCriteria', tcData.initiation_p_value, initiationFailureRate)),
         callRetentionColor: mapExcellentToPass(getKpiCellColor('WfcCallCriteria', tcData.retention_p_value, retentionFailureRate)),
-        moMosValue: data.mos_average?.toFixed(2),
+        moMosValue: formatVal(data.mos_average),
         moMosColor: mapExcellentToPass(getKpiCellColor('WfcMOS', data.mos_average, refData?.mos_average)),
-        mtMosValue: tcData['DUT MT']?.mos_average?.toFixed(2),
+        mtMosValue: formatVal(tcData['DUT MT']?.mos_average),
         mtMosColor: mapExcellentToPass(getKpiCellColor('WfcMOS', tcData['DUT MT']?.mos_average, tcData['REF MT']?.mos_average))
       };
     }).filter(row => row !== null);

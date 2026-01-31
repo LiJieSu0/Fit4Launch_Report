@@ -15,7 +15,7 @@ const CoverageTestTable = ({ tableData, status }) => {
         <table className="general-table-style">
             <thead>
                 <tr>
-                    <th>Device Name</th>
+                    <th>Device Name (km)</th>
                     {runKeys.map(key => (
                         <th key={key}>Run{key.replace('run', '')}</th>
                     ))}

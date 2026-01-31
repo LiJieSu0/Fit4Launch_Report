@@ -9,8 +9,8 @@ import { getKpiCellColor } from '../../Utils/KpiRules';
 const KPI_CONFIG = [
     { name: "DL Throughput < 1Mbps", key: "first_dl_tp_gt_1", link: "DL" },
     { name: "UL Throughput < 1Mbps", key: "first_ul_tp_gt_1", link: "UL" },
-    { name: "Last MOS Before Silence", key: "mos_before_drop", link: "MOS" },
-    { name: "Audio Call Drop", key: "call_drop", link: "Call" }
+    // { name: "Last MOS Before Silence", key: "mos_before_drop", link: "MOS" },
+    // { name: "Audio Call Drop", key: "call_drop", link: "Call" }
 ];
 
 const BANDS = [

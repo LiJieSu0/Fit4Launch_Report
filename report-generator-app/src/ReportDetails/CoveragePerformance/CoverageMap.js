@@ -71,14 +71,18 @@ const calculateAverageCoords = (bandData, metric, device) => {
 };
 
 // Internal component to handle map bounds automatically
-const MapAutoBounds = ({ positions }) => {
+const MapAutoBounds = ({ positions, offset = 0 }) => {
   const map = useMap();
   useEffect(() => {
     if (positions && positions.length > 0) {
       const bounds = L.latLngBounds(positions);
+      if (offset) {
+        const center = bounds.getCenter();
+        bounds.extend([center.lat, center.lng + offset * 2]); // Extend to create space to the east
+      }
       map.fitBounds(bounds, { padding: [80, 80], maxZoom: 13 });
     }
-  }, [positions, map]);
+  }, [positions, map, offset]);
   return null;
 };
 
@@ -105,7 +109,7 @@ const CoverageMap = ({ bandData, metric, baseStation }) => {
   const avgLat = positions.reduce((sum, pos) => sum + pos[0], 0) / positions.length;
   const avgLon = positions.reduce((sum, pos) => sum + pos[1], 0) / positions.length;
 
-  const newCenter = [avgLat, avgLon];
+  const newCenter = [avgLat, avgLon + longitudeOffset];
   return (
     <div style={{ position: 'relative', width: '80%', height: '400px', margin: '0 auto' }}>
       <MapContainer
@@ -116,7 +120,7 @@ const CoverageMap = ({ bandData, metric, baseStation }) => {
         dragging={false}
         zoomControl={false}
       >
-        <MapAutoBounds positions={positions} />
+        <MapAutoBounds positions={positions} offset={longitudeOffset} />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

@@ -85,38 +85,47 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
             band_folder_path = os.path.join(path, band_folder_name)
             if os.path.isdir(band_folder_path):
                 band_results = {"DUT": {}, "REF": {}}
-                for file_name in os.listdir(band_folder_path):
-                    if file_name.lower().endswith(".csv"):
-                        file_path = os.path.join(band_folder_path, file_name)
-                        analysis_res = analyze_vonr_coverage_performance(file_path)
-                        if analysis_res:
-                            enriched = {}
-                            for key, coords in analysis_res.items():
-                                if coords and coords[0] is not None and coords[1] is not None:
-                                    dist = haversine_distance(coords[0], coords[1], self.coords["latitude"], self.coords["longitude"])
-                                    enriched[key] = {"latitude": coords[0], "longitude": coords[1], "distance_km": dist}
-                                else:
-                                    enriched[key] = {"latitude": None, "longitude": None, "distance_km": None}
+                
+                # Get and sort CSV files by name to ensure chronological order
+                csv_files = [f for f in os.listdir(band_folder_path) if f.lower().endswith(".csv")]
+                csv_files.sort()
+                
+                # Use a counter for each device type to assign RunX names
+                run_counters = {"DUT": 1, "REF": 1}
+                
+                for file_name in csv_files:
+                    file_path = os.path.join(band_folder_path, file_name)
+                    analysis_res = analyze_vonr_coverage_performance(file_path)
+                    if analysis_res:
+                        enriched = {}
+                        for key, coords in analysis_res.items():
+                            if coords and coords[0] is not None and coords[1] is not None:
+                                dist = haversine_distance(coords[0], coords[1], self.coords["latitude"], self.coords["longitude"])
+                                enriched[key] = {"latitude": coords[0], "longitude": coords[1], "distance_km": dist}
+                            else:
+                                enriched[key] = {"latitude": None, "longitude": None, "distance_km": None}
+                        
+                        device_match = re.search(r"(DUT|REF|CH(\d+))", file_name, re.IGNORECASE)
+                        device_type = "Unknown"
+                        if device_match:
+                            matched_val = device_match.group(1).upper()
+                            if matched_val == "REF":
+                                device_type = "REF"
+                            elif matched_val == "DUT":
+                                device_type = "DUT"
+                            elif matched_val.startswith("CH"):
+                                ch_num = int(device_match.group(2))
+                                device_type = "REF" if ch_num % 2 != 0 else "DUT"
+                        
+                        if device_type in band_results:
+                            # Assign RunX based on the chronological order of files for this device
+                            run_name = f"Run{run_counters[device_type]}"
+                            run_counters[device_type] += 1
                             
-                            device_match = re.search(r"(DUT|REF|CH(\d+))", file_name, re.IGNORECASE)
-                            device_type = "Unknown"
-                            if device_match:
-                                matched_val = device_match.group(1).upper()
-                                if matched_val == "REF":
-                                    device_type = "REF"
-                                elif matched_val == "DUT":
-                                    device_type = "DUT"
-                                elif matched_val.startswith("CH"):
-                                    ch_num = int(device_match.group(2))
-                                    device_type = "REF" if ch_num % 2 != 0 else "DUT"
-                            run_match = re.search(r"Run(\d+)\.csv", file_name, re.IGNORECASE)
-                            run_name = f"Run{run_match.group(1)}" if run_match else os.path.splitext(file_name)[0]
-                            
-                            if device_type in band_results:
-                                band_results[device_type][run_name] = enriched
-                                secondary = analyze_secondary_kpis(file_path)
-                                if secondary:
-                                    band_results[device_type][run_name]["secondary_kpi"] = secondary
+                            band_results[device_type][run_name] = enriched
+                            secondary = analyze_secondary_kpis(file_path)
+                            if secondary:
+                                band_results[device_type][run_name]["secondary_kpi"] = secondary
                 if band_results["DUT"] or band_results["REF"]:
                     results[band_folder_name] = band_results
         return results

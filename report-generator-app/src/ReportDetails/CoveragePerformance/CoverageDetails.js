@@ -9,7 +9,8 @@ function CoverageDetails() {
     <div>
       <VonrCoverageSection city="Seattle" firstSection={true} />
       <VonrCoverageSection city="New York" />
-      <HpueCoverageSection city="Seattle" />
+
+      <HpueCoverageSection city="Seattle" firstSection={true} />
       <HpueCoverageSection city="New York" />
     </div>
   );

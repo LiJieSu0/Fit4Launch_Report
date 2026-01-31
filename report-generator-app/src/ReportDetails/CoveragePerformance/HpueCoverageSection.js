@@ -4,7 +4,7 @@ import CoverageLineChart from './CoverageLineChart';
 import { ReportContext } from '../../Contexts/ReportContext';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 
-const HpueCoverageSection = ({ city: propCity }) => {
+const HpueCoverageSection = ({ city: propCity, firstSection = false }) => {
     const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
     const city = propCity || globalCity;
 
@@ -80,7 +80,8 @@ const HpueCoverageSection = ({ city: propCity }) => {
 
     return (
         <>
-            <DynamicHeader level={2}>5G n41 HPUE Coverage Test - {city} </DynamicHeader>
+            {firstSection && <DynamicHeader level={1}>5G HPUE Coverage Test - {city} </DynamicHeader>}
+            <DynamicHeader level={2}>N41 HPUE Coverage Test - {city} </DynamicHeader>
             <HPUECoverageTable n41Data={n41HPUEData} />
             <div className='page-content'>
                 <DynamicHeader level={3} hideInTOC={true}>5G n41 HPUE Coverage Test - RSRP Analysis - {city}</DynamicHeader>

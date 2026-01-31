@@ -98,14 +98,17 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
                                 else:
                                     enriched[key] = {"latitude": None, "longitude": None, "distance_km": None}
                             
-                            device_match = re.search(r"(DUT|REF|CH0\d)", file_name, re.IGNORECASE)
+                            device_match = re.search(r"(DUT|REF|CH(\d+))", file_name, re.IGNORECASE)
                             device_type = "Unknown"
                             if device_match:
                                 matched_val = device_match.group(1).upper()
-                                if matched_val in ["CH01", "REF"]:
+                                if matched_val == "REF":
                                     device_type = "REF"
-                                elif matched_val in ["CH02", "DUT"]:
+                                elif matched_val == "DUT":
                                     device_type = "DUT"
+                                elif matched_val.startswith("CH"):
+                                    ch_num = int(device_match.group(2))
+                                    device_type = "REF" if ch_num % 2 != 0 else "DUT"
                             run_match = re.search(r"Run(\d+)\.csv", file_name, re.IGNORECASE)
                             run_name = f"Run{run_match.group(1)}" if run_match else os.path.splitext(file_name)[0]
                             

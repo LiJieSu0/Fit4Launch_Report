@@ -2,38 +2,42 @@ import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
 
 const CoverageTestTable = ({ tableData, status }) => {
+    // Get all run keys from the first row of data (e.g., run1, run2, ...)
+    const runKeys = tableData.length > 0
+        ? Object.keys(tableData[0]).filter(key => key.startsWith('run')).sort((a, b) => {
+            const numA = parseInt(a.replace('run', ''));
+            const numB = parseInt(b.replace('run', ''));
+            return numA - numB;
+        })
+        : [];
 
     return (
-            <table className="general-table-style">
-                <thead>
-                    <tr>
-                        <th>Device Name</th>
-                        <th>Run1</th>
-                        <th>Run2</th>
-                        <th>Run3</th>
-                        <th>Run4</th>
-                        <th>Run5</th>
-                        <th>Average</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableData.map((row, index) => {
-                        const isDUT = row.device === 'DUT';
-                        const averageClassName = isDUT ? (status === 'Pass' ? 'average-pass' : 'average-fail') : '';
-                        return (
-                            <tr key={index}>
-                                <td>{row.device}</td>
-                                <td>{row.run1.toFixed(2)}</td>
-                                <td>{row.run2.toFixed(2)}</td>
-                                <td>{row.run3.toFixed(2)}</td>
-                                <td>{row.run4.toFixed(2)}</td>
-                                <td>{row.run5.toFixed(2)}</td>
-                                <td className={averageClassName}>{row.average.toFixed(2)}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+        <table className="general-table-style">
+            <thead>
+                <tr>
+                    <th>Device Name</th>
+                    {runKeys.map(key => (
+                        <th key={key}>Run{key.replace('run', '')}</th>
+                    ))}
+                    <th>Average</th>
+                </tr>
+            </thead>
+            <tbody>
+                {tableData.map((row, index) => {
+                    const isDUT = row.device === 'DUT';
+                    const averageClassName = isDUT ? (status === 'Pass' ? 'average-pass' : 'average-fail') : '';
+                    return (
+                        <tr key={index}>
+                            <td>{row.device}</td>
+                            {runKeys.map(key => (
+                                <td key={key}>{row[key]?.toFixed(2) || '0.00'}</td>
+                            ))}
+                            <td className={averageClassName}>{row.average.toFixed(2)}</td>
+                        </tr>
+                    );
+                })}
+            </tbody>
+        </table>
     );
 };
 

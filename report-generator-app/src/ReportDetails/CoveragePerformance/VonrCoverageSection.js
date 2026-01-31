@@ -191,9 +191,9 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
         return (
             <div key={band}>
                 <div className='page-content'>
-                    {firstSection && band === 'n25' && <DynamicHeader level={1}>Coverage Test - All Networks</DynamicHeader>}
-                    <DynamicHeader level={2}>5G VoNR Coverage Test - {bandLabel} - {city}</DynamicHeader>
-                    <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - DL Throughput &lt; 1Mbps - {city}</DynamicHeader>
+                    {firstSection && band === 'n25' && <DynamicHeader level={1}>5G NR Coverage Test</DynamicHeader>}
+                    <DynamicHeader level={2}>5G NR Coverage Test - {bandLabel} - {city}</DynamicHeader>
+                    <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - DL Throughput &lt; 1Mbps - {city}</DynamicHeader>
                     <CoverageTestTable tableData={dataDL.slice(0, -1)} status={dataDL[dataDL.length - 1]} />
                     <CoverageMap
                         bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.[band]}
@@ -202,7 +202,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                     />
                 </div>
                 <div className='page-content'>
-                    <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - UL Throughput &lt; 1Mbps - {city}</DynamicHeader>
+                    <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - UL Throughput &lt; 1Mbps - {city}</DynamicHeader>
                     <CoverageTestTable tableData={dataUL.slice(0, -1)} status={dataUL[dataUL.length - 1]} />
                     <CoverageMap
                         bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.[band]}
@@ -229,7 +229,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                     />
                 </div> */}
                 <div className='page-content'>
-                    <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - Secondary KPI - {city}</DynamicHeader>
+                    <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - Secondary KPI - {city}</DynamicHeader>
                     <SecondaryKpiTable data={secondaryKpi} />
                 </div>
             </div>

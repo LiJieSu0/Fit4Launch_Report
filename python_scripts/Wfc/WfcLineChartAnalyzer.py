@@ -136,6 +136,7 @@ def calculate_wfc_rssi_statistics(directory_path, output_json_path="wfc_rssi_sta
     Reads WiFi RSSI values from all CSV files in a specified directory, performs interval statistics,
     calculates percentages, and outputs the aggregated results to a single JSON file.
     Separates MO and MT for both DUT and REF.
+    Also outputs a CSV file with raw RSSI samples for each scenario.
     
     Bins: < -100, [-100, -98), [-98, -96), ..., [-32, -30), >= -30
     """
@@ -145,6 +146,17 @@ def calculate_wfc_rssi_statistics(directory_path, output_json_path="wfc_rssi_sta
 
     all_statistics_results = {}
     rssi_header = "[WiFi] [Serving AP] RSSI"
+
+    # Store raw RSSI samples per scenario for CSV output
+    # Headers: Device, MO DUT, MT DUT, MO REF, MT REF (or DUT, REF for TC164+)
+    scenario_samples = {
+        "MO DUT": [],
+        "MT DUT": [],
+        "MO REF": [],
+        "MT REF": [],
+        "DUT": [],
+        "REF": []
+    }
 
     for filename in os.listdir(directory_path):
         if filename.lower().endswith(".csv"):
@@ -169,16 +181,19 @@ def calculate_wfc_rssi_statistics(directory_path, output_json_path="wfc_rssi_sta
             call_type = ""
             if tc_num and tc_num >= 164:
                 call_type = ""
+                json_key = device
+                csv_key = device
             else:
                 if any(x in filename_upper for x in ["_MO_", "_MO-", "-MO_", "-MO-"]):
                     call_type = "MO"
                 elif any(x in filename_upper for x in ["_MT_", "_MT-", "-MT_", "-MT-"]):
                     call_type = "MT"
-            
-            if not call_type and (not tc_num or tc_num < 164):
-                continue
                 
-            json_key = f"{device} {call_type}".strip()
+                if not call_type:
+                    continue
+                
+                json_key = f"{device} {call_type}"
+                csv_key = f"{call_type} {device}"
 
             try:
                 df = pd.read_csv(csv_file_path, low_memory=False)
@@ -192,6 +207,10 @@ def calculate_wfc_rssi_statistics(directory_path, output_json_path="wfc_rssi_sta
             rssi_values = pd.to_numeric(df[rssi_header], errors='coerce').dropna()
             if rssi_values.empty:
                 continue
+
+            # Collect raw samples for CSV
+            if csv_key in scenario_samples:
+                scenario_samples[csv_key].extend(rssi_values.tolist())
 
             total_count = len(rssi_values)
 
@@ -227,6 +246,7 @@ def calculate_wfc_rssi_statistics(directory_path, output_json_path="wfc_rssi_sta
                 all_statistics_results[json_key][interval] += count
             all_statistics_results[json_key]["_total_count"] += total_count
 
+    # 1. Export JSON results
     final_output = {}
     for device_key, stats in all_statistics_results.items():
         total_count = stats.pop("_total_count")
@@ -248,4 +268,24 @@ def calculate_wfc_rssi_statistics(directory_path, output_json_path="wfc_rssi_sta
                 json.dump(final_output, f, ensure_ascii=False, indent=4)
         except Exception as e:
             print(f"Error writing JSON file: {e}")
+
+    # 2. Export CSV results (Raw Samples)
+    active_scenarios = {k: v for k, v in scenario_samples.items() if v}
+    if active_scenarios:
+        try:
+            # Pad with NaNs to make equal length for DataFrame
+            max_len = max(len(v) for v in active_scenarios.values())
+            padded_data = {}
+            for k, v in active_scenarios.items():
+                padded_data[k] = v + [None] * (max_len - len(v))
+            
+            df_csv = pd.DataFrame(padded_data)
+            # Add "Device" column as index (1 to N)
+            df_csv.insert(0, 'Device', range(1, max_len + 1))
+            
+            csv_output_path = output_json_path.replace(".json", ".csv")
+            df_csv.to_csv(csv_output_path, index=False)
+            print(f"Successfully exported raw RSSI samples to: {csv_output_path}")
+        except Exception as e:
+            print(f"Error writing CSV file: {e}")
 

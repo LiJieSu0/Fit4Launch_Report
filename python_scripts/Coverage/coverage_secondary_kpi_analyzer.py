@@ -9,7 +9,7 @@ def analyze_secondary_kpis(file_path):
     """
     try:
         # Define necessary columns
-        col_bler = '[NR5G] [PCC] [PUSCH] [TB  RB] BLER'
+        col_bler = '[NR5G] [BLER & HARQ] PDSCH BLER'
         col_mcs = '[NR5G] [PCC] [PUSCH] [Modulation] MCS (Avg)'
         col_cqi = '[NR5G] [Quality Report] [CQI] WB CQI (Avg)'
         col_network = '[General] Serving Network'

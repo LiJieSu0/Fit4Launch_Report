@@ -79,6 +79,17 @@ def _determine_analysis_parameters(file_path):
     elif "ul" in file_name: # Fallback for "ul" if "upload" not found
         params["analysis_direction_detected"] = "UL"
     
+    # Fallback: Check parent directories if direction not detected in filename
+    if not params["analysis_direction_detected"]:
+        if "dl" in parent_dir_of_file_dir or "download" in parent_dir_of_file_dir:
+            params["analysis_direction_detected"] = "DL"
+        elif "ul" in parent_dir_of_file_dir or "upload" in parent_dir_of_file_dir:
+             params["analysis_direction_detected"] = "UL"
+        elif "dl" in dir_name or "download" in dir_name:
+             params["analysis_direction_detected"] = "DL"
+        elif "ul" in dir_name or "upload" in dir_name:
+             params["analysis_direction_detected"] = "UL"
+    
     # Determine protocol type from filename
     if "web page" in file_name:
         params["protocol_type_detected"] = "WEB_PAGE"

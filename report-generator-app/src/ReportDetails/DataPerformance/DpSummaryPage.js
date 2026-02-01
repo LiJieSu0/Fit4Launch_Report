@@ -393,26 +393,29 @@ function DpSummaryPage() {
     const ref = base.REF;
     if (!dut || !ref) return 'default';
 
-    const isMHS = caseName && caseName.includes("MHS");
+    // Helper to get metric value with fallback keys
+    const getVal = (dev, primaryKey, fallbackKey, subKey = 'Mean') => {
+      return dev[primaryKey]?.[subKey] ?? dev[fallbackKey]?.[subKey];
+    };
 
     if (metricType === 'Throughput') {
-      const dutVal = isMHS ? dut["DL Throughput"]?.Mean : dut.Throughput?.Mean;
-      const refVal = isMHS ? ref["DL Throughput"]?.Mean : ref.Throughput?.Mean;
+      const dutVal = getVal(dut, "DL Throughput", "Throughput");
+      const refVal = getVal(ref, "DL Throughput", "Throughput");
       return getKpiCellColor('Throughput', dutVal, refVal);
     }
     if (metricType === 'Jitter') {
-      const dutVal = isMHS ? dut["DL Jitter"]?.Mean : dut.Jitter?.Mean;
-      const refVal = isMHS ? ref["DL Jitter"]?.Mean : ref.Jitter?.Mean;
+      const dutVal = getVal(dut, "DL Jitter", "Jitter");
+      const refVal = getVal(ref, "DL Jitter", "Jitter");
       return getKpiCellColor('Jitter', dutVal, refVal);
     }
     if (metricType === 'ErrorRatio') {
-      const dutVal = isMHS ? dut["DL Error Ratio"]?.Mean : dut["Error Ratio"]?.Mean;
-      const refVal = isMHS ? ref["DL Error Ratio"]?.Mean : ref["Error Ratio"]?.Mean;
+      const dutVal = getVal(dut, "DL Error Ratio", "Error Ratio");
+      const refVal = getVal(ref, "DL Error Ratio", "Error Ratio");
       return getKpiCellColor('ErrorRatio', dutVal, refVal);
     }
     if (metricType === 'PingLatency') {
-      const dutVal = isMHS ? dut["Ping RTT"]?.Mean : dut["Ping RTT"]?.avg;
-      const refVal = isMHS ? ref["Ping RTT"]?.Mean : ref["Ping RTT"]?.avg;
+      const dutVal = dut["Ping RTT"]?.Mean ?? dut["Ping RTT"]?.avg;
+      const refVal = ref["Ping RTT"]?.Mean ?? ref["Ping RTT"]?.avg;
       return getKpiCellColor('PingLatency', dutVal, refVal);
     }
     return 'default';
@@ -594,7 +597,7 @@ function DpSummaryPage() {
       <div className='page-content'>
         <div style={{ marginTop: 10 }}></div>
         <DpSummaryTable tableData={mobiltyMHSData} />
-        <DpSummaryTable tableData={mrabData} />
+        {/* <DpSummaryTable tableData={mrabData} /> */}
       </div>
       <div className='page-content'>
         <h4>Data Performance Overview – 5G NSA</h4>

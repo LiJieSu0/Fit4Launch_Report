@@ -107,7 +107,7 @@ function App() {
 
           {currentReport === "DP" && (
             <>
-              {/* <DpSummaryPage /> */}
+              <DpSummaryPage />
               <DpDetailsPage />
               <DpKpiPage />
             </>

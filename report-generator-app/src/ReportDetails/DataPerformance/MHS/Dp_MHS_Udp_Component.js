@@ -491,11 +491,11 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     <>
       <div className="page-content">
         <DynamicHeader level={3}>UDP Test - Mobile Hotspot - 5G Auto - {city}</DynamicHeader>
-        <DynamicHeader level={4}>MHS UDP Test DL Details - 5G Auto - {city}</DynamicHeader>
+        <h4>MHS UDP Test DL Details - 5G Auto - {city}</h4>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
       </div>
       <div className="page-content">
-        <DynamicHeader level={4}>MHS UDP Test UL Details - 5G Auto - {city}</DynamicHeader>
+        <h4>MHS UDP Test UL Details - 5G Auto - {city}</h4>
         <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
       </div>
 

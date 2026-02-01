@@ -11,7 +11,7 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 import { useEffect } from 'react';
 
-const DpDriveTestDetailPage = ({ city: propCity }) => {
+const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
   const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
@@ -191,9 +191,9 @@ const DpDriveTestDetailPage = ({ city: propCity }) => {
   return (
     <>
       <div className='page-content'>
-        <DynamicHeader level={3}>Mobility Test - 5G Auto - {city}</DynamicHeader>
-        <DpDriveTestOverallTable data={formattedTestDriveData} tableName="Mobility Test Drive Overview" />
-        <DpDriveTestTable data={formattedTestDriveData} tableName="Mobility Test Drive Details" />
+        {firstSection && <DynamicHeader level={2}>Mobility Test - 5G Auto</DynamicHeader>}
+        <DpDriveTestOverallTable data={formattedTestDriveData} tableName={`Mobility Test Drive Overview - ${city}`} />
+        <DpDriveTestTable data={formattedTestDriveData} tableName={`Mobility Test Drive Details - ${city}`} />
       </div>
       <div className='page-content'>
         <DpHistogramComponent

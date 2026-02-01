@@ -38,8 +38,8 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
     return <div className="page-content">No Mobility Test Data available</div>;
   }
 
-  // Get the 5G Auto Data Test Drive data
-  const testDriveData = mobilityTestData?.['5G Auto Data Test Drive'];
+  // Get the 5G Auto Data Test Drive data - handle both nested and flat structures
+  const testDriveData = mobilityTestData?.['5G Auto Data Test Drive'] || mobilityTestData;
   const dutDriveTest = testDriveData?.['DUT'];
   const refDriveTest = testDriveData?.['REF'];
 
@@ -50,54 +50,66 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
   // Prepare data for tables and charts - handle the new simpler structure
   const driveTestThroughputData = getDriveTestMetricData(
     "Throughput",
-    dutDriveTest?.Throughput?.Mean,
-    refDriveTest?.Throughput?.Mean
+    dutDriveTest?.['DL Throughput']?.Mean,
+    refDriveTest?.['DL Throughput']?.Mean
   );
   const driveTestJitterData = getDriveTestMetricData(
     "Jitter",
-    dutDriveTest?.Jitter?.Mean,
-    refDriveTest?.Jitter?.Mean
+    dutDriveTest?.['DL Jitter']?.Mean,
+    refDriveTest?.['DL Jitter']?.Mean
   );
   const driveTestErrorRatioData = getDriveTestMetricData(
     "Error Ratio",
-    dutDriveTest?.['Error Ratio']?.Mean,
-    refDriveTest?.['Error Ratio']?.Mean
+    dutDriveTest?.['DL Error Ratio']?.Mean,
+    refDriveTest?.['DL Error Ratio']?.Mean
   );
 
   // Format the TestDriveData for the table components (matching expected structure)
   const formattedTestDriveData = {
     "DUT UDP DL": {
       Throughput: {
-        Mean: dutDriveTest?.Throughput?.Mean || 0,
-        Minimum: dutDriveTest?.Throughput?.Minimum || 0,
-        Maximum: dutDriveTest?.Throughput?.Maximum || 0,
-        'Standard Deviation': dutDriveTest?.Throughput?.['Standard Deviation'] || 0,
+        Mean: dutDriveTest?.['DL Throughput']?.Mean || 0,
+        Minimum: dutDriveTest?.['DL Throughput']?.Minimum || 0,
+        Maximum: dutDriveTest?.['DL Throughput']?.Maximum || 0,
+        'Standard Deviation': dutDriveTest?.['DL Throughput']?.['Standard Deviation'] || 0,
       },
       Jitter: {
-        Mean: dutDriveTest?.Jitter?.Mean || 0,
+        Mean: dutDriveTest?.['DL Jitter']?.Mean || 0,
       },
       'Error Ratio': {
-        Mean: dutDriveTest?.['Error Ratio']?.Mean || 0,
+        Mean: dutDriveTest?.['DL Error Ratio']?.Mean || 0,
+      },
+      'Ping RTT': {
+        avg: dutDriveTest?.['Ping RTT']?.Mean || 0,
+        min: dutDriveTest?.['Ping RTT']?.Min || 0,
+        max: dutDriveTest?.['Ping RTT']?.Max || 0,
+        std_dev: dutDriveTest?.['Ping RTT']?.['Std Dev'] || 0,
       },
     },
     "REF UDP DL": {
       Throughput: {
-        Mean: refDriveTest?.Throughput?.Mean || 0,
-        Minimum: refDriveTest?.Throughput?.Minimum || 0,
-        Maximum: refDriveTest?.Throughput?.Maximum || 0,
-        'Standard Deviation': refDriveTest?.Throughput?.['Standard Deviation'] || 0,
+        Mean: refDriveTest?.['DL Throughput']?.Mean || 0,
+        Minimum: refDriveTest?.['DL Throughput']?.Minimum || 0,
+        Maximum: refDriveTest?.['DL Throughput']?.Maximum || 0,
+        'Standard Deviation': refDriveTest?.['DL Throughput']?.['Standard Deviation'] || 0,
       },
       Jitter: {
-        Mean: refDriveTest?.Jitter?.Mean || 0,
+        Mean: refDriveTest?.['DL Jitter']?.Mean || 0,
       },
       'Error Ratio': {
-        Mean: refDriveTest?.['Error Ratio']?.Mean || 0,
+        Mean: refDriveTest?.['DL Error Ratio']?.Mean || 0,
+      },
+      'Ping RTT': {
+        avg: refDriveTest?.['Ping RTT']?.Mean || 0,
+        min: refDriveTest?.['Ping RTT']?.Min || 0,
+        max: refDriveTest?.['Ping RTT']?.Max || 0,
+        std_dev: refDriveTest?.['Ping RTT']?.['Std Dev'] || 0,
       },
     },
   };
 
-  // Check if MHS Test Drive data exists - use the correct key from JSON
-  const mhsTestDriveData = mobilityTestData?.['5G Auto Data Test MHS Drive'];
+  // Check if MHS Test Drive data exists - check for multiple possible keys
+  const mhsTestDriveData = mobilityTestData?.['5G Auto Data Test MHS Drive'] || mobilityTestData?.['Mobility Test'];
   const dutMHS = mhsTestDriveData?.['DUT'];
   const refMHS = mhsTestDriveData?.['REF'];
   const hasMhsData = dutMHS && refMHS;

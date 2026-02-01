@@ -222,7 +222,7 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
       {hasMhsData ? (
         <>
           <div className='page-content'>
-            <DynamicHeader level={3}>Mobility Test - Mobile Hotspot - 5G Auto - {city}</DynamicHeader>
+            <DynamicHeader level={3}>Mobility Test - Mobile Hotspot - {city}</DynamicHeader>
             <DpMHSTestDriveOverallTable data={formattedMhsTestDriveData} tableName={`Mobility Test Drive Overview - ${city}`} />
             <DpMHSTestDriveTable data={formattedMhsTestDriveData} tableName="MHS Test Drive Data" />
           </div>

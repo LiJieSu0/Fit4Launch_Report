@@ -32,6 +32,8 @@ analysis:
       analysis_type: "google_throughput_analysis"
     - path: "Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive"
       analysis_type: "mhs_drive_performance"
+    - path: "Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive"
+      analysis_type: "mhs_drive_performance"
     - path: "Data Performance/5G NSA DP/Mobility Test"
       analysis_type: "mhs_drive_performance"
     - path: "WFC"

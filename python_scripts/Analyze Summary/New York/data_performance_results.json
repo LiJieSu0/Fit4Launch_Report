@@ -1072,6 +1072,84 @@
                         }
                     }
                 }
+            },
+            "Mobility Test": {
+                "5G Auto Data Test Drive": {
+                    "REF": {
+                        "Device Type": "REF",
+                        "Network Type": "5G",
+                        "Analysis Type": "mhs_drive_performance",
+                        "DL Throughput": {
+                            "Mean": 9.801443888888889,
+                            "Standard Deviation": 0.8891378875478763,
+                            "Minimum": 6.024622222222221,
+                            "Maximum": 10.024444444444443,
+                            "Number of Intervals": 20
+                        },
+                        "UL Throughput": {
+                            "Mean": 5.895139905244023,
+                            "Standard Deviation": 2.0411135952604598,
+                            "Minimum": 0.013803921568627453,
+                            "Maximum": 8.194551181102362,
+                            "Number of Intervals": 20
+                        },
+                        "DL Jitter": {
+                            "Mean": 1.277759964373191
+                        },
+                        "UL Jitter": {
+                            "Mean": 2.21312
+                        },
+                        "DL Error Ratio": {
+                            "Mean": 1.2130870904030282
+                        },
+                        "UL Error Ratio": {
+                            "Mean": 4.3000245999999995
+                        },
+                        "Ping RTT": {
+                            "Mean": 41.22115384615385,
+                            "Min": 11.0,
+                            "Max": 426.0,
+                            "Std Dev": 16.466789586200225
+                        }
+                    },
+                    "DUT": {
+                        "Device Type": "DUT",
+                        "Network Type": "5G",
+                        "Analysis Type": "mhs_drive_performance",
+                        "DL Throughput": {
+                            "Mean": 9.91609388888889,
+                            "Standard Deviation": 0.3861448304427343,
+                            "Minimum": 8.284722222222221,
+                            "Maximum": 10.116244444444446,
+                            "Number of Intervals": 20
+                        },
+                        "UL Throughput": {
+                            "Mean": 7.027786721853433,
+                            "Standard Deviation": 1.9269273129447064,
+                            "Minimum": 0.005652173913043478,
+                            "Maximum": 8.568383999999998,
+                            "Number of Intervals": 20
+                        },
+                        "DL Jitter": {
+                            "Mean": 1.2046199546485261
+                        },
+                        "UL Jitter": {
+                            "Mean": 3.4542653061224486
+                        },
+                        "DL Error Ratio": {
+                            "Mean": 0.18770236621315192
+                        },
+                        "UL Error Ratio": {
+                            "Mean": 0.4258861632653061
+                        },
+                        "Ping RTT": {
+                            "Mean": 47.8825,
+                            "Min": 14.0,
+                            "Max": 1173.0,
+                            "Std Dev": 25.381585664500815
+                        }
+                    }
+                }
             }
         },
         "5G NSA DP": {

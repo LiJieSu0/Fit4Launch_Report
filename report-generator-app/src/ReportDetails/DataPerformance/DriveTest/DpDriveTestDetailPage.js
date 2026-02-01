@@ -256,10 +256,11 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
           </div>
         </>
       ) : (
-        <div className='page-content'>
-          <DynamicHeader level={3}>Mobility Test - Mobile Hotspot</DynamicHeader>
-          <p>No MHS Test Drive Data available</p>
-        </div>
+        <div></div>
+        // <div className='page-content'>
+        //   <DynamicHeader level={3}>Mobility Test - Mobile Hotspot</DynamicHeader>
+        //   <p>No MHS Test Drive Data available</p>
+        // </div>
       )}
     </>
   );

@@ -40,7 +40,7 @@ from Wfc.WfcLineChartAnalyzer import calculate_wfc_statistics, calculate_wfc_rss
 from Coverage.n41_coverage_analyzer import extract_coverage_data_to_csv
 
 class DataAnalysisPipeline:
-    def __init__(self, config_path="config/config.yaml"):
+    def __init__(self, config_path="config/config.yaml", market_name=None):
         self.config = Config(config_path)
         log_config = self.config.get("logging")
         self.logger = setup_logger(
@@ -48,7 +48,13 @@ class DataAnalysisPipeline:
             log_file=log_config.get("log_file"), 
             level=log_config.get("level")
         )
-        self.market = self.config.get("project.market", "Seattle")
+        
+        # Determine market: override if argument provided, otherwise fallback to config or default
+        if market_name:
+            self.market = market_name
+        else:
+            self.market = self.config.get("project.market", "Seattle")
+            
         self.base_raw_data_dir = os.path.join(self.config.get("project.base_raw_data_dir"), self.market)
         self.output_dir = os.path.join(self.config.get("project.output_dir"), self.market)
         self.logger.info(f"Market: {self.market}")
@@ -169,6 +175,21 @@ class DataAnalysisPipeline:
             if not os.path.isdir(full_path): continue
 
             if isinstance(analyzer, CoveragePerformanceAnalyzer):
+                # Pass the effective market to the analyzer if needed, 
+                # though currently it reads from config based on 'project.market' or hardcoded map.
+                # Ideally, we should update CoveragePerformanceAnalyzer to accept market explicitly, 
+                # but we updated the pipeline to handle the market context via 'self.market'
+                # and CoveragePerformanceAnalyzer reads config.
+                
+                # Hack/Fix: CoveragePerformanceAnalyzer reads self.config.get("project.market").
+                # Since we are iterating pipelines with different markets, we might need to 
+                # TEMPORARILY patch the config object or pass the market to analyze method if supported.
+                # However, CoveragePerformanceAnalyzer.analyze() doesn't currently take market.
+                # It reads self.config.get("project.market", "Seattle").
+                # To support multi-market without deep refactoring of Analyzer, 
+                # we can inject the current market into the config instance in memory for this pipeline instance.
+                self.config.data['project']['market'] = self.market # Inject current market into config instance
+                
                 stats = analyzer.analyze(full_path, analysis_type=ana_type)
             else:
                 stats = analyzer.analyze(full_path)
@@ -330,5 +351,26 @@ class DataAnalysisPipeline:
         self.logger.info(f"Processing summary exported to {summary_path}")
 
 if __name__ == "__main__":
-    pipeline = DataAnalysisPipeline()
-    pipeline.run()
+    # Load config initially to get base data location
+    config = Config("config/config.yaml")
+    base_raw_dir = config.get("project.base_raw_data_dir")
+    
+    # Auto-discover markets
+    if os.path.isdir(base_raw_dir):
+        discovered_markets = []
+        for name in os.listdir(base_raw_dir):
+            if os.path.isdir(os.path.join(base_raw_dir, name)):
+                # Optional: Validate against configured markets if strictness is required
+                # configured_markets = config.get("markets")
+                # if configured_markets and name not in configured_markets: continue
+                discovered_markets.append(name)
+        
+        print(f"Discovered markets: {discovered_markets}")
+        
+        for market in discovered_markets:
+            print(f"\n--- Processing Market: {market} ---")
+            pipeline = DataAnalysisPipeline(market_name=market)
+            pipeline.run()
+    else:
+        print(f"Error: Base raw data directory not found: {base_raw_dir}")
+

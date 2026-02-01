@@ -14,10 +14,10 @@ const KPI_CONFIG = [
 ];
 
 const BANDS = [
-    { name: "Motorola XT2575-4(NR 25)", key: "n25", anchor: "2.1" },
-    { name: "Motorola XT2575-4(NR 41)", key: "n41", anchor: "2.2" },
-    { name: "Motorola XT2575-4(NR 71)", key: "n71", anchor: "2.3" },
-    { name: "Motorola XT2575-4(LTE B66)", key: "b66", anchor: "2.4" },
+    { name: "Motorola XT2575-4 (NR 25)", key: "n25", anchor: "2.1" },
+    { name: "Motorola XT2575-4 (NR 41)", key: "n41", anchor: "2.2" },
+    { name: "Motorola XT2575-4 (NR 71)", key: "n71", anchor: "2.3" },
+    { name: "Motorola XT2575-4 (LTE B66)", key: "b66", anchor: "2.4" },
 
 
 ];

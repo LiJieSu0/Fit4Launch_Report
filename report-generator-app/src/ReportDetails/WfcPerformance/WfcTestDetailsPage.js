@@ -203,7 +203,8 @@ const WfcTestDetailsPage = ({ tc, label, sectionNumber = 0 }) => {
                 </div>
                 <div>
                     <div className='page-content'>
-                        <WfcRssiTimeLineChart tc={tc} city={city} />
+                        <WfcRssiLineChart tc={tc} city={city} />
+                        {/* <WfcRssiTimeLineChart tc={tc} city={city} /> */}
                         <WfcMosLineChart tc={tc} city={city} />
                     </div>
                 </div>

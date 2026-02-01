@@ -8,6 +8,7 @@ import WfcMosLineChart from './WfcMosLineChart';
 import WfcRssiLineChart from './WfcRssiLineChart';
 import WfcCpTable from './WfcCpTable';
 import WfcHandoverTable from './WfcHandoverTable';
+import WfcRssiTimeLineChart from './WfcRssiTimeLineChart';
 
 const WfcTestDetailsPage = ({ tc, label, sectionNumber = 0 }) => {
     const { allReportData, availableCities } = useReportData();
@@ -202,7 +203,7 @@ const WfcTestDetailsPage = ({ tc, label, sectionNumber = 0 }) => {
                 </div>
                 <div>
                     <div className='page-content'>
-                        <WfcRssiLineChart tc={tc} city={city} />
+                        <WfcRssiTimeLineChart tc={tc} city={city} />
                         <WfcMosLineChart tc={tc} city={city} />
                     </div>
                 </div>

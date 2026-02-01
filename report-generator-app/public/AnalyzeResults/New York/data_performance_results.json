@@ -1330,42 +1330,76 @@
             "Mobility Test": {
                 "DUT": {
                     "Device Type": "DUT",
-                    "Network Type": "5G NSA",
-                    "Analysis Type": "data_performance",
-                    "Analysis Direction": "DL",
-                    "Protocol Type": "UDP",
-                    "Throughput": {
+                    "Network Type": "5G",
+                    "Analysis Type": "mhs_drive_performance",
+                    "DL Throughput": {
                         "Mean": 9.919943120736377,
                         "Standard Deviation": 0.2444635881916296,
                         "Minimum": 8.898758620689655,
                         "Maximum": 10.011744444444444,
                         "Number of Intervals": 20
                     },
-                    "Jitter": {
+                    "UL Throughput": {
+                        "Mean": 7.250376890915004,
+                        "Standard Deviation": 1.4271615803090856,
+                        "Minimum": 3.832909090909091,
+                        "Maximum": 8.991310344827587,
+                        "Number of Intervals": 20
+                    },
+                    "DL Jitter": {
                         "Mean": 1.2266636878814299
                     },
-                    "Error Ratio": {
+                    "UL Jitter": {
+                        "Mean": 1.6921730769230767
+                    },
+                    "DL Error Ratio": {
                         "Mean": 1.1966673770706189
+                    },
+                    "UL Error Ratio": {
+                        "Mean": 0.8928259423076923
+                    },
+                    "Ping RTT": {
+                        "Mean": 49.960107920601274,
+                        "Min": 14.0,
+                        "Max": 427.0,
+                        "Std Dev": 24.635635996970805
                     }
                 },
                 "REF": {
                     "Device Type": "REF",
-                    "Network Type": "5G NSA",
-                    "Analysis Type": "data_performance",
-                    "Analysis Direction": "DL",
-                    "Protocol Type": "UDP",
-                    "Throughput": {
+                    "Network Type": "5G",
+                    "Analysis Type": "mhs_drive_performance",
+                    "DL Throughput": {
                         "Mean": 9.731745555555557,
                         "Standard Deviation": 1.2130236672446446,
                         "Minimum": 4.579244444444445,
                         "Maximum": 10.02231111111111,
                         "Number of Intervals": 20
                     },
-                    "Jitter": {
+                    "UL Throughput": {
+                        "Mean": 6.666834137797376,
+                        "Standard Deviation": 1.621725080455527,
+                        "Minimum": 1.8860927152317886,
+                        "Maximum": 8.470839694656489,
+                        "Number of Intervals": 20
+                    },
+                    "DL Jitter": {
                         "Mean": 1.5665479416362689
                     },
-                    "Error Ratio": {
+                    "UL Jitter": {
+                        "Mean": 1.9810625000000002
+                    },
+                    "DL Error Ratio": {
                         "Mean": 2.677541280875456
+                    },
+                    "UL Error Ratio": {
+                        "Mean": 5.470618937499999
+                    },
+                    "Ping RTT": {
+                        "Mean": 34.784627543963644,
+                        "Min": 10.0,
+                        "Max": 468.0,
+                        "Std Dev": 17.19309795807126
                     }
                 }
             },

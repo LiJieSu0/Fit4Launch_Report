@@ -30,28 +30,40 @@ function DpNSATestDriveDetails({ city: propCity }) {
     return null; // Hide if data is missing
   }
 
-  const mobilityData = reportData.dataPerformance['Data Performance']?.['5G NSA DP']?.['Mobility Test'];
+  // Try both possible data structures: direct access and nested under "Data Performance"
+  const nsaData = reportData.dataPerformance?.['5G NSA DP'] || reportData.dataPerformance?.['Data Performance']?.['5G NSA DP'];
+  const mobilityData = nsaData?.['Mobility Test'];
 
   if (!mobilityData) {
-    return <div className="page-content">No NSA Test Drive Data available</div>;
+    return null; // Hide if no data available
   }
 
   const dutDriveTest = mobilityData['DUT'];
   const refDriveTest = mobilityData['REF'];
 
-  const getHistogramData = (metricKey) => {
+  // Helper to get DL/UL average for throughput, jitter, and error ratio
+  const getAverage = (device, metricPrefix) => {
+    const dlValue = device?.[`DL ${metricPrefix}`]?.Mean || 0;
+    const ulValue = device?.[`UL ${metricPrefix}`]?.Mean || 0;
+    return (dlValue + ulValue) / 2;
+  };
+
+  const getHistogramData = (metricType) => {
     let dutVal, refVal;
-    if (metricKey === "Ping RTT") {
-      dutVal = dutDriveTest?.[metricKey]?.avg || 0;
-      refVal = refDriveTest?.[metricKey]?.avg || 0;
+
+    if (metricType === "Ping RTT") {
+      dutVal = dutDriveTest?.['Ping RTT']?.['Mean'] || dutDriveTest?.['Ping RTT']?.['avg'] || 0;
+      refVal = refDriveTest?.['Ping RTT']?.['Mean'] || refDriveTest?.['Ping RTT']?.['avg'] || 0;
     } else {
-      dutVal = dutDriveTest?.[metricKey]?.Mean || 0;
-      refVal = refDriveTest?.[metricKey]?.Mean || 0;
+      // For Throughput, Jitter, and Error Ratio, calculate average of DL and UL
+      dutVal = getAverage(dutDriveTest, metricType);
+      refVal = getAverage(refDriveTest, metricType);
     }
+
     return [{
       name: "Mobility Test",
-      [`${metricKey} DUT`]: parseFloat(dutVal.toFixed(2)),
-      [`${metricKey} REF`]: parseFloat(refVal.toFixed(2)),
+      [`${metricType} DUT`]: parseFloat(dutVal.toFixed(2)),
+      [`${metricType} REF`]: parseFloat(refVal.toFixed(2)),
     }];
   };
 

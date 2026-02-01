@@ -35,8 +35,8 @@ function DpDetailsPage() {
       <DpMrabDetailsPage city="New York" /> */}
 
       <DpNSAStationaryDetails city="Seattle" firstSection={true} />
-      <DpNSAStationaryDetails city="New York" />
       <DpNSATestDriveDetails city="Seattle" />
+      <DpNSAStationaryDetails city="New York" />
       <DpNSATestDriveDetails city="New York" />
 
     </div>

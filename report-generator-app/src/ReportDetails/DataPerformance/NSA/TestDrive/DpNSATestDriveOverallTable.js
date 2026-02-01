@@ -17,36 +17,47 @@ const DpNSATestDriveOverallTable = ({ data, tableName }) => {
             return typeof val === 'number' ? val.toFixed(2) : "N/A";
         };
 
-        // Throughput
+        // Helper to calculate average of DL and UL metrics
+        const getAverage = (device, metricName) => {
+            const dlValue = device?.[`DL ${metricName}`]?.Mean;
+            const ulValue = device?.[`UL ${metricName}`]?.Mean;
+
+            if (dlValue !== undefined && ulValue !== undefined) {
+                return ((dlValue + ulValue) / 2).toFixed(2);
+            }
+            return "N/A";
+        };
+
+        // Throughput (average of DL and UL)
         overallMetrics.push({
             metric: "Mean Throughput (Mbps)",
             kpiType: "Throughput",
-            dutValue: getSafeValue(dutDl, 'Throughput.Mean'),
-            refValue: getSafeValue(refDl, 'Throughput.Mean'),
+            dutValue: getAverage(dutDl, 'Throughput'),
+            refValue: getAverage(refDl, 'Throughput'),
         });
 
-        // Jitter
+        // Jitter (average of DL and UL)
         overallMetrics.push({
             metric: "Mean Jitter (s)",
             kpiType: "Jitter",
-            dutValue: getSafeValue(dutDl, 'Jitter.Mean'),
-            refValue: getSafeValue(refDl, 'Jitter.Mean'),
+            dutValue: getAverage(dutDl, 'Jitter'),
+            refValue: getAverage(refDl, 'Jitter'),
         });
 
-        // Error Ratio
+        // Error Ratio (average of DL and UL)
         overallMetrics.push({
             metric: "Packet Failure Rate (%)",
             kpiType: "ErrorRatio",
-            dutValue: getSafeValue(dutDl, 'Error Ratio.Mean'),
-            refValue: getSafeValue(refDl, 'Error Ratio.Mean'),
+            dutValue: getAverage(dutDl, 'Error Ratio'),
+            refValue: getAverage(refDl, 'Error Ratio'),
         });
 
-        // Ping RTT
+        // Ping RTT (no DL/UL, try both "Mean" and "avg" keys)
         overallMetrics.push({
             metric: "Mean Round Trip Time (ms)",
             kpiType: "PingLatency",
-            dutValue: getSafeValue(dutDl, 'Ping RTT.avg'),
-            refValue: getSafeValue(refDl, 'Ping RTT.avg'),
+            dutValue: getSafeValue(dutDl, 'Ping RTT.Mean') !== "N/A" ? getSafeValue(dutDl, 'Ping RTT.Mean') : getSafeValue(dutDl, 'Ping RTT.avg'),
+            refValue: getSafeValue(refDl, 'Ping RTT.Mean') !== "N/A" ? getSafeValue(refDl, 'Ping RTT.Mean') : getSafeValue(refDl, 'Ping RTT.avg'),
         });
 
         return overallMetrics;

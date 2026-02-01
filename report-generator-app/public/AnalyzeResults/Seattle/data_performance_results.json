@@ -2092,6 +2092,82 @@
                         }
                     }
                 }
+            },
+            "Mobility Test": {
+                "DUT": {
+                    "Device Type": "DUT",
+                    "Network Type": "5G",
+                    "Analysis Type": "mhs_drive_performance",
+                    "DL Throughput": {
+                        "Mean": 10.003535945165947,
+                        "Standard Deviation": 0.0072755569198759305,
+                        "Minimum": 9.990144444444445,
+                        "Maximum": 10.015922222222223,
+                        "Number of Intervals": 20
+                    },
+                    "UL Throughput": {
+                        "Mean": 5.766752078122835,
+                        "Standard Deviation": 2.5725489149973852,
+                        "Minimum": 0.0013333333333333333,
+                        "Maximum": 9.70609090909091,
+                        "Number of Intervals": 20
+                    },
+                    "DL Jitter": {
+                        "Mean": 1.365906466512702
+                    },
+                    "UL Jitter": {
+                        "Mean": 1.6718888888888888
+                    },
+                    "DL Error Ratio": {
+                        "Mean": 0.05023339030023095
+                    },
+                    "UL Error Ratio": {
+                        "Mean": 0.05721977777777777
+                    },
+                    "Ping RTT": {
+                        "Mean": 57.79842105263158,
+                        "Min": 31.0,
+                        "Max": 207.0,
+                        "Std Dev": 13.052649800145707
+                    }
+                },
+                "REF": {
+                    "Device Type": "REF",
+                    "Network Type": "5G",
+                    "Analysis Type": "mhs_drive_performance",
+                    "DL Throughput": {
+                        "Mean": 9.986746741741742,
+                        "Standard Deviation": 0.05266120951641642,
+                        "Minimum": 9.819344444444445,
+                        "Maximum": 10.11261111111111,
+                        "Number of Intervals": 20
+                    },
+                    "UL Throughput": {
+                        "Mean": 6.916550630352536,
+                        "Standard Deviation": 1.1235396398161992,
+                        "Minimum": 5.113609756097562,
+                        "Maximum": 10.470815789473686,
+                        "Number of Intervals": 20
+                    },
+                    "DL Jitter": {
+                        "Mean": 1.3245787684170758
+                    },
+                    "UL Jitter": {
+                        "Mean": 2.277448275862069
+                    },
+                    "DL Error Ratio": {
+                        "Mean": 0.5827810192670949
+                    },
+                    "UL Error Ratio": {
+                        "Mean": 1.4743919642857144
+                    },
+                    "Ping RTT": {
+                        "Mean": 54.144516129032255,
+                        "Min": 30.0,
+                        "Max": 359.0,
+                        "Std Dev": 19.715737672308293
+                    }
+                }
             }
         }
     }

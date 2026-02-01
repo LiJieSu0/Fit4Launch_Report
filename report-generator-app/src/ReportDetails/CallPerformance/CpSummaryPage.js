@@ -62,7 +62,7 @@ const CpSummaryPage = () => {
 
 
     return (
-        <div className="page-content">
+        <div className="page-content" id="summary-page">
             <DynamicHeader level={1}>Call Performance Test Overview</DynamicHeader>
             <DynamicHeader level={2}>Seattle</DynamicHeader>
             <table className="general-table-style">

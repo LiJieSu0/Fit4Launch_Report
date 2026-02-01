@@ -61,7 +61,7 @@ const VqSummaryPage = () => {
   const markets = ['Seattle', 'New York'];
 
   return (
-    <div className="page-content">
+    <div className="page-content" id="summary-page">
       <DynamicHeader level={1}>Voice Quality Test Overview</DynamicHeader>
       <table className="general-table-style">
         <thead>

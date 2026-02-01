@@ -134,7 +134,7 @@ const WfcSummaryPage = () => {
   const newYorkHandoverData = getHandoverMarketRows('New York');
 
   return (
-    <div className="page-content">
+    <div className="page-content" id="summary-page">
       <DynamicHeader level={1}>WFC Performance Test Overview</DynamicHeader>
 
       <DynamicHeader level={2}>Seattle Market</DynamicHeader>

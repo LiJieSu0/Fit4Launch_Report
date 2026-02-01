@@ -605,7 +605,7 @@ function DpSummaryPage() {
 
   return (
     <div>
-      <div className='page-content'>
+      <div className='page-content' id="summary-page">
         <DynamicHeader level={1}>Data Performance Overview – All Network</DynamicHeader>
         <h4>Data Performance Overview – 5G Auto</h4>
         <DpSummaryTable tableData={httpSSData} />

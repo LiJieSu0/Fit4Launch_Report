@@ -1,7 +1,8 @@
 .footer {
   display: flex;
   flex-direction: column;
-  padding: 10px 1in; /* Adjust padding to match page margins */
+  padding: 10px 1in;
+  /* Adjust padding to match page margins */
   font-size: 10pt;
   color: #333;
   border-top: 1px solid #eee;
@@ -10,9 +11,12 @@
   left: 0;
   right: 0;
   width: 100%;
-  box-sizing: border-box; /* Include padding in the element's total width and height */
-  background-color: #ffffff; /* Light background for visibility */
-  z-index: 1000; /* Ensure it's above other content */
+  box-sizing: border-box;
+  /* Include padding in the element's total width and height */
+  background-color: #ffffff;
+  /* Light background for visibility */
+  z-index: 1000;
+  /* Ensure it's above other content */
 }
 
 .headerContent {
@@ -46,7 +50,8 @@
   border: 1px solid #333;
   padding: 8px;
   text-align: left;
-  width: 25%; /* Distribute width evenly among 4 columns */
+  width: 25%;
+  /* Distribute width evenly among 4 columns */
 }
 
 /* Print-specific styles */
@@ -57,7 +62,8 @@
     left: 0;
     right: 0;
     width: 100%;
-    padding: 5px 1in; /* Adjust padding for print */
+    padding: 5px 1in;
+    /* Adjust padding for print */
     background-color: transparent;
     border-top: 1px solid #eee;
     z-index: 1000;

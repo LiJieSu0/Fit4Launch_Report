@@ -11,7 +11,7 @@ const ReportFooter = ({ reportType, version = '1.0', issuer = 'Claude Li' }) => 
           ATMC Labs: {reportType} Field Test Report
         </div>
         <div className={styles.rightHeader}>
-          <a href="#table-of-contents" className={styles.tableOfContentsLink}>
+          <a href="#summary-page" className={styles.tableOfContentsLink}>
             Back to Top
           </a>
         </div>

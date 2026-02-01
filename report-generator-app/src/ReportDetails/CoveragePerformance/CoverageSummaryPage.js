@@ -5,7 +5,7 @@ import DynamicHeader from '../../CommonPage/DynamicHeader';
 
 function CoverageSummaryPage() {
   return (
-    <div className='page-content'>
+    <div className='page-content' id="summary-page">
       <DynamicHeader level={1}>Coverage Test Overview</DynamicHeader>
       <CoverageSummaryTable />
     </div>

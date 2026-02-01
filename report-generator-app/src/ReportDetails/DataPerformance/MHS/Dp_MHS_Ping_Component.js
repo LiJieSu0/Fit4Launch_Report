@@ -120,7 +120,7 @@ function Dp_MHS_Ping_Component({ city: propCity }) {
   return (
     <>
       <div className="page-content">
-        <DynamicHeader level={3}>Ping Test - Mobile Hotspot - 5G Auto - {city}</DynamicHeader>
+        <DynamicHeader level={3}>Ping Test - Mobile Hotspot - {city}</DynamicHeader>
         <h4>MHS Ping Test Overview</h4>
         <DpPingOverallTable data={data} />
       </div>

@@ -31,27 +31,28 @@ function Dp_Webbrowser_Component({ city: propCity }) {
 
     // Update to use dataPerformance from the fetched JSON
     // Path: ["Data Performance"]["5G AUTO DP"]["5G Auto Data Web-Kepler"]
-    const WebBrowserData = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["5G Auto Data Web-Kepler"];
+    const WebBrowserData = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["5G Auto Data Web-Kepler"] || { DUT: {}, REF: {} };
 
-    const dutData = WebBrowserData.DUT;
-    const refData = WebBrowserData.REF;
+    const defaultMetric = { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 };
+    const dutData = WebBrowserData.DUT?.["Web Page Load Time"] || defaultMetric;
+    const refData = WebBrowserData.REF?.["Web Page Load Time"] || defaultMetric;
 
     const Dp_WebData = [
-        { category: "Average", dut: { device: "DUT", overall: dutData["Web Page Load Time"]["Mean"].toFixed(3) }, ref: { device: "REF", overall: refData["Web Page Load Time"]["Mean"].toFixed(3) } },
-        { category: "Standard Deviation", dut: { device: "DUT", overall: dutData["Web Page Load Time"]["Standard Deviation"].toFixed(3) }, ref: { device: "REF", overall: refData["Web Page Load Time"]["Standard Deviation"].toFixed(3) } },
-        { category: "Maximum", dut: { device: "DUT", overall: dutData["Web Page Load Time"]["Maximum"].toFixed(3) }, ref: { device: "REF", overall: refData["Web Page Load Time"]["Maximum"].toFixed(3) } },
-        { category: "Minimum", dut: { device: "DUT", overall: dutData["Web Page Load Time"]["Minimum"].toFixed(3) }, ref: { device: "REF", overall: refData["Web Page Load Time"]["Minimum"].toFixed(3) } },
+        { category: "Average", dut: { device: "DUT", overall: (dutData.Mean || 0).toFixed(3) }, ref: { device: "REF", overall: (refData.Mean || 0).toFixed(3) } },
+        { category: "Standard Deviation", dut: { device: "DUT", overall: (dutData["Standard Deviation"] || 0).toFixed(3) }, ref: { device: "REF", overall: (refData["Standard Deviation"] || 0).toFixed(3) } },
+        { category: "Maximum", dut: { device: "DUT", overall: (dutData.Maximum || 0).toFixed(3) }, ref: { device: "REF", overall: (refData.Maximum || 0).toFixed(3) } },
+        { category: "Minimum", dut: { device: "DUT", overall: (dutData.Minimum || 0).toFixed(3) }, ref: { device: "REF", overall: (refData.Minimum || 0).toFixed(3) } },
     ];
 
     const overallTableData = {
-        average: { DUT: { Overall: dutData["Web Page Load Time"]["Mean"].toFixed(3) }, REF: { Overall: refData["Web Page Load Time"]["Mean"].toFixed(3) } },
-        std_dev: { DUT: { Overall: dutData["Web Page Load Time"]["Standard Deviation"].toFixed(3) }, REF: { Overall: refData["Web Page Load Time"]["Standard Deviation"].toFixed(3) } },
-        max: { DUT: { Overall: dutData["Web Page Load Time"]["Maximum"].toFixed(3) }, REF: { Overall: refData["Web Page Load Time"]["Maximum"].toFixed(3) } },
-        min: { DUT: { Overall: dutData["Web Page Load Time"]["Minimum"].toFixed(3) }, REF: { Overall: refData["Web Page Load Time"]["Minimum"].toFixed(3) } },
+        average: { DUT: { Overall: (dutData.Mean || 0).toFixed(3) }, REF: { Overall: (refData.Mean || 0).toFixed(3) } },
+        std_dev: { DUT: { Overall: (dutData["Standard Deviation"] || 0).toFixed(3) }, REF: { Overall: (refData["Standard Deviation"] || 0).toFixed(3) } },
+        max: { DUT: { Overall: (dutData.Maximum || 0).toFixed(3) }, REF: { Overall: (refData.Maximum || 0).toFixed(3) } },
+        min: { DUT: { Overall: (dutData.Minimum || 0).toFixed(3) }, REF: { Overall: (refData.Minimum || 0).toFixed(3) } },
     };
 
     const histogramData = [
-        { name: "Mean", DUT: dutData["Web Page Load Time"]["Mean"], REF: refData["Web Page Load Time"]["Mean"] },
+        { name: "Mean", DUT: dutData.Mean || 0, REF: refData.Mean || 0 },
     ];
 
     const barKeys = [

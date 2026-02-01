@@ -94,8 +94,8 @@ function Dp_Ping_Component({ city: propCity }) {
 
     const pingHistogramData = [...locations, "Overall"].map(location => ({
         name: location,
-        DUT: parseFloat(processedPingData.average.DUT[location]),
-        REF: parseFloat(processedPingData.average.REF[location]),
+        DUT: parseFloat(processedPingData.average.DUT[location] || 0),
+        REF: parseFloat(processedPingData.average.REF[location] || 0),
     }));
 
     const barKeys = [

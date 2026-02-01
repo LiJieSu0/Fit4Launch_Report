@@ -32,22 +32,30 @@ function Dp_Udp_Component({ city: propCity }) {
 
   // Update to use dataPerformance from the fetched JSON
   // Path: ["Data Performance"]["5G AUTO DP"]["Udp Test"]
-  const udp_Data_Source = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["Udp Test"];
+  const udp_Data_Source = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["Udp Test"] || { DL: {}, UL: {} };
 
-  // Helper objects for tasks
-  const dl200Task = udp_Data_Source.DL["UDP Download Task at 200 Mbps for 10 seconds"];
-  const dl400Task = udp_Data_Source.DL["UDP Download Task at 400 Mbps for 10 seconds"];
-  // Note: UL Task names from JSON
-  const ul10Task = udp_Data_Source.UL["UDP Upload Task at 10 Mbps for 10 seconds"];
-  const ul20Task = udp_Data_Source.UL["UDP Upload Task at 20 Mbps for 10 seconds"];
+  // Helper for safe access
+  const getUdpMetric = (dir, task, category, device, metric) => {
+    return udp_Data_Source?.[dir]?.[task]?.[category]?.[device]?.[metric]?.Mean || 0;
+  };
+
+  const getThroughputMetric = (dir, task, category, device, field = 'Mean') => {
+    return udp_Data_Source?.[dir]?.[task]?.[category]?.[device]?.Throughput?.[field] || 0;
+  };
 
   // DL Mean Throughput for 200 Mbps
-  const dlMeanThroughput200_DUT_Good = dl200Task.Good.DUT.Throughput.Mean;
-  const dlMeanThroughput200_REF_Good = dl200Task.Good.REF.Throughput.Mean;
-  const dlMeanThroughput200_DUT_Moderate = dl200Task.Moderate.DUT.Throughput.Mean;
-  const dlMeanThroughput200_REF_Moderate = dl200Task.Moderate.REF.Throughput.Mean;
-  const dlMeanThroughput200_DUT_Poor = dl200Task.Poor.DUT.Throughput.Mean;
-  const dlMeanThroughput200_REF_Poor = dl200Task.Poor.REF.Throughput.Mean;
+  const dl200TaskName = "UDP Download Task at 200 Mbps for 10 seconds";
+  const dlMeanThroughput200_DUT_Good = getThroughputMetric('DL', dl200TaskName, 'Good', 'DUT');
+  const dlMeanThroughput200_REF_Good = getThroughputMetric('DL', dl200TaskName, 'Good', 'REF');
+  const dlMeanThroughput200_DUT_Moderate = getThroughputMetric('DL', dl200TaskName, 'Moderate', 'DUT');
+  const dlMeanThroughput200_REF_Moderate = getThroughputMetric('DL', dl200TaskName, 'Moderate', 'REF');
+  const dlMeanThroughput200_DUT_Poor = getThroughputMetric('DL', dl200TaskName, 'Poor', 'DUT');
+  const dlMeanThroughput200_REF_Poor = getThroughputMetric('DL', dl200TaskName, 'Poor', 'REF');
+
+  const calculateAverage = (vals) => {
+    const activeVals = vals.filter(v => v > 0);
+    return activeVals.length > 0 ? activeVals.reduce((a, b) => a + b, 0) / activeVals.length : 0;
+  };
 
   const dlMeanThroughput200HistogramData = [
     { name: 'Good', DUT: dlMeanThroughput200_DUT_Good, REF: dlMeanThroughput200_REF_Good },
@@ -55,18 +63,19 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: dlMeanThroughput200_DUT_Poor, REF: dlMeanThroughput200_REF_Poor },
     {
       name: 'Overall',
-      DUT: (dlMeanThroughput200_DUT_Good + dlMeanThroughput200_DUT_Moderate + dlMeanThroughput200_DUT_Poor) / 3,
-      REF: (dlMeanThroughput200_REF_Good + dlMeanThroughput200_REF_Moderate + dlMeanThroughput200_REF_Poor) / 3
+      DUT: calculateAverage([dlMeanThroughput200_DUT_Good, dlMeanThroughput200_DUT_Moderate, dlMeanThroughput200_DUT_Poor]),
+      REF: calculateAverage([dlMeanThroughput200_REF_Good, dlMeanThroughput200_REF_Moderate, dlMeanThroughput200_REF_Poor])
     },
   ];
 
   // DL Mean Throughput for 400 Mbps
-  const dlMeanThroughput400_DUT_Good = dl400Task.Good.DUT.Throughput.Mean;
-  const dlMeanThroughput400_REF_Good = dl400Task.Good.REF.Throughput.Mean;
-  const dlMeanThroughput400_DUT_Moderate = dl400Task.Moderate.DUT.Throughput.Mean;
-  const dlMeanThroughput400_REF_Moderate = dl400Task.Moderate.REF.Throughput.Mean;
-  const dlMeanThroughput400_DUT_Poor = dl400Task.Poor.DUT.Throughput.Mean;
-  const dlMeanThroughput400_REF_Poor = dl400Task.Poor.REF.Throughput.Mean;
+  const dl400TaskName = "UDP Download Task at 400 Mbps for 10 seconds";
+  const dlMeanThroughput400_DUT_Good = getThroughputMetric('DL', dl400TaskName, 'Good', 'DUT');
+  const dlMeanThroughput400_REF_Good = getThroughputMetric('DL', dl400TaskName, 'Good', 'REF');
+  const dlMeanThroughput400_DUT_Moderate = getThroughputMetric('DL', dl400TaskName, 'Moderate', 'DUT');
+  const dlMeanThroughput400_REF_Moderate = getThroughputMetric('DL', dl400TaskName, 'Moderate', 'REF');
+  const dlMeanThroughput400_DUT_Poor = getThroughputMetric('DL', dl400TaskName, 'Poor', 'DUT');
+  const dlMeanThroughput400_REF_Poor = getThroughputMetric('DL', dl400TaskName, 'Poor', 'REF');
 
   const dlMeanThroughput400HistogramData = [
     { name: 'Good', DUT: dlMeanThroughput400_DUT_Good, REF: dlMeanThroughput400_REF_Good },
@@ -74,18 +83,18 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: dlMeanThroughput400_DUT_Poor, REF: dlMeanThroughput400_REF_Poor },
     {
       name: 'Overall',
-      DUT: (dlMeanThroughput400_DUT_Good + dlMeanThroughput400_DUT_Moderate + dlMeanThroughput400_DUT_Poor) / 3,
-      REF: (dlMeanThroughput400_REF_Good + dlMeanThroughput400_REF_Moderate + dlMeanThroughput400_REF_Poor) / 3
+      DUT: calculateAverage([dlMeanThroughput400_DUT_Good, dlMeanThroughput400_DUT_Moderate, dlMeanThroughput400_DUT_Poor]),
+      REF: calculateAverage([dlMeanThroughput400_REF_Good, dlMeanThroughput400_REF_Moderate, dlMeanThroughput400_REF_Poor])
     },
   ];
 
   // DL Mean Jitter for 200 Mbps
-  const dlMeanJitter200_DUT_Good = dl200Task.Good.DUT.Jitter.Mean;
-  const dlMeanJitter200_REF_Good = dl200Task.Good.REF.Jitter.Mean;
-  const dlMeanJitter200_DUT_Moderate = dl200Task.Moderate.DUT.Jitter.Mean;
-  const dlMeanJitter200_REF_Moderate = dl200Task.Moderate.REF.Jitter.Mean;
-  const dlMeanJitter200_DUT_Poor = dl200Task.Poor.DUT.Jitter.Mean;
-  const dlMeanJitter200_REF_Poor = dl200Task.Poor.REF.Jitter.Mean;
+  const dlMeanJitter200_DUT_Good = getUdpMetric('DL', dl200TaskName, 'Good', 'DUT', 'Jitter');
+  const dlMeanJitter200_REF_Good = getUdpMetric('DL', dl200TaskName, 'Good', 'REF', 'Jitter');
+  const dlMeanJitter200_DUT_Moderate = getUdpMetric('DL', dl200TaskName, 'Moderate', 'DUT', 'Jitter');
+  const dlMeanJitter200_REF_Moderate = getUdpMetric('DL', dl200TaskName, 'Moderate', 'REF', 'Jitter');
+  const dlMeanJitter200_DUT_Poor = getUdpMetric('DL', dl200TaskName, 'Poor', 'DUT', 'Jitter');
+  const dlMeanJitter200_REF_Poor = getUdpMetric('DL', dl200TaskName, 'Poor', 'REF', 'Jitter');
 
   const dlMeanJitter200HistogramData = [
     { name: 'Good', DUT: dlMeanJitter200_DUT_Good, REF: dlMeanJitter200_REF_Good },
@@ -93,18 +102,18 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: dlMeanJitter200_DUT_Poor, REF: dlMeanJitter200_REF_Poor },
     {
       name: 'Overall',
-      DUT: (dlMeanJitter200_DUT_Good + dlMeanJitter200_DUT_Moderate + dlMeanJitter200_DUT_Poor) / 3,
-      REF: (dlMeanJitter200_REF_Good + dlMeanJitter200_REF_Moderate + dlMeanJitter200_REF_Poor) / 3
+      DUT: calculateAverage([dlMeanJitter200_DUT_Good, dlMeanJitter200_DUT_Moderate, dlMeanJitter200_DUT_Poor]),
+      REF: calculateAverage([dlMeanJitter200_REF_Good, dlMeanJitter200_REF_Moderate, dlMeanJitter200_REF_Poor])
     },
   ];
 
   // DL Mean Jitter for 400 Mbps
-  const dlMeanJitter400_DUT_Good = dl400Task.Good.DUT.Jitter.Mean;
-  const dlMeanJitter400_REF_Good = dl400Task.Good.REF.Jitter.Mean;
-  const dlMeanJitter400_DUT_Moderate = dl400Task.Moderate.DUT.Jitter.Mean;
-  const dlMeanJitter400_REF_Moderate = dl400Task.Moderate.REF.Jitter.Mean;
-  const dlMeanJitter400_DUT_Poor = dl400Task.Poor.DUT.Jitter.Mean;
-  const dlMeanJitter400_REF_Poor = dl400Task.Poor.REF.Jitter.Mean;
+  const dlMeanJitter400_DUT_Good = getUdpMetric('DL', dl400TaskName, 'Good', 'DUT', 'Jitter');
+  const dlMeanJitter400_REF_Good = getUdpMetric('DL', dl400TaskName, 'Good', 'REF', 'Jitter');
+  const dlMeanJitter400_DUT_Moderate = getUdpMetric('DL', dl400TaskName, 'Moderate', 'DUT', 'Jitter');
+  const dlMeanJitter400_REF_Moderate = getUdpMetric('DL', dl400TaskName, 'Moderate', 'REF', 'Jitter');
+  const dlMeanJitter400_DUT_Poor = getUdpMetric('DL', dl400TaskName, 'Poor', 'DUT', 'Jitter');
+  const dlMeanJitter400_REF_Poor = getUdpMetric('DL', dl400TaskName, 'Poor', 'REF', 'Jitter');
 
   const dlMeanJitter400HistogramData = [
     { name: 'Good', DUT: dlMeanJitter400_DUT_Good, REF: dlMeanJitter400_REF_Good },
@@ -112,19 +121,18 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: dlMeanJitter400_DUT_Poor, REF: dlMeanJitter400_REF_Poor },
     {
       name: 'Overall',
-      DUT: (dlMeanJitter400_DUT_Good + dlMeanJitter400_DUT_Moderate + dlMeanJitter400_DUT_Poor) / 3,
-      REF: (dlMeanJitter400_REF_Good + dlMeanJitter400_REF_Moderate + dlMeanJitter400_REF_Poor) / 3
+      DUT: calculateAverage([dlMeanJitter400_DUT_Good, dlMeanJitter400_DUT_Moderate, dlMeanJitter400_DUT_Poor]),
+      REF: calculateAverage([dlMeanJitter400_REF_Good, dlMeanJitter400_REF_Moderate, dlMeanJitter400_REF_Poor])
     },
   ];
 
   // DL Packet Failure Rate for 200 Mbps
-  // Note: JSON key is "Error Ratio"
-  const dlPFR200_DUT_Good = dl200Task.Good.DUT["Error Ratio"].Mean;
-  const dlPFR200_REF_Good = dl200Task.Good.REF["Error Ratio"].Mean;
-  const dlPFR200_DUT_Moderate = dl200Task.Moderate.DUT["Error Ratio"].Mean;
-  const dlPFR200_REF_Moderate = dl200Task.Moderate.REF["Error Ratio"].Mean;
-  const dlPFR200_DUT_Poor = dl200Task.Poor.DUT["Error Ratio"].Mean;
-  const dlPFR200_REF_Poor = dl200Task.Poor.REF["Error Ratio"].Mean;
+  const dlPFR200_DUT_Good = getUdpMetric('DL', dl200TaskName, 'Good', 'DUT', 'Error Ratio');
+  const dlPFR200_REF_Good = getUdpMetric('DL', dl200TaskName, 'Good', 'REF', 'Error Ratio');
+  const dlPFR200_DUT_Moderate = getUdpMetric('DL', dl200TaskName, 'Moderate', 'DUT', 'Error Ratio');
+  const dlPFR200_REF_Moderate = getUdpMetric('DL', dl200TaskName, 'Moderate', 'REF', 'Error Ratio');
+  const dlPFR200_DUT_Poor = getUdpMetric('DL', dl200TaskName, 'Poor', 'DUT', 'Error Ratio');
+  const dlPFR200_REF_Poor = getUdpMetric('DL', dl200TaskName, 'Poor', 'REF', 'Error Ratio');
 
   const dlPFR200HistogramData = [
     { name: 'Good', DUT: dlPFR200_DUT_Good, REF: dlPFR200_REF_Good },
@@ -132,18 +140,18 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: dlPFR200_DUT_Poor, REF: dlPFR200_REF_Poor },
     {
       name: 'Overall',
-      DUT: (dlPFR200_DUT_Good + dlPFR200_DUT_Moderate + dlPFR200_DUT_Poor) / 3,
-      REF: (dlPFR200_REF_Good + dlPFR200_REF_Moderate + dlPFR200_REF_Poor) / 3
+      DUT: calculateAverage([dlPFR200_DUT_Good, dlPFR200_DUT_Moderate, dlPFR200_DUT_Poor]),
+      REF: calculateAverage([dlPFR200_REF_Good, dlPFR200_REF_Moderate, dlPFR200_REF_Poor])
     },
   ];
 
   // DL Packet Failure Rate for 400 Mbps
-  const dlPFR400_DUT_Good = dl400Task.Good.DUT["Error Ratio"].Mean;
-  const dlPFR400_REF_Good = dl400Task.Good.REF["Error Ratio"].Mean;
-  const dlPFR400_DUT_Moderate = dl400Task.Moderate.DUT["Error Ratio"].Mean;
-  const dlPFR400_REF_Moderate = dl400Task.Moderate.REF["Error Ratio"].Mean;
-  const dlPFR400_DUT_Poor = dl400Task.Poor.DUT["Error Ratio"].Mean;
-  const dlPFR400_REF_Poor = dl400Task.Poor.REF["Error Ratio"].Mean;
+  const dlPFR400_DUT_Good = getUdpMetric('DL', dl400TaskName, 'Good', 'DUT', 'Error Ratio');
+  const dlPFR400_REF_Good = getUdpMetric('DL', dl400TaskName, 'Good', 'REF', 'Error Ratio');
+  const dlPFR400_DUT_Moderate = getUdpMetric('DL', dl400TaskName, 'Moderate', 'DUT', 'Error Ratio');
+  const dlPFR400_REF_Moderate = getUdpMetric('DL', dl400TaskName, 'Moderate', 'REF', 'Error Ratio');
+  const dlPFR400_DUT_Poor = getUdpMetric('DL', dl400TaskName, 'Poor', 'DUT', 'Error Ratio');
+  const dlPFR400_REF_Poor = getUdpMetric('DL', dl400TaskName, 'Poor', 'REF', 'Error Ratio');
 
   const dlPFR400HistogramData = [
     { name: 'Good', DUT: dlPFR400_DUT_Good, REF: dlPFR400_REF_Good },
@@ -151,11 +159,14 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: dlPFR400_DUT_Poor, REF: dlPFR400_REF_Poor },
     {
       name: 'Overall',
-      DUT: (dlPFR400_DUT_Good + dlPFR400_DUT_Moderate + dlPFR400_DUT_Poor) / 3,
-      REF: (dlPFR400_REF_Good + dlPFR400_REF_Moderate + dlPFR400_REF_Poor) / 3
+      DUT: calculateAverage([dlPFR400_DUT_Good, dlPFR400_DUT_Moderate, dlPFR400_DUT_Poor]),
+      REF: calculateAverage([dlPFR400_REF_Good, dlPFR400_REF_Moderate, dlPFR400_REF_Poor])
     },
   ];
 
+
+  const ul10TaskName = "UDP Upload Task at 10 Mbps for 10 seconds";
+  const ul20TaskName = "UDP Upload Task at 20 Mbps for 10 seconds";
 
   const barKeys = [
     { key: 'DUT', fill: CHART_COLOR_DUT },
@@ -163,16 +174,14 @@ function Dp_Udp_Component({ city: propCity }) {
   ];
 
   const udp_Stationary_DL = [
-    // Mean Throughput - 200 Mbps
-
     {
       metric: "Mean Throughput (Mbps)",
       idealThroughput: "200",
       deviceName: "DUT",
       location: {
-        good: dl200Task.Good.DUT.Throughput.Mean,
-        moderate: dl200Task.Moderate.DUT.Throughput.Mean,
-        poor: dl200Task.Poor.DUT.Throughput.Mean,
+        good: getThroughputMetric('DL', dl200TaskName, 'Good', 'DUT'),
+        moderate: getThroughputMetric('DL', dl200TaskName, 'Moderate', 'DUT'),
+        poor: getThroughputMetric('DL', dl200TaskName, 'Poor', 'DUT'),
       },
     },
     {
@@ -180,21 +189,19 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "REF",
       location: {
-        good: dl200Task.Good.REF.Throughput.Mean,
-        moderate: dl200Task.Moderate.REF.Throughput.Mean,
-        poor: dl200Task.Poor.REF.Throughput.Mean,
+        good: getThroughputMetric('DL', dl200TaskName, 'Good', 'REF'),
+        moderate: getThroughputMetric('DL', dl200TaskName, 'Moderate', 'REF'),
+        poor: getThroughputMetric('DL', dl200TaskName, 'Poor', 'REF'),
       },
     },
-    // Mean Throughput - 400 Mbps
-
     {
       metric: "Mean Throughput (Mbps)",
       idealThroughput: "400",
       deviceName: "DUT",
       location: {
-        good: dl400Task.Good.DUT.Throughput.Mean,
-        moderate: dl400Task.Moderate.DUT.Throughput.Mean,
-        poor: dl400Task.Poor.DUT.Throughput.Mean,
+        good: getThroughputMetric('DL', dl400TaskName, 'Good', 'DUT'),
+        moderate: getThroughputMetric('DL', dl400TaskName, 'Moderate', 'DUT'),
+        poor: getThroughputMetric('DL', dl400TaskName, 'Poor', 'DUT'),
       },
     },
     {
@@ -202,21 +209,19 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "REF",
       location: {
-        good: dl400Task.Good.REF.Throughput.Mean,
-        moderate: dl400Task.Moderate.REF.Throughput.Mean,
-        poor: dl400Task.Poor.REF.Throughput.Mean,
+        good: getThroughputMetric('DL', dl400TaskName, 'Good', 'REF'),
+        moderate: getThroughputMetric('DL', dl400TaskName, 'Moderate', 'REF'),
+        poor: getThroughputMetric('DL', dl400TaskName, 'Poor', 'REF'),
       },
     },
-    // Max Throughput - 200 Mbps
-
     {
       metric: "Max Throughput (Mbps)",
       idealThroughput: "200",
       deviceName: "DUT",
       location: {
-        good: dl200Task.Good.DUT.Throughput.Maximum,
-        moderate: dl200Task.Moderate.DUT.Throughput.Maximum,
-        poor: dl200Task.Poor.DUT.Throughput.Maximum,
+        good: getThroughputMetric('DL', dl200TaskName, 'Good', 'DUT', 'Maximum'),
+        moderate: getThroughputMetric('DL', dl200TaskName, 'Moderate', 'DUT', 'Maximum'),
+        poor: getThroughputMetric('DL', dl200TaskName, 'Poor', 'DUT', 'Maximum'),
       },
     },
     {
@@ -224,22 +229,19 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "REF",
       location: {
-        good: dl200Task.Good.REF.Throughput.Maximum,
-        moderate: dl200Task.Moderate.REF.Throughput.Maximum,
-        poor: dl200Task.Poor.REF.Throughput.Maximum,
+        good: getThroughputMetric('DL', dl200TaskName, 'Good', 'REF', 'Maximum'),
+        moderate: getThroughputMetric('DL', dl200TaskName, 'Moderate', 'REF', 'Maximum'),
+        poor: getThroughputMetric('DL', dl200TaskName, 'Poor', 'REF', 'Maximum'),
       },
     },
-
-    // Max Throughput - 400 Mbps
-
     {
       metric: "Max Throughput (Mbps)",
       idealThroughput: "400",
       deviceName: "DUT",
       location: {
-        good: dl400Task.Good.DUT.Throughput.Maximum,
-        moderate: dl400Task.Moderate.DUT.Throughput.Maximum,
-        poor: dl400Task.Poor.DUT.Throughput.Maximum,
+        good: getThroughputMetric('DL', dl400TaskName, 'Good', 'DUT', 'Maximum'),
+        moderate: getThroughputMetric('DL', dl400TaskName, 'Moderate', 'DUT', 'Maximum'),
+        poor: getThroughputMetric('DL', dl400TaskName, 'Poor', 'DUT', 'Maximum'),
       },
     },
     {
@@ -247,21 +249,19 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "REF",
       location: {
-        good: dl400Task.Good.REF.Throughput.Maximum,
-        moderate: dl400Task.Moderate.REF.Throughput.Maximum,
-        poor: dl400Task.Poor.REF.Throughput.Maximum,
+        good: getThroughputMetric('DL', dl400TaskName, 'Good', 'REF', 'Maximum'),
+        moderate: getThroughputMetric('DL', dl400TaskName, 'Moderate', 'REF', 'Maximum'),
+        poor: getThroughputMetric('DL', dl400TaskName, 'Poor', 'REF', 'Maximum'),
       },
     },
-    // Min Throughput - 400 Mbps
-    // Min Throughput - 200 Mbps
     {
       metric: "Min Throughput (Mbps)",
       idealThroughput: "200",
       deviceName: "DUT",
       location: {
-        good: dl200Task.Good.DUT.Throughput.Minimum,
-        moderate: dl200Task.Moderate.DUT.Throughput.Minimum,
-        poor: dl200Task.Poor.DUT.Throughput.Minimum,
+        good: getThroughputMetric('DL', dl200TaskName, 'Good', 'DUT', 'Minimum'),
+        moderate: getThroughputMetric('DL', dl200TaskName, 'Moderate', 'DUT', 'Minimum'),
+        poor: getThroughputMetric('DL', dl200TaskName, 'Poor', 'DUT', 'Minimum'),
       },
     },
     {
@@ -269,9 +269,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "REF",
       location: {
-        good: dl200Task.Good.REF.Throughput.Minimum,
-        moderate: dl200Task.Moderate.REF.Throughput.Minimum,
-        poor: dl200Task.Poor.REF.Throughput.Minimum,
+        good: getThroughputMetric('DL', dl200TaskName, 'Good', 'REF', 'Minimum'),
+        moderate: getThroughputMetric('DL', dl200TaskName, 'Moderate', 'REF', 'Minimum'),
+        poor: getThroughputMetric('DL', dl200TaskName, 'Poor', 'REF', 'Minimum'),
       },
     },
     {
@@ -279,9 +279,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "DUT",
       location: {
-        good: dl400Task.Good.DUT.Throughput.Minimum,
-        moderate: dl400Task.Moderate.DUT.Throughput.Minimum,
-        poor: dl400Task.Poor.DUT.Throughput.Minimum,
+        good: getThroughputMetric('DL', dl400TaskName, 'Good', 'DUT', 'Minimum'),
+        moderate: getThroughputMetric('DL', dl400TaskName, 'Moderate', 'DUT', 'Minimum'),
+        poor: getThroughputMetric('DL', dl400TaskName, 'Poor', 'DUT', 'Minimum'),
       },
     },
     {
@@ -289,21 +289,19 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "REF",
       location: {
-        good: dl400Task.Good.REF.Throughput.Minimum,
-        moderate: dl400Task.Moderate.REF.Throughput.Minimum,
-        poor: dl400Task.Poor.REF.Throughput.Minimum,
+        good: getThroughputMetric('DL', dl400TaskName, 'Good', 'REF', 'Minimum'),
+        moderate: getThroughputMetric('DL', dl400TaskName, 'Moderate', 'REF', 'Minimum'),
+        poor: getThroughputMetric('DL', dl400TaskName, 'Poor', 'REF', 'Minimum'),
       },
     },
-    // Mean Jitter - 200 Mbps
-
     {
       metric: "Mean Jitter (ms)",
       idealThroughput: "200",
       deviceName: "DUT",
       location: {
-        good: dl200Task.Good.DUT.Jitter.Mean,
-        moderate: dl200Task.Moderate.DUT.Jitter.Mean,
-        poor: dl200Task.Poor.DUT.Jitter.Mean,
+        good: getUdpMetric('DL', dl200TaskName, 'Good', 'DUT', 'Jitter'),
+        moderate: getUdpMetric('DL', dl200TaskName, 'Moderate', 'DUT', 'Jitter'),
+        poor: getUdpMetric('DL', dl200TaskName, 'Poor', 'DUT', 'Jitter'),
       },
     },
     {
@@ -311,21 +309,19 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "REF",
       location: {
-        good: dl200Task.Good.REF.Jitter.Mean,
-        moderate: dl200Task.Moderate.REF.Jitter.Mean,
-        poor: dl200Task.Poor.REF.Jitter.Mean,
+        good: getUdpMetric('DL', dl200TaskName, 'Good', 'REF', 'Jitter'),
+        moderate: getUdpMetric('DL', dl200TaskName, 'Moderate', 'REF', 'Jitter'),
+        poor: getUdpMetric('DL', dl200TaskName, 'Poor', 'REF', 'Jitter'),
       },
     },
-    // Mean Jitter - 400 Mbps
-
     {
       metric: "Mean Jitter (ms)",
       idealThroughput: "400",
       deviceName: "DUT",
       location: {
-        good: dl400Task.Good.DUT.Jitter.Mean,
-        moderate: dl400Task.Moderate.DUT.Jitter.Mean,
-        poor: dl400Task.Poor.DUT.Jitter.Mean,
+        good: getUdpMetric('DL', dl400TaskName, 'Good', 'DUT', 'Jitter'),
+        moderate: getUdpMetric('DL', dl400TaskName, 'Moderate', 'DUT', 'Jitter'),
+        poor: getUdpMetric('DL', dl400TaskName, 'Poor', 'DUT', 'Jitter'),
       },
     },
     {
@@ -333,21 +329,19 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "REF",
       location: {
-        good: dl400Task.Good.REF.Jitter.Mean,
-        moderate: dl400Task.Moderate.REF.Jitter.Mean,
-        poor: dl400Task.Poor.REF.Jitter.Mean,
+        good: getUdpMetric('DL', dl400TaskName, 'Good', 'REF', 'Jitter'),
+        moderate: getUdpMetric('DL', dl400TaskName, 'Moderate', 'REF', 'Jitter'),
+        poor: getUdpMetric('DL', dl400TaskName, 'Poor', 'REF', 'Jitter'),
       },
     },
-    // Packet Failure Rate - 200 Mbps
-
     {
       metric: "Packet Failure Rate (%)",
       idealThroughput: "200",
       deviceName: "DUT",
       location: {
-        good: dl200Task.Good.DUT["Error Ratio"].Mean,
-        moderate: dl200Task.Moderate.DUT["Error Ratio"].Mean,
-        poor: dl200Task.Poor.DUT["Error Ratio"].Mean,
+        good: getUdpMetric('DL', dl200TaskName, 'Good', 'DUT', 'Error Ratio'),
+        moderate: getUdpMetric('DL', dl200TaskName, 'Moderate', 'DUT', 'Error Ratio'),
+        poor: getUdpMetric('DL', dl200TaskName, 'Poor', 'DUT', 'Error Ratio'),
       },
     },
     {
@@ -355,21 +349,19 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "REF",
       location: {
-        good: dl200Task.Good.REF["Error Ratio"].Mean,
-        moderate: dl200Task.Moderate.REF["Error Ratio"].Mean,
-        poor: dl200Task.Poor.REF["Error Ratio"].Mean,
+        good: getUdpMetric('DL', dl200TaskName, 'Good', 'REF', 'Error Ratio'),
+        moderate: getUdpMetric('DL', dl200TaskName, 'Moderate', 'REF', 'Error Ratio'),
+        poor: getUdpMetric('DL', dl200TaskName, 'Poor', 'REF', 'Error Ratio'),
       },
     },
-    // Packet Failure Rate - 400 Mbps
-
     {
       metric: "Packet Failure Rate (%)",
       idealThroughput: "400",
       deviceName: "DUT",
       location: {
-        good: dl400Task.Good.DUT["Error Ratio"].Mean,
-        moderate: dl400Task.Moderate.DUT["Error Ratio"].Mean,
-        poor: dl400Task.Poor.DUT["Error Ratio"].Mean,
+        good: getUdpMetric('DL', dl400TaskName, 'Good', 'DUT', 'Error Ratio'),
+        moderate: getUdpMetric('DL', dl400TaskName, 'Moderate', 'DUT', 'Error Ratio'),
+        poor: getUdpMetric('DL', dl400TaskName, 'Poor', 'DUT', 'Error Ratio'),
       },
     },
     {
@@ -377,9 +369,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "REF",
       location: {
-        good: dl400Task.Good.REF["Error Ratio"].Mean,
-        moderate: dl400Task.Moderate.REF["Error Ratio"].Mean,
-        poor: dl400Task.Poor.REF["Error Ratio"].Mean,
+        good: getUdpMetric('DL', dl400TaskName, 'Good', 'REF', 'Error Ratio'),
+        moderate: getUdpMetric('DL', dl400TaskName, 'Moderate', 'REF', 'Error Ratio'),
+        poor: getUdpMetric('DL', dl400TaskName, 'Poor', 'REF', 'Error Ratio'),
       },
     }
   ];
@@ -390,9 +382,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "DUT",
       location: {
-        good: ul10Task.Good.DUT.Throughput.Mean,
-        moderate: ul10Task.Moderate.DUT.Throughput.Mean,
-        poor: ul10Task.Poor.DUT.Throughput.Mean,
+        good: getThroughputMetric('UL', ul10TaskName, 'Good', 'DUT'),
+        moderate: getThroughputMetric('UL', ul10TaskName, 'Moderate', 'DUT'),
+        poor: getThroughputMetric('UL', ul10TaskName, 'Poor', 'DUT'),
       },
     },
     {
@@ -400,9 +392,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "REF",
       location: {
-        good: ul10Task.Good.REF.Throughput.Mean,
-        moderate: ul10Task.Moderate.REF.Throughput.Mean,
-        poor: ul10Task.Poor.REF.Throughput.Mean,
+        good: getThroughputMetric('UL', ul10TaskName, 'Good', 'REF'),
+        moderate: getThroughputMetric('UL', ul10TaskName, 'Moderate', 'REF'),
+        poor: getThroughputMetric('UL', ul10TaskName, 'Poor', 'REF'),
       },
     },
     {
@@ -410,9 +402,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "DUT",
       location: {
-        good: ul20Task.Good.DUT.Throughput.Mean,
-        moderate: ul20Task.Moderate.DUT.Throughput.Mean,
-        poor: ul20Task.Poor.DUT.Throughput.Mean,
+        good: getThroughputMetric('UL', ul20TaskName, 'Good', 'DUT'),
+        moderate: getThroughputMetric('UL', ul20TaskName, 'Moderate', 'DUT'),
+        poor: getThroughputMetric('UL', ul20TaskName, 'Poor', 'DUT'),
       },
     },
     {
@@ -420,9 +412,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "REF",
       location: {
-        good: ul20Task.Good.REF.Throughput.Mean,
-        moderate: ul20Task.Moderate.REF.Throughput.Mean,
-        poor: ul20Task.Poor.REF.Throughput.Mean,
+        good: getThroughputMetric('UL', ul20TaskName, 'Good', 'REF'),
+        moderate: getThroughputMetric('UL', ul20TaskName, 'Moderate', 'REF'),
+        poor: getThroughputMetric('UL', ul20TaskName, 'Poor', 'REF'),
       },
     },
     {
@@ -430,9 +422,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "DUT",
       location: {
-        good: ul10Task.Good.DUT.Throughput.Maximum,
-        moderate: ul10Task.Moderate.DUT.Throughput.Maximum,
-        poor: ul10Task.Poor.DUT.Throughput.Maximum,
+        good: getThroughputMetric('UL', ul10TaskName, 'Good', 'DUT', 'Maximum'),
+        moderate: getThroughputMetric('UL', ul10TaskName, 'Moderate', 'DUT', 'Maximum'),
+        poor: getThroughputMetric('UL', ul10TaskName, 'Poor', 'DUT', 'Maximum'),
       },
     },
     {
@@ -440,9 +432,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "REF",
       location: {
-        good: ul10Task.Good.REF.Throughput.Maximum,
-        moderate: ul10Task.Moderate.REF.Throughput.Maximum,
-        poor: ul10Task.Poor.REF.Throughput.Maximum,
+        good: getThroughputMetric('UL', ul10TaskName, 'Good', 'REF', 'Maximum'),
+        moderate: getThroughputMetric('UL', ul10TaskName, 'Moderate', 'REF', 'Maximum'),
+        poor: getThroughputMetric('UL', ul10TaskName, 'Poor', 'REF', 'Maximum'),
       },
     },
     {
@@ -450,9 +442,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "DUT",
       location: {
-        good: ul20Task.Good.DUT.Throughput.Maximum,
-        moderate: ul20Task.Moderate.DUT.Throughput.Maximum,
-        poor: ul20Task.Poor.DUT.Throughput.Maximum,
+        good: getThroughputMetric('UL', ul20TaskName, 'Good', 'DUT', 'Maximum'),
+        moderate: getThroughputMetric('UL', ul20TaskName, 'Moderate', 'DUT', 'Maximum'),
+        poor: getThroughputMetric('UL', ul20TaskName, 'Poor', 'DUT', 'Maximum'),
       },
     },
     {
@@ -460,9 +452,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "REF",
       location: {
-        good: ul20Task.Good.REF.Throughput.Maximum,
-        moderate: ul20Task.Moderate.REF.Throughput.Maximum,
-        poor: ul20Task.Poor.REF.Throughput.Maximum,
+        good: getThroughputMetric('UL', ul20TaskName, 'Good', 'REF', 'Maximum'),
+        moderate: getThroughputMetric('UL', ul20TaskName, 'Moderate', 'REF', 'Maximum'),
+        poor: getThroughputMetric('UL', ul20TaskName, 'Poor', 'REF', 'Maximum'),
       },
     },
     {
@@ -470,9 +462,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "DUT",
       location: {
-        good: ul10Task.Good.DUT.Throughput.Minimum,
-        moderate: ul10Task.Moderate.DUT.Throughput.Minimum,
-        poor: ul10Task.Poor.DUT.Throughput.Minimum,
+        good: getThroughputMetric('UL', ul10TaskName, 'Good', 'DUT', 'Minimum'),
+        moderate: getThroughputMetric('UL', ul10TaskName, 'Moderate', 'DUT', 'Minimum'),
+        poor: getThroughputMetric('UL', ul10TaskName, 'Poor', 'DUT', 'Minimum'),
       },
     },
     {
@@ -480,9 +472,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "REF",
       location: {
-        good: ul10Task.Good.REF.Throughput.Minimum,
-        moderate: ul10Task.Moderate.REF.Throughput.Minimum,
-        poor: ul10Task.Poor.REF.Throughput.Minimum,
+        good: getThroughputMetric('UL', ul10TaskName, 'Good', 'REF', 'Minimum'),
+        moderate: getThroughputMetric('UL', ul10TaskName, 'Moderate', 'REF', 'Minimum'),
+        poor: getThroughputMetric('UL', ul10TaskName, 'Poor', 'REF', 'Minimum'),
       },
     },
     {
@@ -490,9 +482,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "DUT",
       location: {
-        good: ul20Task.Good.DUT.Throughput.Minimum,
-        moderate: ul20Task.Moderate.DUT.Throughput.Minimum,
-        poor: ul20Task.Poor.DUT.Throughput.Minimum,
+        good: getThroughputMetric('UL', ul20TaskName, 'Good', 'DUT', 'Minimum'),
+        moderate: getThroughputMetric('UL', ul20TaskName, 'Moderate', 'DUT', 'Minimum'),
+        poor: getThroughputMetric('UL', ul20TaskName, 'Poor', 'DUT', 'Minimum'),
       },
     },
     {
@@ -500,9 +492,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "REF",
       location: {
-        good: ul20Task.Good.REF.Throughput.Minimum,
-        moderate: ul20Task.Moderate.REF.Throughput.Minimum,
-        poor: ul20Task.Poor.REF.Throughput.Minimum,
+        good: getThroughputMetric('UL', ul20TaskName, 'Good', 'REF', 'Minimum'),
+        moderate: getThroughputMetric('UL', ul20TaskName, 'Moderate', 'REF', 'Minimum'),
+        poor: getThroughputMetric('UL', ul20TaskName, 'Poor', 'REF', 'Minimum'),
       },
     },
     {
@@ -510,9 +502,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "DUT",
       location: {
-        good: ul10Task.Good.DUT.Jitter.Mean,
-        moderate: ul10Task.Moderate.DUT.Jitter.Mean,
-        poor: ul10Task.Poor.DUT.Jitter.Mean,
+        good: getUdpMetric('UL', ul10TaskName, 'Good', 'DUT', 'Jitter'),
+        moderate: getUdpMetric('UL', ul10TaskName, 'Moderate', 'DUT', 'Jitter'),
+        poor: getUdpMetric('UL', ul10TaskName, 'Poor', 'DUT', 'Jitter'),
       },
     },
     {
@@ -520,9 +512,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "REF",
       location: {
-        good: ul10Task.Good.REF.Jitter.Mean,
-        moderate: ul10Task.Moderate.REF.Jitter.Mean,
-        poor: ul10Task.Poor.REF.Jitter.Mean,
+        good: getUdpMetric('UL', ul10TaskName, 'Good', 'REF', 'Jitter'),
+        moderate: getUdpMetric('UL', ul10TaskName, 'Moderate', 'REF', 'Jitter'),
+        poor: getUdpMetric('UL', ul10TaskName, 'Poor', 'REF', 'Jitter'),
       },
     },
     {
@@ -530,9 +522,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "DUT",
       location: {
-        good: ul20Task.Good.DUT.Jitter.Mean,
-        moderate: ul20Task.Moderate.DUT.Jitter.Mean,
-        poor: ul20Task.Poor.DUT.Jitter.Mean,
+        good: getUdpMetric('UL', ul20TaskName, 'Good', 'DUT', 'Jitter'),
+        moderate: getUdpMetric('UL', ul20TaskName, 'Moderate', 'DUT', 'Jitter'),
+        poor: getUdpMetric('UL', ul20TaskName, 'Poor', 'DUT', 'Jitter'),
       },
     },
     {
@@ -540,9 +532,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "REF",
       location: {
-        good: ul20Task.Good.REF.Jitter.Mean,
-        moderate: ul20Task.Moderate.REF.Jitter.Mean,
-        poor: ul20Task.Poor.REF.Jitter.Mean,
+        good: getUdpMetric('UL', ul20TaskName, 'Good', 'REF', 'Jitter'),
+        moderate: getUdpMetric('UL', ul20TaskName, 'Moderate', 'REF', 'Jitter'),
+        poor: getUdpMetric('UL', ul20TaskName, 'Poor', 'REF', 'Jitter'),
       },
     },
     {
@@ -550,9 +542,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "DUT",
       location: {
-        good: ul10Task.Good.DUT["Error Ratio"].Mean,
-        moderate: ul10Task.Moderate.DUT["Error Ratio"].Mean,
-        poor: ul10Task.Poor.DUT["Error Ratio"].Mean,
+        good: getUdpMetric('UL', ul10TaskName, 'Good', 'DUT', 'Error Ratio'),
+        moderate: getUdpMetric('UL', ul10TaskName, 'Moderate', 'DUT', 'Error Ratio'),
+        poor: getUdpMetric('UL', ul10TaskName, 'Poor', 'DUT', 'Error Ratio'),
       },
     },
     {
@@ -560,9 +552,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "REF",
       location: {
-        good: ul10Task.Good.REF["Error Ratio"].Mean,
-        moderate: ul10Task.Moderate.REF["Error Ratio"].Mean,
-        poor: ul10Task.Poor.REF["Error Ratio"].Mean,
+        good: getUdpMetric('UL', ul10TaskName, 'Good', 'REF', 'Error Ratio'),
+        moderate: getUdpMetric('UL', ul10TaskName, 'Moderate', 'REF', 'Error Ratio'),
+        poor: getUdpMetric('UL', ul10TaskName, 'Poor', 'REF', 'Error Ratio'),
       },
     },
     {
@@ -570,9 +562,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "DUT",
       location: {
-        good: ul20Task.Good.DUT["Error Ratio"].Mean,
-        moderate: ul20Task.Moderate.DUT["Error Ratio"].Mean,
-        poor: ul20Task.Poor.DUT["Error Ratio"].Mean,
+        good: getUdpMetric('UL', ul20TaskName, 'Good', 'DUT', 'Error Ratio'),
+        moderate: getUdpMetric('UL', ul20TaskName, 'Moderate', 'DUT', 'Error Ratio'),
+        poor: getUdpMetric('UL', ul20TaskName, 'Poor', 'DUT', 'Error Ratio'),
       },
     },
     {
@@ -580,9 +572,9 @@ function Dp_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "REF",
       location: {
-        good: ul20Task.Good.REF["Error Ratio"].Mean,
-        moderate: ul20Task.Moderate.REF["Error Ratio"].Mean,
-        poor: ul20Task.Poor.REF["Error Ratio"].Mean,
+        good: getUdpMetric('UL', ul20TaskName, 'Good', 'REF', 'Error Ratio'),
+        moderate: getUdpMetric('UL', ul20TaskName, 'Moderate', 'REF', 'Error Ratio'),
+        poor: getUdpMetric('UL', ul20TaskName, 'Poor', 'REF', 'Error Ratio'),
       },
     },
   ];
@@ -612,20 +604,20 @@ function Dp_Udp_Component({ city: propCity }) {
   const ulOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
 
   // UL Mean Throughput for 10 Mbps
-  const ulMeanThroughput10_DUT_Good = ul10Task.Good.DUT.Throughput.Mean;
-  const ulMeanThroughput10_REF_Good = ul10Task.Good.REF.Throughput.Mean;
-  const ulMeanThroughput10_DUT_Moderate = ul10Task.Moderate.DUT.Throughput.Mean;
-  const ulMeanThroughput10_REF_Moderate = ul10Task.Moderate.REF.Throughput.Mean;
-  const ulMeanThroughput10_DUT_Poor = ul10Task.Poor.DUT.Throughput.Mean;
-  const ulMeanThroughput10_REF_Poor = ul10Task.Poor.REF.Throughput.Mean;
+  const ulMeanThroughput10_DUT_Good = getThroughputMetric('UL', ul10TaskName, 'Good', 'DUT');
+  const ulMeanThroughput10_REF_Good = getThroughputMetric('UL', ul10TaskName, 'Good', 'REF');
+  const ulMeanThroughput10_DUT_Moderate = getThroughputMetric('UL', ul10TaskName, 'Moderate', 'DUT');
+  const ulMeanThroughput10_REF_Moderate = getThroughputMetric('UL', ul10TaskName, 'Moderate', 'REF');
+  const ulMeanThroughput10_DUT_Poor = getThroughputMetric('UL', ul10TaskName, 'Poor', 'DUT');
+  const ulMeanThroughput10_REF_Poor = getThroughputMetric('UL', ul10TaskName, 'Poor', 'REF');
 
   // UL Mean Throughput for 20 Mbps
-  const ulMeanThroughput20_DUT_Good = ul20Task.Good.DUT.Throughput.Mean;
-  const ulMeanThroughput20_REF_Good = ul20Task.Good.REF.Throughput.Mean;
-  const ulMeanThroughput20_DUT_Moderate = ul20Task.Moderate.DUT.Throughput.Mean;
-  const ulMeanThroughput20_REF_Moderate = ul20Task.Moderate.REF.Throughput.Mean;
-  const ulMeanThroughput20_DUT_Poor = ul20Task.Poor.DUT.Throughput.Mean;
-  const ulMeanThroughput20_REF_Poor = ul20Task.Poor.REF.Throughput.Mean;
+  const ulMeanThroughput20_DUT_Good = getThroughputMetric('UL', ul20TaskName, 'Good', 'DUT');
+  const ulMeanThroughput20_REF_Good = getThroughputMetric('UL', ul20TaskName, 'Good', 'REF');
+  const ulMeanThroughput20_DUT_Moderate = getThroughputMetric('UL', ul20TaskName, 'Moderate', 'DUT');
+  const ulMeanThroughput20_REF_Moderate = getThroughputMetric('UL', ul20TaskName, 'Moderate', 'REF');
+  const ulMeanThroughput20_DUT_Poor = getThroughputMetric('UL', ul20TaskName, 'Poor', 'DUT');
+  const ulMeanThroughput20_REF_Poor = getThroughputMetric('UL', ul20TaskName, 'Poor', 'REF');
 
   const ulMeanThroughput10HistogramData = [
     { name: 'Good', DUT: ulMeanThroughput10_DUT_Good, REF: ulMeanThroughput10_REF_Good },
@@ -633,8 +625,8 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: ulMeanThroughput10_DUT_Poor, REF: ulMeanThroughput10_REF_Poor },
     {
       name: 'Overall',
-      DUT: (ulMeanThroughput10_DUT_Good + ulMeanThroughput10_DUT_Moderate + ulMeanThroughput10_DUT_Poor) / 3,
-      REF: (ulMeanThroughput10_REF_Good + ulMeanThroughput10_REF_Moderate + ulMeanThroughput10_REF_Poor) / 3
+      DUT: calculateAverage([ulMeanThroughput10_DUT_Good, ulMeanThroughput10_DUT_Moderate, ulMeanThroughput10_DUT_Poor]),
+      REF: calculateAverage([ulMeanThroughput10_REF_Good, ulMeanThroughput10_REF_Moderate, ulMeanThroughput10_REF_Poor])
     },
   ];
 
@@ -644,18 +636,18 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: ulMeanThroughput20_DUT_Poor, REF: ulMeanThroughput20_REF_Poor },
     {
       name: 'Overall',
-      DUT: (ulMeanThroughput20_DUT_Good + ulMeanThroughput20_DUT_Moderate + ulMeanThroughput20_DUT_Poor) / 3,
-      REF: (ulMeanThroughput20_REF_Good + ulMeanThroughput20_REF_Moderate + ulMeanThroughput20_REF_Poor) / 3
+      DUT: calculateAverage([ulMeanThroughput20_DUT_Good, ulMeanThroughput20_DUT_Moderate, ulMeanThroughput20_DUT_Poor]),
+      REF: calculateAverage([ulMeanThroughput20_REF_Good, ulMeanThroughput20_REF_Moderate, ulMeanThroughput20_REF_Poor])
     },
   ];
 
   // UL Mean Jitter for 10 Mbps
-  const ulMeanJitter10_DUT_Good = ul10Task.Good.DUT.Jitter.Mean;
-  const ulMeanJitter10_REF_Good = ul10Task.Good.REF.Jitter.Mean;
-  const ulMeanJitter10_DUT_Moderate = ul10Task.Moderate.DUT.Jitter.Mean;
-  const ulMeanJitter10_REF_Moderate = ul10Task.Moderate.REF.Jitter.Mean;
-  const ulMeanJitter10_DUT_Poor = ul10Task.Poor.DUT.Jitter.Mean;
-  const ulMeanJitter10_REF_Poor = ul10Task.Poor.REF.Jitter.Mean;
+  const ulMeanJitter10_DUT_Good = getUdpMetric('UL', ul10TaskName, 'Good', 'DUT', 'Jitter');
+  const ulMeanJitter10_REF_Good = getUdpMetric('UL', ul10TaskName, 'Good', 'REF', 'Jitter');
+  const ulMeanJitter10_DUT_Moderate = getUdpMetric('UL', ul10TaskName, 'Moderate', 'DUT', 'Jitter');
+  const ulMeanJitter10_REF_Moderate = getUdpMetric('UL', ul10TaskName, 'Moderate', 'REF', 'Jitter');
+  const ulMeanJitter10_DUT_Poor = getUdpMetric('UL', ul10TaskName, 'Poor', 'DUT', 'Jitter');
+  const ulMeanJitter10_REF_Poor = getUdpMetric('UL', ul10TaskName, 'Poor', 'REF', 'Jitter');
 
   const ulMeanJitter10HistogramData = [
     { name: 'Good', DUT: ulMeanJitter10_DUT_Good, REF: ulMeanJitter10_REF_Good },
@@ -663,18 +655,18 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: ulMeanJitter10_DUT_Poor, REF: ulMeanJitter10_REF_Poor },
     {
       name: 'Overall',
-      DUT: (ulMeanJitter10_DUT_Good + ulMeanJitter10_DUT_Moderate + ulMeanJitter10_DUT_Poor) / 3,
-      REF: (ulMeanJitter10_REF_Good + ulMeanJitter10_REF_Moderate + ulMeanJitter10_REF_Poor) / 3
+      DUT: calculateAverage([ulMeanJitter10_DUT_Good, ulMeanJitter10_DUT_Moderate, ulMeanJitter10_DUT_Poor]),
+      REF: calculateAverage([ulMeanJitter10_REF_Good, ulMeanJitter10_REF_Moderate, ulMeanJitter10_REF_Poor])
     },
   ];
 
   // UL Mean Jitter for 20 Mbps
-  const ulMeanJitter20_DUT_Good = ul20Task.Good.DUT.Jitter.Mean;
-  const ulMeanJitter20_REF_Good = ul20Task.Good.REF.Jitter.Mean;
-  const ulMeanJitter20_DUT_Moderate = ul20Task.Moderate.DUT.Jitter.Mean;
-  const ulMeanJitter20_REF_Moderate = ul20Task.Moderate.REF.Jitter.Mean;
-  const ulMeanJitter20_DUT_Poor = ul20Task.Poor.DUT.Jitter.Mean;
-  const ulMeanJitter20_REF_Poor = ul20Task.Poor.REF.Jitter.Mean;
+  const ulMeanJitter20_DUT_Good = getUdpMetric('UL', ul20TaskName, 'Good', 'DUT', 'Jitter');
+  const ulMeanJitter20_REF_Good = getUdpMetric('UL', ul20TaskName, 'Good', 'REF', 'Jitter');
+  const ulMeanJitter20_DUT_Moderate = getUdpMetric('UL', ul20TaskName, 'Moderate', 'DUT', 'Jitter');
+  const ulMeanJitter20_REF_Moderate = getUdpMetric('UL', ul20TaskName, 'Moderate', 'REF', 'Jitter');
+  const ulMeanJitter20_DUT_Poor = getUdpMetric('UL', ul20TaskName, 'Poor', 'DUT', 'Jitter');
+  const ulMeanJitter20_REF_Poor = getUdpMetric('UL', ul20TaskName, 'Poor', 'REF', 'Jitter');
 
   const ulMeanJitter20HistogramData = [
     { name: 'Good', DUT: ulMeanJitter20_DUT_Good, REF: ulMeanJitter20_REF_Good },
@@ -682,18 +674,18 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: ulMeanJitter20_DUT_Poor, REF: ulMeanJitter20_REF_Poor },
     {
       name: 'Overall',
-      DUT: (ulMeanJitter20_DUT_Good + ulMeanJitter20_DUT_Moderate + ulMeanJitter20_DUT_Poor) / 3,
-      REF: (ulMeanJitter20_REF_Good + ulMeanJitter20_REF_Moderate + ulMeanJitter20_REF_Poor) / 3
+      DUT: calculateAverage([ulMeanJitter20_DUT_Good, ulMeanJitter20_DUT_Moderate, ulMeanJitter20_DUT_Poor]),
+      REF: calculateAverage([ulMeanJitter20_REF_Good, ulMeanJitter20_REF_Moderate, ulMeanJitter20_REF_Poor])
     },
   ];
 
   // UL Packet Failure Rate for 10 Mbps
-  const ulPFR10_DUT_Good = ul10Task.Good.DUT["Error Ratio"].Mean;
-  const ulPFR10_REF_Good = ul10Task.Good.REF["Error Ratio"].Mean;
-  const ulPFR10_DUT_Moderate = ul10Task.Moderate.DUT["Error Ratio"].Mean;
-  const ulPFR10_REF_Moderate = ul10Task.Moderate.REF["Error Ratio"].Mean;
-  const ulPFR10_DUT_Poor = ul10Task.Poor.DUT["Error Ratio"].Mean;
-  const ulPFR10_REF_Poor = ul10Task.Poor.REF["Error Ratio"].Mean;
+  const ulPFR10_DUT_Good = getUdpMetric('UL', ul10TaskName, 'Good', 'DUT', 'Error Ratio');
+  const ulPFR10_REF_Good = getUdpMetric('UL', ul10TaskName, 'Good', 'REF', 'Error Ratio');
+  const ulPFR10_DUT_Moderate = getUdpMetric('UL', ul10TaskName, 'Moderate', 'DUT', 'Error Ratio');
+  const ulPFR10_REF_Moderate = getUdpMetric('UL', ul10TaskName, 'Moderate', 'REF', 'Error Ratio');
+  const ulPFR10_DUT_Poor = getUdpMetric('UL', ul10TaskName, 'Poor', 'DUT', 'Error Ratio');
+  const ulPFR10_REF_Poor = getUdpMetric('UL', ul10TaskName, 'Poor', 'REF', 'Error Ratio');
 
   const ulPFR10HistogramData = [
     { name: 'Good', DUT: ulPFR10_DUT_Good, REF: ulPFR10_REF_Good },
@@ -701,18 +693,18 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: ulPFR10_DUT_Poor, REF: ulPFR10_REF_Poor },
     {
       name: 'Overall',
-      DUT: (ulPFR10_DUT_Good + ulPFR10_DUT_Moderate + ulPFR10_DUT_Poor) / 3,
-      REF: (ulPFR10_REF_Good + ulPFR10_REF_Moderate + ulPFR10_REF_Poor) / 3
+      DUT: calculateAverage([ulPFR10_DUT_Good, ulPFR10_DUT_Moderate, ulPFR10_DUT_Poor]),
+      REF: calculateAverage([ulPFR10_REF_Good, ulPFR10_REF_Moderate, ulPFR10_REF_Poor])
     },
   ];
 
   // UL Packet Failure Rate for 20 Mbps
-  const ulPFR20_DUT_Good = ul20Task.Good.DUT["Error Ratio"].Mean;
-  const ulPFR20_REF_Good = ul20Task.Good.REF["Error Ratio"].Mean;
-  const ulPFR20_DUT_Moderate = ul20Task.Moderate.DUT["Error Ratio"].Mean;
-  const ulPFR20_REF_Moderate = ul20Task.Moderate.REF["Error Ratio"].Mean;
-  const ulPFR20_DUT_Poor = ul20Task.Poor.DUT["Error Ratio"].Mean;
-  const ulPFR20_REF_Poor = ul20Task.Poor.REF["Error Ratio"].Mean;
+  const ulPFR20_DUT_Good = getUdpMetric('UL', ul20TaskName, 'Good', 'DUT', 'Error Ratio');
+  const ulPFR20_REF_Good = getUdpMetric('UL', ul20TaskName, 'Good', 'REF', 'Error Ratio');
+  const ulPFR20_DUT_Moderate = getUdpMetric('UL', ul20TaskName, 'Moderate', 'DUT', 'Error Ratio');
+  const ulPFR20_REF_Moderate = getUdpMetric('UL', ul20TaskName, 'Moderate', 'REF', 'Error Ratio');
+  const ulPFR20_DUT_Poor = getUdpMetric('UL', ul20TaskName, 'Poor', 'DUT', 'Error Ratio');
+  const ulPFR20_REF_Poor = getUdpMetric('UL', ul20TaskName, 'Poor', 'REF', 'Error Ratio');
 
   const ulPFR20HistogramData = [
     { name: 'Good', DUT: ulPFR20_DUT_Good, REF: ulPFR20_REF_Good },
@@ -720,8 +712,8 @@ function Dp_Udp_Component({ city: propCity }) {
     { name: 'Poor', DUT: ulPFR20_DUT_Poor, REF: ulPFR20_REF_Poor },
     {
       name: 'Overall',
-      DUT: (ulPFR20_DUT_Good + ulPFR20_DUT_Moderate + ulPFR20_DUT_Poor) / 3,
-      REF: (ulPFR20_REF_Good + ulPFR20_REF_Moderate + ulPFR20_REF_Poor) / 3
+      DUT: calculateAverage([ulPFR20_DUT_Good, ulPFR20_DUT_Moderate, ulPFR20_DUT_Poor]),
+      REF: calculateAverage([ulPFR20_REF_Good, ulPFR20_REF_Moderate, ulPFR20_REF_Poor])
     },
   ];
 

@@ -32,36 +32,58 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
   }
 
   // Path: ["Data Performance"]["5G AUTO DP"]["HTTP Single Stream"]
-  const httpSS_Data_Source = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["HTTP Single Stream"];
+  const httpSS_Data_Source = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["HTTP Single Stream"] || { DL: {}, UL: {} };
+
+  const defaultThroughput = { Mean: 0, "Standard Deviation": 0, Minimum: 0, Maximum: 0 };
+
+  const getThroughput = (dir, category, device) => {
+    return httpSS_Data_Source?.[dir]?.[category]?.[device]?.Throughput || defaultThroughput;
+  };
 
   const httpSS_Stationary_DL = {
     Good: {
-      DUT: httpSS_Data_Source.DL.Good.DUT.Throughput,
-      REF: httpSS_Data_Source.DL.Good.REF.Throughput,
+      DUT: getThroughput('DL', 'Good', 'DUT'),
+      REF: getThroughput('DL', 'Good', 'REF'),
     },
     Moderate: {
-      DUT: httpSS_Data_Source.DL.Moderate.DUT.Throughput,
-      REF: httpSS_Data_Source.DL.Moderate.REF.Throughput,
+      DUT: getThroughput('DL', 'Moderate', 'DUT'),
+      REF: getThroughput('DL', 'Moderate', 'REF'),
     },
     Poor: {
-      DUT: httpSS_Data_Source.DL.Poor.DUT.Throughput,
-      REF: httpSS_Data_Source.DL.Poor.REF.Throughput,
+      DUT: getThroughput('DL', 'Poor', 'DUT'),
+      REF: getThroughput('DL', 'Poor', 'REF'),
     },
   };
 
   const httpSS_Stationary_UL = {
     Good: {
-      DUT: httpSS_Data_Source.UL.Good.DUT.Throughput,
-      REF: httpSS_Data_Source.UL.Good.REF.Throughput,
+      DUT: getThroughput('UL', 'Good', 'DUT'),
+      REF: getThroughput('UL', 'Good', 'REF'),
     },
     Moderate: {
-      DUT: httpSS_Data_Source.UL.Moderate.DUT.Throughput,
-      REF: httpSS_Data_Source.UL.Moderate.REF.Throughput,
+      DUT: getThroughput('UL', 'Moderate', 'DUT'),
+      REF: getThroughput('UL', 'Moderate', 'REF'),
     },
     Poor: {
-      DUT: httpSS_Data_Source.UL.Poor.DUT.Throughput,
-      REF: httpSS_Data_Source.UL.Poor.REF.Throughput,
+      DUT: getThroughput('UL', 'Poor', 'DUT'),
+      REF: getThroughput('UL', 'Poor', 'REF'),
     },
+  };
+
+  // Helper to calculate average only for non-zero means (available data)
+  const calculateOverallMean = (dataObj, device, field = 'Mean') => {
+    const values = [dataObj.Good[device][field], dataObj.Moderate[device][field], dataObj.Poor[device][field]].filter(v => v > 0);
+    return values.length > 0 ? values.reduce((a, b) => a + b, 0) / values.length : 0;
+  };
+
+  const calculateOverallMin = (dataObj, device) => {
+    const values = [dataObj.Good[device].Minimum, dataObj.Moderate[device].Minimum, dataObj.Poor[device].Minimum].filter(v => v > 0);
+    return values.length > 0 ? Math.min(...values) : 0;
+  };
+
+  const calculateOverallMax = (dataObj, device) => {
+    const values = [dataObj.Good[device].Maximum, dataObj.Moderate[device].Maximum, dataObj.Poor[device].Maximum].filter(v => v > 0);
+    return values.length > 0 ? Math.max(...values) : 0;
   };
 
   const dlRangeChartData = {
@@ -90,12 +112,12 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
       refMean: httpSS_Stationary_DL.Poor.REF.Mean,
     },
     Overall: {
-      dutMin: Math.min(httpSS_Stationary_DL.Good.DUT.Minimum, httpSS_Stationary_DL.Moderate.DUT.Minimum, httpSS_Stationary_DL.Poor.DUT.Minimum),
-      dutMax: Math.max(httpSS_Stationary_DL.Good.DUT.Maximum, httpSS_Stationary_DL.Moderate.DUT.Maximum, httpSS_Stationary_DL.Poor.DUT.Maximum),
-      refMin: Math.min(httpSS_Stationary_DL.Good.REF.Minimum, httpSS_Stationary_DL.Moderate.REF.Minimum, httpSS_Stationary_DL.Poor.REF.Minimum),
-      refMax: Math.max(httpSS_Stationary_DL.Good.REF.Maximum, httpSS_Stationary_DL.Moderate.REF.Maximum, httpSS_Stationary_DL.Poor.REF.Maximum),
-      dutMean: (httpSS_Stationary_DL.Good.DUT.Mean + httpSS_Stationary_DL.Moderate.DUT.Mean + httpSS_Stationary_DL.Poor.DUT.Mean) / 3,
-      refMean: (httpSS_Stationary_DL.Good.REF.Mean + httpSS_Stationary_DL.Moderate.REF.Mean + httpSS_Stationary_DL.Poor.REF.Mean) / 3,
+      dutMin: calculateOverallMin(httpSS_Stationary_DL, 'DUT'),
+      dutMax: calculateOverallMax(httpSS_Stationary_DL, 'DUT'),
+      refMin: calculateOverallMin(httpSS_Stationary_DL, 'REF'),
+      refMax: calculateOverallMax(httpSS_Stationary_DL, 'REF'),
+      dutMean: calculateOverallMean(httpSS_Stationary_DL, 'DUT'),
+      refMean: calculateOverallMean(httpSS_Stationary_DL, 'REF'),
     },
   };
 
@@ -125,12 +147,12 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
       refMean: httpSS_Stationary_UL.Poor.REF.Mean,
     },
     Overall: {
-      dutMin: Math.min(httpSS_Stationary_UL.Good.DUT.Minimum, httpSS_Stationary_UL.Moderate.DUT.Minimum, httpSS_Stationary_UL.Poor.DUT.Minimum),
-      dutMax: Math.max(httpSS_Stationary_UL.Good.DUT.Maximum, httpSS_Stationary_UL.Moderate.DUT.Maximum, httpSS_Stationary_UL.Poor.DUT.Maximum),
-      refMin: Math.min(httpSS_Stationary_UL.Good.REF.Minimum, httpSS_Stationary_UL.Moderate.REF.Minimum, httpSS_Stationary_UL.Poor.REF.Minimum),
-      refMax: Math.max(httpSS_Stationary_UL.Good.REF.Maximum, httpSS_Stationary_UL.Moderate.REF.Maximum, httpSS_Stationary_UL.Poor.REF.Maximum),
-      dutMean: (httpSS_Stationary_UL.Good.DUT.Mean + httpSS_Stationary_UL.Moderate.DUT.Mean + httpSS_Stationary_UL.Poor.DUT.Mean) / 3,
-      refMean: (httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3,
+      dutMin: calculateOverallMin(httpSS_Stationary_UL, 'DUT'),
+      dutMax: calculateOverallMax(httpSS_Stationary_UL, 'DUT'),
+      refMin: calculateOverallMin(httpSS_Stationary_UL, 'REF'),
+      refMax: calculateOverallMax(httpSS_Stationary_UL, 'REF'),
+      dutMean: calculateOverallMean(httpSS_Stationary_UL, 'DUT'),
+      refMean: calculateOverallMean(httpSS_Stationary_UL, 'REF'),
     },
   };
 
@@ -140,8 +162,8 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
     { name: 'Poor', DUT: httpSS_Stationary_DL.Poor.DUT.Mean, REF: httpSS_Stationary_DL.Poor.REF.Mean },
     {
       name: 'Overall',
-      DUT: (httpSS_Stationary_DL.Good.DUT.Mean + httpSS_Stationary_DL.Moderate.DUT.Mean + httpSS_Stationary_DL.Poor.DUT.Mean) / 3,
-      REF: (httpSS_Stationary_DL.Good.REF.Mean + httpSS_Stationary_DL.Moderate.REF.Mean + httpSS_Stationary_DL.Poor.REF.Mean) / 3
+      DUT: calculateOverallMean(httpSS_Stationary_DL, 'DUT'),
+      REF: calculateOverallMean(httpSS_Stationary_DL, 'REF')
     },
   ];
 
@@ -151,22 +173,23 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
     { name: 'Poor', DUT: httpSS_Stationary_UL.Poor.DUT.Mean, REF: httpSS_Stationary_UL.Poor.REF.Mean },
     {
       name: 'Overall',
-      DUT: (httpSS_Stationary_UL.Good.DUT.Mean + httpSS_Stationary_UL.Moderate.DUT.Mean + httpSS_Stationary_UL.Poor.DUT.Mean) / 3,
-      REF: (httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3
+      DUT: calculateOverallMean(httpSS_Stationary_UL, 'DUT'),
+      REF: calculateOverallMean(httpSS_Stationary_UL, 'REF')
     },
   ];
 
   const overallTableHeader = ["Throughput", "Device Name", "Download", "Upload"];
   const combinedOverallTableData = [
-    ["Average (Mbps)", "DUT", ((httpSS_Stationary_DL.Good.DUT.Mean + httpSS_Stationary_DL.Moderate.DUT.Mean + httpSS_Stationary_DL.Poor.DUT.Mean) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.DUT.Mean + httpSS_Stationary_UL.Moderate.DUT.Mean + httpSS_Stationary_UL.Poor.DUT.Mean) / 3).toFixed(2)],
-    ["Average (Mbps)", "REF", ((httpSS_Stationary_DL.Good.REF.Mean + httpSS_Stationary_DL.Moderate.REF.Mean + httpSS_Stationary_DL.Poor.REF.Mean) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3).toFixed(2)],
-    ["Standard Deviation (Mbps)", "DUT", ((httpSS_Stationary_DL.Good.DUT["Standard Deviation"] + httpSS_Stationary_DL.Moderate.DUT["Standard Deviation"] + httpSS_Stationary_DL.Poor.DUT["Standard Deviation"]) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.DUT["Standard Deviation"] + httpSS_Stationary_UL.Moderate.DUT["Standard Deviation"] + httpSS_Stationary_UL.Poor.DUT["Standard Deviation"]) / 3).toFixed(2)],
-    ["Standard Deviation (Mbps)", "REF", ((httpSS_Stationary_DL.Good.REF["Standard Deviation"] + httpSS_Stationary_DL.Moderate.REF["Standard Deviation"] + httpSS_Stationary_DL.Poor.REF["Standard Deviation"]) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.REF["Standard Deviation"] + httpSS_Stationary_UL.Moderate.REF["Standard Deviation"] + httpSS_Stationary_UL.Poor.REF["Standard Deviation"]) / 3).toFixed(2)],
-    ["Maximum (Mbps)", "DUT", ((httpSS_Stationary_DL.Good.DUT.Maximum + httpSS_Stationary_DL.Moderate.DUT.Maximum + httpSS_Stationary_DL.Poor.DUT.Maximum) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.DUT.Maximum + httpSS_Stationary_UL.Moderate.DUT.Maximum + httpSS_Stationary_UL.Poor.DUT.Maximum) / 3).toFixed(2)],
-    ["Maximum (Mbps)", "REF", ((httpSS_Stationary_DL.Good.REF.Maximum + httpSS_Stationary_DL.Moderate.REF.Maximum + httpSS_Stationary_DL.Poor.REF.Maximum) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.REF.Maximum + httpSS_Stationary_UL.Moderate.REF.Maximum + httpSS_Stationary_UL.Poor.REF.Maximum) / 3).toFixed(2)],
-    ["Minimum (Mbps)", "DUT", ((httpSS_Stationary_DL.Good.DUT.Minimum + httpSS_Stationary_DL.Moderate.DUT.Minimum + httpSS_Stationary_DL.Poor.DUT.Minimum) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.DUT.Minimum + httpSS_Stationary_UL.Moderate.DUT.Minimum + httpSS_Stationary_UL.Poor.DUT.Minimum) / 3).toFixed(2)],
-    ["Minimum (Mbps)", "REF", ((httpSS_Stationary_DL.Good.REF.Minimum + httpSS_Stationary_DL.Moderate.REF.Minimum + httpSS_Stationary_DL.Poor.REF.Minimum) / 3).toFixed(2), ((httpSS_Stationary_UL.Good.REF.Minimum + httpSS_Stationary_UL.Moderate.REF.Minimum + httpSS_Stationary_UL.Poor.REF.Minimum) / 3).toFixed(2)],
+    ["Average (Mbps)", "DUT", calculateOverallMean(httpSS_Stationary_DL, 'DUT').toFixed(2), calculateOverallMean(httpSS_Stationary_UL, 'DUT').toFixed(2)],
+    ["Average (Mbps)", "REF", calculateOverallMean(httpSS_Stationary_DL, 'REF').toFixed(2), calculateOverallMean(httpSS_Stationary_UL, 'REF').toFixed(2)],
+    ["Standard Deviation (Mbps)", "DUT", calculateOverallMean(httpSS_Stationary_DL, 'DUT', 'Standard Deviation').toFixed(2), calculateOverallMean(httpSS_Stationary_UL, 'DUT', 'Standard Deviation').toFixed(2)],
+    ["Standard Deviation (Mbps)", "REF", calculateOverallMean(httpSS_Stationary_DL, 'REF', 'Standard Deviation').toFixed(2), calculateOverallMean(httpSS_Stationary_UL, 'REF', 'Standard Deviation').toFixed(2)],
+    ["Maximum (Mbps)", "DUT", calculateOverallMax(httpSS_Stationary_DL, 'DUT').toFixed(2), calculateOverallMax(httpSS_Stationary_UL, 'DUT').toFixed(2)],
+    ["Maximum (Mbps)", "REF", calculateOverallMax(httpSS_Stationary_DL, 'REF').toFixed(2), calculateOverallMax(httpSS_Stationary_UL, 'REF').toFixed(2)],
+    ["Minimum (Mbps)", "DUT", calculateOverallMin(httpSS_Stationary_DL, 'DUT').toFixed(2), calculateOverallMin(httpSS_Stationary_UL, 'DUT').toFixed(2)],
+    ["Minimum (Mbps)", "REF", calculateOverallMin(httpSS_Stationary_DL, 'REF').toFixed(2), calculateOverallMin(httpSS_Stationary_UL, 'REF').toFixed(2)],
   ];
+
 
 
   const barKeys = [
@@ -188,14 +211,14 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
             {
               rowIndex: 0,
               colIndex: 2,
-              dutValue: ((httpSS_Stationary_DL.Good.DUT.Mean + httpSS_Stationary_DL.Moderate.DUT.Mean + httpSS_Stationary_DL.Poor.DUT.Mean) / 3).toFixed(2),
-              refValue: ((httpSS_Stationary_DL.Good.REF.Mean + httpSS_Stationary_DL.Moderate.REF.Mean + httpSS_Stationary_DL.Poor.REF.Mean) / 3).toFixed(2),
+              dutValue: calculateOverallMean(httpSS_Stationary_DL, 'DUT').toFixed(2),
+              refValue: calculateOverallMean(httpSS_Stationary_DL, 'REF').toFixed(2),
             },
             {
               rowIndex: 0,
               colIndex: 3,
-              dutValue: ((httpSS_Stationary_UL.Good.DUT.Mean + httpSS_Stationary_UL.Moderate.DUT.Mean + httpSS_Stationary_UL.Poor.DUT.Mean) / 3).toFixed(2),
-              refValue: ((httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3).toFixed(2),
+              dutValue: calculateOverallMean(httpSS_Stationary_UL, 'DUT').toFixed(2),
+              refValue: calculateOverallMean(httpSS_Stationary_UL, 'REF').toFixed(2),
             },
           ]}
         />
@@ -206,8 +229,8 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
           kpiRule="Throughput"
           kpiTargetCells={[
             {
-              dutValue: (httpSS_Stationary_DL.Good.DUT.Mean + httpSS_Stationary_DL.Moderate.DUT.Mean + httpSS_Stationary_DL.Poor.DUT.Mean) / 3,
-              refValue: (httpSS_Stationary_DL.Good.REF.Mean + httpSS_Stationary_DL.Moderate.REF.Mean + httpSS_Stationary_DL.Poor.REF.Mean) / 3,
+              dutValue: calculateOverallMean(httpSS_Stationary_DL, 'DUT'),
+              refValue: calculateOverallMean(httpSS_Stationary_DL, 'REF'),
             },
           ]}
         />
@@ -234,8 +257,8 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
           kpiRule="Throughput"
           kpiTargetCells={[
             {
-              dutValue: (httpSS_Stationary_UL.Good.DUT.Mean + httpSS_Stationary_UL.Moderate.DUT.Mean + httpSS_Stationary_UL.Poor.DUT.Mean) / 3,
-              refValue: (httpSS_Stationary_UL.Good.REF.Mean + httpSS_Stationary_UL.Moderate.REF.Mean + httpSS_Stationary_UL.Poor.REF.Mean) / 3,
+              dutValue: calculateOverallMean(httpSS_Stationary_UL, 'DUT'),
+              refValue: calculateOverallMean(httpSS_Stationary_UL, 'REF'),
             },
           ]}
         />

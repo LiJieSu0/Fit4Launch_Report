@@ -49,30 +49,30 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
   const getMSStats = (dir, cov, dev) => MultiStreamHTTPData?.[dir]?.[cov]?.[dev]?.Throughput || {};
 
   const ssHttpDlHistogramData = [
-    { name: 'Moderate', DUT: getSSStats('DL', 'Moderate', 'DUT').Mean, REF: getSSStats('DL', 'Moderate', 'REF').Mean },
-    { name: 'Poor', DUT: getSSStats('DL', 'Poor', 'DUT').Mean, REF: getSSStats('DL', 'Poor', 'REF').Mean },
+    { name: 'Moderate', DUT: getSSStats('DL', 'Moderate', 'DUT').Mean || 0, REF: getSSStats('DL', 'Moderate', 'REF').Mean || 0 },
+    { name: 'Poor', DUT: getSSStats('DL', 'Poor', 'DUT').Mean || 0, REF: getSSStats('DL', 'Poor', 'REF').Mean || 0 },
   ];
 
   const ssHttpUlHistogramData = [
-    { name: 'Moderate', DUT: getSSStats('UL', 'Moderate', 'DUT').Mean, REF: getSSStats('UL', 'Moderate', 'REF').Mean },
-    { name: 'Poor', DUT: getSSStats('UL', 'Poor', 'DUT').Mean, REF: getSSStats('UL', 'Poor', 'REF').Mean },
+    { name: 'Moderate', DUT: getSSStats('UL', 'Moderate', 'DUT').Mean || 0, REF: getSSStats('UL', 'Moderate', 'REF').Mean || 0 },
+    { name: 'Poor', DUT: getSSStats('UL', 'Poor', 'DUT').Mean || 0, REF: getSSStats('UL', 'Poor', 'REF').Mean || 0 },
   ];
 
   const msHttpDlHistogramData = [
-    { name: 'Moderate', DUT: getMSStats('DL', 'Moderate', 'DUT').Mean, REF: getMSStats('DL', 'Moderate', 'REF').Mean },
-    { name: 'Poor', DUT: getMSStats('DL', 'Poor', 'DUT').Mean, REF: getMSStats('DL', 'Poor', 'REF').Mean },
+    { name: 'Moderate', DUT: getMSStats('DL', 'Moderate', 'DUT').Mean || 0, REF: getMSStats('DL', 'Moderate', 'REF').Mean || 0 },
+    { name: 'Poor', DUT: getMSStats('DL', 'Poor', 'DUT').Mean || 0, REF: getMSStats('DL', 'Poor', 'REF').Mean || 0 },
   ];
 
   const msHttpUlHistogramData = [
-    { name: 'Moderate', DUT: getMSStats('UL', 'Moderate', 'DUT').Mean, REF: getMSStats('UL', 'Moderate', 'REF').Mean },
-    { name: 'Poor', DUT: getMSStats('UL', 'Poor', 'DUT').Mean, REF: getMSStats('UL', 'Poor', 'REF').Mean },
+    { name: 'Moderate', DUT: getMSStats('UL', 'Moderate', 'DUT').Mean || 0, REF: getMSStats('UL', 'Moderate', 'REF').Mean || 0 },
+    { name: 'Poor', DUT: getMSStats('UL', 'Poor', 'DUT').Mean || 0, REF: getMSStats('UL', 'Poor', 'REF').Mean || 0 },
   ];
 
   // Ping processing
   const pingData = processPingData(PingData);
   const pingHistogramData = [
-    { name: 'Moderate', DUT: pingData?.average?.DUT?.Moderate, REF: pingData?.average?.REF?.Moderate },
-    { name: 'Poor', DUT: pingData?.average?.DUT?.Poor, REF: pingData?.average?.REF?.Poor },
+    { name: 'Moderate', DUT: pingData?.average?.DUT?.Moderate || 0, REF: pingData?.average?.REF?.Moderate || 0 },
+    { name: 'Poor', DUT: pingData?.average?.DUT?.Poor || 0, REF: pingData?.average?.REF?.Poor || 0 },
   ];
 
   const overallTableHeader = ["Throughput", "Device Name", "Download", "Upload"];

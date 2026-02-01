@@ -89,9 +89,9 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
         const defaultData = Array.from({ length: 5 }, (_, i) => ({
             run: `RUN ${i + 1}`,
             segments: [
-                { segment: 'First 30%', DUT: { bler: 0, mcs: 0, cqi: 0 }, REF: { bler: 0, mcs: 0, cqi: 0 } },
-                { segment: 'Middle 40%', DUT: { bler: 0, mcs: 0, cqi: 0 }, REF: { bler: 0, mcs: 0, cqi: 0 } },
-                { segment: 'Last 30%', DUT: { bler: 0, mcs: 0, cqi: 0 }, REF: { bler: 0, mcs: 0, cqi: 0 } },
+                { segment: 'First 30%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
+                { segment: 'Middle 40%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
+                { segment: 'Last 30%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
             ]
         }));
 
@@ -114,13 +114,11 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         segment: seg,
                         DUT: {
                             bler: dutStats['AVG BLER'] || 0,
-                            mcs: dutStats['AVG MCS'] || 0,
-                            cqi: dutStats['AVG CQI'] || 0
+                            mcs: dutStats['AVG MCS'] || 0
                         },
                         REF: {
                             bler: refStats['AVG BLER'] || 0,
-                            mcs: refStats['AVG MCS'] || 0,
-                            cqi: refStats['AVG CQI'] || 0
+                            mcs: refStats['AVG MCS'] || 0
                         }
                     };
                 })
@@ -136,11 +134,8 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                     <th rowSpan="2">Segment</th>
                     <th colSpan="2">AVG BLER</th>
                     <th colSpan="2">AVG MCS</th>
-                    <th colSpan="2">AVG CQI</th>
                 </tr>
                 <tr>
-                    <th>DUT</th>
-                    <th>REF</th>
                     <th>DUT</th>
                     <th>REF</th>
                     <th>DUT</th>
@@ -160,8 +155,6 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                                 <td>{segmentData.REF.bler.toFixed(2)}</td>
                                 <td>{segmentData.DUT.mcs.toFixed(2)}</td>
                                 <td>{segmentData.REF.mcs.toFixed(2)}</td>
-                                <td>{segmentData.DUT.cqi.toFixed(2)}</td>
-                                <td>{segmentData.REF.cqi.toFixed(2)}</td>
                             </tr>
                         ))}
                     </React.Fragment>

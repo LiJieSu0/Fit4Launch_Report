@@ -31,7 +31,6 @@ const AboutPage = () => {
         With advanced communication tools, remote services and streamlined logistics, ATMC Labs has unrivaled test coverage for
         wireless devices and offers those services with the highest quality and cost effectiveness.
       </p>
-
     </div>
   );
 };

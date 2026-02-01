@@ -5,7 +5,7 @@ import ContentsIndexPage from './CommonPage/ContentsIndexPage';
 import DeviceInfoPage from './CommonPage/DeviceInfoPage';
 import LegalPage from './CommonPage/LegalPage';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { ReportDataProvider } from './Contexts/ReportDataProvider';
 
@@ -44,6 +44,15 @@ const reportType = {
 
 function App() {
   const [currentReport, setCurrentReport] = useState(null);
+
+  useEffect(() => {
+    if (currentReport) {
+      document.title = reportType[currentReport];
+    } else {
+      document.title = "Report Generator";
+    }
+  }, [currentReport]);
+
 
   if (!currentReport) {
     return (

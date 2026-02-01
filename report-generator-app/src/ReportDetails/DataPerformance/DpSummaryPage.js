@@ -134,30 +134,41 @@ function DpSummaryPage() {
     const cleanCaseName = caseName.replace("MHS-", "").replace("Play-store", "Play-store");
 
     // Find header that matches city, network, case name, and subId
-    const header = numberedHeaders.find(h => {
+    const possibleHeaders = numberedHeaders.filter(h => {
       const text = h.text.toLowerCase();
       const matchesCity = text.includes(city.toLowerCase());
-      const matchesNetwork = text.includes(network.toLowerCase());
+
+      // Network name might be omitted in some headers (especially MHS)
+      const matchesNetwork = text.includes(network.toLowerCase()) || text.includes(network.replace("5G ", "").toLowerCase());
+
       const matchesCase = text.includes(cleanCaseName.toLowerCase()) ||
         (cleanCaseName === "Web Browser" && text.includes("web browser")) ||
         (cleanCaseName === "Play-store App Download" && text.includes("play-store")) ||
-        (caseName === "Mobility" && text.includes("mobility test"));
+        (caseName === "Mobility" && text.includes("mobility test")) ||
+        (caseName === "MHS-Mobility" && text.includes("mobility test")); // MHS Mobility also matches mobility test
+
       const matchesMHS = isMHS ?
         (text.includes("mobile hotspot") || text.includes("mhs")) :
         (!text.includes("mobile hotspot") && !text.includes("mhs"));
 
-      const matchesSub = !subId ||
-        (subId === 'DL' && (text.includes("download") || text.includes("dl"))) ||
-        (subId === 'UL' && (text.includes("upload") || text.includes("ul")));
-
-      return matchesCity && matchesNetwork && matchesCase && matchesMHS && matchesSub;
+      return matchesCity && matchesCase && matchesMHS && (matchesNetwork || isMHS);
     });
 
-    if (header) {
-      return `#${header.id}`;
+    if (possibleHeaders.length === 0) return '#';
+
+    // Best match: also matches subId
+    const subMatch = possibleHeaders.find(h => {
+      const text = h.text.toLowerCase();
+      return (subId === 'DL' && (text.includes("download") || text.includes("dl"))) ||
+        (subId === 'UL' && (text.includes("upload") || text.includes("ul")));
+    });
+
+    if (subMatch) {
+      return `#${subMatch.id}`;
     }
 
-    return '#';
+    // Fallback: first possible match
+    return `#${possibleHeaders[0].id}`;
   };
 
   const NR_MARKETS = MARKETS_CONFIG.filter(m => m.network === "5G AUTO DP");
@@ -611,12 +622,12 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={mhsUdpData} />
         <DpSummaryTable tableData={mhsPingData} />
         <DpSummaryTable tableData={mobiltyData} />
-      </div>
-      <div className='page-content'>
-        <div style={{ marginTop: 10 }}></div>
         <DpSummaryTable tableData={mobiltyMHSData} />
-        {/* <DpSummaryTable tableData={mrabData} /> */}
       </div>
+      {/* <div className='page-content'>
+        <div style={{ marginTop: 10 }}></div>
+        <DpSummaryTable tableData={mrabData} />
+      </div> */}
       <div className='page-content'>
         <h4>Data Performance Overview – 5G NSA</h4>
         <DpSummaryTable tableData={httpNSASSData} />

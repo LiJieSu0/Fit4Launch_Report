@@ -1,3 +1,4 @@
+
 import pandas as pd
 import sys
 import argparse
@@ -24,6 +25,42 @@ def _clean_header(header):
     cleaned_header = re.sub(r'\[.*?\]', '', header)
     # Strip leading/trailing whitespace
     return cleaned_header.strip()
+
+def _get_series_from_dataframe(data, column_name):
+    """
+    Helper function to safely extract a Series from a DataFrame given a column name.
+    If multiple columns exist with the same name (after cleaning), it returns the one with the most valid data.
+    Returns None if the column doesn't exist or is empty.
+    """
+    if column_name not in data.columns:
+        return None
+
+    col_data = data[column_name]
+
+    if isinstance(col_data, pd.Series):
+        if col_data.dropna().empty:
+            return None
+        return col_data
+    elif isinstance(col_data, pd.DataFrame):
+        # Handle duplicate columns
+        best_series = None
+        max_valid_count = -1
+        
+        # Iterate over the columns in the DataFrame (which are the duplicates)
+        for i in range(col_data.shape[1]):
+            series = col_data.iloc[:, i]
+            valid_count = series.count() # count() excludes NA/null values
+            
+            if valid_count > max_valid_count:
+                max_valid_count = valid_count
+                best_series = series
+        
+        if best_series is not None and not best_series.dropna().empty:
+            return best_series
+        else:
+            return None
+    else:
+        return None
 
 def _determine_analysis_parameters(file_path):
     """
@@ -268,24 +305,45 @@ def analyze_throughput(file_path, column_name_to_analyze, event_col_name, start_
         # Apply the cleaning function to all column names in the DataFrame
         data.columns = [_clean_header(col) for col in data.columns]
         
-        current_column_to_use = column_name_to_analyze
+        current_column_to_use = None
+        data_series_to_use = None
         
         # Check primary column
-        if current_column_to_use in data.columns and not data[current_column_to_use].dropna().empty:
-            pass # Primary column is good
+        data_series_to_use = _get_series_from_dataframe(data, column_name_to_analyze)
+        if data_series_to_use is not None:
+            current_column_to_use = column_name_to_analyze
         else:
             # Primary column is not good, try fallbacks
-            if fallback_column_name in data.columns and not data[fallback_column_name].dropna().empty:
-                logger.warning(f"Primary throughput column '{current_column_to_use}' is empty or not found. Using fallback column '{fallback_column_name}'.")
+            data_series_to_use = _get_series_from_dataframe(data, fallback_column_name)
+            if data_series_to_use is not None:
+                logger.warning(f"Primary throughput column '{column_name_to_analyze}' is empty or not found. Using fallback column '{fallback_column_name}'.")
                 current_column_to_use = fallback_column_name
-            elif third_fallback_column_name in data.columns and not data[third_fallback_column_name].dropna().empty:
-                logger.warning(f"Primary throughput column '{column_name_to_analyze}' and first fallback '{fallback_column_name}' are empty or not found. Using third fallback column '{third_fallback_column_name}'.")
-                current_column_to_use = third_fallback_column_name
             else:
-                logger.error(f"Primary throughput column '{column_name_to_analyze}' is empty or not found, and fallback column '{fallback_column_name}' is also empty or not found, and third fallback '{third_fallback_column_name}' is also empty or not found.")
-                logger.debug(f"Available columns: {data.columns.tolist()}")
-                return {} # Return empty dict instead of None
+                data_series_to_use = _get_series_from_dataframe(data, third_fallback_column_name)
+                if data_series_to_use is not None:
+                    logger.warning(f"Primary throughput column '{column_name_to_analyze}' and first fallback '{fallback_column_name}' are empty or not found. Using third fallback column '{third_fallback_column_name}'.")
+                    current_column_to_use = third_fallback_column_name
+                else:
+                    logger.error(f"Primary throughput column '{column_name_to_analyze}' is empty or not found, and fallback column '{fallback_column_name}' is also empty or not found, and third fallback '{third_fallback_column_name}' is also empty or not found.")
+                    logger.debug(f"Available columns: {data.columns.tolist()}")
+                    return {} # Return empty dict instead of None
         
+        # NOTE: At this point data_series_to_use holds the valid data series, 
+        # but the logic below relies on accessing data[current_column_to_use].
+        # Because we've already resolved duplicates in _get_series_from_dataframe, data[current_column_to_use] might return the DataFrame again.
+        # So we should use data_series_to_use for calculations, OR fix the DataFrame to only have the valid series.
+        # To avoid large refactoring, we'll overwrite the column in 'data' with the valid series if it exists.
+        
+        if current_column_to_use and data_series_to_use is not None:
+            # If the column name exists multiple times, drop them and add the single valid series
+            if isinstance(data[current_column_to_use], pd.DataFrame):
+                 # Drop all columns with this name
+                data = data.drop(columns=[current_column_to_use])
+                # Add the valid series back
+                data[current_column_to_use] = data_series_to_use
+            # If it's already a series but we picked it via fallback, it's fine. 
+            # If it was a duplicate and we picked the best one, we just replaced the duplicates with the single best series.
+
         # Check if primary event column exists, otherwise try fallback
         current_event_col_to_use = event_col_name
         if current_event_col_to_use not in data.columns:
@@ -427,7 +485,13 @@ def analyze_jitter(file_path, column_name_to_analyze, event_col_name, start_even
             return {} # Return empty dict instead of None
         
         # Calculate mean of the entire column
-        overall_jitter_data = data[column_name_to_analyze].dropna()
+        # Handle duplicates if present
+        data_series = _get_series_from_dataframe(data, column_name_to_analyze)
+        if data_series is None:
+             print(f"\nError: Column '{column_name_to_analyze}' not found or empty.")
+             return {}
+
+        overall_jitter_data = data_series.dropna()
 
         if not overall_jitter_data.empty:
             mean_val = overall_jitter_data.mean()
@@ -478,7 +542,13 @@ def analyze_error_ratio(file_path, column_name_to_analyze, event_col_name, start
             return {} # Return empty dict instead of None
         
         # Calculate mean of the entire column
-        overall_error_ratio_data = data[column_name_to_analyze].dropna()
+        # Handle duplicates if present
+        data_series = _get_series_from_dataframe(data, column_name_to_analyze)
+        if data_series is None:
+             print(f"\nError: Column '{column_name_to_analyze}' not found or empty.")
+             return {}
+
+        overall_error_ratio_data = data_series.dropna()
 
         if not overall_error_ratio_data.empty:
             mean_val = overall_error_ratio_data.mean()

@@ -444,14 +444,24 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     const overallDUT = getOverallMean(dutGood, dutModerate, dutPoor);
     const overallREF = getOverallMean(refGood, refModerate, refPoor);
 
+    const histogramData = [];
+    if (dutGood !== undefined || refGood !== undefined) {
+      histogramData.push({ name: 'Good', DUT: dutGood, REF: refGood });
+    }
+    if (dutModerate !== undefined || refModerate !== undefined) {
+      histogramData.push({ name: 'Moderate', DUT: dutModerate, REF: refModerate });
+    }
+    if (dutPoor !== undefined || refPoor !== undefined) {
+      histogramData.push({ name: 'Poor', DUT: dutPoor, REF: refPoor });
+    }
+    // Always include overall if calculated? Or only if there was some data?
+    // Based on previous code, it seems expected.
+    histogramData.push({ name: 'Overall', DUT: overallDUT, REF: overallREF });
+
     downloadHistogramData.push({
       title: title,
       yAxisLabel: yAxisLabel,
-      data: [
-        { name: 'Moderate', DUT: dutModerate, REF: refModerate },
-        { name: 'Poor', DUT: dutPoor, REF: refPoor },
-        { name: 'Overall', DUT: overallDUT, REF: overallREF },
-      ]
+      data: histogramData
     });
   });
 
@@ -476,14 +486,22 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     const overallDUT = getOverallMean(dutGood, dutModerate, dutPoor);
     const overallREF = getOverallMean(refGood, refModerate, refPoor);
 
+    const histogramData = [];
+    if (dutGood !== undefined || refGood !== undefined) {
+      histogramData.push({ name: 'Good', DUT: dutGood, REF: refGood });
+    }
+    if (dutModerate !== undefined || refModerate !== undefined) {
+      histogramData.push({ name: 'Moderate', DUT: dutModerate, REF: refModerate });
+    }
+    if (dutPoor !== undefined || refPoor !== undefined) {
+      histogramData.push({ name: 'Poor', DUT: dutPoor, REF: refPoor });
+    }
+    histogramData.push({ name: 'Overall', DUT: overallDUT, REF: overallREF });
+
     uploadHistogramData.push({
       title: title,
       yAxisLabel: yAxisLabel,
-      data: [
-        { name: 'Moderate', DUT: dutModerate, REF: refModerate },
-        { name: 'Poor', DUT: dutPoor, REF: refPoor },
-        { name: 'Overall', DUT: overallDUT, REF: overallREF },
-      ]
+      data: histogramData
     });
   });
 

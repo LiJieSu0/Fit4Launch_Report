@@ -197,9 +197,15 @@ def extract_coverage_data_to_csv(folder_path, output_folder='.', device_type_fil
             # Create a copy to avoid SettingWithCopyWarning and ensure independent operation
             temp_df = all_extracted_data.copy()
             
-            # Convert all columns to numeric, coercing errors will turn non-numeric into NaN
+            # Convert all columns to numeric and apply threshold filtering
             for col in temp_df.columns:
                 temp_df[col] = pd.to_numeric(temp_df[col], errors='coerce')
+                
+                # Apply Power Class thresholds (PC3: 24, PC2: 26)
+                if 'PC3' in col.upper():
+                    temp_df.loc[temp_df[col] > 24, col] = pd.NA
+                elif 'PC2' in col.upper():
+                    temp_df.loc[temp_df[col] > 26, col] = pd.NA
             
             # Filter out rows where any value is NaN or 0
             # We use .any(axis=1) to check if *any* column in a row meets the condition

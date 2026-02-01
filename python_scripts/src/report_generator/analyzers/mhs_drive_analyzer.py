@@ -19,16 +19,25 @@ class MHSDriveAnalyzer(BaseAnalyzer):
         return None
 
     def _analyze_file(self, file_path):
-        filename_pattern = re.compile(r"(DUT|REF)\s+MHS UDP Drive\.csv", re.IGNORECASE)
         file_name = os.path.basename(file_path)
-        match = filename_pattern.match(file_name)
-        if match:
-            device_type = match.group(1).upper()
+        
+        # Simple check for DUT/REF in filename (case-insensitive)
+        device_type = None
+        if "DUT" in file_name.upper():
+            device_type = "DUT"
+        elif "REF" in file_name.upper():
+            device_type = "REF"
+            
+        if device_type:
             analysis_res = analyze_mhs_drive_data(file_path, device_type)
             if analysis_res:
                 filename_without_ext = os.path.splitext(file_name)[0]
+                # Clean up filename for the key if needed, or just use it as is. 
+                # The pipeline usually expects keys like "DUT" or "REF" which is handled by pipeline.py logic 
+                # after receiving this result. However, for consistency with previous logic:
                 if "REF" in filename_without_ext.upper(): filename_without_ext = "REF"
                 elif "DUT" in filename_without_ext.upper(): filename_without_ext = "DUT"
+                
                 return {
                     filename_without_ext: {
                         "Device Type": device_type,
@@ -41,8 +50,7 @@ class MHSDriveAnalyzer(BaseAnalyzer):
 
     def _analyze_directory(self, directory_path):
         results = {}
-        filename_pattern = re.compile(r"(DUT|REF)\s+MHS UDP Drive\.csv", re.IGNORECASE)
-
+        # Iterate over all CSV files in the directory
         for file_name in os.listdir(directory_path):
             if file_name.lower().endswith(".csv"):
                 file_path = os.path.join(directory_path, file_name)

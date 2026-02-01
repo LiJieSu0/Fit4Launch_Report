@@ -2144,3 +2144,99 @@
 2026-01-31 19:50:08,931 - pipeline - INFO - Running final data validation...
 2026-01-31 19:50:08,950 - pipeline - INFO - No empty collections found in any JSON file.
 2026-01-31 19:50:08,951 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-01-31 19:54:14,499 - pipeline - INFO - Market: Seattle
+2026-01-31 19:54:14,499 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\Seattle
+2026-01-31 19:54:14,499 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-01-31 19:54:14,500 - pipeline - INFO - Starting analysis pipeline...
+2026-01-31 19:54:14,505 - pipeline - INFO - Processing 138 individual CSV files...
+2026-01-31 19:54:16,641 - pipeline - INFO - Processing directory-level analyses...
+2026-01-31 19:54:16,642 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-01-31 19:54:16,642 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-31 19:54:16,685 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 19:54:16,910 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 19:54:16,910 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-01-31 19:54:17,013 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-01-31 19:54:17,014 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\Seattle\WFC
+2026-01-31 19:54:17,014 - pipeline - INFO - Processing WFC Test Case: MOS PATCH
+2026-01-31 19:54:17,014 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-01-31 19:54:17,033 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-01-31 19:54:17,064 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-01-31 19:54:17,153 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-01-31 19:54:17,228 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-01-31 19:54:17,316 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-01-31 19:54:17,401 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-01-31 19:54:17,475 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-01-31 19:54:17,561 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-01-31 19:54:17,650 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-01-31 19:54:17,738 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-01-31 19:54:17,828 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-01-31 19:54:17,912 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-01-31 19:54:17,960 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-01-31 19:54:17,975 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-01-31 19:54:17,989 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-01-31 19:54:18,034 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-01-31 19:54:18,053 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-01-31 19:54:18,074 - pipeline - WARNING - MOS patch directory not found: D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH
+2026-01-31 19:54:18,074 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-31 19:54:19,613 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\data_performance_results.json
+2026-01-31 19:54:19,616 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\coverage_performance_results.json
+2026-01-31 19:54:19,618 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_performance_results.json
+2026-01-31 19:54:19,619 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\processing_summary.json
+2026-01-31 19:54:19,619 - pipeline - INFO - Running final data validation...
+2026-01-31 19:54:19,639 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-31 19:54:19,639 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-01-31 20:01:40,316 - pipeline - INFO - Market: New York
+2026-01-31 20:01:40,316 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\New York
+2026-01-31 20:01:40,316 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-01-31 20:01:40,317 - pipeline - INFO - Starting analysis pipeline...
+2026-01-31 20:01:40,321 - pipeline - INFO - Processing 114 individual CSV files...
+2026-01-31 20:01:42,604 - pipeline - INFO - Processing directory-level analyses...
+2026-01-31 20:01:42,604 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance (Type: coverage_coordinate)
+2026-01-31 20:01:42,605 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-01-31 20:01:42,716 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 20:01:43,249 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-01-31 20:01:43,831 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-01-31 20:01:43,832 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: REF, Location: Good)
+2026-01-31 20:01:43,838 - pipeline - INFO - Successfully analyzed _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv: 201.80939047619046
+2026-01-31 20:01:43,838 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: DUT, Location: Good)
+2026-01-31 20:01:43,843 - pipeline - INFO - Successfully analyzed _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv: 106.65787198912199
+2026-01-31 20:01:43,843 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: REF, Location: Good)
+2026-01-31 20:01:43,862 - pipeline - INFO - Successfully analyzed _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv: 151.11654
+2026-01-31 20:01:43,862 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: DUT, Location: Good)
+2026-01-31 20:01:43,882 - pipeline - INFO - Successfully analyzed _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv: 154.40230444444444
+2026-01-31 20:01:43,882 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: REF, Location: Good)
+2026-01-31 20:01:43,900 - pipeline - INFO - Successfully analyzed _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv: 183.348031292517
+2026-01-31 20:01:43,900 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: DUT, Location: Good)
+2026-01-31 20:01:43,917 - pipeline - INFO - Successfully analyzed _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv: 117.78983869911602
+2026-01-31 20:01:43,917 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-01-31 20:01:43,935 - pipeline - INFO - Successfully analyzed _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv: 199.38622564102565
+2026-01-31 20:01:43,935 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-01-31 20:01:43,953 - pipeline - INFO - Successfully analyzed _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv: 130.38925768359607
+2026-01-31 20:01:43,954 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-01-31 20:01:43,971 - pipeline - INFO - Successfully analyzed _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv: 134.55456031746033
+2026-01-31 20:01:43,972 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-01-31 20:01:43,988 - pipeline - INFO - Successfully analyzed _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv: 144.7251455782313
+2026-01-31 20:01:43,989 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-01-31 20:01:44,005 - pipeline - INFO - Successfully analyzed _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv: 74.65798181818182
+2026-01-31 20:01:44,005 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-01-31 20:01:44,021 - pipeline - INFO - Successfully analyzed _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv: 63.67727272727273
+2026-01-31 20:01:44,021 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: REF, Location: Poor)
+2026-01-31 20:01:44,038 - pipeline - INFO - Successfully analyzed _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 49.54232289238539
+2026-01-31 20:01:44,038 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-01-31 20:01:44,070 - pipeline - INFO - Successfully analyzed _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 83.81849905911082
+2026-01-31 20:01:44,071 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: REF, Location: Poor)
+2026-01-31 20:01:44,090 - pipeline - INFO - Successfully analyzed _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 58.24894230560767
+2026-01-31 20:01:44,090 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-01-31 20:01:44,108 - pipeline - INFO - Successfully analyzed _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 65.55823299416632
+2026-01-31 20:01:44,108 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: REF, Location: Poor)
+2026-01-31 20:01:44,126 - pipeline - INFO - Successfully analyzed _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.13884175824176
+2026-01-31 20:01:44,126 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-01-31 20:01:44,143 - pipeline - INFO - Successfully analyzed _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.62678260869565
+2026-01-31 20:01:44,143 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-01-31 20:01:44,143 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-01-31 20:01:44,241 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\data_performance_results.json
+2026-01-31 20:01:44,244 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\coverage_performance_results.json
+2026-01-31 20:01:44,245 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\processing_summary.json
+2026-01-31 20:01:44,245 - pipeline - INFO - Running final data validation...
+2026-01-31 20:01:44,264 - pipeline - INFO - No empty collections found in any JSON file.
+2026-01-31 20:01:44,264 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York

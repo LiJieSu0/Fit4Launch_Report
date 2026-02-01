@@ -192,6 +192,7 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
     <>
       <div className='page-content'>
         {firstSection && <DynamicHeader level={2}>Mobility Test - 5G Auto</DynamicHeader>}
+        <DynamicHeader level={3}>Mobility Test - 5G Auto - {city}</DynamicHeader>
         <DpDriveTestOverallTable data={formattedTestDriveData} tableName={`Mobility Test Drive Overview - ${city}`} />
         <DpDriveTestTable data={formattedTestDriveData} tableName={`Mobility Test Drive Details - ${city}`} />
       </div>
@@ -222,7 +223,7 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
         <>
           <div className='page-content'>
             <DynamicHeader level={3}>Mobility Test - Mobile Hotspot - 5G Auto - {city}</DynamicHeader>
-            <DpMHSTestDriveOverallTable data={formattedMhsTestDriveData} tableName="MHS Test Drive Overall Data" />
+            <DpMHSTestDriveOverallTable data={formattedMhsTestDriveData} tableName={`Mobility Test Drive Overview - ${city}`} />
             <DpMHSTestDriveTable data={formattedMhsTestDriveData} tableName="MHS Test Drive Data" />
           </div>
           <div className='page-content'>

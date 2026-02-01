@@ -3829,3 +3829,371 @@
 2026-02-01 16:48:55,915 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
 2026-02-01 16:48:55,915 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
 2026-02-01 16:48:55,915 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-02-01 17:04:05,217 - pipeline - INFO - Market: DataStructureFolder
+2026-02-01 17:04:05,218 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\DataStructureFolder
+2026-02-01 17:04:05,218 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\DataStructureFolder
+2026-02-01 17:04:05,218 - pipeline - INFO - Starting analysis pipeline...
+2026-02-01 17:04:05,222 - pipeline - INFO - Processing 152 individual CSV files...
+2026-02-01 17:04:06,989 - pipeline - INFO - Processing directory-level analyses...
+2026-02-01 17:04:06,990 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\DataStructureFolder\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-01 17:04:06,991 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-01 17:04:06,991 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-01 17:04:06,993 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\DataStructureFolder\data_performance_results.json
+2026-02-01 17:04:06,994 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\DataStructureFolder\processing_summary.json
+2026-02-01 17:04:06,994 - pipeline - INFO - Running final data validation...
+2026-02-01 17:04:07,005 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-01 17:04:07,006 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\DataStructureFolder
+2026-02-01 17:04:07,010 - pipeline - INFO - Market: New York
+2026-02-01 17:04:07,010 - pipeline - INFO - Market: New York
+2026-02-01 17:04:07,011 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\New York
+2026-02-01 17:04:07,011 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\New York
+2026-02-01 17:04:07,011 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-02-01 17:04:07,011 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-02-01 17:04:07,011 - pipeline - INFO - Starting analysis pipeline...
+2026-02-01 17:04:07,011 - pipeline - INFO - Starting analysis pipeline...
+2026-02-01 17:04:07,016 - pipeline - INFO - Processing 114 individual CSV files...
+2026-02-01 17:04:07,016 - pipeline - INFO - Processing 114 individual CSV files...
+2026-02-01 17:04:08,496 - pipeline - INFO - Processing directory-level analyses...
+2026-02-01 17:04:08,496 - pipeline - INFO - Processing directory-level analyses...
+2026-02-01 17:04:08,497 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-01 17:04:08,497 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-01 17:04:08,497 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-01 17:04:08,497 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-01 17:04:08,530 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-01 17:04:08,530 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-01 17:04:08,812 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-01 17:04:08,812 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-01 17:04:09,103 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-01 17:04:09,103 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-01 17:04:09,104 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-01 17:04:09,104 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-01 17:04:09,109 - pipeline - INFO - Successfully analyzed _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv: 201.80939047619046
+2026-02-01 17:04:09,109 - pipeline - INFO - Successfully analyzed _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv: 201.80939047619046
+2026-02-01 17:04:09,109 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-01 17:04:09,109 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-01 17:04:09,115 - pipeline - INFO - Successfully analyzed _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv: 106.65787198912199
+2026-02-01 17:04:09,115 - pipeline - INFO - Successfully analyzed _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv: 106.65787198912199
+2026-02-01 17:04:09,115 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-01 17:04:09,115 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-01 17:04:09,121 - pipeline - INFO - Successfully analyzed _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv: 151.11654
+2026-02-01 17:04:09,121 - pipeline - INFO - Successfully analyzed _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv: 151.11654
+2026-02-01 17:04:09,122 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-01 17:04:09,122 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-01 17:04:09,128 - pipeline - INFO - Successfully analyzed _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv: 154.40230444444444
+2026-02-01 17:04:09,128 - pipeline - INFO - Successfully analyzed _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv: 154.40230444444444
+2026-02-01 17:04:09,128 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-01 17:04:09,128 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-01 17:04:09,134 - pipeline - INFO - Successfully analyzed _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv: 183.348031292517
+2026-02-01 17:04:09,134 - pipeline - INFO - Successfully analyzed _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv: 183.348031292517
+2026-02-01 17:04:09,134 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-01 17:04:09,134 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-01 17:04:09,140 - pipeline - INFO - Successfully analyzed _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv: 117.78983869911602
+2026-02-01 17:04:09,140 - pipeline - INFO - Successfully analyzed _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv: 117.78983869911602
+2026-02-01 17:04:09,140 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-01 17:04:09,140 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-01 17:04:09,145 - pipeline - INFO - Successfully analyzed _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv: 199.38622564102565
+2026-02-01 17:04:09,145 - pipeline - INFO - Successfully analyzed _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv: 199.38622564102565
+2026-02-01 17:04:09,145 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-01 17:04:09,145 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-01 17:04:09,151 - pipeline - INFO - Successfully analyzed _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv: 130.38925768359607
+2026-02-01 17:04:09,151 - pipeline - INFO - Successfully analyzed _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv: 130.38925768359607
+2026-02-01 17:04:09,151 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-01 17:04:09,151 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-01 17:04:09,157 - pipeline - INFO - Successfully analyzed _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv: 134.55456031746033
+2026-02-01 17:04:09,157 - pipeline - INFO - Successfully analyzed _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv: 134.55456031746033
+2026-02-01 17:04:09,157 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-01 17:04:09,157 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-01 17:04:09,163 - pipeline - INFO - Successfully analyzed _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv: 144.7251455782313
+2026-02-01 17:04:09,163 - pipeline - INFO - Successfully analyzed _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv: 144.7251455782313
+2026-02-01 17:04:09,163 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-01 17:04:09,163 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-01 17:04:09,168 - pipeline - INFO - Successfully analyzed _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv: 74.65798181818182
+2026-02-01 17:04:09,168 - pipeline - INFO - Successfully analyzed _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv: 74.65798181818182
+2026-02-01 17:04:09,168 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-01 17:04:09,168 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-01 17:04:09,173 - pipeline - INFO - Successfully analyzed _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv: 63.67727272727273
+2026-02-01 17:04:09,173 - pipeline - INFO - Successfully analyzed _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv: 63.67727272727273
+2026-02-01 17:04:09,174 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-01 17:04:09,174 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-01 17:04:09,180 - pipeline - INFO - Successfully analyzed _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 49.54232289238539
+2026-02-01 17:04:09,180 - pipeline - INFO - Successfully analyzed _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 49.54232289238539
+2026-02-01 17:04:09,180 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-01 17:04:09,180 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-01 17:04:09,186 - pipeline - INFO - Successfully analyzed _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 83.81849905911082
+2026-02-01 17:04:09,186 - pipeline - INFO - Successfully analyzed _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 83.81849905911082
+2026-02-01 17:04:09,186 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-01 17:04:09,186 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-01 17:04:09,192 - pipeline - INFO - Successfully analyzed _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 58.24894230560767
+2026-02-01 17:04:09,192 - pipeline - INFO - Successfully analyzed _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 58.24894230560767
+2026-02-01 17:04:09,193 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-01 17:04:09,193 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-01 17:04:09,198 - pipeline - INFO - Successfully analyzed _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 65.55823299416632
+2026-02-01 17:04:09,198 - pipeline - INFO - Successfully analyzed _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 65.55823299416632
+2026-02-01 17:04:09,199 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-01 17:04:09,199 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-01 17:04:09,205 - pipeline - INFO - Successfully analyzed _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.13884175824176
+2026-02-01 17:04:09,205 - pipeline - INFO - Successfully analyzed _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.13884175824176
+2026-02-01 17:04:09,206 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-01 17:04:09,206 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-01 17:04:09,211 - pipeline - INFO - Successfully analyzed _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.62678260869565
+2026-02-01 17:04:09,211 - pipeline - INFO - Successfully analyzed _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.62678260869565
+2026-02-01 17:04:09,212 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-01 17:04:09,212 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-01 17:04:09,212 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-01 17:04:09,212 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-01 17:04:09,770 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-01 17:04:09,770 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-01 17:04:10,314 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-01 17:04:10,314 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-01 17:04:10,410 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\data_performance_results.json
+2026-02-01 17:04:10,410 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\data_performance_results.json
+2026-02-01 17:04:10,414 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\coverage_performance_results.json
+2026-02-01 17:04:10,414 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\coverage_performance_results.json
+2026-02-01 17:04:10,415 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\processing_summary.json
+2026-02-01 17:04:10,415 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\New York\processing_summary.json
+2026-02-01 17:04:10,415 - pipeline - INFO - Running final data validation...
+2026-02-01 17:04:10,415 - pipeline - INFO - Running final data validation...
+2026-02-01 17:04:10,433 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-01 17:04:10,433 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-01 17:04:10,434 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-02-01 17:04:10,434 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\New York
+2026-02-01 17:04:10,438 - pipeline - INFO - Market: Seattle
+2026-02-01 17:04:10,438 - pipeline - INFO - Market: Seattle
+2026-02-01 17:04:10,438 - pipeline - INFO - Market: Seattle
+2026-02-01 17:04:10,438 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\Seattle
+2026-02-01 17:04:10,438 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\Seattle
+2026-02-01 17:04:10,438 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\Seattle
+2026-02-01 17:04:10,438 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-02-01 17:04:10,438 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-02-01 17:04:10,438 - pipeline - INFO - Writing to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-02-01 17:04:10,439 - pipeline - INFO - Starting analysis pipeline...
+2026-02-01 17:04:10,439 - pipeline - INFO - Starting analysis pipeline...
+2026-02-01 17:04:10,439 - pipeline - INFO - Starting analysis pipeline...
+2026-02-01 17:04:10,444 - pipeline - INFO - Processing 138 individual CSV files...
+2026-02-01 17:04:10,444 - pipeline - INFO - Processing 138 individual CSV files...
+2026-02-01 17:04:10,444 - pipeline - INFO - Processing 138 individual CSV files...
+2026-02-01 17:04:12,451 - pipeline - INFO - Processing directory-level analyses...
+2026-02-01 17:04:12,451 - pipeline - INFO - Processing directory-level analyses...
+2026-02-01 17:04:12,451 - pipeline - INFO - Processing directory-level analyses...
+2026-02-01 17:04:12,452 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-02-01 17:04:12,452 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-02-01 17:04:12,452 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-02-01 17:04:12,452 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-01 17:04:12,452 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-01 17:04:12,452 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-01 17:04:12,492 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-01 17:04:12,492 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-01 17:04:12,492 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-01 17:04:12,712 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-01 17:04:12,712 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-01 17:04:12,712 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-01 17:04:12,713 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-01 17:04:12,713 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-01 17:04:12,713 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-01 17:04:12,813 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-01 17:04:12,813 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-01 17:04:12,813 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-01 17:04:13,869 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-01 17:04:13,869 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-01 17:04:13,869 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-01 17:04:14,281 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-01 17:04:14,281 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-01 17:04:14,281 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-01 17:04:14,665 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\Seattle\WFC
+2026-02-01 17:04:14,665 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\Seattle\WFC
+2026-02-01 17:04:14,665 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\Seattle\WFC
+2026-02-01 17:04:14,665 - pipeline - INFO - Processing WFC Test Case: MOS PATCH
+2026-02-01 17:04:14,665 - pipeline - INFO - Processing WFC Test Case: MOS PATCH
+2026-02-01 17:04:14,665 - pipeline - INFO - Processing WFC Test Case: MOS PATCH
+2026-02-01 17:04:14,670 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-02-01 17:04:14,670 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-02-01 17:04:14,670 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-02-01 17:04:14,690 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-02-01 17:04:14,690 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-02-01 17:04:14,690 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-02-01 17:04:14,720 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-02-01 17:04:14,720 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-02-01 17:04:14,720 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-02-01 17:04:14,806 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-02-01 17:04:14,806 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-02-01 17:04:14,806 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-02-01 17:04:14,880 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-02-01 17:04:14,880 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-02-01 17:04:14,880 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-02-01 17:04:14,975 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-02-01 17:04:14,975 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-02-01 17:04:14,975 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-02-01 17:04:15,061 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-02-01 17:04:15,061 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-02-01 17:04:15,061 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-02-01 17:04:15,133 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-02-01 17:04:15,133 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-02-01 17:04:15,133 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-02-01 17:04:15,216 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-02-01 17:04:15,216 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-02-01 17:04:15,216 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-02-01 17:04:15,304 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-02-01 17:04:15,304 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-02-01 17:04:15,304 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-02-01 17:04:15,390 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-02-01 17:04:15,390 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-02-01 17:04:15,390 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-02-01 17:04:15,475 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-02-01 17:04:15,475 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-02-01 17:04:15,475 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-02-01 17:04:15,551 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-02-01 17:04:15,551 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-02-01 17:04:15,551 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-02-01 17:04:15,598 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-02-01 17:04:15,598 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-02-01 17:04:15,598 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-02-01 17:04:15,614 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-02-01 17:04:15,614 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-02-01 17:04:15,614 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-02-01 17:04:15,633 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-02-01 17:04:15,633 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-02-01 17:04:15,633 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-02-01 17:04:15,678 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-02-01 17:04:15,678 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-02-01 17:04:15,678 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-02-01 17:04:15,697 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-02-01 17:04:15,697 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-02-01 17:04:15,697 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-02-01 17:04:15,719 - pipeline - INFO - Applying MOS patch from: D:/ReportGenerator/Raw Data\Seattle\WFC\MOS PATCH
+2026-02-01 17:04:15,719 - pipeline - INFO - Applying MOS patch from: D:/ReportGenerator/Raw Data\Seattle\WFC\MOS PATCH
+2026-02-01 17:04:15,719 - pipeline - INFO - Applying MOS patch from: D:/ReportGenerator/Raw Data\Seattle\WFC\MOS PATCH
+2026-02-01 17:04:15,724 - pipeline - INFO - Patched TC164 DUT MOS: 3.7326
+2026-02-01 17:04:15,724 - pipeline - INFO - Patched TC164 DUT MOS: 3.7326
+2026-02-01 17:04:15,724 - pipeline - INFO - Patched TC164 DUT MOS: 3.7326
+2026-02-01 17:04:15,725 - pipeline - INFO - Patched TC164 REF MOS: 4.0775
+2026-02-01 17:04:15,725 - pipeline - INFO - Patched TC164 REF MOS: 4.0775
+2026-02-01 17:04:15,725 - pipeline - INFO - Patched TC164 REF MOS: 4.0775
+2026-02-01 17:04:15,726 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc164.json
+2026-02-01 17:04:15,726 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc164.json
+2026-02-01 17:04:15,726 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc164.json
+2026-02-01 17:04:15,728 - pipeline - INFO - Patched TC167 DUT MOS: 3.4792
+2026-02-01 17:04:15,728 - pipeline - INFO - Patched TC167 DUT MOS: 3.4792
+2026-02-01 17:04:15,728 - pipeline - INFO - Patched TC167 DUT MOS: 3.4792
+2026-02-01 17:04:15,729 - pipeline - INFO - Patched TC167 REF MOS: 3.625
+2026-02-01 17:04:15,729 - pipeline - INFO - Patched TC167 REF MOS: 3.625
+2026-02-01 17:04:15,729 - pipeline - INFO - Patched TC167 REF MOS: 3.625
+2026-02-01 17:04:15,730 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc167.json
+2026-02-01 17:04:15,730 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc167.json
+2026-02-01 17:04:15,730 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc167.json
+2026-02-01 17:04:15,732 - pipeline - INFO - Patched TC170 DUT MOS: 3.3235
+2026-02-01 17:04:15,732 - pipeline - INFO - Patched TC170 DUT MOS: 3.3235
+2026-02-01 17:04:15,732 - pipeline - INFO - Patched TC170 DUT MOS: 3.3235
+2026-02-01 17:04:15,732 - pipeline - INFO - Patched TC170 REF MOS: 3.821
+2026-02-01 17:04:15,732 - pipeline - INFO - Patched TC170 REF MOS: 3.821
+2026-02-01 17:04:15,732 - pipeline - INFO - Patched TC170 REF MOS: 3.821
+2026-02-01 17:04:15,733 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc170.json
+2026-02-01 17:04:15,733 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc170.json
+2026-02-01 17:04:15,733 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc170.json
+2026-02-01 17:04:15,737 - pipeline - INFO - Patched TC172 DUT MOS: 3.9607
+2026-02-01 17:04:15,737 - pipeline - INFO - Patched TC172 DUT MOS: 3.9607
+2026-02-01 17:04:15,737 - pipeline - INFO - Patched TC172 DUT MOS: 3.9607
+2026-02-01 17:04:15,737 - pipeline - INFO - Patched TC172 REF MOS: 3.9051
+2026-02-01 17:04:15,737 - pipeline - INFO - Patched TC172 REF MOS: 3.9051
+2026-02-01 17:04:15,737 - pipeline - INFO - Patched TC172 REF MOS: 3.9051
+2026-02-01 17:04:15,738 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc172.json
+2026-02-01 17:04:15,738 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc172.json
+2026-02-01 17:04:15,738 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc172.json
+2026-02-01 17:04:15,740 - pipeline - INFO - Patched TC175 DUT MOS: 3.3154
+2026-02-01 17:04:15,740 - pipeline - INFO - Patched TC175 DUT MOS: 3.3154
+2026-02-01 17:04:15,740 - pipeline - INFO - Patched TC175 DUT MOS: 3.3154
+2026-02-01 17:04:15,740 - pipeline - INFO - Patched TC175 REF MOS: 3.7154
+2026-02-01 17:04:15,740 - pipeline - INFO - Patched TC175 REF MOS: 3.7154
+2026-02-01 17:04:15,740 - pipeline - INFO - Patched TC175 REF MOS: 3.7154
+2026-02-01 17:04:15,741 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc175.json
+2026-02-01 17:04:15,741 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc175.json
+2026-02-01 17:04:15,741 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc175.json
+2026-02-01 17:04:15,743 - pipeline - INFO - Patched TC178 DUT MOS: 3.2343
+2026-02-01 17:04:15,743 - pipeline - INFO - Patched TC178 DUT MOS: 3.2343
+2026-02-01 17:04:15,743 - pipeline - INFO - Patched TC178 DUT MOS: 3.2343
+2026-02-01 17:04:15,743 - pipeline - INFO - Patched TC178 REF MOS: 3.5062
+2026-02-01 17:04:15,743 - pipeline - INFO - Patched TC178 REF MOS: 3.5062
+2026-02-01 17:04:15,743 - pipeline - INFO - Patched TC178 REF MOS: 3.5062
+2026-02-01 17:04:15,744 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc178.json
+2026-02-01 17:04:15,744 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc178.json
+2026-02-01 17:04:15,744 - pipeline - INFO - Exported MOS histogram statistics to: D:\ReportGenerator\python_scripts\src\Analyze Summary\wfc_linechart_data\wfc_mos_statistics_tc178.json
+2026-02-01 17:04:15,745 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-01 17:04:15,745 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-01 17:04:15,745 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-01 17:04:17,322 - pipeline - INFO - Applying MOS patch from: D:/ReportGenerator/Raw Data\Seattle\WFC\MOS PATCH
+2026-02-01 17:04:17,322 - pipeline - INFO - Applying MOS patch from: D:/ReportGenerator/Raw Data\Seattle\WFC\MOS PATCH
+2026-02-01 17:04:17,322 - pipeline - INFO - Applying MOS patch from: D:/ReportGenerator/Raw Data\Seattle\WFC\MOS PATCH
+2026-02-01 17:04:17,328 - pipeline - INFO - Patched TC164 DUT MOS: 3.7326
+2026-02-01 17:04:17,328 - pipeline - INFO - Patched TC164 DUT MOS: 3.7326
+2026-02-01 17:04:17,328 - pipeline - INFO - Patched TC164 DUT MOS: 3.7326
+2026-02-01 17:04:17,328 - pipeline - INFO - Patched TC164 REF MOS: 4.0775
+2026-02-01 17:04:17,328 - pipeline - INFO - Patched TC164 REF MOS: 4.0775
+2026-02-01 17:04:17,328 - pipeline - INFO - Patched TC164 REF MOS: 4.0775
+2026-02-01 17:04:17,329 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc164.json
+2026-02-01 17:04:17,329 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc164.json
+2026-02-01 17:04:17,329 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc164.json
+2026-02-01 17:04:17,331 - pipeline - INFO - Patched TC167 DUT MOS: 3.4792
+2026-02-01 17:04:17,331 - pipeline - INFO - Patched TC167 DUT MOS: 3.4792
+2026-02-01 17:04:17,331 - pipeline - INFO - Patched TC167 DUT MOS: 3.4792
+2026-02-01 17:04:17,332 - pipeline - INFO - Patched TC167 REF MOS: 3.625
+2026-02-01 17:04:17,332 - pipeline - INFO - Patched TC167 REF MOS: 3.625
+2026-02-01 17:04:17,332 - pipeline - INFO - Patched TC167 REF MOS: 3.625
+2026-02-01 17:04:17,333 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc167.json
+2026-02-01 17:04:17,333 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc167.json
+2026-02-01 17:04:17,333 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc167.json
+2026-02-01 17:04:17,335 - pipeline - INFO - Patched TC170 DUT MOS: 3.3235
+2026-02-01 17:04:17,335 - pipeline - INFO - Patched TC170 DUT MOS: 3.3235
+2026-02-01 17:04:17,335 - pipeline - INFO - Patched TC170 DUT MOS: 3.3235
+2026-02-01 17:04:17,335 - pipeline - INFO - Patched TC170 REF MOS: 3.821
+2026-02-01 17:04:17,335 - pipeline - INFO - Patched TC170 REF MOS: 3.821
+2026-02-01 17:04:17,335 - pipeline - INFO - Patched TC170 REF MOS: 3.821
+2026-02-01 17:04:17,336 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc170.json
+2026-02-01 17:04:17,336 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc170.json
+2026-02-01 17:04:17,336 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc170.json
+2026-02-01 17:04:17,340 - pipeline - INFO - Patched TC172 DUT MOS: 3.9607
+2026-02-01 17:04:17,340 - pipeline - INFO - Patched TC172 DUT MOS: 3.9607
+2026-02-01 17:04:17,340 - pipeline - INFO - Patched TC172 DUT MOS: 3.9607
+2026-02-01 17:04:17,340 - pipeline - INFO - Patched TC172 REF MOS: 3.9051
+2026-02-01 17:04:17,340 - pipeline - INFO - Patched TC172 REF MOS: 3.9051
+2026-02-01 17:04:17,340 - pipeline - INFO - Patched TC172 REF MOS: 3.9051
+2026-02-01 17:04:17,341 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc172.json
+2026-02-01 17:04:17,341 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc172.json
+2026-02-01 17:04:17,341 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc172.json
+2026-02-01 17:04:17,343 - pipeline - INFO - Patched TC175 DUT MOS: 3.3154
+2026-02-01 17:04:17,343 - pipeline - INFO - Patched TC175 DUT MOS: 3.3154
+2026-02-01 17:04:17,343 - pipeline - INFO - Patched TC175 DUT MOS: 3.3154
+2026-02-01 17:04:17,343 - pipeline - INFO - Patched TC175 REF MOS: 3.7154
+2026-02-01 17:04:17,343 - pipeline - INFO - Patched TC175 REF MOS: 3.7154
+2026-02-01 17:04:17,343 - pipeline - INFO - Patched TC175 REF MOS: 3.7154
+2026-02-01 17:04:17,344 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc175.json
+2026-02-01 17:04:17,344 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc175.json
+2026-02-01 17:04:17,344 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc175.json
+2026-02-01 17:04:17,346 - pipeline - INFO - Patched TC178 DUT MOS: 3.2343
+2026-02-01 17:04:17,346 - pipeline - INFO - Patched TC178 DUT MOS: 3.2343
+2026-02-01 17:04:17,346 - pipeline - INFO - Patched TC178 DUT MOS: 3.2343
+2026-02-01 17:04:17,346 - pipeline - INFO - Patched TC178 REF MOS: 3.5062
+2026-02-01 17:04:17,346 - pipeline - INFO - Patched TC178 REF MOS: 3.5062
+2026-02-01 17:04:17,346 - pipeline - INFO - Patched TC178 REF MOS: 3.5062
+2026-02-01 17:04:17,347 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc178.json
+2026-02-01 17:04:17,347 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc178.json
+2026-02-01 17:04:17,347 - pipeline - INFO - Exported MOS histogram statistics to: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_linechart_data\wfc_mos_statistics_tc178.json
+2026-02-01 17:04:17,351 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\data_performance_results.json
+2026-02-01 17:04:17,351 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\data_performance_results.json
+2026-02-01 17:04:17,351 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\data_performance_results.json
+2026-02-01 17:04:17,354 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\coverage_performance_results.json
+2026-02-01 17:04:17,354 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\coverage_performance_results.json
+2026-02-01 17:04:17,354 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\coverage_performance_results.json
+2026-02-01 17:04:17,356 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_performance_results.json
+2026-02-01 17:04:17,356 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_performance_results.json
+2026-02-01 17:04:17,356 - pipeline - INFO - WFC results exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\wfc_performance_results.json
+2026-02-01 17:04:17,357 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\processing_summary.json
+2026-02-01 17:04:17,357 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\processing_summary.json
+2026-02-01 17:04:17,357 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/python_scripts/Analyze Summary\Seattle\processing_summary.json
+2026-02-01 17:04:17,357 - pipeline - INFO - Running final data validation...
+2026-02-01 17:04:17,357 - pipeline - INFO - Running final data validation...
+2026-02-01 17:04:17,357 - pipeline - INFO - Running final data validation...
+2026-02-01 17:04:17,380 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-01 17:04:17,380 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-01 17:04:17,380 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-01 17:04:17,381 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-02-01 17:04:17,381 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle
+2026-02-01 17:04:17,381 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/python_scripts/Analyze Summary\Seattle

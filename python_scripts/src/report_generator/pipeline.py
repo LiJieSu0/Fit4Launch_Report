@@ -303,7 +303,7 @@ class DataAnalysisPipeline:
         # TEMPORARY MOS PATCH - Export MOS patch line chart data (overwrites histogram files)
         try:
             from report_generator.analyzers.wfc_mos_patch import apply_mos_patch
-            patch_dir = r"D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH"
+            patch_dir = os.path.join(self.base_raw_data_dir, "WFC", "MOS PATCH")
             wfc_linechart_dir = os.path.join(self.output_dir, "wfc_linechart_data")
             # Re-apply patch to export line chart data (this will overwrite histogram files)
             if os.path.isdir(patch_dir) and "wfc_performance" in self.results:

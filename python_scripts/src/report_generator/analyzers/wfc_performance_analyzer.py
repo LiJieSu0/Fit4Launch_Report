@@ -348,7 +348,7 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
 
         # TEMPORARY MOS PATCH - Apply MOS patch if enabled
         if ENABLE_MOS_PATCH:
-            patch_dir = r"D:\ReportGenerator\Raw Data\WFC\MOS PATCH\MOS PATCH"
+            patch_dir = os.path.join(root_directory, "MOS PATCH")
             output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Analyze Summary", "wfc_linechart_data")
             results = apply_mos_patch(results, patch_dir, output_dir=output_dir, logger=self.logger)
         

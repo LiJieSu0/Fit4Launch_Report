@@ -296,8 +296,8 @@ def analyze_throughput(file_path, column_name_to_analyze, event_col_name, start_
         started_indices = filtered_data[filtered_data[current_event_col_to_use].astype(str).str.contains(start_event_str, na=False)].index
         ended_indices = filtered_data[filtered_data[current_event_col_to_use].astype(str).str.contains(end_event_str, na=False)].index
 
-        if started_indices.empty or ended_indices.empty:
-            print(f"\nWarning: Could not find both '{start_event_str}' and '{end_event_str}' events in '{current_event_col_to_use}'. Cannot calculate interval averages.")
+        if started_indices.empty:
+            print(f"\nWarning: Could not find '{start_event_str}' events in '{current_event_col_to_use}'. Cannot calculate interval averages.")
             print(f"Proceeding with overall statistics calculation for {current_column_to_use} using available data.")
             overall_data = filtered_data[current_column_to_use].dropna()
             
@@ -309,27 +309,24 @@ def analyze_throughput(file_path, column_name_to_analyze, event_col_name, start_
             stats_result = _calculate_statistics(overall_data, current_column_to_use)
             if stats_result:
                 stats_result["Number of Intervals"] = len(overall_data)
-                stats_result["Note"] = "Calculated statistics on last 20 available rows due to missing start/end events."
+                stats_result["Note"] = "Calculated statistics on last 20 available rows due to missing start events."
             return stats_result if stats_result is not None else {}
         
         interval_averages = []
-        current_start_idx = -1
-
-        for i in range(len(filtered_data)):
-            event = str(filtered_data.loc[i, current_event_col_to_use])
+        
+        # New logic: Each interval starts at a start index and ends just before the next start index (or end of data)
+        for idx in range(len(started_indices)):
+            start_idx = started_indices[idx]
+            if idx + 1 < len(started_indices):
+                end_idx = started_indices[idx + 1] - 1
+            else:
+                end_idx = len(filtered_data) - 1
             
-            if start_event_str in event:
-                current_start_idx = i
-            elif end_event_str in event and current_start_idx != -1:
-                end_idx = i
-                
-                interval_data = filtered_data.loc[current_start_idx : end_idx, current_column_to_use].dropna()
-                
-                if not interval_data.empty:
-                    interval_avg = interval_data.mean()
-                    interval_averages.append(interval_avg)
-                
-                current_start_idx = -1 # Reset for the next interval
+            interval_data = filtered_data.loc[start_idx : end_idx, current_column_to_use].dropna()
+            
+            if not interval_data.empty:
+                interval_avg = interval_data.mean()
+                interval_averages.append(interval_avg)
 
         if not interval_averages:
             # Fallback logic if intervals define no valid data

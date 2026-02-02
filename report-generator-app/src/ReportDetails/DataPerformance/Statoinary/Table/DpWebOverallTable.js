@@ -20,7 +20,6 @@ const DpWebOverallTable = ({ data }) => {
                     <tr>
                         <th rowSpan={2}>Web Page Load Time (s)</th>
                         <th rowSpan={2}>Device Name</th>
-                        <th>Seattle (5G NR)</th>
                     </tr>
                     <tr>
                         <th>Overall</th>

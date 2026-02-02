@@ -44,7 +44,6 @@ const DpPlayStoreOverallTable = ({ tableData }) => {
         <tr>
           <th rowSpan={2}>Throughput (Mbps)</th>
           <th rowSpan={2}>Device Name</th>
-          <th>Seattle (5G NR)</th>
         </tr>
         <tr>
           <th>Overall</th>

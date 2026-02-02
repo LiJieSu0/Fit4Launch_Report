@@ -20,7 +20,6 @@ const DpPingOverallTable = ({ data }) => {
                     <tr>
                         <th rowSpan={2}>Ping RTT (ms)</th>
                         <th rowSpan={2}>Device Name</th>
-                        <th>Seattle (5G NR)</th>
                     </tr>
                     <tr>
                         <th>Overall</th>

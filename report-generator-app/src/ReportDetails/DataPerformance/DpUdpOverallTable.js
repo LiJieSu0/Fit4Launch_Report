@@ -70,7 +70,6 @@ const DpUdpOverallTable = ({ data, headers, city }) => {
             <th rowSpan="2">Metric</th>
             <th rowSpan="2">Ideal Throughput</th>
             <th rowSpan="2">Device Name</th>
-            <th>{city} (5G NR)</th>
           </tr>
           <tr>
             <th>Overall</th>

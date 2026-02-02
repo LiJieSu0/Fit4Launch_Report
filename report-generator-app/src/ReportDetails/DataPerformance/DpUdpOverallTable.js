@@ -1,7 +1,7 @@
 import React from 'react';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 
-const DpUdpOverallTable = ({ data, headers }) => {
+const DpUdpOverallTable = ({ data, headers, city }) => {
   if (!data || data.length === 0 || !headers || headers.length === 0) {
     return <div>No data or headers available for UDP Overall Table.</div>;
   }
@@ -70,7 +70,7 @@ const DpUdpOverallTable = ({ data, headers }) => {
             <th rowSpan="2">Metric</th>
             <th rowSpan="2">Ideal Throughput</th>
             <th rowSpan="2">Device Name</th>
-            <th>Seattle (5G NR)</th>
+            <th>{city} (5G NR)</th>
           </tr>
           <tr>
             <th>Overall</th>
@@ -80,14 +80,20 @@ const DpUdpOverallTable = ({ data, headers }) => {
           {processedData.map((row, pRowIndex) => (
             <tr key={pRowIndex}>
               {row.isFirstInMetricGroup && (
-                <td rowSpan={row.metricRowSpan}>{row['Metric']} {unit[row['Metric']]}</td>
+                <td rowSpan={row.metricRowSpan}>{row['Metric']}{unit[row['Metric']] ? ` ${unit[row['Metric']]}` : ''}</td>
               )}
               {row.isFirstInIdealThroughputGroup && (
                 <td rowSpan={row.idealThroughputRowSpan}>{row['Ideal Throughput']}</td>
               )}
               <td>{row['Device Name']}</td>
               <td style={{
-                backgroundColor: row['Device Name'] === 'DUT' && row.refOverallValue !== null && (row['Metric'].includes('Mean') || row['Metric'].includes('Packet Failure Rate')) && !row['Metric'].includes('Max Throughput') && !row['Metric'].includes('Min Throughput')
+                backgroundColor: row['Device Name'] === 'DUT' &&
+                  row.refOverallValue !== null &&
+                  !isNaN(row.refOverallValue) &&
+                  !isNaN(parseFloat(row['Overall'])) &&
+                  (row['Metric'].includes('Mean') || row['Metric'].includes('Throughput') || row['Metric'].includes('Packet Failure Rate')) &&
+                  !row['Metric'].includes('Max Throughput') &&
+                  !row['Metric'].includes('Min Throughput')
                   ? getKpiCellColor(
                     row['Metric'].includes('Mean Jitter') ? 'Jitter' :
                       row['Metric'].includes('Packet Failure Rate') ? 'ErrorRatio' :

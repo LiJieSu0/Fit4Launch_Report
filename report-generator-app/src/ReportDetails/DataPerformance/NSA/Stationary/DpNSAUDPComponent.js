@@ -164,11 +164,11 @@ function DpNSAUDPComponent({ city: propCity }) {
       <div className='page-content'>
         <DynamicHeader level={2}>UDP Test - 5G NSA - {city}</DynamicHeader>
         <DynamicHeader level={3}>NSA UDP Test DL Details - 5G NSA - {city}</DynamicHeader>
-        <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
+        <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} city={city} />
       </div>
       <div className='page-content'>
         <DynamicHeader level={3}>NSA UDP Test UL Details - 5G NSA - {city}</DynamicHeader>
-        <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
+        <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} city={city} />
       </div>
 
       <div className='page-content'>

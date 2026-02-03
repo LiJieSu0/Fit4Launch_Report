@@ -117,7 +117,7 @@ function App() {
           {currentReport === "DP" && (
             <>
               <DpSummaryPage />
-              <DpDetailsPage />
+              <DpDetailsPage webPageUrl={"http://172.93.163.176/reference/kepler/mobile/"} />
               <DpKpiPage />
             </>
           )}

@@ -9,7 +9,7 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 import { useEffect } from 'react';
 
-function Dp_Webbrowser_Component({ city: propCity }) {
+function Dp_Webbrowser_Component({ city: propCity, webPageUrl }) {
     const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
     const city = propCity || globalCity;
 
@@ -64,6 +64,7 @@ function Dp_Webbrowser_Component({ city: propCity }) {
         <div className='page-content'>
             <DynamicHeader level={2}>Web Browser Test - 5G Auto - {city}</DynamicHeader>
             <h4>Web Browser Test Overview</h4>
+            <p>Web Browser test URL: {webPageUrl}</p>
             <DpWebOverallTable data={overallTableData} />
             {/* <h3>Web Browser Test Details</h3> */}
             {/* <DpWebTable data={Dp_WebData} /> */}

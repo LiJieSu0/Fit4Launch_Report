@@ -12,7 +12,7 @@ import DpMrabDetailsPage from './DpMrabDetailsPage';
 import DpNSAStationaryDetails from './NSA/Stationary/DpNSAStationaryDetails';
 import DpNSATestDriveDetails from './NSA/TestDrive/DpNSATestDriveDetails';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
-function DpDetailsPage() {
+function DpDetailsPage({ webPageUrl }) {
   return (
     <div>
       <Dp_httpSS_Component city="Seattle" firstSection={true} />
@@ -23,8 +23,8 @@ function DpDetailsPage() {
       <Dp_Udp_Component city="New York" />
       <Dp_Ping_Component city="Seattle" />
       <Dp_Ping_Component city="New York" />
-      <Dp_Webbrowser_Component city="Seattle" />
-      <Dp_Webbrowser_Component city="New York" />
+      <Dp_Webbrowser_Component city="Seattle" webPageUrl={"http://172.93.163.176/reference/kepler/mobile/"} />
+      <Dp_Webbrowser_Component city="New York" webPageUrl={"http://172.93.163.176/reference/kepler/mobile/"} />
       {/* <Dp_playStore_Component city="Seattle" />*/}
       <Dp_playStore_Component city="New York" />
       <Dp_MHS_Page city="Seattle" />

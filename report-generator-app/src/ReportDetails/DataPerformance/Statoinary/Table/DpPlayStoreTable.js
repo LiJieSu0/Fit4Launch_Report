@@ -15,9 +15,9 @@ const DpPlayStoreTable = ({ tableData }) => {
           </tr>
           <tr>
             <th>Overall</th>
-            <th>Site 1</th>
-            <th>Site 2</th>
-            <th>Site 3</th>
+            <th>Good</th>
+            <th>Moderate</th>
+            <th>Poor</th>
           </tr>
         </thead>
         <tbody>

@@ -81,10 +81,13 @@ def analyze_secondary_kpis(file_path):
                     results[seg_name]["AVG MCS"] = round(seg_df[col_mcs].mean(), 2) if pd.notna(seg_df[col_mcs].mean()) else 0
                 if col_cqi in available_cols:
                     results[seg_name]["AVG CQI"] = round(seg_df[col_cqi].mean(), 2) if pd.notna(seg_df[col_cqi].mean()) else 0
+                if tx_power_col:
+                    results[seg_name]["AVG TxPower"] = round(seg_df[tx_power_col].mean(), 2) if pd.notna(seg_df[tx_power_col].mean()) else 0
             else:
                 if col_bler in available_cols: results[seg_name]["AVG BLER"] = 0
                 if col_mcs in available_cols: results[seg_name]["AVG MCS"] = 0
                 if col_cqi in available_cols: results[seg_name]["AVG CQI"] = 0
+                if tx_power_col: results[seg_name]["AVG TxPower"] = 0
 
         # 4. Global Average Tx Power (if available)
         if tx_power_col:

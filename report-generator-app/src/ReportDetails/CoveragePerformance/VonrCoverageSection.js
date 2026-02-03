@@ -90,9 +90,9 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
         const defaultData = Array.from({ length: 5 }, (_, i) => ({
             run: `RUN ${i + 1}`,
             segments: [
-                { segment: 'First 30%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
-                { segment: 'Middle 40%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
-                { segment: 'Last 30%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
+                { segment: 'First 30%', DUT: { bler: 0, mcs: 0, txPower: 0 }, REF: { bler: 0, mcs: 0, txPower: 0 } },
+                { segment: 'Middle 40%', DUT: { bler: 0, mcs: 0, txPower: 0 }, REF: { bler: 0, mcs: 0, txPower: 0 } },
+                { segment: 'Last 30%', DUT: { bler: 0, mcs: 0, txPower: 0 }, REF: { bler: 0, mcs: 0, txPower: 0 } },
             ]
         }));
 
@@ -115,11 +115,13 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         segment: seg,
                         DUT: {
                             bler: dutStats['AVG BLER'] || 0,
-                            mcs: dutStats['AVG MCS'] || 0
+                            mcs: dutStats['AVG MCS'] || 0,
+                            txPower: dutStats['AVG TxPower'] || 0
                         },
                         REF: {
                             bler: refStats['AVG BLER'] || 0,
-                            mcs: refStats['AVG MCS'] || 0
+                            mcs: refStats['AVG MCS'] || 0,
+                            txPower: refStats['AVG TxPower'] || 0
                         }
                     };
                 })

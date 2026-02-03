@@ -20,7 +20,7 @@ const CoverPage = ({ reportType }) => {
       <div style={{ marginBottom: 80 }}></div>
       <p className="report-title cover-title cover-title-right-align">T-Mobile {reportType} Field Test Report</p>
       <hr className="title-underline" />
-      <p className="report-title cover-title cover-title-right-align">ATMCL Labs Pilot</p>
+      <p className="report-title cover-title cover-title-right-align">Motorola XT2575-4 Pretest</p>
       <div className="tmobile-logo">
         <img src="/CoverPagePic/tmobile-title-logo.png" alt="tmobile-title-logo" style={{ maxWidth: '90%', height: '90%' }} />
       </div>

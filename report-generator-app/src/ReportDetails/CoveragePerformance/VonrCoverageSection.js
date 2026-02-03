@@ -3,6 +3,7 @@ import CoverageTestTable from './CoverageTestTable';
 import CoverageMap from './CoverageMap';
 import { ReportContext } from '../../Contexts/ReportContext';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
+import SecondaryKpiTable from './SecondaryKpiTable';
 
 // CITY_COORDS removed - now fetched from config.json
 
@@ -126,42 +127,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
         });
     };
 
-    const SecondaryKpiTable = ({ data }) => (
-        <table className="general-table-style">
-            <thead>
-                <tr>
-                    <th rowSpan="2">Run</th>
-                    <th rowSpan="2">Segment</th>
-                    <th colSpan="2">AVG BLER</th>
-                    <th colSpan="2">AVG MCS</th>
-                </tr>
-                <tr>
-                    <th>DUT</th>
-                    <th>REF</th>
-                    <th>DUT</th>
-                    <th>REF</th>
-                </tr>
-            </thead>
-            <tbody>
-                {data.map((runData, runIndex) => (
-                    <React.Fragment key={runIndex}>
-                        {runData.segments.map((segmentData, segmentIndex) => (
-                            <tr key={`${runIndex}-${segmentIndex}`}>
-                                {segmentIndex === 0 && (
-                                    <td rowSpan={runData.segments.length}>{runData.run}</td>
-                                )}
-                                <td>{segmentData.segment}</td>
-                                <td>{segmentData.DUT.bler.toFixed(2)}</td>
-                                <td>{segmentData.REF.bler.toFixed(2)}</td>
-                                <td>{segmentData.DUT.mcs.toFixed(2)}</td>
-                                <td>{segmentData.REF.mcs.toFixed(2)}</td>
-                            </tr>
-                        ))}
-                    </React.Fragment>
-                ))}
-            </tbody>
-        </table>
-    );
+
 
     if (!reportData || !reportData.coveragePerformance) {
         return <div className="page-content">Loading {city} Coverage data...</div>;

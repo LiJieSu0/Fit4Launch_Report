@@ -82,7 +82,7 @@ const CoverageSummaryTable = () => {
             }
         });
 
-        return count > 0 ? sum / count : null;
+        return count > 0 ? (sum / count) * 1000 : null;
     };
 
     const getResult = (market, band, kpi) => {

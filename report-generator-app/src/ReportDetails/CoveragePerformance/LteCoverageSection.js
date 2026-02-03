@@ -63,7 +63,7 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
                 const runInfo = deviceRuns[runKey];
                 let val = 0;
                 if (runInfo && runInfo[metric] && typeof runInfo[metric].distance_km === 'number') {
-                    val = runInfo[metric].distance_km;
+                    val = runInfo[metric].distance_km * 1000;
                 }
 
                 runData[`run${i}`] = val > 0 ? parseFloat(val.toFixed(2)) : 0;

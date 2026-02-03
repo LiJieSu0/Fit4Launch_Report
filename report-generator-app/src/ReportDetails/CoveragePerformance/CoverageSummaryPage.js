@@ -8,6 +8,7 @@ function CoverageSummaryPage() {
     <div className='page-content' id="summary-page">
       <DynamicHeader level={1}>Coverage Test Overview</DynamicHeader>
       <CoverageSummaryTable />
+      {/* Secondary KPI Summary Table */}
     </div>
   );
 }

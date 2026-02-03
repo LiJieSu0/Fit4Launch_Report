@@ -42,9 +42,9 @@ const HpueCoverageSection = ({ city: propCity, firstSection = false }) => {
                 const pc2Entry = runData.find(item => item['Device type'] === 'PC2');
                 const pc3Entry = runData.find(item => item['Device type'] === 'PC3');
 
-                pc2Distances.push(pc2Entry ? parseFloat(pc2Entry.distance_km.toFixed(2)) : 0);
+                pc2Distances.push(pc2Entry ? parseFloat((pc2Entry.distance_km * 1000).toFixed(2)) : 0);
                 pc2TxPowers.push(pc2Entry ? parseFloat(pc2Entry.tx_power_value.toFixed(1)) : 0);
-                pc3Distances.push(pc3Entry ? parseFloat(pc3Entry.distance_km.toFixed(2)) : 0);
+                pc3Distances.push(pc3Entry ? parseFloat((pc3Entry.distance_km * 1000).toFixed(2)) : 0);
                 pc3TxPowers.push(pc3Entry ? parseFloat(pc3Entry.tx_power_value.toFixed(1)) : 0);
             } else {
                 pc2Distances.push(0);

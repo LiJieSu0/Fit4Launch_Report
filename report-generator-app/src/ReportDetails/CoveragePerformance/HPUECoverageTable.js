@@ -20,7 +20,7 @@ const HPUECoverageTable = ({ n41Data }) => {
             <tbody>
                 <tr>
                     <td rowSpan={2}>Power Class 2</td>
-                    <td>UL &lt; 1Mbps Distance (km)</td>
+                    <td>UL &lt; 1Mbps Distance (m)</td>
                     <td>{n41Data.PC2.distances[0]}</td>
                     <td>{n41Data.PC2.distances[1]}</td>
                     <td>{n41Data.PC2.distances[2]}</td>
@@ -39,7 +39,7 @@ const HPUECoverageTable = ({ n41Data }) => {
                 </tr>
                 <tr>
                     <td rowSpan={2}>Power Class 3</td>
-                    <td>UL &lt; 1Mbps Distance (km)</td>
+                    <td>UL &lt; 1Mbps Distance (m)</td>
                     <td>{n41Data.PC3.distances[0]}</td>
                     <td>{n41Data.PC3.distances[1]}</td>
                     <td>{n41Data.PC3.distances[2]}</td>

@@ -4,16 +4,29 @@ import threading
 import sys
 import os
 
+# --- CONFIGURATION SETTINGS ---
+# 你可以在這裡直接修改撥號設定
+PHONE_NUMBER = "922"           # 撥打號碼
+CALL_DURATION = 50             # 通話時長 (秒)
+WAIT_TIME_AFTER_HANGUP = 5     # 掛斷後等待時間 (秒)
+NUM_CALLS = 300                # 總撥打次數
+# 指定設備序號，留空則自動使用所有連線設備，例如: ["R5CR31GAESR", "DEVICE_2"]
+SPECIFIC_DEVICES = [
+    
+] 
+
+# 日誌設定
+LOG_FILE = "logs/auto_call.log"
+LOG_LEVEL = "INFO"
+# ------------------------------
+
 # Add src to sys.path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 from report_generator.utils.logger import setup_logger
-from report_generator.utils.config_loader import Config
 
-# Initialize config and logger
-config = Config("config/config.yaml")
-log_config = config.get("logging")
-logger = setup_logger(name="auto_call", log_file=log_config.get("log_file"), level=log_config.get("level"))
+# Initialize logger
+logger = setup_logger(name="auto_call", log_file=LOG_FILE, level=LOG_LEVEL)
 
 # Global event to signal threads to stop
 stop_event = threading.Event()
@@ -84,14 +97,6 @@ def make_call(device_serial, phone_number, call_duration, wait_time_after_hangup
     logger.info(f"Finished call sequence on device: {device_serial}")
 
 def main():
-    # Load parameters from config
-    ac_config = config.get("auto_call")
-    PHONE_NUMBER = ac_config.get("phone_number")
-    CALL_DURATION = ac_config.get("call_duration")
-    WAIT_TIME_AFTER_HANGUP = ac_config.get("wait_time_after_hangup")
-    NUM_CALLS = ac_config.get("num_calls")
-    SPECIFIC_DEVICES = ac_config.get("specific_devices", [])
-
     all_connected_devices = get_connected_devices()
     if not all_connected_devices:
         logger.error("No ADB devices found. Please ensure devices are connected and ADB is authorized.")

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../StyleScript/CoverPage.css';
 
-const CoverPage = ({ reportType }) => {
+const CoverPage = ({ reportType, projectName }) => {
   return (
     <div className="cover-page cover-page-component">
       <div className="print-header-cover"></div>
@@ -20,7 +20,7 @@ const CoverPage = ({ reportType }) => {
       <div style={{ marginBottom: 80 }}></div>
       <p className="report-title cover-title cover-title-right-align">T-Mobile {reportType} Field Test Report</p>
       <hr className="title-underline" />
-      <p className="report-title cover-title cover-title-right-align">Motorola XT2575-4 Pretest</p>
+      <p className="report-title cover-title cover-title-right-align">{projectName}</p>
       <div className="tmobile-logo">
         <img src="/CoverPagePic/tmobile-title-logo.png" alt="tmobile-title-logo" style={{ maxWidth: '90%', height: '90%' }} />
       </div>

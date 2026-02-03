@@ -34,6 +34,8 @@ import WfcSummaryPage from './ReportDetails/WfcPerformance/WfcSummaryPage';
 import WfcDetailsPage from './ReportDetails/WfcPerformance/WfcDetailsPage';
 import WfcKpiPage from './ReportDetails/WfcPerformance/WfcKpiPage';
 
+
+
 const reportType = {
   'CV': "Coverage Performance",
   'VQ': "Voice Quality",
@@ -41,6 +43,9 @@ const reportType = {
   'DP': "Data Performance",
   'WFC': "Wifi Call"
 }
+const PROJECT_NAME = "Motorola XT2575-4 Pretest"
+// const PROJECT_NAME = "ATMC Labs Pilot"
+
 
 function App() {
   const [currentReport, setCurrentReport] = useState(null);
@@ -85,8 +90,8 @@ function App() {
               ← Back to Main Menu
             </button>
           </div>
-          <CoverPage reportType={reportType[currentReport]} />
-          <ReportHeader />
+          <CoverPage reportType={reportType[currentReport]} projectName={PROJECT_NAME} />
+          <ReportHeader projectName={PROJECT_NAME} />
           <DeviceInfoPage />
           <ContentsIndexPage />
 

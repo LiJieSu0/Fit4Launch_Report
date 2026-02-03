@@ -1,8 +1,11 @@
+
+
 import subprocess
 import time
 import threading
 import sys
 import os
+import logging
 
 # --- CONFIGURATION SETTINGS ---
 # 你可以在這裡直接修改撥號設定
@@ -20,13 +23,24 @@ LOG_FILE = "logs/auto_call.log"
 LOG_LEVEL = "INFO"
 # ------------------------------
 
-# Add src to sys.path
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+# Ensure log directory exists
+log_dir = os.path.dirname(LOG_FILE)
+if log_dir and not os.path.exists(log_dir):
+    try:
+        os.makedirs(log_dir)
+    except Exception:
+        pass
 
-from report_generator.utils.logger import setup_logger
-
-# Initialize logger
-logger = setup_logger(name="auto_call", log_file=LOG_FILE, level=LOG_LEVEL)
+# Configure logging
+logging.basicConfig(
+    level=getattr(logging, LOG_LEVEL.upper(), logging.INFO),
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[
+        logging.FileHandler(LOG_FILE, encoding='utf-8') if os.access(os.path.dirname(LOG_FILE) or ".", os.W_OK) else logging.NullHandler(),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+logger = logging.getLogger("auto_call")
 
 # Global event to signal threads to stop
 stop_event = threading.Event()
@@ -97,6 +111,10 @@ def make_call(device_serial, phone_number, call_duration, wait_time_after_hangup
     logger.info(f"Finished call sequence on device: {device_serial}")
 
 def main():
+    if not check_adb_available():
+        logger.error("ADB is not found in your system PATH. Please install Android Platform Tools.")
+        return
+
     all_connected_devices = get_connected_devices()
     if not all_connected_devices:
         logger.error("No ADB devices found. Please ensure devices are connected and ADB is authorized.")
@@ -134,6 +152,14 @@ def main():
         for thread in threads:
             thread.join()
         logger.info("All parallel dialing tasks completed or interrupted gracefully.")
+
+def check_adb_available():
+    """Checks if ADB is available in the system path."""
+    try:
+        subprocess.run(["adb", "version"], capture_output=True, check=True)
+        return True
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return False
 
 if __name__ == "__main__":
     main()

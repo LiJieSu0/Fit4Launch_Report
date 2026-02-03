@@ -32,8 +32,18 @@ const SecondaryKpiTable = ({ data }) => (
                             <td>{segmentData.REF && typeof segmentData.REF.bler === 'number' ? segmentData.REF.bler.toFixed(2) : '0.00'}</td>
                             <td>{segmentData.DUT && typeof segmentData.DUT.mcs === 'number' ? segmentData.DUT.mcs.toFixed(2) : '0.00'}</td>
                             <td>{segmentData.REF && typeof segmentData.REF.mcs === 'number' ? segmentData.REF.mcs.toFixed(2) : '0.00'}</td>
-                            <td>{segmentData.DUT && typeof segmentData.DUT.txPower === 'number' ? segmentData.DUT.txPower.toFixed(2) : '0.00'}</td>
-                            <td>{segmentData.REF && typeof segmentData.REF.txPower === 'number' ? segmentData.REF.txPower.toFixed(2) : '0.00'}</td>
+
+                            {/* Render TxPower only on the first row of the run, spanning all segments */}
+                            {segmentIndex === 0 && (
+                                <>
+                                    <td rowSpan={runData.segments.length}>
+                                        {runData.txPower && typeof runData.txPower.DUT === 'number' ? runData.txPower.DUT.toFixed(2) : '0.00'}
+                                    </td>
+                                    <td rowSpan={runData.segments.length}>
+                                        {runData.txPower && typeof runData.txPower.REF === 'number' ? runData.txPower.REF.toFixed(2) : '0.00'}
+                                    </td>
+                                </>
+                            )}
                         </tr>
                     ))}
                 </React.Fragment>

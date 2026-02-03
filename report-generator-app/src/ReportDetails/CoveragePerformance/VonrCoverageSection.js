@@ -89,10 +89,11 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
     const processSecondaryKpiData = (band) => {
         const defaultData = Array.from({ length: 5 }, (_, i) => ({
             run: `RUN ${i + 1}`,
+            txPower: { DUT: 0, REF: 0 },
             segments: [
-                { segment: 'First 30%', DUT: { bler: 0, mcs: 0, txPower: 0 }, REF: { bler: 0, mcs: 0, txPower: 0 } },
-                { segment: 'Middle 40%', DUT: { bler: 0, mcs: 0, txPower: 0 }, REF: { bler: 0, mcs: 0, txPower: 0 } },
-                { segment: 'Last 30%', DUT: { bler: 0, mcs: 0, txPower: 0 }, REF: { bler: 0, mcs: 0, txPower: 0 } },
+                { segment: 'First 30%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
+                { segment: 'Middle 40%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
+                { segment: 'Last 30%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
             ]
         }));
 
@@ -106,8 +107,17 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
 
         return Array.from({ length: 5 }, (_, i) => {
             const runKey = `Run${i + 1}`;
+
+            // TxPower is now at the run level in secondary_kpi, not inside segments
+            const dutTxPower = bandData['DUT']?.[runKey]?.['secondary_kpi']?.['TxPower'] || 0;
+            const refTxPower = bandData['REF']?.[runKey]?.['secondary_kpi']?.['TxPower'] || 0;
+
             return {
                 run: `RUN ${i + 1}`,
+                txPower: {
+                    DUT: dutTxPower,
+                    REF: refTxPower
+                },
                 segments: segments.map(seg => {
                     const dutStats = bandData['DUT']?.[runKey]?.['secondary_kpi']?.[seg] || {};
                     const refStats = bandData['REF']?.[runKey]?.['secondary_kpi']?.[seg] || {};
@@ -115,13 +125,11 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         segment: seg,
                         DUT: {
                             bler: dutStats['AVG BLER'] || 0,
-                            mcs: dutStats['AVG MCS'] || 0,
-                            txPower: dutStats['AVG TxPower'] || 0
+                            mcs: dutStats['AVG MCS'] || 0
                         },
                         REF: {
                             bler: refStats['AVG BLER'] || 0,
-                            mcs: refStats['AVG MCS'] || 0,
-                            txPower: refStats['AVG TxPower'] || 0
+                            mcs: refStats['AVG MCS'] || 0
                         }
                     };
                 })

@@ -80,7 +80,6 @@ const HpueCoverageSection = ({ city: propCity, firstSection = false }) => {
 
     return (
         <>
-
             <div className='page-content'>
                 {firstSection && <DynamicHeader level={1}>5G HPUE Coverage Test </DynamicHeader>}
                 <DynamicHeader level={2}>N41 HPUE Coverage Test - {city} </DynamicHeader>

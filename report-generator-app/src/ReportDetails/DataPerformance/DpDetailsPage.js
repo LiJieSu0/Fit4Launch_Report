@@ -27,15 +27,15 @@ function DpDetailsPage({ webPageUrl }) {
       <Dp_Webbrowser_Component city="New York" webPageUrl={"http://172.93.163.176/reference/kepler/mobile/"} />
       {/* <Dp_playStore_Component city="Seattle" />*/}
       <Dp_playStore_Component city="New York" />
-      <Dp_MHS_Page city="Seattle" />
+      {/* <Dp_MHS_Page city="Seattle" /> */}
       {/* <Dp_MHS_Page city="New York" /> */}
-      <DpDriveTestDetailPage city="Seattle" firstSection={true} />
+      {/* <DpDriveTestDetailPage city="Seattle" firstSection={true} /> */}
       <DpDriveTestDetailPage city="New York" />
       {/* <DpMrabDetailsPage city="Seattle" />
       <DpMrabDetailsPage city="New York" /> */}
 
-      <DpNSAStationaryDetails city="Seattle" firstSection={true} />
-      <DpNSATestDriveDetails city="Seattle" />
+      {/* <DpNSAStationaryDetails city="Seattle" firstSection={true} />
+      <DpNSATestDriveDetails city="Seattle" /> */}
       <DpNSAStationaryDetails city="New York" />
       <DpNSATestDriveDetails city="New York" />
 

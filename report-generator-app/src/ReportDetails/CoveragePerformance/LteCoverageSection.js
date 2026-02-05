@@ -3,6 +3,7 @@ import CoverageTestTable from './CoverageTestTable';
 import CoverageMap from './CoverageMap';
 import { ReportContext } from '../../Contexts/ReportContext';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
+import SecondaryKpiTable from './SecondaryKpiTable';
 
 const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
     const { city: globalCity, allReportData, loadCityData, appConfig } = useContext(ReportContext);
@@ -85,6 +86,57 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
         return [...rows, status];
     };
 
+    const processSecondaryKpiData = (band) => {
+        const defaultData = Array.from({ length: 10 }, (_, i) => ({
+            run: `RUN ${i + 1}`,
+            txPower: { DUT: 0, REF: 0 },
+            segments: [
+                { segment: 'First 30%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
+                { segment: 'Middle 40%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
+                { segment: 'Last 30%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
+            ]
+        }));
+
+        const rootData = reportData && reportData.coveragePerformance && reportData.coveragePerformance['Coverage Performance'];
+        if (!rootData || !rootData['LTE Coverage Test'] || !rootData['LTE Coverage Test'][band]) {
+            return defaultData;
+        }
+
+        const bandData = rootData['LTE Coverage Test'][band];
+        const segments = ['First 30%', 'Middle 40%', 'Last 30%'];
+
+        return Array.from({ length: 10 }, (_, i) => {
+            const runKey = `Run${i + 1}`;
+
+            // TxPower is now at the run level in secondary_kpi, not inside segments
+            const dutTxPower = bandData['DUT']?.[runKey]?.['secondary_kpi']?.['TxPower'] || 0;
+            const refTxPower = bandData['REF']?.[runKey]?.['secondary_kpi']?.['TxPower'] || 0;
+
+            return {
+                run: `RUN ${i + 1}`,
+                txPower: {
+                    DUT: dutTxPower,
+                    REF: refTxPower
+                },
+                segments: segments.map(seg => {
+                    const dutStats = bandData['DUT']?.[runKey]?.['secondary_kpi']?.[seg] || {};
+                    const refStats = bandData['REF']?.[runKey]?.['secondary_kpi']?.[seg] || {};
+                    return {
+                        segment: seg,
+                        DUT: {
+                            bler: dutStats['AVG BLER'] || 0,
+                            mcs: dutStats['AVG MCS'] || 0
+                        },
+                        REF: {
+                            bler: refStats['AVG BLER'] || 0,
+                            mcs: refStats['AVG MCS'] || 0
+                        }
+                    };
+                })
+            };
+        });
+    };
+
     if (!reportData || !reportData.coveragePerformance) {
         return <div className="page-content">Loading {city} LTE Coverage data...</div>;
     }
@@ -93,6 +145,7 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
         const bandLabel = band.toUpperCase();
         const dataDL = processLteCoverageData(band, 'first_dl_tp_gt_1');
         const dataUL = processLteCoverageData(band, 'first_ul_tp_gt_1');
+        const secondaryKpi = processSecondaryKpiData(band);
 
         const coords = getBaseStationCoords();
         const BASE_STATION_COORDS = [coords.latitude, coords.longitude];
@@ -120,6 +173,10 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
                         metric="first_ul_tp_gt_1"
                         baseStation={BASE_STATION_COORDS}
                     />
+                </div>
+                <div className='page-content'>
+                    <DynamicHeader level={3} hideInTOC={true}>LTE Coverage Test {bandLabel} - Secondary KPI - {city}</DynamicHeader>
+                    <SecondaryKpiTable data={secondaryKpi} />
                 </div>
             </div>
         );

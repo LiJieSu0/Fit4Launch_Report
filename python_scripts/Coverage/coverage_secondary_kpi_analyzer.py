@@ -65,7 +65,41 @@ def analyze_secondary_kpis(file_path):
         if not present_seg_cols and not tx_power_col:
             return {}
 
-        # 1. Filter out rows where network is 'No service' or NaN
+        # 0. Truncate Data at First "No Service" (Refined Logic Tech Specific)
+        if col_network in df.columns:
+            service_started = False
+            first_no_service_index = None
+            
+            # Determine Technology Mode based on file path (heuristic)
+            is_lte_mode = "lte" in file_path.lower()
+            
+            for idx, row in df.iterrows():
+                network_status = str(row[col_network]).lower()
+                
+                # Check for valid service based on mode
+                if not service_started:
+                    if is_lte_mode:
+                        if "lte" in network_status:
+                            service_started = True
+                    else:
+                        # 5G Mode - Wait for NR SA
+                        if "nr sa" in network_status:
+                            service_started = True
+                
+                # If service has started, and we hit 'no service', this is our cut-off
+                if service_started and network_status == 'no service':
+                    first_no_service_index = idx
+                    # print(f"Found Cut-off No Service at index {first_no_service_index}")
+                    break
+            
+            if first_no_service_index is not None:
+                # Keep only data BEFORE the first No Service (after valid service started)
+                df = df.iloc[:first_no_service_index].copy()
+        
+        if df.empty:
+            return {}
+
+        # 1. Filter out rows where network is 'No Service' or NaN (Existing Logic - still good for random bad rows before the drop)
         # Also ensure we only take rows where at least one of our target KPIs has a value
         if col_network in df.columns:
             df = df[df[col_network].astype(str).str.lower() != 'no service'].copy()

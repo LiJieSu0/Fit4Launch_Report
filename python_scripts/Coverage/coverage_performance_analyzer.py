@@ -31,6 +31,7 @@ def analyze_csv(file_path):
     col_ul_tp = '[Call Test] [Throughput] Application UL TP'
     col_latitude = '[General] [GPS] Latitude'
     col_longitude = '[General] [GPS] Longitude'
+    col_network = '[General] Serving Network'
 
     coords = {
         "mos_before_drop": (None, None),
@@ -69,15 +70,44 @@ def analyze_csv(file_path):
             # If current row has no coordinates, search upwards
             coords["call_drop"] = find_coordinates(df, drop_index, col_latitude, col_longitude)
 
-    # Coordinate 3: First DL TP > 1 from bottom
-    for i in range(len(df) - 1, -1, -1):
+    # Determine the search limit index
+    # Logic: Find the first "No Service" AFTER valid service has started (Tech specific).
+    search_limit_index = len(df) - 1
+    
+    # Determine Technology Mode based on file path (heuristic)
+    is_lte_mode = "lte" in file_path.lower()
+    # Default to 5G/NR mode if not LTE
+    
+    if col_network in df.columns:
+        service_started = False
+        for idx, row in df.iterrows():
+            network_status = str(row[col_network]).lower()
+            
+            # Check for valid service based on mode
+            if not service_started:
+                if is_lte_mode:
+                    if "lte" in network_status:
+                        service_started = True
+                else:
+                    # 5G Mode - Wait for NR SA
+                    if "nr sa" in network_status:
+                        service_started = True
+            
+            # If service has started, and we hit 'no service', this is our cut-off
+            if service_started and network_status == 'no service':
+                search_limit_index = idx
+                # print(f"Found Cut-off No Service at index {search_limit_index}")
+                break
+
+    # Coordinate 3: First DL TP > 1 from bottom (or from No Service index upwards)
+    for i in range(search_limit_index, -1, -1):
         dl_tp_val = df.loc[i, col_dl_tp]
         if pd.notna(dl_tp_val) and pd.to_numeric(dl_tp_val, errors='coerce') > 1:
             coords["first_dl_tp_gt_1"] = find_coordinates(df, i, col_latitude, col_longitude)
             break
 
-    # Coordinate 4: First UL TP > 1 from bottom
-    for i in range(len(df) - 1, -1, -1):
+    # Coordinate 4: First UL TP > 1 from bottom (or from No Service index upwards)
+    for i in range(search_limit_index, -1, -1):
         ul_tp_val = df.loc[i, col_ul_tp]
         if pd.notna(ul_tp_val) and pd.to_numeric(ul_tp_val, errors='coerce') > 1:
             coords["first_ul_tp_gt_1"] = find_coordinates(df, i, col_latitude, col_longitude)

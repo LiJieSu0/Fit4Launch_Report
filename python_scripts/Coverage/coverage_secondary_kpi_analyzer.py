@@ -116,6 +116,14 @@ def analyze_secondary_kpis(file_path):
         for col in present_cols:
             df[col] = pd.to_numeric(df[col], errors='coerce')
 
+        # Apply Power Class filtering for Tx Power - ONLY for HPUE tests
+        if "HPUE" in file_path.upper() and tx_power_col and tx_power_col in df.columns:
+            filename = os.path.basename(file_path).upper()
+            if 'PC2' in filename:
+                df.loc[df[tx_power_col] > 26, tx_power_col] = np.nan
+            elif 'PC3' in filename:
+                df.loc[df[tx_power_col] > 24, tx_power_col] = np.nan
+
         total_rows = len(df)
         
         # 3. Calculate segment boundaries

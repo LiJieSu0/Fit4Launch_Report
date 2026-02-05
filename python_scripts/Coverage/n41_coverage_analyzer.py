@@ -79,16 +79,25 @@ def analyze_n41_coverage(folder_path, device_type_filter=None):
                             if tx_power_value is not None:
                                 break
                         
-                        results.append({
-                            'Device type': device_type,
-                            'latitude': latitude,
-                            'longitude': longitude,
-                            'ul_tp_value': ul_tp_value,
-                            'rsrp_value': rsrp_value,
-                            'tx_power_value': tx_power_value
-                        })
-                        found_data_point = True
-                        break # Found UL TP for this 'No service', move to next 'No service'
+                        # Apply Power Class filtering - ONLY for HPUE tests
+                        if "HPUE" in file_path.upper() and tx_power_value is not None:
+                            if 'PC2' in device_type.upper() and tx_power_value > 26:
+                                tx_power_value = None
+                            elif 'PC3' in device_type.upper() and tx_power_value > 24:
+                                tx_power_value = None
+                        
+                        # Only append if tx_power_value is still valid after filtering
+                        if tx_power_value is not None:
+                            results.append({
+                                'Device type': device_type,
+                                'latitude': latitude,
+                                'longitude': longitude,
+                                'ul_tp_value': ul_tp_value,
+                                'rsrp_value': rsrp_value,
+                                'tx_power_value': tx_power_value
+                            })
+                            found_data_point = True
+                            break # Found UL TP for this 'No service', move to next 'No service'
                 if found_data_point:
                     break # Found a data point for at least one 'No service', stop processing this file
             

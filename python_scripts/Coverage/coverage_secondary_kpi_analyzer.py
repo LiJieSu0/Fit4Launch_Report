@@ -27,8 +27,14 @@ def analyze_secondary_kpis(file_path):
         
         # Identify which Tx Power column to use
         tx_power_col = None
-        if col_tx_power_lte in available_cols:
-            tx_power_col = col_tx_power_lte
+        norm_path = file_path.lower()
+        
+        # Priority 1: Path contains "Coverage" and "LTE" -> FORCE use of LTE Header
+        if "coverage" in norm_path and "lte" in norm_path:
+            if col_tx_power_lte in available_cols:
+                tx_power_col = col_tx_power_lte
+        
+        # Priority 2: Fallback to existing logic for NR or other cases
         elif col_tx_power_5g in available_cols:
             tx_power_col = col_tx_power_5g
 

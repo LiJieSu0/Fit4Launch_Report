@@ -34,16 +34,16 @@ const DpNSAPingOverallTable = ({ data }) => {
                                 <td style={row.key === "average" ? {
                                     backgroundColor: getKpiCellColor(
                                         'PingLatency',
-                                        parseFloat(data[row.key].DUT.Overall),
-                                        parseFloat(data[row.key].REF.Overall)
+                                        parseFloat(data?.[row.key]?.DUT?.Overall),
+                                        parseFloat(data?.[row.key]?.REF?.Overall)
                                     )
                                 } : {}}>
-                                    {data[row.key].DUT.Overall}
+                                    {data?.[row.key]?.DUT?.Overall ?? "N/A"}
                                 </td>
                             </tr>
                             <tr>
                                 <td>REF</td>
-                                <td>{data[row.key].REF.Overall}</td>
+                                <td>{data?.[row.key]?.REF?.Overall ?? "N/A"}</td>
                             </tr>
                         </React.Fragment>
                     ))}

@@ -36,6 +36,20 @@ const DpNSAPingTable = ({ data, tableName }) => {
         return ((moderateVal + poorVal) / 2).toFixed(2);
     };
 
+    const safeToFixed = (val) => {
+        const parsed = parseFloat(val);
+        return isNaN(parsed) ? "N/A" : parsed.toFixed(2);
+    };
+
+    const getSafeValue = (obj, ...path) => {
+        let current = obj;
+        for (const key of path) {
+            if (current == null) return "N/A";
+            current = current[key];
+        }
+        return current ?? "N/A";
+    };
+
     return (
         <div className="">
             <h4>{tableName}</h4>
@@ -56,54 +70,54 @@ const DpNSAPingTable = ({ data, tableName }) => {
                     <tr>
                         <td rowSpan="2">Average</td>
                         <td>DUT</td>
-                        <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(data.average.DUT.Overall), parseFloat(data.average.REF.Overall)) }}>{parseFloat(data.average.DUT.Overall).toFixed(2)}</td>
-                        <td>{parseFloat(data.average.DUT.Moderate).toFixed(2)}</td>
-                        <td>{parseFloat(data.average.DUT.Poor).toFixed(2)}</td>
+                        <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(getSafeValue(data, 'average', 'DUT', 'Overall')), parseFloat(getSafeValue(data, 'average', 'REF', 'Overall'))) }}>{safeToFixed(getSafeValue(data, 'average', 'DUT', 'Overall'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'average', 'DUT', 'Moderate'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'average', 'DUT', 'Poor'))}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
-                        <td>{parseFloat(data.average.REF.Overall).toFixed(2)}</td>
-                        <td>{parseFloat(data.average.REF.Moderate).toFixed(2)}</td>
-                        <td>{parseFloat(data.average.REF.Poor).toFixed(2)}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'average', 'REF', 'Overall'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'average', 'REF', 'Moderate'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'average', 'REF', 'Poor'))}</td>
                     </tr>
                     <tr>
                         <td rowSpan="2">Standard Deviation</td>
                         <td>DUT</td>
-                        <td>{parseFloat(data.std_dev.DUT.Overall).toFixed(2)}</td>
-                        <td>{parseFloat(data.std_dev.DUT.Moderate).toFixed(2)}</td>
-                        <td>{parseFloat(data.std_dev.DUT.Poor).toFixed(2)}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'std_dev', 'DUT', 'Overall'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'std_dev', 'DUT', 'Moderate'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'std_dev', 'DUT', 'Poor'))}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
-                        <td>{parseFloat(data.std_dev.REF.Overall).toFixed(2)}</td>
-                        <td>{parseFloat(data.std_dev.REF.Moderate).toFixed(2)}</td>
-                        <td>{parseFloat(data.std_dev.REF.Poor).toFixed(2)}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'std_dev', 'REF', 'Overall'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'std_dev', 'REF', 'Moderate'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'std_dev', 'REF', 'Poor'))}</td>
                     </tr>
                     <tr>
                         <td rowSpan="2">Maximum</td>
                         <td>DUT</td>
-                        <td>{parseFloat(data.max.DUT.Overall).toFixed(2)}</td>
-                        <td>{parseFloat(data.max.DUT.Moderate).toFixed(2)}</td>
-                        <td>{parseFloat(data.max.DUT.Poor).toFixed(2)}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'max', 'DUT', 'Overall'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'max', 'DUT', 'Moderate'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'max', 'DUT', 'Poor'))}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
-                        <td>{parseFloat(data.max.REF.Overall).toFixed(2)}</td>
-                        <td>{parseFloat(data.max.REF.Moderate).toFixed(2)}</td>
-                        <td>{parseFloat(data.max.REF.Poor).toFixed(2)}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'max', 'REF', 'Overall'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'max', 'REF', 'Moderate'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'max', 'REF', 'Poor'))}</td>
                     </tr>
                     <tr>
                         <td rowSpan="2">Minimum</td>
                         <td>DUT</td>
-                        <td>{parseFloat(data.min.DUT.Overall).toFixed(2)}</td>
-                        <td>{parseFloat(data.min.DUT.Moderate).toFixed(2)}</td>
-                        <td>{parseFloat(data.min.DUT.Poor).toFixed(2)}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'min', 'DUT', 'Overall'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'min', 'DUT', 'Moderate'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'min', 'DUT', 'Poor'))}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
-                        <td>{parseFloat(data.min.REF.Overall).toFixed(2)}</td>
-                        <td>{parseFloat(data.min.REF.Moderate).toFixed(2)}</td>
-                        <td>{parseFloat(data.min.REF.Poor).toFixed(2)}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'min', 'REF', 'Overall'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'min', 'REF', 'Moderate'))}</td>
+                        <td>{safeToFixed(getSafeValue(data, 'min', 'REF', 'Poor'))}</td>
                     </tr>
                 </tbody>
             </table>

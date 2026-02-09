@@ -31,7 +31,16 @@ function Dp_Ping_Component({ city: propCity }) {
 
     // Update to use dataPerformance from the fetched JSON
     // Path: ["Data Performance"]["5G AUTO DP"]["Ping"]
-    const Dp_Ping_Data = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["Ping"];
+    const Dp_Ping_Data = reportData.dataPerformance?.["Data Performance"]?.["5G AUTO DP"]?.["Ping"];
+
+    if (!Dp_Ping_Data) {
+        return (
+            <div className="page-content">
+                <h4>Ping Test - 5G Auto</h4>
+                <p>No Ping data available for {city}.</p>
+            </div>
+        );
+    }
 
 
     const processedPingData = {

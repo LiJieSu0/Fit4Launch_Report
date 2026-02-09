@@ -33,7 +33,7 @@ function Dp_httpMS_Component({ city: propCity }) {
     }
 
     // Path: ["Data Performance"]["5G AUTO DP"]["HTTP Multi Stream"]
-    const httpMS_Data_Source = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["HTTP Multi Stream"] || { DL: {}, UL: {} };
+    const httpMS_Data_Source = reportData.dataPerformance?.["Data Performance"]?.["5G AUTO DP"]?.["HTTP Multi Stream"] || { DL: {}, UL: {} };
 
     const defaultThroughput = { Mean: 0, "Standard Deviation": 0, Minimum: 0, Maximum: 0 };
 

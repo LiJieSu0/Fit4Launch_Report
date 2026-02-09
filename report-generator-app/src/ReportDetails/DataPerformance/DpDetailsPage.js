@@ -15,7 +15,7 @@ import DynamicHeader from '../../CommonPage/DynamicHeader';
 function DpDetailsPage({ webPageUrl }) {
   return (
     <div>
-      <Dp_httpSS_Component city="Seattle" firstSection={true} />
+      {/* <Dp_httpSS_Component city="Seattle" firstSection={true} />
       <Dp_httpSS_Component city="New York" />
       <Dp_httpMS_Component city="Seattle" />
       <Dp_httpMS_Component city="New York" />
@@ -25,19 +25,24 @@ function DpDetailsPage({ webPageUrl }) {
       <Dp_Ping_Component city="New York" />
       <Dp_Webbrowser_Component city="Seattle" webPageUrl={"http://172.93.163.176/reference/kepler/mobile/"} />
       <Dp_Webbrowser_Component city="New York" webPageUrl={"http://172.93.163.176/reference/kepler/mobile/"} />
-      {/* <Dp_playStore_Component city="Seattle" />*/}
+      <Dp_playStore_Component city="Seattle" />
       <Dp_playStore_Component city="New York" />
-      {/* <Dp_MHS_Page city="Seattle" /> */}
-      {/* <Dp_MHS_Page city="New York" /> */}
-      {/* <DpDriveTestDetailPage city="Seattle" firstSection={true} /> */}
+      <Dp_MHS_Page city="Seattle" />
+      <Dp_MHS_Page city="New York" />
+      <DpDriveTestDetailPage city="Seattle" firstSection={true} />
       <DpDriveTestDetailPage city="New York" />
-      {/* <DpMrabDetailsPage city="Seattle" />
-      <DpMrabDetailsPage city="New York" /> */}
+      <DpMrabDetailsPage city="Seattle" />
+      <DpMrabDetailsPage city="New York" />
 
-      {/* <DpNSAStationaryDetails city="Seattle" firstSection={true} />
-      <DpNSATestDriveDetails city="Seattle" /> */}
+      <DpNSAStationaryDetails city="Seattle" firstSection={true} />
+      <DpNSATestDriveDetails city="Seattle" />
       <DpNSAStationaryDetails city="New York" />
-      <DpNSATestDriveDetails city="New York" />
+      <DpNSATestDriveDetails city="New York" /> */}
+      {/* Debug report section, remove after debugging */}
+      <Dp_playStore_Component city="New York" />
+
+      <DpNSAStationaryDetails city="New York" />
+
 
     </div>
   );

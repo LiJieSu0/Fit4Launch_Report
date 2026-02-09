@@ -31,7 +31,7 @@ function Dp_Webbrowser_Component({ city: propCity, webPageUrl }) {
 
     // Update to use dataPerformance from the fetched JSON
     // Path: ["Data Performance"]["5G AUTO DP"]["5G Auto Data Web-Kepler"]
-    const WebBrowserData = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["5G Auto Data Web-Kepler"] || { DUT: {}, REF: {} };
+    const WebBrowserData = reportData.dataPerformance?.["Data Performance"]?.["5G AUTO DP"]?.["5G Auto Data Web-Kepler"] || { DUT: {}, REF: {} };
 
     const defaultMetric = { Mean: 0, "Standard Deviation": 0, Maximum: 0, Minimum: 0 };
     const dutData = WebBrowserData.DUT?.["Web Page Load Time"] || defaultMetric;

@@ -32,7 +32,7 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
   }
 
   // Path: ["Data Performance"]["5G AUTO DP"]["HTTP Single Stream"]
-  const httpSS_Data_Source = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["HTTP Single Stream"] || { DL: {}, UL: {} };
+  const httpSS_Data_Source = reportData.dataPerformance?.["Data Performance"]?.["5G AUTO DP"]?.["HTTP Single Stream"] || { DL: {}, UL: {} };
 
   const defaultThroughput = { Mean: 0, "Standard Deviation": 0, Minimum: 0, Maximum: 0 };
 

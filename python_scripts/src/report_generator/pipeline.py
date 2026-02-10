@@ -40,7 +40,7 @@ from Wfc.WfcLineChartAnalyzer import calculate_wfc_statistics, calculate_wfc_rss
 from Coverage.n41_coverage_analyzer import extract_coverage_data_to_csv
 
 class DataAnalysisPipeline:
-    def __init__(self, config_path="config/config.yaml", market_name=None):
+    def __init__(self, config_path="config/config.yaml", market_name=None, project_name=None):
         self.config = Config(config_path)
         log_config = self.config.get("logging")
         self.logger = setup_logger(
@@ -49,18 +49,29 @@ class DataAnalysisPipeline:
             level=log_config.get("level")
         )
         
+        # Project logic: If project_name is provided, it dictates the sub-pathing
+        self.project = project_name
+        
         # Determine market: override if argument provided, otherwise fallback to config or default
         if market_name:
             self.market = market_name
         else:
             self.market = self.config.get("project.market", "Seattle")
             
-        self.base_raw_data_dir = os.path.join(self.config.get("project.base_raw_data_dir"), self.market)
-        self.output_dir = os.path.join(self.config.get("project.output_dir"), self.market)
+        # Directory resolution: Raw Data / [Project] / Market
+        if self.project:
+            self.base_raw_data_dir = os.path.join(self.config.get("project.base_raw_data_dir"), self.project, self.market)
+            self.output_dir = os.path.join(self.config.get("project.output_dir"), self.project, self.market)
+        else:
+            self.base_raw_data_dir = os.path.join(self.config.get("project.base_raw_data_dir"), self.market)
+            self.output_dir = os.path.join(self.config.get("project.output_dir"), self.market)
+
+        if self.project:
+            self.logger.info(f"Project: {self.project}")
         self.logger.info(f"Market: {self.market}")
         self.logger.info(f"Reading from: {self.base_raw_data_dir}")
         self.logger.info(f"Writing to: {self.output_dir}")
-        os.makedirs(self.output_dir, exist_ok=True)
+        # Removed os.makedirs(self.output_dir, exist_ok=True) for lazy creation
         
         self.results = {
             "data_performance": {},
@@ -252,7 +263,7 @@ class DataAnalysisPipeline:
         
         # VQ Line Chart
         vq_linechart_dir = os.path.join(self.output_dir, "vq_linechart_data")
-        os.makedirs(vq_linechart_dir, exist_ok=True)
+        # Subdirectory created only if valid paths found below
         evs_wb_vq_paths = [
             os.path.join(self.base_raw_data_dir, r"Voice Quality\5G Auto VoNR Disabled EVS WB VQ\Base"),
             os.path.join(self.base_raw_data_dir, r"Voice Quality\5G Auto VoNR Disabled EVS WB VQ\Mobile"),
@@ -261,42 +272,43 @@ class DataAnalysisPipeline:
         ]
         for p in evs_wb_vq_paths:
             if os.path.isdir(p):
+                os.makedirs(vq_linechart_dir, exist_ok=True)
                 scenario = os.path.basename(os.path.dirname(p)) + "_" + os.path.basename(p)
                 out_path = os.path.join(vq_linechart_dir, f"vq_mos_statistics_{scenario.replace(' ', '_').lower()}.json")
                 calculate_vq_statistics(p, output_json_path=out_path)
 
         # WFC Line Chart
         wfc_linechart_dir = os.path.join(self.output_dir, "wfc_linechart_data")
-        os.makedirs(wfc_linechart_dir, exist_ok=True)
         wfc_base_path = os.path.join(self.base_raw_data_dir, "WFC")
         if os.path.isdir(wfc_base_path):
             for tc_dir in os.listdir(wfc_base_path):
                 tc_path = os.path.join(wfc_base_path, tc_dir)
                 if os.path.isdir(tc_path):
+                    os.makedirs(wfc_linechart_dir, exist_ok=True)
                     out_path = os.path.join(wfc_linechart_dir, f"wfc_mos_statistics_{tc_dir.lower()}.json")
                     calculate_wfc_statistics(tc_path, output_json_path=out_path)
 
         # WFC RSSI Line Chart
         wfc_rssi_linechart_dir = os.path.join(self.output_dir, "wfc_rssi_linechart_data")
-        os.makedirs(wfc_rssi_linechart_dir, exist_ok=True)
         if os.path.isdir(wfc_base_path):
             for tc_dir in os.listdir(wfc_base_path):
                 tc_path = os.path.join(wfc_base_path, tc_dir)
                 if os.path.isdir(tc_path):
+                    os.makedirs(wfc_rssi_linechart_dir, exist_ok=True)
                     out_path = os.path.join(wfc_rssi_linechart_dir, f"wfc_rssi_statistics_{tc_dir.lower()}.json")
                     calculate_wfc_rssi_statistics(tc_path, output_json_path=out_path)
 
         # RSRP & Tx Power Extraction
         rsrp_dir = os.path.join(self.output_dir, "rsrp_data")
         tx_dir = os.path.join(self.output_dir, "tx_power_data")
-        os.makedirs(rsrp_dir, exist_ok=True)
-        os.makedirs(tx_dir, exist_ok=True)
         
         n41_path = os.path.join(self.base_raw_data_dir, "Coverage Performance", "5G n41 HPUE Coverage Test")
         if os.path.isdir(n41_path):
             for run in os.listdir(n41_path):
                 run_p = os.path.join(n41_path, run)
                 if os.path.isdir(run_p) and run.startswith("Run"):
+                    os.makedirs(rsrp_dir, exist_ok=True)
+                    os.makedirs(tx_dir, exist_ok=True)
                     extract_coverage_data_to_csv(run_p, rsrp_dir, ['PC2', 'PC3'], '[NR5G] [RF] RSRP', 'RSRP_Analysis')
                     extract_coverage_data_to_csv(run_p, tx_dir, ['PC2', 'PC3'], '[NR5G] [Power] Tx power (PUSCH Actual)', 'TxPower_Analysis', fallback_column_name='[NR5G] [Power] Tx power (Total)')
         
@@ -321,6 +333,7 @@ class DataAnalysisPipeline:
         }
         for category, (filename, root_key) in export_map.items():
             if self.results[category]:
+                os.makedirs(self.output_dir, exist_ok=True)
                 path = os.path.join(self.output_dir, filename)
                 # Wrap the results in the category root key
                 final_output = {root_key: self.results[category]}
@@ -329,6 +342,10 @@ class DataAnalysisPipeline:
                 self.logger.info(f"{root_key} results exported to {path}")
 
     def _export_processing_summary(self):
+        if not self.processing_stats["valid_files"] and not self.processing_stats["invalid_files"]:
+            return # Skip summary if nothing processed
+            
+        os.makedirs(self.output_dir, exist_ok=True)
         summary_path = os.path.join(self.output_dir, "processing_summary.json")
         summary_data = {
             "market": self.market,
@@ -355,22 +372,42 @@ if __name__ == "__main__":
     config = Config("config/config.yaml")
     base_raw_dir = config.get("project.base_raw_data_dir")
     
-    # Auto-discover markets
+    # Get configured markets as whitelist
+    markets_config = config.get("markets", {})
+    configured_market_names = list(markets_config.keys())
+    
+    # Auto-discover projects and markets
     if os.path.isdir(base_raw_dir):
-        discovered_markets = []
+        # We search for folders starting with '#' as project folders
+        # Folders NOT starting with '#' are now ignored as per requirement
+        discovered_targets = [] # List of (project_name, market_name)
+        
         for name in os.listdir(base_raw_dir):
-            if os.path.isdir(os.path.join(base_raw_dir, name)):
-                # Optional: Validate against configured markets if strictness is required
-                # configured_markets = config.get("markets")
-                # if configured_markets and name not in configured_markets: continue
-                discovered_markets.append(name)
+            full_path = os.path.join(base_raw_dir, name)
+            if os.path.isdir(full_path) and name.startswith("#"):
+                # This is a project folder, discover markets inside
+                project_folder = name
+                for sub_name in os.listdir(full_path):
+                    if os.path.isdir(os.path.join(full_path, sub_name)):
+                        # Strict filtering: only markets in the whitelist
+                        if sub_name in configured_market_names:
+                            discovered_targets.append((project_folder, sub_name))
+                        else:
+                            print(f"Ignoring non-configured market folder: {project_folder}/{sub_name}")
+            else:
+                # Top level folders without '#' are ignored
+                if os.path.isdir(full_path):
+                    print(f"Skipping non-project directory: {name}")
         
-        print(f"Discovered markets: {discovered_markets}")
-        
-        for market in discovered_markets:
-            print(f"\n--- Processing Market: {market} ---")
-            pipeline = DataAnalysisPipeline(market_name=market)
-            pipeline.run()
+        if not discovered_targets:
+            print(f"No project directories (starting with '#') found in: {base_raw_dir}")
+        else:
+            print(f"Discovered targets: {discovered_targets}")
+            
+            for project, market in discovered_targets:
+                print(f"\n--- Processing Project: {project} | Market: {market} ---")
+                pipeline = DataAnalysisPipeline(market_name=market, project_name=project)
+                pipeline.run()
     else:
         print(f"Error: Base raw data directory not found: {base_raw_dir}")
 

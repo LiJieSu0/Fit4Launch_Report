@@ -14,7 +14,8 @@ export const ReportDataProvider = ({ children }) => {
 
   const loadCityData = async (targetCity, targetProject = project) => {
     if (!targetProject) return;
-    const cacheKey = `${targetProject}-${targetCity}`;
+    const folderName = typeof targetProject === 'object' ? targetProject.dataFolderName : targetProject;
+    const cacheKey = `${folderName}-${targetCity}`;
     if (allReportData[cacheKey]) return; // Already loaded
 
     try {
@@ -50,7 +51,8 @@ export const ReportDataProvider = ({ children }) => {
           const newData = {};
           cities.forEach((c, idx) => {
             if (results[idx]) {
-              newData[`${project}-${c}`] = results[idx];
+              const folderName = typeof project === 'object' ? project.dataFolderName : project;
+              newData[`${folderName}-${c}`] = results[idx];
             }
           });
           setAllReportData(prev => ({ ...prev, ...newData }));
@@ -68,7 +70,8 @@ export const ReportDataProvider = ({ children }) => {
   useEffect(() => {
     if (project && availableCities.length > 0) {
       const loadMissing = async () => {
-        const missingCities = availableCities.filter(c => !allReportData[`${project}-${c}`]);
+        const folderName = typeof project === 'object' ? project.dataFolderName : project;
+        const missingCities = availableCities.filter(c => !allReportData[`${folderName}-${c}`]);
         if (missingCities.length > 0) {
           const loadPromises = missingCities.map(c => loadAllData(project, c));
           const results = await Promise.all(loadPromises);
@@ -76,7 +79,8 @@ export const ReportDataProvider = ({ children }) => {
           const newData = {};
           missingCities.forEach((c, idx) => {
             if (results[idx]) {
-              newData[`${project}-${c}`] = results[idx];
+              const folderName = typeof project === 'object' ? project.dataFolderName : project;
+              newData[`${folderName}-${c}`] = results[idx];
             }
           });
           setAllReportData(prev => ({ ...prev, ...newData }));
@@ -91,7 +95,8 @@ export const ReportDataProvider = ({ children }) => {
     if (!project) return {};
     const data = {};
     availableCities.forEach(c => {
-      const cacheKey = `${project}-${c}`;
+      const folderName = typeof project === 'object' ? project.dataFolderName : project;
+      const cacheKey = `${folderName}-${c}`;
       if (allReportData[cacheKey]) {
         data[c] = allReportData[cacheKey];
       }

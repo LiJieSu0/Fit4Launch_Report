@@ -45,8 +45,8 @@ function App() {
   const { project, setProject, availableProjects } = useContext(ReportContext);
   const [currentReport, setCurrentReport] = useState(null);
 
-  // Derive project name from project folder for display (e.g., #Dry Run -> Dry Run)
-  const displayProjectName = project ? project.replace('#', '') : "Select Project";
+  // Derive project name from project object for display
+  const displayProjectName = project ? project.displayProjectName : "Select Project";
 
   useEffect(() => {
     if (currentReport) {
@@ -65,11 +65,11 @@ function App() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', maxWidth: '300px', margin: '0 auto' }}>
           {availableProjects.map((p) => (
             <button
-              key={p}
+              key={p.dataFolderName}
               onClick={() => setProject(p)}
               style={{ padding: '15px', fontSize: '18px', cursor: 'pointer', borderRadius: '8px', border: '1px solid #ccc', backgroundColor: '#f0f0f0' }}
             >
-              {p.replace('#', '')}
+              {p.displayProjectName}
             </button>
           ))}
         </div>

@@ -1,3 +1,70 @@
 [
-    "#Dry Run"
+    {
+        "dataFolderName": "#Dry Run",
+        "displayProjectName": "ATMC Labs Pilot",
+        "deviceData": [
+            {
+                "testDeviceLabel": "Samsung XCover Pro7",
+                "role": "Device Under Test",
+                "softwareVersion": "SP1A.210812.016.A125USQU3CVG4",
+                "imei": [
+                    "354877970011048",
+                    "354877970012475",
+                    "354877970011139",
+                    "354877970011428",
+                    "354877970010297",
+                    "354877970012335",
+                    "354877970012160",
+                    "354877970022535"
+                ]
+            },
+            {
+                "testDeviceLabel": "Samsung GS23",
+                "role": "Reference",
+                "softwareVersion": "UP1A.231005.007.S911USQU1BWK4",
+                "imei": [
+                    "350932550010987",
+                    "355123541733938",
+                    "355123540010296",
+                    "351246873596070",
+                    "352766397820481",
+                    "352766397867003",
+                    "352766397820184",
+                    "352766397822875"
+                ]
+            }
+        ]
+    },
+    {
+        "dataFolderName": "#HuaqinDebug",
+        "displayProjectName": "Huaqin Debug",
+        "deviceData": [
+            {
+                "testDeviceLabel": "Motorola XT2575-4",
+                "role": "Device Under Test",
+                "softwareVersion": "17.0.02.147_Development Version",
+                "imei": [
+                    "350932550010987",
+                    "355123541733938",
+                    "355123540010296",
+                    "351246873596070",
+                    "352766397820481",
+                    "352766397867003",
+                    "352766397820184",
+                    "352766397822875"
+                ]
+            },
+            {
+                "testDeviceLabel": "Samsung Galaxy A14 5G (SM-A146U) ",
+                "role": "Reference",
+                "softwareVersion": "AP3A.240905.015.A2.A146USQSFEYK3",
+                "imei": [
+                    "350545460016108",
+                    "350545460016157",
+                    "350545460014939",
+                    "350545460015225"
+                ]
+            }
+        ]
+    }
 ]

@@ -22,7 +22,8 @@ export const loadAppConfig = async () => {
 };
 
 export const loadAllData = async (project, city) => {
-  const projectPath = project ? `${encodeURIComponent(project)}/` : '';
+  const folderName = typeof project === 'object' ? project.dataFolderName : project;
+  const projectPath = folderName ? `${encodeURIComponent(folderName)}/` : '';
   const cityDataPath = `${BASE_DATA_PATH}${projectPath}${encodeURIComponent(city)}/`;
   try {
     const [

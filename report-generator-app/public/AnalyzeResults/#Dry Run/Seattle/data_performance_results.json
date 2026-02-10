@@ -2,31 +2,6 @@
     "Data Performance": {
         "5G AUTO DP": {
             "5G VoNR MRAB Stationary": {
-                "DUT": {
-                    "MRAB Statistics": {
-                        "Pre Call": {
-                            "Mean": 134.15152296296296,
-                            "Maximum": 254.6954,
-                            "Minimum": 23.713900000000002,
-                            "Standard Deviation": 61.969877176982365
-                        },
-                        "In Call": {
-                            "Mean": 106.17720453040987,
-                            "Maximum": 226.15058823529415,
-                            "Minimum": 50.11210344827586,
-                            "Standard Deviation": 43.77477926478246
-                        },
-                        "Post Call": {
-                            "Mean": 171.49899703703701,
-                            "Maximum": 288.78044444444447,
-                            "Minimum": 57.163700000000006,
-                            "Standard Deviation": 74.11495980277779
-                        }
-                    },
-                    "Device Type": "DUT",
-                    "Network Type": "5G",
-                    "Analysis Type": "mrab_performance"
-                },
                 "REF": {
                     "MRAB Statistics": {
                         "Pre Call": {
@@ -49,6 +24,31 @@
                         }
                     },
                     "Device Type": "REF",
+                    "Network Type": "5G",
+                    "Analysis Type": "mrab_performance"
+                },
+                "DUT": {
+                    "MRAB Statistics": {
+                        "Pre Call": {
+                            "Mean": 134.15152296296296,
+                            "Maximum": 254.6954,
+                            "Minimum": 23.713900000000002,
+                            "Standard Deviation": 61.969877176982365
+                        },
+                        "In Call": {
+                            "Mean": 106.17720453040987,
+                            "Maximum": 226.15058823529415,
+                            "Minimum": 50.11210344827586,
+                            "Standard Deviation": 43.77477926478246
+                        },
+                        "Post Call": {
+                            "Mean": 171.49899703703701,
+                            "Maximum": 288.78044444444447,
+                            "Minimum": 57.163700000000006,
+                            "Standard Deviation": 74.11495980277779
+                        }
+                    },
+                    "Device Type": "DUT",
                     "Network Type": "5G",
                     "Analysis Type": "mrab_performance"
                 }
@@ -1258,6 +1258,26 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
+                                    "Mean": 91.79604210526315,
+                                    "Standard Deviation": 71.60706648546416,
+                                    "Minimum": 22.3119,
+                                    "Maximum": 194.82670000000002,
+                                    "Number of Intervals": 19
+                                },
+                                "Jitter": {
+                                    "Mean": 0.40207368421052636
+                                },
+                                "Error Ratio": {
+                                    "Mean": 47.74205263157896
+                                }
+                            },
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
                                     "Mean": 165.29354500000002,
                                     "Standard Deviation": 45.39024254576811,
                                     "Minimum": 18.477700000000002,
@@ -1773,6 +1793,44 @@
                             "Min": 34.0,
                             "Max": 995.0,
                             "Std Dev": 49.408297803853614
+                        }
+                    },
+                    "REF": {
+                        "Device Type": "REF",
+                        "Network Type": "5G",
+                        "Analysis Type": "mhs_drive_performance",
+                        "DL Throughput": {
+                            "Mean": 10.00135691520468,
+                            "Standard Deviation": 0.0034895469966286156,
+                            "Minimum": 9.993822222222224,
+                            "Maximum": 10.006533333333334,
+                            "Number of Intervals": 20
+                        },
+                        "UL Throughput": {
+                            "Mean": 0.022,
+                            "Standard Deviation": 0.02495996794869737,
+                            "Minimum": 0.001,
+                            "Maximum": 0.061,
+                            "Number of Intervals": 5,
+                            "Note": "Calculated overall sum divided by number of detected points due to no valid interval data segments. Limited to last 20 rows."
+                        },
+                        "DL Jitter": {
+                            "Mean": 1.6999004149377592
+                        },
+                        "UL Jitter": {
+                            "Mean": 2.027404761904762
+                        },
+                        "DL Error Ratio": {
+                            "Mean": 1.0917634854771785
+                        },
+                        "UL Error Ratio": {
+                            "Mean": 7.355714285714284
+                        },
+                        "Ping RTT": {
+                            "Mean": 111.29530840676351,
+                            "Min": 36.0,
+                            "Max": 379.0,
+                            "Std Dev": 32.02049359244282
                         }
                     }
                 },

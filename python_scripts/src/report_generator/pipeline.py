@@ -409,16 +409,6 @@ if __name__ == "__main__":
                 pipeline = DataAnalysisPipeline(market_name=market, project_name=project)
                 pipeline.run()
             
-            # After processing all, export the set of discovered projects for React to use
-            projects_list = sorted(list(set(t[0] for t in discovered_targets)))
-            projects_json_path = os.path.join(config.get("project.output_dir"), "projects.json")
-            try:
-                os.makedirs(os.path.dirname(projects_json_path), exist_ok=True)
-                with open(projects_json_path, 'w', encoding='utf-8') as f:
-                    json.dump(projects_list, f, ensure_ascii=False, indent=4)
-                print(f"\nExported project list for UI: {projects_json_path}")
-            except Exception as e:
-                print(f"Warning: Failed to export projects.json: {e}")
     else:
         print(f"Error: Base raw data directory not found: {base_raw_dir}")
 

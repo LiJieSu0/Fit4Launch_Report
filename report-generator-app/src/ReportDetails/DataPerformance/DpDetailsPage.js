@@ -35,12 +35,14 @@ function DpDetailsPage({ webPageUrl }) {
       <DpMrabDetailsPage city="New York" />
 
       <DpNSAStationaryDetails city="Seattle" firstSection={true} />
-      <DpNSATestDriveDetails city="Seattle" />
       <DpNSAStationaryDetails city="New York" />
+      <DpNSATestDriveDetails city="Seattle" />
       <DpNSATestDriveDetails city="New York" />
+
+
+
       {/* Debug report section, remove after debugging */}
       {/* <Dp_playStore_Component city="New York" />
-
       <DpNSAStationaryDetails city="New York" /> */}
 
 

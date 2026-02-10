@@ -9,7 +9,7 @@ import { HeaderContext } from '../../Contexts/HeaderContext';
 
 //TODO summary page cell link
 function DpSummaryPage() {
-  const { allReportData } = useContext(ReportContext);
+  const { projectData } = useContext(ReportContext);
   const { numberedHeaders } = useContext(HeaderContext);
 
   const MARKETS_CONFIG = [
@@ -178,7 +178,7 @@ function DpSummaryPage() {
     headers: [{ label: "HTTP Single Stream Test Download & Upload - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
     rows: NR_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const dlResult = getAveragedKPI(cityData, market.network, "HTTP Single Stream", ["Throughput", "Mean"], "Throughput", "DL");
       const ulResult = getAveragedKPI(cityData, market.network, "HTTP Single Stream", ["Throughput", "Mean"], "Throughput", "UL");
       if (dlResult === 'default' && ulResult === 'default') return null;
@@ -197,7 +197,7 @@ function DpSummaryPage() {
     headers: [{ label: "HTTP Multi Stream Test Download & Upload - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
     rows: NR_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const dlResult = getAveragedKPI(cityData, market.network, "HTTP Multi Stream", ["Throughput", "Mean"], "Throughput", "DL");
       const ulResult = getAveragedKPI(cityData, market.network, "HTTP Multi Stream", ["Throughput", "Mean"], "Throughput", "UL");
       if (dlResult === 'default' && ulResult === 'default') return null;
@@ -216,7 +216,7 @@ function DpSummaryPage() {
     headers: [{ label: "UDP Test - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
     rows: NR_MARKETS.flatMap((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const dlTput = getUdpResult(cityData, market.network, "DL", "Throughput");
       const ulTput = getUdpResult(cityData, market.network, "UL", "Throughput");
       const dlJitter = getUdpResult(cityData, market.network, "DL", "Jitter");
@@ -240,7 +240,7 @@ function DpSummaryPage() {
       { label: "RTT" }
     ],
     rows: NR_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const result = getAveragedKPI(cityData, market.network, "Ping", ["Ping RTT", "avg"], "PingLatency");
       if (result === 'default') return null;
       return {
@@ -261,7 +261,7 @@ function DpSummaryPage() {
       { label: "Load Time" }
     ],
     rows: NR_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const result = getAveragedKPI(cityData, market.network, "5G Auto Data Web-Kepler", ["Web Page Load Time", "Mean"], "WebPageLoadTime");
       if (result === 'default') return null;
       return {
@@ -278,7 +278,7 @@ function DpSummaryPage() {
     headers: [{ label: "Play-store App Download Test - 5G Auto", colSpan: 5 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "30M" }, { label: "60M" }, { label: "100M" }],
     rows: NR_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       // Play-store data structure usually multiple tasks or aggregated? Assume similar averaging
       const r30m = getAveragedKPI(cityData, market.network, "5G Auto Data Play-store app Download", ["30M", "overall_average_throughput"], "Throughput");
       const r60m = getAveragedKPI(cityData, market.network, "5G Auto Data Play-store app Download", ["60M", "overall_average_throughput"], "Throughput");
@@ -302,7 +302,7 @@ function DpSummaryPage() {
     headers: [{ label: "MHS-HTTP Single Stream Test Download & Upload - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
     rows: NR_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const base = ["Mobile Hotspot Test", "HTTP Single Stream"];
       const dl = getAveragedKPI(cityData, market.network, base[0], ["Throughput", "Mean"], "Throughput", [base[1], "DL"]);
       const ul = getAveragedKPI(cityData, market.network, base[0], ["Throughput", "Mean"], "Throughput", [base[1], "UL"]);
@@ -322,7 +322,7 @@ function DpSummaryPage() {
     headers: [{ label: "MHS-HTTP Multi Stream Test Download & Upload - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
     rows: NR_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const base = ["Mobile Hotspot Test", "HTTP Multi Stream"];
       const dl = getAveragedKPI(cityData, market.network, base[0], ["Throughput", "Mean"], "Throughput", [base[1], "DL"]);
       const ul = getAveragedKPI(cityData, market.network, base[0], ["Throughput", "Mean"], "Throughput", [base[1], "UL"]);
@@ -367,7 +367,7 @@ function DpSummaryPage() {
     headers: [{ label: "MHS-UDP Test - 5G Auto", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
     rows: NR_MARKETS.flatMap((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const dlTput = getMhsUdpResult(cityData, market.network, "DL", "Throughput");
       const ulTput = getMhsUdpResult(cityData, market.network, "UL", "Throughput");
       const dlJitter = getMhsUdpResult(cityData, market.network, "DL", "Jitter");
@@ -387,7 +387,7 @@ function DpSummaryPage() {
     headers: [{ label: "MHS-Ping Test - 5G Auto", colSpan: 3 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "RTT" }],
     rows: NR_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const res = getAveragedKPI(cityData, market.network, "Mobile Hotspot Test", ["Ping RTT", "avg"], "PingLatency", "Ping");
       if (res === 'default') return null;
       return {
@@ -447,7 +447,7 @@ function DpSummaryPage() {
     headers: [{ label: "Mobility Test - 5G Auto", colSpan: 3 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Value" }],
     rows: NR_MARKETS.flatMap((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const caseName = "5G Auto Data Test Drive";
       const tput = getMobilityResult(cityData, market.network, caseName, "Throughput");
       const jitter = getMobilityResult(cityData, market.network, caseName, "Jitter");
@@ -467,7 +467,7 @@ function DpSummaryPage() {
     headers: [{ label: "Mobility Test - Mobile Hotspot", colSpan: 3 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Value" }],
     rows: NR_MARKETS.flatMap((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const caseName = "5G Auto Data Test MHS Drive";
       const tput = getMobilityResult(cityData, market.network, caseName, "Throughput");
       const jitter = getMobilityResult(cityData, market.network, caseName, "Jitter");
@@ -487,7 +487,7 @@ function DpSummaryPage() {
     headers: [{ label: "MRAB Test - 5G Auto", colSpan: 5 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Pre Call" }, { label: "In Call" }, { label: "Post Call" }],
     rows: NR_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const base = cityData?.dataPerformance?.["Data Performance"]?.[market.network]?.["5G VoNR MRAB Stationary"];
       const getMrabRes = (sub) => {
         const dut = base?.DUT?.["MRAB Statistics"]?.[sub]?.Mean;
@@ -510,7 +510,7 @@ function DpSummaryPage() {
     headers: [{ label: "HTTP Single Stream Test Download & Upload - 5G NSA", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
     rows: NSA_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const dl = getAveragedKPI(cityData, market.network, "HTTP Single Stream", ["Throughput", "Mean"], "Throughput", "DL");
       const ul = getAveragedKPI(cityData, market.network, "HTTP Single Stream", ["Throughput", "Mean"], "Throughput", "UL");
       if (dl === 'default' && ul === 'default') return null;
@@ -529,7 +529,7 @@ function DpSummaryPage() {
     headers: [{ label: "HTTP Multi Stream Test Download & Upload - 5G NSA", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
     rows: NSA_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const dl = getAveragedKPI(cityData, market.network, "HTTP Multi Stream", ["Throughput", "Mean"], "Throughput", "DL");
       const ul = getAveragedKPI(cityData, market.network, "HTTP Multi Stream", ["Throughput", "Mean"], "Throughput", "UL");
       if (dl === 'default' && ul === 'default') return null;
@@ -548,7 +548,7 @@ function DpSummaryPage() {
     headers: [{ label: "UDP Test - 5G NSA", colSpan: 4 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Download" }, { label: "Upload" }],
     rows: NSA_MARKETS.flatMap((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const dlTput = getUdpResult(cityData, market.network, "DL", "Throughput");
       const ulTput = getUdpResult(cityData, market.network, "UL", "Throughput");
       const dlJitter = getUdpResult(cityData, market.network, "DL", "Jitter");
@@ -568,7 +568,7 @@ function DpSummaryPage() {
     headers: [{ label: "Ping Test - 5G NSA", colSpan: 3 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "RTT" }],
     rows: NSA_MARKETS.map((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const res = getAveragedKPI(cityData, market.network, "Ping", ["Ping RTT", "avg"], "PingLatency");
       if (res === 'default') return null;
       return {
@@ -585,7 +585,7 @@ function DpSummaryPage() {
     headers: [{ label: "Mobility Test - 5G NSA", colSpan: 3 }],
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "Value" }],
     rows: NSA_MARKETS.flatMap((market, marketIdx) => {
-      const cityData = allReportData[market.city];
+      const cityData = projectData[market.city];
       const caseName = "5G NSA Data Test Drive"; // Placeholder case name for NSA
       const tput = getMobilityResult(cityData, market.network, caseName, "Throughput");
       const jitter = getMobilityResult(cityData, market.network, caseName, "Jitter");

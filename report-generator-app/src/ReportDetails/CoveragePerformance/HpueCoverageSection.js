@@ -5,7 +5,7 @@ import { ReportContext } from '../../Contexts/ReportContext';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 
 const HpueCoverageSection = ({ city: propCity, firstSection = false }) => {
-    const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+    const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
     const city = propCity || globalCity;
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const HpueCoverageSection = ({ city: propCity, firstSection = false }) => {
         }
     }, [city, loadCityData]);
 
-    const reportData = allReportData[city];
+    const reportData = projectData[city];
 
     const processN41HPUECoverageData = () => {
         const defaultData = {

@@ -21,8 +21,9 @@ export const loadAppConfig = async () => {
   return await safeFetchJson('/config.json');
 };
 
-export const loadAllData = async (city) => {
-  const cityDataPath = `${BASE_DATA_PATH}${city}/`;
+export const loadAllData = async (project, city) => {
+  const projectPath = project ? `${encodeURIComponent(project)}/` : '';
+  const cityDataPath = `${BASE_DATA_PATH}${projectPath}${encodeURIComponent(city)}/`;
   try {
     const [
       callPerformance,
@@ -52,5 +53,10 @@ export const loadAllData = async (city) => {
 };
 
 export const getAvailableCities = async () => {
-  return ['Seattle', 'New York']; // To add data folders, need to hard coded the data path through here. 
+  return ['Seattle', 'New York'];
+};
+
+export const getAvailableProjects = async () => {
+  const projects = await safeFetchJson(`${BASE_DATA_PATH}projects.json`);
+  return projects || [];
 };

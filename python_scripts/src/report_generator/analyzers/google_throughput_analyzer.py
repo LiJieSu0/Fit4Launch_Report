@@ -20,7 +20,7 @@ class GoogleThroughputAnalyzer(BaseAnalyzer):
 
     def _analyze_file(self, file_path):
         dev_pattern = re.compile(r"(DUT|REF)", re.IGNORECASE)
-        size_pattern = re.compile(r"(?:APP-|Playstore |Play Store )(\d+)\s*M[B]?", re.IGNORECASE)
+        size_pattern = re.compile(r"(?:APP[- ]?|Playstore |Play Store )(\d+)\s*M[B]?", re.IGNORECASE)
         file_name = os.path.basename(file_path)
         dev_match = dev_pattern.search(file_name)
         size_match = size_pattern.search(file_name)
@@ -41,7 +41,7 @@ class GoogleThroughputAnalyzer(BaseAnalyzer):
     def _analyze_directory(self, directory_path):
         results = {}
         dev_pattern = re.compile(r"(DUT|REF)", re.IGNORECASE)
-        size_pattern = re.compile(r"(?:APP-|Playstore |Play Store )(\d+)\s*M[B]?", re.IGNORECASE)
+        size_pattern = re.compile(r"(?:APP[- ]?|Playstore |Play Store )(\d+)\s*M[B]?", re.IGNORECASE)
         quality_location_pattern = re.compile(r"(Good|Moderate|Poor)", re.IGNORECASE)
         location_pattern = re.compile(r"L(\d+)", re.IGNORECASE)
 

@@ -11,10 +11,10 @@ import WfcHandoverTable from './WfcHandoverTable';
 import WfcRssiTimeLineChart from './WfcRssiTimeLineChart';
 
 const WfcTestDetailsPage = ({ tc, label, sectionNumber = 0 }) => {
-    const { allReportData, availableCities } = useReportData();
+    const { projectData, availableCities } = useReportData();
 
     const renderMarketTable = (city) => {
-        const cityData = allReportData[city]?.wfcPerformance?.['WFC']?.[tc];
+        const cityData = projectData[city]?.wfcPerformance?.['WFC']?.[tc];
         if (!cityData) return null;
 
         const hasMoMt = cityData['DUT MO'] || cityData['DUT MT'] || cityData['REF MO'] || cityData['REF MT'];

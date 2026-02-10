@@ -6,7 +6,7 @@ import DynamicHeader from '../../CommonPage/DynamicHeader';
 import SecondaryKpiTable from './SecondaryKpiTable';
 
 const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
-    const { city: globalCity, allReportData, loadCityData, appConfig } = useContext(ReportContext);
+    const { city: globalCity, projectData, loadCityData, appConfig } = useContext(ReportContext);
     const city = propCity || globalCity;
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
         }
     }, [city, loadCityData]);
 
-    const reportData = allReportData[city];
+    const reportData = projectData[city];
 
     // Logic requested: NY uses "New York" key, Seattle uses "Seattle_LTE" key
     const getBaseStationCoords = () => {

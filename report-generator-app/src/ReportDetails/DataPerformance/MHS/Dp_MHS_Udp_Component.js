@@ -9,7 +9,7 @@ import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 
 function Dp_MHS_Udp_Component({ city: propCity }) {
-  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     }
   }, [city, loadCityData]);
 
-  const reportData = allReportData[city];
+  const reportData = projectData[city];
 
   if (!reportData) {
     return <div className="page-content">Loading {city} data...</div>;
@@ -28,7 +28,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     return null; // Hide if data is missing
   }
 
-  const udpDataRaw = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["Mobile Hotspot Test"]["Udp Test"];
+  const udpDataRaw = reportData.dataPerformance?.["Data Performance"]?.["5G AUTO DP"]?.["Mobile Hotspot Test"]?.["Udp Test"] || {};
 
 
   const udp_Stationary_DL = [

@@ -72,7 +72,7 @@ const processAudioDelayData = (audioDelayData) => {
 };
 
 const AutoVoNRDisabledAudioDelay = ({ city: propCity }) => {
-  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
   const [vqTableData5, setVqTableData5] = useState([]);
 
@@ -82,7 +82,7 @@ const AutoVoNRDisabledAudioDelay = ({ city: propCity }) => {
     }
   }, [city, loadCityData]);
 
-  const reportData = allReportData[city];
+  const reportData = projectData[city];
 
   useEffect(() => {
     if (reportData && reportData.voiceQuality && reportData.voiceQuality["Voice Quality"]) {

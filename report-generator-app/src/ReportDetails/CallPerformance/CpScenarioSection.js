@@ -8,7 +8,7 @@ import DynamicHeader from '../../CommonPage/DynamicHeader';
 import { useReportData } from '../../Contexts/ReportContext';
 
 const CpScenarioSection = ({ title, city, isFirst = false }) => {
-    const { allReportData, loadCityData, loading } = useReportData();
+    const { projectData, loadCityData, loading } = useReportData();
 
     // Ensure data for the specified city is loaded
     useEffect(() => {
@@ -18,7 +18,7 @@ const CpScenarioSection = ({ title, city, isFirst = false }) => {
     }, [city, loadCityData]);
 
     // Read the data for this specific city and scenario
-    const reportData = allReportData[city];
+    const reportData = projectData[city];
     const data = reportData?.callPerformance?.['Call Performance']?.[title];
 
     if (loading && !reportData) {

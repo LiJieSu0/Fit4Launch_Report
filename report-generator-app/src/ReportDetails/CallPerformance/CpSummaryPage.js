@@ -12,7 +12,7 @@ const CpSummaryPage = () => {
 
 
 
-    const { allReportData } = useReportData();
+    const { projectData } = useReportData();
     const { numberedHeaders } = useContext(HeaderContext);
 
     const getDynamicLink = (scenarioKey, marketName) => {
@@ -22,7 +22,7 @@ const CpSummaryPage = () => {
     };
 
     const getMarketRows = (marketName) => {
-        const marketData = allReportData[marketName]?.callPerformance?.['Call Performance'];
+        const marketData = projectData[marketName]?.callPerformance?.['Call Performance'];
         if (!marketData) return [];
 
         const scenarios = [

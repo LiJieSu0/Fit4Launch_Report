@@ -10,7 +10,7 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import { useEffect } from 'react';
 
 function Dp_Webbrowser_Component({ city: propCity, webPageUrl }) {
-    const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+    const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
     const city = propCity || globalCity;
 
     useEffect(() => {
@@ -19,7 +19,7 @@ function Dp_Webbrowser_Component({ city: propCity, webPageUrl }) {
         }
     }, [city, loadCityData]);
 
-    const reportData = allReportData[city];
+    const reportData = projectData[city];
 
     if (!reportData) {
         return <div className="page-content">Loading {city} data...</div>;

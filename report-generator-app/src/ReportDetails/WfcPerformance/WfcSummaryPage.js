@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const WfcSummaryPage = () => {
-  const { allReportData } = useReportData();
+  const { projectData } = useReportData();
   const { numberedHeaders } = useContext(HeaderContext);
 
   const getDynamicLink = (scenarioKey, marketName) => {
@@ -19,7 +19,7 @@ const WfcSummaryPage = () => {
   };
 
   const getMarketRows = (marketName) => {
-    const marketData = allReportData[marketName]?.wfcPerformance?.['WFC'];
+    const marketData = projectData[marketName]?.wfcPerformance?.['WFC'];
     if (!marketData) return [];
 
     // Define WFC scenarios based on wfc_performance_results.json structure
@@ -79,7 +79,7 @@ const WfcSummaryPage = () => {
   };
 
   const getHandoverMarketRows = (marketName) => {
-    const marketData = allReportData[marketName]?.wfcPerformance?.['WFC'];
+    const marketData = projectData[marketName]?.wfcPerformance?.['WFC'];
     if (!marketData) return [];
 
     const scenarios = [

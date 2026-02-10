@@ -15,7 +15,7 @@ import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 import { useEffect } from 'react';
 
 function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
-  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
     }
   }, [city, loadCityData]);
 
-  const reportData = allReportData[city];
+  const reportData = projectData[city];
 
   if (!reportData) {
     return <div className="page-content">Loading {city} NSA data...</div>;

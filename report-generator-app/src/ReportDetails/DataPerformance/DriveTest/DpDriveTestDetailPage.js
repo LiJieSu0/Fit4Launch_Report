@@ -12,7 +12,7 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import { useEffect } from 'react';
 
 const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
-  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
     }
   }, [city, loadCityData]);
 
-  const reportData = allReportData[city];
+  const reportData = projectData[city];
 
   if (!reportData) {
     return <div className="page-content">Loading {city} data...</div>;

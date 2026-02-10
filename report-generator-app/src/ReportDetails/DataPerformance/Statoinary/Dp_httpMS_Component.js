@@ -12,7 +12,7 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import { useEffect } from 'react';
 
 function Dp_httpMS_Component({ city: propCity }) {
-    const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+    const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
     const city = propCity || globalCity;
 
     useEffect(() => {
@@ -21,7 +21,7 @@ function Dp_httpMS_Component({ city: propCity }) {
         }
     }, [city, loadCityData]);
 
-    const reportData = allReportData[city];
+    const reportData = projectData[city];
 
     // Update to use dataPerformance from the fetched JSON
     if (!reportData) {

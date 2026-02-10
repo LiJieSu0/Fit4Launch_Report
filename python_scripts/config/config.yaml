@@ -2,7 +2,7 @@ project:
   name: "ReportGenerator"
   # market: "Seattle" # Deprecated: Pipeline now iterates over available markets in Raw Data
   base_raw_data_dir: "D:/ReportGenerator/Raw Data"
-  output_dir: "D:/ReportGenerator/python_scripts/Analyze Summary"
+  output_dir: "D:/ReportGenerator/report-generator-app/public/AnalyzeResults"
 
 logging:
   level: "INFO"

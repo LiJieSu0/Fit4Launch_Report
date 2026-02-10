@@ -8,7 +8,7 @@ import SecondaryKpiTable from './SecondaryKpiTable';
 // CITY_COORDS removed - now fetched from config.json
 
 const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
-    const { city: globalCity, allReportData, loadCityData, appConfig } = useContext(ReportContext);
+    const { city: globalCity, projectData, loadCityData, appConfig } = useContext(ReportContext);
     const city = propCity || globalCity;
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
         }
     }, [city, loadCityData]);
 
-    const reportData = allReportData[city];
+    const reportData = projectData[city];
 
     // Dynamically determine Base Station coordinates from appConfig
     // Logic: If band is LTE (starts with 'b'), use ${city}_LTE if available. Otherwise use ${city}.

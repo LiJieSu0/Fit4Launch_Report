@@ -1,0 +1,1930 @@
+{
+    "Data Performance": {
+        "5G AUTO DP": {
+            "5G Auto Data Web-Kepler": {
+                "REF": {
+                    "Device Type": "REF",
+                    "Network Type": "5G",
+                    "Analysis Type": "data_performance",
+                    "Protocol Type": "WEB_PAGE",
+                    "Web Page Load Time": {
+                        "Mean": 0.9772,
+                        "Standard Deviation": 0.3508100582504683,
+                        "Minimum": 0.533,
+                        "Maximum": 2.22,
+                        "Number of Intervals": 100
+                    }
+                },
+                "DUT": {
+                    "Device Type": "DUT",
+                    "Network Type": "5G",
+                    "Analysis Type": "data_performance",
+                    "Protocol Type": "WEB_PAGE",
+                    "Web Page Load Time": {
+                        "Mean": 0.9533499999999998,
+                        "Standard Deviation": 0.26236135828896817,
+                        "Minimum": 0.648,
+                        "Maximum": 2.257,
+                        "Number of Intervals": 100
+                    }
+                }
+            },
+            "5G VoNR MRAB Stationary": {
+                "DUT": {
+                    "MRAB Statistics": {
+                        "Pre Call": {
+                            "Mean": 243.01202666666663,
+                            "Maximum": 314.47399999999993,
+                            "Minimum": 152.34544444444447,
+                            "Standard Deviation": 49.65196250737186
+                        },
+                        "In Call": {
+                            "Mean": 216.84957500120026,
+                            "Maximum": 291.63276923076927,
+                            "Minimum": 131.4708064516129,
+                            "Standard Deviation": 43.1412381225391
+                        },
+                        "Post Call": {
+                            "Mean": 256.82278962962965,
+                            "Maximum": 329.1771,
+                            "Minimum": 83.31150000000001,
+                            "Standard Deviation": 62.3824388052282
+                        }
+                    },
+                    "Device Type": "DUT",
+                    "Network Type": "5G",
+                    "Analysis Type": "mrab_performance"
+                },
+                "REF": {
+                    "MRAB Statistics": {
+                        "Pre Call": {
+                            "Mean": 203.96879703703698,
+                            "Maximum": 290.64577777777777,
+                            "Minimum": 29.935799999999993,
+                            "Standard Deviation": 67.93926778154214
+                        },
+                        "In Call": {
+                            "Mean": 238.058726812267,
+                            "Maximum": 297.12607692307694,
+                            "Minimum": 154.75284615384615,
+                            "Standard Deviation": 39.39556762487642
+                        },
+                        "Post Call": {
+                            "Mean": 301.8824733333332,
+                            "Maximum": 348.8771,
+                            "Minimum": 210.20833333333334,
+                            "Standard Deviation": 42.74977534317748
+                        }
+                    },
+                    "Device Type": "REF",
+                    "Network Type": "5G",
+                    "Analysis Type": "mrab_performance"
+                }
+            },
+            "HTTP Multi Stream": {
+                "DL": {
+                    "Good": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 611.3851185362319,
+                                "Standard Deviation": 72.60935122262651,
+                                "Minimum": 519.57075,
+                                "Maximum": 681.636304347826,
+                                "Number of Intervals": 5
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 471.2474942036125,
+                                "Standard Deviation": 86.04860127082988,
+                                "Minimum": 361.27466666666663,
+                                "Maximum": 560.8507586206897,
+                                "Number of Intervals": 5
+                            }
+                        }
+                    },
+                    "Moderate": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 158.94559646962233,
+                                "Standard Deviation": 56.50932403979357,
+                                "Minimum": 23.10203333333333,
+                                "Maximum": 236.1725517241379,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 23.1279226683087,
+                                "Standard Deviation": 17.743534606174794,
+                                "Minimum": 1.9296000000000002,
+                                "Maximum": 79.13103333333332,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    },
+                    "Poor": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 384.1277429985405,
+                                "Standard Deviation": 47.84037791213457,
+                                "Minimum": 248.88841379310344,
+                                "Maximum": 440.1412413793103,
+                                "Number of Intervals": 18
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 55.42619214458026,
+                                "Standard Deviation": 15.335862543505986,
+                                "Minimum": 28.042172413793104,
+                                "Maximum": 88.66949999999999,
+                                "Number of Intervals": 18
+                            }
+                        }
+                    }
+                },
+                "UL": {
+                    "Good": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 45.32399402298851,
+                                "Standard Deviation": 1.2942775344531328,
+                                "Minimum": 41.27923333333334,
+                                "Maximum": 47.437482758620696,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 71.57504321839079,
+                                "Standard Deviation": 6.643963984326905,
+                                "Minimum": 57.38403448275863,
+                                "Maximum": 81.789,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    },
+                    "Moderate": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 31.327401839080466,
+                                "Standard Deviation": 7.059834708089468,
+                                "Minimum": 16.9514,
+                                "Maximum": 44.213,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 78.70153787356321,
+                                "Standard Deviation": 7.934939349194266,
+                                "Minimum": 52.2189,
+                                "Maximum": 91.39973333333334,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    },
+                    "Poor": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 1.0485733333333334,
+                                "Standard Deviation": 1.435818169662626,
+                                "Minimum": 0.0,
+                                "Maximum": 2.6214333333333335,
+                                "Number of Intervals": 5
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 0.9039425287356323,
+                                "Standard Deviation": 1.5656743868924048,
+                                "Minimum": 0.0,
+                                "Maximum": 2.711827586206897,
+                                "Number of Intervals": 3
+                            }
+                        }
+                    }
+                }
+            },
+            "HTTP Single Stream": {
+                "DL": {
+                    "Good": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 205.01715062102872,
+                                "Standard Deviation": 88.80369874045354,
+                                "Minimum": 58.83313333333333,
+                                "Maximum": 297.59984615384616,
+                                "Number of Intervals": 10
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 256.64363365587235,
+                                "Standard Deviation": 43.659413436711496,
+                                "Minimum": 187.05271666666664,
+                                "Maximum": 316.60634,
+                                "Number of Intervals": 10
+                            }
+                        }
+                    },
+                    "Moderate": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 181.6081172150789,
+                                "Standard Deviation": 60.522475789669734,
+                                "Minimum": 87.5780677966102,
+                                "Maximum": 273.7217931034483,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 163.54580152542374,
+                                "Standard Deviation": 27.57254460228732,
+                                "Minimum": 101.66721666666668,
+                                "Maximum": 200.14283050847456,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    },
+                    "Poor": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 179.7895385003134,
+                                "Standard Deviation": 101.98682338054947,
+                                "Minimum": 0.024166666666666666,
+                                "Maximum": 287.5859636363636,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 52.819074074074074,
+                                "Standard Deviation": 0,
+                                "Minimum": 52.819074074074074,
+                                "Maximum": 52.819074074074074,
+                                "Number of Intervals": 1
+                            }
+                        }
+                    }
+                },
+                "UL": {
+                    "Good": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 97.334525,
+                                "Standard Deviation": 134.61542612416844,
+                                "Minimum": 11.908,
+                                "Maximum": 648.0055000000001,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 67.2181,
+                                "Standard Deviation": 37.995760289662236,
+                                "Minimum": 8.503,
+                                "Maximum": 142.445,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    },
+                    "Moderate": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 45.37497297619047,
+                                "Standard Deviation": 19.85935579823137,
+                                "Minimum": 12.231,
+                                "Maximum": 92.819,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 121.98795,
+                                "Standard Deviation": 63.8280813291083,
+                                "Minimum": 40.966,
+                                "Maximum": 230.696,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    },
+                    "Poor": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 46.56689999999999,
+                                "Standard Deviation": 7.114703861869814,
+                                "Minimum": 39.8765,
+                                "Maximum": 62.848,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 55.490874999999996,
+                                "Standard Deviation": 11.291177728506028,
+                                "Minimum": 40.988,
+                                "Maximum": 81.5135,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    }
+                }
+            },
+            "Ping": {
+                "Good": {
+                    "REF": {
+                        "Device Type": "REF",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Protocol Type": "PING",
+                        "Ping RTT": {
+                            "min": 17.0,
+                            "max": 139.0,
+                            "avg": 40.848,
+                            "std_dev": 11.865685187545635
+                        }
+                    },
+                    "DUT": {
+                        "Device Type": "DUT",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Protocol Type": "PING",
+                        "Ping RTT": {
+                            "min": 22.0,
+                            "max": 70.0,
+                            "avg": 39.836,
+                            "std_dev": 7.359717037341821
+                        }
+                    }
+                },
+                "Moderate": {
+                    "REF": {
+                        "Device Type": "REF",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Protocol Type": "PING",
+                        "Ping RTT": {
+                            "min": 23.0,
+                            "max": 127.0,
+                            "avg": 43.516,
+                            "std_dev": 8.749334014162606
+                        }
+                    },
+                    "DUT": {
+                        "Device Type": "DUT",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Protocol Type": "PING",
+                        "Ping RTT": {
+                            "min": 21.0,
+                            "max": 64.0,
+                            "avg": 42.146,
+                            "std_dev": 8.089720090478073
+                        }
+                    }
+                },
+                "Poor": {
+                    "REF": {
+                        "Device Type": "REF",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Protocol Type": "PING",
+                        "Ping RTT": {
+                            "min": 12.0,
+                            "max": 75.0,
+                            "avg": 33.06,
+                            "std_dev": 8.355359001748292
+                        }
+                    },
+                    "DUT": {
+                        "Device Type": "DUT",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Protocol Type": "PING",
+                        "Ping RTT": {
+                            "min": 11.0,
+                            "max": 63.0,
+                            "avg": 35.184,
+                            "std_dev": 9.761799499012353
+                        }
+                    }
+                }
+            },
+            "Udp Test": {
+                "DL": {
+                    "UDP Download Task at 200 Mbps for 10 seconds": {
+                        "Good": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 184.61623500000002,
+                                    "Standard Deviation": 14.257659922939116,
+                                    "Minimum": 162.4222,
+                                    "Maximum": 199.6619,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.07717500000000001
+                                },
+                                "Error Ratio": {
+                                    "Mean": 7.8147
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 194.920275,
+                                    "Standard Deviation": 0.8075157511092108,
+                                    "Minimum": 193.2524,
+                                    "Maximum": 196.2497,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.07743500000000002
+                                },
+                                "Error Ratio": {
+                                    "Mean": 2.4566999999999997
+                                }
+                            }
+                        },
+                        "Moderate": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 169.52394736842106,
+                                    "Standard Deviation": 17.183842330494613,
+                                    "Minimum": 134.4258,
+                                    "Maximum": 199.63870000000003,
+                                    "Number of Intervals": 19
+                                },
+                                "Jitter": {
+                                    "Mean": 0.09977894736842106
+                                },
+                                "Error Ratio": {
+                                    "Mean": 6.210000000000002
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 171.2274,
+                                    "Standard Deviation": 21.743990020723732,
+                                    "Minimum": 128.6961,
+                                    "Maximum": 194.2555,
+                                    "Number of Intervals": 16
+                                },
+                                "Jitter": {
+                                    "Mean": 0.10473125000000001
+                                },
+                                "Error Ratio": {
+                                    "Mean": 3.3678124999999994
+                                }
+                            }
+                        },
+                        "Poor": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 116.64495000000004,
+                                    "Standard Deviation": 70.52205687586424,
+                                    "Minimum": 0.0462,
+                                    "Maximum": 175.30030000000002,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 9.777095000000001
+                                },
+                                "Error Ratio": {
+                                    "Mean": 33.1576
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 49.08272105263158,
+                                    "Standard Deviation": 37.517892118406934,
+                                    "Minimum": 0.0517,
+                                    "Maximum": 112.9795,
+                                    "Number of Intervals": 19
+                                },
+                                "Jitter": {
+                                    "Mean": 10.30688947368421
+                                },
+                                "Error Ratio": {
+                                    "Mean": 58.64578947368422
+                                }
+                            }
+                        }
+                    },
+                    "UDP Download Task at 400 Mbps for 10 seconds": {
+                        "Good": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 268.26156499999996,
+                                    "Standard Deviation": 75.59439027402325,
+                                    "Minimum": 217.61849999999998,
+                                    "Maximum": 397.68899999999996,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.052270000000000004
+                                },
+                                "Error Ratio": {
+                                    "Mean": 32.38965
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 382.07744499999995,
+                                    "Standard Deviation": 12.998383734484879,
+                                    "Minimum": 356.90099999999995,
+                                    "Maximum": 419.1998,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.04282
+                                },
+                                "Error Ratio": {
+                                    "Mean": 4.82885
+                                }
+                            }
+                        },
+                        "Moderate": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 148.66682105263158,
+                                    "Standard Deviation": 7.552797002257504,
+                                    "Minimum": 132.0442,
+                                    "Maximum": 160.56,
+                                    "Number of Intervals": 19
+                                },
+                                "Jitter": {
+                                    "Mean": 0.11865263157894738
+                                },
+                                "Error Ratio": {
+                                    "Mean": 16.998052631578947
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 154.85842499999998,
+                                    "Standard Deviation": 14.530201856998808,
+                                    "Minimum": 134.4446,
+                                    "Maximum": 198.5605,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.09283000000000001
+                                },
+                                "Error Ratio": {
+                                    "Mean": 9.92625
+                                }
+                            }
+                        },
+                        "Poor": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 148.05890500000004,
+                                    "Standard Deviation": 7.076946721163317,
+                                    "Minimum": 138.0176,
+                                    "Maximum": 161.54770000000002,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.149055
+                                },
+                                "Error Ratio": {
+                                    "Mean": 24.333150000000003
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 107.66817499999999,
+                                    "Standard Deviation": 31.531362502767326,
+                                    "Minimum": 31.912399999999998,
+                                    "Maximum": 159.92680000000001,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.30522
+                                },
+                                "Error Ratio": {
+                                    "Mean": 30.3638
+                                }
+                            }
+                        }
+                    }
+                },
+                "UL": {
+                    "UDP Upload Task at 10 Mbps for 10 seconds": {
+                        "Good": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 5.499523988095238,
+                                    "Standard Deviation": 0.4005963192391159,
+                                    "Minimum": 5.094333333333332,
+                                    "Maximum": 6.9746250000000005,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 1.7423499999999996
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.009500000000000001
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 5.250677827380952,
+                                    "Standard Deviation": 0.34222073379099227,
+                                    "Minimum": 4.997714285714285,
+                                    "Maximum": 6.5831875,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 1.7007999999999999
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0
+                                }
+                            }
+                        },
+                        "Moderate": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 5.34609169642857,
+                                    "Standard Deviation": 0.4146915127805981,
+                                    "Minimum": 4.991333333333333,
+                                    "Maximum": 6.8008125,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 1.6810500000000002
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0015
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 5.588673154761905,
+                                    "Standard Deviation": 0.36378190332335725,
+                                    "Minimum": 5.312190476190477,
+                                    "Maximum": 7.023875,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 1.7004000000000001
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0
+                                }
+                            }
+                        },
+                        "Poor": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 5.669706815476191,
+                                    "Standard Deviation": 0.38237302600098916,
+                                    "Minimum": 5.326714285714285,
+                                    "Maximum": 7.190312499999999,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 1.69335
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.07
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 5.475953095238095,
+                                    "Standard Deviation": 0.4725078718522542,
+                                    "Minimum": 5.046,
+                                    "Maximum": 7.141333333333333,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 1.7828500000000003
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0005
+                                }
+                            }
+                        }
+                    },
+                    "UDP Upload Task at 20 Mbps for 10 seconds": {
+                        "Good": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 11.153809791666667,
+                                    "Standard Deviation": 0.8063326533490609,
+                                    "Minimum": 10.435238095238093,
+                                    "Maximum": 14.2373125,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.9155
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.015500000000000003
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 10.66225017857143,
+                                    "Standard Deviation": 0.7920270595236655,
+                                    "Minimum": 10.081190476190477,
+                                    "Maximum": 13.779625,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.9441
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0
+                                }
+                            }
+                        },
+                        "Moderate": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 10.597819821428573,
+                                    "Standard Deviation": 0.7392862918320401,
+                                    "Minimum": 9.974285714285715,
+                                    "Maximum": 13.113625,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.9087
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.001
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 11.681302916666667,
+                                    "Standard Deviation": 0.8132920559738253,
+                                    "Minimum": 10.999380952380951,
+                                    "Maximum": 14.901125,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.9467000000000001
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0
+                                }
+                            }
+                        },
+                        "Poor": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 11.461302767857143,
+                                    "Standard Deviation": 0.823819582347748,
+                                    "Minimum": 10.813809523809525,
+                                    "Maximum": 14.7043125,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.94565
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0055
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 11.338860143398268,
+                                    "Standard Deviation": 0.8810904415509061,
+                                    "Minimum": 10.361545454545453,
+                                    "Maximum": 14.6294375,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.97995
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0005
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "5G Auto Data Play-store app Download": {
+                "Good": {
+                    "REF": {
+                        "100M": {
+                            "overall_average_throughput": 263.202
+                        },
+                        "60M": {
+                            "overall_average_throughput": 238.354
+                        },
+                        "30M": {
+                            "overall_average_throughput": 75.78566666666667
+                        }
+                    },
+                    "DUT": {
+                        "100M": {
+                            "overall_average_throughput": 262.726
+                        },
+                        "60M": {
+                            "overall_average_throughput": 140.6186
+                        },
+                        "30M": {
+                            "overall_average_throughput": 78.27300000000001
+                        }
+                    }
+                },
+                "Moderate": {
+                    "REF": {
+                        "100M": {
+                            "overall_average_throughput": 149.105912676733
+                        },
+                        "60M": {
+                            "overall_average_throughput": 176.1300491883117
+                        },
+                        "30M": {
+                            "overall_average_throughput": 196.85621014492753
+                        }
+                    },
+                    "DUT": {
+                        "100M": {
+                            "overall_average_throughput": 104.78977219980874
+                        },
+                        "60M": {
+                            "overall_average_throughput": 117.79193697916666
+                        },
+                        "30M": {
+                            "overall_average_throughput": 119.37199855072464
+                        }
+                    }
+                },
+                "Poor": {
+                    "REF": {
+                        "100M": {
+                            "overall_average_throughput": 251.54180277777778
+                        },
+                        "60M": {
+                            "overall_average_throughput": 141.11671079545454
+                        },
+                        "30M": {
+                            "overall_average_throughput": 124.50955311355311
+                        }
+                    },
+                    "DUT": {
+                        "100M": {
+                            "overall_average_throughput": 72.53284699869847
+                        },
+                        "60M": {
+                            "overall_average_throughput": 99.62210783279221
+                        },
+                        "30M": {
+                            "overall_average_throughput": 89.59927121212121
+                        }
+                    }
+                }
+            },
+            "Mobility Test": {
+                "5G Auto Data Test Drive": {
+                    "REF": {
+                        "Device Type": "REF",
+                        "Network Type": "5G",
+                        "Analysis Type": "mhs_drive_performance",
+                        "DL Throughput": {
+                            "Mean": 10.004799074074075,
+                            "Standard Deviation": 0.005075878694301106,
+                            "Minimum": 9.997955555555556,
+                            "Maximum": 10.012533333333332,
+                            "Number of Intervals": 12
+                        },
+                        "UL Throughput": {
+                            "Mean": 6.273553373334043,
+                            "Standard Deviation": 1.334399075828315,
+                            "Minimum": 4.67957671957672,
+                            "Maximum": 9.496262411347518,
+                            "Number of Intervals": 12
+                        },
+                        "DL Jitter": {
+                            "Mean": 1.6977296296296296
+                        },
+                        "UL Jitter": {
+                            "Mean": 1.7372500000000002
+                        },
+                        "DL Error Ratio": {
+                            "Mean": 0.0009351851851851854
+                        },
+                        "UL Error Ratio": {
+                            "Mean": 0.5691666666666667
+                        },
+                        "Ping RTT": {
+                            "Mean": 40.92,
+                            "Min": 12.0,
+                            "Max": 429.0,
+                            "Std Dev": 16.29790225811324
+                        }
+                    },
+                    "DUT": {
+                        "Device Type": "DUT",
+                        "Network Type": "5G",
+                        "Analysis Type": "mhs_drive_performance",
+                        "DL Throughput": {
+                            "Mean": 10.001387037037036,
+                            "Standard Deviation": 0.0051313911086629145,
+                            "Minimum": 9.993066666666666,
+                            "Maximum": 10.010722222222222,
+                            "Number of Intervals": 12
+                        },
+                        "UL Throughput": {
+                            "Mean": 6.646166350913781,
+                            "Standard Deviation": 0.9114748167071294,
+                            "Minimum": 4.944826815642458,
+                            "Maximum": 7.747684210526316,
+                            "Number of Intervals": 12
+                        },
+                        "DL Jitter": {
+                            "Mean": 1.7123685185185185
+                        },
+                        "UL Jitter": {
+                            "Mean": 1.7822500000000001
+                        },
+                        "DL Error Ratio": {
+                            "Mean": 0.0007685185185185185
+                        },
+                        "UL Error Ratio": {
+                            "Mean": 0.36000000000000004
+                        },
+                        "Ping RTT": {
+                            "Mean": 41.0775,
+                            "Min": 20.0,
+                            "Max": 454.0,
+                            "Std Dev": 15.148687380687415
+                        }
+                    }
+                }
+            }
+        },
+        "5G NSA DP": {
+            "HTTP Multi Stream": {
+                "DL": {
+                    "Moderate": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 130.07810477054704,
+                                "Standard Deviation": 70.88398010513987,
+                                "Minimum": 57.01648275862068,
+                                "Maximum": 281.38186666666667,
+                                "Number of Intervals": 19
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 70.60092954022988,
+                                "Standard Deviation": 16.797485157849824,
+                                "Minimum": 33.24855172413793,
+                                "Maximum": 101.67136666666666,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    },
+                    "Poor": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 38.52056558109834,
+                                "Standard Deviation": 18.271869962339423,
+                                "Minimum": 15.143275862068965,
+                                "Maximum": 73.25133333333333,
+                                "Number of Intervals": 18
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 49.81532704433498,
+                                "Standard Deviation": 54.538626681941935,
+                                "Minimum": 13.034300000000002,
+                                "Maximum": 213.2052857142857,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    }
+                },
+                "UL": {
+                    "Moderate": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 28.22340155172414,
+                                "Standard Deviation": 1.822414217705487,
+                                "Minimum": 24.222099999999998,
+                                "Maximum": 30.931366666666666,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 112.55923683908046,
+                                "Standard Deviation": 9.281509285504793,
+                                "Minimum": 86.77168965517241,
+                                "Maximum": 122.75082758620691,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    },
+                    "Poor": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 1.7476222222222224,
+                                "Standard Deviation": 1.513485240662658,
+                                "Minimum": 0.0,
+                                "Maximum": 2.6214333333333335,
+                                "Number of Intervals": 3
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 1.3559137931034484,
+                                "Standard Deviation": 1.565674386892405,
+                                "Minimum": 0.0,
+                                "Maximum": 2.711827586206897,
+                                "Number of Intervals": 4
+                            }
+                        }
+                    }
+                }
+            },
+            "HTTP Single Stream": {
+                "DL": {
+                    "Moderate": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 74.25378625901033,
+                                "Standard Deviation": 19.323550437741716,
+                                "Minimum": 51.0386724137931,
+                                "Maximum": 128.361406779661,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 77.84490727498539,
+                                "Standard Deviation": 17.534984123067012,
+                                "Minimum": 54.386706896551715,
+                                "Maximum": 107.273,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    },
+                    "Poor": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 33.435619026275205,
+                                "Standard Deviation": 22.39516603405634,
+                                "Minimum": 0.022728813559322034,
+                                "Maximum": 70.14033898305084,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "DL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 23.507392901811805,
+                                "Standard Deviation": 15.828556630129027,
+                                "Minimum": 0.00033333333333333327,
+                                "Maximum": 50.96458620689654,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    }
+                },
+                "UL": {
+                    "Moderate": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 110.96812499999999,
+                                "Standard Deviation": 195.42697145059202,
+                                "Minimum": 0.0,
+                                "Maximum": 747.755,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 89.19470833333334,
+                                "Standard Deviation": 148.73967686953614,
+                                "Minimum": 31.826500000000003,
+                                "Maximum": 709.4575,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    },
+                    "Poor": {
+                        "REF": {
+                            "Device Type": "REF",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 67.09256666666667,
+                                "Standard Deviation": 38.98069454208873,
+                                "Minimum": 14.227,
+                                "Maximum": 190.105,
+                                "Number of Intervals": 20
+                            }
+                        },
+                        "DUT": {
+                            "Device Type": "DUT",
+                            "Network Type": "5G NSA",
+                            "Analysis Type": "data_performance",
+                            "Analysis Direction": "UL",
+                            "Protocol Type": "HTTP",
+                            "Throughput": {
+                                "Mean": 53.650749999999995,
+                                "Standard Deviation": 14.730139738769767,
+                                "Minimum": 35.461999999999996,
+                                "Maximum": 100.917,
+                                "Number of Intervals": 20
+                            }
+                        }
+                    }
+                }
+            },
+            "Mobility Test": {
+                "DUT": {
+                    "Device Type": "DUT",
+                    "Network Type": "5G",
+                    "Analysis Type": "mhs_drive_performance",
+                    "DL Throughput": {
+                        "Mean": 9.885714795918368,
+                        "Standard Deviation": 0.22920670961134107,
+                        "Minimum": 9.26587755102041,
+                        "Maximum": 10.007533333333333,
+                        "Number of Intervals": 12
+                    },
+                    "UL Throughput": {
+                        "Mean": 0.07869399406209827,
+                        "Standard Deviation": 0.04406798151263944,
+                        "Minimum": 0.04814084507042254,
+                        "Maximum": 0.21135802469135803,
+                        "Number of Intervals": 12
+                    },
+                    "DL Jitter": {
+                        "Mean": 1.7924119345524543
+                    },
+                    "DL Error Ratio": {
+                        "Mean": 0.7841097208854668
+                    },
+                    "Ping RTT": {
+                        "Mean": 48.005,
+                        "Min": 21.0,
+                        "Max": 580.0,
+                        "Std Dev": 23.400490610255744
+                    }
+                },
+                "REF": {
+                    "Device Type": "REF",
+                    "Network Type": "5G",
+                    "Analysis Type": "mhs_drive_performance",
+                    "DL Throughput": {
+                        "Mean": 9.825028240740743,
+                        "Standard Deviation": 0.5197526691407084,
+                        "Minimum": 8.183083333333334,
+                        "Maximum": 10.009933333333333,
+                        "Number of Intervals": 12
+                    },
+                    "UL Throughput": {
+                        "Mean": 0.24695222015029006,
+                        "Standard Deviation": 0.370979170783221,
+                        "Minimum": 0.053924137931034476,
+                        "Maximum": 1.0460617283950617,
+                        "Number of Intervals": 12
+                    },
+                    "DL Jitter": {
+                        "Mean": 2.246844761904762
+                    },
+                    "DL Error Ratio": {
+                        "Mean": 0.7805142857142857
+                    },
+                    "Ping RTT": {
+                        "Mean": 48.718333333333334,
+                        "Min": 18.0,
+                        "Max": 344.0,
+                        "Std Dev": 23.895428226559666
+                    }
+                }
+            },
+            "Ping": {
+                "Moderate": {
+                    "REF": {
+                        "Device Type": "REF",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Protocol Type": "PING",
+                        "Ping RTT": {
+                            "min": 27.0,
+                            "max": 64.0,
+                            "avg": 39.228,
+                            "std_dev": 7.22609499645525
+                        }
+                    },
+                    "DUT": {
+                        "Device Type": "DUT",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Protocol Type": "PING",
+                        "Ping RTT": {
+                            "min": 21.0,
+                            "max": 207.0,
+                            "avg": 41.992,
+                            "std_dev": 10.283356984065245
+                        }
+                    }
+                },
+                "Poor": {
+                    "REF": {
+                        "Device Type": "REF",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Protocol Type": "PING",
+                        "Ping RTT": {
+                            "min": 15.0,
+                            "max": 75.0,
+                            "avg": 36.804,
+                            "std_dev": 9.75355564373274
+                        }
+                    },
+                    "DUT": {
+                        "Device Type": "DUT",
+                        "Network Type": "5G NSA",
+                        "Analysis Type": "data_performance",
+                        "Protocol Type": "PING",
+                        "Ping RTT": {
+                            "min": 13.0,
+                            "max": 73.0,
+                            "avg": 35.194,
+                            "std_dev": 9.845111296113707
+                        }
+                    }
+                }
+            },
+            "Udp Test": {
+                "DL": {
+                    "UDP Download Task at 200 Mbps for 10 seconds": {
+                        "Moderate": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 133.7845894736842,
+                                    "Standard Deviation": 41.02424991076612,
+                                    "Minimum": 69.24159999999999,
+                                    "Maximum": 194.6918,
+                                    "Number of Intervals": 19
+                                },
+                                "Jitter": {
+                                    "Mean": 0.20821052631578946
+                                },
+                                "Error Ratio": {
+                                    "Mean": 17.809789473684212
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 170.17298999999997,
+                                    "Standard Deviation": 27.396942958195744,
+                                    "Minimum": 104.67190000000001,
+                                    "Maximum": 195.8632,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.13391
+                                },
+                                "Error Ratio": {
+                                    "Mean": 5.478299999999999
+                                }
+                            }
+                        },
+                        "Poor": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 41.466235,
+                                    "Standard Deviation": 37.123054439047706,
+                                    "Minimum": 0.0407,
+                                    "Maximum": 128.3516,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 10.587495
+                                },
+                                "Error Ratio": {
+                                    "Mean": 67.48715
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 39.98565500000001,
+                                    "Standard Deviation": 32.31762072997973,
+                                    "Minimum": 0.0518,
+                                    "Maximum": 112.0347,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 8.266034999999999
+                                },
+                                "Error Ratio": {
+                                    "Mean": 70.1171
+                                }
+                            }
+                        }
+                    },
+                    "UDP Download Task at 400 Mbps for 10 seconds": {
+                        "Moderate": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 118.18198947368421,
+                                    "Standard Deviation": 40.22515069834205,
+                                    "Minimum": 49.6186,
+                                    "Maximum": 172.58870000000002,
+                                    "Number of Intervals": 19
+                                },
+                                "Jitter": {
+                                    "Mean": 0.2526105263157895
+                                },
+                                "Error Ratio": {
+                                    "Mean": 32.060421052631575
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 123.223235,
+                                    "Standard Deviation": 28.574855599824392,
+                                    "Minimum": 58.3312,
+                                    "Maximum": 192.73769999999996,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.19829499999999997
+                                },
+                                "Error Ratio": {
+                                    "Mean": 19.49075
+                                }
+                            }
+                        },
+                        "Poor": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 21.95171,
+                                    "Standard Deviation": 8.648057529502157,
+                                    "Minimum": 7.724300000000001,
+                                    "Maximum": 37.340999999999994,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 2.264385
+                                },
+                                "Error Ratio": {
+                                    "Mean": 74.78739999999999
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 32.210519999999995,
+                                    "Standard Deviation": 12.755768791355788,
+                                    "Minimum": 13.3612,
+                                    "Maximum": 62.6869,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 1.4200400000000002
+                                },
+                                "Error Ratio": {
+                                    "Mean": 64.9618
+                                }
+                            }
+                        }
+                    }
+                },
+                "UL": {
+                    "5G NSA_UDP Upload Task at 10 Mbps for 10 seconds": {
+                        "Moderate": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 5.602613789160402,
+                                    "Standard Deviation": 0.378835171388314,
+                                    "Minimum": 5.136476190476192,
+                                    "Maximum": 6.9315625,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 1.5121
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0085
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 5.798208035714286,
+                                    "Standard Deviation": 0.4490461392901323,
+                                    "Minimum": 4.9245833333333335,
+                                    "Maximum": 7.4208750000000006,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 1.6935499999999997
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0
+                                }
+                            }
+                        },
+                        "Poor": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 5.676137916666668,
+                                    "Standard Deviation": 0.39533243863787004,
+                                    "Minimum": 5.337095238095238,
+                                    "Maximum": 7.154374999999999,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 1.7404499999999998
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 5.527258958333333,
+                                    "Standard Deviation": 0.38913349204182507,
+                                    "Minimum": 5.205476190476191,
+                                    "Maximum": 6.8075625,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 1.7625999999999997
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0005
+                                }
+                            }
+                        }
+                    },
+                    "5G NSA_UDP Upload Task at 20 Mbps for 10 seconds": {
+                        "Moderate": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 17.28224424325674,
+                                    "Standard Deviation": 1.5339119313488425,
+                                    "Minimum": 14.817399999999997,
+                                    "Maximum": 20.545454545454547,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.87705
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0005
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 11.88744836309524,
+                                    "Standard Deviation": 0.7818873101281163,
+                                    "Minimum": 11.252285714285714,
+                                    "Maximum": 14.9465625,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.95425
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0085
+                                }
+                            }
+                        },
+                        "Poor": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 16.341716095571094,
+                                    "Standard Deviation": 1.798257187881551,
+                                    "Minimum": 13.660750000000002,
+                                    "Maximum": 19.837272727272726,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.7481
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.0005
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "DUT",
+                                "Network Type": "5G NSA",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "UL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 12.010701726190476,
+                                    "Standard Deviation": 1.1067900472378394,
+                                    "Minimum": 11.032333333333332,
+                                    "Maximum": 16.397375,
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.9757999999999999
+                                },
+                                "Error Ratio": {
+                                    "Mean": 0.039999999999999994
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,26 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { ReportContext } from './ReportContext';
-import { loadAllData, getAvailableCities, loadAppConfig } from '../Utils/DataLoader'; // Assuming DataLoader exists
+import { loadAllData, getAvailableCities, loadAppConfig, getAvailableProjects } from '../Utils/DataLoader'; // Assuming DataLoader exists
 
 export const ReportDataProvider = ({ children }) => {
   const [city, setCity] = useState('Seattle'); // Default city
+  const [project, setProject] = useState(null); // Selected project
   const [availableCities, setAvailableCities] = useState([]);
+  const [availableProjects, setAvailableProjects] = useState([]);
   const [allReportData, setAllReportData] = useState({}); // Cache for all cities' data
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [appConfig, setAppConfig] = useState(null);
 
-  const loadCityData = async (targetCity) => {
-    if (allReportData[targetCity]) return; // Already loaded
+  const loadCityData = async (targetCity, targetProject = project) => {
+    if (!targetProject) return;
+    const cacheKey = `${targetProject}-${targetCity}`;
+    if (allReportData[cacheKey]) return; // Already loaded
 
     try {
-      const data = await loadAllData(targetCity);
+      const data = await loadAllData(targetProject, targetCity);
       setAllReportData(prev => ({
         ...prev,
-        [targetCity]: data
+        [cacheKey]: data
       }));
     } catch (err) {
-      console.error(`Failed to load data for ${targetCity}:`, err);
+      console.error(`Failed to load data for ${targetProject}/${targetCity}:`, err);
       throw err;
     }
   };
@@ -32,12 +36,25 @@ export const ReportDataProvider = ({ children }) => {
         const cities = await getAvailableCities();
         setAvailableCities(cities);
 
+        const projects = await getAvailableProjects();
+        setAvailableProjects(projects);
+
         const config = await loadAppConfig();
         setAppConfig(config);
 
-        // Initial load of the default city
-        const data = await loadAllData(city);
-        setAllReportData({ [city]: data });
+        // Initial load of ALL cities for the project if project is ready
+        if (project) {
+          const loadPromises = cities.map(c => loadAllData(project, c));
+          const results = await Promise.all(loadPromises);
+
+          const newData = {};
+          cities.forEach((c, idx) => {
+            if (results[idx]) {
+              newData[`${project}-${c}`] = results[idx];
+            }
+          });
+          setAllReportData(prev => ({ ...prev, ...newData }));
+        }
       } catch (err) {
         setError(err);
       } finally {
@@ -47,12 +64,40 @@ export const ReportDataProvider = ({ children }) => {
     initialize();
   }, []); // Only on mount
 
-  // effect to handle city change from global selector
+  // effect to handle project change: load all cities for the new project
   useEffect(() => {
-    if (city && !allReportData[city] && !loading) {
-      loadCityData(city);
+    if (project && availableCities.length > 0) {
+      const loadMissing = async () => {
+        const missingCities = availableCities.filter(c => !allReportData[`${project}-${c}`]);
+        if (missingCities.length > 0) {
+          const loadPromises = missingCities.map(c => loadAllData(project, c));
+          const results = await Promise.all(loadPromises);
+
+          const newData = {};
+          missingCities.forEach((c, idx) => {
+            if (results[idx]) {
+              newData[`${project}-${c}`] = results[idx];
+            }
+          });
+          setAllReportData(prev => ({ ...prev, ...newData }));
+        }
+      };
+      loadMissing();
     }
-  }, [city]);
+  }, [project, availableCities]);
+
+  // Derived data for the current active project
+  const projectData = React.useMemo(() => {
+    if (!project) return {};
+    const data = {};
+    availableCities.forEach(c => {
+      const cacheKey = `${project}-${c}`;
+      if (allReportData[cacheKey]) {
+        data[c] = allReportData[cacheKey];
+      }
+    });
+    return data;
+  }, [allReportData, project, availableCities]);
 
   if (loading && Object.keys(allReportData).length === 0) {
     return <div>Loading report data...</div>;
@@ -64,13 +109,17 @@ export const ReportDataProvider = ({ children }) => {
 
   return (
     <ReportContext.Provider value={{
-      reportData: allReportData[city], // For backward compatibility
+      reportData: projectData[city],
+      projectData,
       allReportData,
       loading,
       error,
       city,
       setCity,
+      project,
+      setProject,
       availableCities,
+      availableProjects,
       loadCityData,
       appConfig
     }}>

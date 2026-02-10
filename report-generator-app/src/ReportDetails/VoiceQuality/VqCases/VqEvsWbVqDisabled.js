@@ -24,7 +24,7 @@ const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
 };
 
 const VqEvsWbVqDisabled = ({ city: propCity }) => {
-  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
     }
   }, [city, loadCityData]);
 
-  const reportData = allReportData[city];
+  const reportData = projectData[city];
 
   if (!reportData || !reportData.voiceQuality || !reportData.voiceQuality["Voice Quality"]) {
     return <div>Loading {city} voice quality data...</div>;

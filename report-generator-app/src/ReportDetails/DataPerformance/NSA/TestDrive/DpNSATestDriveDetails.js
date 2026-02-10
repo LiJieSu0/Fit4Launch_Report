@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 // Define additional colors for the histogram bars
 function DpNSATestDriveDetails({ city: propCity }) {
-  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function DpNSATestDriveDetails({ city: propCity }) {
     }
   }, [city, loadCityData]);
 
-  const reportData = allReportData[city];
+  const reportData = projectData[city];
 
   if (!reportData) {
     return <div className="page-content">Loading {city} NSA Test Drive data...</div>;

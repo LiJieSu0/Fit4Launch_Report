@@ -7,7 +7,7 @@ import { getKpiCellColor } from '../../Utils/KpiRules';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 
 const DpMrabDetailsPage = ({ city: propCity }) => {
-  const { city: globalCity, allReportData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const DpMrabDetailsPage = ({ city: propCity }) => {
     }
   }, [city, loadCityData]);
 
-  const reportData = allReportData[city];
+  const reportData = projectData[city];
   if (!reportData) {
     return <div className="page-content">Loading {city} MRAB data...</div>;
   }
@@ -25,6 +25,8 @@ const DpMrabDetailsPage = ({ city: propCity }) => {
     return null; // Hide if data is missing
   }
 
+  // Assuming 'network' is defined elsewhere or should be a specific string like '5G AUTO DP'
+  // For now, using the original path to mrabData
   const mrabData = reportData.dataPerformance?.['Data Performance']?.['5G AUTO DP']?.['5G VoNR MRAB Stationary'];
 
   if (!mrabData) {

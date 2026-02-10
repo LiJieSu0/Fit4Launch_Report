@@ -23,7 +23,7 @@ const BANDS = [
 ];
 
 const CoverageSummaryTable = () => {
-    const { allReportData, availableCities, loadCityData } = useReportData();
+    const { projectData, availableCities, loadCityData } = useReportData();
     const { numberedHeaders } = useContext(HeaderContext);
     const markets = availableCities || ["Seattle", "New York"];
 
@@ -54,11 +54,11 @@ const CoverageSummaryTable = () => {
 
     React.useEffect(() => {
         markets.forEach(market => {
-            if (!allReportData[market]) {
+            if (!projectData[market]) {
                 loadCityData(market).catch(err => console.error(`Failed to load ${market}:`, err));
             }
         });
-    }, [markets, allReportData, loadCityData]);
+    }, [markets, projectData, loadCityData]);
 
     const calculateAvgDistance = (cityData, band, deviceType, kpiKey) => {
         const root = cityData?.coveragePerformance?.["Coverage Performance"];
@@ -86,7 +86,7 @@ const CoverageSummaryTable = () => {
     };
 
     const getResult = (market, band, kpi) => {
-        const cityData = allReportData[market];
+        const cityData = projectData[market];
         if (!cityData) return { status: "N/A", color: "default", link: "#" };
 
         const dutAvg = calculateAvgDistance(cityData, band.key, "DUT", kpi.key);

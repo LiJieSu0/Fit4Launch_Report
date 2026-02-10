@@ -5,14 +5,12 @@ import ContentsIndexPage from './CommonPage/ContentsIndexPage';
 import DeviceInfoPage from './CommonPage/DeviceInfoPage';
 import LegalPage from './CommonPage/LegalPage';
 
-import { useState, useEffect } from 'react';
-
-import { ReportDataProvider } from './Contexts/ReportDataProvider';
+import { useContext, useState, useEffect } from 'react';
+import { ReportContext } from './Contexts/ReportContext';
 
 
 import ReportHeader from './CommonPage/ReportHeader';
 import ReportFooter from './CommonPage/ReportFooter';
-import { HeaderProvider } from './Contexts/HeaderContext';
 
 import CallPerformanceDetails from './ReportDetails/CallPerformance/CallPerformanceDetails';
 import CpSummaryPage from './ReportDetails/CallPerformance/CpSummaryPage';
@@ -43,26 +41,55 @@ const reportType = {
   'DP': "Data Performance",
   'WFC': "Wifi Call"
 }
-const PROJECT_NAME = "Motorola XT2575-4 Pretest"
-// const PROJECT_NAME = "ATMC Labs Pilot"
-
-
 function App() {
+  const { project, setProject, availableProjects } = useContext(ReportContext);
   const [currentReport, setCurrentReport] = useState(null);
+
+  // Derive project name from project folder for display (e.g., #Dry Run -> Dry Run)
+  const displayProjectName = project ? project.replace('#', '') : "Select Project";
 
   useEffect(() => {
     if (currentReport) {
-      document.title = reportType[currentReport];
+      document.title = `${displayProjectName} - ${reportType[currentReport]}`;
     } else {
-      document.title = "Report Generator";
+      document.title = project ? `${displayProjectName} Menu` : "Report Generator";
     }
-  }, [currentReport]);
+  }, [currentReport, project, displayProjectName]);
 
+
+  if (!project) {
+    return (
+      <div className="App-Home" style={{ padding: '50px', textAlign: 'center' }}>
+        <img src="atmclogo.jpg" alt="atmcl" style={{ maxWidth: '200px', marginBottom: '30px' }} />
+        <h1>Select a Project</h1>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', maxWidth: '300px', margin: '0 auto' }}>
+          {availableProjects.map((p) => (
+            <button
+              key={p}
+              onClick={() => setProject(p)}
+              style={{ padding: '15px', fontSize: '18px', cursor: 'pointer', borderRadius: '8px', border: '1px solid #ccc', backgroundColor: '#f0f0f0' }}
+            >
+              {p.replace('#', '')}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   if (!currentReport) {
     return (
       <div className="App-Home" style={{ padding: '50px', textAlign: 'center' }}>
-        <h1>Report Generator</h1>
+        <div style={{ position: 'fixed', top: '10px', left: '10px', zIndex: 1000 }}>
+          <button
+            onClick={() => setProject(null)}
+            style={{ padding: '8px 16px', cursor: 'pointer' }}
+          >
+            ← Switch Project
+          </button>
+        </div>
+        <h1>{displayProjectName}</h1>
+        <p>Select report type to view</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', maxWidth: '300px', margin: '0 auto' }}>
           {Object.entries(reportType).map(([key, value]) => (
             <button
@@ -79,68 +106,64 @@ function App() {
   }
 
   return (
-    <ReportDataProvider>
-      <HeaderProvider>
-        <div className="App">
-          <div style={{ position: 'fixed', top: '10px', left: '10px', zIndex: 1000 }}>
-            <button
-              onClick={() => setCurrentReport(null)}
-              style={{ padding: '8px 16px', cursor: 'pointer' }}
-            >
-              ← Back to Main Menu
-            </button>
-          </div>
-          <CoverPage reportType={reportType[currentReport]} projectName={PROJECT_NAME} />
-          <ReportHeader projectName={PROJECT_NAME} />
-          <DeviceInfoPage />
-          <ContentsIndexPage />
+    <div className="App">
+      <div style={{ position: 'fixed', top: '10px', left: '10px', zIndex: 1000, display: 'flex', gap: '10px' }}>
+        <button
+          onClick={() => setCurrentReport(null)}
+          style={{ padding: '8px 16px', cursor: 'pointer' }}
+        >
+          ← Menu
+        </button>
+      </div>
+      <CoverPage reportType={reportType[currentReport]} projectName={displayProjectName} />
+      <ReportHeader projectName={displayProjectName} />
+      <DeviceInfoPage />
+      <ContentsIndexPage />
 
-          {currentReport === "CV" && (
-            <>
-              <CoverageSummaryPage />
-              <CoverageDetails />
-              <CoverageKpiPage />
-            </>
-          )}
+      {currentReport === "CV" && (
+        <>
+          <CoverageSummaryPage />
+          <CoverageDetails />
+          <CoverageKpiPage />
+        </>
+      )}
 
-          {currentReport === "VQ" && (
-            <>
-              <VqSummaryPage />
-              <VqDetailsPage />
-              <VqKpiPage />
-            </>
-          )}
+      {currentReport === "VQ" && (
+        <>
+          <VqSummaryPage />
+          <VqDetailsPage />
+          <VqKpiPage />
+        </>
+      )}
 
-          {currentReport === "CP" && (
-            <>
-              <CpSummaryPage />
-              <CallPerformanceDetails />
-              <CpKpiPage />
-            </>
-          )}
+      {currentReport === "CP" && (
+        <>
+          <CpSummaryPage />
+          <CallPerformanceDetails />
+          <CpKpiPage />
+        </>
+      )}
 
-          {currentReport === "DP" && (
-            <>
-              <DpSummaryPage />
-              <DpDetailsPage webPageUrl={"http://172.93.163.176/reference/kepler/mobile/"} />
-              <DpKpiPage />
-            </>
-          )}
+      {currentReport === "DP" && (
+        <>
+          <DpSummaryPage />
+          <DpDetailsPage webPageUrl={"http://172.93.163.176/reference/kepler/mobile/"} />
+          <DpKpiPage />
+        </>
+      )}
 
-          {currentReport === "WFC" && (
-            <>
-              <WfcSummaryPage />
-              <WfcDetailsPage />
-              <WfcKpiPage />
-            </>
-          )}
+      {currentReport === "WFC" && (
+        <>
+          <WfcSummaryPage />
+          <WfcDetailsPage />
+          <WfcKpiPage />
+        </>
+      )}
 
-          <LegalPage />
-          <AboutPage />
-          <ReportFooter reportType={reportType[currentReport]} />
-        </div>
-      </HeaderProvider>
-    </ReportDataProvider>
+      <LegalPage />
+      <AboutPage />
+      <ReportFooter reportType={reportType[currentReport]} />
+    </div>
   );
 }
 

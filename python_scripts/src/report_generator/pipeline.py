@@ -323,6 +323,44 @@ class DataAnalysisPipeline:
         except Exception as e:
             self.logger.warning(f"Failed to export MOS patch line chart data: {e}")
 
+        # Export CDF Throughput data
+        self._export_cdf_data()
+
+    def _export_cdf_data(self):
+        """Recursively traverses data_performance results and exports Throughput_CDF data to separate files."""
+        self.logger.info("Checking for CDF Throughput data to export...")
+        cdf_dir = os.path.join(self.output_dir, "cdf_throughput_data")
+        
+        processed_count = 0
+
+        def traverse(current_dict, path_parts):
+            nonlocal processed_count
+            for key, value in current_dict.items():
+                if isinstance(value, dict):
+                    if "Throughput_CDF" in value:
+                        # Found statistics for a device (DUT/REF)
+                        os.makedirs(cdf_dir, exist_ok=True)
+                        
+                        # Use path parts to build a descriptive filename
+                        # path_parts might be ["5G AUTO DP", "TC_NAME"]
+                        # key is "DUT" or "REF"
+                        safe_parts = [p.replace(" ", "_") for p in path_parts]
+                        filename = f"cdf_throughput_{'_'.join(safe_parts)}_{key}.json".lower()
+                        
+                        out_path = os.path.join(cdf_dir, filename)
+                        with open(out_path, 'w', encoding='utf-8') as f:
+                            json.dump(value.pop("Throughput_CDF"), f, indent=4, ensure_ascii=True)
+                        
+                        processed_count += 1
+                        # Note: Throughput_CDF is popped from the dictionary so it won't be in data_performance_results.json
+                    else:
+                        traverse(value, path_parts + [key])
+
+        if "data_performance" in self.results:
+            traverse(self.results["data_performance"], [])
+            if processed_count > 0:
+                self.logger.info(f"Exported {processed_count} CDF throughput JSON files to {cdf_dir}")
+
     def _export_all(self):
         export_map = {
             "data_performance": ("data_performance_results.json", "Data Performance"),

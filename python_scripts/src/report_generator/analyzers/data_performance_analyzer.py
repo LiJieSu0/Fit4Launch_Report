@@ -39,6 +39,20 @@ class DataPerformanceAnalyzer(BaseAnalyzer):
             )
             if tp_stats:
                 stats["Throughput"] = tp_stats
+            
+            # CDF Analysis (New feature)
+            cdf_stats = data_performance_statics.analyze_throughput_cdf(
+                csv_file_path, 
+                params["column_to_analyze_throughput"], 
+                params["event_col"], 
+                params["start_event"], 
+                params["end_event"], 
+                fallback_column_name=params["column_to_analyze_throughput_fallback"], 
+                fallback_event_col_name=params["event_col_fallback"], 
+                third_fallback_column_name=params["column_to_analyze_throughput_third_fallback"]
+            )
+            if cdf_stats:
+                stats["Throughput_CDF"] = cdf_stats
 
         # UDP Jitter and Error Ratio
         if params["protocol_type_detected"] == "UDP":

@@ -449,6 +449,102 @@ def analyze_throughput(file_path, column_name_to_analyze, event_col_name, start_
         print(f"An error occurred during throughput analysis: {e}")
         return {} # Return empty dict instead of None
 
+def analyze_throughput_cdf(file_path, column_name_to_analyze, event_col_name, start_event_str, end_event_str, fallback_column_name=None, fallback_event_col_name=None, third_fallback_column_name=None):
+    """
+    Reads a data CSV file, identifies intervals, and calculates CDF for throughput points.
+    Uses dynamic binning (20 bins) between min and max.
+    Only reads necessary columns to reduce memory load.
+    """
+    try:
+        # Read headers first to identify correct columns for usecols
+        header_df = pd.read_csv(file_path, nrows=0)
+        cleaned_headers = [_clean_header(col) for col in header_df.columns]
+        
+        actual_tp_col = None
+        # Priority for throughput column
+        for cand in [column_name_to_analyze, fallback_column_name, third_fallback_column_name]:
+            if cand and cand in cleaned_headers:
+                # Find the original column name (might have multiple, pick first for simplicity or handle duplicates?)
+                # _get_series_from_dataframe is better but it needs the whole df. 
+                # To minimize memory, we'll try to pick the first occurrence in original headers.
+                actual_tp_col = header_df.columns[cleaned_headers.index(cand)]
+                break
+        
+        actual_ev_col = None
+        for cand in [event_col_name, fallback_event_col_name]:
+            if cand and cand in cleaned_headers:
+                actual_ev_col = header_df.columns[cleaned_headers.index(cand)]
+                break
+        
+        if not actual_tp_col or not actual_ev_col:
+            return {}
+
+        # Efficiently read only needed columns
+        data = pd.read_csv(file_path, usecols=[actual_tp_col, actual_ev_col])
+        data.columns = [_clean_header(col) for col in data.columns]
+        
+        # Cleaned names for access
+        tp_col_clean = _clean_header(actual_tp_col)
+        ev_col_clean = _clean_header(actual_ev_col)
+
+        started_indices = data[data[ev_col_clean].astype(str).str.contains(start_event_str, na=False)].index
+        
+        tp_points = []
+        if started_indices.empty:
+            tp_points = data[tp_col_clean].dropna().tail(100).tolist() # Limit fallback to last 100 points
+        else:
+            # Collect points from intervals
+            for idx in range(len(started_indices)):
+                start_idx = started_indices[idx]
+                if idx + 1 < len(started_indices):
+                    end_idx = started_indices[idx + 1] - 1
+                else:
+                    end_idx = len(data) - 1
+                
+                interval_tp = data.loc[start_idx : end_idx, tp_col_clean].dropna()
+                tp_points.extend(interval_tp.tolist())
+
+        if not tp_points:
+            return {}
+            
+        tp_series = pd.Series(tp_points)
+        min_val = float(tp_series.min())
+        max_val = float(tp_series.max())
+        total_count = len(tp_series)
+        
+        if max_val == min_val:
+            return {
+                "min": min_val,
+                "max": max_val,
+                "bin_count": 1,
+                "cdf": [{"bin_end": max_val, "cumulative_percent": 100.0}]
+            }
+
+        num_bins = 20
+        bin_width = (max_val - min_val) / num_bins
+        
+        cdf_list = []
+        for i in range(1, num_bins + 1):
+            bin_end = min_val + i * bin_width
+            count = (tp_series <= bin_end).sum()
+            cdf_list.append({
+                "bin_end": round(bin_end, 2),
+                "cumulative_percent": round((count / total_count) * 100, 2)
+            })
+            
+        return {
+            "min": round(min_val, 2),
+            "max": round(max_val, 2),
+            "bin_width": round(bin_width, 2),
+            "total_points": total_count,
+            "cdf": cdf_list
+        }
+
+    except Exception as e:
+        if logger:
+            logger.error(f"Error in analyze_throughput_cdf: {e}")
+        return {}
+
     except FileNotFoundError:
         print(f"Error: The file at {file_path} was not found.")
         return {} # Return empty dict instead of None

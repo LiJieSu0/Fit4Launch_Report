@@ -89,13 +89,24 @@ function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
         <tbody>
           {tableData.map((row, index) => {
             let overallCellStyle = {};
+            let site1CellStyle = {};
+            let site2CellStyle = {};
+            let site3CellStyle = {};
+
             if (kpiRule && kpiTargetCells && row.deviceName === "DUT" && row.category === "Average (Mbps)") {
               const refRow = tableData.find(r => r.deviceName === "REF" && r.category === "Average (Mbps)");
               if (refRow) {
-                const color = getKpiCellColor(kpiRule, parseFloat(row.overall), parseFloat(refRow.overall));
-                if (color) {
-                  overallCellStyle = { backgroundColor: color };
-                }
+                const overallColor = getKpiCellColor(kpiRule, parseFloat(row.overall), parseFloat(refRow.overall));
+                if (overallColor) overallCellStyle = { backgroundColor: overallColor };
+
+                const site1Color = getKpiCellColor(kpiRule, parseFloat(row.site1), parseFloat(refRow.site1));
+                if (site1Color) site1CellStyle = { backgroundColor: site1Color };
+
+                const site2Color = getKpiCellColor(kpiRule, parseFloat(row.site2), parseFloat(refRow.site2));
+                if (site2Color) site2CellStyle = { backgroundColor: site2Color };
+
+                const site3Color = getKpiCellColor(kpiRule, parseFloat(row.site3), parseFloat(refRow.site3));
+                if (site3Color) site3CellStyle = { backgroundColor: site3Color };
               }
             }
 
@@ -106,9 +117,9 @@ function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
                 )}
                 <td>{row.deviceName}</td>
                 <td style={overallCellStyle}>{row.overall}</td>
-                <td>{row.site1}</td>
-                <td>{row.site2}</td>
-                <td>{row.site3}</td>
+                <td style={site1CellStyle}>{row.site1}</td>
+                <td style={site2CellStyle}>{row.site2}</td>
+                <td style={site3CellStyle}>{row.site3}</td>
               </tr>
             );
           })}

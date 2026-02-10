@@ -86,9 +86,19 @@ function DpMHSHttpSSTable({ data, tableName, kpiRule }) {
                 )}
                 <td>{row.deviceName}</td>
                 <td style={{ backgroundColor: overallColor }}>{row.overall}</td>
-                {availableCategories.map(cat => (
-                  <td key={cat}>{row.sites[cat]}</td>
-                ))}
+                {availableCategories.map(cat => {
+                  const siteColor =
+                    row.deviceName === "DUT" && row.category === "Average" && !isNaN(parseFloat(row.sites[cat])) && !isNaN(parseFloat(tableData[index + 1]?.sites[cat]))
+                      ? getKpiCellColor(
+                        kpiRule,
+                        parseFloat(row.sites[cat]),
+                        parseFloat(tableData[index + 1].sites[cat])
+                      )
+                      : undefined;
+                  return (
+                    <td key={cat} style={{ backgroundColor: siteColor }}>{row.sites[cat]}</td>
+                  );
+                })}
               </tr>
             );
           })}

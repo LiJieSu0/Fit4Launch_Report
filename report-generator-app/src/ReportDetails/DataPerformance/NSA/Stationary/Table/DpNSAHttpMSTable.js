@@ -78,26 +78,38 @@ function DpNSAHttpMSTable({ data, tableName }) {
           </tr>
         </thead>
         <tbody>
-          {tableData.map((row, index) => (
-            <tr key={index}>
-              {row.deviceName === "DUT" && (
-                <td rowSpan="2">{row.category}{" (Mbps)"}</td>
-              )}
-              <td>{row.deviceName}</td>
-              <td style={{
-                backgroundColor:
-                  row.category === "Average" && row.deviceName === "DUT"
-                    ? getKpiCellColor(
-                      "Throughput",
-                      parseFloat(row.overall),
-                      parseFloat(tableData[index + 1].overall)
-                    )
-                    : "inherit",
-              }}>{row.overall}</td>
-              <td>{row.site1}</td>
-              <td>{row.site2}</td>
-            </tr>
-          ))}
+          {tableData.map((row, index) => {
+            const isDutAverage = row.category === "Average" && row.deviceName === "DUT";
+            let overallCellStyle = {};
+            let site1CellStyle = {};
+            let site2CellStyle = {};
+
+            if (isDutAverage) {
+              const refRow = tableData[index + 1]; // In the tableData array, REF Average follows DUT Average
+              if (refRow && refRow.deviceName === "REF") {
+                const overallColor = getKpiCellColor("Throughput", parseFloat(row.overall), parseFloat(refRow.overall));
+                if (overallColor) overallCellStyle = { backgroundColor: overallColor };
+
+                const site1Color = getKpiCellColor("Throughput", parseFloat(row.site1), parseFloat(refRow.site1));
+                if (site1Color) site1CellStyle = { backgroundColor: site1Color };
+
+                const site2Color = getKpiCellColor("Throughput", parseFloat(row.site2), parseFloat(refRow.site2));
+                if (site2Color) site2CellStyle = { backgroundColor: site2Color };
+              }
+            }
+
+            return (
+              <tr key={index}>
+                {row.deviceName === "DUT" && (
+                  <td rowSpan="2">{row.category}{" (Mbps)"}</td>
+                )}
+                <td>{row.deviceName}</td>
+                <td style={overallCellStyle}>{row.overall}</td>
+                <td style={site1CellStyle}>{row.site1}</td>
+                <td style={site2CellStyle}>{row.site2}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

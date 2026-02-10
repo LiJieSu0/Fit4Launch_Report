@@ -89,11 +89,16 @@ const DpMHSPingTable = ({ data }) => {
                                 <td style={metric.key === 'average' ? { backgroundColor: getKpiCellColor('PingLatency', parseFloat(data.average.DUT.Overall), parseFloat(data.average.REF.Overall)) } : {}}>
                                     {parseFloat(data[metric.key].DUT.Overall).toFixed(2)}
                                 </td>
-                                {availableLocations.map(loc => (
-                                    <td key={`dut-${metric.key}-${loc}`}>
-                                        {parseFloat(data[metric.key].DUT[loc] || 0).toFixed(2)}
-                                    </td>
-                                ))}
+                                {availableLocations.map(loc => {
+                                    const siteColor = metric.key === 'average'
+                                        ? getKpiCellColor('PingLatency', parseFloat(data.average.DUT[loc] || 0), parseFloat(data.average.REF[loc] || 0))
+                                        : undefined;
+                                    return (
+                                        <td key={`dut-${metric.key}-${loc}`} style={{ backgroundColor: siteColor }}>
+                                            {parseFloat(data[metric.key].DUT[loc] || 0).toFixed(2)}
+                                        </td>
+                                    );
+                                })}
                             </tr>
                             <tr>
                                 <td>REF</td>

@@ -71,8 +71,8 @@ const DpNSAPingTable = ({ data, tableName }) => {
                         <td rowSpan="2">Average</td>
                         <td>DUT</td>
                         <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(getSafeValue(data, 'average', 'DUT', 'Overall')), parseFloat(getSafeValue(data, 'average', 'REF', 'Overall'))) }}>{safeToFixed(getSafeValue(data, 'average', 'DUT', 'Overall'))}</td>
-                        <td>{safeToFixed(getSafeValue(data, 'average', 'DUT', 'Moderate'))}</td>
-                        <td>{safeToFixed(getSafeValue(data, 'average', 'DUT', 'Poor'))}</td>
+                        <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(getSafeValue(data, 'average', 'DUT', 'Moderate')), parseFloat(getSafeValue(data, 'average', 'REF', 'Moderate'))) }}>{safeToFixed(getSafeValue(data, 'average', 'DUT', 'Moderate'))}</td>
+                        <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(getSafeValue(data, 'average', 'DUT', 'Poor')), parseFloat(getSafeValue(data, 'average', 'REF', 'Poor'))) }}>{safeToFixed(getSafeValue(data, 'average', 'DUT', 'Poor'))}</td>
                     </tr>
                     <tr>
                         <td>REF</td>

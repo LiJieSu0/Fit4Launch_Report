@@ -93,9 +93,45 @@ function DpUdpTableLoc3({ data, tableName }) {
                 }}>
                   {currentOverallValue}
                 </td>
-                <td>{row.location.good.toFixed(2)}</td>
-                <td>{row.location.moderate.toFixed(2)}</td>
-                <td>{row.location.poor.toFixed(2)}</td>
+                <td style={{
+                  backgroundColor: row.deviceName === 'DUT' && refRow && row.metric !== 'Max Throughput (Mbps)' && row.metric !== 'Min Throughput (Mbps)'
+                    ? getKpiCellColor(
+                      row.metric === 'Mean Jitter (ms)' ? 'Jitter' :
+                        row.metric === 'Packet Failure Rate (%)' ? 'ErrorRatio' :
+                          'Throughput',
+                      parseFloat(row.location.good),
+                      parseFloat(refRow.location.good)
+                    )
+                    : 'inherit'
+                }}>
+                  {row.location.good.toFixed(2)}
+                </td>
+                <td style={{
+                  backgroundColor: row.deviceName === 'DUT' && refRow && row.metric !== 'Max Throughput (Mbps)' && row.metric !== 'Min Throughput (Mbps)'
+                    ? getKpiCellColor(
+                      row.metric === 'Mean Jitter (ms)' ? 'Jitter' :
+                        row.metric === 'Packet Failure Rate (%)' ? 'ErrorRatio' :
+                          'Throughput',
+                      parseFloat(row.location.moderate),
+                      parseFloat(refRow.location.moderate)
+                    )
+                    : 'inherit'
+                }}>
+                  {row.location.moderate.toFixed(2)}
+                </td>
+                <td style={{
+                  backgroundColor: row.deviceName === 'DUT' && refRow && row.metric !== 'Max Throughput (Mbps)' && row.metric !== 'Min Throughput (Mbps)'
+                    ? getKpiCellColor(
+                      row.metric === 'Mean Jitter (ms)' ? 'Jitter' :
+                        row.metric === 'Packet Failure Rate (%)' ? 'ErrorRatio' :
+                          'Throughput',
+                      parseFloat(row.location.poor),
+                      parseFloat(refRow.location.poor)
+                    )
+                    : 'inherit'
+                }}>
+                  {row.location.poor.toFixed(2)}
+                </td>
               </tr>
             );
           })}

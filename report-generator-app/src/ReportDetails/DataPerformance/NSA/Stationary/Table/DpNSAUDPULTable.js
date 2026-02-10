@@ -95,8 +95,32 @@ function DpNSAUDPULTable({ data, tableName }) {
                 }}>
                   {currentOverallValue}
                 </td>
-                <td>{typeof row.location?.moderate === 'number' ? row.location.moderate.toFixed(2) : (row.location?.moderate || "0.00")}</td>
-                <td>{typeof row.location?.poor === 'number' ? row.location.poor.toFixed(2) : (row.location?.poor || "0.00")}</td>
+                <td style={{
+                  backgroundColor: row.deviceName === 'DUT' && refRow?.location?.moderate !== undefined && !row.metric.includes('Max Throughput')
+                    ? getKpiCellColor(
+                      row.metric === 'Mean Jitter (s)' ? 'Jitter' :
+                        row.metric === 'Packet Failure Rate (%)' ? 'ErrorRatio' :
+                          'Throughput',
+                      parseFloat(row.location.moderate),
+                      parseFloat(refRow.location.moderate)
+                    )
+                    : 'inherit'
+                }}>
+                  {typeof row.location?.moderate === 'number' ? row.location.moderate.toFixed(2) : (row.location?.moderate || "0.00")}
+                </td>
+                <td style={{
+                  backgroundColor: row.deviceName === 'DUT' && refRow?.location?.poor !== undefined && !row.metric.includes('Max Throughput')
+                    ? getKpiCellColor(
+                      row.metric === 'Mean Jitter (s)' ? 'Jitter' :
+                        row.metric === 'Packet Failure Rate (%)' ? 'ErrorRatio' :
+                          'Throughput',
+                      parseFloat(row.location.poor),
+                      parseFloat(refRow.location.poor)
+                    )
+                    : 'inherit'
+                }}>
+                  {typeof row.location?.poor === 'number' ? row.location.poor.toFixed(2) : (row.location?.poor || "0.00")}
+                </td>
               </tr>
             );
 

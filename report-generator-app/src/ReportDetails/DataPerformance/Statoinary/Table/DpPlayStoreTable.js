@@ -48,9 +48,30 @@ const DpPlayStoreTable = ({ tableData }) => {
                 )}
                 <td style={{ border: '1px solid black', backgroundColor: 'white' }}>{row.deviceName}</td>
                 <td style={overallCellStyle}>{row.overall}</td>
-                <td style={{ border: '1px solid black', backgroundColor: 'white' }}>{row.site1}</td>
-                <td style={{ border: '1px solid black', backgroundColor: 'white' }}>{row.site2}</td>
-                <td style={{ border: '1px solid black', backgroundColor: 'white' }}>{row.site3}</td>
+                <td style={{
+                  backgroundColor: row.deviceName === 'DUT' && refOverall && tableData.find(d => d.throughput === row.throughput && d.deviceName === 'REF')?.site1
+                    ? getKpiCellColor('Throughput', parseFloat(row.site1), parseFloat(tableData.find(d => d.throughput === row.throughput && d.deviceName === 'REF').site1))
+                    : 'inherit',
+                  border: '1px solid black'
+                }}>
+                  {row.site1}
+                </td>
+                <td style={{
+                  backgroundColor: row.deviceName === 'DUT' && refOverall && tableData.find(d => d.throughput === row.throughput && d.deviceName === 'REF')?.site2
+                    ? getKpiCellColor('Throughput', parseFloat(row.site2), parseFloat(tableData.find(d => d.throughput === row.throughput && d.deviceName === 'REF').site2))
+                    : 'inherit',
+                  border: '1px solid black'
+                }}>
+                  {row.site2}
+                </td>
+                <td style={{
+                  backgroundColor: row.deviceName === 'DUT' && refOverall && tableData.find(d => d.throughput === row.throughput && d.deviceName === 'REF')?.site3
+                    ? getKpiCellColor('Throughput', parseFloat(row.site3), parseFloat(tableData.find(d => d.throughput === row.throughput && d.deviceName === 'REF').site3))
+                    : 'inherit',
+                  border: '1px solid black'
+                }}>
+                  {row.site3}
+                </td>
               </tr>
             );
           })}

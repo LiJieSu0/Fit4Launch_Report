@@ -121,11 +121,22 @@ function DpMHSUdpTable({ data, tableName }) {
                 }}>
                   {currentOverallValue}
                 </td>
-                {availableLocations.map(loc => (
-                  <td key={loc}>
-                    {row.location[loc] !== undefined ? row.location[loc].toFixed(2) : 'N/A'}
-                  </td>
-                ))}
+                {availableLocations.map(loc => {
+                  const siteColor = row.deviceName === 'DUT' && refOverallValue !== null && row.metric !== 'Max Throughput' && row.location[loc] !== undefined && refRow?.location?.[loc] !== undefined
+                    ? getKpiCellColor(
+                      row.metric === 'Mean Jitter' ? 'Jitter' :
+                        row.metric === 'Packet Failure Rate' ? 'ErrorRatio' :
+                          'Throughput',
+                      parseFloat(row.location[loc]),
+                      parseFloat(refRow.location[loc])
+                    )
+                    : undefined;
+                  return (
+                    <td key={loc} style={{ backgroundColor: siteColor }}>
+                      {row.location[loc] !== undefined ? row.location[loc].toFixed(2) : 'N/A'}
+                    </td>
+                  );
+                })}
               </tr>
             );
           })}

@@ -49,9 +49,9 @@ const DpPingTableLoc3 = ({ data }) => {
                         <td rowSpan="2">Average</td>
                         <td>DUT</td>
                         <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(data.average.DUT.Overall), parseFloat(data.average.REF.Overall)) }}>{data.average.DUT.Overall}</td>
-                        <td>{data.average.DUT.Good}</td>
-                        <td>{data.average.DUT.Moderate}</td>
-                        <td>{data.average.DUT.Poor}</td>
+                        <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(data.average.DUT.Good), parseFloat(data.average.REF.Good)) }}>{data.average.DUT.Good}</td>
+                        <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(data.average.DUT.Moderate), parseFloat(data.average.REF.Moderate)) }}>{data.average.DUT.Moderate}</td>
+                        <td style={{ backgroundColor: getKpiCellColor('PingLatency', parseFloat(data.average.DUT.Poor), parseFloat(data.average.REF.Poor)) }}>{data.average.DUT.Poor}</td>
                     </tr>
                     <tr>
                         <td>REF</td>

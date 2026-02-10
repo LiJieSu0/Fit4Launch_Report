@@ -128,6 +128,9 @@ def _determine_analysis_parameters(file_path):
              params["analysis_direction_detected"] = "UL"
     
     # Determine protocol type from filename
+    # First, prepare the lowercase file path for path-based checks
+    file_path_lower = file_path.lower()
+    
     if "web page" in file_name:
         params["protocol_type_detected"] = "WEB_PAGE"
     elif "http" in file_name:
@@ -137,8 +140,11 @@ def _determine_analysis_parameters(file_path):
     elif "ping" in file_name: # Detect PING protocol
         params["protocol_type_detected"] = "PING"
     
+    # Check file path for Web-Kepler (path-based detection)
+    if "web-kepler" in file_path_lower or "kepler" in file_path_lower:
+        params["protocol_type_detected"] = "WEB_PAGE"
+    
     # Determine network type (5G/LTE) from the full file path
-    file_path_lower = file_path.lower()
     if "5g nsa" in file_path_lower:
         params["network_type_detected"] = "5G NSA"
     elif "5g sa" in file_path_lower:

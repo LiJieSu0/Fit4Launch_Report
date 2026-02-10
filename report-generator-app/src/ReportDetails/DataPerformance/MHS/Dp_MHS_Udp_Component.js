@@ -36,7 +36,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
     {
       metric: "Mean Throughput",
-      idealThroughput: "200000",
+      idealThroughput: "200",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Mean,
@@ -46,7 +46,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Mean Throughput",
-      idealThroughput: "200000",
+      idealThroughput: "200",
       deviceName: "REF",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Mean,
@@ -58,7 +58,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
     {
       metric: "Mean Throughput",
-      idealThroughput: "400000",
+      idealThroughput: "400",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Mean,
@@ -68,7 +68,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Mean Throughput",
-      idealThroughput: "400000",
+      idealThroughput: "400",
       deviceName: "REF",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Mean,
@@ -80,7 +80,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
     {
       metric: "Max Throughput",
-      idealThroughput: "200000",
+      idealThroughput: "200",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Maximum,
@@ -90,7 +90,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Max Throughput",
-      idealThroughput: "200000",
+      idealThroughput: "200",
       deviceName: "REF",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Maximum,
@@ -102,7 +102,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
     {
       metric: "Max Throughput",
-      idealThroughput: "400000",
+      idealThroughput: "400",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Maximum,
@@ -112,7 +112,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Max Throughput",
-      idealThroughput: "400000",
+      idealThroughput: "400",
       deviceName: "REF",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Maximum,
@@ -124,7 +124,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
     {
       metric: "Mean Jitter",
-      idealThroughput: "200000",
+      idealThroughput: "200",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.DUT?.Jitter?.Mean,
@@ -134,7 +134,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Mean Jitter",
-      idealThroughput: "200000",
+      idealThroughput: "200",
       deviceName: "REF",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.REF?.Jitter?.Mean,
@@ -146,7 +146,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
     {
       metric: "Mean Jitter",
-      idealThroughput: "400000",
+      idealThroughput: "400",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.DUT?.Jitter?.Mean,
@@ -156,7 +156,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Mean Jitter",
-      idealThroughput: "400000",
+      idealThroughput: "400",
       deviceName: "REF",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.REF?.Jitter?.Mean,
@@ -168,7 +168,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
     {
       metric: "Packet Failure Rate",
-      idealThroughput: "200000",
+      idealThroughput: "200",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.DUT?.["Error Ratio"]?.Mean,
@@ -178,7 +178,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Packet Failure Rate",
-      idealThroughput: "200000",
+      idealThroughput: "200",
       deviceName: "REF",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.REF?.["Error Ratio"]?.Mean,
@@ -190,7 +190,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
     {
       metric: "Packet Failure Rate",
-      idealThroughput: "400000",
+      idealThroughput: "400",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.DUT?.["Error Ratio"]?.Mean,
@@ -200,7 +200,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Packet Failure Rate",
-      idealThroughput: "400000",
+      idealThroughput: "400",
       deviceName: "REF",
       location: {
         good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.REF?.["Error Ratio"]?.Mean,
@@ -232,7 +232,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     // Mean Throughput - 10 Mbps
     {
       metric: "Mean Throughput",
-      idealThroughput: "10000",
+      idealThroughput: "10",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Mean,
@@ -242,7 +242,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Mean Throughput",
-      idealThroughput: "10000",
+      idealThroughput: "10",
       deviceName: "REF",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Mean,
@@ -253,7 +253,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     // Mean Throughput - 20 Mbps
     {
       metric: "Mean Throughput",
-      idealThroughput: "20000",
+      idealThroughput: "20",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Mean,
@@ -263,7 +263,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Mean Throughput",
-      idealThroughput: "20000",
+      idealThroughput: "20",
       deviceName: "REF",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Mean,
@@ -274,7 +274,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     // Max Throughput - 10 Mbps
     {
       metric: "Max Throughput",
-      idealThroughput: "10000",
+      idealThroughput: "10",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Maximum,
@@ -284,7 +284,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Max Throughput",
-      idealThroughput: "10000",
+      idealThroughput: "10",
       deviceName: "REF",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Maximum,
@@ -295,7 +295,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     // Max Throughput - 20 Mbps
     {
       metric: "Max Throughput",
-      idealThroughput: "20000",
+      idealThroughput: "20",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Maximum,
@@ -305,7 +305,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Max Throughput",
-      idealThroughput: "20000",
+      idealThroughput: "20",
       deviceName: "REF",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Maximum,
@@ -316,7 +316,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     // Mean Jitter - 10 Mbps
     {
       metric: "Mean Jitter",
-      idealThroughput: "10000",
+      idealThroughput: "10",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.DUT?.Jitter?.Mean,
@@ -326,7 +326,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Mean Jitter",
-      idealThroughput: "10000",
+      idealThroughput: "10",
       deviceName: "REF",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.REF?.Jitter?.Mean,
@@ -337,7 +337,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     // Mean Jitter - 20 Mbps
     {
       metric: "Mean Jitter",
-      idealThroughput: "20000",
+      idealThroughput: "20",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.DUT?.Jitter?.Mean,
@@ -347,7 +347,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Mean Jitter",
-      idealThroughput: "20000",
+      idealThroughput: "20",
       deviceName: "REF",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.REF?.Jitter?.Mean,
@@ -358,7 +358,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     // Packet Failure Rate - 10 Mbps
     {
       metric: "Packet Failure Rate",
-      idealThroughput: "10000",
+      idealThroughput: "10",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.DUT?.["Error Ratio"]?.Mean,
@@ -368,7 +368,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Packet Failure Rate",
-      idealThroughput: "10000",
+      idealThroughput: "10",
       deviceName: "REF",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.REF?.["Error Ratio"]?.Mean,
@@ -379,7 +379,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     // Packet Failure Rate - 20 Mbps
     {
       metric: "Packet Failure Rate",
-      idealThroughput: "20000",
+      idealThroughput: "20",
       deviceName: "DUT",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.DUT?.["Error Ratio"]?.Mean,
@@ -389,7 +389,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     },
     {
       metric: "Packet Failure Rate",
-      idealThroughput: "20000",
+      idealThroughput: "20",
       deviceName: "REF",
       location: {
         good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.REF?.["Error Ratio"]?.Mean,
@@ -425,12 +425,12 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
   const downloadHistogramData = [];
   const downloadMetrics = [
-    { metric: "Mean Throughput", idealThroughput: "200000", title: "MHS UDP Download Throughput (200 Mbps)", yAxisLabel: "Throughput (Mbps)" },
-    { metric: "Mean Throughput", idealThroughput: "400000", title: "MHS UDP Download Throughput (400 Mbps)", yAxisLabel: "Throughput (Mbps)" },
-    { metric: "Mean Jitter", idealThroughput: "200000", title: "MHS UDP Download Jitter (200 Mbps)", yAxisLabel: "Jitter (ms)" },
-    { metric: "Mean Jitter", idealThroughput: "400000", title: "MHS UDP Download Jitter (400 Mbps)", yAxisLabel: "Jitter (ms)" },
-    { metric: "Packet Failure Rate", idealThroughput: "200000", title: "MHS UDP Download Packet Failure Rate (200 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
-    { metric: "Packet Failure Rate", idealThroughput: "400000", title: "MHS UDP Download Packet Failure Rate (400 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
+    { metric: "Mean Throughput", idealThroughput: "200", title: "MHS UDP Download Throughput (200 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Throughput", idealThroughput: "400", title: "MHS UDP Download Throughput (400 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Jitter", idealThroughput: "200", title: "MHS UDP Download Jitter (200 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Mean Jitter", idealThroughput: "400", title: "MHS UDP Download Jitter (400 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Packet Failure Rate", idealThroughput: "200", title: "MHS UDP Download Packet Failure Rate (200 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
+    { metric: "Packet Failure Rate", idealThroughput: "400", title: "MHS UDP Download Packet Failure Rate (400 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
   ];
 
   downloadMetrics.forEach(({ metric, idealThroughput, title, yAxisLabel }) => {
@@ -467,12 +467,12 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
   const uploadHistogramData = [];
   const uploadMetrics = [
-    { metric: "Mean Throughput", idealThroughput: "10000", title: "MHS UDP Upload Throughput (10 Mbps)", yAxisLabel: "Throughput (Mbps)" },
-    { metric: "Mean Throughput", idealThroughput: "20000", title: "MHS UDP Upload Throughput (20 Mbps)", yAxisLabel: "Throughput (Mbps)" },
-    { metric: "Mean Jitter", idealThroughput: "10000", title: "MHS UDP Upload Jitter (10 Mbps)", yAxisLabel: "Jitter (ms)" },
-    { metric: "Mean Jitter", idealThroughput: "20000", title: "MHS UDP Upload Jitter (20 Mbps)", yAxisLabel: "Jitter (ms)" },
-    { metric: "Packet Failure Rate", idealThroughput: "10000", title: "MHS UDP Upload Packet Failure Rate (10 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
-    { metric: "Packet Failure Rate", idealThroughput: "20000", title: "MHS UDP Upload Packet Failure Rate (20 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
+    { metric: "Mean Throughput", idealThroughput: "10", title: "MHS UDP Upload Throughput (10 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Throughput", idealThroughput: "20", title: "MHS UDP Upload Throughput (20 Mbps)", yAxisLabel: "Throughput (Mbps)" },
+    { metric: "Mean Jitter", idealThroughput: "10", title: "MHS UDP Upload Jitter (10 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Mean Jitter", idealThroughput: "20", title: "MHS UDP Upload Jitter (20 Mbps)", yAxisLabel: "Jitter (ms)" },
+    { metric: "Packet Failure Rate", idealThroughput: "10", title: "MHS UDP Upload Packet Failure Rate (10 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
+    { metric: "Packet Failure Rate", idealThroughput: "20", title: "MHS UDP Upload Packet Failure Rate (20 Mbps)", yAxisLabel: "Packet Failure Rate (%)" },
   ];
 
   uploadMetrics.forEach(({ metric, idealThroughput, title, yAxisLabel }) => {

@@ -11891,3 +11891,433 @@
 2026-02-09 23:07:25,738 - pipeline - INFO - No empty collections found in any JSON file.
 2026-02-09 23:07:25,739 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
 2026-02-09 23:07:25,739 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-10 09:31:58,212 - pipeline - INFO - Project: #Dry Run
+2026-02-10 09:31:58,212 - pipeline - INFO - Market: New York
+2026-02-10 09:31:58,213 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\New York
+2026-02-10 09:31:58,213 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-10 09:31:58,213 - pipeline - INFO - Starting analysis pipeline...
+2026-02-10 09:31:58,220 - pipeline - INFO - Processing 246 individual CSV files...
+2026-02-10 09:31:58,302 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260203_125220_CH01_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 DUT_.csv
+2026-02-10 09:31:58,332 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260203_125220_CH02_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 REF_.csv
+2026-02-10 09:32:04,311 - pipeline - INFO - Processing directory-level analyses...
+2026-02-10 09:32:04,311 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-10 09:32:04,312 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-10 09:32:04,436 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-10 09:32:05,406 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-10 09:32:05,920 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-10 09:32:05,920 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-10 09:32:05,940 - pipeline - INFO - Successfully analyzed _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv: 201.80939047619046
+2026-02-10 09:32:05,940 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-10 09:32:05,960 - pipeline - INFO - Successfully analyzed _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv: 106.65787198912199
+2026-02-10 09:32:05,960 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-10 09:32:05,980 - pipeline - INFO - Successfully analyzed _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv: 151.11654
+2026-02-10 09:32:05,980 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-10 09:32:06,001 - pipeline - INFO - Successfully analyzed _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv: 154.40230444444444
+2026-02-10 09:32:06,001 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-10 09:32:06,019 - pipeline - INFO - Successfully analyzed _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv: 183.348031292517
+2026-02-10 09:32:06,019 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-10 09:32:06,037 - pipeline - INFO - Successfully analyzed _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv: 117.78983869911602
+2026-02-10 09:32:06,037 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-10 09:32:06,054 - pipeline - INFO - Successfully analyzed _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv: 140.6186
+2026-02-10 09:32:06,054 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-10 09:32:06,070 - pipeline - INFO - Successfully analyzed _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv: 238.354
+2026-02-10 09:32:06,070 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-10 09:32:06,087 - pipeline - INFO - Successfully analyzed _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv: 78.27300000000001
+2026-02-10 09:32:06,087 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-10 09:32:06,102 - pipeline - INFO - Successfully analyzed _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv: 75.78566666666667
+2026-02-10 09:32:06,102 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-10 09:32:06,118 - pipeline - INFO - Successfully analyzed _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv: 262.726
+2026-02-10 09:32:06,118 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-10 09:32:06,133 - pipeline - INFO - Successfully analyzed _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv: 263.202
+2026-02-10 09:32:06,134 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-10 09:32:06,154 - pipeline - INFO - Successfully analyzed _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv: 199.38622564102565
+2026-02-10 09:32:06,154 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:06,171 - pipeline - INFO - Successfully analyzed _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv: 130.38925768359607
+2026-02-10 09:32:06,171 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-10 09:32:06,188 - pipeline - INFO - Successfully analyzed _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv: 134.55456031746033
+2026-02-10 09:32:06,188 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:06,207 - pipeline - INFO - Successfully analyzed _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv: 144.7251455782313
+2026-02-10 09:32:06,208 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-10 09:32:06,224 - pipeline - INFO - Successfully analyzed _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv: 74.65798181818182
+2026-02-10 09:32:06,224 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:06,242 - pipeline - INFO - Successfully analyzed _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv: 63.67727272727273
+2026-02-10 09:32:06,242 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-10 09:32:06,263 - pipeline - INFO - Successfully analyzed _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv: 196.85621014492753
+2026-02-10 09:32:06,263 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:06,285 - pipeline - INFO - Successfully analyzed _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv: 119.37199855072464
+2026-02-10 09:32:06,285 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-10 09:32:06,303 - pipeline - INFO - Successfully analyzed _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv: 176.1300491883117
+2026-02-10 09:32:06,304 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:06,324 - pipeline - INFO - Successfully analyzed _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv: 117.79193697916666
+2026-02-10 09:32:06,324 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-10 09:32:06,344 - pipeline - INFO - Successfully analyzed _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv: 149.105912676733
+2026-02-10 09:32:06,344 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:06,364 - pipeline - INFO - Successfully analyzed _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv: 104.78977219980874
+2026-02-10 09:32:06,365 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-10 09:32:06,381 - pipeline - INFO - Successfully analyzed _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 49.54232289238539
+2026-02-10 09:32:06,381 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-10 09:32:06,416 - pipeline - INFO - Successfully analyzed _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 83.81849905911082
+2026-02-10 09:32:06,416 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-10 09:32:06,436 - pipeline - INFO - Successfully analyzed _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 58.24894230560767
+2026-02-10 09:32:06,436 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-10 09:32:06,454 - pipeline - INFO - Successfully analyzed _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 65.55823299416632
+2026-02-10 09:32:06,455 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-10 09:32:06,473 - pipeline - INFO - Successfully analyzed _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.13884175824176
+2026-02-10 09:32:06,474 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-10 09:32:06,493 - pipeline - INFO - Successfully analyzed _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.62678260869565
+2026-02-10 09:32:06,493 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-10 09:32:06,515 - pipeline - INFO - Successfully analyzed _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv: 124.50955311355311
+2026-02-10 09:32:06,515 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-10 09:32:06,535 - pipeline - INFO - Successfully analyzed _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv: 89.59927121212121
+2026-02-10 09:32:06,535 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-10 09:32:06,553 - pipeline - INFO - Successfully analyzed _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv: 141.11671079545454
+2026-02-10 09:32:06,553 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-10 09:32:06,581 - pipeline - INFO - Successfully analyzed _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv: 99.62210783279221
+2026-02-10 09:32:06,581 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-10 09:32:06,601 - pipeline - INFO - Successfully analyzed _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv: 251.54180277777778
+2026-02-10 09:32:06,602 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-10 09:32:06,623 - pipeline - INFO - Successfully analyzed _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv: 72.53284699869847
+2026-02-10 09:32:06,623 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-10 09:32:06,624 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-10 09:32:06,624 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-10 09:32:08,422 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-10 09:32:10,259 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-10 09:32:10,371 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\data_performance_results.json
+2026-02-10 09:32:10,375 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\coverage_performance_results.json
+2026-02-10 09:32:10,377 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\processing_summary.json
+2026-02-10 09:32:10,377 - pipeline - INFO - Running final data validation...
+2026-02-10 09:32:10,397 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-10 09:32:10,397 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-10 09:32:10,401 - pipeline - INFO - Project: #Dry Run
+2026-02-10 09:32:10,401 - pipeline - INFO - Project: #Dry Run
+2026-02-10 09:32:10,401 - pipeline - INFO - Market: Seattle
+2026-02-10 09:32:10,401 - pipeline - INFO - Market: Seattle
+2026-02-10 09:32:10,402 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-10 09:32:10,402 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-10 09:32:10,402 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-10 09:32:10,402 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-10 09:32:10,403 - pipeline - INFO - Starting analysis pipeline...
+2026-02-10 09:32:10,403 - pipeline - INFO - Starting analysis pipeline...
+2026-02-10 09:32:10,410 - pipeline - INFO - Processing 172 individual CSV files...
+2026-02-10 09:32:10,410 - pipeline - INFO - Processing 172 individual CSV files...
+2026-02-10 09:32:10,412 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv
+2026-02-10 09:32:10,412 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv
+2026-02-10 09:32:10,427 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:32:10,427 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:32:10,439 - pipeline - WARNING - No MRAB intervals found for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:32:10,439 - pipeline - WARNING - No MRAB intervals found for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:32:10,440 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:32:10,440 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:32:10,469 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv
+2026-02-10 09:32:10,469 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv
+2026-02-10 09:32:15,206 - pipeline - INFO - Processing directory-level analyses...
+2026-02-10 09:32:15,206 - pipeline - INFO - Processing directory-level analyses...
+2026-02-10 09:32:15,207 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-10 09:32:15,207 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-10 09:32:15,208 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-10 09:32:15,208 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-10 09:32:15,226 - pipeline - INFO - Successfully analyzed _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv: 147.1285119047619
+2026-02-10 09:32:15,226 - pipeline - INFO - Successfully analyzed _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv: 147.1285119047619
+2026-02-10 09:32:15,226 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-10 09:32:15,226 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-10 09:32:15,244 - pipeline - INFO - Successfully analyzed _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv: 60.84161072545875
+2026-02-10 09:32:15,244 - pipeline - INFO - Successfully analyzed _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv: 60.84161072545875
+2026-02-10 09:32:15,244 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-10 09:32:15,244 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-10 09:32:15,262 - pipeline - INFO - Successfully analyzed _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv: 213.39915641025638
+2026-02-10 09:32:15,262 - pipeline - INFO - Successfully analyzed _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv: 213.39915641025638
+2026-02-10 09:32:15,262 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-10 09:32:15,262 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-10 09:32:15,280 - pipeline - INFO - Successfully analyzed _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv: 62.726704619722376
+2026-02-10 09:32:15,280 - pipeline - INFO - Successfully analyzed _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv: 62.726704619722376
+2026-02-10 09:32:15,281 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-10 09:32:15,281 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-10 09:32:15,301 - pipeline - INFO - Successfully analyzed _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv: 249.94195769230768
+2026-02-10 09:32:15,301 - pipeline - INFO - Successfully analyzed _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv: 249.94195769230768
+2026-02-10 09:32:15,301 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-10 09:32:15,301 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-10 09:32:15,321 - pipeline - INFO - Successfully analyzed _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv: 120.83504523809523
+2026-02-10 09:32:15,321 - pipeline - INFO - Successfully analyzed _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv: 120.83504523809523
+2026-02-10 09:32:15,321 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:15,321 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:15,338 - pipeline - INFO - Successfully analyzed _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv: 134.29444791666666
+2026-02-10 09:32:15,338 - pipeline - INFO - Successfully analyzed _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv: 134.29444791666666
+2026-02-10 09:32:15,339 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-10 09:32:15,339 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-10 09:32:15,356 - pipeline - INFO - Successfully analyzed _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv: 91.81906558641975
+2026-02-10 09:32:15,356 - pipeline - INFO - Successfully analyzed _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv: 91.81906558641975
+2026-02-10 09:32:15,356 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:15,356 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:15,372 - pipeline - INFO - Successfully analyzed _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv: 228.6272625
+2026-02-10 09:32:15,372 - pipeline - INFO - Successfully analyzed _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv: 228.6272625
+2026-02-10 09:32:15,373 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-10 09:32:15,373 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-10 09:32:15,389 - pipeline - INFO - Successfully analyzed _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv: 131.27356176470587
+2026-02-10 09:32:15,389 - pipeline - INFO - Successfully analyzed _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv: 131.27356176470587
+2026-02-10 09:32:15,389 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:15,389 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-10 09:32:15,409 - pipeline - INFO - Successfully analyzed _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv: 260.2947194444444
+2026-02-10 09:32:15,409 - pipeline - INFO - Successfully analyzed _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv: 260.2947194444444
+2026-02-10 09:32:15,410 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-10 09:32:15,410 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-10 09:32:15,428 - pipeline - INFO - Successfully analyzed _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv: 201.0624455687831
+2026-02-10 09:32:15,428 - pipeline - INFO - Successfully analyzed _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv: 201.0624455687831
+2026-02-10 09:32:15,429 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-10 09:32:15,429 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-10 09:32:15,452 - pipeline - INFO - Successfully analyzed _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv: 24.38934015715434
+2026-02-10 09:32:15,452 - pipeline - INFO - Successfully analyzed _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv: 24.38934015715434
+2026-02-10 09:32:15,452 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-10 09:32:15,452 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-10 09:32:15,474 - pipeline - INFO - Successfully analyzed _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv: 3.2500080253080257
+2026-02-10 09:32:15,474 - pipeline - INFO - Successfully analyzed _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv: 3.2500080253080257
+2026-02-10 09:32:15,475 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-10 09:32:15,475 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-10 09:32:15,496 - pipeline - INFO - Successfully analyzed _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv: 3.528818966441385
+2026-02-10 09:32:15,496 - pipeline - INFO - Successfully analyzed _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv: 3.528818966441385
+2026-02-10 09:32:15,496 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-10 09:32:15,496 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-10 09:32:15,517 - pipeline - INFO - Successfully analyzed _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv: 2.468806872488008
+2026-02-10 09:32:15,517 - pipeline - INFO - Successfully analyzed _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv: 2.468806872488008
+2026-02-10 09:32:15,517 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-10 09:32:15,517 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-10 09:32:15,537 - pipeline - INFO - Successfully analyzed _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv: 6.999370687685939
+2026-02-10 09:32:15,537 - pipeline - INFO - Successfully analyzed _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv: 6.999370687685939
+2026-02-10 09:32:15,537 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-10 09:32:15,537 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-10 09:32:15,557 - pipeline - INFO - Successfully analyzed _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv: 2.489027777777778
+2026-02-10 09:32:15,557 - pipeline - INFO - Successfully analyzed _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv: 2.489027777777778
+2026-02-10 09:32:15,557 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-10 09:32:15,557 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-10 09:32:15,557 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-10 09:32:15,557 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-10 09:32:16,067 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-10 09:32:16,067 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-10 09:32:17,003 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-10 09:32:17,003 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-10 09:32:17,124 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-10 09:32:17,124 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-10 09:32:17,129 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-10 09:32:17,129 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-10 09:32:17,130 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-10 09:32:17,130 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-10 09:32:17,131 - pipeline - INFO - Running final data validation...
+2026-02-10 09:32:17,131 - pipeline - INFO - Running final data validation...
+2026-02-10 09:32:17,159 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-10 09:32:17,159 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-10 09:32:17,160 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-10 09:32:17,160 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-10 09:47:02,351 - pipeline - INFO - Project: #Dry Run
+2026-02-10 09:47:02,351 - pipeline - INFO - Market: New York
+2026-02-10 09:47:02,352 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\New York
+2026-02-10 09:47:02,352 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-10 09:47:02,352 - pipeline - INFO - Starting analysis pipeline...
+2026-02-10 09:47:02,358 - pipeline - INFO - Processing 246 individual CSV files...
+2026-02-10 09:47:02,403 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260203_125220_CH01_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 DUT_.csv
+2026-02-10 09:47:02,420 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260203_125220_CH02_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 REF_.csv
+2026-02-10 09:47:05,862 - pipeline - INFO - Processing directory-level analyses...
+2026-02-10 09:47:05,863 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-10 09:47:05,863 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-10 09:47:05,897 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-10 09:47:06,521 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-10 09:47:06,875 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-10 09:47:06,876 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-10 09:47:06,881 - pipeline - INFO - Successfully analyzed _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv: 201.80939047619046
+2026-02-10 09:47:06,881 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-10 09:47:06,887 - pipeline - INFO - Successfully analyzed _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv: 106.65787198912199
+2026-02-10 09:47:06,888 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-10 09:47:06,894 - pipeline - INFO - Successfully analyzed _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv: 151.11654
+2026-02-10 09:47:06,895 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-10 09:47:06,902 - pipeline - INFO - Successfully analyzed _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv: 154.40230444444444
+2026-02-10 09:47:06,902 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-10 09:47:06,909 - pipeline - INFO - Successfully analyzed _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv: 183.348031292517
+2026-02-10 09:47:06,909 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-10 09:47:06,915 - pipeline - INFO - Successfully analyzed _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv: 117.78983869911602
+2026-02-10 09:47:06,915 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-10 09:47:06,920 - pipeline - INFO - Successfully analyzed _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv: 140.6186
+2026-02-10 09:47:06,921 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-10 09:47:06,925 - pipeline - INFO - Successfully analyzed _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv: 238.354
+2026-02-10 09:47:06,925 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-10 09:47:06,930 - pipeline - INFO - Successfully analyzed _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv: 78.27300000000001
+2026-02-10 09:47:06,930 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-10 09:47:06,934 - pipeline - INFO - Successfully analyzed _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv: 75.78566666666667
+2026-02-10 09:47:06,934 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-10 09:47:06,939 - pipeline - INFO - Successfully analyzed _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv: 262.726
+2026-02-10 09:47:06,939 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-10 09:47:06,943 - pipeline - INFO - Successfully analyzed _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv: 263.202
+2026-02-10 09:47:06,943 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-10 09:47:06,948 - pipeline - INFO - Successfully analyzed _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv: 199.38622564102565
+2026-02-10 09:47:06,948 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:06,954 - pipeline - INFO - Successfully analyzed _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv: 130.38925768359607
+2026-02-10 09:47:06,954 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-10 09:47:06,959 - pipeline - INFO - Successfully analyzed _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv: 134.55456031746033
+2026-02-10 09:47:06,959 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:06,964 - pipeline - INFO - Successfully analyzed _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv: 144.7251455782313
+2026-02-10 09:47:06,964 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-10 09:47:06,970 - pipeline - INFO - Successfully analyzed _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv: 74.65798181818182
+2026-02-10 09:47:06,970 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:06,975 - pipeline - INFO - Successfully analyzed _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv: 63.67727272727273
+2026-02-10 09:47:06,975 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-10 09:47:06,983 - pipeline - INFO - Successfully analyzed _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv: 196.85621014492753
+2026-02-10 09:47:06,983 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:06,990 - pipeline - INFO - Successfully analyzed _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv: 119.37199855072464
+2026-02-10 09:47:06,990 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-10 09:47:06,997 - pipeline - INFO - Successfully analyzed _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv: 176.1300491883117
+2026-02-10 09:47:06,997 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:07,004 - pipeline - INFO - Successfully analyzed _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv: 117.79193697916666
+2026-02-10 09:47:07,005 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-10 09:47:07,012 - pipeline - INFO - Successfully analyzed _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv: 149.105912676733
+2026-02-10 09:47:07,012 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:07,020 - pipeline - INFO - Successfully analyzed _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv: 104.78977219980874
+2026-02-10 09:47:07,020 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-10 09:47:07,026 - pipeline - INFO - Successfully analyzed _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 49.54232289238539
+2026-02-10 09:47:07,026 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-10 09:47:07,032 - pipeline - INFO - Successfully analyzed _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 83.81849905911082
+2026-02-10 09:47:07,033 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-10 09:47:07,040 - pipeline - INFO - Successfully analyzed _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 58.24894230560767
+2026-02-10 09:47:07,040 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-10 09:47:07,046 - pipeline - INFO - Successfully analyzed _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 65.55823299416632
+2026-02-10 09:47:07,047 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-10 09:47:07,053 - pipeline - INFO - Successfully analyzed _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.13884175824176
+2026-02-10 09:47:07,053 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-10 09:47:07,059 - pipeline - INFO - Successfully analyzed _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.62678260869565
+2026-02-10 09:47:07,059 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-10 09:47:07,066 - pipeline - INFO - Successfully analyzed _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv: 124.50955311355311
+2026-02-10 09:47:07,066 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-10 09:47:07,073 - pipeline - INFO - Successfully analyzed _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv: 89.59927121212121
+2026-02-10 09:47:07,073 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-10 09:47:07,079 - pipeline - INFO - Successfully analyzed _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv: 141.11671079545454
+2026-02-10 09:47:07,079 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-10 09:47:07,086 - pipeline - INFO - Successfully analyzed _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv: 99.62210783279221
+2026-02-10 09:47:07,086 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-10 09:47:07,093 - pipeline - INFO - Successfully analyzed _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv: 251.54180277777778
+2026-02-10 09:47:07,093 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-10 09:47:07,100 - pipeline - INFO - Successfully analyzed _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv: 72.53284699869847
+2026-02-10 09:47:07,101 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-10 09:47:07,101 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-10 09:47:07,101 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-10 09:47:08,824 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-10 09:47:10,573 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-10 09:47:10,689 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\data_performance_results.json
+2026-02-10 09:47:10,694 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\coverage_performance_results.json
+2026-02-10 09:47:10,695 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\processing_summary.json
+2026-02-10 09:47:10,695 - pipeline - INFO - Running final data validation...
+2026-02-10 09:47:10,716 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-10 09:47:10,716 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-10 09:47:10,721 - pipeline - INFO - Project: #Dry Run
+2026-02-10 09:47:10,721 - pipeline - INFO - Project: #Dry Run
+2026-02-10 09:47:10,721 - pipeline - INFO - Market: Seattle
+2026-02-10 09:47:10,721 - pipeline - INFO - Market: Seattle
+2026-02-10 09:47:10,721 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-10 09:47:10,721 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-10 09:47:10,722 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-10 09:47:10,722 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-10 09:47:10,722 - pipeline - INFO - Starting analysis pipeline...
+2026-02-10 09:47:10,722 - pipeline - INFO - Starting analysis pipeline...
+2026-02-10 09:47:10,727 - pipeline - INFO - Processing 172 individual CSV files...
+2026-02-10 09:47:10,727 - pipeline - INFO - Processing 172 individual CSV files...
+2026-02-10 09:47:10,728 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv
+2026-02-10 09:47:10,728 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv
+2026-02-10 09:47:10,729 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:47:10,729 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:47:10,730 - pipeline - WARNING - No MRAB intervals found for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:47:10,730 - pipeline - WARNING - No MRAB intervals found for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260205_140657_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:47:10,730 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:47:10,730 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-10 09:47:10,746 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv
+2026-02-10 09:47:10,746 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv
+2026-02-10 09:47:13,930 - pipeline - INFO - Processing directory-level analyses...
+2026-02-10 09:47:13,930 - pipeline - INFO - Processing directory-level analyses...
+2026-02-10 09:47:13,930 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-10 09:47:13,930 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-10 09:47:13,931 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-10 09:47:13,931 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-10 09:47:13,939 - pipeline - INFO - Successfully analyzed _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv: 147.1285119047619
+2026-02-10 09:47:13,939 - pipeline - INFO - Successfully analyzed _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv: 147.1285119047619
+2026-02-10 09:47:13,940 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-10 09:47:13,940 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-10 09:47:13,947 - pipeline - INFO - Successfully analyzed _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv: 60.84161072545875
+2026-02-10 09:47:13,947 - pipeline - INFO - Successfully analyzed _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv: 60.84161072545875
+2026-02-10 09:47:13,947 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-10 09:47:13,947 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-10 09:47:13,955 - pipeline - INFO - Successfully analyzed _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv: 213.39915641025638
+2026-02-10 09:47:13,955 - pipeline - INFO - Successfully analyzed _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv: 213.39915641025638
+2026-02-10 09:47:13,956 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-10 09:47:13,956 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-10 09:47:13,963 - pipeline - INFO - Successfully analyzed _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv: 62.726704619722376
+2026-02-10 09:47:13,963 - pipeline - INFO - Successfully analyzed _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv: 62.726704619722376
+2026-02-10 09:47:13,963 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-10 09:47:13,963 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-10 09:47:13,975 - pipeline - INFO - Successfully analyzed _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv: 249.94195769230768
+2026-02-10 09:47:13,975 - pipeline - INFO - Successfully analyzed _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv: 249.94195769230768
+2026-02-10 09:47:13,975 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-10 09:47:13,975 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-10 09:47:13,985 - pipeline - INFO - Successfully analyzed _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv: 120.83504523809523
+2026-02-10 09:47:13,985 - pipeline - INFO - Successfully analyzed _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv: 120.83504523809523
+2026-02-10 09:47:13,986 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:13,986 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:13,993 - pipeline - INFO - Successfully analyzed _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv: 134.29444791666666
+2026-02-10 09:47:13,993 - pipeline - INFO - Successfully analyzed _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv: 134.29444791666666
+2026-02-10 09:47:13,993 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-10 09:47:13,993 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-10 09:47:13,998 - pipeline - INFO - Successfully analyzed _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv: 91.81906558641975
+2026-02-10 09:47:13,998 - pipeline - INFO - Successfully analyzed _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv: 91.81906558641975
+2026-02-10 09:47:13,999 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:13,999 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:14,005 - pipeline - INFO - Successfully analyzed _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv: 228.6272625
+2026-02-10 09:47:14,005 - pipeline - INFO - Successfully analyzed _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv: 228.6272625
+2026-02-10 09:47:14,005 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-10 09:47:14,005 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-10 09:47:14,011 - pipeline - INFO - Successfully analyzed _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv: 131.27356176470587
+2026-02-10 09:47:14,011 - pipeline - INFO - Successfully analyzed _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv: 131.27356176470587
+2026-02-10 09:47:14,011 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:14,011 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-10 09:47:14,017 - pipeline - INFO - Successfully analyzed _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv: 260.2947194444444
+2026-02-10 09:47:14,017 - pipeline - INFO - Successfully analyzed _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv: 260.2947194444444
+2026-02-10 09:47:14,018 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-10 09:47:14,018 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-10 09:47:14,024 - pipeline - INFO - Successfully analyzed _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv: 201.0624455687831
+2026-02-10 09:47:14,024 - pipeline - INFO - Successfully analyzed _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv: 201.0624455687831
+2026-02-10 09:47:14,025 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-10 09:47:14,025 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-10 09:47:14,042 - pipeline - INFO - Successfully analyzed _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv: 24.38934015715434
+2026-02-10 09:47:14,042 - pipeline - INFO - Successfully analyzed _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv: 24.38934015715434
+2026-02-10 09:47:14,043 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-10 09:47:14,043 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-10 09:47:14,056 - pipeline - INFO - Successfully analyzed _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv: 3.2500080253080257
+2026-02-10 09:47:14,056 - pipeline - INFO - Successfully analyzed _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv: 3.2500080253080257
+2026-02-10 09:47:14,057 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-10 09:47:14,057 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-10 09:47:14,069 - pipeline - INFO - Successfully analyzed _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv: 3.528818966441385
+2026-02-10 09:47:14,069 - pipeline - INFO - Successfully analyzed _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv: 3.528818966441385
+2026-02-10 09:47:14,070 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-10 09:47:14,070 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-10 09:47:14,081 - pipeline - INFO - Successfully analyzed _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv: 2.468806872488008
+2026-02-10 09:47:14,081 - pipeline - INFO - Successfully analyzed _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv: 2.468806872488008
+2026-02-10 09:47:14,081 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-10 09:47:14,081 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-10 09:47:14,092 - pipeline - INFO - Successfully analyzed _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv: 6.999370687685939
+2026-02-10 09:47:14,092 - pipeline - INFO - Successfully analyzed _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv: 6.999370687685939
+2026-02-10 09:47:14,092 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-10 09:47:14,092 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-10 09:47:14,101 - pipeline - INFO - Successfully analyzed _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv: 2.489027777777778
+2026-02-10 09:47:14,101 - pipeline - INFO - Successfully analyzed _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv: 2.489027777777778
+2026-02-10 09:47:14,101 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-10 09:47:14,101 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-10 09:47:14,102 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-10 09:47:14,102 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-10 09:47:14,610 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-10 09:47:14,610 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-10 09:47:15,519 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-10 09:47:15,519 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-10 09:47:15,632 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-10 09:47:15,632 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-10 09:47:15,637 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-10 09:47:15,637 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-10 09:47:15,638 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-10 09:47:15,638 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-10 09:47:15,639 - pipeline - INFO - Running final data validation...
+2026-02-10 09:47:15,639 - pipeline - INFO - Running final data validation...
+2026-02-10 09:47:15,662 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-10 09:47:15,662 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-10 09:47:15,663 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-10 09:47:15,663 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle

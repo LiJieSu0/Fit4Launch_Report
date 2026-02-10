@@ -23,15 +23,15 @@ const deviceData = [
     // {
     //     testDeviceLabel: "Samsung XCover Pro7",
     //     role: "Device Under Test",
-    //     softwareVersion: "17.0.02.147_Development Version",
+    //     softwareVersion: "SP1A.210812.016.A125USQU3CVG4",
     //     imei: [
     //         "354879770010297", "354879770011428", "354879770012160", "354879770012335", "354879770011139", "354879770011535", "354879770010388", "354879770012210", "354879770011048", "354879770012475"
     //     ]
     // },
     // {
-    //     testDeviceLabel: "Samsung GS25 FE",
+    //     testDeviceLabel: "Samsung GS23",
     //     role: "Reference",
-    //     softwareVersion: "AP3A.240905.015.A2.A146USQSFEYK3",
+    //     softwareVersion: "UP1A.231005.007.S911USQU1BWK4",
     //     imei: [
     //         "358625370021547", "358625370020499", "358625370022602", "358625370021935", "358625370022487", "358625370020408", "358625370022867", "358625370021489", "358625370021489", "358625370021596"
     //     ]

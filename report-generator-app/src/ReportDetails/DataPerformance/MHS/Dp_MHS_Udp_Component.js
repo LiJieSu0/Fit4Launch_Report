@@ -39,9 +39,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -49,9 +49,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Mean,
+        poor: undefined,
       },
     },
     // Mean Throughput - 400 Mbps
@@ -61,9 +61,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -71,9 +71,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Mean,
+        poor: undefined,
       },
     },
     // Max Throughput - 200 Mbps
@@ -83,9 +83,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Maximum,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Maximum,
-        poor: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Maximum,
+        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Maximum,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Maximum,
+        poor: undefined,
       },
     },
     {
@@ -93,9 +93,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Maximum,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Maximum,
-        poor: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Maximum,
+        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Maximum,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Maximum,
+        poor: undefined,
       },
     },
     // Max Throughput - 400 Mbps
@@ -105,9 +105,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Maximum,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Maximum,
-        poor: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Maximum,
+        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Maximum,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Maximum,
+        poor: undefined,
       },
     },
     {
@@ -115,9 +115,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Maximum,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Maximum,
-        poor: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Maximum,
+        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Maximum,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Maximum,
+        poor: undefined,
       },
     },
     // Mean Jitter - 200 Mbps
@@ -127,9 +127,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.DUT?.Jitter?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.DUT?.Jitter?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.DUT?.Jitter?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.DUT?.Jitter?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.DUT?.Jitter?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -137,9 +137,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.REF?.Jitter?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.REF?.Jitter?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.REF?.Jitter?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.REF?.Jitter?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.REF?.Jitter?.Mean,
+        poor: undefined,
       },
     },
     // Mean Jitter - 400 Mbps
@@ -149,9 +149,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.DUT?.Jitter?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.DUT?.Jitter?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.DUT?.Jitter?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.DUT?.Jitter?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.DUT?.Jitter?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -159,9 +159,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.REF?.Jitter?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.REF?.Jitter?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.REF?.Jitter?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.REF?.Jitter?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.REF?.Jitter?.Mean,
+        poor: undefined,
       },
     },
     // Packet Failure Rate - 200 Mbps
@@ -171,9 +171,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.DUT?.["Error Ratio"]?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.DUT?.["Error Ratio"]?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.DUT?.["Error Ratio"]?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.DUT?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.DUT?.["Error Ratio"]?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -181,9 +181,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "200",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Good?.REF?.["Error Ratio"]?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.REF?.["Error Ratio"]?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.REF?.["Error Ratio"]?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Moderate?.REF?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 200 Mbps for 10 seconds"]?.Poor?.REF?.["Error Ratio"]?.Mean,
+        poor: undefined,
       },
     },
     // Packet Failure Rate - 400 Mbps
@@ -193,9 +193,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.DUT?.["Error Ratio"]?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.DUT?.["Error Ratio"]?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.DUT?.["Error Ratio"]?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.DUT?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.DUT?.["Error Ratio"]?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -203,11 +203,11 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "400",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Good?.REF?.["Error Ratio"]?.Mean,
-        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.REF?.["Error Ratio"]?.Mean,
-        poor: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.REF?.["Error Ratio"]?.Mean,
+        good: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Moderate?.REF?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.DL?.["UDP Download Task at 400 Mbps for 10 seconds"]?.Poor?.REF?.["Error Ratio"]?.Mean,
+        poor: undefined,
       },
-    }
+    },
   ];
 
   const getOverallMean = (goodValue, moderateValue, poorValue) => {
@@ -235,9 +235,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -245,9 +245,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Mean,
+        poor: undefined,
       },
     },
     // Mean Throughput - 20 Mbps
@@ -256,9 +256,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -266,9 +266,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Mean,
+        poor: undefined,
       },
     },
     // Max Throughput - 10 Mbps
@@ -277,9 +277,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Maximum,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Maximum,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Maximum,
+        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Maximum,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Maximum,
+        poor: undefined,
       },
     },
     {
@@ -287,9 +287,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Maximum,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Maximum,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Maximum,
+        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Maximum,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Maximum,
+        poor: undefined,
       },
     },
     // Max Throughput - 20 Mbps
@@ -298,9 +298,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.DUT?.Throughput?.Maximum,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Maximum,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Maximum,
+        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.DUT?.Throughput?.Maximum,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.DUT?.Throughput?.Maximum,
+        poor: undefined,
       },
     },
     {
@@ -308,9 +308,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.REF?.Throughput?.Maximum,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Maximum,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Maximum,
+        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.REF?.Throughput?.Maximum,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.REF?.Throughput?.Maximum,
+        poor: undefined,
       },
     },
     // Mean Jitter - 10 Mbps
@@ -319,9 +319,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.DUT?.Jitter?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.DUT?.Jitter?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.DUT?.Jitter?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.DUT?.Jitter?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.DUT?.Jitter?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -329,9 +329,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.REF?.Jitter?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.REF?.Jitter?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.REF?.Jitter?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.REF?.Jitter?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.REF?.Jitter?.Mean,
+        poor: undefined,
       },
     },
     // Mean Jitter - 20 Mbps
@@ -340,9 +340,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.DUT?.Jitter?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.DUT?.Jitter?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.DUT?.Jitter?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.DUT?.Jitter?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.DUT?.Jitter?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -350,9 +350,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.REF?.Jitter?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.REF?.Jitter?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.REF?.Jitter?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.REF?.Jitter?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.REF?.Jitter?.Mean,
+        poor: undefined,
       },
     },
     // Packet Failure Rate - 10 Mbps
@@ -361,9 +361,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.DUT?.["Error Ratio"]?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.DUT?.["Error Ratio"]?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.DUT?.["Error Ratio"]?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.DUT?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.DUT?.["Error Ratio"]?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -371,9 +371,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "10",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Good?.REF?.["Error Ratio"]?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.REF?.["Error Ratio"]?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.REF?.["Error Ratio"]?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Moderate?.REF?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 10 Mbps for 10 seconds"]?.Poor?.REF?.["Error Ratio"]?.Mean,
+        poor: undefined,
       },
     },
     // Packet Failure Rate - 20 Mbps
@@ -382,9 +382,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "DUT",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.DUT?.["Error Ratio"]?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.DUT?.["Error Ratio"]?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.DUT?.["Error Ratio"]?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.DUT?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.DUT?.["Error Ratio"]?.Mean,
+        poor: undefined,
       },
     },
     {
@@ -392,9 +392,9 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
       idealThroughput: "20",
       deviceName: "REF",
       location: {
-        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Good?.REF?.["Error Ratio"]?.Mean,
-        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.REF?.["Error Ratio"]?.Mean,
-        poor: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.REF?.["Error Ratio"]?.Mean,
+        good: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Moderate?.REF?.["Error Ratio"]?.Mean,
+        moderate: udpDataRaw.UL?.["UDP Upload Task at 20 Mbps for 10 seconds"]?.Poor?.REF?.["Error Ratio"]?.Mean,
+        poor: undefined,
       },
     }
   ];

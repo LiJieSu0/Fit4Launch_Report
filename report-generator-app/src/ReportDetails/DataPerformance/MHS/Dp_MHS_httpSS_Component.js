@@ -39,31 +39,31 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
 
   const dataDL = {
     Good: {
-      DUT: getStats('DL', 'Good', 'DUT'),
-      REF: getStats('DL', 'Good', 'REF'),
-    },
-    Moderate: {
       DUT: getStats('DL', 'Moderate', 'DUT'),
       REF: getStats('DL', 'Moderate', 'REF'),
     },
-    Poor: {
+    Moderate: {
       DUT: getStats('DL', 'Poor', 'DUT'),
       REF: getStats('DL', 'Poor', 'REF'),
+    },
+    Poor: {
+      DUT: {},
+      REF: {},
     }
   };
 
   const dataUL = {
     Good: {
-      DUT: getStats('UL', 'Good', 'DUT'),
-      REF: getStats('UL', 'Good', 'REF'),
-    },
-    Moderate: {
       DUT: getStats('UL', 'Moderate', 'DUT'),
       REF: getStats('UL', 'Moderate', 'REF'),
     },
-    Poor: {
+    Moderate: {
       DUT: getStats('UL', 'Poor', 'DUT'),
       REF: getStats('UL', 'Poor', 'REF'),
+    },
+    Poor: {
+      DUT: {},
+      REF: {},
     }
   };
 

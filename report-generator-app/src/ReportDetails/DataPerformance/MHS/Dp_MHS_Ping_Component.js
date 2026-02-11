@@ -40,12 +40,13 @@ function Dp_MHS_Ping_Component({ city: propCity }) {
   };
 
   // MHS Ping data only has Moderate and Poor in the JSON
-  const goodDUT = getPingMetrics("Good", "DUT");
-  const goodREF = getPingMetrics("Good", "REF");
-  const modDUT = getPingMetrics("Moderate", "DUT");
-  const modREF = getPingMetrics("Moderate", "REF");
-  const poorDUT = getPingMetrics("Poor", "DUT");
-  const poorREF = getPingMetrics("Poor", "REF");
+  // MHS Ping data only has Moderate and Poor in the JSON
+  const goodDUT = getPingMetrics("Moderate", "DUT");
+  const goodREF = getPingMetrics("Moderate", "REF");
+  const modDUT = getPingMetrics("Poor", "DUT");
+  const modREF = getPingMetrics("Poor", "REF");
+  const poorDUT = { min: 0, max: 0, avg: 0, std_dev: 0 };
+  const poorREF = { min: 0, max: 0, avg: 0, std_dev: 0 };
 
 
   const calculateOverall = (val1, val2, val3) => {

@@ -345,7 +345,7 @@ class DataAnalysisPipeline:
                         # path_parts might be ["5G AUTO DP", "TC_NAME"]
                         # key is "DUT" or "REF"
                         safe_parts = [p.replace(" ", "_") for p in path_parts]
-                        filename = f"cdf_throughput_{'_'.join(safe_parts)}_{key}.json".lower()
+                        filename = f"{'_'.join(safe_parts)}_{key}.json".lower()
                         
                         out_path = os.path.join(cdf_dir, filename)
                         with open(out_path, 'w', encoding='utf-8') as f:

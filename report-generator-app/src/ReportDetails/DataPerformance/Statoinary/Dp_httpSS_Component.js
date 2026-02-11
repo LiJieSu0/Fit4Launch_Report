@@ -3,6 +3,7 @@ import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
 import DpThroughputOverallTable from '../DpThroughputOverallTable';
 import DpRangeChart from '../DpRangeChart';
 import DpHistogramComponent from '../DpHistogramComponent';
+import DpCDF_Chart from '../DpCDF_Chart';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
@@ -11,7 +12,7 @@ import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import { useEffect } from 'react';
 
 function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
-  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, project, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -234,6 +235,13 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
             },
           ]}
         />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          filename="5g_auto_dp_http_single_stream_dl_good_dut.json"
+          title="HTTP SS DL Good (DUT) CDF"
+        />
+
       </div>
       <div className='page-content'>
         <DpHistogramComponent

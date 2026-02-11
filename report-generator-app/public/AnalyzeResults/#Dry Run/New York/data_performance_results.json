@@ -183,10 +183,10 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 45.32399402298851,
-                                "Standard Deviation": 1.2942775344531328,
+                                "Mean": 45.579118690932305,
+                                "Standard Deviation": 1.8154193451516982,
                                 "Minimum": 41.27923333333334,
-                                "Maximum": 47.437482758620696,
+                                "Maximum": 50.95137037037037,
                                 "Number of Intervals": 20
                             }
                         },
@@ -213,10 +213,10 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 31.327401839080466,
-                                "Standard Deviation": 7.059834708089468,
-                                "Minimum": 16.9514,
-                                "Maximum": 44.213,
+                                "Mean": 34.80290666915089,
+                                "Standard Deviation": 8.396004074905248,
+                                "Minimum": 21.189249999999998,
+                                "Maximum": 51.66581818181819,
                                 "Number of Intervals": 20
                             }
                         },
@@ -227,9 +227,9 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 78.70153787356321,
-                                "Standard Deviation": 7.934939349194266,
-                                "Minimum": 52.2189,
+                                "Mean": 78.79157045977011,
+                                "Standard Deviation": 7.62271605565957,
+                                "Minimum": 54.01955172413793,
                                 "Maximum": 91.39973333333334,
                                 "Number of Intervals": 20
                             }
@@ -243,11 +243,11 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 1.0485733333333334,
-                                "Standard Deviation": 1.435818169662626,
-                                "Minimum": 0.0,
-                                "Maximum": 2.6214333333333335,
-                                "Number of Intervals": 5
+                                "Mean": 78.643,
+                                "Standard Deviation": 0.0,
+                                "Minimum": 78.643,
+                                "Maximum": 78.643,
+                                "Number of Intervals": 2
                             }
                         },
                         "DUT": {
@@ -257,11 +257,11 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 0.9039425287356323,
-                                "Standard Deviation": 1.5656743868924048,
-                                "Minimum": 0.0,
-                                "Maximum": 2.711827586206897,
-                                "Number of Intervals": 3
+                                "Mean": 78.643,
+                                "Standard Deviation": NaN,
+                                "Minimum": 78.643,
+                                "Maximum": 78.643,
+                                "Number of Intervals": 1
                             }
                         }
                     }
@@ -291,9 +291,9 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 256.64363365587235,
-                                "Standard Deviation": 43.659413436711496,
-                                "Minimum": 187.05271666666664,
+                                "Mean": 256.96067215869726,
+                                "Standard Deviation": 43.105923335165656,
+                                "Minimum": 190.22310169491527,
                                 "Maximum": 316.60634,
                                 "Number of Intervals": 10
                             }
@@ -337,9 +337,9 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 179.7895385003134,
-                                "Standard Deviation": 101.98682338054947,
-                                "Minimum": 0.024166666666666666,
+                                "Mean": 180.43712136472004,
+                                "Standard Deviation": 101.57165380614506,
+                                "Minimum": 0.06552173913043478,
                                 "Maximum": 287.5859636363636,
                                 "Number of Intervals": 20
                             }
@@ -351,11 +351,11 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 52.819074074074074,
-                                "Standard Deviation": 0,
-                                "Minimum": 52.819074074074074,
-                                "Maximum": 52.819074074074074,
-                                "Number of Intervals": 1
+                                "Mean": 73.386,
+                                "Standard Deviation": 21.054,
+                                "Minimum": 46.48,
+                                "Maximum": 109.697,
+                                "Number of Intervals": 20
                             }
                         }
                     }
@@ -399,8 +399,8 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 45.37497297619047,
-                                "Standard Deviation": 19.85935579823137,
+                                "Mean": 47.689049999999995,
+                                "Standard Deviation": 18.71915085293668,
                                 "Minimum": 12.231,
                                 "Maximum": 92.819,
                                 "Number of Intervals": 20
@@ -413,8 +413,8 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 121.98795,
-                                "Standard Deviation": 63.8280813291083,
+                                "Mean": 123.156475,
+                                "Standard Deviation": 62.579721334486415,
                                 "Minimum": 40.966,
                                 "Maximum": 230.696,
                                 "Number of Intervals": 20
@@ -443,10 +443,10 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 55.490874999999996,
-                                "Standard Deviation": 11.291177728506028,
+                                "Mean": 57.716874999999995,
+                                "Standard Deviation": 13.235529069888683,
                                 "Minimum": 40.988,
-                                "Maximum": 81.5135,
+                                "Maximum": 89.04,
                                 "Number of Intervals": 20
                             }
                         }
@@ -551,10 +551,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.07717500000000001
+                                    "Mean": 0.07717500000000002,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 7.8147
+                                    "Mean": 7.819059722222223,
+                                    "Number of Intervals": 20
                                 }
                             },
                             "DUT": {
@@ -571,10 +573,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.07743500000000002
+                                    "Mean": 0.07743500000000002,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 2.4566999999999997
+                                    "Mean": 2.4567,
+                                    "Number of Intervals": 20
                                 }
                             }
                         },
@@ -593,10 +597,12 @@
                                     "Number of Intervals": 19
                                 },
                                 "Jitter": {
-                                    "Mean": 0.09977894736842106
+                                    "Mean": 0.09977894736842105,
+                                    "Number of Intervals": 19
                                 },
                                 "Error Ratio": {
-                                    "Mean": 6.210000000000002
+                                    "Mean": 6.2111754385964915,
+                                    "Number of Intervals": 19
                                 }
                             },
                             "DUT": {
@@ -613,10 +619,12 @@
                                     "Number of Intervals": 16
                                 },
                                 "Jitter": {
-                                    "Mean": 0.10473125000000001
+                                    "Mean": 0.10473125000000003,
+                                    "Number of Intervals": 16
                                 },
                                 "Error Ratio": {
-                                    "Mean": 3.3678124999999994
+                                    "Mean": 3.3678125,
+                                    "Number of Intervals": 16
                                 }
                             }
                         },
@@ -635,10 +643,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 9.777095000000001
+                                    "Mean": 9.777095,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 33.1576
+                                    "Mean": 33.15938888888888,
+                                    "Number of Intervals": 20
                                 }
                             },
                             "DUT": {
@@ -655,10 +665,12 @@
                                     "Number of Intervals": 19
                                 },
                                 "Jitter": {
-                                    "Mean": 10.30688947368421
+                                    "Mean": 10.30688947368421,
+                                    "Number of Intervals": 19
                                 },
                                 "Error Ratio": {
-                                    "Mean": 58.64578947368422
+                                    "Mean": 58.6457894736842,
+                                    "Number of Intervals": 19
                                 }
                             }
                         }
@@ -679,10 +691,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.052270000000000004
+                                    "Mean": 0.052270000000000004,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 32.38965
+                                    "Mean": 32.389649999999996,
+                                    "Number of Intervals": 20
                                 }
                             },
                             "DUT": {
@@ -699,10 +713,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.04282
+                                    "Mean": 0.042820000000000004,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 4.82885
+                                    "Mean": 4.828850000000001,
+                                    "Number of Intervals": 20
                                 }
                             }
                         },
@@ -721,10 +737,12 @@
                                     "Number of Intervals": 19
                                 },
                                 "Jitter": {
-                                    "Mean": 0.11865263157894738
+                                    "Mean": 0.11865263157894737,
+                                    "Number of Intervals": 19
                                 },
                                 "Error Ratio": {
-                                    "Mean": 16.998052631578947
+                                    "Mean": 16.998052631578947,
+                                    "Number of Intervals": 19
                                 }
                             },
                             "DUT": {
@@ -741,10 +759,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.09283000000000001
+                                    "Mean": 0.09283,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 9.92625
+                                    "Mean": 9.926249999999998,
+                                    "Number of Intervals": 20
                                 }
                             }
                         },
@@ -763,10 +783,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.149055
+                                    "Mean": 0.149055,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 24.333150000000003
+                                    "Mean": 24.33315,
+                                    "Number of Intervals": 20
                                 }
                             },
                             "DUT": {
@@ -783,10 +805,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.30522
+                                    "Mean": 0.30521999999999994,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 30.3638
+                                    "Mean": 30.363799999999998,
+                                    "Number of Intervals": 20
                                 }
                             }
                         }
@@ -809,10 +833,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.7423499999999996
+                                    "Mean": 1.7423499999999996,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.009500000000000001
+                                    "Mean": 0.01461538461538462,
+                                    "Number of Intervals": 13
                                 }
                             },
                             "DUT": {
@@ -829,10 +855,8 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.7007999999999999
-                                },
-                                "Error Ratio": {
-                                    "Mean": 0.0
+                                    "Mean": 1.7008000000000003,
+                                    "Number of Intervals": 20
                                 }
                             }
                         },
@@ -851,10 +875,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.6810500000000002
+                                    "Mean": 1.6810500000000004,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.0015
+                                    "Mean": 0.01,
+                                    "Number of Intervals": 3
                                 }
                             },
                             "DUT": {
@@ -871,10 +897,8 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.7004000000000001
-                                },
-                                "Error Ratio": {
-                                    "Mean": 0.0
+                                    "Mean": 1.7004000000000001,
+                                    "Number of Intervals": 20
                                 }
                             }
                         },
@@ -893,10 +917,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.69335
+                                    "Mean": 1.69335,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.07
+                                    "Mean": 0.23333333333333336,
+                                    "Number of Intervals": 6
                                 }
                             },
                             "DUT": {
@@ -913,10 +939,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.7828500000000003
+                                    "Mean": 1.7828499999999998,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.0005
+                                    "Mean": 0.01,
+                                    "Number of Intervals": 1
                                 }
                             }
                         }
@@ -937,10 +965,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.9155
+                                    "Mean": 0.9155,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.015500000000000003
+                                    "Mean": 0.017222222222222226,
+                                    "Number of Intervals": 18
                                 }
                             },
                             "DUT": {
@@ -957,10 +987,8 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.9441
-                                },
-                                "Error Ratio": {
-                                    "Mean": 0.0
+                                    "Mean": 0.9440999999999999,
+                                    "Number of Intervals": 20
                                 }
                             }
                         },
@@ -979,10 +1007,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.9087
+                                    "Mean": 0.9087,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.001
+                                    "Mean": 0.01,
+                                    "Number of Intervals": 2
                                 }
                             },
                             "DUT": {
@@ -999,10 +1029,8 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.9467000000000001
-                                },
-                                "Error Ratio": {
-                                    "Mean": 0.0
+                                    "Mean": 0.9467000000000001,
+                                    "Number of Intervals": 20
                                 }
                             }
                         },
@@ -1021,10 +1049,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.94565
+                                    "Mean": 0.94565,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.0055
+                                    "Mean": 0.055,
+                                    "Number of Intervals": 2
                                 }
                             },
                             "DUT": {
@@ -1041,10 +1071,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.97995
+                                    "Mean": 0.97995,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.0005
+                                    "Mean": 0.01,
+                                    "Number of Intervals": 1
                                 }
                             }
                         }
@@ -1139,23 +1171,27 @@
                             "Number of Intervals": 12
                         },
                         "UL Throughput": {
-                            "Mean": 6.273553373334043,
-                            "Standard Deviation": 1.334399075828315,
+                            "Mean": 6.292523539729092,
+                            "Standard Deviation": 1.3538285909743355,
                             "Minimum": 4.67957671957672,
-                            "Maximum": 9.496262411347518,
+                            "Maximum": 9.564092857142857,
                             "Number of Intervals": 12
                         },
                         "DL Jitter": {
-                            "Mean": 1.6977296296296296
+                            "Mean": 1.6977296296296298,
+                            "Number of Intervals": 12
                         },
                         "UL Jitter": {
-                            "Mean": 1.7372500000000002
+                            "Mean": 1.7372500000000002,
+                            "Number of Intervals": 12
                         },
                         "DL Error Ratio": {
-                            "Mean": 0.0009351851851851854
+                            "Mean": 0.013632432432432433,
+                            "Number of Intervals": 5
                         },
                         "UL Error Ratio": {
-                            "Mean": 0.5691666666666667
+                            "Mean": 0.85375,
+                            "Number of Intervals": 8
                         },
                         "Ping RTT": {
                             "Mean": 40.92,
@@ -1176,23 +1212,27 @@
                             "Number of Intervals": 12
                         },
                         "UL Throughput": {
-                            "Mean": 6.646166350913781,
-                            "Standard Deviation": 0.9114748167071294,
+                            "Mean": 6.649904374213905,
+                            "Standard Deviation": 0.9131374660984144,
                             "Minimum": 4.944826815642458,
                             "Maximum": 7.747684210526316,
                             "Number of Intervals": 12
                         },
                         "DL Jitter": {
-                            "Mean": 1.7123685185185185
+                            "Mean": 1.7123685185185187,
+                            "Number of Intervals": 12
                         },
                         "UL Jitter": {
-                            "Mean": 1.7822500000000001
+                            "Mean": 1.7822499999999997,
+                            "Number of Intervals": 12
                         },
                         "DL Error Ratio": {
-                            "Mean": 0.0007685185185185185
+                            "Mean": 0.05111742424242424,
+                            "Number of Intervals": 3
                         },
                         "UL Error Ratio": {
-                            "Mean": 0.36000000000000004
+                            "Mean": 0.8640000000000001,
+                            "Number of Intervals": 5
                         },
                         "Ping RTT": {
                             "Mean": 41.0775,
@@ -1277,10 +1317,10 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 28.22340155172414,
-                                "Standard Deviation": 1.822414217705487,
+                                "Mean": 29.14343292419266,
+                                "Standard Deviation": 2.2950529461699833,
                                 "Minimum": 24.222099999999998,
-                                "Maximum": 30.931366666666666,
+                                "Maximum": 33.71022222222222,
                                 "Number of Intervals": 20
                             }
                         },
@@ -1307,11 +1347,11 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 1.7476222222222224,
-                                "Standard Deviation": 1.513485240662658,
-                                "Minimum": 0.0,
-                                "Maximum": 2.6214333333333335,
-                                "Number of Intervals": 3
+                                "Mean": 78.643,
+                                "Standard Deviation": 0.0,
+                                "Minimum": 78.643,
+                                "Maximum": 78.643,
+                                "Number of Intervals": 2
                             }
                         },
                         "DUT": {
@@ -1321,11 +1361,11 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 1.3559137931034484,
-                                "Standard Deviation": 1.565674386892405,
-                                "Minimum": 0.0,
-                                "Maximum": 2.711827586206897,
-                                "Number of Intervals": 4
+                                "Mean": 78.643,
+                                "Standard Deviation": 0.0,
+                                "Minimum": 78.643,
+                                "Maximum": 78.643,
+                                "Number of Intervals": 2
                             }
                         }
                     }
@@ -1371,9 +1411,9 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 33.435619026275205,
-                                "Standard Deviation": 22.39516603405634,
-                                "Minimum": 0.022728813559322034,
+                                "Mean": 33.58595650184225,
+                                "Standard Deviation": 22.19536659830821,
+                                "Minimum": 0.055875,
                                 "Maximum": 70.14033898305084,
                                 "Number of Intervals": 20
                             }
@@ -1385,9 +1425,9 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 23.507392901811805,
-                                "Standard Deviation": 15.828556630129027,
-                                "Minimum": 0.00033333333333333327,
+                                "Mean": 23.542502225007397,
+                                "Standard Deviation": 15.780236533853572,
+                                "Minimum": 0.009999999999999998,
                                 "Maximum": 50.96458620689654,
                                 "Number of Intervals": 20
                             }
@@ -1403,11 +1443,11 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 110.96812499999999,
-                                "Standard Deviation": 195.42697145059202,
-                                "Minimum": 0.0,
+                                "Mean": 119.51546052631578,
+                                "Standard Deviation": 198.1843877335791,
+                                "Minimum": 31.71125,
                                 "Maximum": 747.755,
-                                "Number of Intervals": 20
+                                "Number of Intervals": 19
                             }
                         },
                         "DUT": {
@@ -1417,8 +1457,8 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 89.19470833333334,
-                                "Standard Deviation": 148.73967686953614,
+                                "Mean": 92.65500833333333,
+                                "Standard Deviation": 147.78220965249275,
                                 "Minimum": 31.826500000000003,
                                 "Maximum": 709.4575,
                                 "Number of Intervals": 20
@@ -1433,8 +1473,8 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 67.09256666666667,
-                                "Standard Deviation": 38.98069454208873,
+                                "Mean": 68.88611666666667,
+                                "Standard Deviation": 37.48321928048533,
                                 "Minimum": 14.227,
                                 "Maximum": 190.105,
                                 "Number of Intervals": 20
@@ -1463,24 +1503,26 @@
                     "Network Type": "5G",
                     "Analysis Type": "mhs_drive_performance",
                     "DL Throughput": {
-                        "Mean": 9.885714795918368,
-                        "Standard Deviation": 0.22920670961134107,
-                        "Minimum": 9.26587755102041,
+                        "Mean": 9.936072826086956,
+                        "Standard Deviation": 0.12191838085290994,
+                        "Minimum": 9.658366666666668,
                         "Maximum": 10.007533333333333,
                         "Number of Intervals": 12
                     },
                     "UL Throughput": {
-                        "Mean": 0.07869399406209827,
-                        "Standard Deviation": 0.04406798151263944,
+                        "Mean": 0.07891398843802726,
+                        "Standard Deviation": 0.04439383389926977,
                         "Minimum": 0.04814084507042254,
-                        "Maximum": 0.21135802469135803,
+                        "Maximum": 0.21267080745341616,
                         "Number of Intervals": 12
                     },
                     "DL Jitter": {
-                        "Mean": 1.7924119345524543
+                        "Mean": 1.78970015117158,
+                        "Number of Intervals": 12
                     },
                     "DL Error Ratio": {
-                        "Mean": 0.7841097208854668
+                        "Mean": 1.6050421952078928,
+                        "Number of Intervals": 6
                     },
                     "Ping RTT": {
                         "Mean": 48.005,
@@ -1494,24 +1536,26 @@
                     "Network Type": "5G",
                     "Analysis Type": "mhs_drive_performance",
                     "DL Throughput": {
-                        "Mean": 9.825028240740743,
-                        "Standard Deviation": 0.5197526691407084,
-                        "Minimum": 8.183083333333334,
+                        "Mean": 9.87373707010582,
+                        "Standard Deviation": 0.3523034167275192,
+                        "Minimum": 8.767589285714285,
                         "Maximum": 10.009933333333333,
                         "Number of Intervals": 12
                     },
                     "UL Throughput": {
-                        "Mean": 0.24695222015029006,
-                        "Standard Deviation": 0.370979170783221,
-                        "Minimum": 0.053924137931034476,
+                        "Mean": 0.24711949808659714,
+                        "Standard Deviation": 0.3709009119407053,
+                        "Minimum": 0.05429861111111111,
                         "Maximum": 1.0460617283950617,
                         "Number of Intervals": 12
                     },
                     "DL Jitter": {
-                        "Mean": 2.246844761904762
+                        "Mean": 2.4555046296296297,
+                        "Number of Intervals": 12
                     },
                     "DL Error Ratio": {
-                        "Mean": 0.7805142857142857
+                        "Mean": 2.1100137331929028,
+                        "Number of Intervals": 8
                     },
                     "Ping RTT": {
                         "Mean": 48.718333333333334,
@@ -1593,10 +1637,12 @@
                                     "Number of Intervals": 19
                                 },
                                 "Jitter": {
-                                    "Mean": 0.20821052631578946
+                                    "Mean": 0.20821052631578946,
+                                    "Number of Intervals": 19
                                 },
                                 "Error Ratio": {
-                                    "Mean": 17.809789473684212
+                                    "Mean": 17.80978947368421,
+                                    "Number of Intervals": 19
                                 }
                             },
                             "DUT": {
@@ -1613,10 +1659,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.13391
+                                    "Mean": 0.13391000000000003,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 5.478299999999999
+                                    "Mean": 5.4783,
+                                    "Number of Intervals": 20
                                 }
                             }
                         },
@@ -1635,10 +1683,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 10.587495
+                                    "Mean": 10.587494999999997,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 67.48715
+                                    "Mean": 67.48715,
+                                    "Number of Intervals": 20
                                 }
                             },
                             "DUT": {
@@ -1648,17 +1698,19 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 39.98565500000001,
-                                    "Standard Deviation": 32.31762072997973,
-                                    "Minimum": 0.0518,
+                                    "Mean": 39.986646666666665,
+                                    "Standard Deviation": 32.316331199458894,
+                                    "Minimum": 0.05389999999999999,
                                     "Maximum": 112.0347,
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 8.266034999999999
+                                    "Mean": 8.44594777777778,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 70.1171
+                                    "Mean": 70.11710000000002,
+                                    "Number of Intervals": 20
                                 }
                             }
                         }
@@ -1679,10 +1731,12 @@
                                     "Number of Intervals": 19
                                 },
                                 "Jitter": {
-                                    "Mean": 0.2526105263157895
+                                    "Mean": 0.25261052631578945,
+                                    "Number of Intervals": 19
                                 },
                                 "Error Ratio": {
-                                    "Mean": 32.060421052631575
+                                    "Mean": 32.06042105263158,
+                                    "Number of Intervals": 19
                                 }
                             },
                             "DUT": {
@@ -1699,10 +1753,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.19829499999999997
+                                    "Mean": 0.198295,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 19.49075
+                                    "Mean": 19.49075,
+                                    "Number of Intervals": 20
                                 }
                             }
                         },
@@ -1721,10 +1777,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 2.264385
+                                    "Mean": 2.264385,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 74.78739999999999
+                                    "Mean": 74.78739999999999,
+                                    "Number of Intervals": 20
                                 }
                             },
                             "DUT": {
@@ -1741,10 +1799,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.4200400000000002
+                                    "Mean": 1.4200399999999997,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 64.9618
+                                    "Mean": 64.9618,
+                                    "Number of Intervals": 20
                                 }
                             }
                         }
@@ -1767,10 +1827,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.5121
+                                    "Mean": 1.5121000000000002,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.0085
+                                    "Mean": 0.17,
+                                    "Number of Intervals": 1
                                 }
                             },
                             "DUT": {
@@ -1787,10 +1849,8 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.6935499999999997
-                                },
-                                "Error Ratio": {
-                                    "Mean": 0.0
+                                    "Mean": 1.6935499999999997,
+                                    "Number of Intervals": 20
                                 }
                             }
                         },
@@ -1809,10 +1869,8 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.7404499999999998
-                                },
-                                "Error Ratio": {
-                                    "Mean": 0.0
+                                    "Mean": 1.7404499999999998,
+                                    "Number of Intervals": 20
                                 }
                             },
                             "DUT": {
@@ -1829,10 +1887,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.7625999999999997
+                                    "Mean": 1.7625999999999997,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.0005
+                                    "Mean": 0.01,
+                                    "Number of Intervals": 1
                                 }
                             }
                         }
@@ -1853,10 +1913,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.87705
+                                    "Mean": 0.87705,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.0005
+                                    "Mean": 0.01,
+                                    "Number of Intervals": 1
                                 }
                             },
                             "DUT": {
@@ -1873,10 +1935,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.95425
+                                    "Mean": 0.9542499999999998,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.0085
+                                    "Mean": 0.05666666666666667,
+                                    "Number of Intervals": 3
                                 }
                             }
                         },
@@ -1888,17 +1952,19 @@
                                 "Analysis Direction": "UL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 16.341716095571094,
-                                    "Standard Deviation": 1.798257187881551,
+                                    "Mean": 16.41230776223776,
+                                    "Standard Deviation": 1.8500278903461456,
                                     "Minimum": 13.660750000000002,
                                     "Maximum": 19.837272727272726,
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.7481
+                                    "Mean": 0.7481000000000001,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.0005
+                                    "Mean": 0.01,
+                                    "Number of Intervals": 1
                                 }
                             },
                             "DUT": {
@@ -1915,10 +1981,12 @@
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.9757999999999999
+                                    "Mean": 0.9758000000000001,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.039999999999999994
+                                    "Mean": 0.11428571428571428,
+                                    "Number of Intervals": 7
                                 }
                             }
                         }

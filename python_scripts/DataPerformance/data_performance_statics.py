@@ -62,6 +62,25 @@ def _get_series_from_dataframe(data, column_name):
     else:
         return None
 
+def _get_interval_indices(df, event_col, start_event_str):
+    """
+    Finds start and end indices for intervals based on a start event string.
+    An interval starts at each occurrence of start_event_str and ends at the
+    row before the next occurrence, or at the end of the dataframe for the last match.
+    """
+    started_indices = df[df[event_col].astype(str).str.contains(start_event_str, na=False)].index.tolist()
+    
+    intervals = []
+    for i in range(len(started_indices)):
+        start_idx = started_indices[i]
+        if i + 1 < len(started_indices):
+            end_idx = started_indices[i + 1] - 1
+        else:
+            end_idx = len(df) - 1
+        intervals.append((start_idx, end_idx))
+    
+    return intervals
+
 def _determine_analysis_parameters(file_path):
     """
     Determines analysis parameters (direction, protocol, network, device, column names, event strings)
@@ -368,15 +387,15 @@ def analyze_throughput(file_path, column_name_to_analyze, event_col_name, start_
         
         filtered_data = data.copy()
 
-        started_indices = filtered_data[filtered_data[current_event_col_to_use].astype(str).str.contains(start_event_str, na=False)].index
-        ended_indices = filtered_data[filtered_data[current_event_col_to_use].astype(str).str.contains(end_event_str, na=False)].index
+        # Use the new interval logic: Start to Next Start - 1
+        intervals = _get_interval_indices(filtered_data, current_event_col_to_use, start_event_str)
 
-        if started_indices.empty:
+        if not intervals:
             print(f"\nWarning: Could not find '{start_event_str}' events in '{current_event_col_to_use}'. Cannot calculate interval averages.")
             print(f"Proceeding with overall statistics calculation for {current_column_to_use} using available data.")
             overall_data = filtered_data[current_column_to_use].dropna()
             
-            # If overall_data has more than 20 entries, take only the last 20 as per old script's fallback behavior
+            # If overall_data has more than 2 entries, take only the last 20 as per old script's fallback behavior
             if len(overall_data) > 20:
                 overall_data = overall_data.tail(20)
                 print(f"Warning: Overall data exceeded 20 rows. Using last 20 rows for calculation.")
@@ -389,15 +408,10 @@ def analyze_throughput(file_path, column_name_to_analyze, event_col_name, start_
         
         interval_averages = []
         
-        # New logic: Each interval starts at a start index and ends just before the next start index (or end of data)
-        for idx in range(len(started_indices)):
-            start_idx = started_indices[idx]
-            if idx + 1 < len(started_indices):
-                end_idx = started_indices[idx + 1] - 1
-            else:
-                end_idx = len(filtered_data) - 1
-            
+        for start_idx, end_idx in intervals:
+            # Drop NaN AND zero values as per user request
             interval_data = filtered_data.loc[start_idx : end_idx, current_column_to_use].dropna()
+            interval_data = interval_data[interval_data != 0]
             
             if not interval_data.empty:
                 interval_avg = interval_data.mean()
@@ -487,21 +501,18 @@ def analyze_throughput_cdf(file_path, column_name_to_analyze, event_col_name, st
         tp_col_clean = _clean_header(actual_tp_col)
         ev_col_clean = _clean_header(actual_ev_col)
 
-        started_indices = data[data[ev_col_clean].astype(str).str.contains(start_event_str, na=False)].index
+        # Use the new interval logic: Start to Next Start - 1
+        intervals = _get_interval_indices(data, ev_col_clean, start_event_str)
         
         tp_points = []
-        if started_indices.empty:
+        if not intervals:
             tp_points = data[tp_col_clean].dropna().tail(100).tolist() # Limit fallback to last 100 points
         else:
             # Collect points from intervals
-            for idx in range(len(started_indices)):
-                start_idx = started_indices[idx]
-                if idx + 1 < len(started_indices):
-                    end_idx = started_indices[idx + 1] - 1
-                else:
-                    end_idx = len(data) - 1
-                
+            for start_idx, end_idx in intervals:
                 interval_tp = data.loc[start_idx : end_idx, tp_col_clean].dropna()
+                # Exclude zero values
+                interval_tp = interval_tp[interval_tp != 0]
                 tp_points.extend(interval_tp.tolist())
 
         if not tp_points:
@@ -561,11 +572,7 @@ def analyze_jitter(file_path, column_name_to_analyze, event_col_name, start_even
         data = pd.read_csv(file_path)
         # Apply the cleaning function to all column names in the DataFrame
         data.columns = [_clean_header(col) for col in data.columns]
-        # print(f"Successfully loaded {file_path}")
-
-        # The column names to analyze are already cleaned by _determine_analysis_parameters
-        # No need to strip or clean them again here.
-
+        
         # Check if primary event column exists, otherwise try fallback
         current_event_col_to_use = event_col_name
         if current_event_col_to_use not in data.columns:
@@ -575,39 +582,52 @@ def analyze_jitter(file_path, column_name_to_analyze, event_col_name, start_even
                     current_event_col_to_use = fallback_event_col_name
                 else:
                     print(f"\nError: Primary event column '{current_event_col_to_use}' not found, and fallback event column '{fallback_event_col_name}' is also not found.")
-                    print(f"Available columns: {data.columns.tolist()}")
-                    return {} # Return empty dict instead of None
+                    return {}
             else:
                 print(f"\nError: Event column '{current_event_col_to_use}' not found in the CSV file, and no fallback event column was provided.")
-                print(f"Available columns: {data.columns.tolist()}")
-                return {} # Return empty dict instead of None
+                return {}
 
-        if column_name_to_analyze not in data.columns:
-            print(f"\nError: Column '{column_name_to_analyze}' not found in the CSV file.")
-            return {} # Return empty dict instead of None
-        
-        # Calculate mean of the entire column
         # Handle duplicates if present
         data_series = _get_series_from_dataframe(data, column_name_to_analyze)
         if data_series is None:
              print(f"\nError: Column '{column_name_to_analyze}' not found or empty.")
              return {}
 
-        overall_jitter_data = data_series.dropna()
+        # Use the new interval logic: Start to Next Start - 1
+        intervals = _get_interval_indices(data, current_event_col_to_use, start_event_str)
 
-        if not overall_jitter_data.empty:
-            mean_val = overall_jitter_data.mean()
-            return {"Mean": mean_val}
-        else:
-            # print(f"\nNo valid data found to calculate mean for '{column_name_to_analyze_stripped}'.")
-            return {} # Return empty dict instead of None
+        if not intervals:
+            # Fallback to entire column mean if no intervals found
+            overall_jitter_data = data_series.dropna()
+            overall_jitter_data = overall_jitter_data[overall_jitter_data != 0]
+            if not overall_jitter_data.empty:
+                mean_val = overall_jitter_data.mean()
+                return {"Mean": mean_val, "Note": "Calculated on entire column due to missing start events."}
+            return {}
+
+        interval_means = []
+        for start_idx, end_idx in intervals:
+            interval_data = data.loc[start_idx : end_idx, column_name_to_analyze].dropna()
+            interval_data = interval_data[interval_data != 0]
+            if not interval_data.empty:
+                interval_means.append(interval_data.mean())
+
+        if not interval_means:
+            return {}
+
+        if len(interval_means) > 20:
+            interval_means = interval_means[-20:]
+            print(f"Warning: Jitter interval groups exceeded 20. Using last 20 groups for statistics.")
+
+        overall_mean = sum(interval_means) / len(interval_means)
+        return {"Mean": overall_mean, "Number of Intervals": len(interval_means)}
 
     except FileNotFoundError:
         print(f"Error: The file at {file_path} was not found.")
-        return {} # Return empty dict instead of None
+        return {}
     except Exception as e:
-        print(f"An error occurred: {e}")
-        return {} # Return empty dict instead of None
+        print(f"An error occurred in analyze_jitter: {e}")
+        return {}
 
 def analyze_error_ratio(file_path, column_name_to_analyze, event_col_name, start_event_str, end_event_str, fallback_event_col_name=None):
     """
@@ -618,11 +638,7 @@ def analyze_error_ratio(file_path, column_name_to_analyze, event_col_name, start
         data = pd.read_csv(file_path)
         # Apply the cleaning function to all column names in the DataFrame
         data.columns = [_clean_header(col) for col in data.columns]
-        # print(f"Successfully loaded {file_path}")
-
-        # The column names to analyze are already cleaned by _determine_analysis_parameters
-        # No need to strip or clean them again here.
-
+        
         # Check if primary event column exists, otherwise try fallback
         current_event_col_to_use = event_col_name
         if current_event_col_to_use not in data.columns:
@@ -632,39 +648,52 @@ def analyze_error_ratio(file_path, column_name_to_analyze, event_col_name, start
                     current_event_col_to_use = fallback_event_col_name
                 else:
                     print(f"\nError: Primary event column '{current_event_col_to_use}' not found, and fallback event column '{fallback_event_col_name}' is also not found.")
-                    print(f"Available columns: {data.columns.tolist()}")
-                    return {} # Return empty dict instead of None
+                    return {}
             else:
                 print(f"\nError: Event column '{current_event_col_to_use}' not found in the CSV file, and no fallback event column was provided.")
-                print(f"Available columns: {data.columns.tolist()}")
-                return {} # Return empty dict instead of None
+                return {}
 
-        if column_name_to_analyze not in data.columns:
-            print(f"\nError: Column '{column_name_to_analyze}' not found in the CSV file.")
-            return {} # Return empty dict instead of None
-        
-        # Calculate mean of the entire column
         # Handle duplicates if present
         data_series = _get_series_from_dataframe(data, column_name_to_analyze)
         if data_series is None:
              print(f"\nError: Column '{column_name_to_analyze}' not found or empty.")
              return {}
 
-        overall_error_ratio_data = data_series.dropna()
+        # Use the new interval logic: Start to Next Start - 1
+        intervals = _get_interval_indices(data, current_event_col_to_use, start_event_str)
 
-        if not overall_error_ratio_data.empty:
-            mean_val = overall_error_ratio_data.mean()
-            return {"Mean": mean_val}
-        else:
-            # print(f"\nNo valid data found to calculate statistics for '{column_name_to_analyze_stripped}'.")
-            return {} # Return empty dict instead of None
+        if not intervals:
+            # Fallback to entire column mean if no intervals found
+            overall_error_data = data_series.dropna()
+            overall_error_data = overall_error_data[overall_error_data != 0]
+            if not overall_error_data.empty:
+                mean_val = overall_error_data.mean()
+                return {"Mean": mean_val, "Note": "Calculated on entire column due to missing start events."}
+            return {}
+
+        interval_means = []
+        for start_idx, end_idx in intervals:
+            interval_data = data.loc[start_idx : end_idx, column_name_to_analyze].dropna()
+            interval_data = interval_data[interval_data != 0]
+            if not interval_data.empty:
+                interval_means.append(interval_data.mean())
+
+        if not interval_means:
+            return {}
+
+        if len(interval_means) > 20:
+            interval_means = interval_means[-20:]
+            print(f"Warning: Error ratio interval groups exceeded 20. Using last 20 groups for statistics.")
+
+        overall_mean = sum(interval_means) / len(interval_means)
+        return {"Mean": overall_mean, "Number of Intervals": len(interval_means)}
 
     except FileNotFoundError:
         print(f"Error: The file at {file_path} was not found.")
-        return {} # Return empty dict instead of None
+        return {}
     except Exception as e:
-        print(f"An error occurred: {e}")
-        return {} # Return empty dict instead of None
+        print(f"An error occurred in analyze_error_ratio: {e}")
+        return {}
 
 def analyze_web_page_load_time(file_path, event_col_name, start_event_str, end_event_str, duration_col_name, fallback_event_col_name=None):
     """

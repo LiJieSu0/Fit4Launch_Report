@@ -235,12 +235,13 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
             },
           ]}
         />
-        <DpCDF_Chart
+        {/* <DpCDF_Chart
           project={project}
           city={city}
-          filename="5g_auto_dp_http_single_stream_dl_good_dut.json"
-          title="HTTP SS DL Good (DUT) CDF"
-        />
+          dutFilename="5g_auto_dp_http_single_stream_dl_good_dut.json"
+          refFilename="5g_auto_dp_http_single_stream_dl_good_ref.json"
+          title="HTTP SS DL Good CDF (DUT vs REF)"
+        /> */}
 
       </div>
       <div className='page-content'>

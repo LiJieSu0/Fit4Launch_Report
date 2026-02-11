@@ -21,7 +21,7 @@ ChartJS.register(
     Legend
 );
 
-const CoverageLineChart = ({ analysisType, run }) => {
+const CoverageLineChart = ({ analysisType, run, city, projectFolderName }) => {
     const [chartData, setChartData] = useState(null);
 
     // Determine settings based on analysisType
@@ -31,12 +31,12 @@ const CoverageLineChart = ({ analysisType, run }) => {
     let chartTitleContext = "";
 
     if (analysisType === 'RSRP') {
-        dataFolderPath = "/AnalyzeResults/Seattle/rsrp_data";
+        dataFolderPath = `/AnalyzeResults/${encodeURIComponent(projectFolderName)}/${encodeURIComponent(city)}/rsrp_data`;
         fileNamePart = "_PC2_PC3_RSRP_Analysis.csv";
         yAxisLabel = "RSRP Value";
         chartTitleContext = "RSRP Analysis";
     } else if (analysisType === 'TxPower') {
-        dataFolderPath = "/AnalyzeResults/Seattle/tx_power_data";
+        dataFolderPath = `/AnalyzeResults/${encodeURIComponent(projectFolderName)}/${encodeURIComponent(city)}/tx_power_data`;
         fileNamePart = "_PC2_PC3_TxPower_Analysis.csv";
         yAxisLabel = "Tx Power Value (dBm)";
         chartTitleContext = "Tx Power Analysis";
@@ -111,7 +111,7 @@ const CoverageLineChart = ({ analysisType, run }) => {
         };
 
         fetchData();
-    }, [analysisType, run, dataFolderPath, fileNamePart]);
+    }, [analysisType, run, dataFolderPath, fileNamePart, city, projectFolderName]);
 
     if (!chartData) {
         return <div style={{ height: '400px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading Run {run}...</div>;

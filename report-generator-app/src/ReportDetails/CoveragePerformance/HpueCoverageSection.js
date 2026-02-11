@@ -5,7 +5,7 @@ import { ReportContext } from '../../Contexts/ReportContext';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 
 const HpueCoverageSection = ({ city: propCity, firstSection = false }) => {
-    const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
+    const { city: globalCity, projectData, loadCityData, project } = useContext(ReportContext);
     const city = propCity || globalCity;
 
     useEffect(() => {
@@ -77,6 +77,7 @@ const HpueCoverageSection = ({ city: propCity, firstSection = false }) => {
     }
 
     const n41HPUEData = processN41HPUECoverageData();
+    const projectFolderName = project ? project.dataFolderName : "";
 
     return (
         <>
@@ -85,27 +86,27 @@ const HpueCoverageSection = ({ city: propCity, firstSection = false }) => {
                 <DynamicHeader level={2}>N41 HPUE Coverage Test - {city} </DynamicHeader>
                 <HPUECoverageTable n41Data={n41HPUEData} />
                 <DynamicHeader level={3} hideInTOC={true}>5G n41 HPUE Coverage Test - RSRP Analysis - {city}</DynamicHeader>
-                <CoverageLineChart analysisType="RSRP" run={1} />
-                <CoverageLineChart analysisType="RSRP" run={2} />
+                <CoverageLineChart analysisType="RSRP" run={1} city={city} projectFolderName={projectFolderName} />
+                <CoverageLineChart analysisType="RSRP" run={2} city={city} projectFolderName={projectFolderName} />
             </div>
             <div className='page-content'>
-                <CoverageLineChart analysisType="RSRP" run={3} />
-                <CoverageLineChart analysisType="RSRP" run={4} />
+                <CoverageLineChart analysisType="RSRP" run={3} city={city} projectFolderName={projectFolderName} />
+                <CoverageLineChart analysisType="RSRP" run={4} city={city} projectFolderName={projectFolderName} />
             </div>
             <div className='page-content'>
-                <CoverageLineChart analysisType="RSRP" run={5} />
+                <CoverageLineChart analysisType="RSRP" run={5} city={city} projectFolderName={projectFolderName} />
             </div>
             <div className='page-content'>
                 <DynamicHeader level={3} hideInTOC={true}>5G n41 HPUE Coverage Test - Tx Power Analysis - {city}</DynamicHeader>
-                <CoverageLineChart analysisType="TxPower" run={1} />
-                <CoverageLineChart analysisType="TxPower" run={2} />
+                <CoverageLineChart analysisType="TxPower" run={1} city={city} projectFolderName={projectFolderName} />
+                <CoverageLineChart analysisType="TxPower" run={2} city={city} projectFolderName={projectFolderName} />
             </div>
             <div className='page-content'>
-                <CoverageLineChart analysisType="TxPower" run={3} />
-                <CoverageLineChart analysisType="TxPower" run={4} />
+                <CoverageLineChart analysisType="TxPower" run={3} city={city} projectFolderName={projectFolderName} />
+                <CoverageLineChart analysisType="TxPower" run={4} city={city} projectFolderName={projectFolderName} />
             </div>
             <div className='page-content'>
-                <CoverageLineChart analysisType="TxPower" run={5} />
+                <CoverageLineChart analysisType="TxPower" run={5} city={city} projectFolderName={projectFolderName} />
             </div>
         </>
     );

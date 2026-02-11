@@ -32,7 +32,7 @@ function Dp_Udp_Component({ city: propCity }) {
 
   // Update to use dataPerformance from the fetched JSON
   // Path: ["Data Performance"]["5G AUTO DP"]["Udp Test"]
-  const udp_Data_Source = reportData.dataPerformance["Data Performance"]["5G AUTO DP"]["Udp Test"] || { DL: {}, UL: {} };
+  const udp_Data_Source = reportData.dataPerformance?.["Data Performance"]?.["5G AUTO DP"]?.["Udp Test"] || { DL: {}, UL: {} };
 
   // Helper for safe access
   const getUdpMetric = (dir, task, category, device, metric) => {

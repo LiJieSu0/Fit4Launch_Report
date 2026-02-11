@@ -196,8 +196,8 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
       <div className='page-content'>
         <DpHistogramComponent
           data={[
+            { name: 'Good', DUT: dataDL.Good.DUT["Mean"], REF: dataDL.Good.REF["Mean"] },
             { name: 'Moderate', DUT: dataDL.Moderate.DUT["Mean"], REF: dataDL.Moderate.REF["Mean"] },
-            { name: 'Poor', DUT: dataDL.Poor.DUT["Mean"], REF: dataDL.Poor.REF["Mean"] },
             { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
           ]}
           title="MHS Http Single Stream Download Throughput"
@@ -218,9 +218,9 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
 
         <DpHistogramComponent
           data={[
-            { name: 'Moderate', DUT: dataDL.Moderate.DUT["Mean"], REF: dataDL.Moderate.REF["Mean"] },
-            { name: 'Poor', DUT: dataDL.Poor.DUT["Mean"], REF: dataDL.Poor.REF["Mean"] },
-            { name: 'Overall', DUT: overallDownloadDUTMean, REF: overallDownloadREFMean },
+            { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },
+            { name: 'Moderate', DUT: dataUL.Moderate.DUT["Mean"], REF: dataUL.Moderate.REF["Mean"] },
+            { name: 'Overall', DUT: overallUploadDUTMean, REF: overallUploadREFMean },
           ]}
           title="MHS Single Stream HTTP Upload Throughput"
           yAxisLabel="Throughput"

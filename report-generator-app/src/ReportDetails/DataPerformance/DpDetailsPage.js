@@ -14,7 +14,7 @@ import DpNSATestDriveDetails from './NSA/TestDrive/DpNSATestDriveDetails';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 function DpDetailsPage({ webPageUrl }) {
   return (
-    // TODO MHS and Mobility bug fix
+    // TODO MHS and Mobility bug fix, MHS Moderate to good , Poor to Moderate Data structure need to be fixed
     <div>
       <Dp_httpSS_Component city="Seattle" firstSection={true} />
       <Dp_httpSS_Component city="New York" />

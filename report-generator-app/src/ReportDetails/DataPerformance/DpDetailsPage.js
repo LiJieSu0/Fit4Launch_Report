@@ -15,7 +15,7 @@ import DynamicHeader from '../../CommonPage/DynamicHeader';
 function DpDetailsPage({ webPageUrl }) {
   return (
     <div>
-      <Dp_httpSS_Component city="Seattle" firstSection={true} />
+      {/* <Dp_httpSS_Component city="Seattle" firstSection={true} />
       <Dp_httpSS_Component city="New York" />
       <Dp_httpMS_Component city="Seattle" />
       <Dp_httpMS_Component city="New York" />
@@ -28,7 +28,6 @@ function DpDetailsPage({ webPageUrl }) {
       <Dp_playStore_Component city="Seattle" />
       <Dp_playStore_Component city="New York" />
       <Dp_MHS_Page city="Seattle" />
-      {/* <Dp_MHS_Page city="New York" /> */}
       <DpDriveTestDetailPage city="Seattle" firstSection={true} />
       <DpDriveTestDetailPage city="New York" />
       <DpMrabDetailsPage city="Seattle" />
@@ -37,14 +36,18 @@ function DpDetailsPage({ webPageUrl }) {
       <DpNSAStationaryDetails city="Seattle" firstSection={true} />
       <DpNSAStationaryDetails city="New York" />
       <DpNSATestDriveDetails city="Seattle" />
+      <DpNSATestDriveDetails city="New York" /> */}
+
+      {/* Debug Section */}
+      <Dp_Udp_Component city="Seattle" />
+      <Dp_MHS_Page city="Seattle" />
+      <DpDriveTestDetailPage city="Seattle" firstSection={true} />
+      <DpNSAStationaryDetails city="Seattle" firstSection={true} />
       <DpNSATestDriveDetails city="New York" />
 
-
-
-      {/* Debug report section, remove after debugging */}
-      {/* <Dp_playStore_Component city="New York" />
-      <DpNSAStationaryDetails city="New York" /> */}
-
+      {/* pages need to print this time
+ 11,19,33,34,35,38,46,50,55
+ */}
 
     </div>
   );

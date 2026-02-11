@@ -967,6 +967,10 @@
                                         "Maximum": 9.932,
                                         "Number of Intervals": 20
                                     },
+                                    "Error Ratio": {
+                                        "Mean": 0.0,
+                                        "Number of Intervals": 20
+                                    },
                                     "Jitter": {
                                         "Mean": 1.7449499999999998,
                                         "Number of Intervals": 20
@@ -988,6 +992,10 @@
                                     "Jitter": {
                                         "Mean": 1.8324499999999997,
                                         "Number of Intervals": 20
+                                    },
+                                    "Error Ratio": {
+                                        "Mean": 0,
+                                        "Number of Intervals": 10
                                     }
                                 }
                             },
@@ -1055,6 +1063,10 @@
                                     },
                                     "Jitter": {
                                         "Mean": 0.9279999999999999,
+                                        "Number of Intervals": 20
+                                    },
+                                    "Error Ratio": {
+                                        "Mean": 0.0,
                                         "Number of Intervals": 20
                                     }
                                 },
@@ -1848,6 +1860,13 @@
                             "Maximum": 9.980822222222224,
                             "Number of Intervals": 20
                         },
+                        "UL Throughput": {
+                            "Mean": 9.0379,
+                            "Standard Deviation": 1.5279,
+                            "Minimum": 5.457,
+                            "Maximum": 10,
+                            "Number of Intervals": 66
+                        },
                         "DL Jitter": {
                             "Mean": 1.4069083479532163,
                             "Number of Intervals": 20
@@ -1881,6 +1900,13 @@
                             "Minimum": 9.993822222222224,
                             "Maximum": 10.006533333333334,
                             "Number of Intervals": 20
+                        },
+                        "UL Throughput": {
+                            "Mean": 9.3716,
+                            "Standard Deviation": 0.7278,
+                            "Minimum": 7.25,
+                            "Maximum": 10.849,
+                            "Number of Intervals": 56
                         },
                         "DL Jitter": {
                             "Mean": 1.62191932748538,
@@ -2704,6 +2730,10 @@
                         "Mean": 1.656,
                         "Number of Intervals": 4
                     },
+                    "DL Error Ratio": {
+                        "Mean": 0.00,
+                        "Number of Intervals": 1
+                    },
                     "UL Error Ratio": {
                         "Mean": 0.05,
                         "Number of Intervals": 1
@@ -2739,6 +2769,10 @@
                     },
                     "UL Jitter": {
                         "Mean": 0.853,
+                        "Number of Intervals": 1
+                    },
+                    "DL Error Ratio": {
+                        "Mean": 0.00,
                         "Number of Intervals": 1
                     },
                     "UL Error Ratio": {

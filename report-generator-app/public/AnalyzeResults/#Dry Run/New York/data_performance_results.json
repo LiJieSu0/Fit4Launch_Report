@@ -258,7 +258,7 @@
                             "Protocol Type": "HTTP",
                             "Throughput": {
                                 "Mean": 78.643,
-                                "Standard Deviation": NaN,
+                                "Standard Deviation": 0,
                                 "Minimum": 78.643,
                                 "Maximum": 78.643,
                                 "Number of Intervals": 1
@@ -351,11 +351,11 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 52.819074074074074,
-                                "Standard Deviation": NaN,
-                                "Minimum": 52.819074074074074,
-                                "Maximum": 52.819074074074074,
-                                "Number of Intervals": 1
+                                "Mean": 73.386,
+                                "Standard Deviation": 21.054,
+                                "Minimum": 46.48,
+                                "Maximum": 109.697,
+                                "Number of Intervals": 20
                             }
                         }
                     }
@@ -1520,7 +1520,15 @@
                         "Mean": 1.78970015117158,
                         "Number of Intervals": 12
                     },
+                    "UL Jitter": {
+                        "Mean": 1.78970015117158,
+                        "Number of Intervals": 12
+                    },
                     "DL Error Ratio": {
+                        "Mean": 1.6050421952078928,
+                        "Number of Intervals": 6
+                    },
+                    "UL Error Ratio": {
                         "Mean": 1.6050421952078928,
                         "Number of Intervals": 6
                     },
@@ -1553,7 +1561,15 @@
                         "Mean": 2.4555046296296297,
                         "Number of Intervals": 12
                     },
+                    "UL Jitter": {
+                        "Mean": 2.4555046296296297,
+                        "Number of Intervals": 12
+                    },
                     "DL Error Ratio": {
+                        "Mean": 2.1100137331929028,
+                        "Number of Intervals": 8
+                    },
+                    "UL Error Ratio": {
                         "Mean": 2.1100137331929028,
                         "Number of Intervals": 8
                     },

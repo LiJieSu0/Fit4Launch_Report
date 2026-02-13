@@ -61,6 +61,26 @@
                     "distance_km": 2.7658983158896033
                 }
             ],
+            "Run4": [
+                {
+                    "Device type": "PC2",
+                    "latitude": 40.574222,
+                    "longitude": -74.666642,
+                    "ul_tp_value": 10.485,
+                    "rsrp_value": -141.8,
+                    "tx_power_value": 23.1,
+                    "distance_km": 2.794
+                },
+                {
+                    "Device type": "PC3",
+                    "latitude": 40.573567,
+                    "longitude": -74.66678,
+                    "ul_tp_value": 10.485,
+                    "rsrp_value": -108.68,
+                    "tx_power_value": 22.1,
+                    "distance_km": 2.794
+                }
+            ],
             "Run5": [
                 {
                     "Device type": "PC2",
@@ -111,21 +131,21 @@
                                 "AVG BLER": 0.03,
                                 "AVG MCS": 14.33,
                                 "AVG CQI": 13.19,
-                                "AVG TxPower": 6.18
+                                "AVG TxPower": 16.05
                             },
                             "Middle 40%": {
                                 "AVG BLER": 2.25,
                                 "AVG MCS": 14.66,
                                 "AVG CQI": 11.39,
-                                "AVG TxPower": 21.15
+                                "AVG TxPower": 19.89
                             },
                             "Last 30%": {
                                 "AVG BLER": 13.94,
                                 "AVG MCS": 6.62,
                                 "AVG CQI": 9.65,
-                                "AVG TxPower": 36.51
+                                "AVG TxPower": 22.62
                             },
-                            "TxPower": 21.33
+                            "TxPower": 19.57
                         }
                     },
                     "Run2": {
@@ -154,21 +174,21 @@
                                 "AVG BLER": 0.59,
                                 "AVG MCS": 15.33,
                                 "AVG CQI": 13.75,
-                                "AVG TxPower": 10.71
+                                "AVG TxPower": 16.39
                             },
                             "Middle 40%": {
                                 "AVG BLER": 3.4,
                                 "AVG MCS": 13.68,
                                 "AVG CQI": 11.15,
-                                "AVG TxPower": 25.5
+                                "AVG TxPower": 20.11
                             },
                             "Last 30%": {
                                 "AVG BLER": 6.8,
                                 "AVG MCS": 5.7,
                                 "AVG CQI": 9.93,
-                                "AVG TxPower": 39.13
+                                "AVG TxPower": 22.59
                             },
-                            "TxPower": 25.15
+                            "TxPower": 19.74
                         }
                     },
                     "Run3": {
@@ -197,21 +217,21 @@
                                 "AVG BLER": 5.79,
                                 "AVG MCS": 16.31,
                                 "AVG CQI": 12.29,
-                                "AVG TxPower": 5.71
+                                "AVG TxPower": 15.84
                             },
                             "Middle 40%": {
                                 "AVG BLER": 5.44,
                                 "AVG MCS": 14.46,
                                 "AVG CQI": 10.49,
-                                "AVG TxPower": 28.87
+                                "AVG TxPower": 21.22
                             },
                             "Last 30%": {
                                 "AVG BLER": 25.63,
                                 "AVG MCS": 6.96,
                                 "AVG CQI": 10.24,
-                                "AVG TxPower": 33.99
+                                "AVG TxPower": 22.66
                             },
-                            "TxPower": 23.58
+                            "TxPower": 20.07
                         }
                     },
                     "Run4": {
@@ -240,21 +260,21 @@
                                 "AVG BLER": 1.91,
                                 "AVG MCS": 14.06,
                                 "AVG CQI": 13.62,
-                                "AVG TxPower": 7.29
+                                "AVG TxPower": 15.85
                             },
                             "Middle 40%": {
                                 "AVG BLER": 5.93,
                                 "AVG MCS": 12.9,
                                 "AVG CQI": 10.05,
-                                "AVG TxPower": 24.3
+                                "AVG TxPower": 20.37
                             },
                             "Last 30%": {
                                 "AVG BLER": 23.95,
                                 "AVG MCS": 7.62,
                                 "AVG CQI": 10.35,
-                                "AVG TxPower": 29.46
+                                "AVG TxPower": 22.8
                             },
-                            "TxPower": 20.8
+                            "TxPower": 19.76
                         }
                     },
                     "Run5": {
@@ -283,21 +303,21 @@
                                 "AVG BLER": 5.41,
                                 "AVG MCS": 16.0,
                                 "AVG CQI": 11.77,
-                                "AVG TxPower": 13.03
+                                "AVG TxPower": 17.35
                             },
                             "Middle 40%": {
                                 "AVG BLER": 5.72,
                                 "AVG MCS": 9.61,
                                 "AVG CQI": 10.36,
-                                "AVG TxPower": 36.82
+                                "AVG TxPower": 22.24
                             },
                             "Last 30%": {
                                 "AVG BLER": 31.27,
                                 "AVG MCS": 6.89,
                                 "AVG CQI": 10.3,
-                                "AVG TxPower": 29.0
+                                "AVG TxPower": 22.94
                             },
-                            "TxPower": 27.41
+                            "TxPower": 21.0
                         }
                     }
                 },
@@ -328,21 +348,21 @@
                                 "AVG BLER": 0.01,
                                 "AVG MCS": 14.18,
                                 "AVG CQI": 13.49,
-                                "AVG TxPower": 5.04
+                                "AVG TxPower": 15.26
                             },
                             "Middle 40%": {
                                 "AVG BLER": 2.53,
                                 "AVG MCS": 13.86,
                                 "AVG CQI": 12.27,
-                                "AVG TxPower": 17.84
+                                "AVG TxPower": 19.27
                             },
                             "Last 30%": {
                                 "AVG BLER": 9.02,
                                 "AVG MCS": 6.04,
                                 "AVG CQI": 9.85,
-                                "AVG TxPower": 39.83
+                                "AVG TxPower": 22.52
                             },
-                            "TxPower": 20.6
+                            "TxPower": 19.04
                         }
                     },
                     "Run2": {
@@ -371,21 +391,21 @@
                                 "AVG BLER": 0.8,
                                 "AVG MCS": 14.34,
                                 "AVG CQI": 14.1,
-                                "AVG TxPower": 6.62
+                                "AVG TxPower": 16.24
                             },
                             "Middle 40%": {
                                 "AVG BLER": 4.08,
                                 "AVG MCS": 13.11,
                                 "AVG CQI": 11.63,
-                                "AVG TxPower": 24.56
+                                "AVG TxPower": 20.55
                             },
                             "Last 30%": {
                                 "AVG BLER": 6.61,
                                 "AVG MCS": 3.86,
                                 "AVG CQI": 10.16,
-                                "AVG TxPower": 38.66
+                                "AVG TxPower": 22.47
                             },
-                            "TxPower": 23.41
+                            "TxPower": 19.83
                         }
                     },
                     "Run3": {
@@ -414,21 +434,21 @@
                                 "AVG BLER": 5.14,
                                 "AVG MCS": 16.07,
                                 "AVG CQI": 11.76,
-                                "AVG TxPower": 6.17
+                                "AVG TxPower": 16.45
                             },
                             "Middle 40%": {
                                 "AVG BLER": 5.64,
                                 "AVG MCS": 9.86,
                                 "AVG CQI": 10.59,
-                                "AVG TxPower": 33.1
+                                "AVG TxPower": 21.91
                             },
                             "Last 30%": {
                                 "AVG BLER": 12.19,
                                 "AVG MCS": 4.44,
                                 "AVG CQI": 9.89,
-                                "AVG TxPower": 39.79
+                                "AVG TxPower": 22.53
                             },
-                            "TxPower": 27.1
+                            "TxPower": 20.47
                         }
                     },
                     "Run4": {
@@ -457,21 +477,21 @@
                                 "AVG BLER": 1.02,
                                 "AVG MCS": 15.19,
                                 "AVG CQI": 13.95,
-                                "AVG TxPower": 5.1
+                                "AVG TxPower": 15.82
                             },
                             "Middle 40%": {
                                 "AVG BLER": 6.39,
                                 "AVG MCS": 14.07,
                                 "AVG CQI": 11.23,
-                                "AVG TxPower": 16.2
+                                "AVG TxPower": 19.15
                             },
                             "Last 30%": {
                                 "AVG BLER": 7.19,
                                 "AVG MCS": 6.11,
                                 "AVG CQI": 9.97,
-                                "AVG TxPower": 40.61
+                                "AVG TxPower": 22.39
                             },
-                            "TxPower": 20.27
+                            "TxPower": 19.14
                         }
                     },
                     "Run5": {
@@ -500,21 +520,21 @@
                                 "AVG BLER": 4.17,
                                 "AVG MCS": 15.97,
                                 "AVG CQI": 11.73,
-                                "AVG TxPower": 8.44
+                                "AVG TxPower": 16.75
                             },
                             "Middle 40%": {
                                 "AVG BLER": 5.65,
                                 "AVG MCS": 11.92,
                                 "AVG CQI": 10.98,
-                                "AVG TxPower": 30.78
+                                "AVG TxPower": 21.7
                             },
                             "Last 30%": {
                                 "AVG BLER": 9.86,
                                 "AVG MCS": 3.39,
                                 "AVG CQI": 9.58,
-                                "AVG TxPower": 39.49
+                                "AVG TxPower": 22.76
                             },
-                            "TxPower": 26.77
+                            "TxPower": 20.54
                         }
                     }
                 }
@@ -547,21 +567,21 @@
                                 "AVG BLER": 1.62,
                                 "AVG MCS": 14.16,
                                 "AVG CQI": 12.76,
-                                "AVG TxPower": -3.27
+                                "AVG TxPower": 0.73
                             },
                             "Middle 40%": {
                                 "AVG BLER": 5.58,
                                 "AVG MCS": 12.66,
                                 "AVG CQI": 11.82,
-                                "AVG TxPower": 14.58
+                                "AVG TxPower": 17.31
                             },
                             "Last 30%": {
                                 "AVG BLER": 18.56,
                                 "AVG MCS": 9.53,
                                 "AVG CQI": 11.18,
-                                "AVG TxPower": 21.54
+                                "AVG TxPower": 23.72
                             },
-                            "TxPower": 11.35
+                            "TxPower": 14.29
                         }
                     },
                     "Run2": {
@@ -590,21 +610,21 @@
                                 "AVG BLER": 1.62,
                                 "AVG MCS": 14.24,
                                 "AVG CQI": 12.99,
-                                "AVG TxPower": 1.4
+                                "AVG TxPower": 3.39
                             },
                             "Middle 40%": {
                                 "AVG BLER": 7.57,
                                 "AVG MCS": 10.52,
                                 "AVG CQI": 10.98,
-                                "AVG TxPower": 28.36
+                                "AVG TxPower": 21.84
                             },
                             "Last 30%": {
                                 "AVG BLER": 12.96,
                                 "AVG MCS": 9.08,
                                 "AVG CQI": 11.49,
-                                "AVG TxPower": 36.54
+                                "AVG TxPower": 23.91
                             },
-                            "TxPower": 22.73
+                            "TxPower": 16.93
                         }
                     },
                     "Run3": {
@@ -633,21 +653,21 @@
                                 "AVG BLER": 1.9,
                                 "AVG MCS": 15.31,
                                 "AVG CQI": 11.87,
-                                "AVG TxPower": 3.93
+                                "AVG TxPower": 7.86
                             },
                             "Middle 40%": {
                                 "AVG BLER": 6.55,
                                 "AVG MCS": 9.53,
                                 "AVG CQI": 10.72,
-                                "AVG TxPower": 33.05
+                                "AVG TxPower": 23.68
                             },
                             "Last 30%": {
                                 "AVG BLER": 21.98,
                                 "AVG MCS": 7.91,
                                 "AVG CQI": 11.0,
-                                "AVG TxPower": 36.4
+                                "AVG TxPower": 23.64
                             },
-                            "TxPower": 25.36
+                            "TxPower": 18.93
                         }
                     },
                     "Run4": {
@@ -676,21 +696,21 @@
                                 "AVG BLER": 2.14,
                                 "AVG MCS": 13.6,
                                 "AVG CQI": 12.9,
-                                "AVG TxPower": 0.53
+                                "AVG TxPower": 3.38
                             },
                             "Middle 40%": {
                                 "AVG BLER": 8.06,
                                 "AVG MCS": 10.44,
                                 "AVG CQI": 10.68,
-                                "AVG TxPower": 29.44
+                                "AVG TxPower": 22.65
                             },
                             "Last 30%": {
                                 "AVG BLER": 17.25,
                                 "AVG MCS": 12.88,
                                 "AVG CQI": 11.96,
-                                "AVG TxPower": 30.65
+                                "AVG TxPower": 23.65
                             },
-                            "TxPower": 21.23
+                            "TxPower": 17.24
                         }
                     },
                     "Run5": {
@@ -717,23 +737,23 @@
                         "secondary_kpi": {
                             "First 30%": {
                                 "AVG BLER": 2.76,
-                                "AVG MCS": 15.4,
+                                "AVG MCS": 15.41,
                                 "AVG CQI": 11.68,
-                                "AVG TxPower": 9.83
+                                "AVG TxPower": 13.09
                             },
                             "Middle 40%": {
-                                "AVG BLER": 8.35,
-                                "AVG MCS": 8.05,
-                                "AVG CQI": 10.47,
-                                "AVG TxPower": 36.55
+                                "AVG BLER": 7.66,
+                                "AVG MCS": 8.08,
+                                "AVG CQI": 10.48,
+                                "AVG TxPower": 24.54
                             },
                             "Last 30%": {
-                                "AVG BLER": 15.77,
-                                "AVG MCS": 6.15,
+                                "AVG BLER": 16.45,
+                                "AVG MCS": 6.26,
                                 "AVG CQI": 11.64,
-                                "AVG TxPower": 37.74
+                                "AVG TxPower": 22.58
                             },
-                            "TxPower": 28.91
+                            "TxPower": 20.54
                         }
                     }
                 },
@@ -764,21 +784,21 @@
                                 "AVG BLER": 1.08,
                                 "AVG MCS": 14.51,
                                 "AVG CQI": 12.9,
-                                "AVG TxPower": -2.88
+                                "AVG TxPower": 1.07
                             },
                             "Middle 40%": {
                                 "AVG BLER": 5.19,
                                 "AVG MCS": 12.28,
                                 "AVG CQI": 11.52,
-                                "AVG TxPower": 13.53
+                                "AVG TxPower": 17.18
                             },
                             "Last 30%": {
                                 "AVG BLER": 15.13,
                                 "AVG MCS": 9.44,
                                 "AVG CQI": 11.63,
-                                "AVG TxPower": 21.17
+                                "AVG TxPower": 23.16
                             },
-                            "TxPower": 10.94
+                            "TxPower": 14.18
                         }
                     },
                     "Run2": {
@@ -807,21 +827,21 @@
                                 "AVG BLER": 1.18,
                                 "AVG MCS": 14.08,
                                 "AVG CQI": 12.74,
-                                "AVG TxPower": 0.14
+                                "AVG TxPower": 3.35
                             },
                             "Middle 40%": {
                                 "AVG BLER": 7.53,
                                 "AVG MCS": 9.92,
                                 "AVG CQI": 10.93,
-                                "AVG TxPower": 29.68
+                                "AVG TxPower": 22.42
                             },
                             "Last 30%": {
                                 "AVG BLER": 13.11,
                                 "AVG MCS": 7.52,
                                 "AVG CQI": 11.79,
-                                "AVG TxPower": 39.72
+                                "AVG TxPower": 24.85
                             },
-                            "TxPower": 23.83
+                            "TxPower": 17.43
                         }
                     },
                     "Run3": {
@@ -850,21 +870,21 @@
                                 "AVG BLER": 1.82,
                                 "AVG MCS": 15.48,
                                 "AVG CQI": 11.27,
-                                "AVG TxPower": 2.72
+                                "AVG TxPower": 7.79
                             },
                             "Middle 40%": {
                                 "AVG BLER": 6.05,
                                 "AVG MCS": 9.46,
                                 "AVG CQI": 10.77,
-                                "AVG TxPower": 33.12
+                                "AVG TxPower": 23.52
                             },
                             "Last 30%": {
                                 "AVG BLER": 22.1,
                                 "AVG MCS": 8.97,
                                 "AVG CQI": 11.19,
-                                "AVG TxPower": 35.55
+                                "AVG TxPower": 24.6
                             },
-                            "TxPower": 24.89
+                            "TxPower": 19.21
                         }
                     },
                     "Run4": {
@@ -893,21 +913,21 @@
                                 "AVG BLER": 1.72,
                                 "AVG MCS": 13.59,
                                 "AVG CQI": 12.32,
-                                "AVG TxPower": 0.79
+                                "AVG TxPower": 4.21
                             },
                             "Middle 40%": {
                                 "AVG BLER": 7.61,
                                 "AVG MCS": 9.6,
                                 "AVG CQI": 10.83,
-                                "AVG TxPower": 30.02
+                                "AVG TxPower": 22.63
                             },
                             "Last 30%": {
                                 "AVG BLER": 15.28,
                                 "AVG MCS": 9.18,
                                 "AVG CQI": 11.75,
-                                "AVG TxPower": 20.15
+                                "AVG TxPower": 21.5
                             },
-                            "TxPower": 18.38
+                            "TxPower": 16.83
                         }
                     },
                     "Run5": {
@@ -936,21 +956,21 @@
                                 "AVG BLER": 4.98,
                                 "AVG MCS": 15.48,
                                 "AVG CQI": 10.49,
-                                "AVG TxPower": 7.29
+                                "AVG TxPower": 11.5
                             },
                             "Middle 40%": {
                                 "AVG BLER": 8.31,
                                 "AVG MCS": 6.96,
                                 "AVG CQI": 10.76,
-                                "AVG TxPower": 36.96
+                                "AVG TxPower": 24.28
                             },
                             "Last 30%": {
                                 "AVG BLER": 17.15,
                                 "AVG MCS": 8.65,
                                 "AVG CQI": 11.93,
-                                "AVG TxPower": 36.34
+                                "AVG TxPower": 24.69
                             },
-                            "TxPower": 27.88
+                            "TxPower": 20.58
                         }
                     }
                 }
@@ -983,21 +1003,21 @@
                                 "AVG BLER": 1.05,
                                 "AVG MCS": 14.85,
                                 "AVG CQI": 13.25,
-                                "AVG TxPower": 3.19
+                                "AVG TxPower": 7.92
                             },
                             "Middle 40%": {
                                 "AVG BLER": 4.87,
                                 "AVG MCS": 15.8,
                                 "AVG CQI": 12.07,
-                                "AVG TxPower": 11.68
+                                "AVG TxPower": 12.79
                             },
                             "Last 30%": {
                                 "AVG BLER": 16.1,
                                 "AVG MCS": 10.72,
                                 "AVG CQI": 9.5,
-                                "AVG TxPower": 14.35
+                                "AVG TxPower": 21.0
                             },
-                            "TxPower": 9.96
+                            "TxPower": 13.83
                         }
                     },
                     "Run2": {
@@ -1026,21 +1046,21 @@
                                 "AVG BLER": 2.08,
                                 "AVG MCS": 15.15,
                                 "AVG CQI": 13.82,
-                                "AVG TxPower": 4.93
+                                "AVG TxPower": 10.15
                             },
                             "Middle 40%": {
                                 "AVG BLER": 5.14,
                                 "AVG MCS": 15.94,
                                 "AVG CQI": 11.15,
-                                "AVG TxPower": 15.7
+                                "AVG TxPower": 15.58
                             },
                             "Last 30%": {
                                 "AVG BLER": 16.34,
                                 "AVG MCS": 13.98,
                                 "AVG CQI": 9.14,
-                                "AVG TxPower": 26.19
+                                "AVG TxPower": 22.12
                             },
-                            "TxPower": 15.66
+                            "TxPower": 15.94
                         }
                     },
                     "Run3": {
@@ -1069,21 +1089,21 @@
                                 "AVG BLER": 9.61,
                                 "AVG MCS": 16.75,
                                 "AVG CQI": 12.0,
-                                "AVG TxPower": 2.86
+                                "AVG TxPower": 8.96
                             },
                             "Middle 40%": {
                                 "AVG BLER": 6.32,
                                 "AVG MCS": 16.0,
                                 "AVG CQI": 9.25,
-                                "AVG TxPower": 20.64
+                                "AVG TxPower": 19.14
                             },
                             "Last 30%": {
                                 "AVG BLER": 11.24,
                                 "AVG MCS": 15.24,
                                 "AVG CQI": 9.1,
-                                "AVG TxPower": 29.07
+                                "AVG TxPower": 21.96
                             },
-                            "TxPower": 17.98
+                            "TxPower": 17.02
                         }
                     },
                     "Run4": {
@@ -1112,21 +1132,21 @@
                                 "AVG BLER": 2.87,
                                 "AVG MCS": 14.23,
                                 "AVG CQI": 13.15,
-                                "AVG TxPower": 1.69
+                                "AVG TxPower": 8.08
                             },
                             "Middle 40%": {
                                 "AVG BLER": 6.37,
                                 "AVG MCS": 15.98,
                                 "AVG CQI": 10.86,
-                                "AVG TxPower": 17.44
+                                "AVG TxPower": 16.34
                             },
                             "Last 30%": {
                                 "AVG BLER": 14.11,
                                 "AVG MCS": 13.63,
                                 "AVG CQI": 8.52,
-                                "AVG TxPower": 30.79
+                                "AVG TxPower": 21.98
                             },
-                            "TxPower": 16.81
+                            "TxPower": 15.59
                         }
                     },
                     "Run5": {
@@ -1155,21 +1175,21 @@
                                 "AVG BLER": 6.07,
                                 "AVG MCS": 16.72,
                                 "AVG CQI": 11.82,
-                                "AVG TxPower": 6.61
+                                "AVG TxPower": 11.81
                             },
                             "Middle 40%": {
                                 "AVG BLER": 6.38,
                                 "AVG MCS": 15.83,
                                 "AVG CQI": 8.91,
-                                "AVG TxPower": 25.23
+                                "AVG TxPower": 21.75
                             },
                             "Last 30%": {
                                 "AVG BLER": 21.33,
                                 "AVG MCS": 11.41,
                                 "AVG CQI": 7.84,
-                                "AVG TxPower": 32.98
+                                "AVG TxPower": 22.44
                             },
-                            "TxPower": 22.08
+                            "TxPower": 19.02
                         }
                     }
                 },
@@ -1200,21 +1220,21 @@
                                 "AVG BLER": 0.36,
                                 "AVG MCS": 14.38,
                                 "AVG CQI": 11.02,
-                                "AVG TxPower": 6.54
+                                "AVG TxPower": 10.98
                             },
                             "Middle 40%": {
                                 "AVG BLER": 2.55,
                                 "AVG MCS": 15.9,
                                 "AVG CQI": 9.33,
-                                "AVG TxPower": 17.04
+                                "AVG TxPower": 18.12
                             },
                             "Last 30%": {
                                 "AVG BLER": 1.58,
                                 "AVG MCS": 11.79,
                                 "AVG CQI": 8.07,
-                                "AVG TxPower": 21.48
+                                "AVG TxPower": 22.67
                             },
-                            "TxPower": 15.25
+                            "TxPower": 17.37
                         }
                     },
                     "Run2": {
@@ -1243,21 +1263,21 @@
                                 "AVG BLER": 1.67,
                                 "AVG MCS": 14.87,
                                 "AVG CQI": 10.56,
-                                "AVG TxPower": 9.32
+                                "AVG TxPower": 13.2
                             },
                             "Middle 40%": {
                                 "AVG BLER": 3.44,
                                 "AVG MCS": 15.95,
                                 "AVG CQI": 8.72,
-                                "AVG TxPower": 19.13
+                                "AVG TxPower": 18.7
                             },
                             "Last 30%": {
                                 "AVG BLER": 4.74,
                                 "AVG MCS": 14.66,
                                 "AVG CQI": 7.24,
-                                "AVG TxPower": 30.82
+                                "AVG TxPower": 22.29
                             },
-                            "TxPower": 19.74
+                            "TxPower": 18.15
                         }
                     },
                     "Run3": {
@@ -1286,21 +1306,21 @@
                                 "AVG BLER": 0.58,
                                 "AVG MCS": 17.02,
                                 "AVG CQI": 7.91,
-                                "AVG TxPower": 6.95
+                                "AVG TxPower": 14.39
                             },
                             "Middle 40%": {
                                 "AVG BLER": 4.17,
                                 "AVG MCS": 16.02,
                                 "AVG CQI": 8.86,
-                                "AVG TxPower": 25.62
+                                "AVG TxPower": 22.09
                             },
                             "Last 30%": {
                                 "AVG BLER": 5.1,
                                 "AVG MCS": 13.09,
                                 "AVG CQI": 7.49,
-                                "AVG TxPower": 34.03
+                                "AVG TxPower": 22.65
                             },
-                            "TxPower": 22.65
+                            "TxPower": 19.96
                         }
                     },
                     "Run4": {
@@ -1329,21 +1349,21 @@
                                 "AVG BLER": 1.57,
                                 "AVG MCS": 13.82,
                                 "AVG CQI": 9.1,
-                                "AVG TxPower": 7.22
+                                "AVG TxPower": 11.49
                             },
                             "Middle 40%": {
                                 "AVG BLER": 4.81,
                                 "AVG MCS": 15.94,
                                 "AVG CQI": 7.84,
-                                "AVG TxPower": 22.13
+                                "AVG TxPower": 20.11
                             },
                             "Last 30%": {
                                 "AVG BLER": 6.72,
                                 "AVG MCS": 13.37,
                                 "AVG CQI": 5.81,
-                                "AVG TxPower": 34.87
+                                "AVG TxPower": 22.55
                             },
-                            "TxPower": 21.58
+                            "TxPower": 18.31
                         }
                     },
                     "Run5": {
@@ -1372,21 +1392,21 @@
                                 "AVG BLER": 0.7,
                                 "AVG MCS": 16.37,
                                 "AVG CQI": 9.07,
-                                "AVG TxPower": 9.37
+                                "AVG TxPower": 15.43
                             },
                             "Middle 40%": {
                                 "AVG BLER": 4.45,
                                 "AVG MCS": 15.91,
                                 "AVG CQI": 7.71,
-                                "AVG TxPower": 27.34
+                                "AVG TxPower": 22.24
                             },
                             "Last 30%": {
                                 "AVG BLER": 7.47,
                                 "AVG MCS": 12.88,
                                 "AVG CQI": 6.54,
-                                "AVG TxPower": 34.8
+                                "AVG TxPower": 22.7
                             },
-                            "TxPower": 24.31
+                            "TxPower": 20.37
                         }
                     }
                 }

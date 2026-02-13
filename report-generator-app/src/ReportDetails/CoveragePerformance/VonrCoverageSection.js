@@ -179,7 +179,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         baseStation={BASE_STATION_COORDS}
                     />
                 </div>
-                {/* <div className='page-content'>
+                <div className='page-content'>
                     <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - Last MOS Before Silence - {city}</DynamicHeader>
                     <CoverageTestTable tableData={dataMOS.slice(0, -1)} status={dataMOS[dataMOS.length - 1]} />
                     <CoverageMap
@@ -196,7 +196,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         metric="call_drop"
                         baseStation={BASE_STATION_COORDS}
                     />
-                </div> */}
+                </div>
                 <div className='page-content'>
                     <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - Secondary KPI - {city}</DynamicHeader>
                     <SecondaryKpiTable data={secondaryKpi} />

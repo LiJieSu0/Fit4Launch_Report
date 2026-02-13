@@ -36,26 +36,57 @@ def analyze_secondary_kpis(file_path):
         
         # Priority 1: Path contains "Coverage" and "LTE" -> FORCE use of LTE Header
         if "coverage" in norm_path and "lte" in norm_path:
-            if col_tx_power_lte in available_cols:
-                tx_power_col = col_tx_power_lte
+            # For LTE, we might still want to look for specific LTE headers, but user asked for specific priority.
+            # However, typically LTE files have '[LTE] ... Tx power (PUSCH Total)'.
+            # If the user's request is strictly about these 3 headers, they might be for 5G coverage.
+            # But "Tx power (total)" is quite generic.
+            # Let's keep the LTE specific check for BLER/MCS, but use the new logic for Tx Power if the LTE specific one isn't found?
+            # Or better, let's try to find an LTE specific one first, IF strictly required by previous logic context.
+            # The previous logic was strict: if LTE path, use col_tx_power_lte.
             
-            # Select LTE Headers for Segments
+            # Use LTE specific headers for BLER/MCS
             target_bler = col_bler_lte
             target_mcs = col_mcs_lte
-            target_cqi = col_cqi # Default to 5G CQI? Or maybe LTE has different CQI? Keeping as is for now if not specified.
-        
-        # Priority 2: Fallback to existing logic for NR or other cases
-        elif col_tx_power_5g in available_cols:
-            tx_power_col = col_tx_power_5g
-            target_bler = col_bler
-            target_mcs = col_mcs
-            target_cqi = col_cqi
-        
+            target_cqi = col_cqi 
+            
+            # For Tx Power in LTE mode, we try the known LTE column first.
+            if col_tx_power_lte in available_cols:
+                 tx_power_col = col_tx_power_lte
+            else:
+                 # Fallback to the new fuzzy search if strict LTE column not found
+                 tx_power_col = None
+
         else:
-            # Default to 5G headers if no specific condition met
-            target_bler = col_bler
-            target_mcs = col_mcs
-            target_cqi = col_cqi
+             # Default to 5G headers logic
+             target_bler = col_bler
+             target_mcs = col_mcs
+             target_cqi = col_cqi
+             tx_power_col = None
+
+        # Determine Tx Power Column using Fuzzy Search Priority (if not already set by strict LTE logic)
+        # Priority:
+        # 1. tx power (pusch actual)
+        # 2. tx power (total)
+        # 3. tx power (total actual)
+        
+        if tx_power_col is None:
+            # Define priority patterns (all lowercase for case-insensitive matching)
+            # using regex-like thinking but simple substring check is often enough for "fuzzy" in this context
+            # unless user meant actual leavenstein distance, but usually implies substring/variation.
+            priority_patterns = [
+                "tx power (pusch actual)",
+                "tx power (total)",
+                "tx power (total actual)"
+            ]
+            
+            available_cols_lower = [c.lower() for c in available_cols]
+            
+            for pattern in priority_patterns:
+                # Find first column that contains the pattern
+                match = next((i for i, col in enumerate(available_cols_lower) if pattern in col), None)
+                if match is not None:
+                    tx_power_col = available_cols[match]
+                    break
 
         # Core required columns for segmentation (if any of these exist, we do segmentation)
         seg_cols = [target_bler, target_mcs, target_cqi]

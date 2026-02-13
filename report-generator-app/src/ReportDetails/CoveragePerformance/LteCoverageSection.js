@@ -175,6 +175,24 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
                     />
                 </div>
                 <div className='page-content'>
+                    <DynamicHeader level={3} hideInTOC={true}>LTE Coverage Test {bandLabel} - Last MOS Before Silence - {city}</DynamicHeader>
+                    <CoverageTestTable tableData={dataMOS.slice(0, -1)} status={dataMOS[dataMOS.length - 1]} />
+                    <CoverageMap
+                        bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['LTE Coverage Test']?.[band]}
+                        metric="mos_before_drop"
+                        baseStation={BASE_STATION_COORDS}
+                    />
+                </div>
+                <div className='page-content'>
+                    <DynamicHeader level={3} hideInTOC={true}>LTE Coverage Test {bandLabel} - Audio Call Drop - {city}</DynamicHeader>
+                    <CoverageTestTable tableData={dataAudio.slice(0, -1)} status={bandStatus} />
+                    <CoverageMap
+                        bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['LTE Coverage Test']?.[band]}
+                        metric="call_drop"
+                        baseStation={BASE_STATION_COORDS}
+                    />
+                </div>
+                <div className='page-content'>
                     <DynamicHeader level={3} hideInTOC={true}>LTE Coverage Test {bandLabel} - Secondary KPI - {city}</DynamicHeader>
                     <SecondaryKpiTable data={secondaryKpi} />
                 </div>

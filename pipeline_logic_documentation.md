@@ -113,13 +113,17 @@ For individual CSV files (Data Performance, etc.), the `_determine_analysis_para
 
 #### 2. Secondary KPIs (`coverage_secondary_kpi_analyzer.py`)
 *   **Logic:** Segments data into First 30%, Middle 40%, Last 30% relative to a "No Service" cut-off.
-*   **Path Logic:** If path contains "Coverage" AND "LTE", forces LTE headers.
+*   **Tx Power Logic:** Uses fuzzy search with the following priority (case-insensitive):
+    1. `tx power (pusch actual)`
+    2. `tx power (total)`
+    3. `tx power (total actual)`
+    *   (In LTE context, tries `[LTE] [Power] [Tx Power] Tx power (PUSCH Total)` first).
 
 | Metric | **Primary Header (5G)** | **LTE Context Header** |
 | :--- | :--- | :--- |
 | **BLER** | `[NR5G] [BLER & HARQ] PDSCH BLER` | `[LTE] [L1] [BLER] PDSCH BLER` |
 | **MCS** | `[NR5G] [PCC] [PUSCH] [Modulation] MCS (Avg)` | `[LTE-A] [PCell] [L1] [MCS] DL MCS (TB0 & TB1 - Avg)` |
-| **Tx Power**| `[NR5G] [Power] Tx power (Total)` | `[LTE] [Power] [Tx Power] Tx power (PUSCH Total)` |
+| **Tx Power**| Fuzzy Priority: `PUSCH Actual` > `Total` > `Total Actual` | `[LTE] [Power] [Tx Power] Tx power (PUSCH Total)` |
 
 ---
 

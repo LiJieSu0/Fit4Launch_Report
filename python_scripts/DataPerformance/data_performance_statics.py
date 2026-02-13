@@ -100,6 +100,8 @@ def _determine_analysis_parameters(file_path):
     logger.debug(f"_determine_analysis_parameters - file_name (from basename): {file_name}")
     logger.debug(f"_determine_analysis_parameters - parent_dir_of_file_dir: {parent_dir_of_file_dir}")
 
+    file_path_lower = file_path.lower()
+
     params = {
         "event_col": None,
         "event_col_fallback": None, # Added for fallback event column
@@ -145,6 +147,9 @@ def _determine_analysis_parameters(file_path):
              params["analysis_direction_detected"] = "DL"
         elif "ul" in dir_name or "upload" in dir_name:
              params["analysis_direction_detected"] = "UL"
+        # New fallback for Mobility/Drive tests that are typically Bi-Directional
+        elif "mobility" in file_path_lower or "drive" in file_path_lower:
+             params["analysis_direction_detected"] = "UL" # Default to UL if not specified, typical for these tests
     
     # Determine protocol type from filename
     # First, prepare the lowercase file path for path-based checks
@@ -154,7 +159,7 @@ def _determine_analysis_parameters(file_path):
         params["protocol_type_detected"] = "WEB_PAGE"
     elif "http" in file_name:
         params["protocol_type_detected"] = "HTTP"
-    elif "udp" in file_name:
+    elif "udp" in file_name or "mobility" in file_name or "mobility" in file_path_lower:
         params["protocol_type_detected"] = "UDP"
     elif "ping" in file_name: # Detect PING protocol
         params["protocol_type_detected"] = "PING"
@@ -596,7 +601,6 @@ def analyze_jitter(file_path, column_name_to_analyze, event_col_name, start_even
             # Extract interval means from this file
             for start_idx, end_idx in intervals:
                 interval_data = data.loc[start_idx : end_idx, column_name_to_analyze].dropna()
-                interval_data = interval_data[interval_data != 0]
                 if not interval_data.empty:
                     all_interval_means.append(interval_data.mean())
 
@@ -664,7 +668,6 @@ def analyze_error_ratio(file_path, column_name_to_analyze, event_col_name, start
             if not intervals:
                 # Fallback to entire column mean if no intervals found
                 overall_error_data = data_series.dropna()
-                overall_error_data = overall_error_data[overall_error_data != 0]
                 if not overall_error_data.empty:
                     all_interval_means.append(overall_error_data.mean())
                 continue
@@ -672,7 +675,6 @@ def analyze_error_ratio(file_path, column_name_to_analyze, event_col_name, start
             # Extract interval means from this file
             for start_idx, end_idx in intervals:
                 interval_data = data.loc[start_idx : end_idx, column_name_to_analyze].dropna()
-                interval_data = interval_data[interval_data != 0]
                 if not interval_data.empty:
                     all_interval_means.append(interval_data.mean())
 

@@ -21,12 +21,12 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
         });
 
         // Throughput UL
-        overallMetrics.push({
-            metric: "UL Throughput Mean (Mbps)",
-            kpiType: "Throughput",
-            dutValue: dutDl.Throughput.UL.Mean.toFixed(2),
-            refValue: refDl.Throughput.UL.Mean.toFixed(2),
-        });
+        // overallMetrics.push({
+        //     metric: "UL Throughput Mean (Mbps)",
+        //     kpiType: "Throughput",
+        //     dutValue: dutDl.Throughput.UL.Mean.toFixed(2),
+        //     refValue: refDl.Throughput.UL.Mean.toFixed(2),
+        // });
 
         // Jitter DL
         overallMetrics.push({
@@ -37,12 +37,12 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
         });
 
         // Jitter UL
-        overallMetrics.push({
-            metric: "UL Jitter Mean (ms)",
-            kpiType: "Jitter",
-            dutValue: dutDl.Jitter["UL Mean"].toFixed(2),
-            refValue: refDl.Jitter["UL Mean"].toFixed(2),
-        });
+        // overallMetrics.push({
+        //     metric: "UL Jitter Mean (ms)",
+        //     kpiType: "Jitter",
+        //     dutValue: dutDl.Jitter["UL Mean"].toFixed(2),
+        //     refValue: refDl.Jitter["UL Mean"].toFixed(2),
+        // });
 
         // Error Ratio DL
         overallMetrics.push({
@@ -53,12 +53,12 @@ const DpMHSTestDriveOverallTable = ({ data, tableName }) => {
         });
 
         // Error Ratio UL
-        overallMetrics.push({
-            metric: "UL Packet Failure Rate Mean (%)",
-            kpiType: "ErrorRatio",
-            dutValue: dutDl['Error Ratio']["UL Mean"].toFixed(2),
-            refValue: refDl['Error Ratio']["UL Mean"].toFixed(2),
-        });
+        // overallMetrics.push({
+        //     metric: "UL Packet Failure Rate Mean (%)",
+        //     kpiType: "ErrorRatio",
+        //     dutValue: dutDl['Error Ratio']["UL Mean"].toFixed(2),
+        //     refValue: refDl['Error Ratio']["UL Mean"].toFixed(2),
+        // });
 
         // Ping RTT
         overallMetrics.push({

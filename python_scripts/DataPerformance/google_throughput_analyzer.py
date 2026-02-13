@@ -85,25 +85,29 @@ def analyze_throughput(file_path):
             else:
                 df = pd.read_csv(current_file_path)
 
-            df.columns = [_clean_header(col) for col in df.columns]
-            
             # Find throughput column
             throughput_column = None
-            for col in possible_columns:
-                clean_col = _clean_header(col)
-                if clean_col in df.columns:
-                    valid_data = pd.to_numeric(df[clean_col], errors='coerce').dropna()
-                    if len(valid_data) > 0:
-                        throughput_column = clean_col
+            for col_cand in possible_columns:
+                # Find if any actual column matches this candidate after cleaning
+                match_found = None
+                for actual_col in df.columns:
+                    if _clean_header(actual_col) == _clean_header(col_cand):
+                        match_found = actual_col
+                        break
+                
+                if match_found:
+                    valid_data = pd.to_numeric(df[match_found], errors='coerce').dropna()
+                    if len(valid_data) > 0 and valid_data.max() > 0.1:
+                        throughput_column = match_found
                         break
             
             if not throughput_column:
-                for col in df.columns:
-                    col_lower = str(col).lower()
+                for actual_col in df.columns:
+                    col_lower = str(actual_col).lower()
                     if ("throughput" in col_lower or "dl tp" in col_lower or "ul tp" in col_lower):
-                        valid_data = pd.to_numeric(df[col], errors='coerce').dropna()
-                        if len(valid_data) > 0:
-                            throughput_column = col
+                        valid_data = pd.to_numeric(df[actual_col], errors='coerce').dropna()
+                        if len(valid_data) > 0 and valid_data.max() > 0.1:
+                            throughput_column = actual_col
                             break
                             
             if not throughput_column:

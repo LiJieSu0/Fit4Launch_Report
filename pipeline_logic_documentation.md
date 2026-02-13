@@ -21,8 +21,8 @@ For individual CSV files (Data Performance, etc.), the `_determine_analysis_para
 | Protocol | Trigger Condition |
 | :--- | :--- |
 | **WEB_PAGE** | Filename contains `web page` OR Path contains `web-kepler` / `kepler` |
-| **HTTP** | Filename contains `http` |
-| **UDP** | Filename contains `udp` |
+| **HTTP** | Filename contains `http` OR Path contains `play-store app` |
+| **UDP** | Filename contains `udp` OR Filename/Path contains `mobility` |
 | **PING** | Filename contains `ping` |
 
 ---
@@ -33,6 +33,7 @@ For individual CSV files (Data Performance, etc.), the `_determine_analysis_para
 
 #### 1. Throughput (HTTP/UDP)
 *   **Logic:** Detects "intervals" of active data transfer based on Start/End events. Calculates average throughput for each interval, then averages those averages.
+*   **Direction Logic:** If not found in filename, checks parent directories. Defaults to **UL** for `mobility`/`drive` paths if ambiguous.
 *   **Start Event:** `Download Started` (HTTP DL), `Upload Started` (HTTP UL), `IPERF_T_Start` (UDP)
 *   **End Event:** `Download Ended` (HTTP DL), `Upload Ended` (HTTP UL), `IPERF_T_End` (UDP)
 *   **Filter:** Removes `0` and `NaN` values.
@@ -41,7 +42,7 @@ For individual CSV files (Data Performance, etc.), the `_determine_analysis_para
 | :--- | :--- | :--- | :--- | :--- |
 | **DL** | 5G/NR | `[Call Test] [Throughput] Application DL TP` | `[NR5G] [(NR + LTE)] [Throughput] PDSCH TP` | `DL TP (excl. slow start)` |
 | **DL** | LTE | `[LTE] [Data Throughput] [Downlink (All)] [PDSCH] PDSCH TP (Total)` | N/A | `DL TP (excl. slow start)` |
-| **UL** | 5G/NR | `[Call Test] [Throughput] Application UL TP` | `[NR5G] [(NR + LTE)] [Throughput] PUSCH TP` | `UL Avg TP` |
+| **UL** | 5G/NR | `[Call Test] [Throughput] Application UL TP` | `[NR5G] [Throughput] PUSCH TP` | `UL Avg TP` |
 | **UL** | LTE | `[LTE] [Data Throughput] [Uplink (All)] [PUSCH] PUSCH TP (Total)` | N/A | `UL Avg TP` |
 
 #### 2. UDP Jitter & Error Ratio
@@ -101,7 +102,7 @@ For individual CSV files (Data Performance, etc.), the `_determine_analysis_para
 ### D. Coverage Performance (`Coverage` folder)
 
 #### 1. N41 Coverage (`n41_coverage_analyzer.py`)
-*   **Logic:** Extracts RSRP and Tx Power at the location of specific "No Service" events (looking upwards for data).
+*   **Logic:** Extracts RSRP and Tx Power at the location of specific "No Service" events.
 *   **Filtering:** Rows with `Tx Power == 0` or matching **HPUE Limits** are removed:
     *   **PC2 Devices:** Tx Power > 26 dBm is removed.
     *   **PC3 Devices:** Tx Power > 24 dBm is removed.
@@ -142,7 +143,7 @@ For individual CSV files (Data Performance, etc.), the `_determine_analysis_para
     2.  `[NR5G] [(NR + LTE)] [Throughput] PDSCH TP`
     3.  `[NR5G] [Throughput] PDSCH TP`
     4.  `[LTE] [Data Throughput] [Downlink (All)] [PDSCH] PDSCH TP (Total)`
-    5.  *Fuzzy Match:* Any column containing "throughput", "dl tp", or "ul tp".
+    5.  *Fuzzy Match:* Header contains `throughput`, `dl tp`, or `ul tp`.
 
 ---
 

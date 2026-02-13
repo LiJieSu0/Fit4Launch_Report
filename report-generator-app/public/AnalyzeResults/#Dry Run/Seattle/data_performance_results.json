@@ -1944,6 +1944,80 @@
                         }
                     }
                 }
+            },
+            "5G Auto Data Play-store app Download": {
+                "Good": {
+                    "DUT": {
+                        "30M": {
+                            "overall_average_throughput": 147.1285119047619
+                        },
+                        "60M": {
+                            "overall_average_throughput": 213.39915641025638
+                        },
+                        "100M": {
+                            "overall_average_throughput": 249.94195769230768
+                        }
+                    },
+                    "REF": {
+                        "30M": {
+                            "overall_average_throughput": 60.84161072545875
+                        },
+                        "60M": {
+                            "overall_average_throughput": 62.726704619722376
+                        },
+                        "100M": {
+                            "overall_average_throughput": 120.83504523809523
+                        }
+                    }
+                },
+                "Moderate": {
+                    "DUT": {
+                        "30M": {
+                            "overall_average_throughput": 0.039857142857142855
+                        },
+                        "60M": {
+                            "overall_average_throughput": 228.6272625
+                        },
+                        "100M": {
+                            "overall_average_throughput": 260.2947194444444
+                        }
+                    },
+                    "REF": {
+                        "30M": {
+                            "overall_average_throughput": 0.0491
+                        },
+                        "60M": {
+                            "overall_average_throughput": 131.27356176470587
+                        },
+                        "100M": {
+                            "overall_average_throughput": 201.0624455687831
+                        }
+                    }
+                },
+                "Poor": {
+                    "DUT": {
+                        "100M": {
+                            "overall_average_throughput": 24.38934015715434
+                        },
+                        "60M": {
+                            "overall_average_throughput": 3.3509206789909762
+                        },
+                        "30M": {
+                            "overall_average_throughput": 2.193686111111111
+                        }
+                    },
+                    "REF": {
+                        "100M": {
+                            "overall_average_throughput": 3.250008635808636
+                        },
+                        "60M": {
+                            "overall_average_throughput": 2.330117389653276
+                        },
+                        "30M": {
+                            "overall_average_throughput": 2.144216666666667
+                        }
+                    }
+                }
             }
         },
         "5G NSA DP": {

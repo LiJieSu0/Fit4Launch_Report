@@ -83,10 +83,12 @@ const DpCDF_Chart = ({ project, city, dutFilename, refFilename, title }) => {
                         />
                         <Legend verticalAlign="top" height={36} />
 
-                        {/* Reference Lines at 25%, 50%, 75% */}
+                        {/* Reference Lines at 5%, 25%, 50%, 75%, 95% */}
+                        <ReferenceLine y={5} stroke="#db1b1bff" strokeDasharray="5 5" label={{ value: '5', position: 'left', fill: '#666', fontSize: 15, dy: -8 }} />
                         <ReferenceLine y={25} stroke="#ccc" strokeDasharray="5 5" />
                         <ReferenceLine y={50} stroke="#ccc" strokeDasharray="5 5" />
                         <ReferenceLine y={75} stroke="#ccc" strokeDasharray="5 5" />
+                        <ReferenceLine y={95} stroke="#1548d4ff" strokeDasharray="5 5" label={{ value: '95', position: 'left', fill: '#666', fontSize: 15, dy: 8 }} />
 
                         {data.dut && (
                             <Line

@@ -45,8 +45,8 @@ function DpNSATestDriveTable({ data, tableName }) {
       },
     ];
 
-    // Process DL and UL metrics
-    ["DL", "UL"].forEach(direction => {
+    // Process DL metrics (UL removed)
+    ["DL"].forEach(direction => {
       dlUlMetrics.forEach(metric => {
         metric.subMetrics.forEach(subMetric => {
           const metricPath = `${direction} ${metric.name}.${subMetric.key}`;

@@ -17,39 +17,34 @@ const DpNSATestDriveOverallTable = ({ data, tableName }) => {
             return typeof val === 'number' ? val.toFixed(2) : "N/A";
         };
 
-        // Helper to calculate average of DL and UL metrics
-        const getAverage = (device, metricName) => {
+        // Helper to get only DL metric
+        const getDlValue = (device, metricName) => {
             const dlValue = device?.[`DL ${metricName}`]?.Mean;
-            const ulValue = device?.[`UL ${metricName}`]?.Mean;
-
-            if (dlValue !== undefined && ulValue !== undefined) {
-                return ((dlValue + ulValue) / 2).toFixed(2);
-            }
-            return "N/A";
+            return dlValue !== undefined ? dlValue.toFixed(2) : "N/A";
         };
 
-        // Throughput (average of DL and UL)
+        // Throughput (DL only)
         overallMetrics.push({
-            metric: "Mean Throughput (Mbps)",
+            metric: "Mean DL Throughput (Mbps)",
             kpiType: "Throughput",
-            dutValue: getAverage(dutDl, 'Throughput'),
-            refValue: getAverage(refDl, 'Throughput'),
+            dutValue: getDlValue(dutDl, 'Throughput'),
+            refValue: getDlValue(refDl, 'Throughput'),
         });
 
-        // Jitter (average of DL and UL)
+        // Jitter (DL only)
         overallMetrics.push({
-            metric: "Mean Jitter (s)",
+            metric: "Mean DL Jitter (s)",
             kpiType: "Jitter",
-            dutValue: getAverage(dutDl, 'Jitter'),
-            refValue: getAverage(refDl, 'Jitter'),
+            dutValue: getDlValue(dutDl, 'Jitter'),
+            refValue: getDlValue(refDl, 'Jitter'),
         });
 
-        // Error Ratio (average of DL and UL)
+        // Error Ratio (DL only)
         overallMetrics.push({
             metric: "Packet Failure Rate (%)",
             kpiType: "ErrorRatio",
-            dutValue: getAverage(dutDl, 'Error Ratio'),
-            refValue: getAverage(refDl, 'Error Ratio'),
+            dutValue: getDlValue(dutDl, 'Error Ratio'),
+            refValue: getDlValue(refDl, 'Error Ratio'),
         });
 
         // Ping RTT (no DL/UL, try both "Mean" and "avg" keys)

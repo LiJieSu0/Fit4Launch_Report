@@ -41,11 +41,9 @@ function DpNSATestDriveDetails({ city: propCity }) {
   const dutDriveTest = mobilityData['DUT'];
   const refDriveTest = mobilityData['REF'];
 
-  // Helper to get DL/UL average for throughput, jitter, and error ratio
-  const getAverage = (device, metricPrefix) => {
-    const dlValue = device?.[`DL ${metricPrefix}`]?.Mean || 0;
-    const ulValue = device?.[`UL ${metricPrefix}`]?.Mean || 0;
-    return (dlValue + ulValue) / 2;
+  // Helper to get DL value for throughput, jitter, and error ratio
+  const getDlValue = (device, metricPrefix) => {
+    return device?.[`DL ${metricPrefix}`]?.Mean || 0;
   };
 
   const getHistogramData = (metricType) => {
@@ -55,9 +53,9 @@ function DpNSATestDriveDetails({ city: propCity }) {
       dutVal = dutDriveTest?.['Ping RTT']?.['Mean'] || dutDriveTest?.['Ping RTT']?.['avg'] || 0;
       refVal = refDriveTest?.['Ping RTT']?.['Mean'] || refDriveTest?.['Ping RTT']?.['avg'] || 0;
     } else {
-      // For Throughput, Jitter, and Error Ratio, calculate average of DL and UL
-      dutVal = getAverage(dutDriveTest, metricType);
-      refVal = getAverage(refDriveTest, metricType);
+      // For Throughput, Jitter, and Error Ratio, use DL value
+      dutVal = getDlValue(dutDriveTest, metricType);
+      refVal = getDlValue(refDriveTest, metricType);
     }
 
     return [{
@@ -93,13 +91,13 @@ function DpNSATestDriveDetails({ city: propCity }) {
       <div className='page-content'>
         <DpHistogramComponent
           data={throughputData}
-          title="Drive Test Throughput"
+          title="Drive Test DL Throughput"
           yAxisLabel="Mbps"
           barKeys={barKeysThroughput}
         />
         <DpHistogramComponent
           data={jitterData}
-          title="Drive Test Jitter"
+          title="Drive Test DL Jitter"
           yAxisLabel="s"
           barKeys={barKeysJitter}
         />
@@ -108,7 +106,7 @@ function DpNSATestDriveDetails({ city: propCity }) {
       <div className='page-content'>
         <DpHistogramComponent
           data={errorRatioData}
-          title="Packet Failure Rate"
+          title="DL Packet Failure Rate"
           yAxisLabel="%"
           barKeys={barKeysErrorRatio}
         />

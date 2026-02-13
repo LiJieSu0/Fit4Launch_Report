@@ -17,6 +17,7 @@ const DeviceInfoPage = () => {
                         <th>Test Device Label</th>
                         <th>Role</th>
                         <th>Software Version</th>
+                        <th>Hardware Version</th>
                         <th>IMEI</th>
                     </tr>
                 </thead>
@@ -27,6 +28,7 @@ const DeviceInfoPage = () => {
                                 <td>{device.testDeviceLabel}</td>
                                 <td>{device.role}</td>
                                 <td>{device.softwareVersion}</td>
+                                <td>{device.hardwareVersion}</td>
                                 <td>
                                     {device.imei.map((imei, i) => (
                                         <div key={i}>{imei}</div>
@@ -36,13 +38,14 @@ const DeviceInfoPage = () => {
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="4" style={{ textAlign: 'center', padding: '20px' }}>
+                            <td colSpan="5" style={{ textAlign: 'center', padding: '20px' }}>
                                 No device information available for this project.
                             </td>
                         </tr>
                     )}
                 </tbody>
             </table>
+            <h2>Test Duration: {project?.testDuration}</h2>
         </div>
     );
 };

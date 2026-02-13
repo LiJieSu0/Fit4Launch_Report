@@ -235,14 +235,29 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
             },
           ]}
         />
-        {/* <DpCDF_Chart
+      </div>
+      <div className='page-content'>
+        <DpCDF_Chart
           project={project}
           city={city}
           dutFilename="5g_auto_dp_http_single_stream_dl_good_dut.json"
           refFilename="5g_auto_dp_http_single_stream_dl_good_ref.json"
           title="HTTP SS DL Good CDF (DUT vs REF)"
-        /> */}
-
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_http_single_stream_dl_moderate_dut.json"
+          refFilename="5g_auto_dp_http_single_stream_dl_moderate_ref.json"
+          title="HTTP SS DL Moderate CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_http_single_stream_dl_poor_dut.json"
+          refFilename="5g_auto_dp_http_single_stream_dl_poor_ref.json"
+          title="HTTP SS DL Poor CDF (DUT vs REF)"
+        />
       </div>
       <div className='page-content'>
         <DpHistogramComponent

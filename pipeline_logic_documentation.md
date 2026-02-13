@@ -74,8 +74,10 @@ For individual CSV files (Data Performance, etc.), the `_determine_analysis_para
     *   `[Call Test] Call Result` (Aggregation target)
 
 #### 2. Call Setup Time
-*   **Logic:** Calculates mean of valid setup durations.
-*   **Header:** `[Call Test] [VoNR VoLTE] [Duration] SIP Setup Duration (Invite~200OK)`
+*   **Logic:** Tries 3 methods in order (similar to WFC).
+    1.  **Header:** `[Call Test] [VoNR VoLTE] [Duration] SIP Setup Duration (Invite~200OK)`
+    2.  **Event Diff:** `[UE] Voice - Setup Success` time minus `[UE] Voice - Orig Success` time.
+    3.  **Event Diff:** `[Tool] Voice - Answer Request` time minus `[Tool] Voice - Call Scheduling Start(Term)` time.
 
 ---
 

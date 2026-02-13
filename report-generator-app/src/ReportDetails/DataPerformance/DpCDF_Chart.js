@@ -54,9 +54,9 @@ const DpCDF_Chart = ({ project, city, dutFilename, refFilename, title }) => {
     }
 
     return (
-        <div className="cdf-chart-container" style={{ margin: '20px 0', padding: '20px', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
-            <h4 style={{ textAlign: 'center', marginBottom: '20px' }}>{title || 'Throughput CDF Comparison'}</h4>
-            <div style={{ width: '100%', height: '400px' }}>
+        <div className="cdf-chart-container" style={{ margin: '20px 0', padding: '0px', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
+            <h4 style={{ textAlign: 'center', marginBottom: '0px' }}>{title || 'Throughput CDF Comparison'}</h4>
+            <div style={{ width: '50%', height: '250px' }}>
                 <ResponsiveContainer>
                     <LineChart
                         margin={{

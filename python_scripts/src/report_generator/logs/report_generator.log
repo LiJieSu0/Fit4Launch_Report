@@ -18336,3 +18336,390 @@
 2026-02-12 11:14:06,046 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
 2026-02-12 11:14:06,046 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
 2026-02-12 11:14:06,046 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 13:30:44,160 - pipeline - INFO - Project: #Dry Run
+2026-02-12 13:30:44,160 - pipeline - INFO - Market: New York
+2026-02-12 13:30:44,161 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\New York
+2026-02-12 13:30:44,161 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-12 13:30:44,161 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 13:30:44,167 - pipeline - INFO - Processing 240 individual CSV files...
+2026-02-12 13:30:44,272 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260203_125220_CH01_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 DUT_.csv
+2026-02-12 13:30:44,289 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260203_125220_CH02_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 REF_.csv
+2026-02-12 13:30:51,587 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 13:30:51,587 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Call Performance
+2026-02-12 13:30:51,588 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-02-12 13:30:51,588 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-02-12 13:30:53,745 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-02-12 13:30:53,745 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-02-12 13:30:56,035 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 13:30:56,036 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 13:30:56,075 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 13:30:56,658 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 13:30:56,991 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 13:30:56,992 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 13:30:56,996 - pipeline - INFO - Successfully analyzed _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv: 201.80939047619046
+2026-02-12 13:30:56,997 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 13:30:57,002 - pipeline - INFO - Successfully analyzed _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv: 106.65787198912199
+2026-02-12 13:30:57,002 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 13:30:57,009 - pipeline - INFO - Successfully analyzed _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv: 151.11654
+2026-02-12 13:30:57,009 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 13:30:57,016 - pipeline - INFO - Successfully analyzed _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv: 154.40230444444444
+2026-02-12 13:30:57,016 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 13:30:57,023 - pipeline - INFO - Successfully analyzed _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv: 183.348031292517
+2026-02-12 13:30:57,023 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 13:30:57,030 - pipeline - INFO - Successfully analyzed _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv: 117.78983869911602
+2026-02-12 13:30:57,030 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 13:30:57,035 - pipeline - INFO - Successfully analyzed _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv: 140.6186
+2026-02-12 13:30:57,036 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 13:30:57,048 - pipeline - INFO - Successfully analyzed _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv: 238.354
+2026-02-12 13:30:57,048 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 13:30:57,058 - pipeline - INFO - Successfully analyzed _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv: 78.27300000000001
+2026-02-12 13:30:57,058 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 13:30:57,067 - pipeline - INFO - Successfully analyzed _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv: 75.78566666666667
+2026-02-12 13:30:57,067 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 13:30:57,076 - pipeline - INFO - Successfully analyzed _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv: 262.726
+2026-02-12 13:30:57,077 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 13:30:57,084 - pipeline - INFO - Successfully analyzed _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv: 263.202
+2026-02-12 13:30:57,085 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 13:30:57,096 - pipeline - INFO - Successfully analyzed _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv: 199.38622564102565
+2026-02-12 13:30:57,096 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 13:30:57,105 - pipeline - INFO - Successfully analyzed _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv: 130.38925768359607
+2026-02-12 13:30:57,105 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 13:30:57,115 - pipeline - INFO - Successfully analyzed _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv: 134.55456031746033
+2026-02-12 13:30:57,115 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 13:30:57,121 - pipeline - INFO - Successfully analyzed _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv: 144.7251455782313
+2026-02-12 13:30:57,122 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 13:30:57,127 - pipeline - INFO - Successfully analyzed _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv: 74.65798181818182
+2026-02-12 13:30:57,128 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 13:30:57,134 - pipeline - INFO - Successfully analyzed _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv: 63.67727272727273
+2026-02-12 13:30:57,134 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 13:30:57,148 - pipeline - INFO - Successfully analyzed _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv: 196.85621014492753
+2026-02-12 13:30:57,148 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 13:30:57,156 - pipeline - INFO - Successfully analyzed _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv: 119.37199855072464
+2026-02-12 13:30:57,156 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 13:30:57,165 - pipeline - INFO - Successfully analyzed _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv: 176.1300491883117
+2026-02-12 13:30:57,165 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 13:30:57,173 - pipeline - INFO - Successfully analyzed _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv: 117.79193697916666
+2026-02-12 13:30:57,173 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 13:30:57,182 - pipeline - INFO - Successfully analyzed _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv: 149.105912676733
+2026-02-12 13:30:57,182 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 13:30:57,190 - pipeline - INFO - Successfully analyzed _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv: 104.78977219980874
+2026-02-12 13:30:57,191 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 13:30:57,198 - pipeline - INFO - Successfully analyzed _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 49.54232289238539
+2026-02-12 13:30:57,198 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 13:30:57,205 - pipeline - INFO - Successfully analyzed _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 83.81849905911082
+2026-02-12 13:30:57,205 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 13:30:57,212 - pipeline - INFO - Successfully analyzed _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 58.24894230560767
+2026-02-12 13:30:57,213 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 13:30:57,220 - pipeline - INFO - Successfully analyzed _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 65.55823299416632
+2026-02-12 13:30:57,220 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 13:30:57,227 - pipeline - INFO - Successfully analyzed _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.13884175824176
+2026-02-12 13:30:57,227 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 13:30:57,235 - pipeline - INFO - Successfully analyzed _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.62678260869565
+2026-02-12 13:30:57,235 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 13:30:57,242 - pipeline - INFO - Successfully analyzed _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv: 124.50955311355311
+2026-02-12 13:30:57,243 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 13:30:57,250 - pipeline - INFO - Successfully analyzed _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv: 89.59927121212121
+2026-02-12 13:30:57,250 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 13:30:57,258 - pipeline - INFO - Successfully analyzed _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv: 141.11671079545454
+2026-02-12 13:30:57,258 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 13:30:57,266 - pipeline - INFO - Successfully analyzed _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv: 99.62210783279221
+2026-02-12 13:30:57,266 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 13:30:57,274 - pipeline - INFO - Successfully analyzed _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv: 251.54180277777778
+2026-02-12 13:30:57,274 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 13:30:57,282 - pipeline - INFO - Successfully analyzed _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv: 72.53284699869847
+2026-02-12 13:30:57,282 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-12 13:30:57,282 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 13:30:57,283 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 13:30:59,205 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 13:31:01,130 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 13:31:01,249 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 13:31:01,278 - pipeline - INFO - Exported 60 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\cdf_throughput_data
+2026-02-12 13:31:01,282 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\data_performance_results.json
+2026-02-12 13:31:01,283 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\call_performance_results.json
+2026-02-12 13:31:01,290 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\coverage_performance_results.json
+2026-02-12 13:31:01,291 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\processing_summary.json
+2026-02-12 13:31:01,292 - pipeline - INFO - Running final data validation...
+2026-02-12 13:31:01,327 - pipeline - WARNING - Summary of Empty collections found in JSON files:
+2026-02-12 13:31:01,328 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> DUT -> call_result_distribution -> Empty Dictionary
+2026-02-12 13:31:01,328 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> DUT -> rat_distribution -> Empty Dictionary
+2026-02-12 13:31:01,328 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> REF -> call_result_distribution -> Empty Dictionary
+2026-02-12 13:31:01,328 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> REF -> rat_distribution -> Empty Dictionary
+2026-02-12 13:31:01,328 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> DUT -> call_result_distribution -> Empty Dictionary
+2026-02-12 13:31:01,329 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> DUT -> rat_distribution -> Empty Dictionary
+2026-02-12 13:31:01,329 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> REF -> call_result_distribution -> Empty Dictionary
+2026-02-12 13:31:01,329 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> REF -> rat_distribution -> Empty Dictionary
+2026-02-12 13:31:01,329 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-12 13:31:01,333 - pipeline - INFO - Project: #Dry Run
+2026-02-12 13:31:01,333 - pipeline - INFO - Project: #Dry Run
+2026-02-12 13:31:01,333 - pipeline - INFO - Market: Seattle
+2026-02-12 13:31:01,333 - pipeline - INFO - Market: Seattle
+2026-02-12 13:31:01,333 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-12 13:31:01,333 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-12 13:31:01,333 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 13:31:01,333 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 13:31:01,334 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 13:31:01,334 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 13:31:01,341 - pipeline - INFO - Processing 170 individual CSV files...
+2026-02-12 13:31:01,341 - pipeline - INFO - Processing 170 individual CSV files...
+2026-02-12 13:31:01,424 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-12 13:31:01,424 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv
+2026-02-12 13:31:01,440 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv
+2026-02-12 13:31:01,440 - pipeline - INFO - Analyzing MRAB Performance for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP\5G VoNR MRAB Stationary\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv
+2026-02-12 13:31:06,849 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 13:31:06,849 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 13:31:06,850 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 13:31:06,850 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 13:31:06,851 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 13:31:06,851 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 13:31:06,890 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 13:31:06,890 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 13:31:07,609 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 13:31:07,609 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 13:31:07,610 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-12 13:31:07,610 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-12 13:31:08,059 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 13:31:08,059 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 13:31:08,060 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 13:31:08,060 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 13:31:08,068 - pipeline - INFO - Successfully analyzed _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv: 147.1285119047619
+2026-02-12 13:31:08,068 - pipeline - INFO - Successfully analyzed _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv: 147.1285119047619
+2026-02-12 13:31:08,068 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 13:31:08,068 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 13:31:08,076 - pipeline - INFO - Successfully analyzed _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv: 60.84161072545875
+2026-02-12 13:31:08,076 - pipeline - INFO - Successfully analyzed _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv: 60.84161072545875
+2026-02-12 13:31:08,076 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 13:31:08,076 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 13:31:08,085 - pipeline - INFO - Successfully analyzed _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv: 213.39915641025638
+2026-02-12 13:31:08,085 - pipeline - INFO - Successfully analyzed _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv: 213.39915641025638
+2026-02-12 13:31:08,085 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 13:31:08,085 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 13:31:08,093 - pipeline - INFO - Successfully analyzed _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv: 62.726704619722376
+2026-02-12 13:31:08,093 - pipeline - INFO - Successfully analyzed _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv: 62.726704619722376
+2026-02-12 13:31:08,094 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 13:31:08,094 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 13:31:08,105 - pipeline - INFO - Successfully analyzed _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv: 249.94195769230768
+2026-02-12 13:31:08,105 - pipeline - INFO - Successfully analyzed _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv: 249.94195769230768
+2026-02-12 13:31:08,106 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 13:31:08,106 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 13:31:08,118 - pipeline - INFO - Successfully analyzed _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv: 120.83504523809523
+2026-02-12 13:31:08,118 - pipeline - INFO - Successfully analyzed _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv: 120.83504523809523
+2026-02-12 13:31:08,119 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 13:31:08,119 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 13:31:08,128 - pipeline - INFO - Successfully analyzed _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv: 134.29444791666666
+2026-02-12 13:31:08,128 - pipeline - INFO - Successfully analyzed _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv: 134.29444791666666
+2026-02-12 13:31:08,128 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 13:31:08,128 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 13:31:08,134 - pipeline - INFO - Successfully analyzed _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv: 91.81906558641975
+2026-02-12 13:31:08,134 - pipeline - INFO - Successfully analyzed _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv: 91.81906558641975
+2026-02-12 13:31:08,135 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 13:31:08,135 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 13:31:08,143 - pipeline - INFO - Successfully analyzed _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv: 228.6272625
+2026-02-12 13:31:08,143 - pipeline - INFO - Successfully analyzed _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv: 228.6272625
+2026-02-12 13:31:08,144 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 13:31:08,144 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 13:31:08,150 - pipeline - INFO - Successfully analyzed _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv: 131.27356176470587
+2026-02-12 13:31:08,150 - pipeline - INFO - Successfully analyzed _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv: 131.27356176470587
+2026-02-12 13:31:08,151 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 13:31:08,151 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 13:31:08,159 - pipeline - INFO - Successfully analyzed _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv: 260.2947194444444
+2026-02-12 13:31:08,159 - pipeline - INFO - Successfully analyzed _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv: 260.2947194444444
+2026-02-12 13:31:08,160 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 13:31:08,160 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 13:31:08,166 - pipeline - INFO - Successfully analyzed _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv: 201.0624455687831
+2026-02-12 13:31:08,166 - pipeline - INFO - Successfully analyzed _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv: 201.0624455687831
+2026-02-12 13:31:08,166 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 13:31:08,166 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 13:31:08,180 - pipeline - INFO - Successfully analyzed _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv: 24.38934015715434
+2026-02-12 13:31:08,180 - pipeline - INFO - Successfully analyzed _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv: 24.38934015715434
+2026-02-12 13:31:08,181 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 13:31:08,181 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 13:31:08,195 - pipeline - INFO - Successfully analyzed _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv: 3.2500080253080257
+2026-02-12 13:31:08,195 - pipeline - INFO - Successfully analyzed _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv: 3.2500080253080257
+2026-02-12 13:31:08,196 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 13:31:08,196 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 13:31:08,208 - pipeline - INFO - Successfully analyzed _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv: 3.528818966441385
+2026-02-12 13:31:08,208 - pipeline - INFO - Successfully analyzed _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv: 3.528818966441385
+2026-02-12 13:31:08,209 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 13:31:08,209 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 13:31:08,222 - pipeline - INFO - Successfully analyzed _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv: 2.468806872488008
+2026-02-12 13:31:08,222 - pipeline - INFO - Successfully analyzed _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv: 2.468806872488008
+2026-02-12 13:31:08,222 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 13:31:08,222 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 13:31:08,235 - pipeline - INFO - Successfully analyzed _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv: 6.999370687685939
+2026-02-12 13:31:08,235 - pipeline - INFO - Successfully analyzed _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv: 6.999370687685939
+2026-02-12 13:31:08,235 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 13:31:08,235 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 13:31:08,246 - pipeline - INFO - Successfully analyzed _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv: 2.489027777777778
+2026-02-12 13:31:08,246 - pipeline - INFO - Successfully analyzed _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv: 2.489027777777778
+2026-02-12 13:31:08,246 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-12 13:31:08,246 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-12 13:31:08,247 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 13:31:08,247 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 13:31:09,324 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 13:31:09,324 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 13:31:10,303 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 13:31:10,303 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 13:31:10,417 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 13:31:10,417 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 13:31:10,560 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 13:31:10,560 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 13:31:10,609 - pipeline - INFO - Exported 84 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\cdf_throughput_data
+2026-02-12 13:31:10,609 - pipeline - INFO - Exported 84 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\cdf_throughput_data
+2026-02-12 13:31:10,619 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-12 13:31:10,619 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-12 13:31:10,629 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\coverage_performance_results.json
+2026-02-12 13:31:10,629 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\coverage_performance_results.json
+2026-02-12 13:31:10,630 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-12 13:31:10,630 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-12 13:31:10,631 - pipeline - INFO - Running final data validation...
+2026-02-12 13:31:10,631 - pipeline - INFO - Running final data validation...
+2026-02-12 13:31:10,675 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 13:31:10,675 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 13:31:10,675 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 13:31:10,675 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 13:31:10,679 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 13:31:10,679 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 13:31:10,679 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 13:31:10,679 - pipeline - INFO - Market: New York
+2026-02-12 13:31:10,679 - pipeline - INFO - Market: New York
+2026-02-12 13:31:10,679 - pipeline - INFO - Market: New York
+2026-02-12 13:31:10,680 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York
+2026-02-12 13:31:10,680 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York
+2026-02-12 13:31:10,680 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York
+2026-02-12 13:31:10,680 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 13:31:10,680 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 13:31:10,680 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 13:31:10,681 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 13:31:10,681 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 13:31:10,681 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 13:31:10,687 - pipeline - INFO - Processing 2 individual CSV files...
+2026-02-12 13:31:10,687 - pipeline - INFO - Processing 2 individual CSV files...
+2026-02-12 13:31:10,687 - pipeline - INFO - Processing 2 individual CSV files...
+2026-02-12 13:31:10,687 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 13:31:10,687 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 13:31:10,687 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 13:31:10,688 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 13:31:10,688 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 13:31:10,688 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 13:31:10,688 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 13:31:10,688 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 13:31:10,688 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 13:31:10,689 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 13:31:10,689 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 13:31:10,689 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 13:31:10,842 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 13:31:10,842 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 13:31:10,842 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 13:31:10,843 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 13:31:10,843 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 13:31:10,843 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 13:31:10,843 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 13:31:10,843 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 13:31:10,843 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 13:31:10,844 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 13:31:10,844 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 13:31:10,844 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 13:31:10,845 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 13:31:10,845 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 13:31:10,845 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 13:31:11,410 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 13:31:11,410 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 13:31:11,410 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 13:31:11,416 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 13:31:11,416 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 13:31:11,416 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 13:31:11,417 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\data_performance_results.json
+2026-02-12 13:31:11,417 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\data_performance_results.json
+2026-02-12 13:31:11,417 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\data_performance_results.json
+2026-02-12 13:31:11,418 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\coverage_performance_results.json
+2026-02-12 13:31:11,418 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\coverage_performance_results.json
+2026-02-12 13:31:11,418 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\coverage_performance_results.json
+2026-02-12 13:31:11,419 - pipeline - INFO - Running final data validation...
+2026-02-12 13:31:11,419 - pipeline - INFO - Running final data validation...
+2026-02-12 13:31:11,419 - pipeline - INFO - Running final data validation...
+2026-02-12 13:31:11,430 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 13:31:11,430 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 13:31:11,430 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 13:31:11,431 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 13:31:11,431 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 13:31:11,431 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 13:31:11,435 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 13:31:11,435 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 13:31:11,435 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 13:31:11,435 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 13:31:11,435 - pipeline - INFO - Market: Seattle
+2026-02-12 13:31:11,435 - pipeline - INFO - Market: Seattle
+2026-02-12 13:31:11,435 - pipeline - INFO - Market: Seattle
+2026-02-12 13:31:11,435 - pipeline - INFO - Market: Seattle
+2026-02-12 13:31:11,436 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 13:31:11,436 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 13:31:11,436 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 13:31:11,436 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 13:31:11,436 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 13:31:11,436 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 13:31:11,436 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 13:31:11,436 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 13:31:11,437 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 13:31:11,437 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 13:31:11,437 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 13:31:11,437 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 13:31:11,444 - pipeline - INFO - Processing 32 individual CSV files...
+2026-02-12 13:31:11,444 - pipeline - INFO - Processing 32 individual CSV files...
+2026-02-12 13:31:11,444 - pipeline - INFO - Processing 32 individual CSV files...
+2026-02-12 13:31:11,444 - pipeline - INFO - Processing 32 individual CSV files...
+2026-02-12 13:31:12,494 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 13:31:12,494 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 13:31:12,494 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 13:31:12,494 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 13:31:12,495 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 13:31:12,495 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 13:31:12,495 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 13:31:12,495 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 13:31:12,497 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 13:31:12,497 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 13:31:12,497 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 13:31:12,497 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 13:31:12,497 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 13:31:12,497 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 13:31:12,497 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 13:31:12,497 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 13:31:12,498 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 13:31:12,498 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 13:31:12,498 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 13:31:12,498 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 13:31:13,297 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 13:31:13,297 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 13:31:13,297 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 13:31:13,297 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 13:31:13,298 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 13:31:13,298 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 13:31:13,298 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 13:31:13,298 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 13:31:13,298 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 13:31:13,298 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 13:31:13,298 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 13:31:13,298 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 13:31:13,302 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 13:31:13,302 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 13:31:13,302 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 13:31:13,302 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 13:31:13,305 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 13:31:13,305 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 13:31:13,305 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 13:31:13,305 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 13:31:13,306 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 13:31:13,306 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 13:31:13,306 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 13:31:13,306 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 13:31:13,307 - pipeline - INFO - Running final data validation...
+2026-02-12 13:31:13,307 - pipeline - INFO - Running final data validation...
+2026-02-12 13:31:13,307 - pipeline - INFO - Running final data validation...
+2026-02-12 13:31:13,307 - pipeline - INFO - Running final data validation...
+2026-02-12 13:31:13,321 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 13:31:13,321 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 13:31:13,321 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 13:31:13,321 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 13:31:13,322 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 13:31:13,322 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 13:31:13,322 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 13:31:13,322 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle

@@ -107,13 +107,85 @@ def analyze_call_data(file_path):
         if not voice_calls_df.empty:
             rat_distribution = voice_calls_df[call_test_real_service_col].value_counts().to_dict()
 
-    # New statistic: Mean setup Time
+    # New statistic: Mean setup Time with Fallback Logic
+    setup_times = []
+
+    # Method 1: SIP Setup Duration Header
     if sip_setup_duration_col in df_filtered.columns:
         # Convert to numeric, coercing errors to NaN, then drop NaNs
-        setup_durations = df_filtered[sip_setup_duration_col].apply(pd.to_numeric, errors='coerce').dropna()
-        if not setup_durations.empty:
-            total_setup_duration = setup_durations.sum()
-            setup_duration_count = setup_durations.count()
+        durations = df_filtered[sip_setup_duration_col].apply(pd.to_numeric, errors='coerce').dropna()
+        if not durations.empty:
+            setup_times.extend(durations.tolist())
+
+    # Check for 'Time' column (it might be 'Time' or similar after cleaning)
+    time_col = 'Time' if 'Time' in df_filtered.columns else None
+
+    # Method 2: Time difference between Orig Success and Setup Success
+    if not setup_times and time_col and event_voice_call_event_col in df_filtered.columns:
+        try:
+            df_temp = df_filtered.copy()
+            df_temp[time_col] = pd.to_datetime(df_temp[time_col], errors='coerce')
+            df_temp = df_temp.dropna(subset=[time_col])
+            
+            # Events based on WFC logic, but checking against cleaned column content
+            # The cleaning function removes brackets from headers, but NOT from values.
+            # So values should still contain brackets if they are in the CSV.
+            # Note: The 'contains' check earlier used regex, implying values might vary?
+            # 'Voice - Call Scheduling Start(Orig)' was matched with regex.
+            # WFC uses exact string match: '[UE]   Voice - Orig Success'
+            # We should probably use 'contains' to be safe or inspect values. 
+            # Given WFC script uses exact match in list, I'll stick to that but be robust.
+            
+            # WFC events: '[UE]   Voice - Orig Success', '[UE]   Voice - Setup Success'
+            # Note the spaces.
+            
+            relevant_events = df_temp[df_temp[event_voice_call_event_col].astype(str).str.contains(r'Voice - Orig Success|Voice - Setup Success', case=False, regex=True)].sort_values(by=time_col)
+
+            if not relevant_events.empty:
+                orig_time = None
+                for _, row in relevant_events.iterrows():
+                    event_type = str(row[event_voice_call_event_col])
+                    current_time = row[time_col]
+                    
+                    if 'Voice - Orig Success' in event_type:
+                        orig_time = current_time
+                    elif 'Voice - Setup Success' in event_type and orig_time is not None:
+                        setup_times.append((current_time - orig_time).total_seconds())
+                        orig_time = None
+        except Exception as e:
+            print(f"Error calculating setup time (Method 2): {e}")
+
+    # Method 3: Scheduling Start to Answer Request
+    if not setup_times and time_col and event_voice_call_event_col in df_filtered.columns:
+        try:
+            df_temp = df_filtered.copy()
+            df_temp[time_col] = pd.to_datetime(df_temp[time_col], errors='coerce')
+            df_temp = df_temp.dropna(subset=[time_col])
+            
+            # WFC events: '[Tool] Voice - Call Scheduling Start(Term)', '[Tool] Voice - Answer Request'
+
+            relevant_events = df_temp[df_temp[event_voice_call_event_col].astype(str).str.contains(r'Voice - Call Scheduling Start\(Term\)|Voice - Answer Request', case=False, regex=True)].sort_values(by=time_col)
+
+            if not relevant_events.empty:
+                start_time = None
+                for _, row in relevant_events.iterrows():
+                    event_type = str(row[event_voice_call_event_col])
+                    current_time = row[time_col]
+                    
+                    if 'Voice - Call Scheduling Start(Term)' in event_type:
+                        start_time = current_time
+                    elif 'Voice - Answer Request' in event_type and start_time is not None:
+                        setup_times.append((current_time - start_time).total_seconds())
+                        start_time = None
+        except Exception as e:
+            print(f"Error calculating setup time (Method 3): {e}")
+
+    if setup_times:
+        # Filter valid positive setup times
+        valid_setup_times = [t for t in setup_times if t > 0]
+        if valid_setup_times:
+            total_setup_duration = sum(valid_setup_times)
+            setup_duration_count = len(valid_setup_times)
     
     INITIATION_FAILURE_CATEGORIES = ['Orig. Fail']
     initiation_failures = sum(call_result_distribution.get(cat, 0) for cat in INITIATION_FAILURE_CATEGORIES)

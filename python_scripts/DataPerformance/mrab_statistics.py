@@ -6,13 +6,13 @@ import json
 def extract_intervals_and_values(file_path, header_name, blank_row_threshold=10):
     """
     Extracts discrete intervals, their numerical values, and their line number ranges
-    from a specified column of a CSV file.
+    from a specified column of one or more CSV files.
 
     An interval is defined by consecutive non-empty rows. If the number of
     consecutive empty rows exceeds `blank_row_threshold`, a new interval begins.
 
     Args:
-        file_path (str): The path to the CSV file.
+        file_path: Either a single file path (str) or a list of file paths (list)
         header_name (str): The name of the header column to analyze.
         blank_row_threshold (int): The maximum number of consecutive blank rows
                                    allowed within a single interval.
@@ -22,65 +22,78 @@ def extract_intervals_and_values(file_path, header_name, blank_row_threshold=10)
               (start_line_number, end_line_number)).
               Returns an empty list if an error occurs.
     """
-    intervals_data = []
-    current_interval_values = []
-    current_interval_start_line = -1
-    consecutive_blank_rows = 0
-    in_interval = False
-    line_number = 0
+    # Handle both single file and file list
+    if isinstance(file_path, list):
+        file_paths = file_path
+    else:
+        file_paths = [file_path]
+    
+    all_intervals_data = []
+    
+    # Process each file
+    for current_file_path in file_paths:
+        intervals_data = []
+        current_interval_values = []
+        current_interval_start_line = -1
+        consecutive_blank_rows = 0
+        in_interval = False
+        line_number = 0
 
-    try:
-        with open(file_path, 'r', newline='', encoding='utf-8') as csvfile:
-            reader = csv.reader(csvfile)
-            headers = next(reader)  # Read the header row
-            line_number += 1 # Account for header row
-
-            try:
-                column_index = headers.index(header_name)
-            except ValueError:
-                print(f"Error: Header '{header_name}' not found in the CSV file.")
-                return []
-
-            for row in reader:
-                line_number += 1
-                cell_value = ""
-                if len(row) > column_index:
-                    cell_value = row[column_index].strip()
+        try:
+            with open(current_file_path, 'r', newline='', encoding='utf-8') as csvfile:
+                reader = csv.reader(csvfile)
+                headers = next(reader)  # Read the header row
+                line_number += 1 # Account for header row
 
                 try:
-                    numeric_value = float(cell_value)
-                    # If a numeric value is found
-                    if not in_interval:
-                        in_interval = True
-                        current_interval_values = [] # Start a new interval
-                        current_interval_start_line = line_number
-                    current_interval_values.append(numeric_value)
-                    consecutive_blank_rows = 0 # Reset blank row counter
+                    column_index = headers.index(header_name)
                 except ValueError:
-                    # If the cell is blank or non-numeric
-                    if in_interval:
-                        consecutive_blank_rows += 1
-                        if consecutive_blank_rows > blank_row_threshold:
-                            if current_interval_values: # Only add if the interval has data
-                                # Corrected end_line_number calculation
-                                intervals_data.append((current_interval_values, (current_interval_start_line, line_number - consecutive_blank_rows)))
-                            in_interval = False
-                            current_interval_values = []
-                            current_interval_start_line = -1
-                            consecutive_blank_rows = 0
+                    print(f"Error: Header '{header_name}' not found in the CSV file {current_file_path}.")
+                    continue  # Skip this file
+
+                for row in reader:
+                    line_number += 1
+                    cell_value = ""
+                    if len(row) > column_index:
+                        cell_value = row[column_index].strip()
+
+                    try:
+                        numeric_value = float(cell_value)
+                        # If a numeric value is found
+                        if not in_interval:
+                            in_interval = True
+                            current_interval_values = [] # Start a new interval
+                            current_interval_start_line = line_number
+                        current_interval_values.append(numeric_value)
+                        consecutive_blank_rows = 0 # Reset blank row counter
+                    except ValueError:
+                        # If the cell is blank or non-numeric
+                        if in_interval:
+                            consecutive_blank_rows += 1
+                            if consecutive_blank_rows > blank_row_threshold:
+                                if current_interval_values: # Only add if the interval has data
+                                    # Corrected end_line_number calculation
+                                    intervals_data.append((current_interval_values, (current_interval_start_line, line_number - consecutive_blank_rows)))
+                                in_interval = False
+                                current_interval_values = []
+                                current_interval_start_line = -1
+                                consecutive_blank_rows = 0
+                
+                # Add the last interval if it was still active
+                if in_interval and current_interval_values:
+                    intervals_data.append((current_interval_values, (current_interval_start_line, line_number)))
             
-            # Add the last interval if it was still active
-            if in_interval and current_interval_values:
-                intervals_data.append((current_interval_values, (current_interval_start_line, line_number)))
+            # Add intervals from this file to the combined list
+            all_intervals_data.extend(intervals_data)
 
-        return intervals_data
+        except FileNotFoundError:
+            print(f"Error: File not found at '{current_file_path}'")
+            continue
+        except Exception as e:
+            print(f"An unexpected error occurred processing {current_file_path}: {e}")
+            continue
 
-    except FileNotFoundError:
-        print(f"Error: File not found at '{file_path}'")
-        return []
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-        return []
+    return all_intervals_data
 
 def analyze_grouped_intervals(all_intervals_with_lines):
     """

@@ -116,6 +116,63 @@ class DataAnalysisPipeline:
         from DataPerformance import data_performance_statics
         return data_performance_statics._determine_analysis_parameters(file_path)
 
+    def _group_files_by_directory_and_device(self, csv_files):
+        """
+        Groups CSV files by their directory path and device type.
+        Returns a dictionary: {directory_path: {device_type: [file_paths]}}
+        """
+        groups = {}
+        
+        for csv_file in csv_files:
+            # Get directory path
+            dir_path = os.path.dirname(csv_file)
+            
+            # Determine device type from filename
+            # Use regex to match device type markers, prioritizing those at the end of filename
+            filename = os.path.basename(csv_file)
+            filename_upper = filename.upper()
+            device_type = "DUT"  # Default
+            
+            # Try to match device type markers near the end of filename (before .csv)
+            # Pattern: _DUT_ or _REF_ or _PC2_ or _PC3_ near the end
+            import re
+            # First try to match explicit markers at the end (more reliable)
+            end_match = re.search(r'_(DUT|REF|PC\d+)_\.CSV$', filename_upper)
+            if end_match:
+                matched = end_match.group(1)
+                if matched == "PC2":
+                    device_type = "DUT"
+                elif matched == "PC3":
+                    device_type = "REF"
+                else:
+                    device_type = matched  # DUT or REF
+            else:
+                # Fall back to general pattern matching (first occurrence)
+                general_match = re.search(r'(DUT|REF|PC\d+)', filename_upper)
+                if general_match:
+                    matched = general_match.group(1)
+                    if matched == "PC2":
+                        device_type = "DUT"
+                    elif matched == "PC3":
+                        device_type = "REF"
+                    else:
+                        device_type = matched
+                # If still no match, try channel numbers as last resort
+                elif "CH01" in filename_upper:
+                    device_type = "REF"
+                elif "CH02" in filename_upper:
+                    device_type = "DUT"
+            
+            # Create nested structure
+            if dir_path not in groups:
+                groups[dir_path] = {}
+            if device_type not in groups[dir_path]:
+                groups[dir_path][device_type] = []
+            
+            groups[dir_path][device_type].append(csv_file)
+        
+        return groups
+
     def run(self):
         self.logger.info("Starting analysis pipeline...")
         
@@ -124,7 +181,7 @@ class DataAnalysisPipeline:
             self.logger.error("No analysis directories configured in config.yaml")
             return
 
-        # 1. Process individual CSV files
+        # 1. Process individual CSV files (now with aggregation)
         excluded_types = [
             "call_performance", "voice_quality_combined", "coverage_coordinate", 
             "n41_coverage", "vonr_coverage_performance", "google_throughput_analysis", 
@@ -137,41 +194,51 @@ class DataAnalysisPipeline:
             excluded_analysis_types=excluded_types
         )
         
-        self.logger.info(f"Processing {len(all_csv_files)} individual CSV files...")
-        for csv_file_path in all_csv_files:
-            params = self._get_params(csv_file_path)
-            if not params: continue
-            
-            ana_type = params.get("analysis_type_detected")
-            if ana_type in excluded_types:
-                self.logger.debug(f"Skipping {csv_file_path} in file loop as it is a directory-based type ({ana_type})")
-                continue
-            
-            analyzer = self.analyzers.get(ana_type)
-            if not analyzer: continue
-
-            stats = analyzer.analyze(csv_file_path)
-            if stats and analyzer.validate(stats):
-                relative_path = os.path.relpath(csv_file_path, self.base_raw_data_dir)
-                path_components = relative_path.replace("\\", "/").split('/')
+        # Group files by directory and device type
+        self.logger.info(f"Grouping {len(all_csv_files)} CSV files by directory and device type...")
+        file_groups = self._group_files_by_directory_and_device(all_csv_files)
+        
+        total_groups = sum(len(devices) for devices in file_groups.values())
+        self.logger.info(f"Created {total_groups} file groups for analysis")
+        
+        # Process each group
+        for dir_path, device_groups in file_groups.items():
+            for device_type, file_list in device_groups.items():
+                # Get params from first file to determine analysis type
+                params = self._get_params(file_list[0])
+                if not params:
+                    continue
                 
-                # Strip leading category directories to avoid double nesting at export
-                if path_components[0] in ["Data Performance", "Voice Quality", "Call Performance", "Coverage Performance"]:
-                    path_components = path_components[1:]
+                ana_type = params.get("analysis_type_detected")
+                if ana_type in excluded_types:
+                    self.logger.debug(f"Skipping {dir_path} as it is a directory-based type ({ana_type})")
+                    continue
                 
-                # Use DUT/REF as the final key instead of filename
-                device_type = stats.get("Device Type", "DUT").upper()
-                filename_without_ext = os.path.splitext(path_components[-1])[0].upper()
-                if "REF" in filename_without_ext: device_type = "REF"
-                elif "DUT" in filename_without_ext: device_type = "DUT"
+                analyzer = self.analyzers.get(ana_type)
+                if not analyzer:
+                    continue
                 
-                path_components[-1] = device_type
+                # Analyze with file list (single file or multiple files)
+                self.logger.info(f"Analyzing {len(file_list)} file(s) for {device_type} in {os.path.basename(dir_path)}")
+                stats = analyzer.analyze(file_list)
                 
-                # Insert into data_performance results
-                self._insert_into_nested_dict(self.results["data_performance"], path_components, stats)
-                self.processing_stats["valid_files"].append(csv_file_path)
-            else:
-                self.processing_stats["invalid_files"].append(csv_file_path)
+                if stats and analyzer.validate(stats):
+                    # Use first file to determine path structure
+                    relative_path = os.path.relpath(file_list[0], self.base_raw_data_dir)
+                    path_components = relative_path.replace("\\", "/").split('/')
+                    
+                    # Strip leading category directories to avoid double nesting at export
+                    if path_components[0] in ["Data Performance", "Voice Quality", "Call Performance", "Coverage Performance"]:
+                        path_components = path_components[1:]
+                    
+                    # Use device_type as the final key
+                    path_components[-1] = device_type
+                    
+                    # Insert into data_performance results
+                    self._insert_into_nested_dict(self.results["data_performance"], path_components, stats)
+                    self.processing_stats["valid_files"].extend(file_list)
+                else:
+                    self.processing_stats["invalid_files"].extend(file_list)
 
         # 2. Process directory-based analysis
         self.logger.info("Processing directory-level analyses...")

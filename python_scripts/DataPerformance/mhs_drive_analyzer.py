@@ -19,13 +19,18 @@ def analyze_mhs_drive_data(file_path, device_type_detected):
     Analyzes MHS Test Drive Data for Throughput, Jitter, Error Ratio, and Ping RTT.
     
     Args:
-        file_path (str): The path to the MHS UDP Drive CSV file (DUT or REF).
+        file_path: Either a single file path (str) or a list of file paths (list)
         device_type_detected (str): "DUT" or "REF"
         
     Returns:
         dict: A dictionary containing the calculated statistics.
     """
-    
+    # Handle both single file and file list
+    if isinstance(file_path, list):
+        file_paths = file_path
+    else:
+        file_paths = [file_path]
+        
     all_mhs_stats = {}
 
     # Define parameters for MHS UDP Drive analysis
@@ -39,13 +44,15 @@ def analyze_mhs_drive_data(file_path, device_type_detected):
     end_event = "IPERF_T_End"
 
     # --- Throughput Analysis (DL and UL) ---
+    # Functions analyze_throughput, analyze_jitter, and analyze_error_ratio already handle lists
+    
     # DL Throughput
     dl_throughput_col = _clean_header("[Call Test] [Throughput] Application DL TP")
     dl_throughput_fallback_col = _clean_header("[NR5G] [(NR + LTE)] [Throughput] PDSCH TP")
     dl_throughput_third_fallback_col = _clean_header("DL TP (excl. slow start)")
     
     dl_throughput_stats = analyze_throughput(
-        file_path, dl_throughput_col, event_col, start_event, end_event,
+        file_paths, dl_throughput_col, event_col, start_event, end_event,
         fallback_column_name=dl_throughput_fallback_col,
         fallback_event_col_name=event_col_fallback,
         third_fallback_column_name=dl_throughput_third_fallback_col
@@ -59,7 +66,7 @@ def analyze_mhs_drive_data(file_path, device_type_detected):
     ul_throughput_third_fallback_col = _clean_header("UL Avg TP")
     
     ul_throughput_stats = analyze_throughput(
-        file_path, ul_throughput_col, event_col, start_event, end_event,
+        file_paths, ul_throughput_col, event_col, start_event, end_event,
         fallback_column_name=ul_throughput_fallback_col,
         fallback_event_col_name=event_col_fallback,
         third_fallback_column_name=ul_throughput_third_fallback_col
@@ -71,7 +78,7 @@ def analyze_mhs_drive_data(file_path, device_type_detected):
     # DL Jitter
     dl_jitter_col = _clean_header("[Call Test] [iPerf] [Throughput] DL Jitter")
     dl_jitter_stats = analyze_jitter(
-        file_path, dl_jitter_col, event_col, start_event, end_event,
+        file_paths, dl_jitter_col, event_col, start_event, end_event,
         fallback_event_col_name=event_col_fallback
     )
     if dl_jitter_stats:
@@ -80,7 +87,7 @@ def analyze_mhs_drive_data(file_path, device_type_detected):
     # UL Jitter
     ul_jitter_col = _clean_header("[Call Test] [iPerf] [Call Average] [Jitter and Error] UL Jitter")
     ul_jitter_stats = analyze_jitter(
-        file_path, ul_jitter_col, event_col, start_event, end_event,
+        file_paths, ul_jitter_col, event_col, start_event, end_event,
         fallback_event_col_name=event_col_fallback
     )
     if ul_jitter_stats:
@@ -90,7 +97,7 @@ def analyze_mhs_drive_data(file_path, device_type_detected):
     # DL Error Ratio
     dl_error_ratio_col = _clean_header("[Call Test] [iPerf] [Throughput] DL Error Ratio")
     dl_error_ratio_stats = analyze_error_ratio(
-        file_path, dl_error_ratio_col, event_col, start_event, end_event,
+        file_paths, dl_error_ratio_col, event_col, start_event, end_event,
         fallback_event_col_name=event_col_fallback
     )
     if dl_error_ratio_stats:
@@ -99,7 +106,7 @@ def analyze_mhs_drive_data(file_path, device_type_detected):
     # UL Error Ratio
     ul_error_ratio_col = _clean_header("[Call Test] [iPerf] [Call Average] [Jitter and Error] UL Error Ratio")
     ul_error_ratio_stats = analyze_error_ratio(
-        file_path, ul_error_ratio_col, event_col, start_event, end_event,
+        file_paths, ul_error_ratio_col, event_col, start_event, end_event,
         fallback_event_col_name=event_col_fallback
     )
     if ul_error_ratio_stats:
@@ -109,28 +116,32 @@ def analyze_mhs_drive_data(file_path, device_type_detected):
     # --- Ping RTT Analysis ---
     # Ping RTT column is directly in the MHS Drive file
     ping_rtt_col = _clean_header("[Call Test] [PING] [RTT] RTT")
+    all_rtt_values = []
     
-    try:
-        data = pd.read_csv(file_path)
-        data.columns = [_clean_header(col) for col in data.columns]
+    for current_file_path in file_paths:
+        try:
+            data = pd.read_csv(current_file_path)
+            data.columns = [_clean_header(col) for col in data.columns]
 
-        if ping_rtt_col in data.columns:
-            ping_rtt_data = data[ping_rtt_col].dropna()
-            if not ping_rtt_data.empty:
-                ping_stats_result = _calculate_statistics(ping_rtt_data, ping_rtt_col)
-                if ping_stats_result:
-                    all_mhs_stats["Ping RTT"] = {
-                        "Mean": ping_stats_result["Mean"],
-                        "Min": ping_stats_result["Minimum"],
-                        "Max": ping_stats_result["Maximum"],
-                        "Std Dev": ping_stats_result["Standard Deviation"]
-                    }
+            if ping_rtt_col in data.columns:
+                ping_rtt_data = data[ping_rtt_col].dropna()
+                if not ping_rtt_data.empty:
+                    all_rtt_values.extend(ping_rtt_data.tolist())
+                else:
+                    print(f"No valid Ping RTT data found in column '{ping_rtt_col}' for {current_file_path}.")
             else:
-                print(f"No valid Ping RTT data found in column '{ping_rtt_col}' for {file_path}.")
-        else:
-            print(f"Ping RTT column '{ping_rtt_col}' not found in {file_path}.")
-    except Exception as e:
-        print(f"Error reading file {file_path} for Ping RTT analysis: {e}")
+                print(f"Ping RTT column '{ping_rtt_col}' not found in {current_file_path}.")
+        except Exception as e:
+            print(f"Error reading file {current_file_path} for Ping RTT analysis: {e}")
+
+    if all_rtt_values:
+        rtt_series = pd.Series(all_rtt_values)
+        all_mhs_stats["Ping RTT"] = {
+            "Mean": float(rtt_series.mean()),
+            "Min": float(rtt_series.min()),
+            "Max": float(rtt_series.max()),
+            "Std Dev": float(rtt_series.std()) if len(all_rtt_values) > 1 else 0.0
+        }
 
     return all_mhs_stats
 

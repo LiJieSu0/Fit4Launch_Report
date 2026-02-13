@@ -9,23 +9,31 @@ import { getKpiCellColor } from '../../Utils/KpiRules';
 const KPI_CONFIG = [
     { name: "DL Throughput < 1Mbps", key: "first_dl_tp_gt_1", link: "DL" },
     { name: "UL Throughput < 1Mbps", key: "first_ul_tp_gt_1", link: "UL" },
-    // { name: "Last MOS Before Silence", key: "mos_before_drop", link: "MOS" },
-    // { name: "Audio Call Drop", key: "call_drop", link: "Call" }
-];
-
-const BANDS = [
-    { name: "Motorola XT2575-4 (NR 25)", key: "n25", anchor: "2.1" },
-    { name: "Motorola XT2575-4 (NR 41)", key: "n41", anchor: "2.2" },
-    { name: "Motorola XT2575-4 (NR 71)", key: "n71", anchor: "2.3" },
-    { name: "Motorola XT2575-4 (LTE B66)", key: "b66", anchor: "2.4" },
-
-
+    { name: "Last MOS Before Silence", key: "mos_before_drop", link: "MOS" },
+    { name: "Audio Call Drop", key: "call_drop", link: "Call" }
 ];
 
 const CoverageSummaryTable = () => {
-    const { projectData, availableCities, loadCityData } = useReportData();
+    const { projectData, availableCities, loadCityData, project } = useReportData();
     const { numberedHeaders } = useContext(HeaderContext);
     const markets = availableCities || ["Seattle", "New York"];
+
+    // Dynamically get device label from project configuration
+    const getDeviceLabel = () => {
+        if (!project || !project.deviceData) return "Device";
+        const dut = project.deviceData.find(d => d.role === "Device Under Test");
+        return dut ? dut.testDeviceLabel : "Device";
+    };
+
+    const deviceLabel = getDeviceLabel();
+
+    // Generate BANDS array with dynamic device name
+    const BANDS = [
+        { name: `${deviceLabel} (NR 25)`, key: "n25", anchor: "2.1" },
+        { name: `${deviceLabel} (NR 41)`, key: "n41", anchor: "2.2" },
+        { name: `${deviceLabel} (NR 71)`, key: "n71", anchor: "2.3" },
+        { name: `${deviceLabel} (LTE B66)`, key: "b66", anchor: "2.4" },
+    ];
 
     const getDynamicLink = (market, bandKey, kpiLink) => {
         const citySearch = market.toLowerCase();

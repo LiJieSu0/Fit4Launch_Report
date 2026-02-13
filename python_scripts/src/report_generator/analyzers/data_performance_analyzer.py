@@ -8,10 +8,26 @@ class DataPerformanceAnalyzer(BaseAnalyzer):
         self.config = config
         self.logger = logger
 
-    def analyze(self, csv_file_path: str):
-        params = data_performance_statics._determine_analysis_parameters(csv_file_path)
+    def analyze(self, csv_file_path):
+        """
+        Analyzes data performance from one or more CSV files.
+        
+        Args:
+            csv_file_path: Either a single file path (str) or a list of file paths (list)
+        
+        Returns:
+            Dictionary of statistics or None
+        """
+        # Handle both single file and file list
+        if isinstance(csv_file_path, list):
+            file_paths = csv_file_path
+        else:
+            file_paths = [csv_file_path]
+        
+        # Get params from first file
+        params = data_performance_statics._determine_analysis_parameters(file_paths[0])
         if params is None:
-            self.logger.warning(f"Could not determine parameters for: {csv_file_path}")
+            self.logger.warning(f"Could not determine parameters for: {file_paths[0]}")
             return None
 
         stats = {
@@ -28,7 +44,7 @@ class DataPerformanceAnalyzer(BaseAnalyzer):
         # Throughput Analysis
         if params["protocol_type_detected"] in ["HTTP", "UDP"]:
             tp_stats = data_performance_statics.analyze_throughput(
-                csv_file_path, 
+                file_paths,  # Pass file list
                 params["column_to_analyze_throughput"], 
                 params["event_col"], 
                 params["start_event"], 
@@ -42,7 +58,7 @@ class DataPerformanceAnalyzer(BaseAnalyzer):
             
             # CDF Analysis (New feature)
             cdf_stats = data_performance_statics.analyze_throughput_cdf(
-                csv_file_path, 
+                file_paths,  # Pass file list
                 params["column_to_analyze_throughput"], 
                 params["event_col"], 
                 params["start_event"], 
@@ -57,24 +73,24 @@ class DataPerformanceAnalyzer(BaseAnalyzer):
         # UDP Jitter and Error Ratio
         if params["protocol_type_detected"] == "UDP":
             if params["analysis_direction_detected"] == "DL":
-                jitter = data_performance_statics.analyze_jitter(csv_file_path, params["column_to_analyze_jitter"], params["event_col"], params["start_event"], params["end_event"], fallback_event_col_name=params["event_col_fallback"])
-                error = data_performance_statics.analyze_error_ratio(csv_file_path, params["column_to_analyze_error_ratio"], params["event_col"], params["start_event"], params["end_event"], fallback_event_col_name=params["event_col_fallback"])
+                jitter = data_performance_statics.analyze_jitter(file_paths, params["column_to_analyze_jitter"], params["event_col"], params["start_event"], params["end_event"], fallback_event_col_name=params["event_col_fallback"])
+                error = data_performance_statics.analyze_error_ratio(file_paths, params["column_to_analyze_error_ratio"], params["event_col"], params["start_event"], params["end_event"], fallback_event_col_name=params["event_col_fallback"])
             else:
-                jitter = data_performance_statics.analyze_jitter(csv_file_path, params["column_to_analyze_ul_jitter"], params["event_col"], params["start_event"], params["end_event"], fallback_event_col_name=params["event_col_fallback"])
-                error = data_performance_statics.analyze_error_ratio(csv_file_path, params["column_to_analyze_ul_error_ratio"], params["event_col"], params["start_event"], params["end_event"], fallback_event_col_name=params["event_col_fallback"])
+                jitter = data_performance_statics.analyze_jitter(file_paths, params["column_to_analyze_ul_jitter"], params["event_col"], params["start_event"], params["end_event"], fallback_event_col_name=params["event_col_fallback"])
+                error = data_performance_statics.analyze_error_ratio(file_paths, params["column_to_analyze_ul_error_ratio"], params["event_col"], params["start_event"], params["end_event"], fallback_event_col_name=params["event_col_fallback"])
             
             if jitter: stats["Jitter"] = jitter
             if error: stats["Error Ratio"] = error
 
         # Web Page Load Time
         if params["protocol_type_detected"] == "WEB_PAGE":
-            web_stats = data_performance_statics.analyze_web_page_load_time(csv_file_path, params["event_col"], params["start_event"], params["end_event"], params["column_to_analyze_total_duration"], fallback_event_col_name=params["event_col_fallback"])
+            web_stats = data_performance_statics.analyze_web_page_load_time(file_paths, params["event_col"], params["start_event"], params["end_event"], params["column_to_analyze_total_duration"], fallback_event_col_name=params["event_col_fallback"])
             if web_stats:
                 stats["Web Page Load Time"] = web_stats
 
         # Ping RTT
         if params["protocol_type_detected"] == "PING":
-            ping_res = ping_statics.calculate_ping_statistics(csv_file_path, device_type=params["device_type_detected"])
+            ping_res = ping_statics.calculate_ping_statistics(file_paths, device_type=params["device_type_detected"])
             if ping_res and "Ping RTT" in ping_res:
                 stats["Ping RTT"] = ping_res["Ping RTT"]
 

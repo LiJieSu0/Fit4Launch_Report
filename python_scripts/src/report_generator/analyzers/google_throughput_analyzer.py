@@ -9,25 +9,38 @@ class GoogleThroughputAnalyzer(BaseAnalyzer):
         self.config = config
         self.logger = logger
 
-    def analyze(self, path: str):
-        if os.path.isfile(path):
+    def analyze(self, path):
+        if isinstance(path, list):
+            self.logger.info(f"Analyzing Google Throughput file list: {path}")
+            # If it's a list, we treat it as a single file group to analyze
+            # We can use the first file to determine device/size and then analyze the whole list
+            return self._analyze_file_list(path)
+        elif os.path.isfile(path):
             self.logger.info(f"Analyzing Google Throughput file: {path}")
-            return self._analyze_file(path)
+            return self._analyze_file_list([path])
         elif os.path.isdir(path):
             self.logger.info(f"Analyzing Google Throughput directory: {path}")
             return self._analyze_directory(path)
         return None
 
-    def _analyze_file(self, file_path):
+    def _analyze_file_list(self, file_paths):
+        if not file_paths: return None
+        
         dev_pattern = re.compile(r"(DUT|REF)", re.IGNORECASE)
         size_pattern = re.compile(r"(?:APP[- ]?|Playstore |Play Store )(\d+)\s*M[B]?", re.IGNORECASE)
-        file_name = os.path.basename(file_path)
+        
+        # Determine parameters from the first file
+        first_file = file_paths[0]
+        file_name = os.path.basename(first_file)
         dev_match = dev_pattern.search(file_name)
         size_match = size_pattern.search(file_name)
+        
         if dev_match and size_match:
             test_content = size_match.group(1).upper() + "M"
             device_type = dev_match.group(1).upper()
-            analysis_res = google_analyze_throughput(file_path)
+            
+            # Use the statistics function which now handles lists
+            analysis_res = google_analyze_throughput(file_paths)
             if analysis_res:
                 return {
                     device_type: {

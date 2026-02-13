@@ -3120,3 +3120,1717 @@
 2026-02-10 10:13:08,364 - pipeline - INFO - No empty collections found in any JSON file.
 2026-02-10 10:13:08,364 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
 2026-02-10 10:13:08,364 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 22:05:29,504 - pipeline - INFO - Project: #Dry Run
+2026-02-12 22:05:29,504 - pipeline - INFO - Market: New York
+2026-02-12 22:05:29,505 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\New York
+2026-02-12 22:05:29,505 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-12 22:05:29,505 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:05:29,512 - pipeline - INFO - Grouping 244 CSV files by directory and device type...
+2026-02-12 22:05:29,514 - pipeline - INFO - Created 104 file groups for analysis
+2026-02-12 22:05:29,515 - pipeline - INFO - Analyzing 2 file(s) for REF in 5G Auto Data Web-Kepler
+2026-02-12 22:05:29,561 - pipeline - INFO - Analyzing 2 file(s) for DUT in 5G Auto Data Web-Kepler
+2026-02-12 22:05:29,608 - pipeline - INFO - Analyzing 1 file(s) for DUT in 5G VoNR MRAB Stationary
+2026-02-12 22:05:29,608 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\New York\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260203_125220_CH01_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 DUT_.csv']
+2026-02-12 22:05:29,626 - pipeline - INFO - Analyzing 1 file(s) for REF in 5G VoNR MRAB Stationary
+2026-02-12 22:05:29,626 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\New York\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260203_125220_CH02_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 REF_.csv']
+2026-02-12 22:05:29,644 - pipeline - INFO - Analyzing 5 file(s) for REF in Good
+2026-02-12 22:05:29,721 - pipeline - INFO - Analyzing 5 file(s) for DUT in Good
+2026-02-12 22:05:29,798 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:29,857 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:29,920 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:29,953 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:29,986 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:05:30,036 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:05:30,082 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:30,126 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:30,172 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:30,201 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:30,229 - pipeline - INFO - Analyzing 3 file(s) for REF in Good
+2026-02-12 22:05:30,313 - pipeline - INFO - Analyzing 3 file(s) for DUT in Good
+2026-02-12 22:05:30,402 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:30,488 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:30,572 - pipeline - INFO - Analyzing 3 file(s) for DUT in Poor
+2026-02-12 22:05:30,641 - pipeline - INFO - Analyzing 3 file(s) for REF in Poor
+2026-02-12 22:05:30,717 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:05:30,761 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:05:30,795 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:30,827 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:30,859 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:30,908 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:30,939 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:05:31,014 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:05:31,088 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:31,163 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:31,235 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:31,313 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:31,385 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:05:31,487 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:05:31,572 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:31,656 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:31,739 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:31,824 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:31,906 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:05:31,989 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:05:32,077 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:32,159 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:32,243 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:32,362 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:32,448 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:05:32,524 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:05:32,602 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:32,678 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:32,757 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:32,839 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:32,916 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:05:32,994 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:05:33,071 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:33,146 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:33,220 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:33,296 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:33,374 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:33,432 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:33,490 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:33,550 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:33,610 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:33,655 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:33,700 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:33,739 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:33,781 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:33,862 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:33,945 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:34,031 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:34,113 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:34,143 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:34,174 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:34,208 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:34,238 - pipeline - INFO - Analyzing 4 file(s) for DUT in Mobility Test
+2026-02-12 22:05:34,784 - pipeline - INFO - Analyzing 4 file(s) for REF in Mobility Test
+2026-02-12 22:05:35,317 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:35,390 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:35,464 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:35,538 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:35,647 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:35,734 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:35,822 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:35,904 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:35,997 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:36,086 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:36,168 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:36,252 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:36,334 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:36,413 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:36,492 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:36,573 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:36,651 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:36,729 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:36,807 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:36,883 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:36,960 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:05:36,961 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Call Performance
+2026-02-12 22:05:36,961 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-02-12 22:05:36,962 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-02-12 22:05:38,724 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-02-12 22:05:38,724 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-02-12 22:05:40,483 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:05:40,483 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:05:40,524 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:05:41,210 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:05:41,581 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:05:41,582 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 22:05:41,587 - pipeline - WARNING - Failed to analyze _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv (likely no valid throughput data)
+2026-02-12 22:05:41,587 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 22:05:41,592 - pipeline - WARNING - Failed to analyze _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv (likely no valid throughput data)
+2026-02-12 22:05:41,592 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 22:05:41,599 - pipeline - WARNING - Failed to analyze _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (likely no valid throughput data)
+2026-02-12 22:05:41,600 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 22:05:41,606 - pipeline - WARNING - Failed to analyze _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (likely no valid throughput data)
+2026-02-12 22:05:41,606 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 22:05:41,612 - pipeline - WARNING - Failed to analyze _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (likely no valid throughput data)
+2026-02-12 22:05:41,612 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 22:05:41,618 - pipeline - WARNING - Failed to analyze _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (likely no valid throughput data)
+2026-02-12 22:05:41,618 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 22:05:41,622 - pipeline - WARNING - Failed to analyze _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,622 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 22:05:41,626 - pipeline - WARNING - Failed to analyze _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,626 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 22:05:41,630 - pipeline - WARNING - Failed to analyze _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,631 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 22:05:41,635 - pipeline - WARNING - Failed to analyze _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,635 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 22:05:41,639 - pipeline - WARNING - Failed to analyze _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,639 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 22:05:41,643 - pipeline - WARNING - Failed to analyze _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,643 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 22:05:41,648 - pipeline - WARNING - Failed to analyze _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (likely no valid throughput data)
+2026-02-12 22:05:41,648 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:41,652 - pipeline - WARNING - Failed to analyze _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (likely no valid throughput data)
+2026-02-12 22:05:41,652 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 22:05:41,657 - pipeline - WARNING - Failed to analyze _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (likely no valid throughput data)
+2026-02-12 22:05:41,657 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:41,661 - pipeline - WARNING - Failed to analyze _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (likely no valid throughput data)
+2026-02-12 22:05:41,661 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 22:05:41,665 - pipeline - WARNING - Failed to analyze _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (likely no valid throughput data)
+2026-02-12 22:05:41,666 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:41,670 - pipeline - WARNING - Failed to analyze _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (likely no valid throughput data)
+2026-02-12 22:05:41,670 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 22:05:41,677 - pipeline - WARNING - Failed to analyze _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,677 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:41,684 - pipeline - WARNING - Failed to analyze _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,684 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 22:05:41,690 - pipeline - WARNING - Failed to analyze _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,690 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:41,696 - pipeline - WARNING - Failed to analyze _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,697 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 22:05:41,703 - pipeline - WARNING - Failed to analyze _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,704 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:41,710 - pipeline - WARNING - Failed to analyze _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,710 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 22:05:41,716 - pipeline - WARNING - Failed to analyze _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-02-12 22:05:41,716 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 22:05:41,722 - pipeline - WARNING - Failed to analyze _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-02-12 22:05:41,722 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 22:05:41,727 - pipeline - WARNING - Failed to analyze _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-02-12 22:05:41,728 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 22:05:41,733 - pipeline - WARNING - Failed to analyze _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-02-12 22:05:41,734 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 22:05:41,739 - pipeline - WARNING - Failed to analyze _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-02-12 22:05:41,739 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 22:05:41,745 - pipeline - WARNING - Failed to analyze _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (likely no valid throughput data)
+2026-02-12 22:05:41,745 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 22:05:41,752 - pipeline - WARNING - Failed to analyze _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,752 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 22:05:41,758 - pipeline - WARNING - Failed to analyze _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,759 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 22:05:41,766 - pipeline - WARNING - Failed to analyze _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,766 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 22:05:41,772 - pipeline - WARNING - Failed to analyze _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,772 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 22:05:41,779 - pipeline - WARNING - Failed to analyze _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,779 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 22:05:41,786 - pipeline - WARNING - Failed to analyze _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:05:41,786 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:05:41,786 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:05:41,787 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:05:43,819 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:05:45,790 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:05:45,888 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:05:45,910 - pipeline - INFO - Exported 60 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\cdf_throughput_data
+2026-02-12 22:05:45,915 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\data_performance_results.json
+2026-02-12 22:05:45,917 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\call_performance_results.json
+2026-02-12 22:05:45,927 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\coverage_performance_results.json
+2026-02-12 22:05:45,928 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\processing_summary.json
+2026-02-12 22:05:45,929 - pipeline - INFO - Running final data validation...
+2026-02-12 22:05:45,963 - pipeline - WARNING - Summary of Empty collections found in JSON files:
+2026-02-12 22:05:45,963 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> DUT -> call_result_distribution -> Empty Dictionary
+2026-02-12 22:05:45,964 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> DUT -> rat_distribution -> Empty Dictionary
+2026-02-12 22:05:45,964 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> REF -> call_result_distribution -> Empty Dictionary
+2026-02-12 22:05:45,964 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> REF -> rat_distribution -> Empty Dictionary
+2026-02-12 22:05:45,964 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> DUT -> call_result_distribution -> Empty Dictionary
+2026-02-12 22:05:45,965 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> DUT -> rat_distribution -> Empty Dictionary
+2026-02-12 22:05:45,965 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> REF -> call_result_distribution -> Empty Dictionary
+2026-02-12 22:05:45,965 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> REF -> rat_distribution -> Empty Dictionary
+2026-02-12 22:05:45,965 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-12 22:05:45,969 - pipeline - INFO - Project: #Dry Run
+2026-02-12 22:05:45,969 - pipeline - INFO - Project: #Dry Run
+2026-02-12 22:05:45,969 - pipeline - INFO - Market: Seattle
+2026-02-12 22:05:45,969 - pipeline - INFO - Market: Seattle
+2026-02-12 22:05:45,969 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-12 22:05:45,969 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-12 22:05:45,970 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 22:05:45,970 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 22:05:45,970 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:05:45,970 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:05:45,976 - pipeline - INFO - Grouping 170 CSV files by directory and device type...
+2026-02-12 22:05:45,976 - pipeline - INFO - Grouping 170 CSV files by directory and device type...
+2026-02-12 22:05:45,978 - pipeline - INFO - Created 142 file groups for analysis
+2026-02-12 22:05:45,978 - pipeline - INFO - Created 142 file groups for analysis
+2026-02-12 22:05:45,979 - pipeline - INFO - Analyzing 2 file(s) for DUT in 5G Auto Data Web-Kepler
+2026-02-12 22:05:45,979 - pipeline - INFO - Analyzing 2 file(s) for DUT in 5G Auto Data Web-Kepler
+2026-02-12 22:05:46,019 - pipeline - INFO - Analyzing 2 file(s) for REF in 5G Auto Data Web-Kepler
+2026-02-12 22:05:46,019 - pipeline - INFO - Analyzing 2 file(s) for REF in 5G Auto Data Web-Kepler
+2026-02-12 22:05:46,056 - pipeline - INFO - Analyzing 1 file(s) for REF in 5G VoNR MRAB Stationary
+2026-02-12 22:05:46,056 - pipeline - INFO - Analyzing 1 file(s) for REF in 5G VoNR MRAB Stationary
+2026-02-12 22:05:46,057 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv']
+2026-02-12 22:05:46,057 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv']
+2026-02-12 22:05:46,073 - pipeline - INFO - Analyzing 1 file(s) for DUT in 5G VoNR MRAB Stationary
+2026-02-12 22:05:46,073 - pipeline - INFO - Analyzing 1 file(s) for DUT in 5G VoNR MRAB Stationary
+2026-02-12 22:05:46,074 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv']
+2026-02-12 22:05:46,074 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv']
+2026-02-12 22:05:46,090 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:46,090 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:46,126 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:46,126 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:46,161 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:46,161 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:46,208 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:46,208 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:46,256 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:46,256 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:46,301 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:46,301 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:46,341 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:46,341 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:46,370 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:46,370 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:46,400 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:46,400 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:46,430 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:46,430 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:46,461 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:46,461 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:46,490 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:46,490 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:46,519 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:46,519 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:46,570 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:46,570 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:46,621 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:46,621 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:46,673 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:46,673 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:46,732 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:46,732 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:46,812 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:46,812 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:46,913 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:46,913 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:46,942 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:46,942 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:46,964 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:46,964 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,007 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,007 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,089 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,089 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,140 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,140 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,178 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,178 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,210 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,210 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,241 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,241 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,280 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,280 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,317 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,317 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,368 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,368 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,397 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,397 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,426 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,426 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,455 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,455 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,502 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,502 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,547 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,547 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,595 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,595 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,646 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,646 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,667 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,667 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,687 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,687 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,728 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,728 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,760 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,760 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,801 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,801 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:47,842 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,842 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:47,885 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,885 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:47,936 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:47,936 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:48,007 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:48,007 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:48,078 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:48,078 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:48,147 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:48,147 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:48,202 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:48,202 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:48,250 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:48,250 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:48,298 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:48,298 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:48,346 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:48,346 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:48,392 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:48,392 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:48,430 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:48,430 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:48,471 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:48,471 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:48,531 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:48,531 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:48,594 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:48,594 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:48,636 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:48,636 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:48,674 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:48,674 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:48,736 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:48,736 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:48,795 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:48,795 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:48,837 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:48,837 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:48,879 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:48,879 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:48,923 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:48,923 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:48,971 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:48,971 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:49,015 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:49,015 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:49,057 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:05:49,057 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:05:49,125 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:05:49,125 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:05:49,191 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:49,191 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:49,241 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:49,241 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:49,291 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:49,291 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:49,341 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:49,341 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:49,394 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:05:49,394 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:05:49,467 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:05:49,467 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:05:49,541 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:49,541 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:49,595 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:49,595 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:49,650 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:49,650 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:49,700 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:49,700 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:49,752 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:49,752 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:49,800 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:49,800 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:49,846 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:49,846 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:49,895 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:49,895 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:49,940 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:49,940 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:49,986 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:49,986 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:50,037 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:50,037 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:50,083 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:50,083 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:50,128 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,128 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,173 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,173 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,220 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:50,220 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:50,264 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:50,264 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:50,308 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,308 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,345 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,345 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,379 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:50,379 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:50,414 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:50,414 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:50,447 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,447 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,475 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,475 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,508 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:50,508 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:50,537 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:50,537 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:50,565 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,565 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,617 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,617 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,668 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:50,668 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:50,719 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:50,719 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:50,769 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,769 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,801 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,801 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,833 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:50,833 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:50,859 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:50,859 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:50,888 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,888 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:50,931 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,931 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:50,974 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:50,974 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:51,016 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:51,016 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:51,060 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:51,060 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:51,108 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:51,108 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:51,156 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:51,156 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:51,206 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:51,206 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:51,253 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:51,253 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:51,303 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:51,303 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:51,353 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:51,353 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:51,401 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:51,401 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:51,450 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:51,450 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:51,496 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:51,496 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:51,542 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:51,542 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:51,588 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:51,588 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:51,634 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:51,634 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:05:51,710 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:51,710 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:05:51,777 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:51,777 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:51,822 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:51,822 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:51,868 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:05:51,868 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:05:51,869 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:05:51,869 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:05:51,869 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:05:51,869 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:05:51,903 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:05:51,903 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:05:52,691 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:05:52,691 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:05:52,691 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-12 22:05:52,691 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-12 22:05:53,169 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:05:53,169 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:05:53,170 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 22:05:53,170 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 22:05:53,177 - pipeline - WARNING - Failed to analyze _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,177 - pipeline - WARNING - Failed to analyze _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,178 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 22:05:53,178 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 22:05:53,184 - pipeline - WARNING - Failed to analyze _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,184 - pipeline - WARNING - Failed to analyze _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,185 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 22:05:53,185 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 22:05:53,191 - pipeline - WARNING - Failed to analyze _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,191 - pipeline - WARNING - Failed to analyze _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,192 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 22:05:53,192 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 22:05:53,199 - pipeline - WARNING - Failed to analyze _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,199 - pipeline - WARNING - Failed to analyze _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,199 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 22:05:53,199 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 22:05:53,209 - pipeline - WARNING - Failed to analyze _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,209 - pipeline - WARNING - Failed to analyze _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,209 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 22:05:53,209 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 22:05:53,219 - pipeline - WARNING - Failed to analyze _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,219 - pipeline - WARNING - Failed to analyze _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,220 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:53,220 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:53,226 - pipeline - WARNING - Failed to analyze _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,226 - pipeline - WARNING - Failed to analyze _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,226 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 22:05:53,226 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 22:05:53,232 - pipeline - WARNING - Failed to analyze _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,232 - pipeline - WARNING - Failed to analyze _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,232 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:53,232 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:53,237 - pipeline - WARNING - Failed to analyze _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,237 - pipeline - WARNING - Failed to analyze _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,238 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 22:05:53,238 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 22:05:53,242 - pipeline - WARNING - Failed to analyze _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,242 - pipeline - WARNING - Failed to analyze _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,242 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:53,242 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 22:05:53,247 - pipeline - WARNING - Failed to analyze _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,247 - pipeline - WARNING - Failed to analyze _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,248 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 22:05:53,248 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 22:05:53,253 - pipeline - WARNING - Failed to analyze _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,253 - pipeline - WARNING - Failed to analyze _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,253 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 22:05:53,253 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 22:05:53,265 - pipeline - WARNING - Failed to analyze _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,265 - pipeline - WARNING - Failed to analyze _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,265 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 22:05:53,265 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 22:05:53,275 - pipeline - WARNING - Failed to analyze _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,275 - pipeline - WARNING - Failed to analyze _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,276 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 22:05:53,276 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 22:05:53,286 - pipeline - WARNING - Failed to analyze _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,286 - pipeline - WARNING - Failed to analyze _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,287 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 22:05:53,287 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 22:05:53,296 - pipeline - WARNING - Failed to analyze _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,296 - pipeline - WARNING - Failed to analyze _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,297 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 22:05:53,297 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 22:05:53,306 - pipeline - WARNING - Failed to analyze _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,306 - pipeline - WARNING - Failed to analyze _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,307 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 22:05:53,307 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 22:05:53,316 - pipeline - WARNING - Failed to analyze _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,316 - pipeline - WARNING - Failed to analyze _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:05:53,316 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:05:53,316 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:05:53,316 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:05:53,316 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:05:54,379 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:05:54,379 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:05:55,367 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:05:55,367 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:05:55,479 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:05:55,479 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:05:55,613 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:05:55,613 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:05:55,649 - pipeline - INFO - Exported 84 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\cdf_throughput_data
+2026-02-12 22:05:55,649 - pipeline - INFO - Exported 84 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\cdf_throughput_data
+2026-02-12 22:05:55,654 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-12 22:05:55,654 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-12 22:05:55,658 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\coverage_performance_results.json
+2026-02-12 22:05:55,658 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\coverage_performance_results.json
+2026-02-12 22:05:55,660 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-12 22:05:55,660 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-12 22:05:55,661 - pipeline - INFO - Running final data validation...
+2026-02-12 22:05:55,661 - pipeline - INFO - Running final data validation...
+2026-02-12 22:05:55,706 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:05:55,706 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:05:55,706 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 22:05:55,706 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 22:05:55,710 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:05:55,710 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:05:55,710 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:05:55,711 - pipeline - INFO - Market: New York
+2026-02-12 22:05:55,711 - pipeline - INFO - Market: New York
+2026-02-12 22:05:55,711 - pipeline - INFO - Market: New York
+2026-02-12 22:05:55,711 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York
+2026-02-12 22:05:55,711 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York
+2026-02-12 22:05:55,711 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York
+2026-02-12 22:05:55,712 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:05:55,712 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:05:55,712 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:05:55,712 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:05:55,712 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:05:55,712 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:05:55,719 - pipeline - INFO - Grouping 2 CSV files by directory and device type...
+2026-02-12 22:05:55,719 - pipeline - INFO - Grouping 2 CSV files by directory and device type...
+2026-02-12 22:05:55,719 - pipeline - INFO - Grouping 2 CSV files by directory and device type...
+2026-02-12 22:05:55,719 - pipeline - INFO - Created 2 file groups for analysis
+2026-02-12 22:05:55,719 - pipeline - INFO - Created 2 file groups for analysis
+2026-02-12 22:05:55,719 - pipeline - INFO - Created 2 file groups for analysis
+2026-02-12 22:05:55,720 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:05:55,720 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:05:55,720 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:05:55,720 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:05:55,720 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:05:55,720 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:05:55,721 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:05:55,721 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:05:55,721 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:05:55,722 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:05:55,722 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:05:55,722 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:05:55,867 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:05:55,867 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:05:55,867 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:05:55,868 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:05:55,868 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:05:55,868 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:05:55,869 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:05:55,869 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:05:55,869 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:05:55,870 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:05:55,870 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:05:55,870 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:05:55,871 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:05:55,871 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:05:55,871 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:05:56,443 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:05:56,443 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:05:56,443 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:05:56,448 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:05:56,448 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:05:56,448 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:05:56,449 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\data_performance_results.json
+2026-02-12 22:05:56,449 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\data_performance_results.json
+2026-02-12 22:05:56,449 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\data_performance_results.json
+2026-02-12 22:05:56,451 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\coverage_performance_results.json
+2026-02-12 22:05:56,451 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\coverage_performance_results.json
+2026-02-12 22:05:56,451 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\coverage_performance_results.json
+2026-02-12 22:05:56,451 - pipeline - INFO - Running final data validation...
+2026-02-12 22:05:56,451 - pipeline - INFO - Running final data validation...
+2026-02-12 22:05:56,451 - pipeline - INFO - Running final data validation...
+2026-02-12 22:05:56,464 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:05:56,464 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:05:56,464 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:05:56,465 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:05:56,465 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:05:56,465 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:05:56,469 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:05:56,469 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:05:56,469 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:05:56,469 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:05:56,469 - pipeline - INFO - Market: Seattle
+2026-02-12 22:05:56,469 - pipeline - INFO - Market: Seattle
+2026-02-12 22:05:56,469 - pipeline - INFO - Market: Seattle
+2026-02-12 22:05:56,469 - pipeline - INFO - Market: Seattle
+2026-02-12 22:05:56,470 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 22:05:56,470 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 22:05:56,470 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 22:05:56,470 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 22:05:56,471 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:05:56,471 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:05:56,471 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:05:56,471 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:05:56,471 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:05:56,471 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:05:56,471 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:05:56,471 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:05:56,478 - pipeline - INFO - Grouping 32 CSV files by directory and device type...
+2026-02-12 22:05:56,478 - pipeline - INFO - Grouping 32 CSV files by directory and device type...
+2026-02-12 22:05:56,478 - pipeline - INFO - Grouping 32 CSV files by directory and device type...
+2026-02-12 22:05:56,478 - pipeline - INFO - Grouping 32 CSV files by directory and device type...
+2026-02-12 22:05:56,479 - pipeline - INFO - Created 28 file groups for analysis
+2026-02-12 22:05:56,479 - pipeline - INFO - Created 28 file groups for analysis
+2026-02-12 22:05:56,479 - pipeline - INFO - Created 28 file groups for analysis
+2026-02-12 22:05:56,479 - pipeline - INFO - Created 28 file groups for analysis
+2026-02-12 22:05:56,479 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,479 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,479 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,479 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,505 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,505 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,505 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,505 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,530 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,530 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,530 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,530 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,555 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,555 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,555 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,555 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,580 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:56,580 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:56,580 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:56,580 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:56,610 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:56,610 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:56,610 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:56,610 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:56,640 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,640 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,640 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,640 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,670 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,670 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,670 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,670 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,701 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:56,701 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:56,701 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:56,701 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:05:56,731 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:56,731 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:56,731 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:56,731 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:05:56,763 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,763 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,763 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,763 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,796 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,796 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,796 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,796 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,826 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,826 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,826 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,826 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:56,857 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,857 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,857 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,857 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:56,889 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:56,889 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:56,889 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:56,889 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:56,919 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:56,919 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:56,919 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:56,919 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:56,954 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:56,954 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:56,954 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:56,954 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:05:56,985 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:56,985 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:56,985 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:56,985 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:05:57,018 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:57,018 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:57,018 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:57,018 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:57,049 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:57,049 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:57,049 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:57,049 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:57,098 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:57,098 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:57,098 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:57,098 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:57,194 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:57,194 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:57,194 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:57,194 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:57,281 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:57,281 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:57,281 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:57,281 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:05:57,314 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:57,314 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:57,314 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:57,314 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:05:57,346 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:57,346 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:57,346 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:57,346 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:05:57,414 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:57,414 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:57,414 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:57,414 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:05:57,494 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:05:57,494 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:05:57,494 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:05:57,494 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:05:57,495 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:05:57,495 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:05:57,495 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:05:57,495 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:05:57,496 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:05:57,496 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:05:57,496 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:05:57,496 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:05:57,497 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:05:57,497 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:05:57,497 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:05:57,497 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:05:57,498 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:05:57,498 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:05:57,498 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:05:57,498 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:05:58,348 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:05:58,348 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:05:58,348 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:05:58,348 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:05:58,349 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:05:58,349 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:05:58,349 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:05:58,349 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:05:58,350 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:05:58,350 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:05:58,350 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:05:58,350 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:05:58,353 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 22:05:58,353 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 22:05:58,353 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 22:05:58,353 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 22:05:58,355 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 22:05:58,355 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 22:05:58,355 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 22:05:58,355 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 22:05:58,357 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 22:05:58,357 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 22:05:58,357 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 22:05:58,357 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 22:05:58,358 - pipeline - INFO - Running final data validation...
+2026-02-12 22:05:58,358 - pipeline - INFO - Running final data validation...
+2026-02-12 22:05:58,358 - pipeline - INFO - Running final data validation...
+2026-02-12 22:05:58,358 - pipeline - INFO - Running final data validation...
+2026-02-12 22:05:58,371 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:05:58,371 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:05:58,371 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:05:58,371 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:05:58,372 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:05:58,372 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:05:58,372 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:05:58,372 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:11:23,578 - pipeline - INFO - Project: #Dry Run
+2026-02-12 22:11:23,578 - pipeline - INFO - Market: New York
+2026-02-12 22:11:23,578 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\New York
+2026-02-12 22:11:23,579 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-12 22:11:23,579 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:11:23,585 - pipeline - INFO - Grouping 244 CSV files by directory and device type...
+2026-02-12 22:11:23,587 - pipeline - INFO - Created 104 file groups for analysis
+2026-02-12 22:11:23,588 - pipeline - INFO - Analyzing 2 file(s) for REF in 5G Auto Data Web-Kepler
+2026-02-12 22:11:23,634 - pipeline - INFO - Analyzing 2 file(s) for DUT in 5G Auto Data Web-Kepler
+2026-02-12 22:11:23,679 - pipeline - INFO - Analyzing 1 file(s) for DUT in 5G VoNR MRAB Stationary
+2026-02-12 22:11:23,679 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\New York\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260203_125220_CH01_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 DUT_.csv']
+2026-02-12 22:11:23,696 - pipeline - INFO - Analyzing 1 file(s) for REF in 5G VoNR MRAB Stationary
+2026-02-12 22:11:23,697 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\New York\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260203_125220_CH02_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 REF_.csv']
+2026-02-12 22:11:23,714 - pipeline - INFO - Analyzing 5 file(s) for REF in Good
+2026-02-12 22:11:23,793 - pipeline - INFO - Analyzing 5 file(s) for DUT in Good
+2026-02-12 22:11:23,872 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:23,935 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:23,994 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:24,029 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:24,063 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:11:24,108 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:11:24,156 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:24,200 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:24,248 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:24,275 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:24,303 - pipeline - INFO - Analyzing 3 file(s) for REF in Good
+2026-02-12 22:11:24,392 - pipeline - INFO - Analyzing 3 file(s) for DUT in Good
+2026-02-12 22:11:24,479 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:24,558 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:24,646 - pipeline - INFO - Analyzing 3 file(s) for DUT in Poor
+2026-02-12 22:11:24,713 - pipeline - INFO - Analyzing 3 file(s) for REF in Poor
+2026-02-12 22:11:24,782 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:11:24,812 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:11:24,846 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:24,878 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:24,910 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:24,956 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:24,988 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:11:25,065 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:11:25,145 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:25,266 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:25,446 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:25,527 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:25,600 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:11:25,688 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:11:25,771 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:25,852 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:25,936 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:26,023 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:26,105 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:11:26,189 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:11:26,273 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:26,353 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:26,444 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:26,543 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:26,629 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:11:26,709 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:11:26,799 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:26,881 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:26,959 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:27,038 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:27,116 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:11:27,193 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:11:27,273 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:27,349 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:27,426 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:27,509 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:27,586 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:27,648 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:27,709 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:27,771 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:27,832 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:27,879 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:27,926 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:27,967 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:28,009 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:28,088 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:28,169 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:28,250 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:28,330 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:28,360 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:28,390 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:28,434 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:28,477 - pipeline - INFO - Analyzing 4 file(s) for DUT in Mobility Test
+2026-02-12 22:11:29,034 - pipeline - INFO - Analyzing 4 file(s) for REF in Mobility Test
+2026-02-12 22:11:29,565 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:29,638 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:29,717 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:29,790 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:29,863 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:29,948 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:30,036 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:30,120 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:30,211 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:30,293 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:30,376 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:30,457 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:30,543 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:30,623 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:30,704 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:30,786 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:30,863 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:30,939 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:31,017 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:31,095 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:31,171 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:11:31,172 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Call Performance
+2026-02-12 22:11:31,172 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-02-12 22:11:31,173 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-02-12 22:11:32,913 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-02-12 22:11:32,913 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-02-12 22:11:34,659 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:11:34,660 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:11:34,698 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:11:35,335 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:11:35,681 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:11:35,682 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 22:11:35,686 - pipeline - INFO - Successfully analyzed _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv: 201.80939047619046
+2026-02-12 22:11:35,687 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 22:11:35,692 - pipeline - INFO - Successfully analyzed _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv: 106.65787198912199
+2026-02-12 22:11:35,692 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 22:11:35,698 - pipeline - INFO - Successfully analyzed _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv: 151.11654
+2026-02-12 22:11:35,698 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 22:11:35,704 - pipeline - INFO - Successfully analyzed _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv: 154.40230444444444
+2026-02-12 22:11:35,704 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 22:11:35,710 - pipeline - INFO - Successfully analyzed _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv: 183.348031292517
+2026-02-12 22:11:35,710 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 22:11:35,715 - pipeline - INFO - Successfully analyzed _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv: 117.78983869911602
+2026-02-12 22:11:35,716 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 22:11:35,720 - pipeline - WARNING - Failed to analyze _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,721 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 22:11:35,725 - pipeline - WARNING - Failed to analyze _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,725 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 22:11:35,730 - pipeline - WARNING - Failed to analyze _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,730 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 22:11:35,734 - pipeline - WARNING - Failed to analyze _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,734 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 22:11:35,739 - pipeline - WARNING - Failed to analyze _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,739 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 22:11:35,743 - pipeline - WARNING - Failed to analyze _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,744 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 22:11:35,748 - pipeline - INFO - Successfully analyzed _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv: 199.38622564102565
+2026-02-12 22:11:35,748 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:35,756 - pipeline - INFO - Successfully analyzed _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv: 130.38925768359607
+2026-02-12 22:11:35,756 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 22:11:35,760 - pipeline - INFO - Successfully analyzed _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv: 134.55456031746033
+2026-02-12 22:11:35,761 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:35,765 - pipeline - INFO - Successfully analyzed _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv: 144.7251455782313
+2026-02-12 22:11:35,766 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 22:11:35,770 - pipeline - INFO - Successfully analyzed _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv: 74.65798181818182
+2026-02-12 22:11:35,770 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:35,775 - pipeline - INFO - Successfully analyzed _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv: 63.67727272727273
+2026-02-12 22:11:35,776 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 22:11:35,783 - pipeline - WARNING - Failed to analyze _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,783 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:35,790 - pipeline - WARNING - Failed to analyze _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,791 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 22:11:35,798 - pipeline - WARNING - Failed to analyze _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,798 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:35,804 - pipeline - WARNING - Failed to analyze _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,805 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 22:11:35,812 - pipeline - WARNING - Failed to analyze _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,812 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:35,819 - pipeline - WARNING - Failed to analyze _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,819 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 22:11:35,825 - pipeline - INFO - Successfully analyzed _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 49.54232289238539
+2026-02-12 22:11:35,825 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 22:11:35,831 - pipeline - INFO - Successfully analyzed _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 83.81849905911082
+2026-02-12 22:11:35,831 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 22:11:35,837 - pipeline - INFO - Successfully analyzed _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 58.24894230560767
+2026-02-12 22:11:35,837 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 22:11:35,844 - pipeline - INFO - Successfully analyzed _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 65.55823299416632
+2026-02-12 22:11:35,844 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 22:11:35,850 - pipeline - INFO - Successfully analyzed _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.13884175824176
+2026-02-12 22:11:35,850 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 22:11:35,856 - pipeline - INFO - Successfully analyzed _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.62678260869565
+2026-02-12 22:11:35,856 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 22:11:35,863 - pipeline - WARNING - Failed to analyze _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,863 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 22:11:35,870 - pipeline - WARNING - Failed to analyze _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,870 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 22:11:35,876 - pipeline - WARNING - Failed to analyze _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,877 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 22:11:35,883 - pipeline - WARNING - Failed to analyze _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,883 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 22:11:35,891 - pipeline - WARNING - Failed to analyze _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,891 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 22:11:35,898 - pipeline - WARNING - Failed to analyze _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv (likely no valid throughput data)
+2026-02-12 22:11:35,899 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-12 22:11:35,899 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:11:35,899 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:11:38,090 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:11:40,051 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:11:40,150 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:11:40,183 - pipeline - INFO - Exported 60 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\cdf_throughput_data
+2026-02-12 22:11:40,190 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\data_performance_results.json
+2026-02-12 22:11:40,191 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\call_performance_results.json
+2026-02-12 22:11:40,196 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\coverage_performance_results.json
+2026-02-12 22:11:40,197 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\processing_summary.json
+2026-02-12 22:11:40,198 - pipeline - INFO - Running final data validation...
+2026-02-12 22:11:40,230 - pipeline - WARNING - Summary of Empty collections found in JSON files:
+2026-02-12 22:11:40,231 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> DUT -> call_result_distribution -> Empty Dictionary
+2026-02-12 22:11:40,231 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> DUT -> rat_distribution -> Empty Dictionary
+2026-02-12 22:11:40,232 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> REF -> call_result_distribution -> Empty Dictionary
+2026-02-12 22:11:40,232 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Disabled CP MO Drive -> REF -> rat_distribution -> Empty Dictionary
+2026-02-12 22:11:40,232 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> DUT -> call_result_distribution -> Empty Dictionary
+2026-02-12 22:11:40,232 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> DUT -> rat_distribution -> Empty Dictionary
+2026-02-12 22:11:40,233 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> REF -> call_result_distribution -> Empty Dictionary
+2026-02-12 22:11:40,233 - pipeline - WARNING -   - call_performance_results.json -> Call Performance -> 5G Auto VoNR Enabled CP MO Drive -> REF -> rat_distribution -> Empty Dictionary
+2026-02-12 22:11:40,233 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-12 22:11:40,237 - pipeline - INFO - Project: #Dry Run
+2026-02-12 22:11:40,237 - pipeline - INFO - Project: #Dry Run
+2026-02-12 22:11:40,237 - pipeline - INFO - Market: Seattle
+2026-02-12 22:11:40,237 - pipeline - INFO - Market: Seattle
+2026-02-12 22:11:40,238 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-12 22:11:40,238 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-12 22:11:40,238 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 22:11:40,238 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 22:11:40,239 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:11:40,239 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:11:40,245 - pipeline - INFO - Grouping 170 CSV files by directory and device type...
+2026-02-12 22:11:40,245 - pipeline - INFO - Grouping 170 CSV files by directory and device type...
+2026-02-12 22:11:40,246 - pipeline - INFO - Created 142 file groups for analysis
+2026-02-12 22:11:40,246 - pipeline - INFO - Created 142 file groups for analysis
+2026-02-12 22:11:40,247 - pipeline - INFO - Analyzing 2 file(s) for DUT in 5G Auto Data Web-Kepler
+2026-02-12 22:11:40,247 - pipeline - INFO - Analyzing 2 file(s) for DUT in 5G Auto Data Web-Kepler
+2026-02-12 22:11:40,284 - pipeline - INFO - Analyzing 2 file(s) for REF in 5G Auto Data Web-Kepler
+2026-02-12 22:11:40,284 - pipeline - INFO - Analyzing 2 file(s) for REF in 5G Auto Data Web-Kepler
+2026-02-12 22:11:40,321 - pipeline - INFO - Analyzing 1 file(s) for REF in 5G VoNR MRAB Stationary
+2026-02-12 22:11:40,321 - pipeline - INFO - Analyzing 1 file(s) for REF in 5G VoNR MRAB Stationary
+2026-02-12 22:11:40,322 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv']
+2026-02-12 22:11:40,322 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv']
+2026-02-12 22:11:40,338 - pipeline - INFO - Analyzing 1 file(s) for DUT in 5G VoNR MRAB Stationary
+2026-02-12 22:11:40,338 - pipeline - INFO - Analyzing 1 file(s) for DUT in 5G VoNR MRAB Stationary
+2026-02-12 22:11:40,339 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv']
+2026-02-12 22:11:40,339 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv']
+2026-02-12 22:11:40,356 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:40,356 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:40,391 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:40,391 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:40,427 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:40,427 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:40,476 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:40,476 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:40,524 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:40,524 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:40,568 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:40,568 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:40,608 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:40,608 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:40,637 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:40,637 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:40,666 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:40,666 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:40,698 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:40,698 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:40,727 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:40,727 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:40,756 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:40,756 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:40,785 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:40,785 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:40,839 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:40,839 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:40,894 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:40,894 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:40,947 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:40,947 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:40,999 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:40,999 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:41,053 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:41,053 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:41,106 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:41,106 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:41,124 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:41,124 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:41,152 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:41,152 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:41,223 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:41,223 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:41,302 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:41,302 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:41,346 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:41,346 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:41,389 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:41,389 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:41,427 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:41,427 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:41,459 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:41,459 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:41,496 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:41,496 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:41,535 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:41,535 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:41,569 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:41,569 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:41,610 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:41,610 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:41,641 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:41,641 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:41,676 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:41,676 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:41,724 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:41,724 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:41,781 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:41,781 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:41,838 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:41,838 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:41,900 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:41,900 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:41,932 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:41,932 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:41,961 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:41,961 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:42,003 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:42,003 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:42,037 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:42,037 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:42,079 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:42,079 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:42,125 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:42,125 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:42,176 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:42,176 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:42,243 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:42,243 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:42,317 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:42,317 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:42,394 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:42,394 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:42,459 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:42,459 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:42,512 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:42,512 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:42,564 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:42,564 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:42,628 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:42,628 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:42,680 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:42,680 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:42,730 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:42,730 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:42,766 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:42,766 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:42,803 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:42,803 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:42,865 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:42,865 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:42,927 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:42,927 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:42,963 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:42,963 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:43,000 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:43,000 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:43,062 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:43,062 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:43,145 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:43,145 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:43,191 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:43,191 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:43,233 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:43,233 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:43,277 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:43,277 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:43,321 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:43,321 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:43,363 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:43,363 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:43,405 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:11:43,405 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:11:43,477 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:11:43,477 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:11:43,547 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:43,547 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:43,599 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:43,599 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:43,650 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:43,650 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:43,701 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:43,701 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:43,754 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:11:43,754 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-12 22:11:43,831 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:11:43,831 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-12 22:11:43,910 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:43,910 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:43,960 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:43,960 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:44,011 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:44,011 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:44,060 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:44,060 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:44,111 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:44,111 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:44,158 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:44,158 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:44,205 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:44,205 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:44,252 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:44,252 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:44,298 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:44,298 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:44,345 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:44,345 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:44,391 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:44,391 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:44,438 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:44,438 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:44,484 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:44,484 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:44,533 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:44,533 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:44,579 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:44,579 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:44,625 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:44,625 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:44,672 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:44,672 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:44,708 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:44,708 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:44,742 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:44,742 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:44,777 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:44,777 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:44,811 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:44,811 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:44,841 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:44,841 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:44,872 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:44,872 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:44,901 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:44,901 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:44,929 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:44,929 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:44,984 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:44,984 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:45,036 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,036 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,088 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:45,088 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:45,140 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:45,140 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:45,175 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:45,175 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:45,210 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,210 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,238 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:45,238 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:45,266 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:45,266 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:45,310 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:45,310 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:45,353 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,353 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,394 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:45,394 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:45,438 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:45,438 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:45,491 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:45,491 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:45,542 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,542 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,593 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:45,593 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:45,644 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:45,644 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:45,700 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:45,700 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:45,754 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,754 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,805 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:45,805 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:45,855 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:45,855 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:45,901 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:45,901 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:45,949 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,949 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:45,996 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:45,996 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:46,042 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:46,042 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-12 22:11:46,120 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:46,120 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-12 22:11:46,191 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:46,191 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:46,238 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:46,238 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:46,287 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:11:46,287 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:11:46,288 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:11:46,288 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:11:46,289 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:11:46,289 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:11:46,326 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:11:46,326 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:11:47,082 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:11:47,082 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:11:47,083 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-12 22:11:47,083 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-12 22:11:47,547 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:11:47,547 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:11:47,548 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 22:11:47,548 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-12 22:11:47,556 - pipeline - WARNING - Failed to analyze _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,556 - pipeline - WARNING - Failed to analyze _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,557 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 22:11:47,557 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-12 22:11:47,564 - pipeline - WARNING - Failed to analyze _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,564 - pipeline - WARNING - Failed to analyze _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,565 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 22:11:47,565 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-12 22:11:47,571 - pipeline - WARNING - Failed to analyze _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,571 - pipeline - WARNING - Failed to analyze _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,572 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 22:11:47,572 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-12 22:11:47,579 - pipeline - WARNING - Failed to analyze _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,579 - pipeline - WARNING - Failed to analyze _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,580 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 22:11:47,580 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-12 22:11:47,590 - pipeline - WARNING - Failed to analyze _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,590 - pipeline - WARNING - Failed to analyze _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,590 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 22:11:47,590 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-12 22:11:47,601 - pipeline - WARNING - Failed to analyze _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,601 - pipeline - WARNING - Failed to analyze _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,601 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:47,601 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:47,608 - pipeline - WARNING - Failed to analyze _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,608 - pipeline - WARNING - Failed to analyze _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,609 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 22:11:47,609 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-12 22:11:47,615 - pipeline - WARNING - Failed to analyze _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,615 - pipeline - WARNING - Failed to analyze _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,616 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:47,616 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:47,622 - pipeline - WARNING - Failed to analyze _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,622 - pipeline - WARNING - Failed to analyze _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,622 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 22:11:47,622 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-12 22:11:47,628 - pipeline - WARNING - Failed to analyze _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,628 - pipeline - WARNING - Failed to analyze _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,628 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:47,628 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-12 22:11:47,634 - pipeline - WARNING - Failed to analyze _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,634 - pipeline - WARNING - Failed to analyze _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,634 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 22:11:47,634 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-12 22:11:47,640 - pipeline - WARNING - Failed to analyze _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,640 - pipeline - WARNING - Failed to analyze _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,641 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 22:11:47,641 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-12 22:11:47,653 - pipeline - WARNING - Failed to analyze _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,653 - pipeline - WARNING - Failed to analyze _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,654 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 22:11:47,654 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-12 22:11:47,665 - pipeline - WARNING - Failed to analyze _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,665 - pipeline - WARNING - Failed to analyze _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,666 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 22:11:47,666 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-12 22:11:47,676 - pipeline - WARNING - Failed to analyze _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,676 - pipeline - WARNING - Failed to analyze _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,676 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 22:11:47,676 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-12 22:11:47,686 - pipeline - WARNING - Failed to analyze _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,686 - pipeline - WARNING - Failed to analyze _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,687 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 22:11:47,687 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-12 22:11:47,697 - pipeline - WARNING - Failed to analyze _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,697 - pipeline - WARNING - Failed to analyze _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,698 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 22:11:47,698 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-12 22:11:47,705 - pipeline - WARNING - Failed to analyze _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,705 - pipeline - WARNING - Failed to analyze _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (likely no valid throughput data)
+2026-02-12 22:11:47,705 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:11:47,705 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:11:47,706 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:11:47,706 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:11:48,850 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:11:48,850 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:11:49,993 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:11:49,993 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:11:50,113 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:11:50,113 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:11:50,226 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:11:50,226 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:11:50,268 - pipeline - INFO - Exported 84 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\cdf_throughput_data
+2026-02-12 22:11:50,268 - pipeline - INFO - Exported 84 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\cdf_throughput_data
+2026-02-12 22:11:50,276 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-12 22:11:50,276 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-12 22:11:50,284 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\coverage_performance_results.json
+2026-02-12 22:11:50,284 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\coverage_performance_results.json
+2026-02-12 22:11:50,286 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-12 22:11:50,286 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-12 22:11:50,287 - pipeline - INFO - Running final data validation...
+2026-02-12 22:11:50,287 - pipeline - INFO - Running final data validation...
+2026-02-12 22:11:50,322 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:11:50,322 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:11:50,323 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 22:11:50,323 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-12 22:11:50,327 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:11:50,327 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:11:50,327 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:11:50,327 - pipeline - INFO - Market: New York
+2026-02-12 22:11:50,327 - pipeline - INFO - Market: New York
+2026-02-12 22:11:50,327 - pipeline - INFO - Market: New York
+2026-02-12 22:11:50,328 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York
+2026-02-12 22:11:50,328 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York
+2026-02-12 22:11:50,328 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York
+2026-02-12 22:11:50,328 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:11:50,328 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:11:50,328 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:11:50,329 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:11:50,329 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:11:50,329 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:11:50,335 - pipeline - INFO - Grouping 2 CSV files by directory and device type...
+2026-02-12 22:11:50,335 - pipeline - INFO - Grouping 2 CSV files by directory and device type...
+2026-02-12 22:11:50,335 - pipeline - INFO - Grouping 2 CSV files by directory and device type...
+2026-02-12 22:11:50,336 - pipeline - INFO - Created 2 file groups for analysis
+2026-02-12 22:11:50,336 - pipeline - INFO - Created 2 file groups for analysis
+2026-02-12 22:11:50,336 - pipeline - INFO - Created 2 file groups for analysis
+2026-02-12 22:11:50,336 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:11:50,336 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:11:50,336 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:11:50,337 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:11:50,337 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:11:50,337 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-12 22:11:50,338 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:11:50,338 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:11:50,338 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-12 22:11:50,339 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:11:50,339 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:11:50,339 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-12 22:11:50,497 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:11:50,497 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:11:50,497 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:11:50,498 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:11:50,498 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:11:50,498 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:11:50,499 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:11:50,499 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:11:50,499 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:11:50,500 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:11:50,500 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:11:50,500 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:11:50,500 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:11:50,500 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:11:50,500 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:11:51,103 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:11:51,103 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:11:51,103 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:11:51,109 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:11:51,109 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:11:51,109 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:11:51,110 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\data_performance_results.json
+2026-02-12 22:11:51,110 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\data_performance_results.json
+2026-02-12 22:11:51,110 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\data_performance_results.json
+2026-02-12 22:11:51,112 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\coverage_performance_results.json
+2026-02-12 22:11:51,112 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\coverage_performance_results.json
+2026-02-12 22:11:51,112 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York\coverage_performance_results.json
+2026-02-12 22:11:51,113 - pipeline - INFO - Running final data validation...
+2026-02-12 22:11:51,113 - pipeline - INFO - Running final data validation...
+2026-02-12 22:11:51,113 - pipeline - INFO - Running final data validation...
+2026-02-12 22:11:51,123 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:11:51,123 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:11:51,123 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:11:51,124 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:11:51,124 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:11:51,124 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\New York
+2026-02-12 22:11:51,128 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:11:51,128 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:11:51,128 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:11:51,128 - pipeline - INFO - Project: #HuaqinDebug
+2026-02-12 22:11:51,128 - pipeline - INFO - Market: Seattle
+2026-02-12 22:11:51,128 - pipeline - INFO - Market: Seattle
+2026-02-12 22:11:51,128 - pipeline - INFO - Market: Seattle
+2026-02-12 22:11:51,128 - pipeline - INFO - Market: Seattle
+2026-02-12 22:11:51,129 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 22:11:51,129 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 22:11:51,129 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 22:11:51,129 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle
+2026-02-12 22:11:51,130 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:11:51,130 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:11:51,130 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:11:51,130 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:11:51,131 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:11:51,131 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:11:51,131 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:11:51,131 - pipeline - INFO - Starting analysis pipeline...
+2026-02-12 22:11:51,137 - pipeline - INFO - Grouping 32 CSV files by directory and device type...
+2026-02-12 22:11:51,137 - pipeline - INFO - Grouping 32 CSV files by directory and device type...
+2026-02-12 22:11:51,137 - pipeline - INFO - Grouping 32 CSV files by directory and device type...
+2026-02-12 22:11:51,137 - pipeline - INFO - Grouping 32 CSV files by directory and device type...
+2026-02-12 22:11:51,138 - pipeline - INFO - Created 28 file groups for analysis
+2026-02-12 22:11:51,138 - pipeline - INFO - Created 28 file groups for analysis
+2026-02-12 22:11:51,138 - pipeline - INFO - Created 28 file groups for analysis
+2026-02-12 22:11:51,138 - pipeline - INFO - Created 28 file groups for analysis
+2026-02-12 22:11:51,139 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,139 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,139 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,139 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,165 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,165 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,165 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,165 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,192 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,192 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,192 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,192 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,218 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,218 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,218 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,218 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,244 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:51,244 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:51,244 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:51,244 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:51,274 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:51,274 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:51,274 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:51,274 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:51,305 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,305 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,305 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,305 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,334 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,334 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,334 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,334 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,365 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:51,365 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:51,365 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:51,365 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-12 22:11:51,395 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:51,395 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:51,395 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:51,395 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-12 22:11:51,429 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,429 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,429 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,429 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,462 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,462 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,462 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,462 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,518 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,518 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,518 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,518 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,568 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,568 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,568 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,568 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,611 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:51,611 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:51,611 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:51,611 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:51,649 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:51,649 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:51,649 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:51,649 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:51,685 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:51,685 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:51,685 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:51,685 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-12 22:11:51,732 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:51,732 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:51,732 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:51,732 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-12 22:11:51,771 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,771 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,771 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,771 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:51,822 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,822 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,822 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,822 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:51,867 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:51,867 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:51,867 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:51,867 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:51,959 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:51,959 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:51,959 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:51,959 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:52,034 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:52,034 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:52,034 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:52,034 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-12 22:11:52,071 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:52,071 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:52,071 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:52,071 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-12 22:11:52,102 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:52,102 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:52,102 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:52,102 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-12 22:11:52,167 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:52,167 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:52,167 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:52,167 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-12 22:11:52,235 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:11:52,235 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:11:52,235 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:11:52,235 - pipeline - INFO - Processing directory-level analyses...
+2026-02-12 22:11:52,236 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:11:52,236 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:11:52,236 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:11:52,236 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-12 22:11:52,237 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:11:52,237 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:11:52,237 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:11:52,237 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: False
+2026-02-12 22:11:52,238 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:11:52,238 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:11:52,238 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:11:52,238 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-12 22:11:52,239 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:11:52,239 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:11:52,239 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:11:52,239 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-12 22:11:53,034 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:11:53,034 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:11:53,034 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:11:53,034 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#HuaqinDebug\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-12 22:11:53,035 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:11:53,035 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:11:53,035 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:11:53,035 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-12 22:11:53,036 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:11:53,036 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:11:53,036 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:11:53,036 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-12 22:11:53,040 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 22:11:53,040 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 22:11:53,040 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 22:11:53,040 - pipeline - INFO - Exported 8 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\cdf_throughput_data
+2026-02-12 22:11:53,043 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 22:11:53,043 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 22:11:53,043 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 22:11:53,043 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\data_performance_results.json
+2026-02-12 22:11:53,044 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 22:11:53,044 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 22:11:53,044 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 22:11:53,044 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle\processing_summary.json
+2026-02-12 22:11:53,045 - pipeline - INFO - Running final data validation...
+2026-02-12 22:11:53,045 - pipeline - INFO - Running final data validation...
+2026-02-12 22:11:53,045 - pipeline - INFO - Running final data validation...
+2026-02-12 22:11:53,045 - pipeline - INFO - Running final data validation...
+2026-02-12 22:11:53,055 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:11:53,055 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:11:53,055 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:11:53,055 - pipeline - INFO - No empty collections found in any JSON file.
+2026-02-12 22:11:53,056 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:11:53,056 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:11:53,056 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle
+2026-02-12 22:11:53,056 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#HuaqinDebug\Seattle

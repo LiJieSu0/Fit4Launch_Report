@@ -145,6 +145,9 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
         const bandLabel = band.toUpperCase();
         const dataDL = processLteCoverageData(band, 'first_dl_tp_gt_1');
         const dataUL = processLteCoverageData(band, 'first_ul_tp_gt_1');
+        const dataMOS = processLteCoverageData(band, 'mos_before_drop');
+        const dataAudio = processLteCoverageData(band, 'call_drop');
+        const bandStatus = dataAudio[dataAudio.length - 1];
         const secondaryKpi = processSecondaryKpiData(band);
 
         const coords = getBaseStationCoords();

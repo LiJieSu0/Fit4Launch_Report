@@ -237,6 +237,12 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
     ["Minimum (Mbps)", "REF", calculateOverallMin(httpSS_Stationary_DL, 'REF').toFixed(2), calculateOverallMin(httpSS_Stationary_UL, 'REF').toFixed(2)],
   ];
 
+  const mockBoxPlotData = [
+    { x: "Test 1 (Good)", min: 10, q1: 15, median: 20, q3: 25, max: 30, outliers: [5, 35, 100] },
+    { x: "Test 2 (Bad)", min: 10, q1: 20, median: 25, q3: 30, max: 50, outliers: [] },
+    { x: "Test 3 (Extreme)", min: 0, q1: 10, median: 20, q3: 30, max: 40, outliers: [-10, 60] }
+  ];
+
 
 
   const barKeys = [
@@ -357,6 +363,12 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
         <DpBoxPlot
           data={getBoxPlotData(httpSS_Stationary_UL)}
           title="Http Single Stream Upload Throughput Box Plot"
+          yAxisLabel="Throughput (Mbps)"
+        />
+        {/* Test Box plot here */}
+        <DpBoxPlot
+          data={mockBoxPlotData}
+          title="TEST: Box Plot Outliers (Mock Data)"
           yAxisLabel="Throughput (Mbps)"
         />
       </div>

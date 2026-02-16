@@ -18,6 +18,27 @@ const DpCDF_Chart = ({ project, city, dutFilename, refFilename, title }) => {
     const [data, setData] = useState({ dut: null, ref: null });
     const [loading, setLoading] = useState(true);
 
+    const findValueAtPercent = (dataset, targetPercent) => {
+        if (!dataset || dataset.length === 0) return 'N/A';
+        // Ensure dataset is sorted by cumulative_percent
+        // Usually CDF data is sorted by bin_end, and cumulative_percent is monotonic.
+
+        // Find the first point >= targetPercent
+        const index = dataset.findIndex(p => p.cumulative_percent >= targetPercent);
+
+        if (index === -1) return dataset[dataset.length - 1].bin_end; // Should not happen if data goes to 100%
+        if (index === 0) return dataset[0].bin_end;
+
+        // Linear interpolation
+        const p1 = dataset[index - 1];
+        const p2 = dataset[index];
+
+        const slope = (p2.bin_end - p1.bin_end) / (p2.cumulative_percent - p1.cumulative_percent);
+        const interpolatedValue = p1.bin_end + slope * (targetPercent - p1.cumulative_percent);
+
+        return interpolatedValue.toFixed(2);
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -61,7 +82,7 @@ const DpCDF_Chart = ({ project, city, dutFilename, refFilename, title }) => {
                     <LineChart
                         margin={{
                             top: 5,
-                            right: 30,
+                            right: 150, // Increased right margin to accommodate labels
                             left: 20,
                             bottom: 25,
                         }}
@@ -84,11 +105,51 @@ const DpCDF_Chart = ({ project, city, dutFilename, refFilename, title }) => {
                         <Legend verticalAlign="top" height={36} />
 
                         {/* Reference Lines at 5%, 25%, 50%, 75%, 95% */}
-                        <ReferenceLine y={5} stroke="#db1b1bff" strokeDasharray="5 5" label={{ value: '5', position: 'left', fill: '#666', fontSize: 15, dy: -8 }} />
+                        <ReferenceLine
+                            y={5}
+                            stroke="#db1b1bff"
+                            strokeDasharray="5 5"
+                            label={{
+                                value: '5',
+                                position: 'left',
+                                fill: '#666',
+                                fontSize: 15,
+                                dy: -8
+                            }}
+                        />
+                        {/* Custom Label for values at 5% */}
+                        <ReferenceLine y={5} stroke="none" label={{
+                            value: `DUT: ${findValueAtPercent(data.dut, 5)} | REF: ${findValueAtPercent(data.ref, 5)}`,
+                            position: 'right',
+                            fill: '#666',
+                            fontSize: 12,
+                            dy: -8
+                        }} />
+
                         <ReferenceLine y={25} stroke="#ccc" strokeDasharray="5 5" />
                         <ReferenceLine y={50} stroke="#ccc" strokeDasharray="5 5" />
                         <ReferenceLine y={75} stroke="#ccc" strokeDasharray="5 5" />
-                        <ReferenceLine y={95} stroke="#1548d4ff" strokeDasharray="5 5" label={{ value: '95', position: 'left', fill: '#666', fontSize: 15, dy: 8 }} />
+
+                        <ReferenceLine
+                            y={95}
+                            stroke="#1548d4ff"
+                            strokeDasharray="5 5"
+                            label={{
+                                value: '95',
+                                position: 'left',
+                                fill: '#666',
+                                fontSize: 15,
+                                dy: 8
+                            }}
+                        />
+                        {/* Custom Label for values at 95% */}
+                        <ReferenceLine y={95} stroke="none" label={{
+                            value: `DUT: ${findValueAtPercent(data.dut, 95)} | REF: ${findValueAtPercent(data.ref, 95)}`,
+                            position: 'right',
+                            fill: '#666',
+                            fontSize: 12,
+                            dy: 8
+                        }} />
 
                         {data.dut && (
                             <Line

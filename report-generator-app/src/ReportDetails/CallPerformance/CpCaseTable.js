@@ -16,10 +16,11 @@ const CpCaseTable = ({ title, data, city }) => {
     const refSuccessfulInitiations = ref.total_initiation_successes || 0;
     const refFailedInitiations = ref.total_initiation_failures || 0;
 
-    const dutSuccessfulInitiationsPercentage = dutTotalAttempts > 0 ? (dutSuccessfulInitiations / dutTotalAttempts * 100).toFixed(2) : (0).toFixed(2);
     const dutFailedInitiationsPercentage = dutTotalAttempts > 0 ? (dutFailedInitiations / dutTotalAttempts * 100).toFixed(2) : (0).toFixed(2);
-    const refSuccessfulInitiationsPercentage = refTotalAttempts > 0 ? (refSuccessfulInitiations / refTotalAttempts * 100).toFixed(2) : (0).toFixed(2);
     const refFailedInitiationsPercentage = refTotalAttempts > 0 ? (refFailedInitiations / refTotalAttempts * 100).toFixed(2) : (0).toFixed(2);
+
+    const dutFailedRetentionPercentage = dutSuccessfulInitiations > 0 ? ((dut.total_retention_failures || 0) / dutSuccessfulInitiations * 100).toFixed(2) : (0).toFixed(2);
+    const refFailedRetentionPercentage = refSuccessfulInitiations > 0 ? ((ref.total_retention_failures || 0) / refSuccessfulInitiations * 100).toFixed(2) : (0).toFixed(2);
 
     return (
         <div className="">
@@ -31,8 +32,8 @@ const CpCaseTable = ({ title, data, city }) => {
                         <th>Connection Attempts</th>
                         <th>Mean Setup Time (s)</th>
                         <th>Successful Initiations</th>
-                        <th>Failed Initiations</th>
-                        <th>Failed Retention</th>
+                        <th>Failed Initiations (%)</th>
+                        <th>Failed Retention (%)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,16 +44,16 @@ const CpCaseTable = ({ title, data, city }) => {
                             {(dut.mean_setup_time || 0).toFixed(2)}
                         </td>
                         <td>{dutSuccessfulInitiations}</td>
-                        <td>{dutFailedInitiations}</td>
-                        <td>{dut.total_retention_failures || 0}</td>
+                        <td>{dutFailedInitiationsPercentage}%</td>
+                        <td>{dutFailedRetentionPercentage}%</td>
                     </tr>
                     <tr>
                         <td>REF</td>
                         <td>{refTotalAttempts}</td>
                         <td>{(ref.mean_setup_time || 0).toFixed(2)}</td>
                         <td>{refSuccessfulInitiations}</td>
-                        <td>{refFailedInitiations}</td>
-                        <td>{ref.total_retention_failures || 0}</td>
+                        <td>{refFailedInitiationsPercentage}%</td>
+                        <td>{refFailedRetentionPercentage}%</td>
                     </tr>
                 </tbody>
             </table>

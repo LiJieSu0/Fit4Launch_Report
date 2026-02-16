@@ -8,6 +8,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import DpBoxPlot from './DpBoxPlot';
 
 import { useEffect } from 'react';
 
@@ -179,6 +180,51 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
     },
   ];
 
+  const getBoxPlotData = (dataSource) => {
+    const categories = ['Good', 'Moderate', 'Poor'];
+    const plotData = [];
+
+    categories.forEach(cat => {
+      ['DUT', 'REF'].forEach(dev => {
+        const stats = dataSource[cat][dev];
+        // Skip if mean is 0 (likely no data)
+        if (!stats || stats.Mean === 0) return;
+
+        let min = stats.Minimum;
+        let max = stats.Maximum;
+        let q1 = stats.Q1;
+        let median = stats.Median;
+        let q3 = stats.Q3;
+        // Use empty array if Outliers is missing
+        let outliers = stats.Outliers || [];
+
+        // Fallback estimation if Q1 is missing
+        if (q1 === undefined) {
+          const mean = stats.Mean;
+          const stdDev = stats['Standard Deviation'];
+          median = mean;
+          q1 = mean - 0.675 * stdDev;
+          q3 = mean + 0.675 * stdDev;
+
+          // Ensure Q1/Q3 are within Min/Max
+          q1 = Math.max(min, q1);
+          q3 = Math.min(max, q3);
+        }
+
+        plotData.push({
+          x: `${cat} (${dev})`,
+          min: min,
+          q1: q1,
+          median: median,
+          q3: q3,
+          max: max,
+          outliers: outliers
+        });
+      });
+    });
+    return plotData;
+  };
+
   const overallTableHeader = ["Throughput", "Device Name", "Download", "Upload"];
   const combinedOverallTableData = [
     ["Average (Mbps)", "DUT", calculateOverallMean(httpSS_Stationary_DL, 'DUT').toFixed(2), calculateOverallMean(httpSS_Stationary_UL, 'DUT').toFixed(2)],
@@ -295,11 +341,23 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
       </div>
 
       <div className='page-content'>
-
         <DpRangeChart
           data={ulRangeChartData}
           chartTitle="Http Single Stream Upload Throughput Range"
           yAxisTitle="Throughput (Mbps)"
+        />
+      </div>
+
+      <div className='page-content'>
+        <DpBoxPlot
+          data={getBoxPlotData(httpSS_Stationary_DL)}
+          title="Http Single Stream Download Throughput Box Plot"
+          yAxisLabel="Throughput (Mbps)"
+        />
+        <DpBoxPlot
+          data={getBoxPlotData(httpSS_Stationary_UL)}
+          title="Http Single Stream Upload Throughput Box Plot"
+          yAxisLabel="Throughput (Mbps)"
         />
       </div>
 

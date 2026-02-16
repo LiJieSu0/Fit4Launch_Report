@@ -315,11 +315,28 @@ def _calculate_statistics(data_series, column_name):
     min_val = data_series.min()
     max_val = data_series.max()
     
+    # Calculate Quartiles
+    q1_val = data_series.quantile(0.25)
+    median_val = data_series.median()
+    q3_val = data_series.quantile(0.75)
+    
+    # Calculate IQR and Outliers
+    iqr = q3_val - q1_val
+    lower_bound = q1_val - 1.5 * iqr
+    upper_bound = q3_val + 1.5 * iqr
+    
+    # Identify outliers
+    outliers = data_series[(data_series < lower_bound) | (data_series > upper_bound)].tolist()
+    
     stats = {
         "Mean": mean_val,
         "Standard Deviation": std_dev_val,
         "Minimum": min_val,
-        "Maximum": max_val
+        "Maximum": max_val,
+        "Q1": q1_val,
+        "Median": median_val,
+        "Q3": q3_val,
+        "Outliers": outliers
     }
     
     return stats

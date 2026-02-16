@@ -31,9 +31,8 @@ const CpCaseTable = ({ title, data, city }) => {
                         <th>Connection Attempts</th>
                         <th>Mean Setup Time (s)</th>
                         <th>Successful Initiations</th>
-                        <th>Successful Initiations (%)</th>
                         <th>Failed Initiations</th>
-                        <th>Failed Initiations (%)</th>
+                        <th>Failed Retention</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,18 +43,16 @@ const CpCaseTable = ({ title, data, city }) => {
                             {(dut.mean_setup_time || 0).toFixed(2)}
                         </td>
                         <td>{dutSuccessfulInitiations}</td>
-                        <td>{dutSuccessfulInitiationsPercentage}%</td>
                         <td>{dutFailedInitiations}</td>
-                        <td>{dutFailedInitiationsPercentage}%</td>
+                        <td>{dut.total_retention_failures || 0}</td>
                     </tr>
                     <tr>
                         <td>REF</td>
                         <td>{refTotalAttempts}</td>
                         <td>{(ref.mean_setup_time || 0).toFixed(2)}</td>
                         <td>{refSuccessfulInitiations}</td>
-                        <td>{refSuccessfulInitiationsPercentage}%</td>
                         <td>{refFailedInitiations}</td>
-                        <td>{refFailedInitiationsPercentage}%</td>
+                        <td>{ref.total_retention_failures || 0}</td>
                     </tr>
                 </tbody>
             </table>

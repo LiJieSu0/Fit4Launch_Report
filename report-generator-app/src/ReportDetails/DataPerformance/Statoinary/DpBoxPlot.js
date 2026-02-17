@@ -47,9 +47,15 @@ const DpBoxPlot = ({ data, title, yAxisLabel, width = 600, height = 300 }) => {
     }
 
     return (
-        <div className="box-plot-container" style={{ width: '100%', height: 'auto', textAlign: 'center' }}>
+        <div className="box-plot-container" style={{ width: '60%', height: 'auto', textAlign: 'center' }}>
             <h4>{title}</h4>
-            <VictoryChart domainPadding={20} width={width} height={height} domain={{ y: yDomain }}>
+            <VictoryChart
+                domainPadding={20}
+                width={width}
+                height={height}
+                domain={{ y: yDomain }}
+                padding={{ top: 20, bottom: 50, left: 80, right: 20 }} // Increased left padding for Y-axis label
+            >
                 <VictoryAxis
                     crossAxis={false} // Prevent axis from moving to y=0
                     offsetY={50} // Force axis to bottom (Victory coordinates are bottom-up, this sets the baseline)

@@ -6,6 +6,7 @@ import { ReportContext } from '../../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../../Constants/ChartColors';
 import DynamicHeader from '../../../../CommonPage/DynamicHeader';
+import DpBoxPlot from '../../Statoinary/DpBoxPlot';
 
 import { useEffect } from 'react';
 
@@ -80,6 +81,23 @@ function DpNSATestDriveDetails({ city: propCity }) {
   const barKeysErrorRatio = [{ key: "Error Ratio DUT", fill: CHART_COLOR_DUT }, { key: "Error Ratio REF", fill: CHART_COLOR_REF }];
   const barKeysPingRtt = [{ key: "Ping RTT DUT", fill: CHART_COLOR_DUT }, { key: "Ping RTT REF", fill: CHART_COLOR_REF }];
 
+  // Helper to build a single box plot entry from a stats object
+  const buildBoxEntry = (label, stats) => {
+    if (!stats || !stats.Mean) return null;
+    let { Minimum: min, Maximum: max, Q1: q1, Median: median, Q3: q3, Outliers: outliers = [], Mean: mean, 'Standard Deviation': stdDev } = stats;
+    if (q1 === undefined) {
+      median = mean;
+      q1 = Math.max(min, mean - 0.675 * stdDev);
+      q3 = Math.min(max, mean + 0.675 * stdDev);
+    }
+    return { x: label, min, q1, median, q3, max, outliers };
+  };
+
+  const nsaDriveTestDLBoxPlotData = [
+    buildBoxEntry('DUT', dutDriveTest?.['DL Throughput']),
+    buildBoxEntry('REF', refDriveTest?.['DL Throughput']),
+  ].filter(Boolean);
+
   return (
     <>
       <div className='page-content'>
@@ -115,6 +133,13 @@ function DpNSATestDriveDetails({ city: propCity }) {
           title="Ping RTT"
           yAxisLabel="ms"
           barKeys={barKeysPingRtt}
+        />
+      </div>
+      <div className='page-content'>
+        <DpBoxPlot
+          data={nsaDriveTestDLBoxPlotData}
+          title="NSA Mobility Test DL Throughput Box Plot"
+          yAxisLabel="Throughput (Mbps)"
         />
       </div>
     </>

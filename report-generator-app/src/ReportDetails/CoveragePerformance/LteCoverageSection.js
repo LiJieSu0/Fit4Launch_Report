@@ -4,6 +4,7 @@ import CoverageMap from './CoverageMap';
 import { ReportContext } from '../../Contexts/ReportContext';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 import SecondaryKpiTable from './SecondaryKpiTable';
+import PageBreak from '../../CommonPage/PageBreak';
 
 const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
     const { city: globalCity, projectData, loadCityData, appConfig } = useContext(ReportContext);
@@ -138,7 +139,7 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
     };
 
     if (!reportData || !reportData.coveragePerformance) {
-        return <div className="page-content">Loading {city} LTE Coverage data...</div>;
+        return <PageBreak>Loading {city} LTE Coverage data...</PageBreak>;
     }
 
     const renderBandSection = (band) => {
@@ -157,7 +158,7 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
 
         return (
             <div key={band}>
-                <div className='page-content'>
+                <PageBreak>
                     {firstSection && isFirstBand && <DynamicHeader level={1}>LTE Coverage Test</DynamicHeader>}
                     <DynamicHeader level={2}>LTE Coverage Test - {bandLabel} - {city}</DynamicHeader>
                     <DynamicHeader level={3} hideInTOC={true}>LTE Coverage Test {bandLabel} - DL Throughput &lt; 1Mbps - {city}</DynamicHeader>
@@ -167,8 +168,8 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
                         metric="first_dl_tp_gt_1"
                         baseStation={BASE_STATION_COORDS}
                     />
-                </div>
-                <div className='page-content'>
+                </PageBreak>
+                <PageBreak>
                     <DynamicHeader level={3} hideInTOC={true}>LTE Coverage Test {bandLabel} - UL Throughput &lt; 1Mbps - {city}</DynamicHeader>
                     <CoverageTestTable tableData={dataUL.slice(0, -1)} status={dataUL[dataUL.length - 1]} />
                     <CoverageMap
@@ -176,8 +177,8 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
                         metric="first_ul_tp_gt_1"
                         baseStation={BASE_STATION_COORDS}
                     />
-                </div>
-                <div className='page-content'>
+                </PageBreak>
+                <PageBreak>
                     <DynamicHeader level={3} hideInTOC={true}>LTE Coverage Test {bandLabel} - Last MOS Before Silence - {city}</DynamicHeader>
                     <CoverageTestTable tableData={dataMOS.slice(0, -1)} status={dataMOS[dataMOS.length - 1]} />
                     <CoverageMap
@@ -185,8 +186,8 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
                         metric="mos_before_drop"
                         baseStation={BASE_STATION_COORDS}
                     />
-                </div>
-                <div className='page-content'>
+                </PageBreak>
+                <PageBreak>
                     <DynamicHeader level={3} hideInTOC={true}>LTE Coverage Test {bandLabel} - Audio Call Drop - {city}</DynamicHeader>
                     <CoverageTestTable tableData={dataAudio.slice(0, -1)} status={bandStatus} />
                     <CoverageMap
@@ -194,17 +195,17 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
                         metric="call_drop"
                         baseStation={BASE_STATION_COORDS}
                     />
-                </div>
-                <div className='page-content'>
+                </PageBreak>
+                <PageBreak>
                     <DynamicHeader level={3} hideInTOC={true}>LTE Coverage Test {bandLabel} - Secondary KPI - {city}</DynamicHeader>
                     <SecondaryKpiTable data={secondaryKpi} />
-                </div>
+                </PageBreak>
             </div>
         );
     };
 
     return (
-        <>{lteBands.length > 0 ? lteBands.map(band => renderBandSection(band)) : <div className="page-content">No LTE Band data found for {city}.</div>}</>
+        <>{lteBands.length > 0 ? lteBands.map(band => renderBandSection(band)) : <PageBreak>No LTE Band data found for {city}.</PageBreak>}</>
     );
 };
 

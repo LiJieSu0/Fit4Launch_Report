@@ -7,6 +7,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 
 import { useEffect } from 'react';
@@ -24,7 +25,7 @@ function Dp_MHS_httpMS_Component({ city: propCity }) {
   const reportData = projectData[city];
 
   if (!reportData) {
-    return <div className="page-content">Loading {city} data...</div>;
+    return <PageBreak>Loading {city} data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -166,7 +167,7 @@ function Dp_MHS_httpMS_Component({ city: propCity }) {
 
   return (
     <>
-      <div className='page-content'>
+      <PageBreak>
         <DynamicHeader level={3}>HTTP Multi Stream Test - Mobile Hotspot - {city}</DynamicHeader>
         <h4>MHS Http Multi Stream Overview </h4>
         <DpThroughputOverallTable
@@ -189,9 +190,9 @@ function Dp_MHS_httpMS_Component({ city: propCity }) {
           ]}
         />
         <DpMHSHttpMSTable data={dataDL} tableName="MHS Http Multi Stream DL Details" kpiRule="Throughput" />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpHistogramComponent
           data={getChartData(dataDL, overallDownloadDUTMean, overallDownloadREFMean)}
           title="MHS Http Multi Stream Download Throughput"
@@ -203,13 +204,13 @@ function Dp_MHS_httpMS_Component({ city: propCity }) {
           title="MHS Http Multi Stream Download Throughput Box Plot"
           yAxisLabel="Throughput"
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpMHSHttpMSTable data={dataUL} tableName="MHS Http Multi Stream UL Details" kpiRule="Throughput" />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpHistogramComponent
           data={getChartData(dataUL, overallUploadDUTMean, overallUploadREFMean)}
           title="MHS Multi Stream HTTP Upload Throughput"
@@ -221,7 +222,7 @@ function Dp_MHS_httpMS_Component({ city: propCity }) {
           title="MHS Multi Stream HTTP Upload Throughput Box Plot"
           yAxisLabel="Throughput"
         />
-      </div>
+      </PageBreak>
     </>
   );
 }

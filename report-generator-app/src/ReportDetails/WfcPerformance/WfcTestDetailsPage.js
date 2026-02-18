@@ -1,5 +1,6 @@
 import { useReportData } from '../../Contexts/ReportContext';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
+import PageBreak from '../../CommonPage/PageBreak';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 
 import PValueTable from '../CallPerformance/PValueTable';
@@ -37,7 +38,7 @@ const WfcTestDetailsPage = ({ tc, label, sectionNumber = 0 }) => {
 
         return (
             <>
-                <div className='page-content'>
+                <PageBreak>
                     <div key={city} className="market-section" style={{ marginBottom: '60px', pageBreakAfter: 'always' }}>
                         {sectionNumber == 1 && <DynamicHeader level={1}>WFC Performance Test Details</DynamicHeader>}
                         {sectionNumber == 1 && <DynamicHeader level={2}>Call Performance and Voice Quality</DynamicHeader>}
@@ -201,13 +202,13 @@ const WfcTestDetailsPage = ({ tc, label, sectionNumber = 0 }) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </PageBreak>
                 <div>
-                    <div className='page-content'>
+                    <PageBreak>
                         <WfcRssiLineChart tc={tc} city={city} />
                         {/* <WfcRssiTimeLineChart tc={tc} city={city} /> */}
                         <WfcMosLineChart tc={tc} city={city} />
-                    </div>
+                    </PageBreak>
                 </div>
             </>
         );

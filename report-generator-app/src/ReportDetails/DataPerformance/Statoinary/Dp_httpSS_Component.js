@@ -9,6 +9,7 @@ import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import DpBoxPlot from './DpBoxPlot';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 import { useEffect } from 'react';
 
@@ -26,7 +27,7 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
 
   // Update to use dataPerformance from the fetched JSON
   if (!reportData) {
-    return <div className="page-content">Loading {city} data...</div>;
+    return <PageBreak>Loading {city} data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -180,7 +181,7 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
   console.log("DUT value" + httpSS_Stationary_DL.Good.DUT);
   return (
     <>
-      <div className='page-content'>
+      <PageBreak>
         {firstSection && <DynamicHeader level={1} style={{ textAlign: 'center' }}>Data Performance - 5G Auto </DynamicHeader>}
         <DynamicHeader level={2}>HTTP Single Stream Test Download & Upload - 5G Auto - {city}</DynamicHeader>
         <h4>Http Single Stream Overview</h4>
@@ -215,8 +216,8 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
             },
           ]}
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpCDF_Chart
           project={project}
           city={city}
@@ -238,8 +239,8 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
           refFilename="5g_auto_dp_http_single_stream_dl_poor_ref.json"
           title="HTTP SS DL Poor CDF (DUT vs REF)"
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpHistogramComponent
           data={dlHistogramData}
           title="Http Single Stream Download Throughput"
@@ -251,9 +252,9 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
           title="Http Single Stream Download Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
 
         <DpDetailsTableLoc3
           data={httpSS_Stationary_UL}
@@ -272,15 +273,15 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpBoxPlot
           data={getBoxPlotData(httpSS_Stationary_UL)}
           title="Http Single Stream Upload Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
+      </PageBreak>
 
 
 

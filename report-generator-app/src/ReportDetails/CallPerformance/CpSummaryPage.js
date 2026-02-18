@@ -5,6 +5,7 @@ import { useReportData } from '../../Contexts/ReportContext';
 import { HeaderContext } from '../../Contexts/HeaderContext';
 import { useContext } from 'react';
 import { getKpiCellColor } from '../../Utils/KpiRules';
+import PageBreak from '../../CommonPage/PageBreak';
 
 
 
@@ -62,7 +63,7 @@ const CpSummaryPage = () => {
 
 
     return (
-        <div className="page-content" id="summary-page">
+        <PageBreak id="summary-page">
             <DynamicHeader level={1}>Call Performance Test Overview</DynamicHeader>
             <DynamicHeader level={2}>Seattle</DynamicHeader>
             <table className="general-table-style">
@@ -109,7 +110,7 @@ const CpSummaryPage = () => {
             </table>
 
 
-        </div>
+        </PageBreak>
     );
 };
 

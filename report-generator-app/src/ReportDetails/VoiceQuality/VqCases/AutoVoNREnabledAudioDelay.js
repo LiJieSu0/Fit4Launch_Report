@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 const processAudioDelayData = (audioDelayData) => {
   if (!audioDelayData || !audioDelayData.DUT1 || !audioDelayData.REF1 || !audioDelayData.DUT2 || !audioDelayData.REF2) {
@@ -92,7 +93,7 @@ const AutoVoNREnabledAudioDelay = ({ city: propCity }) => {
   }, [reportData]);
 
   return (
-    <>
+    <PageBreak>
       <DynamicHeader level={2}>5G Auto VoNR Enabled Audio Delay - {city}</DynamicHeader>
       <table className="general-table-style vq-details-table">
         <thead>
@@ -128,7 +129,7 @@ const AutoVoNREnabledAudioDelay = ({ city: propCity }) => {
           ))}
         </tbody>
       </table>
-    </>
+    </PageBreak>
   );
 };
 

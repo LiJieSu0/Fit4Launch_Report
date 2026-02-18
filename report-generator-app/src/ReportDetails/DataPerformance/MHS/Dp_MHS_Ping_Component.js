@@ -5,6 +5,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import DpHistogramComponent from "../DpHistogramComponent";
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from "../../../Constants/ChartColors";
 import DynamicHeader from "../../../CommonPage/DynamicHeader";
+import PageBreak from "../../../CommonPage/PageBreak";
 
 import { useEffect } from 'react';
 
@@ -21,7 +22,7 @@ function Dp_MHS_Ping_Component({ city: propCity }) {
   const reportData = projectData[city];
 
   if (!reportData) {
-    return <div className="page-content">Loading {city} data...</div>;
+    return <PageBreak>Loading {city} data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -31,7 +32,7 @@ function Dp_MHS_Ping_Component({ city: propCity }) {
   const pingDataRaw = reportData.dataPerformance?.['Data Performance']?.['5G AUTO DP']?.['Mobile Hotspot Test']?.['Ping'];
 
   if (!pingDataRaw) {
-    return <div className="page-content">No MHS Ping Data available</div>;
+    return <PageBreak>No MHS Ping Data available</PageBreak>;
   }
 
   const getPingMetrics = (coverage, device) => {
@@ -134,12 +135,12 @@ function Dp_MHS_Ping_Component({ city: propCity }) {
 
   return (
     <>
-      <div className="page-content">
+      <PageBreak>
         <DynamicHeader level={3}>Ping Test - Mobile Hotspot - {city}</DynamicHeader>
         <h4>MHS Ping Test Overview</h4>
         <DpPingOverallTable data={data} />
-      </div>
-      <div className="page-content">
+      </PageBreak>
+      <PageBreak>
         <h4>MHS Ping Test Details</h4>
         <DpMHSPingTable data={data} />
         <DpHistogramComponent
@@ -148,7 +149,7 @@ function Dp_MHS_Ping_Component({ city: propCity }) {
           yAxisLabel="Latency (ms)"
           barKeys={barKeys}
         />
-      </div>
+      </PageBreak>
     </>
   );
 }

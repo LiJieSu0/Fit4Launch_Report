@@ -8,6 +8,8 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../../Constants/ChartCol
 import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 import DpBoxPlot from '../../Statoinary/DpBoxPlot';
 
+import PageBreak from '../../../../CommonPage/PageBreak';
+
 import { useEffect } from 'react';
 
 // Define additional colors for the histogram bars
@@ -24,7 +26,7 @@ function DpNSATestDriveDetails({ city: propCity }) {
   const reportData = projectData[city];
 
   if (!reportData) {
-    return <div className="page-content">Loading {city} NSA Test Drive data...</div>;
+    return <PageBreak>Loading {city} NSA Test Drive data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -81,7 +83,7 @@ function DpNSATestDriveDetails({ city: propCity }) {
   const barKeysErrorRatio = [{ key: "Error Ratio DUT", fill: CHART_COLOR_DUT }, { key: "Error Ratio REF", fill: CHART_COLOR_REF }];
   const barKeysPingRtt = [{ key: "Ping RTT DUT", fill: CHART_COLOR_DUT }, { key: "Ping RTT REF", fill: CHART_COLOR_REF }];
 
-  // Helper to build a single box plot entry from a stats object
+  // Helper to build a single box entry from a stats object
   const buildBoxEntry = (label, stats) => {
     if (!stats || !stats.Mean) return null;
     let { Minimum: min, Maximum: max, Q1: q1, Median: median, Q3: q3, Outliers: outliers = [], Mean: mean, 'Standard Deviation': stdDev } = stats;
@@ -100,13 +102,13 @@ function DpNSATestDriveDetails({ city: propCity }) {
 
   return (
     <>
-      <div className='page-content'>
+      <PageBreak>
         <DynamicHeader level={2}>Mobility Test - 5G NSA - {city}</DynamicHeader>
         <DpNSATestDriveOverallTable data={formattedTestDriveData} tableName="Drive Test Overview" />
         <DpNSATestDriveTable data={formattedTestDriveData} tableName="Drive Test Details" />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpHistogramComponent
           data={throughputData}
           title="Drive Test DL Throughput"
@@ -119,9 +121,9 @@ function DpNSATestDriveDetails({ city: propCity }) {
           yAxisLabel="s"
           barKeys={barKeysJitter}
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpHistogramComponent
           data={errorRatioData}
           title="DL Packet Failure Rate"
@@ -134,14 +136,14 @@ function DpNSATestDriveDetails({ city: propCity }) {
           yAxisLabel="ms"
           barKeys={barKeysPingRtt}
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpBoxPlot
           data={nsaDriveTestDLBoxPlotData}
           title="NSA Mobility Test DL Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
+      </PageBreak>
     </>
   );
 }

@@ -8,6 +8,7 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 import { useEffect } from 'react';
 
@@ -25,7 +26,7 @@ function Dp_httpMS_Component({ city: propCity }) {
 
     // Update to use dataPerformance from the fetched JSON
     if (!reportData) {
-        return <div className="page-content">Loading {city} data...</div>;
+        return <PageBreak>Loading {city} data...</PageBreak>;
     }
 
     if (reportData.dataPerformance === null) {
@@ -176,7 +177,7 @@ function Dp_httpMS_Component({ city: propCity }) {
 
     return (
         <>
-            <div className='page-content'>
+            <PageBreak>
                 <DynamicHeader level={2}>HTTP Multi Stream Test Download & Upload - 5G Auto - {city}</DynamicHeader>
                 <h4>Http Multi Stream Overview</h4>
                 <DpThroughputOverallTable
@@ -210,9 +211,9 @@ function Dp_httpMS_Component({ city: propCity }) {
                     ]}
                 />
 
-            </div>
+            </PageBreak>
 
-            <div className='page-content'>
+            <PageBreak>
                 <DpHistogramComponent
                     data={dlHistogramData}
                     title="Http Multi Stream Download Throughput"
@@ -224,8 +225,8 @@ function Dp_httpMS_Component({ city: propCity }) {
                     title="Http Multi Stream Download Throughput Box Plot"
                     yAxisLabel="Throughput (Mbps)"
                 />
-            </div>
-            <div className='page-content'>
+            </PageBreak>
+            <PageBreak>
                 <DpDetailsTableLoc3
                     data={httpMS_Stationary_UL}
                     tableName="Http Multi Stream UL Details"
@@ -244,15 +245,15 @@ function Dp_httpMS_Component({ city: propCity }) {
                     yAxisLabel="Throughput (Mbps)"
                     barKeys={barKeys}
                 />
-            </div>
+            </PageBreak>
 
-            <div className='page-content'>
+            <PageBreak>
                 <DpBoxPlot
                     data={getBoxPlotData(httpMS_Stationary_UL)}
                     title="Http Multi Stream Upload Throughput Box Plot"
                     yAxisLabel="Throughput (Mbps)"
                 />
-            </div>
+            </PageBreak>
         </>
 
     );

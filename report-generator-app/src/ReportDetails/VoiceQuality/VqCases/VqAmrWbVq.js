@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -34,14 +35,14 @@ const VqAmrWbVq = ({ city: propCity }) => {
   const reportData = projectData[city];
 
   if (!reportData || !reportData.voiceQuality || !reportData.voiceQuality["Voice Quality"]) {
-    return <div>Loading {city} voice quality data...</div>;
+    return <PageBreak>Loading {city} voice quality data...</PageBreak>;
   }
 
   const amrWbKey = "5G Auto VoNR Enabled AMR WB VQ";
   const amrWbDataPath = reportData.voiceQuality["Voice Quality"][amrWbKey];
 
   if (!amrWbDataPath) {
-    return <div>Loading {amrWbKey} data for {city}...</div>;
+    return <PageBreak>Loading {amrWbKey} data for {city}...</PageBreak>;
   }
 
   const getAmrWbValue = (category, device, stat, isPercentage = false, decimals = 2) => {
@@ -108,7 +109,7 @@ const VqAmrWbVq = ({ city: propCity }) => {
   ];
 
   return (
-    <div className="page-content">
+    <PageBreak>
       <DynamicHeader level={2}>5G Auto VoNR Enabled AMR WB VQ - {city}</DynamicHeader>
       <h4>Results</h4>
       <table className="general-table-style performance-table">
@@ -158,7 +159,7 @@ const VqAmrWbVq = ({ city: propCity }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </PageBreak>
   );
 };
 

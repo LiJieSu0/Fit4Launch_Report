@@ -4,6 +4,7 @@ import '../../../StyleScript/Restricted_Report_Style.css';
 import VqLineChart from './VqLineChart';
 import VqMosTable from './VqMosTable';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -36,14 +37,14 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
   const reportData = projectData[city];
 
   if (!reportData || !reportData.voiceQuality || !reportData.voiceQuality["Voice Quality"]) {
-    return <div>Loading {city} voice quality data...</div>;
+    return <PageBreak>Loading {city} voice quality data...</PageBreak>;
   }
 
   const evsWbKey = "5G Auto VoNR Disabled EVS WB VQ";
   const evsWbDataPath = reportData.voiceQuality["Voice Quality"][evsWbKey];
 
   if (!evsWbDataPath) {
-    return <div>Loading {evsWbKey} data for {city}...</div>;
+    return <PageBreak>Loading {evsWbKey} data for {city}...</PageBreak>;
   }
 
   const getEvsWbValue = (category, device, stat, isPercentage = false, decimals = 2) => {
@@ -134,7 +135,7 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
 
   return (
     <>
-      <div className="page-content">
+      <PageBreak>
         <DynamicHeader level={2}>5G Auto VoNR Disabled EVS WB VQ - {city}</DynamicHeader>
         <h4>Results</h4>
         <div className="two-column-layout">
@@ -223,16 +224,15 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
             ))}
           </tbody>
         </table>
-      </div>
-      <div className="page-content">
+      </PageBreak>
+      <PageBreak>
         <h4>VoNR Disabled EVS WB VQ Downlink MOS Distribution - {city}</h4>
         <VqLineChart dataSource="vonr_disabled_evs_wb_vq_mobile" />
         <VqMosTable dataSource="vonr_disabled_evs_wb_vq_mobile" />
         <h4>VoNR Disabled EVS WB VQ Uplink MOS Distribution - {city}</h4>
         <VqLineChart dataSource="vonr_disabled_evs_wb_vq_base" />
         <VqMosTable dataSource="vonr_disabled_evs_wb_vq_base" />
-      </div>
-
+      </PageBreak>
     </>
   );
 };

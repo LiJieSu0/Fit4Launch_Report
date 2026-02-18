@@ -9,6 +9,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import DpBoxPlot from '../Statoinary/DpBoxPlot';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 import { useEffect } from 'react';
 
@@ -25,7 +26,7 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
   const reportData = projectData[city];
 
   if (!reportData) {
-    return <div className="page-content">Loading {city} data...</div>;
+    return <PageBreak>Loading {city} data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -36,7 +37,7 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
   const mobilityTestData = reportData.dataPerformance?.['Data Performance']?.['5G AUTO DP']?.['Mobility Test'];
 
   if (!mobilityTestData) {
-    return <div className="page-content">No Mobility Test Data available</div>;
+    return <PageBreak>No Mobility Test Data available</PageBreak>;
   }
 
   // Get the 5G Auto Data Test Drive data - handle both nested and flat structures
@@ -227,13 +228,13 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
 
   return (
     <>
-      <div className='page-content'>
+      <PageBreak>
         {firstSection && <DynamicHeader level={2}>Mobility Test - 5G Auto</DynamicHeader>}
         <DynamicHeader level={3}>Mobility Test - 5G Auto - {city}</DynamicHeader>
         <DpDriveTestOverallTable data={formattedTestDriveData} tableName={`Mobility Test Drive Overview - ${city}`} />
         <DpDriveTestTable data={formattedTestDriveData} tableName={`Mobility Test Drive Details - ${city}`} />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpHistogramComponent
           data={driveTestThroughputData}
           title="Mobility Test Drive Throughput"
@@ -246,32 +247,32 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
           yAxisLabel="Jitter (s)"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpHistogramComponent
           data={driveTestErrorRatioData}
           title="Mobility Test Drive Packet Failure Rate"
           yAxisLabel="Packet Failure Rate (%)"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpBoxPlot
           data={driveTestDLBoxPlotData}
           title="Mobility Test Drive DL Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
+      </PageBreak>
 
       {hasMhsData ? (
         <>
-          <div className='page-content'>
+          <PageBreak>
             <DynamicHeader level={3}>Mobility Test - Mobile Hotspot - {city}</DynamicHeader>
             <DpMHSTestDriveOverallTable data={formattedMhsTestDriveData} tableName={`Mobility Test Drive Overview - ${city}`} />
             <DpMHSTestDriveTable data={formattedMhsTestDriveData} tableName="MHS Test Drive Data" />
-          </div>
-          <div className='page-content'>
+          </PageBreak>
+          <PageBreak>
             <DpHistogramComponent
               data={mhsDLThroughputData}
               title="MHS Test Drive - DL Throughput"
@@ -284,8 +285,8 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
               yAxisLabel="Jitter (ms)"
               barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
             />
-          </div>
-          <div className='page-content'>
+          </PageBreak>
+          <PageBreak>
             <DpHistogramComponent
               data={mhsDLErrorRatioData}
               title="MHS Test Drive - DL Packet Failure Rate"
@@ -298,21 +299,21 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
               yAxisLabel="RTT (ms)"
               barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
             />
-          </div>
-          <div className='page-content'>
+          </PageBreak>
+          <PageBreak>
             <DpBoxPlot
               data={mhsDriveTestDLBoxPlotData}
               title="MHS Mobility Test Drive Throughput Box Plot"
               yAxisLabel="Throughput (Mbps)"
             />
-          </div>
+          </PageBreak>
         </>
       ) : (
         <div></div>
-        // <div className='page-content'>
+        // <PageBreak>
         //   <DynamicHeader level={3}>Mobility Test - Mobile Hotspot</DynamicHeader>
         //   <p>No MHS Test Drive Data available</p>
-        // </div>
+        // </PageBreak>
       )}
     </>
   );

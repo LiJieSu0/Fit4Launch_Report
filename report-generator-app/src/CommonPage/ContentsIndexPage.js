@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { HeaderContext } from '../Contexts/HeaderContext';
+import PageBreak from './PageBreak';
 
 const ContentsIndexPage = () => {
   const { numberedHeaders } = useContext(HeaderContext);
@@ -38,12 +39,12 @@ const ContentsIndexPage = () => {
   if (headerChunks.length === 0) {
     return (
       <div className="contents-index-page">
-        <div className="page-content">
+        <PageBreak>
           <h2 id="table-of-contents">Table of Contents</h2>
           <ul style={{ listStyleType: 'none', padding: 0 }}>
             <li>No sections found.</li>
           </ul>
-        </div>
+        </PageBreak>
       </div>
     );
   }
@@ -51,7 +52,7 @@ const ContentsIndexPage = () => {
   return (
     <div className="contents-index-page">
       {headerChunks.map((chunk, chunkIndex) => (
-        <div key={chunkIndex} className="page-content">
+        <PageBreak key={chunkIndex}>
           {chunkIndex === 0 && <h2 id="table-of-contents">Table of Contents</h2>}
           <ul style={{ listStyleType: 'none', padding: 0 }}>
             {chunk.map((heading, index) => (
@@ -65,7 +66,7 @@ const ContentsIndexPage = () => {
               </li>
             ))}
           </ul>
-        </div>
+        </PageBreak>
       ))}
     </div>
   );

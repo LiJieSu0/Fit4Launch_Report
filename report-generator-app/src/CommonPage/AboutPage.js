@@ -1,9 +1,10 @@
 import React from 'react';
 import DynamicHeader from './DynamicHeader';
+import PageBreak from './PageBreak';
 
 const AboutPage = () => {
   return (
-    <div className='page-content'>
+    <PageBreak>
       <DynamicHeader level={1}>About ATMC Labs</DynamicHeader>
       <p>
         Advanced Test Management and Certification Labs (ATMC Labs)
@@ -31,7 +32,7 @@ const AboutPage = () => {
         With advanced communication tools, remote services and streamlined logistics, ATMC Labs has unrivaled test coverage for
         wireless devices and offers those services with the highest quality and cost effectiveness.
       </p>
-    </div>
+    </PageBreak>
   );
 };
 

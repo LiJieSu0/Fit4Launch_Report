@@ -6,6 +6,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 import { useEffect } from 'react';
 
@@ -22,7 +23,7 @@ function Dp_Ping_Component({ city: propCity }) {
     const reportData = projectData[city];
 
     if (!reportData) {
-        return <div className="page-content">Loading {city} data...</div>;
+        return <PageBreak>Loading {city} data...</PageBreak>;
     }
 
     if (reportData.dataPerformance === null) {
@@ -35,10 +36,10 @@ function Dp_Ping_Component({ city: propCity }) {
 
     if (!Dp_Ping_Data) {
         return (
-            <div className="page-content">
+            <PageBreak>
                 <h4>Ping Test - 5G Auto</h4>
                 <p>No Ping data available for {city}.</p>
-            </div>
+            </PageBreak>
         );
     }
 
@@ -114,12 +115,12 @@ function Dp_Ping_Component({ city: propCity }) {
 
     return (
         <>
-            <div className='page-content'>
+            <PageBreak>
                 <DynamicHeader level={2}>Ping Test - 5G Auto - {city}</DynamicHeader>
                 <h4>Ping Test Overview</h4>
                 <DpPingOverallTable data={processedPingData} />
-            </div>
-            <div className='page-content'>
+            </PageBreak>
+            <PageBreak>
                 <h4>Ping Test Details</h4>
                 <DpPingTableLoc3 data={processedPingData} />
                 <DpHistogramComponent
@@ -128,7 +129,7 @@ function Dp_Ping_Component({ city: propCity }) {
                     yAxisLabel="Ping RTT (ms)"
                     barKeys={barKeys}
                 />
-            </div>
+            </PageBreak>
         </>
 
     )

@@ -6,6 +6,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 import { useEffect } from 'react';
 
@@ -22,7 +23,7 @@ function Dp_Webbrowser_Component({ city: propCity, webPageUrl }) {
     const reportData = projectData[city];
 
     if (!reportData) {
-        return <div className="page-content">Loading {city} data...</div>;
+        return <PageBreak>Loading {city} data...</PageBreak>;
     }
 
     if (reportData.dataPerformance === null) {
@@ -61,7 +62,7 @@ function Dp_Webbrowser_Component({ city: propCity, webPageUrl }) {
     ];
 
     return (
-        <div className='page-content'>
+        <PageBreak>
             <DynamicHeader level={2}>Web Browser Test - 5G Auto - {city}</DynamicHeader>
             <h4>Web Browser Test Overview</h4>
             <p>Web Browser test URL: {webPageUrl}</p>
@@ -74,7 +75,7 @@ function Dp_Webbrowser_Component({ city: propCity, webPageUrl }) {
                 yAxisLabel="Time (s)"
                 barKeys={barKeys}
             /> */}
-        </div>
+        </PageBreak>
     )
 };
 

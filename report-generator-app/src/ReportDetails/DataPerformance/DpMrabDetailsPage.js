@@ -5,6 +5,7 @@ import DpHistogramComponent from './DpHistogramComponent';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../Constants/ChartColors';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
+import PageBreak from '../../CommonPage/PageBreak';
 
 const DpMrabDetailsPage = ({ city: propCity }) => {
   const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
@@ -18,7 +19,7 @@ const DpMrabDetailsPage = ({ city: propCity }) => {
 
   const reportData = projectData[city];
   if (!reportData) {
-    return <div className="page-content">Loading {city} MRAB data...</div>;
+    return <PageBreak>Loading {city} MRAB data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -33,7 +34,7 @@ const DpMrabDetailsPage = ({ city: propCity }) => {
     return null; // Hide if specific MRAB data is not in the JSON
   }
   return (
-    <div className="page-content">
+    <PageBreak>
       <DynamicHeader level={2}>VoNR M-RAB Stationary Test - 5G Auto - {city}</DynamicHeader>
       <h4>VoNR M-RAB Overview</h4>
       <table className="general-table-style">
@@ -163,7 +164,7 @@ const DpMrabDetailsPage = ({ city: propCity }) => {
         yAxisLabel="Mean Value (Mbps)"
         barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
       />
-    </div>
+    </PageBreak>
   );
 };
 

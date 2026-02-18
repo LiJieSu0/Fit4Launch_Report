@@ -6,6 +6,7 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 import { useEffect } from 'react';
 
@@ -22,7 +23,7 @@ const Dp_playStore_Component = ({ city: propCity }) => {
   const reportData = projectData[city];
 
   if (!reportData) {
-    return <div className="page-content">Loading {city} data...</div>;
+    return <PageBreak>Loading {city} data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -105,14 +106,14 @@ const Dp_playStore_Component = ({ city: propCity }) => {
 
   return (
     <>
-      <div className='page-content'>
+      <PageBreak>
         <DynamicHeader level={2}>Play-store App Download Test - 5G Auto - {city}</DynamicHeader>
         <h4>Play-store App Download Test Overview</h4>
         <DpPlayStoreOverallTable tableData={tableData} />
         <h4>Play-store App Download Test Details</h4>
         <DpPlayStoreTable tableData={tableData} />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
 
         <DpHistogramComponent
           data={histogramData30M}
@@ -126,9 +127,9 @@ const Dp_playStore_Component = ({ city: propCity }) => {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
 
         <DpHistogramComponent
           data={histogramData100M}
@@ -136,7 +137,7 @@ const Dp_playStore_Component = ({ city: propCity }) => {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
-      </div>
+      </PageBreak>
     </>
 
   );

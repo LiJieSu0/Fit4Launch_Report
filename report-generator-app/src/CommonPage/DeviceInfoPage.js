@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import '../StyleScript/Restricted_Report_Style.css';
 import { ReportContext } from '../Contexts/ReportContext';
+import PageBreak from './PageBreak';
 
 const DeviceInfoPage = () => {
     const { project } = useContext(ReportContext);
@@ -9,7 +10,7 @@ const DeviceInfoPage = () => {
     const deviceData = project?.deviceData || [];
 
     return (
-        <div className="page-content device-info-page">
+        <PageBreak className="device-info-page">
             <h2>Device Information</h2>
             <table className="device-info-table general-table-style">
                 <thead>
@@ -46,7 +47,7 @@ const DeviceInfoPage = () => {
                 </tbody>
             </table>
             <h2>Test Duration: {project?.testDuration}</h2>
-        </div>
+        </PageBreak>
     );
 };
 

@@ -3,6 +3,7 @@ import '../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 import { HeaderContext } from '../../Contexts/HeaderContext';
 import { useContext } from 'react';
+import PageBreak from '../../CommonPage/PageBreak';
 
 const VqSummaryPage = () => {
   const { numberedHeaders } = useContext(HeaderContext);
@@ -61,7 +62,7 @@ const VqSummaryPage = () => {
   const markets = ['Seattle', 'New York'];
 
   return (
-    <div className="page-content" id="summary-page">
+    <PageBreak id="summary-page">
       <DynamicHeader level={1}>Voice Quality Test Overview</DynamicHeader>
       <table className="general-table-style">
         <thead>
@@ -88,7 +89,7 @@ const VqSummaryPage = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </PageBreak>
   );
 };
 

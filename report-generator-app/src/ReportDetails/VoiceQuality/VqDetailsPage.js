@@ -6,6 +6,7 @@ import VqEvsWbVqDisabled from './VqCases/VqEvsWbVqDisabled';
 import VqEvsWbVqEnabled from './VqCases/VqEvsWbVqEnabled';
 import AutoVoNRDisabledAudioDelay from './VqCases/AutoVoNRDisabledAudioDelay';
 import AutoVoNREnabledAudioDelay from './VqCases/AutoVoNREnabledAudioDelay';
+import PageBreak from '../../CommonPage/PageBreak';
 
 
 //TODO audio delay color hardcoded
@@ -20,14 +21,14 @@ const VqDetailsPage = () => {
       <VqEvsWbVqDisabled city='New York' />
       <VqEvsWbVqEnabled city='Seattle' />
       <VqEvsWbVqEnabled city='New York' />
-      <div className='page-content'>
+      <PageBreak>
         <AutoVoNRDisabledAudioDelay city='Seattle' />
         <AutoVoNRDisabledAudioDelay city='New York' />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <AutoVoNREnabledAudioDelay city='Seattle' />
         <AutoVoNREnabledAudioDelay city='New York' />
-      </div>
+      </PageBreak>
     </div>
   );
 };

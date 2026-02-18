@@ -9,6 +9,7 @@ import { useContext } from 'react';
 import '../../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 import DpBoxPlot from '../../Statoinary/DpBoxPlot';
+import PageBreak from '../../../../CommonPage/PageBreak';
 
 import { useEffect } from 'react';
 
@@ -25,7 +26,7 @@ function DpNSAUDPComponent({ city: propCity }) {
   const reportData = projectData[city];
 
   if (!reportData) {
-    return <div className="page-content">Loading {city} NSA UDP data...</div>;
+    return <PageBreak>Loading {city} NSA UDP data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -35,7 +36,7 @@ function DpNSAUDPComponent({ city: propCity }) {
   const udpData = reportData.dataPerformance['Data Performance']?.['5G NSA DP']?.['Udp Test'];
 
   if (!udpData) {
-    return <div className="page-content">No NSA UDP Data available</div>;
+    return <PageBreak>No NSA UDP Data available</PageBreak>;
   }
 
   // Helper to safely extract metrics
@@ -181,23 +182,23 @@ function DpNSAUDPComponent({ city: propCity }) {
 
   return (
     <>
-      <div className='page-content'>
+      <PageBreak>
         <DynamicHeader level={2}>UDP Test - 5G NSA - {city}</DynamicHeader>
         <DynamicHeader level={3}>NSA UDP Test DL Details - 5G NSA - {city}</DynamicHeader>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} city={city} />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DynamicHeader level={3}>NSA UDP Test UL Details - 5G NSA - {city}</DynamicHeader>
         <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} city={city} />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpNSAUDPDLTable data={udp_Stationary_DL} tableName="NSA UDP Test DL Details" />
-      </div>
+      </PageBreak>
 
 
       {/* UDP DL overall  */}
-      <div className='page-content'>
+      <PageBreak>
         {["200", "400"].map((idealThroughput) => (
           <DpHistogramComponent
             key={`dl-throughput-${idealThroughput}`}
@@ -207,10 +208,10 @@ function DpNSAUDPComponent({ city: propCity }) {
             barKeys={histogramBarKeys}
           />
         ))}
-      </div>
+      </PageBreak>
 
       {/* Mean Jitter (s) - UDP Download Stationary */}
-      <div className='page-content'>
+      <PageBreak>
         {["200", "400"].map((idealThroughput) => (
           <DpHistogramComponent
             key={`dl-jitter-${idealThroughput}`}
@@ -220,10 +221,10 @@ function DpNSAUDPComponent({ city: propCity }) {
             barKeys={histogramBarKeys}
           />
         ))}
-      </div>
+      </PageBreak>
 
       {/* Packet Failure Rate (%) - UDP Download Stationary */}
-      <div className='page-content'>
+      <PageBreak>
         {["200", "400"].map((idealThroughput) => (
           <DpHistogramComponent
             key={`dl-packet-failure-${idealThroughput}`}
@@ -233,8 +234,8 @@ function DpNSAUDPComponent({ city: propCity }) {
             barKeys={histogramBarKeys}
           />
         ))}
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpBoxPlot
           data={getNsaUdpBoxPlotData('DL', 'UDP Download Task at 200 Mbps for 10 seconds')}
           title="NSA UDP Download Throughput Box Plot (200 Mbps)"
@@ -245,13 +246,13 @@ function DpNSAUDPComponent({ city: propCity }) {
           title="NSA UDP Download Throughput Box Plot (400 Mbps)"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpNSAUDPULTable data={udp_Stationary_UL} tableName="NSA UDP Test UL Details" />
-      </div>
+      </PageBreak>
       {/* UDP UL overall  */}
-      <div className='page-content'>
+      <PageBreak>
         {["10", "20"].map((idealThroughput) => (
           <DpHistogramComponent
             key={`ul-throughput-${idealThroughput}`}
@@ -261,10 +262,10 @@ function DpNSAUDPComponent({ city: propCity }) {
             barKeys={histogramBarKeys}
           />
         ))}
-      </div>
+      </PageBreak>
 
       {/* Mean Jitter (s) - UDP Upload Stationary */}
-      <div className='page-content'>
+      <PageBreak>
         {["10", "20"].map((idealThroughput) => (
           <DpHistogramComponent
             key={`ul-jitter-${idealThroughput}`}
@@ -274,10 +275,10 @@ function DpNSAUDPComponent({ city: propCity }) {
             barKeys={histogramBarKeys}
           />
         ))}
-      </div>
+      </PageBreak>
 
       {/* Packet Failure Rate (%) - UDP Upload Stationary */}
-      <div className='page-content'>
+      <PageBreak>
         {["10", "20"].map((idealThroughput) => (
           <DpHistogramComponent
             key={`ul-packet-failure-${idealThroughput}`}
@@ -287,10 +288,9 @@ function DpNSAUDPComponent({ city: propCity }) {
             barKeys={histogramBarKeys}
           />
         ))}
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
-
+      <PageBreak>
         <DpBoxPlot
           data={getNsaUdpBoxPlotData('UL', '5G NSA_UDP Upload Task at 10 Mbps for 10 seconds')}
           title="NSA UDP Upload Throughput Box Plot (10 Mbps)"
@@ -301,7 +301,7 @@ function DpNSAUDPComponent({ city: propCity }) {
           title="NSA UDP Upload Throughput Box Plot (20 Mbps)"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
+      </PageBreak>
     </>
   );
 }

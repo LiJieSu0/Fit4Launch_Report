@@ -5,6 +5,7 @@ import { useReportData } from '../../Contexts/ReportContext';
 import { HeaderContext } from '../../Contexts/HeaderContext';
 import { useContext } from 'react';
 import { getKpiCellColor } from '../../Utils/KpiRules';
+import PageBreak from '../../CommonPage/PageBreak';
 
 const WfcSummaryPage = () => {
   const { projectData } = useReportData();
@@ -134,7 +135,7 @@ const WfcSummaryPage = () => {
   const newYorkHandoverData = getHandoverMarketRows('New York');
 
   return (
-    <div className="page-content" id="summary-page">
+    <PageBreak id="summary-page">
       <DynamicHeader level={1}>WFC Performance Test Overview</DynamicHeader>
 
       <DynamicHeader level={2}>Seattle Market</DynamicHeader>
@@ -246,7 +247,7 @@ const WfcSummaryPage = () => {
           {newYorkHandoverData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
         </tbody>
       </table> */}
-    </div>
+    </PageBreak>
   );
 };
 

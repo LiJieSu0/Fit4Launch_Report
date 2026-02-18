@@ -7,6 +7,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import DynamicHeader from "../../../CommonPage/DynamicHeader";
+import PageBreak from "../../../CommonPage/PageBreak";
 
 import { useEffect } from 'react';
 
@@ -23,7 +24,7 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
   const reportData = projectData[city];
 
   if (!reportData) {
-    return <div className="page-content">Loading {city} data...</div>;
+    return <PageBreak>Loading {city} data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -166,7 +167,7 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
 
   return (
     <>
-      <div className='page-content'>
+      <PageBreak>
         <DynamicHeader level={3}>HTTP Single Stream Test - Mobile Hotspot - {city}</DynamicHeader>
         <h4>MHS Http Single Stream Overview</h4>
         <DpThroughputOverallTable
@@ -189,9 +190,8 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
           ]}
         />
         <DpMHSHttpSSTable data={dataDL} tableName="MHS Http Single Stream DL Details" kpiRule="Throughput" />
-      </div>
-
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpHistogramComponent
           data={[
             { name: 'Good', DUT: dataDL.Good.DUT["Mean"], REF: dataDL.Good.REF["Mean"] },
@@ -207,13 +207,11 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
           title="MHS Http Single Stream Download Throughput Box Plot"
           yAxisLabel="Throughput"
         />
-      </div>
-
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpMHSHttpSSTable data={dataUL} tableName="MHS Http Single Stream UL Details" kpiRule="Throughput" />
-      </div>
-      <div className='page-content'>
-
+      </PageBreak>
+      <PageBreak>
         <DpHistogramComponent
           data={[
             { name: 'Good', DUT: dataUL.Good.DUT["Mean"], REF: dataUL.Good.REF["Mean"] },
@@ -229,7 +227,7 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
           title="MHS Single Stream HTTP Upload Throughput Box Plot"
           yAxisLabel="Throughput"
         />
-      </div>
+      </PageBreak>
 
     </>
   );

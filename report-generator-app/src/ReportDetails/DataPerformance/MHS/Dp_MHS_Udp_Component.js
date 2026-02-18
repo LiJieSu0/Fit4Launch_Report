@@ -8,6 +8,7 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import DpBoxPlot from '../Statoinary/DpBoxPlot';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 function Dp_MHS_Udp_Component({ city: propCity }) {
   const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
@@ -22,7 +23,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
   const reportData = projectData[city];
 
   if (!reportData) {
-    return <div className="page-content">Loading {city} data...</div>;
+    return <PageBreak>Loading {city} data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -528,19 +529,19 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
 
   return (
     <>
-      <div className="page-content">
+      <PageBreak>
         <DynamicHeader level={3}>UDP Test - Mobile Hotspot - {city}</DynamicHeader>
         <h4>MHS UDP Test DL Details - {city}</h4>
         <DpUdpOverallTable data={dlOverallTableData} headers={dlOverallTableHeaders} />
-      </div>
-      <div className="page-content">
+      </PageBreak>
+      <PageBreak>
         <h4>MHS UDP Test UL Details - {city}</h4>
         <DpUdpOverallTable data={ulOverallTableData} headers={ulOverallTableHeaders} />
-      </div>
+      </PageBreak>
 
-      <div className="page-content">
+      <PageBreak>
         <DpMHSUdpTable data={udp_Stationary_DL} tableName="MHS UDP Test DL Details" />
-      </div>
+      </PageBreak>
 
 
       {downloadHistogramData.reduce((acc, histogram, index) => {
@@ -560,11 +561,11 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
         }
         return acc;
       }, []).map((group, groupIndex) => (
-        <div className="page-content" key={`dl-group-${groupIndex}`}>
+        <PageBreak key={`dl-group-${groupIndex}`}>
           {group}
-        </div>
+        </PageBreak>
       ))}
-      <div className="page-content">
+      <PageBreak>
         <DpBoxPlot
           data={getUdpMhsBoxPlotData('DL', 'UDP Download Task at 200 Mbps for 10 seconds')}
           title="MHS UDP Download Throughput Box Plot (200 Mbps)"
@@ -575,11 +576,11 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
           title="MHS UDP Download Throughput Box Plot (400 Mbps)"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
+      </PageBreak>
 
-      <div className="page-content">
+      <PageBreak>
         <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP Test UL Details" />
-      </div>
+      </PageBreak>
 
       {uploadHistogramData.reduce((acc, histogram, index) => {
         const component = (
@@ -598,11 +599,11 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
         }
         return acc;
       }, []).map((group, groupIndex) => (
-        <div className="page-content" key={`ul-group-${groupIndex}`}>
+        <PageBreak key={`ul-group-${groupIndex}`}>
           {group}
-        </div>
+        </PageBreak>
       ))}
-      <div className="page-content">
+      <PageBreak>
         <DpBoxPlot
           data={getUdpMhsBoxPlotData('UL', 'UDP Upload Task at 10 Mbps for 10 seconds')}
           title="MHS UDP Upload Throughput Box Plot (10 Mbps)"
@@ -613,7 +614,7 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
           title="MHS UDP Upload Throughput Box Plot (20 Mbps)"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
+      </PageBreak>
     </>
   );
 }

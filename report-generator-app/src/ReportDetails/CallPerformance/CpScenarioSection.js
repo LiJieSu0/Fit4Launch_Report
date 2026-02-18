@@ -6,6 +6,7 @@ import CallCategoriesChart from './CallCategoriesChart';
 import CallCategoriesTable from './CallCategoriesTable';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 import { useReportData } from '../../Contexts/ReportContext';
+import PageBreak from '../../CommonPage/PageBreak';
 
 const CpScenarioSection = ({ title, city, isFirst = false }) => {
     const { projectData, loadCityData, loading } = useReportData();
@@ -22,7 +23,7 @@ const CpScenarioSection = ({ title, city, isFirst = false }) => {
     const data = reportData?.callPerformance?.['Call Performance']?.[title];
 
     if (loading && !reportData) {
-        return <div className='page-content'>Loading {city} data...</div>;
+        return <PageBreak>Loading {city} data...</PageBreak>;
     }
 
     if (!data) {
@@ -30,14 +31,14 @@ const CpScenarioSection = ({ title, city, isFirst = false }) => {
     }
 
     return (
-        <div className='page-content'>
+        <PageBreak>
             {isFirst && <DynamicHeader level={1}>Call Performance Test </DynamicHeader>}
             <CpCaseTable title={title} data={data} city={city} />
             <PValueTable data={data} />
             <CallSummaryChart data={data} />
             <CallCategoriesChart data={data} />
             <CallCategoriesTable data={data} />
-        </div>
+        </PageBreak>
     );
 };
 

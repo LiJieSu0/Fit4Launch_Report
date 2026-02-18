@@ -8,6 +8,7 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import DpBoxPlot from './DpBoxPlot';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 import { useEffect } from 'react';
 
@@ -24,7 +25,7 @@ function Dp_Udp_Component({ city: propCity }) {
   const reportData = projectData[city];
 
   if (!reportData) {
-    return <div className="page-content">Loading {city} data...</div>;
+    return <PageBreak>Loading {city} data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -740,14 +741,14 @@ function Dp_Udp_Component({ city: propCity }) {
 
   return (
     <>
-      <div className='page-content'>
+      <PageBreak>
         <DynamicHeader level={2}>UDP Test - 5G Auto - {city}</DynamicHeader>
         <DynamicHeader level={3}>UDP Download Details - 5G Auto - {city}</DynamicHeader>
         {/* dp udp overall  table */}
         <DpUdpTableLoc3 data={udp_Stationary_DL} tableName="UDP Test DL Details" />
-      </div>
+      </PageBreak>
       {/* histograms */}
-      <div className='page-content'>
+      <PageBreak>
         <DpHistogramComponent
           data={dlMeanThroughput200HistogramData}
           title="UDP Download Mean Throughput (200 Mbps)"
@@ -760,8 +761,8 @@ function Dp_Udp_Component({ city: propCity }) {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpHistogramComponent
           data={dlMeanJitter200HistogramData}
           title="UDP Download Mean Jitter (200 Mbps)"
@@ -774,8 +775,8 @@ function Dp_Udp_Component({ city: propCity }) {
           yAxisLabel="Jitter (s)"
           barKeys={barKeys}
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpHistogramComponent
           data={dlPFR200HistogramData}
           title="UDP Download Packet Failure Rate (200 Mbps)"
@@ -788,9 +789,9 @@ function Dp_Udp_Component({ city: propCity }) {
           yAxisLabel="Packet Failure Rate (%)"
           barKeys={barKeys}
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpBoxPlot
           data={getUdpBoxPlotData('DL', dl200TaskName, '200 Mbps')}
           title="UDP Download Throughput Box Plot (200 Mbps)"
@@ -801,14 +802,14 @@ function Dp_Udp_Component({ city: propCity }) {
           title="UDP Download Throughput Box Plot (400 Mbps)"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DynamicHeader level={3}>UDP Upload Details - 5G Auto - {city}</DynamicHeader>
         <DpUdpTableLoc3 data={udp_Stationary_UL} tableName="UDP Test UL Details" />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpHistogramComponent
           data={ulMeanThroughput10HistogramData}
           title="UDP Upload Mean Throughput (10 Mbps)"
@@ -821,9 +822,9 @@ function Dp_Udp_Component({ city: propCity }) {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpHistogramComponent
           data={ulMeanJitter10HistogramData}
           title="UDP Upload Mean Jitter (10 Mbps)"
@@ -836,9 +837,9 @@ function Dp_Udp_Component({ city: propCity }) {
           yAxisLabel="Jitter (ms)"
           barKeys={barKeys}
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpHistogramComponent
           data={ulPFR10HistogramData}
           title="UDP Upload Packet Failure Rate (10 Mbps)"
@@ -851,9 +852,9 @@ function Dp_Udp_Component({ city: propCity }) {
           yAxisLabel="Packet Failure Rate (%)"
           barKeys={barKeys}
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpBoxPlot
           data={getUdpBoxPlotData('UL', ul10TaskName, '10 Mbps')}
           title="UDP Upload Throughput Box Plot (10 Mbps)"
@@ -864,7 +865,7 @@ function Dp_Udp_Component({ city: propCity }) {
           title="UDP Upload Throughput Box Plot (20 Mbps)"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
+      </PageBreak>
     </>
   );
 }

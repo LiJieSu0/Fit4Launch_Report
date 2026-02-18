@@ -4,6 +4,7 @@ import CoverageMap from './CoverageMap';
 import { ReportContext } from '../../Contexts/ReportContext';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 import SecondaryKpiTable from './SecondaryKpiTable';
+import PageBreak from '../../CommonPage/PageBreak';
 
 // CITY_COORDS removed - now fetched from config.json
 
@@ -140,7 +141,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
 
 
     if (!reportData || !reportData.coveragePerformance) {
-        return <div className="page-content">Loading {city} Coverage data...</div>;
+        return <PageBreak>Loading {city} Coverage data...</PageBreak>;
     }
 
     const renderBandSection = (band) => {
@@ -159,7 +160,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
 
         return (
             <div key={band}>
-                <div className='page-content'>
+                <PageBreak>
                     {firstSection && band === 'n25' && <DynamicHeader level={1}>5G NR Coverage Test</DynamicHeader>}
                     <DynamicHeader level={2}>5G NR Coverage Test - {bandLabel} - {city}</DynamicHeader>
                     <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - DL Throughput &lt; 1Mbps - {city}</DynamicHeader>
@@ -169,8 +170,8 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         metric="first_dl_tp_gt_1"
                         baseStation={BASE_STATION_COORDS}
                     />
-                </div>
-                <div className='page-content'>
+                </PageBreak>
+                <PageBreak>
                     <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - UL Throughput &lt; 1Mbps - {city}</DynamicHeader>
                     <CoverageTestTable tableData={dataUL.slice(0, -1)} status={dataUL[dataUL.length - 1]} />
                     <CoverageMap
@@ -178,8 +179,8 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         metric="first_ul_tp_gt_1"
                         baseStation={BASE_STATION_COORDS}
                     />
-                </div>
-                <div className='page-content'>
+                </PageBreak>
+                <PageBreak>
                     <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - Last MOS Before Silence - {city}</DynamicHeader>
                     <CoverageTestTable tableData={dataMOS.slice(0, -1)} status={dataMOS[dataMOS.length - 1]} />
                     <CoverageMap
@@ -187,8 +188,8 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         metric="mos_before_drop"
                         baseStation={BASE_STATION_COORDS}
                     />
-                </div>
-                <div className='page-content'>
+                </PageBreak>
+                <PageBreak>
                     <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - Audio Call Drop - {city}</DynamicHeader>
                     <CoverageTestTable tableData={dataAudio.slice(0, -1)} status={bandStatus} />
                     <CoverageMap
@@ -196,11 +197,11 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         metric="call_drop"
                         baseStation={BASE_STATION_COORDS}
                     />
-                </div>
-                <div className='page-content'>
+                </PageBreak>
+                <PageBreak>
                     <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - Secondary KPI - {city}</DynamicHeader>
                     <SecondaryKpiTable data={secondaryKpi} />
-                </div>
+                </PageBreak>
             </div>
         );
     };

@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 import { HeaderContext } from '../../Contexts/HeaderContext';
+import PageBreak from '../../CommonPage/PageBreak';
 
 
 //TODO summary page cell link
@@ -605,7 +606,7 @@ function DpSummaryPage() {
 
   return (
     <div>
-      <div className='page-content' id="summary-page">
+      <PageBreak id="summary-page">
         <DynamicHeader level={1}>Data Performance Overview – All Network</DynamicHeader>
         <h4>Data Performance Overview – 5G Auto</h4>
         <DpSummaryTable tableData={httpSSData} />
@@ -614,8 +615,8 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={pingData} />
         <DpSummaryTable tableData={webBrowserData} />
         <DpSummaryTable tableData={playStoreData} />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <div style={{ marginTop: 10 }}></div>
         <DpSummaryTable tableData={mhsHttpSSData} />
         <DpSummaryTable tableData={mhsHttpMSData} />
@@ -623,19 +624,19 @@ function DpSummaryPage() {
         <DpSummaryTable tableData={mhsPingData} />
         <DpSummaryTable tableData={mobiltyData} />
         <DpSummaryTable tableData={mobiltyMHSData} />
-      </div>
-      {/* <div className='page-content'>
+      </PageBreak>
+      {/* <PageBreak>
         <div style={{ marginTop: 10 }}></div>
         <DpSummaryTable tableData={mrabData} />
-      </div> */}
-      <div className='page-content'>
+      </PageBreak> */}
+      <PageBreak>
         <h4>Data Performance Overview – 5G NSA</h4>
         <DpSummaryTable tableData={httpNSASSData} />
         <DpSummaryTable tableData={httpNSAMSData} />
         <DpSummaryTable tableData={udpNSAData} />
         <DpSummaryTable tableData={pingNSAData} />
         <DpSummaryTable tableData={mobiltyNSAData} />
-      </div>
+      </PageBreak>
     </div >
   );
 }

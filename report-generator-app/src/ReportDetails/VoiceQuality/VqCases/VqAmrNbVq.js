@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import PageBreak from '../../../CommonPage/PageBreak';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -34,14 +35,14 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
   const reportData = projectData[city];
 
   if (!reportData || !reportData.voiceQuality || !reportData.voiceQuality["Voice Quality"]) {
-    return <div>Loading {city} voice quality data...</div>;
+    return <PageBreak>Loading {city} voice quality data...</PageBreak>;
   }
 
   const amrNbKey = "5G Auto VoNR Enabled AMR NB VQ";
   const amrNbDataPath = reportData.voiceQuality["Voice Quality"][amrNbKey];
 
   if (!amrNbDataPath) {
-    return <div>Loading {amrNbKey} data for {city}...</div>;
+    return <PageBreak>Loading {amrNbKey} data for {city}...</PageBreak>;
   }
 
   const getAmrNbValue = (device, type, stat, isPercentage = false, decimals = 2) => {
@@ -154,7 +155,7 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
     }
   ];
   return (
-    <div className="page-content">
+    <PageBreak>
       {firstSection && <DynamicHeader level={1} style={{ textAlign: 'center' }}>Voice Quality Test</DynamicHeader>}
       <DynamicHeader level={2}>5G Auto VoNR Enabled AMR NB VQ - {city}</DynamicHeader>
       <h4>Results</h4>
@@ -205,7 +206,7 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </PageBreak>
   );
 };
 

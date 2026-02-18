@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './LegalPage.module.css';
 import DynamicHeader from './DynamicHeader';
+import PageBreak from './PageBreak';
 
 const LegalPage = () => {
   return (
-    <div className='page-content'>
+    <PageBreak>
       <DynamicHeader level={1}>Legal Notice</DynamicHeader>
       <p>
         This report contains confidential and proprietary information belonging to ATMC Labs
@@ -34,7 +35,7 @@ const LegalPage = () => {
         Telephone: +1-858-342-8435
       </p>
 
-    </div>
+    </PageBreak>
   );
 };
 

@@ -12,6 +12,7 @@ import { ReportContext } from '../../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 import DpBoxPlot from '../../Statoinary/DpBoxPlot';
+import PageBreak from '../../../../CommonPage/PageBreak';
 
 import { useEffect } from 'react';
 
@@ -28,7 +29,7 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
   const reportData = projectData[city];
 
   if (!reportData) {
-    return <div className="page-content">Loading {city} NSA data...</div>;
+    return <PageBreak>Loading {city} NSA data...</PageBreak>;
   }
 
   if (reportData.dataPerformance === null) {
@@ -38,7 +39,7 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
   const nsaStationaryData = reportData.dataPerformance['Data Performance']?.['5G NSA DP'];
 
   if (!nsaStationaryData) {
-    return <div className="page-content">No NSA Stationary Data available</div>;
+    return <PageBreak>No NSA Stationary Data available</PageBreak>;
   }
 
   const MultiStreamHTTPData = nsaStationaryData['HTTP Multi Stream'];
@@ -178,7 +179,7 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
 
   return (
     <>
-      <div className='page-content'>
+      <PageBreak>
         {firstSection && <DynamicHeader level={1}>Data Performance - 5G NSA</DynamicHeader>}
         <DynamicHeader level={2}>HTTP Single Stream Test Download & Upload - 5G NSA - {city}</DynamicHeader>
         <h4>Http Single Stream Overview </h4>
@@ -215,8 +216,8 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
           }}
           tableName="Http Single Stream DL Details"
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpNSAHttpSSTable
           data={{
             Moderate: {
@@ -236,16 +237,16 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
           yAxisLabel="Throughput"
           barKeys={barKeys}
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpHistogramComponent
           data={ssHttpUlHistogramData}
           title="Http Single Stream Upload Throughput"
           yAxisLabel="Throughput"
           barKeys={barKeys}
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpBoxPlot
           data={getNsaBoxPlotData('DL', getSSStats)}
           title="Http Single Stream Download Throughput Box Plot"
@@ -256,8 +257,8 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
           title="Http Single Stream Upload Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DynamicHeader level={2}>HTTP Multi Stream Test Download & Upload - 5G NSA - {city}</DynamicHeader>
         <h4>Http Multi Stream Overview</h4>
         <DpThroughputOverallTable
@@ -292,8 +293,8 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
           }}
           tableName="Http Multi Stream DL Details"
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpNSAHttpMSTable
           data={{
             Moderate: {
@@ -313,17 +314,17 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
           yAxisLabel="Throughput"
           barKeys={barKeys}
         />
-      </div>
+      </PageBreak>
 
-      <div className='page-content'>
+      <PageBreak>
         <DpHistogramComponent
           data={msHttpUlHistogramData}
           title="Http Multi Stream Upload Throughput"
           yAxisLabel="Throughput"
           barKeys={barKeys}
         />
-      </div>
-      <div className='page-content'>
+      </PageBreak>
+      <PageBreak>
         <DpBoxPlot
           data={getNsaBoxPlotData('DL', getMSStats)}
           title="Http Multi Stream Download Throughput Box Plot"
@@ -334,11 +335,11 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
           title="Http Multi Stream Upload Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
         />
-      </div>
+      </PageBreak>
 
 
       <DpNSAUDPComponent city={city} />
-      <div className='page-content'>
+      <PageBreak>
         <DynamicHeader level={2}>Ping Test - 5G NSA - {city}</DynamicHeader>
         <h4>Ping Test Overview</h4>
         <DpNSAPingOverallTable data={pingData} />
@@ -349,7 +350,7 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
           yAxisLabel="Latency (ms)"
           barKeys={barKeys}
         />
-      </div>
+      </PageBreak>
     </>
 
   );

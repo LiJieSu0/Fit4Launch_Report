@@ -8,10 +8,11 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import DpBoxPlot from '../Statoinary/DpBoxPlot';
+import DpCDF_Chart from "../DpCDF_Chart";
 import PageBreak from '../../../CommonPage/PageBreak';
 
 function Dp_MHS_Udp_Component({ city: propCity }) {
-  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, project, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -571,10 +572,47 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
           title="MHS UDP Download Throughput Box Plot (200 Mbps)"
           yAxisLabel="Throughput (Mbps)"
         />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_mobile_hotspot_test_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_moderate_dut.json"
+          refFilename="5g_auto_dp_mobile_hotspot_test_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_moderate_ref.json"
+          title="MHS UDP DL 200M Good CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_mobile_hotspot_test_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_poor_dut.json"
+          refFilename="5g_auto_dp_mobile_hotspot_test_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_poor_ref.json"
+          title="MHS UDP DL 200M Moderate CDF (DUT vs REF)"
+        />
+      </PageBreak>
+
+      <PageBreak>
         <DpBoxPlot
           data={getUdpMhsBoxPlotData('DL', 'UDP Download Task at 400 Mbps for 10 seconds')}
           title="MHS UDP Download Throughput Box Plot (400 Mbps)"
           yAxisLabel="Throughput (Mbps)"
+        />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_mobile_hotspot_test_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_moderate_dut.json"
+          refFilename="5g_auto_dp_mobile_hotspot_test_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_moderate_ref.json"
+          title="MHS UDP DL 400M Good CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_mobile_hotspot_test_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_poor_dut.json"
+          refFilename="5g_auto_dp_mobile_hotspot_test_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_poor_ref.json"
+          title="MHS UDP DL 400M Moderate CDF (DUT vs REF)"
         />
       </PageBreak>
 

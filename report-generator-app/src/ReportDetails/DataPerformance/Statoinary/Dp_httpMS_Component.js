@@ -4,6 +4,7 @@ import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
 import DpThroughputOverallTable from '../DpThroughputOverallTable';
 import DpBoxPlot from './DpBoxPlot';
 import DpHistogramComponent from '../DpHistogramComponent';
+import DpCDF_Chart from '../DpCDF_Chart';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
@@ -13,7 +14,7 @@ import PageBreak from '../../../CommonPage/PageBreak';
 import { useEffect } from 'react';
 
 function Dp_httpMS_Component({ city: propCity }) {
-    const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
+    const { city: globalCity, projectData, project, loadCityData } = useContext(ReportContext);
     const city = propCity || globalCity;
 
     useEffect(() => {
@@ -226,6 +227,30 @@ function Dp_httpMS_Component({ city: propCity }) {
                     yAxisLabel="Throughput (Mbps)"
                 />
             </PageBreak>
+
+            <PageBreak>
+                <DpCDF_Chart
+                    project={project}
+                    city={city}
+                    dutFilename="5g_auto_dp_http_multi_stream_dl_good_dut.json"
+                    refFilename="5g_auto_dp_http_multi_stream_dl_good_ref.json"
+                    title="HTTP MS DL Good CDF (DUT vs REF)"
+                />
+                <DpCDF_Chart
+                    project={project}
+                    city={city}
+                    dutFilename="5g_auto_dp_http_multi_stream_dl_moderate_dut.json"
+                    refFilename="5g_auto_dp_http_multi_stream_dl_moderate_ref.json"
+                    title="HTTP MS DL Moderate CDF (DUT vs REF)"
+                />
+                <DpCDF_Chart
+                    project={project}
+                    city={city}
+                    dutFilename="5g_auto_dp_http_multi_stream_dl_poor_dut.json"
+                    refFilename="5g_auto_dp_http_multi_stream_dl_poor_ref.json"
+                    title="HTTP MS DL Poor CDF (DUT vs REF)"
+                />
+            </PageBreak>
             <PageBreak>
                 <DpDetailsTableLoc3
                     data={httpMS_Stationary_UL}
@@ -252,6 +277,30 @@ function Dp_httpMS_Component({ city: propCity }) {
                     data={getBoxPlotData(httpMS_Stationary_UL)}
                     title="Http Multi Stream Upload Throughput Box Plot"
                     yAxisLabel="Throughput (Mbps)"
+                />
+            </PageBreak>
+
+            <PageBreak>
+                <DpCDF_Chart
+                    project={project}
+                    city={city}
+                    dutFilename="5g_auto_dp_http_multi_stream_ul_good_dut.json"
+                    refFilename="5g_auto_dp_http_multi_stream_ul_good_ref.json"
+                    title="HTTP MS UL Good CDF (DUT vs REF)"
+                />
+                <DpCDF_Chart
+                    project={project}
+                    city={city}
+                    dutFilename="5g_auto_dp_http_multi_stream_ul_moderate_dut.json"
+                    refFilename="5g_auto_dp_http_multi_stream_ul_moderate_ref.json"
+                    title="HTTP MS UL Moderate CDF (DUT vs REF)"
+                />
+                <DpCDF_Chart
+                    project={project}
+                    city={city}
+                    dutFilename="5g_auto_dp_http_multi_stream_ul_poor_dut.json"
+                    refFilename="5g_auto_dp_http_multi_stream_ul_poor_ref.json"
+                    title="HTTP MS UL Poor CDF (DUT vs REF)"
                 />
             </PageBreak>
         </>

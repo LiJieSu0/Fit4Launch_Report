@@ -2,6 +2,7 @@ import React from 'react';
 import DpUdpTableLoc3 from './Table/DpUdpTableLoc3';
 import DpHistogramComponent from '../DpHistogramComponent';
 import DpUdpOverallTable from '../DpUdpOverallTable';
+import DpCDF_Chart from '../DpCDF_Chart';
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
@@ -13,7 +14,7 @@ import PageBreak from '../../../CommonPage/PageBreak';
 import { useEffect } from 'react';
 
 function Dp_Udp_Component({ city: propCity }) {
-  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, project, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -797,10 +798,61 @@ function Dp_Udp_Component({ city: propCity }) {
           title="UDP Download Throughput Box Plot (200 Mbps)"
           yAxisLabel="Throughput (Mbps)"
         />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_good_dut.json"
+          refFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_good_ref.json"
+          title="UDP DL 200M Good CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_moderate_dut.json"
+          refFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_moderate_ref.json"
+          title="UDP DL 200M Moderate CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_poor_dut.json"
+          refFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_poor_ref.json"
+          title="UDP DL 200M Poor CDF (DUT vs REF)"
+        />
+      </PageBreak>
+
+      <PageBreak>
         <DpBoxPlot
           data={getUdpBoxPlotData('DL', dl400TaskName, '400 Mbps')}
           title="UDP Download Throughput Box Plot (400 Mbps)"
           yAxisLabel="Throughput (Mbps)"
+        />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_good_dut.json"
+          refFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_good_ref.json"
+          title="UDP DL 400M Good CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_moderate_dut.json"
+          refFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_moderate_ref.json"
+          title="UDP DL 400M Moderate CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_poor_dut.json"
+          refFilename="5g_auto_dp_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_poor_ref.json"
+          title="UDP DL 400M Poor CDF (DUT vs REF)"
         />
       </PageBreak>
 

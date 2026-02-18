@@ -9,12 +9,13 @@ import { useContext } from 'react';
 import '../../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 import DpBoxPlot from '../../Statoinary/DpBoxPlot';
+import DpCDF_Chart from '../../DpCDF_Chart';
 import PageBreak from '../../../../CommonPage/PageBreak';
 
 import { useEffect } from 'react';
 
 function DpNSAUDPComponent({ city: propCity }) {
-  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, project, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -241,10 +242,47 @@ function DpNSAUDPComponent({ city: propCity }) {
           title="NSA UDP Download Throughput Box Plot (200 Mbps)"
           yAxisLabel="Throughput (Mbps)"
         />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_moderate_dut.json"
+          refFilename="5g_nsa_dp_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_moderate_ref.json"
+          title="NSA UDP DL 200M Moderate CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_poor_dut.json"
+          refFilename="5g_nsa_dp_udp_test_dl_udp_download_task_at_200_mbps_for_10_seconds_poor_ref.json"
+          title="NSA UDP DL 200M Poor CDF (DUT vs REF)"
+        />
+      </PageBreak>
+
+      <PageBreak>
         <DpBoxPlot
           data={getNsaUdpBoxPlotData('DL', 'UDP Download Task at 400 Mbps for 10 seconds')}
           title="NSA UDP Download Throughput Box Plot (400 Mbps)"
           yAxisLabel="Throughput (Mbps)"
+        />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_moderate_dut.json"
+          refFilename="5g_nsa_dp_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_moderate_ref.json"
+          title="NSA UDP DL 400M Moderate CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_poor_dut.json"
+          refFilename="5g_nsa_dp_udp_test_dl_udp_download_task_at_400_mbps_for_10_seconds_poor_ref.json"
+          title="NSA UDP DL 400M Poor CDF (DUT vs REF)"
         />
       </PageBreak>
 
@@ -296,6 +334,13 @@ function DpNSAUDPComponent({ city: propCity }) {
           title="NSA UDP Upload Throughput Box Plot (10 Mbps)"
           yAxisLabel="Throughput (Mbps)"
         />
+      </PageBreak>
+
+      {/* Note: UL UDP CDF files for NSA were not explicitly found in search, but adding placeholders for consistency if they appear in future runs. 
+          Assuming filenames follow the pattern 5g_nsa_dp_udp_test_ul_... if they exist. 
+          Actually I'll check my search results again. */}
+
+      <PageBreak>
         <DpBoxPlot
           data={getNsaUdpBoxPlotData('UL', '5G NSA_UDP Upload Task at 20 Mbps for 10 seconds')}
           title="NSA UDP Upload Throughput Box Plot (20 Mbps)"

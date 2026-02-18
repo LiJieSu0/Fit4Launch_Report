@@ -217,6 +217,21 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
           ]}
         />
       </PageBreak>
+
+      <PageBreak>
+        <DpHistogramComponent
+          data={dlHistogramData}
+          title="Http Single Stream Download Throughput"
+          yAxisLabel="Throughput (Mbps)"
+          barKeys={barKeys}
+        />
+        <DpBoxPlot
+          data={getBoxPlotData(httpSS_Stationary_DL)}
+          title="Http Single Stream Download Throughput Box Plot"
+          yAxisLabel="Throughput (Mbps)"
+        />
+      </PageBreak>
+
       <PageBreak>
         <DpCDF_Chart
           project={project}
@@ -238,19 +253,6 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
           dutFilename="5g_auto_dp_http_single_stream_dl_poor_dut.json"
           refFilename="5g_auto_dp_http_single_stream_dl_poor_ref.json"
           title="HTTP SS DL Poor CDF (DUT vs REF)"
-        />
-      </PageBreak>
-      <PageBreak>
-        <DpHistogramComponent
-          data={dlHistogramData}
-          title="Http Single Stream Download Throughput"
-          yAxisLabel="Throughput (Mbps)"
-          barKeys={barKeys}
-        />
-        <DpBoxPlot
-          data={getBoxPlotData(httpSS_Stationary_DL)}
-          title="Http Single Stream Download Throughput Box Plot"
-          yAxisLabel="Throughput (Mbps)"
         />
       </PageBreak>
 
@@ -280,6 +282,30 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
           data={getBoxPlotData(httpSS_Stationary_UL)}
           title="Http Single Stream Upload Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
+        />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_http_single_stream_ul_good_dut.json"
+          refFilename="5g_auto_dp_http_single_stream_ul_good_ref.json"
+          title="HTTP SS UL Good CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_http_single_stream_ul_moderate_dut.json"
+          refFilename="5g_auto_dp_http_single_stream_ul_moderate_ref.json"
+          title="HTTP SS UL Moderate CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_http_single_stream_ul_poor_dut.json"
+          refFilename="5g_auto_dp_http_single_stream_ul_poor_ref.json"
+          title="HTTP SS UL Poor CDF (DUT vs REF)"
         />
       </PageBreak>
 

@@ -12,12 +12,13 @@ import { ReportContext } from '../../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DynamicHeader from '../../../../CommonPage/DynamicHeader';
 import DpBoxPlot from '../../Statoinary/DpBoxPlot';
+import DpCDF_Chart from '../../DpCDF_Chart';
 import PageBreak from '../../../../CommonPage/PageBreak';
 
 import { useEffect } from 'react';
 
 function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
-  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, project, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -252,10 +253,47 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
           title="Http Single Stream Download Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
         />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_http_single_stream_dl_moderate_dut.json"
+          refFilename="5g_nsa_dp_http_single_stream_dl_moderate_ref.json"
+          title="NSA HTTP SS DL Moderate CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_http_single_stream_dl_poor_dut.json"
+          refFilename="5g_nsa_dp_http_single_stream_dl_poor_ref.json"
+          title="NSA HTTP SS DL Poor CDF (DUT vs REF)"
+        />
+      </PageBreak>
+
+      <PageBreak>
         <DpBoxPlot
           data={getNsaBoxPlotData('UL', getSSStats)}
           title="Http Single Stream Upload Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
+        />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_http_single_stream_ul_moderate_dut.json"
+          refFilename="5g_nsa_dp_http_single_stream_ul_moderate_ref.json"
+          title="NSA HTTP SS UL Moderate CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_http_single_stream_ul_poor_dut.json"
+          refFilename="5g_nsa_dp_http_single_stream_ul_poor_ref.json"
+          title="NSA HTTP SS UL Poor CDF (DUT vs REF)"
         />
       </PageBreak>
       <PageBreak>
@@ -330,10 +368,47 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
           title="Http Multi Stream Download Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
         />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_http_multi_stream_dl_moderate_dut.json"
+          refFilename="5g_nsa_dp_http_multi_stream_dl_moderate_ref.json"
+          title="NSA HTTP MS DL Moderate CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_http_multi_stream_dl_poor_dut.json"
+          refFilename="5g_nsa_dp_http_multi_stream_dl_poor_ref.json"
+          title="NSA HTTP MS DL Poor CDF (DUT vs REF)"
+        />
+      </PageBreak>
+
+      <PageBreak>
         <DpBoxPlot
           data={getNsaBoxPlotData('UL', getMSStats)}
           title="Http Multi Stream Upload Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
+        />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_http_multi_stream_ul_moderate_dut.json"
+          refFilename="5g_nsa_dp_http_multi_stream_ul_moderate_ref.json"
+          title="NSA HTTP MS UL Moderate CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_nsa_dp_http_multi_stream_ul_poor_dut.json"
+          refFilename="5g_nsa_dp_http_multi_stream_ul_poor_ref.json"
+          title="NSA HTTP MS UL Poor CDF (DUT vs REF)"
         />
       </PageBreak>
 

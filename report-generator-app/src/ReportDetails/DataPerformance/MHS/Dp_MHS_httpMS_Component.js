@@ -2,6 +2,7 @@ import React from "react";
 import DpMHSHttpMSTable from "./Table/DpMHSHttpMSTable";
 import DpHistogramComponent from "../DpHistogramComponent";
 import DpBoxPlot from '../Statoinary/DpBoxPlot';
+import DpCDF_Chart from "../DpCDF_Chart";
 import DpThroughputOverallTable from "../DpThroughputOverallTable";
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
@@ -13,7 +14,7 @@ import PageBreak from '../../../CommonPage/PageBreak';
 import { useEffect } from 'react';
 
 function Dp_MHS_httpMS_Component({ city: propCity }) {
-  const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
+  const { city: globalCity, projectData, project, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
   useEffect(() => {
@@ -207,6 +208,23 @@ function Dp_MHS_httpMS_Component({ city: propCity }) {
       </PageBreak>
 
       <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_mobile_hotspot_test_http_multi_stream_dl_moderate_dut.json"
+          refFilename="5g_auto_dp_mobile_hotspot_test_http_multi_stream_dl_moderate_ref.json"
+          title="MHS HTTP MS DL Good CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_mobile_hotspot_test_http_multi_stream_dl_poor_dut.json"
+          refFilename="5g_auto_dp_mobile_hotspot_test_http_multi_stream_dl_poor_ref.json"
+          title="MHS HTTP MS DL Moderate CDF (DUT vs REF)"
+        />
+      </PageBreak>
+
+      <PageBreak>
         <DpMHSHttpMSTable data={dataUL} tableName="MHS Http Multi Stream UL Details" kpiRule="Throughput" />
       </PageBreak>
 
@@ -221,6 +239,23 @@ function Dp_MHS_httpMS_Component({ city: propCity }) {
           data={getBoxPlotData(dataUL)}
           title="MHS Multi Stream HTTP Upload Throughput Box Plot"
           yAxisLabel="Throughput"
+        />
+      </PageBreak>
+
+      <PageBreak>
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_mobile_hotspot_test_http_multi_stream_ul_moderate_dut.json"
+          refFilename="5g_auto_dp_mobile_hotspot_test_http_multi_stream_ul_moderate_ref.json"
+          title="MHS HTTP MS UL Good CDF (DUT vs REF)"
+        />
+        <DpCDF_Chart
+          project={project}
+          city={city}
+          dutFilename="5g_auto_dp_mobile_hotspot_test_http_multi_stream_ul_poor_dut.json"
+          refFilename="5g_auto_dp_mobile_hotspot_test_http_multi_stream_ul_poor_ref.json"
+          title="MHS HTTP MS UL Moderate CDF (DUT vs REF)"
         />
       </PageBreak>
     </>

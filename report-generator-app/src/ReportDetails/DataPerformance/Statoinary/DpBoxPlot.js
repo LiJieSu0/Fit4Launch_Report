@@ -87,11 +87,13 @@ const DpBoxPlot = ({ data, title, yAxisLabel, width = 600, height = 300 }) => {
                     // Use calculated props for whiskers to exclude outliers
                     max={(datum) => {
                         const iqr = datum.q3 - datum.q1;
+                        if (iqr === 0) return datum.max; // fallback: show actual max when IQR=0
                         const upperFence = datum.q3 + 1.5 * iqr;
                         return Math.min(datum.max, upperFence);
                     }}
                     min={(datum) => {
                         const iqr = datum.q3 - datum.q1;
+                        if (iqr === 0) return datum.min; // fallback: show actual min when IQR=0
                         const lowerFence = datum.q1 - 1.5 * iqr;
                         return Math.max(datum.min, lowerFence);
                     }}

@@ -1,7 +1,7 @@
 import React from "react";
 import DpMHSHttpSSTable from "./Table/DpMHSHttpSSTable";
 import DpHistogramComponent from "../DpHistogramComponent";
-import DpRangeChart from "../DpRangeChart";
+import DpBoxPlot from '../Statoinary/DpBoxPlot';
 import DpThroughputOverallTable from "../DpThroughputOverallTable";
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
@@ -91,6 +91,51 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
   const overallUploadREFMean = calculateOverallRef(dataUL, 'Mean');
 
 
+  const getBoxPlotData = (dataSource) => {
+    const categories = ['Good', 'Moderate', 'Poor'];
+    const plotData = [];
+
+    categories.forEach(cat => {
+      ['DUT', 'REF'].forEach(dev => {
+        const stats = dataSource[cat][dev];
+        // Skip if mean is 0 (likely no data)
+        if (!stats || stats.Mean === 0) return;
+
+        let min = stats.Minimum;
+        let max = stats.Maximum;
+        let q1 = stats.Q1;
+        let median = stats.Median;
+        let q3 = stats.Q3;
+        // Use empty array if Outliers is missing
+        let outliers = stats.Outliers || [];
+
+        // Fallback estimation if Q1 is missing
+        if (q1 === undefined) {
+          const mean = stats.Mean;
+          const stdDev = stats['Standard Deviation'];
+          median = mean;
+          q1 = mean - 0.675 * stdDev;
+          q3 = mean + 0.675 * stdDev;
+
+          // Ensure Q1/Q3 are within Min/Max
+          q1 = Math.max(min, q1);
+          q3 = Math.min(max, q3);
+        }
+
+        plotData.push({
+          x: `${cat} (${dev})`,
+          min: min,
+          q1: q1,
+          median: median,
+          q3: q3,
+          max: max,
+          outliers: outliers
+        });
+      });
+    });
+    return plotData;
+  };
+
   const overallTableHeader = ["Throughput (Mbps)", "Device Name", "Download", "Upload"];
 
   // Helper for aggregating stats for table (Average of available coverages)
@@ -127,44 +172,7 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
     return chartData;
   };
 
-  const getRangeChartData = (dataObj) => {
-    const rangeData = {};
-    ['Good', 'Moderate', 'Poor'].forEach(cov => {
-      if (dataObj[cov]?.DUT?.['Mean'] !== undefined || dataObj[cov]?.REF?.['Mean'] !== undefined) {
-        rangeData[cov] = {
-          dutMin: dataObj[cov]?.DUT?.Minimum, dutMax: dataObj[cov]?.DUT?.Maximum, dutMean: dataObj[cov]?.DUT?.Mean,
-          refMin: dataObj[cov]?.REF?.Minimum, refMax: dataObj[cov]?.REF?.Maximum, refMean: dataObj[cov]?.REF?.Mean,
-        };
-      }
-    });
-    return rangeData;
-  };
 
-  const downloadRangeChartData = getRangeChartData(dataDL);
-
-  // Calculate Overall Range Data
-  const calculateOverallRange = (rangeData) => {
-    const metrics = ['dutMin', 'dutMax', 'dutMean', 'refMin', 'refMax', 'refMean'];
-    const result = {};
-    metrics.forEach(metric => {
-      const values = Object.keys(rangeData)
-        .map(cov => rangeData[cov]?.[metric])
-        .filter(val => val !== undefined && val !== null);
-      result[metric] = values.length > 0 ? values.reduce((a, b) => a + b, 0) / values.length : 0;
-    });
-    return result;
-  };
-
-
-  if (Object.keys(downloadRangeChartData).length > 0) {
-    downloadRangeChartData.Overall = calculateOverallRange(downloadRangeChartData);
-  }
-
-  const uploadRangeChartData = getRangeChartData(dataUL);
-
-  if (Object.keys(uploadRangeChartData).length > 0) {
-    uploadRangeChartData.Overall = calculateOverallRange(uploadRangeChartData);
-  }
 
   return (
     <>
@@ -204,10 +212,10 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
           yAxisLabel="Throughput"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
         />
-        <DpRangeChart
-          data={downloadRangeChartData}
-          chartTitle="MHS Http Single Stream Download Throughput Range"
-          yAxisTitle="Throughput"
+        <DpBoxPlot
+          data={getBoxPlotData(dataDL)}
+          title="MHS Http Single Stream Download Throughput Box Plot"
+          yAxisLabel="Throughput"
         />
       </div>
 
@@ -226,10 +234,10 @@ function Dp_MHS_httpSS_Component({ city: propCity }) {
           yAxisLabel="Throughput"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
         />
-        <DpRangeChart
-          data={uploadRangeChartData}
-          chartTitle="MHS Single Stream HTTP Upload Throughput Range"
-          yAxisTitle="Throughput"
+        <DpBoxPlot
+          data={getBoxPlotData(dataUL)}
+          title="MHS Single Stream HTTP Upload Throughput Box Plot"
+          yAxisLabel="Throughput"
         />
       </div>
 

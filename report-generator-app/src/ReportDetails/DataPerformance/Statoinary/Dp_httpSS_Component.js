@@ -1,7 +1,7 @@
 import React from 'react';
 import DpDetailsTableLoc3 from './Table/DpDetailsTableLoc3';
 import DpThroughputOverallTable from '../DpThroughputOverallTable';
-import DpRangeChart from '../DpRangeChart';
+
 import DpHistogramComponent from '../DpHistogramComponent';
 import DpCDF_Chart from '../DpCDF_Chart';
 import { ReportContext } from '../../../Contexts/ReportContext';
@@ -88,75 +88,7 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
     return values.length > 0 ? Math.max(...values) : 0;
   };
 
-  const dlRangeChartData = {
-    Good: {
-      dutMin: httpSS_Stationary_DL.Good.DUT.Minimum,
-      dutMax: httpSS_Stationary_DL.Good.DUT.Maximum,
-      refMin: httpSS_Stationary_DL.Good.REF.Minimum,
-      refMax: httpSS_Stationary_DL.Good.REF.Maximum,
-      dutMean: httpSS_Stationary_DL.Good.DUT.Mean,
-      refMean: httpSS_Stationary_DL.Good.REF.Mean,
-    },
-    Moderate: {
-      dutMin: httpSS_Stationary_DL.Moderate.DUT.Minimum,
-      dutMax: httpSS_Stationary_DL.Moderate.DUT.Maximum,
-      refMin: httpSS_Stationary_DL.Moderate.REF.Minimum,
-      refMax: httpSS_Stationary_DL.Moderate.REF.Maximum,
-      dutMean: httpSS_Stationary_DL.Moderate.DUT.Mean,
-      refMean: httpSS_Stationary_DL.Moderate.REF.Mean,
-    },
-    Poor: {
-      dutMin: httpSS_Stationary_DL.Poor.DUT.Minimum,
-      dutMax: httpSS_Stationary_DL.Poor.DUT.Maximum,
-      refMin: httpSS_Stationary_DL.Poor.REF.Minimum,
-      refMax: httpSS_Stationary_DL.Poor.REF.Maximum,
-      dutMean: httpSS_Stationary_DL.Poor.DUT.Mean,
-      refMean: httpSS_Stationary_DL.Poor.REF.Mean,
-    },
-    Overall: {
-      dutMin: calculateOverallMin(httpSS_Stationary_DL, 'DUT'),
-      dutMax: calculateOverallMax(httpSS_Stationary_DL, 'DUT'),
-      refMin: calculateOverallMin(httpSS_Stationary_DL, 'REF'),
-      refMax: calculateOverallMax(httpSS_Stationary_DL, 'REF'),
-      dutMean: calculateOverallMean(httpSS_Stationary_DL, 'DUT'),
-      refMean: calculateOverallMean(httpSS_Stationary_DL, 'REF'),
-    },
-  };
 
-  const ulRangeChartData = {
-    Good: {
-      dutMin: httpSS_Stationary_UL.Good.DUT.Minimum,
-      dutMax: httpSS_Stationary_UL.Good.DUT.Maximum,
-      refMin: httpSS_Stationary_UL.Good.REF.Minimum,
-      refMax: httpSS_Stationary_UL.Good.REF.Maximum,
-      dutMean: httpSS_Stationary_UL.Good.DUT.Mean,
-      refMean: httpSS_Stationary_UL.Good.REF.Mean,
-    },
-    Moderate: {
-      dutMin: httpSS_Stationary_UL.Moderate.DUT.Minimum,
-      dutMax: httpSS_Stationary_UL.Moderate.DUT.Maximum,
-      refMin: httpSS_Stationary_UL.Moderate.REF.Minimum,
-      refMax: httpSS_Stationary_UL.Moderate.REF.Maximum,
-      dutMean: httpSS_Stationary_UL.Moderate.DUT.Mean,
-      refMean: httpSS_Stationary_UL.Moderate.REF.Mean,
-    },
-    Poor: {
-      dutMin: httpSS_Stationary_UL.Poor.DUT.Minimum,
-      dutMax: httpSS_Stationary_UL.Poor.DUT.Maximum,
-      refMin: httpSS_Stationary_UL.Poor.REF.Minimum,
-      refMax: httpSS_Stationary_UL.Poor.REF.Maximum,
-      dutMean: httpSS_Stationary_UL.Poor.DUT.Mean,
-      refMean: httpSS_Stationary_UL.Poor.REF.Mean,
-    },
-    Overall: {
-      dutMin: calculateOverallMin(httpSS_Stationary_UL, 'DUT'),
-      dutMax: calculateOverallMax(httpSS_Stationary_UL, 'DUT'),
-      refMin: calculateOverallMin(httpSS_Stationary_UL, 'REF'),
-      refMax: calculateOverallMax(httpSS_Stationary_UL, 'REF'),
-      dutMean: calculateOverallMean(httpSS_Stationary_UL, 'DUT'),
-      refMean: calculateOverallMean(httpSS_Stationary_UL, 'REF'),
-    },
-  };
 
   const dlHistogramData = [
     { name: 'Good', DUT: httpSS_Stationary_DL.Good.DUT.Mean, REF: httpSS_Stationary_DL.Good.REF.Mean },
@@ -237,11 +169,7 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
     ["Minimum (Mbps)", "REF", calculateOverallMin(httpSS_Stationary_DL, 'REF').toFixed(2), calculateOverallMin(httpSS_Stationary_UL, 'REF').toFixed(2)],
   ];
 
-  const mockBoxPlotData = [
-    { x: "Test 1 (Good)", min: 10, q1: 15, median: 20, q3: 25, max: 30, outliers: [5, 35, 100] },
-    { x: "Test 2 (Bad)", min: 10, q1: 20, median: 25, q3: 30, max: 50, outliers: [] },
-    { x: "Test 3 (Extreme)", min: 0, q1: 10, median: 20, q3: 30, max: 40, outliers: [-10, 60] }
-  ];
+
 
 
 
@@ -318,10 +246,10 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
           yAxisLabel="Throughput (Mbps)"
           barKeys={barKeys}
         />
-        <DpRangeChart
-          data={dlRangeChartData}
-          chartTitle="Http Single Stream Download Throughput Range"
-          yAxisTitle="Throughput (Mbps)"
+        <DpBoxPlot
+          data={getBoxPlotData(httpSS_Stationary_DL)}
+          title="Http Single Stream Download Throughput Box Plot"
+          yAxisLabel="Throughput (Mbps)"
         />
       </div>
 
@@ -347,31 +275,14 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
       </div>
 
       <div className='page-content'>
-        <DpRangeChart
-          data={ulRangeChartData}
-          chartTitle="Http Single Stream Upload Throughput Range"
-          yAxisTitle="Throughput (Mbps)"
-        />
-      </div>
-
-      <div className='page-content'>
-        <DpBoxPlot
-          data={getBoxPlotData(httpSS_Stationary_DL)}
-          title="Http Single Stream Download Throughput Box Plot"
-          yAxisLabel="Throughput (Mbps)"
-        />
         <DpBoxPlot
           data={getBoxPlotData(httpSS_Stationary_UL)}
           title="Http Single Stream Upload Throughput Box Plot"
           yAxisLabel="Throughput (Mbps)"
         />
-        {/* Test Box plot here */}
-        <DpBoxPlot
-          data={mockBoxPlotData}
-          title="TEST: Box Plot Outliers (Mock Data)"
-          yAxisLabel="Throughput (Mbps)"
-        />
       </div>
+
+
 
     </>
 

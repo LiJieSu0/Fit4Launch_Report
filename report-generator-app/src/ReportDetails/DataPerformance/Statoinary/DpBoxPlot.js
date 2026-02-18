@@ -46,12 +46,16 @@ const DpBoxPlot = ({ data, title, yAxisLabel, width = 600, height = 300 }) => {
         });
     }
 
+    // Dynamic sizing: scale width with number of entries
+    const dynamicWidth = Math.min(width, Math.max(300, data.length * 120 + 120));
+    const dynamicDomainPadding = Math.max(15, Math.min(40, 120 / data.length));
+
     return (
-        <div className="box-plot-container" style={{ width: '60%', height: 'auto', textAlign: 'center' }}>
+        <div className="box-plot-container" style={{ width: `${dynamicWidth}px`, height: 'auto', textAlign: 'center' }}>
             <h4>{title}</h4>
             <VictoryChart
-                domainPadding={20}
-                width={width}
+                domainPadding={dynamicDomainPadding}
+                width={dynamicWidth}
                 height={height}
                 domain={{ y: yDomain }}
                 padding={{ top: 20, bottom: 50, left: 80, right: 20 }} // Increased left padding for Y-axis label

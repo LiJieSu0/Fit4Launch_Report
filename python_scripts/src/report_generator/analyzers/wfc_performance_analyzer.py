@@ -242,8 +242,9 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
 
         results = {}
         
-        # 2. Process each TC
-        for tc_name, categories in tc_groups.items():
+        # 2. Process each TC (Sorted numerically)
+        sorted_tc_items = sorted(tc_groups.items(), key=lambda x: self._extract_tc_number(x[0]) or 0)
+        for tc_name, categories in sorted_tc_items:
             self.logger.info(f"Processing WFC Test Case: {tc_name}")
             tc_results = {}
             tc_num = self._extract_tc_number(tc_name)

@@ -8,6 +8,7 @@ import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors
 import { ReportContext } from '../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import DpBoxPlot from '../Statoinary/DpBoxPlot';
 
 import { useEffect } from 'react';
 
@@ -200,6 +201,30 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
     refMHS?.['Ping RTT']?.Mean
   ) : [];
 
+  // Helper to build BoxPlot data from a stats object (no category, just DUT/REF)
+  const buildBoxEntry = (label, stats) => {
+    if (!stats || !stats.Mean) return null;
+    let { Minimum: min, Maximum: max, Q1: q1, Median: median, Q3: q3, Outliers: outliers = [], Mean: mean, 'Standard Deviation': stdDev } = stats;
+    if (q1 === undefined) {
+      median = mean;
+      q1 = Math.max(min, mean - 0.675 * stdDev);
+      q3 = Math.min(max, mean + 0.675 * stdDev);
+    }
+    return { x: label, min, q1, median, q3, max, outliers };
+  };
+
+  const driveTestDLBoxPlotData = [
+    buildBoxEntry('DUT', dutDriveTest?.['DL Throughput']),
+    buildBoxEntry('REF', refDriveTest?.['DL Throughput']),
+  ].filter(Boolean);
+
+  const mhsDriveTestDLBoxPlotData = hasMhsData ? [
+    buildBoxEntry('DUT DL', dutMHS?.['DL Throughput']),
+    buildBoxEntry('REF DL', refMHS?.['DL Throughput']),
+    buildBoxEntry('DUT UL', dutMHS?.['UL Throughput']),
+    buildBoxEntry('REF UL', refMHS?.['UL Throughput']),
+  ].filter(Boolean) : [];
+
   return (
     <>
       <div className='page-content'>
@@ -228,6 +253,14 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
           title="Mobility Test Drive Packet Failure Rate"
           yAxisLabel="Packet Failure Rate (%)"
           barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+        />
+      </div>
+
+      <div className='page-content'>
+        <DpBoxPlot
+          data={driveTestDLBoxPlotData}
+          title="Mobility Test Drive DL Throughput Box Plot"
+          yAxisLabel="Throughput (Mbps)"
         />
       </div>
 
@@ -264,6 +297,13 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
               title="MHS Test Drive - Mean Ping RTT"
               yAxisLabel="RTT (ms)"
               barKeys={[{ key: 'DUT', fill: CHART_COLOR_DUT }, { key: 'REF', fill: CHART_COLOR_REF }]}
+            />
+          </div>
+          <div className='page-content'>
+            <DpBoxPlot
+              data={mhsDriveTestDLBoxPlotData}
+              title="MHS Mobility Test Drive Throughput Box Plot"
+              yAxisLabel="Throughput (Mbps)"
             />
           </div>
         </>

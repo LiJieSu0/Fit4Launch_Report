@@ -157,23 +157,27 @@ For individual CSV files (Data Performance, etc.), the `_determine_analysis_para
 
 ### H. WFC Performance (`wfc_performance_analyzer.py`)
 
-#### 1. MOS
-*   **Logic:** Average of standard MOS headers.
-*   **Primary:** `[Call Test] [Voice Quality] [Per Rx Clip] MOS Value`
-*   **Secondary:** `[Call Test] [Voice Quality] [Sampled Values] MOS (POLQA)`
+*   **TC Determination**: Test Case (TC) is extracted from the filename (e.g., `TC-164` or `TC164`). Fallback to parent directory name if not found in filename.
+*   **Logic**: Aggregates data from multiple CSV files/runs for the same TC and Category (DUT MO, REF MO, DUT MT, REF MT). 
+*   **Excluded Directories**: Skips `MOS PATCH` directory if present (standard analysis is used for all).
+*   **Handover Count**: Specifically for **TC >= 162**, counts transitions between `NR` and `IWLAN` in the network type header.
 
-#### 2. Setup Time
-*   **Logic:** Tries 3 methods in order.
-    1.  **Header:** `[Call Test] [VoNR VoLTE] [Duration] SIP Setup Duration (Invite~200OK)`
-    2.  **Event Diff:** `[UE] Voice - Setup Success` time minus `[UE] Voice - Orig Success` time.
-    3.  **Event Diff:** `[Tool] Voice - Answer Request` time minus `[Tool] Voice - Call Scheduling Start(Term)` time.
+| Metric | logic/Header |
+| :--- | :--- |
+| **MOS** | Average of `[Per Rx Clip] MOS Value` (Primary) or `[Sampled Values] MOS (POLQA)` (Secondary). |
+| **Setup Time** | Tries 1. `SIP Setup Duration` header, 2. `Setup Success` - `Orig Success` event diff, 3. `Answer Request` - `Scheduling Start` event diff. |
+| **Call Performance** | Calculates `Total attempts`, `Failures (Orig/Drop)`, and `Successes` for MO calls. |
+| **P-Value** | Calculates p-values for MO Initiation and MO Retention using Fisher's Exact test (comparing DUT MO vs REF MO). |
+| **RSSI** | `[WiFi] [Serving AP] RSSI` |
+| **RSRP** | `[Per Rx Clip] [RF Quality] 5G RSRP` (Primary) or `[NR5G] [RF] RSRP` (Fallback). |
 
-#### 3. RSSI
-*   **Header:** `[WiFi] [Serving AP] RSSI`
+---
 
-#### 4. RSRP
-*   **Primary:** `[Call Test] [Voice Quality] [Per Rx Clip] [RF Quality] 5G RSRP`
-*   **Fallback:** `[NR5G] [RF] RSRP`
+### I. WFC Line Chart Post-Processing (`WfcLineChartAnalyzer.py`)
 
-#### 5. Handover Count
-*   **Logic:** Counts transitions between "NR" and "IWLAN" in `[Mobile Info] [Android] [Radio] Network Type (Data Svc)`.
+*   **Logic**: Executed during pipeline post-processing. Groups WFC files by TC and generates statistical distributions.
+*   **TC164+ Special Handling**: For **TC >= 164**, data is grouped by `DUT`/`REF` only (no MO/MT separation). For older TCs, MO/MT separation is maintained.
+*   **MOS Line Chart**: Bins MOS values into intervals (e.g., `< 2.0`, `[2.0, 2.1)`, ..., `[4.4, 4.5)`, `>= 4.5`) and calculates percentages.
+*   **RSSI Line Chart**: 
+    1. Bins RSSI values (e.g., `< -100`, `[-100, -98)`, ..., `[-32, -30)`, `>= -30`).
+    2. Exports raw RSSI samples to a corresponding CSV file for detailed analysis.

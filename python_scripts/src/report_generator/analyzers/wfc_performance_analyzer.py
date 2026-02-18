@@ -5,11 +5,6 @@ import re
 from report_generator.base_analyzer import BaseAnalyzer
 from CallPerformance.call_analyze import _calculate_fisher_exact_criteria
 
-# TEMPORARY MOS PATCH - Feature flag and import
-ENABLE_MOS_PATCH = True
-if ENABLE_MOS_PATCH:
-    from report_generator.analyzers.wfc_mos_patch import apply_mos_patch
-
 class WfcPerformanceAnalyzer(BaseAnalyzer):
     def __init__(self, config, logger):
         self.config = config
@@ -37,11 +32,19 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                 return round(float(values.mean()), 4)
         return None
 
-    def _extract_tc_number(self, dirname):
+    def _extract_tc_number(self, tc_name):
         """Extracts the numeric part of the TC name (e.g., 'TC164' -> 164)."""
-        match = re.search(r'TC(\d+)', dirname, re.IGNORECASE)
+        if not tc_name: return None
+        match = re.search(r'TC(\d+)', tc_name, re.IGNORECASE)
         if match:
             return int(match.group(1))
+        return None
+
+    def _determine_tc(self, filename):
+        """Extracts TC label from filename and standardizes it to TCxxx."""
+        match = re.search(r'TC-?(\d+)', filename, re.IGNORECASE)
+        if match:
+            return f"TC{match.group(1)}"
         return None
 
     def _calculate_handover_count(self, df):
@@ -201,6 +204,7 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
     def analyze(self, root_directory: str):
         """
         Analyzes a WFC directory. Groups results by TC -> Category -> Metrics.
+        TC is determined from filename, and multiple runs for the same Case are aggregated.
         """
         self.logger.info(f"Analyzing WFC root directory: {root_directory}")
         
@@ -208,151 +212,149 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
             self.logger.error(f"Directory not found: {root_directory}")
             return None
 
+        # 1. Collect all CSV files and group them by TC and Category
+        tc_groups = {} # {tc_name: {category: [file_paths]}}
+        
+        for root, _, files in os.walk(root_directory):
+            for filename in files:
+                if filename.lower().endswith('.csv'):
+                    tc_name = self._determine_tc(filename)
+                    if not tc_name:
+                        # Fallback to directory name if filename doesn't have TC
+                        tc_name = self._determine_tc(os.path.basename(root))
+                    
+                    if not tc_name:
+                        self.logger.debug(f"Could not determine TC for file: {filename}")
+                        continue
+                        
+                    category = self._determine_category(filename)
+                    
+                    if tc_name not in tc_groups:
+                        tc_groups[tc_name] = {}
+                    if category not in tc_groups[tc_name]:
+                        tc_groups[tc_name][category] = []
+                    
+                    tc_groups[tc_name][category].append(os.path.join(root, filename))
+
+        if not tc_groups:
+            self.logger.warning(f"No WFC CSV files with valid TC found in {root_directory}")
+            return None
+
         results = {}
         
-        for tc_dir_name in os.listdir(root_directory):
-            tc_dir_path = os.path.join(root_directory, tc_dir_name)
-            if not os.path.isdir(tc_dir_path):
-                continue
-
-            self.logger.info(f"Processing WFC Test Case: {tc_dir_name}")
-            tc_stats = {}
-
-            csv_files = [f for f in os.listdir(tc_dir_path) if f.lower().endswith('.csv')]
+        # 2. Process each TC
+        for tc_name, categories in tc_groups.items():
+            self.logger.info(f"Processing WFC Test Case: {tc_name}")
+            tc_results = {}
+            tc_num = self._extract_tc_number(tc_name)
             
-            for csv_file in csv_files:
-                category = self._determine_category(csv_file)
-                if not category:
-                    continue
+            for category, file_paths in categories.items():
+                category_metrics = {
+                    "mos": [], 
+                    "setup_time": [],
+                    "cp": [],
+                    "rssi": [],
+                    "rsrp": [],
+                    "handover_counts": []
+                }
                 
-                file_path = os.path.join(tc_dir_path, csv_file)
-                try:
-                    df = pd.read_csv(file_path, low_memory=False)
-                    
-                    # 1. MOS
-                    mos_avg = self._calculate_mos_average(df)
-                    # 2. Setup Time
-                    setup_time = self._calculate_setup_time(df)
-                    # 3. Call Performance (MO Only)
-                    cp_stats = None
-                    if "MT" not in category:
-                        cp_stats = self._calculate_call_performance(df)
-                    
-                    # 4. RSSI and RSRP
-                    rssi_avg = self._calculate_column_average(df, self.rssi_header)
-                    rsrp_avg = self._calculate_column_average(df, self.rsrp_header)
-                    if rsrp_avg is None:
-                        rsrp_avg = self._calculate_column_average(df, self.rsrp_fallback_header)
-                    
-                    if category not in tc_stats:
-                        tc_stats[category] = {
-                            "mos": [], 
-                            "setup_time": [],
-                            "cp": [],
-                            "rssi": [],
-                            "rsrp": [],
-                            "handover_counts": []
-                        }
-                    
-                    if mos_avg is not None:
-                        tc_stats[category]["mos"].append(mos_avg)
-                    if setup_time is not None:
-                        tc_stats[category]["setup_time"].append(setup_time)
-                    if cp_stats is not None:
-                        tc_stats[category]["cp"].append(cp_stats)
-                    if rssi_avg is not None:
-                        tc_stats[category]["rssi"].append(rssi_avg)
-                    if rsrp_avg is not None:
-                        tc_stats[category]["rsrp"].append(rsrp_avg)
+                for file_path in file_paths:
+                    try:
+                        df = pd.read_csv(file_path, low_memory=False)
                         
-                    # Handle Handover Counts (TC162-TC170)
-                    tc_num = self._extract_tc_number(tc_dir_name)
-                    if tc_num and tc_num >= 162:
-                        ho_count = self._calculate_handover_count(df)
-                        tc_stats[category]["handover_counts"].append(ho_count)
+                        # Metrics
+                        mos_avg = self._calculate_mos_average(df)
+                        setup_time = self._calculate_setup_time(df)
+                        rssi_avg = self._calculate_column_average(df, self.rssi_header)
+                        rsrp_avg = self._calculate_column_average(df, self.rsrp_header)
+                        if rsrp_avg is None:
+                            rsrp_avg = self._calculate_column_average(df, self.rsrp_fallback_header)
                         
-                except Exception as e:
-                    self.logger.error(f"Error processing {file_path}: {e}")
-
-            if tc_stats:
-                final_tc_results = {}
-                for category, metrics in tc_stats.items():
-                    final_tc_results[category] = {}
-                    
-                    # Metric: MOS
-                    mos_values = metrics["mos"]
-                    final_tc_results[category]["mos_average"] = round(sum(mos_values) / len(mos_values), 4) if mos_values else "N/A"
-                    
-                    # Metric: Setup Time
-                    setup_values = metrics["setup_time"]
-                    final_tc_results[category]["mean_setup_time"] = round(sum(setup_values) / len(setup_values), 4) if setup_values else "N/A"
-                    
-                    # Metric: RSSI
-                    rssi_values = metrics["rssi"]
-                    final_tc_results[category]["rssi_average"] = round(sum(rssi_values) / len(rssi_values), 4) if rssi_values else "N/A"
-
-                    # Metric: RSRP
-                    rsrp_values = metrics["rsrp"]
-                    final_tc_results[category]["rsrp_average"] = round(sum(rsrp_values) / len(rsrp_values), 4) if rsrp_values else "N/A"
-
-                    # Rule: MinimumHandover (TC162-TC170)
-                    tc_num = self._extract_tc_number(tc_dir_name)
-                    if tc_num and tc_num >= 162:
-                        ho_values = metrics["handover_counts"]
-                        # Sum total transitions across all runs
-                        final_tc_results[category]["minimum_handover"] = sum(ho_values) if ho_values else 0
-
-                    # Metric: Call Performance (MO/DUT with CP only)
-                    if metrics["cp"]:
-                        agg_cp = {
-                            "total_mo_attempts": 0,
-                            "total_initiation_failures": 0,
-                            "total_retention_failures": 0,
-                            "total_initiation_successes": 0
-                        }
-                        for entry in metrics["cp"]:
-                            for k in agg_cp:
-                                agg_cp[k] += entry.get(k, 0)
-                        final_tc_results[category].update(agg_cp)
-                
-                # Calculate p-values for MO calls if both DUT MO and REF MO exist
-                if "DUT MO" in final_tc_results and "REF MO" in final_tc_results:
-                    dut_mo = final_tc_results["DUT MO"]
-                    ref_mo = final_tc_results["REF MO"]
-                    
-                    # initiation_p_value
-                    if "total_mo_attempts" in dut_mo and "total_mo_attempts" in ref_mo:
-                        _, p_init = _calculate_fisher_exact_criteria(
-                            dut_mo.get('total_initiation_failures', 0), 
-                            dut_mo.get('total_mo_attempts', 0) - dut_mo.get('total_initiation_failures', 0),
-                            ref_mo.get('total_initiation_failures', 0), 
-                            ref_mo.get('total_mo_attempts', 0) - ref_mo.get('total_initiation_failures', 0),
-                            criteria_type="WFC MO Initiation"
-                        )
-                        if p_init is not None:
-                            final_tc_results["initiation_p_value"] = p_init
+                        if mos_avg is not None: category_metrics["mos"].append(mos_avg)
+                        if setup_time is not None: category_metrics["setup_time"].append(setup_time)
+                        if rssi_avg is not None: category_metrics["rssi"].append(rssi_avg)
+                        if rsrp_avg is not None: category_metrics["rsrp"].append(rsrp_avg)
+                        
+                        if "MT" not in category:
+                            cp_stats = self._calculate_call_performance(df)
+                            if cp_stats: category_metrics["cp"].append(cp_stats)
                             
-                        # retention_p_value
-                        _, p_ret = _calculate_fisher_exact_criteria(
-                            dut_mo.get('total_retention_failures', 0), 
-                            dut_mo.get('total_initiation_successes', 0),
-                            ref_mo.get('total_retention_failures', 0), 
-                            ref_mo.get('total_initiation_successes', 0),
-                            criteria_type="WFC MO Retention"
-                        )
-                        if p_ret is not None:
-                            final_tc_results["retention_p_value"] = p_ret
+                        if tc_num and tc_num >= 162:
+                            ho_count = self._calculate_handover_count(df)
+                            category_metrics["handover_counts"].append(ho_count)
+                            
+                    except Exception as e:
+                        self.logger.error(f"Error processing {file_path}: {e}")
 
-                if final_tc_results:
-                    results[tc_dir_name] = final_tc_results
+                # Aggregate Category results
+                tc_results[category] = {}
+                
+                mos_values = category_metrics["mos"]
+                tc_results[category]["mos_average"] = round(sum(mos_values) / len(mos_values), 4) if mos_values else "N/A"
+                
+                setup_values = category_metrics["setup_time"]
+                tc_results[category]["mean_setup_time"] = round(sum(setup_values) / len(setup_values), 4) if setup_values else "N/A"
+                
+                rssi_values = category_metrics["rssi"]
+                tc_results[category]["rssi_average"] = round(sum(rssi_values) / len(rssi_values), 4) if rssi_values else "N/A"
 
-        # TEMPORARY MOS PATCH - Apply MOS patch if enabled
-        if ENABLE_MOS_PATCH:
-            patch_dir = os.path.join(root_directory, "MOS PATCH")
-            output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Analyze Summary", "wfc_linechart_data")
-            results = apply_mos_patch(results, patch_dir, output_dir=output_dir, logger=self.logger)
-        
+                rsrp_values = category_metrics["rsrp"]
+                tc_results[category]["rsrp_average"] = round(sum(rsrp_values) / len(rsrp_values), 4) if rsrp_values else "N/A"
+
+                if tc_num and tc_num >= 162:
+                    ho_values = category_metrics["handover_counts"]
+                    tc_results[category]["minimum_handover"] = sum(ho_values) if ho_values else 0
+
+                if category_metrics["cp"]:
+                    agg_cp = {
+                        "total_mo_attempts": 0,
+                        "total_initiation_failures": 0,
+                        "total_retention_failures": 0,
+                        "total_initiation_successes": 0
+                    }
+                    for entry in category_metrics["cp"]:
+                        for k in agg_cp:
+                            agg_cp[k] += entry.get(k, 0)
+                    tc_results[category].update(agg_cp)
+
+            # 3. Calculate p-values
+            if "DUT MO" in tc_results and "REF MO" in tc_results:
+                dut_mo = tc_results["DUT MO"]
+                ref_mo = tc_results["REF MO"]
+                
+                if "total_mo_attempts" in dut_mo and "total_mo_attempts" in ref_mo:
+                    _, p_init = _calculate_fisher_exact_criteria(
+                        dut_mo.get('total_initiation_failures', 0), 
+                        dut_mo.get('total_mo_attempts', 0) - dut_mo.get('total_initiation_failures', 0),
+                        ref_mo.get('total_initiation_failures', 0), 
+                        ref_mo.get('total_mo_attempts', 0) - ref_mo.get('total_initiation_failures', 0),
+                        criteria_type="WFC MO Initiation"
+                    )
+                    if p_init is not None: tc_results["initiation_p_value"] = p_init
+                        
+                    _, p_ret = _calculate_fisher_exact_criteria(
+                        dut_mo.get('total_retention_failures', 0), 
+                        dut_mo.get('total_initiation_successes', 0),
+                        ref_mo.get('total_retention_failures', 0), 
+                        ref_mo.get('total_initiation_successes', 0),
+                        criteria_type="WFC MO Retention"
+                    )
+                    if p_ret is not None: tc_results["retention_p_value"] = p_ret
+
+            if tc_results:
+                results[tc_name] = tc_results
+
         return results
+
+    def validate(self, results) -> bool:
+        return bool(results)
+
+    def export(self, results, output_path: str):
+        import json
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(results, f, indent=4, ensure_ascii=False)
+        self.logger.info(f"WFC Performance results exported to {output_path}")
+
 
     def validate(self, results) -> bool:
         return bool(results)

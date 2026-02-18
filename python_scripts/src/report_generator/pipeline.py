@@ -344,26 +344,48 @@ class DataAnalysisPipeline:
                 out_path = os.path.join(vq_linechart_dir, f"vq_mos_statistics_{scenario.replace(' ', '_').lower()}.json")
                 calculate_vq_statistics(p, output_json_path=out_path)
 
-        # WFC Line Chart
-        wfc_linechart_dir = os.path.join(self.output_dir, "wfc_linechart_data")
+        # WFC Data Processing (Line Chart & RSSI)
         wfc_base_path = os.path.join(self.base_raw_data_dir, "WFC")
         if os.path.isdir(wfc_base_path):
-            for tc_dir in os.listdir(wfc_base_path):
-                tc_path = os.path.join(wfc_base_path, tc_dir)
-                if os.path.isdir(tc_path):
-                    os.makedirs(wfc_linechart_dir, exist_ok=True)
-                    out_path = os.path.join(wfc_linechart_dir, f"wfc_mos_statistics_{tc_dir.lower()}.json")
-                    calculate_wfc_statistics(tc_path, output_json_path=out_path)
+            self.logger.info("Grouping WFC CSV files by Test Case for line chart generation...")
+            # Group all WFC CSV files by TC
+            grouped_wfc_files = {} # {tc_name: [list of file paths]}
+            
+            def determine_tc(filename):
+                match = re.search(r'TC-?(\d+)', filename, re.IGNORECASE)
+                if match:
+                    return f"TC{match.group(1)}"
+                return None
 
-        # WFC RSSI Line Chart
-        wfc_rssi_linechart_dir = os.path.join(self.output_dir, "wfc_rssi_linechart_data")
-        if os.path.isdir(wfc_base_path):
-            for tc_dir in os.listdir(wfc_base_path):
-                tc_path = os.path.join(wfc_base_path, tc_dir)
-                if os.path.isdir(tc_path):
-                    os.makedirs(wfc_rssi_linechart_dir, exist_ok=True)
-                    out_path = os.path.join(wfc_rssi_linechart_dir, f"wfc_rssi_statistics_{tc_dir.lower()}.json")
-                    calculate_wfc_rssi_statistics(tc_path, output_json_path=out_path)
+            for root, _, files in os.walk(wfc_base_path):
+                # Skip MOS PATCH directory if it exists, as we are using standard analysis now
+                if "MOS PATCH" in root.upper():
+                    continue
+                for f in files:
+                    if f.lower().endswith('.csv'):
+                        tc_name = determine_tc(f)
+                        if not tc_name:
+                            tc_name = determine_tc(os.path.basename(root))
+                        
+                        if tc_name:
+                            if tc_name not in grouped_wfc_files:
+                                grouped_wfc_files[tc_name] = []
+                            grouped_wfc_files[tc_name].append(os.path.join(root, f))
+            
+            # WFC Line Chart Directories
+            wfc_linechart_dir = os.path.join(self.output_dir, "wfc_linechart_data")
+            wfc_rssi_linechart_dir = os.path.join(self.output_dir, "wfc_rssi_linechart_data")
+
+            for tc_name, file_list in grouped_wfc_files.items():
+                # 1. MOS Line Chart
+                os.makedirs(wfc_linechart_dir, exist_ok=True)
+                out_mos_path = os.path.join(wfc_linechart_dir, f"wfc_mos_statistics_{tc_name.lower()}.json")
+                calculate_wfc_statistics(file_list, output_json_path=out_mos_path)
+                
+                # 2. RSSI Line Chart
+                os.makedirs(wfc_rssi_linechart_dir, exist_ok=True)
+                out_rssi_path = os.path.join(wfc_rssi_linechart_dir, f"wfc_rssi_statistics_{tc_name.lower()}.json")
+                calculate_wfc_rssi_statistics(file_list, output_json_path=out_rssi_path)
 
         # RSRP & Tx Power Extraction
         rsrp_dir = os.path.join(self.output_dir, "rsrp_data")
@@ -376,19 +398,9 @@ class DataAnalysisPipeline:
                 if os.path.isdir(run_p) and run.startswith("Run"):
                     os.makedirs(rsrp_dir, exist_ok=True)
                     os.makedirs(tx_dir, exist_ok=True)
+                    from Coverage.n41_coverage_analyzer import extract_coverage_data_to_csv
                     extract_coverage_data_to_csv(run_p, rsrp_dir, ['PC2', 'PC3'], '[NR5G] [RF] RSRP', 'RSRP_Analysis')
                     extract_coverage_data_to_csv(run_p, tx_dir, ['PC2', 'PC3'], '[NR5G] [Power] Tx power (PUSCH Actual)', 'TxPower_Analysis', fallback_column_name='[NR5G] [Power] Tx power (Total)')
-        
-        # TEMPORARY MOS PATCH - Export MOS patch line chart data (overwrites histogram files)
-        try:
-            from report_generator.analyzers.wfc_mos_patch import apply_mos_patch
-            patch_dir = os.path.join(self.base_raw_data_dir, "WFC", "MOS PATCH")
-            wfc_linechart_dir = os.path.join(self.output_dir, "wfc_linechart_data")
-            # Re-apply patch to export line chart data (this will overwrite histogram files)
-            if os.path.isdir(patch_dir) and "wfc_performance" in self.results:
-                apply_mos_patch(self.results["wfc_performance"], patch_dir, output_dir=wfc_linechart_dir, logger=self.logger)
-        except Exception as e:
-            self.logger.warning(f"Failed to export MOS patch line chart data: {e}")
 
         # Export CDF Throughput data
         self._export_cdf_data()

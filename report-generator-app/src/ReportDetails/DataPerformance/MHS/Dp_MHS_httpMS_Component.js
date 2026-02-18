@@ -97,16 +97,15 @@ function Dp_MHS_httpMS_Component({ city: propCity }) {
 
     categories.forEach(cat => {
       ['DUT', 'REF'].forEach(dev => {
-        const stats = dataSource[cat][dev];
-        // Skip if mean is 0 (likely no data)
-        if (!stats || stats.Mean === 0) return;
+        const stats = dataSource?.[cat]?.[dev];
+        // Skip if no data or Mean is missing/zero
+        if (!stats || !stats.Mean) return;
 
         let min = stats.Minimum;
         let max = stats.Maximum;
         let q1 = stats.Q1;
         let median = stats.Median;
         let q3 = stats.Q3;
-        // Use empty array if Outliers is missing
         let outliers = stats.Outliers || [];
 
         // Fallback estimation if Q1 is missing
@@ -114,22 +113,13 @@ function Dp_MHS_httpMS_Component({ city: propCity }) {
           const mean = stats.Mean;
           const stdDev = stats['Standard Deviation'];
           median = mean;
-          q1 = mean - 0.675 * stdDev;
-          q3 = mean + 0.675 * stdDev;
-
-          // Ensure Q1/Q3 are within Min/Max
-          q1 = Math.max(min, q1);
-          q3 = Math.min(max, q3);
+          q1 = Math.max(min, mean - 0.675 * stdDev);
+          q3 = Math.min(max, mean + 0.675 * stdDev);
         }
 
         plotData.push({
           x: `${cat} (${dev})`,
-          min: min,
-          q1: q1,
-          median: median,
-          q3: q3,
-          max: max,
-          outliers: outliers
+          min, q1, median, q3, max, outliers
         });
       });
     });

@@ -81,7 +81,7 @@ const DpBoxPlot = ({ data, title, yAxisLabel, width = 600, height = 300 }) => {
                         max: { stroke: "black", strokeWidth: 1 },
                         q1: { fill: "#FF5733", fillOpacity: 0.5 },
                         q3: { fill: "#FF5733", fillOpacity: 0.5 },
-                        median: { stroke: "white", strokeWidth: 2 },
+                        median: { stroke: "black", strokeWidth: 2 },
                         outliers: { stroke: "transparent" } // Hide default outliers
                     }}
                     // Use calculated props for whiskers to exclude outliers

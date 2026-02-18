@@ -28,11 +28,12 @@ const WfcCpTable = ({ cityData }) => {
             </thead>
             <tbody>
                 {devices.map(({ name, moKey, mtKey }) => {
-                    const moData = cityData[moKey];
+                    // Fallback logic: if 'DUT MO' is missing, try 'DUT'
+                    const moData = cityData[moKey] || cityData[name];
                     const mtData = cityData[mtKey];
                     if (!moData && !mtData) return null;
 
-                    const refMoData = cityData[moKey.includes('DUT') ? 'REF MO' : moKey];
+                    const refMoData = cityData[moKey.includes('DUT') ? 'REF MO' : moKey] || cityData['REF'];
                     const refMtData = cityData[mtKey.includes('DUT') ? 'REF MT' : mtKey];
 
                     const initFailPct = moData?.total_mo_attempts > 0 ? (moData.total_initiation_failures / moData.total_mo_attempts * 100).toFixed(1) : '0.0';

@@ -19,8 +19,9 @@ const WfcTestDetailsPage = ({ tc, label, sectionNumber = 0 }) => {
 
         const hasMoMt = cityData['DUT MO'] || cityData['DUT MT'] || cityData['REF MO'] || cityData['REF MT'];
 
-        const moInitFailureRate = cityData['DUT MO']?.total_mo_attempts > 0 ? cityData['DUT MO']?.total_initiation_failures / cityData['DUT MO']?.total_mo_attempts : 0;
-        const moRetFailureRate = cityData['DUT MO']?.total_mo_attempts > 0 ? cityData['DUT MO']?.total_retention_failures / cityData['DUT MO']?.total_mo_attempts : 0;
+        const dutMoData = cityData['DUT MO'] || cityData['DUT'];
+        const moInitFailureRate = dutMoData?.total_mo_attempts > 0 ? dutMoData?.total_initiation_failures / dutMoData?.total_mo_attempts : 0;
+        const moRetFailureRate = dutMoData?.total_mo_attempts > 0 ? dutMoData?.total_retention_failures / dutMoData?.total_mo_attempts : 0;
 
         const formatVal = (val) => {
             if (val === undefined || val === null || val === 'N/A') return 'N/A';

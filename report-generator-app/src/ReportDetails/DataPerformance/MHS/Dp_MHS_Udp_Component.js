@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import DpBoxPlot from '../Statoinary/DpBoxPlot';
 
 function Dp_MHS_Udp_Component({ city: propCity }) {
   const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
@@ -505,6 +506,26 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
     });
   });
 
+  // Helper to build BoxPlot data for MHS UDP (Moderate→Good, Poor→Moderate label mapping)
+  const getUdpMhsBoxPlotData = (dir, taskName) => {
+    const labelMap = { Moderate: 'Good', Poor: 'Moderate' };
+    const plotData = [];
+    ['Moderate', 'Poor'].forEach(jsonCat => {
+      ['DUT', 'REF'].forEach(dev => {
+        const stats = udpDataRaw?.[dir]?.[taskName]?.[jsonCat]?.[dev]?.Throughput;
+        if (!stats || !stats.Mean) return;
+        let { Minimum: min, Maximum: max, Q1: q1, Median: median, Q3: q3, Outliers: outliers = [], Mean: mean, 'Standard Deviation': stdDev } = stats;
+        if (q1 === undefined) {
+          median = mean;
+          q1 = Math.max(min, mean - 0.675 * stdDev);
+          q3 = Math.min(max, mean + 0.675 * stdDev);
+        }
+        plotData.push({ x: `${labelMap[jsonCat]} (${dev})`, min, q1, median, q3, max, outliers });
+      });
+    });
+    return plotData;
+  };
+
   return (
     <>
       <div className="page-content">
@@ -543,10 +564,23 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
           {group}
         </div>
       ))}
+      <div className="page-content">
+        <DpBoxPlot
+          data={getUdpMhsBoxPlotData('DL', 'UDP Download Task at 200 Mbps for 10 seconds')}
+          title="MHS UDP Download Throughput Box Plot (200 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
+        />
+        <DpBoxPlot
+          data={getUdpMhsBoxPlotData('DL', 'UDP Download Task at 400 Mbps for 10 seconds')}
+          title="MHS UDP Download Throughput Box Plot (400 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
+        />
+      </div>
 
       <div className="page-content">
         <DpMHSUdpTable data={udp_Stationary_UL} tableName="MHS UDP Test UL Details" />
       </div>
+
       {uploadHistogramData.reduce((acc, histogram, index) => {
         const component = (
           <DpHistogramComponent
@@ -568,6 +602,18 @@ function Dp_MHS_Udp_Component({ city: propCity }) {
           {group}
         </div>
       ))}
+      <div className="page-content">
+        <DpBoxPlot
+          data={getUdpMhsBoxPlotData('UL', 'UDP Upload Task at 10 Mbps for 10 seconds')}
+          title="MHS UDP Upload Throughput Box Plot (10 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
+        />
+        <DpBoxPlot
+          data={getUdpMhsBoxPlotData('UL', 'UDP Upload Task at 20 Mbps for 10 seconds')}
+          title="MHS UDP Upload Throughput Box Plot (20 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
+        />
+      </div>
     </>
   );
 }

@@ -8,6 +8,7 @@ import { ReportContext } from '../../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import '../../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../../CommonPage/DynamicHeader';
+import DpBoxPlot from '../../Statoinary/DpBoxPlot';
 
 import { useEffect } from 'react';
 
@@ -159,6 +160,25 @@ function DpNSAUDPComponent({ city: propCity }) {
 
   const ulOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
 
+  // Helper to build BoxPlot data for NSA UDP tasks (Moderate/Poor categories)
+  const getNsaUdpBoxPlotData = (dir, taskName) => {
+    const plotData = [];
+    ['Moderate', 'Poor'].forEach(cov => {
+      ['DUT', 'REF'].forEach(dev => {
+        const stats = udpData?.[dir]?.[taskName]?.[cov]?.[dev]?.Throughput;
+        if (!stats || !stats.Mean) return;
+        let { Minimum: min, Maximum: max, Q1: q1, Median: median, Q3: q3, Outliers: outliers = [], Mean: mean, 'Standard Deviation': stdDev } = stats;
+        if (q1 === undefined) {
+          median = mean;
+          q1 = Math.max(min, mean - 0.675 * stdDev);
+          q3 = Math.min(max, mean + 0.675 * stdDev);
+        }
+        plotData.push({ x: `${cov} (${dev})`, min, q1, median, q3, max, outliers });
+      });
+    });
+    return plotData;
+  };
+
   return (
     <>
       <div className='page-content'>
@@ -214,7 +234,18 @@ function DpNSAUDPComponent({ city: propCity }) {
           />
         ))}
       </div>
-
+      <div className='page-content'>
+        <DpBoxPlot
+          data={getNsaUdpBoxPlotData('DL', 'UDP Download Task at 200 Mbps for 10 seconds')}
+          title="NSA UDP Download Throughput Box Plot (200 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
+        />
+        <DpBoxPlot
+          data={getNsaUdpBoxPlotData('DL', 'UDP Download Task at 400 Mbps for 10 seconds')}
+          title="NSA UDP Download Throughput Box Plot (400 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
+        />
+      </div>
 
       <div className='page-content'>
         <DpNSAUDPULTable data={udp_Stationary_UL} tableName="NSA UDP Test UL Details" />
@@ -256,6 +287,20 @@ function DpNSAUDPComponent({ city: propCity }) {
             barKeys={histogramBarKeys}
           />
         ))}
+      </div>
+
+      <div className='page-content'>
+
+        <DpBoxPlot
+          data={getNsaUdpBoxPlotData('UL', '5G NSA_UDP Upload Task at 10 Mbps for 10 seconds')}
+          title="NSA UDP Upload Throughput Box Plot (10 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
+        />
+        <DpBoxPlot
+          data={getNsaUdpBoxPlotData('UL', '5G NSA_UDP Upload Task at 20 Mbps for 10 seconds')}
+          title="NSA UDP Upload Throughput Box Plot (20 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
+        />
       </div>
     </>
   );

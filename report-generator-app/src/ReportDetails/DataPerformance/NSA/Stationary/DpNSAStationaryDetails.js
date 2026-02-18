@@ -11,6 +11,7 @@ import DpNSAUDPComponent from './DpNSAUDPComponent';
 import { ReportContext } from '../../../../Contexts/ReportContext';
 import { useContext } from 'react';
 import DynamicHeader from '../../../../CommonPage/DynamicHeader';
+import DpBoxPlot from '../../Statoinary/DpBoxPlot';
 
 import { useEffect } from 'react';
 
@@ -151,6 +152,30 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
     { key: 'REF', fill: CHART_COLOR_REF },
   ];
 
+  // Helper to build a single box plot entry from a stats object
+  const getBoxPlotEntry = (label, stats) => {
+    if (!stats || !stats.Mean) return null;
+    let { Minimum: min, Maximum: max, Q1: q1, Median: median, Q3: q3, Outliers: outliers = [], Mean: mean, 'Standard Deviation': stdDev } = stats;
+    if (q1 === undefined) {
+      median = mean;
+      q1 = Math.max(min, mean - 0.675 * stdDev);
+      q3 = Math.min(max, mean + 0.675 * stdDev);
+    }
+    return { x: label, min, q1, median, q3, max, outliers };
+  };
+
+  // Build box plot data for a given direction and getStats function
+  const getNsaBoxPlotData = (dir, getStatsFn) => {
+    const entries = [];
+    ['Moderate', 'Poor'].forEach(cov => {
+      ['DUT', 'REF'].forEach(dev => {
+        const entry = getBoxPlotEntry(`${cov} (${dev})`, getStatsFn(dir, cov, dev));
+        if (entry) entries.push(entry);
+      });
+    });
+    return entries;
+  };
+
   return (
     <>
       <div className='page-content'>
@@ -221,6 +246,18 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
         />
       </div>
       <div className='page-content'>
+        <DpBoxPlot
+          data={getNsaBoxPlotData('DL', getSSStats)}
+          title="Http Single Stream Download Throughput Box Plot"
+          yAxisLabel="Throughput (Mbps)"
+        />
+        <DpBoxPlot
+          data={getNsaBoxPlotData('UL', getSSStats)}
+          title="Http Single Stream Upload Throughput Box Plot"
+          yAxisLabel="Throughput (Mbps)"
+        />
+      </div>
+      <div className='page-content'>
         <DynamicHeader level={2}>HTTP Multi Stream Test Download & Upload - 5G NSA - {city}</DynamicHeader>
         <h4>Http Multi Stream Overview</h4>
         <DpThroughputOverallTable
@@ -286,6 +323,20 @@ function DpNSAStationaryDetails({ city: propCity, firstSection = false }) {
           barKeys={barKeys}
         />
       </div>
+      <div className='page-content'>
+        <DpBoxPlot
+          data={getNsaBoxPlotData('DL', getMSStats)}
+          title="Http Multi Stream Download Throughput Box Plot"
+          yAxisLabel="Throughput (Mbps)"
+        />
+        <DpBoxPlot
+          data={getNsaBoxPlotData('UL', getMSStats)}
+          title="Http Multi Stream Upload Throughput Box Plot"
+          yAxisLabel="Throughput (Mbps)"
+        />
+      </div>
+
+
       <DpNSAUDPComponent city={city} />
       <div className='page-content'>
         <DynamicHeader level={2}>Ping Test - 5G NSA - {city}</DynamicHeader>

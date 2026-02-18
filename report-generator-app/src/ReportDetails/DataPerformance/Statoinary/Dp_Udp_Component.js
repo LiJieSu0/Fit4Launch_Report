@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { CHART_COLOR_DUT, CHART_COLOR_REF } from '../../../Constants/ChartColors';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
+import DpBoxPlot from './DpBoxPlot';
 
 import { useEffect } from 'react';
 
@@ -717,6 +718,26 @@ function Dp_Udp_Component({ city: propCity }) {
     },
   ];
 
+  // Helper to build BoxPlot data for a given direction and task
+  const getUdpBoxPlotData = (dir, taskName, label) => {
+    const categories = ['Good', 'Moderate', 'Poor'];
+    const plotData = [];
+    categories.forEach(cat => {
+      ['DUT', 'REF'].forEach(dev => {
+        const stats = udp_Data_Source?.[dir]?.[taskName]?.[cat]?.[dev]?.Throughput;
+        if (!stats || !stats.Mean) return;
+        let { Minimum: min, Maximum: max, Q1: q1, Median: median, Q3: q3, Outliers: outliers = [], Mean: mean, 'Standard Deviation': stdDev } = stats;
+        if (q1 === undefined) {
+          median = mean;
+          q1 = Math.max(min, mean - 0.675 * stdDev);
+          q3 = Math.min(max, mean + 0.675 * stdDev);
+        }
+        plotData.push({ x: `${cat} (${dev})`, min, q1, median, q3, max, outliers });
+      });
+    });
+    return plotData;
+  };
+
   return (
     <>
       <div className='page-content'>
@@ -769,6 +790,18 @@ function Dp_Udp_Component({ city: propCity }) {
         />
       </div>
 
+      <div className='page-content'>
+        <DpBoxPlot
+          data={getUdpBoxPlotData('DL', dl200TaskName, '200 Mbps')}
+          title="UDP Download Throughput Box Plot (200 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
+        />
+        <DpBoxPlot
+          data={getUdpBoxPlotData('DL', dl400TaskName, '400 Mbps')}
+          title="UDP Download Throughput Box Plot (400 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
+        />
+      </div>
 
       <div className='page-content'>
         <DynamicHeader level={3}>UDP Upload Details - 5G Auto - {city}</DynamicHeader>
@@ -791,7 +824,6 @@ function Dp_Udp_Component({ city: propCity }) {
       </div>
 
       <div className='page-content'>
-
         <DpHistogramComponent
           data={ulMeanJitter10HistogramData}
           title="UDP Upload Mean Jitter (10 Mbps)"
@@ -807,7 +839,6 @@ function Dp_Udp_Component({ city: propCity }) {
       </div>
 
       <div className='page-content'>
-
         <DpHistogramComponent
           data={ulPFR10HistogramData}
           title="UDP Upload Packet Failure Rate (10 Mbps)"
@@ -819,6 +850,19 @@ function Dp_Udp_Component({ city: propCity }) {
           title="UDP Upload Packet Failure Rate (20 Mbps)"
           yAxisLabel="Packet Failure Rate (%)"
           barKeys={barKeys}
+        />
+      </div>
+
+      <div className='page-content'>
+        <DpBoxPlot
+          data={getUdpBoxPlotData('UL', ul10TaskName, '10 Mbps')}
+          title="UDP Upload Throughput Box Plot (10 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
+        />
+        <DpBoxPlot
+          data={getUdpBoxPlotData('UL', ul20TaskName, '20 Mbps')}
+          title="UDP Upload Throughput Box Plot (20 Mbps)"
+          yAxisLabel="Throughput (Mbps)"
         />
       </div>
     </>

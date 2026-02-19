@@ -28,61 +28,67 @@ const WfcDetailsPage = () => {
       {/* Baseline Celluar and wfc call performance */}
       <WfcTestDetailsPage tc="TC150" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline" sectionNumber={1} />
-      {/* TC151 */}
       <WfcTestDetailsPage tc="TC151" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline (LinkSys Hydra Pro 6E)" />
+
+
+
       {/* WFC Call Performance */}
       {/* WFC call overall performance */}
-      {/* TC152 */}
+
+
+      {/* LinkSys Hydra Pro 6E */}
       {/* TC153 */}
       {/* TC154 */}
       {/* TC155 */}
+
+      {/* ASUS RT-AC68U */}
       {/* TC156 */}
       {/* TC157 */}
       {/* TC158 */}
+
+      {/* Google Nest AP AC2200 */}
       {/* TC159 */}
       {/* TC160 */}
       {/* TC161 */}
 
-      {/* haven't classify yet */}
 
-
-      {/* Overall Handover Performance */}
-      {/* TC162 */}
-      {/* TC163 */}
 
       {/* Multi Handover */}
+      {/* Profile 1 */}
+      {/* TC162 */}
+      {/* TC163 */}
       {/* TC164 */}
+      {/* Profile 2 */}
       {/* TC165 */}
       {/* TC166 */}
       {/* TC167 */}
+      {/* Profile 3 */}
       {/* TC168 */}
       {/* TC169 */}
       {/* TC170 */}
-      {/* TC171 */}
 
       {/* IP Impairments */}
+      {/* TC171 */}
       {/* TC172 */}
       {/* TC173 */}
-      {/* TC174 */}
 
       {/* In of WFC Coverage */}
+      {/* TC174 */}
       {/* TC175 */}
       {/* TC176 */}
-      {/* TC177 */}
 
       {/* Out of WFC Coverage */}
+      {/* TC177 */}
       {/* TC178 */}
       {/* TC179 */}
+
+
+      {/* haven't classified yet */}
+      {/* TC152 */}
       {/* TC180 */}
 
-      {/* Multi Handover */}
 
-      {/* IP Impairments */}
-
-      {/* In of WFC Coverage */}
-
-      {/* Out of WFC Coverage */}
 
 
 

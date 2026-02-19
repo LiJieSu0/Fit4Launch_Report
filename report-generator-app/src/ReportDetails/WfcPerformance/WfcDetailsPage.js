@@ -26,8 +26,8 @@ const WfcDetailsPage = () => {
       {/* <WfcTestDetailsPage tc="TC178" label="Out of WFC Coverage" /> */}
 
       {/* Baseline Celluar and wfc call performance */}
-      <WfcTestDetailsPage tc="TC150" label="Call Performance Baseline" sectionNumber={1} />
-      {/* TC150 */}
+      <WfcTestDetailsPage tc="TC150" label="Call Performance Baseline"
+        caseTitle="Cellular Call Performance and Audio Quality Baseline" sectionNumber={1} />
       {/* TC151 */}
 
       {/* WFC Call Performance */}

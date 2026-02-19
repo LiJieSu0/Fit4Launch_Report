@@ -26,10 +26,53 @@ const WfcDetailsPage = () => {
       {/* <WfcTestDetailsPage tc="TC178" label="Out of WFC Coverage" /> */}
 
       {/* Baseline Celluar and wfc call performance */}
+      {/* TC150 */}
+      {/* TC151 */}
 
       {/* WFC Call Performance */}
+      {/* WFC call overall performance */}
+      {/* TC152 */}
+      {/* TC153 */}
+      {/* TC154 */}
+      {/* TC155 */}
+      {/* TC156 */}
+      {/* TC157 */}
+      {/* TC158 */}
+      {/* TC159 */}
+      {/* TC160 */}
+      {/* TC161 */}
+
+      {/* haven't classify yet */}
+
 
       {/* Overall Handover Performance */}
+      {/* TC162 */}
+      {/* TC163 */}
+
+      {/* Multi Handover */}
+      {/* TC164 */}
+      {/* TC165 */}
+      {/* TC166 */}
+      {/* TC167 */}
+      {/* TC168 */}
+      {/* TC169 */}
+      {/* TC170 */}
+      {/* TC171 */}
+
+      {/* IP Impairments */}
+      {/* TC172 */}
+      {/* TC173 */}
+      {/* TC174 */}
+
+      {/* In of WFC Coverage */}
+      {/* TC175 */}
+      {/* TC176 */}
+      {/* TC177 */}
+
+      {/* Out of WFC Coverage */}
+      {/* TC178 */}
+      {/* TC179 */}
+      {/* TC180 */}
 
       {/* Multi Handover */}
 

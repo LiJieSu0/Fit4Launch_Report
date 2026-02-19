@@ -158,7 +158,13 @@ For individual CSV files (Data Performance, etc.), the `_determine_analysis_para
 ### H. WFC Performance (`wfc_performance_analyzer.py`)
 
 *   **TC Determination**: Test Case (TC) is extracted from the filename (e.g., `TC-164` or `TC164`). Fallback to parent directory name if not found in filename.
-*   **Logic**: Aggregates data from multiple CSV files/runs for the same TC and Category (DUT MO, REF MO, DUT MT, REF MT). 
+*   **Category (MO/MT) Determination**:
+    *   **Device**: `DUT` (default) or `REF` if "REF" is in filename.
+    *   **Direction**: Identified by `MO` or `MT` keywords.
+    *   **Flexible Delimiters**: The analyzer use a robust regex `r'(?:[^a-zA-Z0-9]|^)(MO|MT)(?:[^a-zA-Z0-9]|$)'`. This supports `MO`/`MT` surrounded by ANY non-alphanumeric character (e.g., `_`, `-`, ` `, `.`, `[`).
+    *   > [!NOTE]
+    *   > **TC151 Improvement**: Filenames like `SEA DUT MO_TC-151.csv` are now correctly identified as `DUT MO`.
+*   **Logic**: Aggregates data from multiple CSV files/runs for the same TC and Category. 
 *   **Excluded Directories**: Skips `MOS PATCH` directory if present (standard analysis is used for all).
 *   **Handover Count**: Specifically for **TC >= 162**, counts transitions between `NR` and `IWLAN` in the network type header.
 
@@ -177,7 +183,32 @@ For individual CSV files (Data Performance, etc.), the `_determine_analysis_para
 
 *   **Logic**: Executed during pipeline post-processing. Groups WFC files by TC and generates statistical distributions.
 *   **TC164+ Special Handling**: For **TC >= 164**, data is grouped by `DUT`/`REF` only (no MO/MT separation). For older TCs, MO/MT separation is maintained.
+*   **MO/MT Detection**: Both MOS and RSSI charts now use a consistent, robust regex to identify MO/MT, supporting various delimiters including spaces.
 *   **MOS Line Chart**: Bins MOS values into intervals (e.g., `< 2.0`, `[2.0, 2.1)`, ..., `[4.4, 4.5)`, `>= 4.5`) and calculates percentages.
 *   **RSSI Line Chart**: 
     1. Bins RSSI values (e.g., `< -100`, `[-100, -98)`, ..., `[-32, -30)`, `>= -30`).
     2. Exports raw RSSI samples to a corresponding CSV file for detailed analysis.
+
+---
+
+## 3. Filename Naming Conventions (`rules.py`)
+
+The pipeline uses token-based matching to validate and classify files. Standard tokens include:
+
+| Category | Options |
+| :--- | :--- |
+| **Operator** | `TMO`, `ATT`, `VZW` |
+| **Network** | `SA`, `LTE`, `VONR ON`, `VONR OFF`, `5G AUTO`, `5G NSA` |
+| **City** | `SEA`, `NY` |
+| **Device** | `DUT` (CH01), `REF` (CH02) |
+| **Location** | `L1` (Good), `L2` (Moderate), `L3` (Poor) |
+| **Band** | `N41`, `N25`, `N71` |
+| **VQ Mode** | `BASE`, `MOBILE` |
+
+### WFC Specific Naming
+For WFC tests, the filename should ideally follow:
+`{Operator}_{Network}_WFC_{Device}-{Direction}_TC-{Number}.csv`
+Example: `TMO_5G_WFC_DUT-MO_TC-151.csv`
+
+> [!TIP]
+> **Supported Delimiters**: The pipeline now supports any non-alphanumeric character as a delimiter for `MO`/`MT` (e.g., `DUT MO`, `DUT_MO`, `DUT-MO`).

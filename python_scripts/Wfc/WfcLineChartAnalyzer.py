@@ -50,7 +50,8 @@ def calculate_wfc_statistics(file_paths, output_json_path="wfc_statistics.json")
         if tc_num and tc_num >= 164:
             call_type = "" # No suffix
         else:
-            match_call = re.search(r'[-_ ](MO|MT)[-_ ]', filename_upper)
+            # Improved regex to catch MO/MT with various delimiters (any non-alphanumeric) or at boundaries
+            match_call = re.search(r'(?:[^a-zA-Z0-9]|^)(MO|MT)(?:[^a-zA-Z0-9]|$)', filename_upper)
             if match_call:
                 call_type = match_call.group(1)
         
@@ -175,10 +176,10 @@ def calculate_wfc_rssi_statistics(file_paths, output_json_path="wfc_rssi_statist
             json_key = device
             csv_key = device
         else:
-            if any(x in filename_upper for x in ["_MO_", "_MO-", "-MO_", "-MO-"]):
-                call_type = "MO"
-            elif any(x in filename_upper for x in ["_MT_", "_MT-", "-MT_", "-MT-"]):
-                call_type = "MT"
+            # Improved regex to catch MO/MT with various delimiters (any non-alphanumeric) or at boundaries
+            match_call = re.search(r'(?:[^a-zA-Z0-9]|^)(MO|MT)(?:[^a-zA-Z0-9]|$)', filename_upper)
+            if match_call:
+                call_type = match_call.group(1)
             
             if not call_type:
                 continue

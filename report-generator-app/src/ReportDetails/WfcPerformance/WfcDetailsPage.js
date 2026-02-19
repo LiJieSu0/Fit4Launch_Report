@@ -23,9 +23,21 @@ const WfcDetailsPage = () => {
       <WfcTestDetailsPage tc="TC170" label="Multi Handovers" />
       <WfcTestDetailsPage tc="TC172" label="IP Impairments" />
       <WfcTestDetailsPage tc="TC175" label="In of WFC Coverage" /> */}
-      <WfcTestDetailsPage tc="TC178" label="Out of WFC Coverage" />
+      {/* <WfcTestDetailsPage tc="TC178" label="Out of WFC Coverage" /> */}
 
+      {/* Baseline Celluar and wfc call performance */}
 
+      {/* WFC Call Performance */}
+
+      {/* Overall Handover Performance */}
+
+      {/* Multi Handover */}
+
+      {/* IP Impairments */}
+
+      {/* In of WFC Coverage */}
+
+      {/* Out of WFC Coverage */}
 
 
 

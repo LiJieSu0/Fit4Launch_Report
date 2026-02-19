@@ -50,10 +50,9 @@ def calculate_wfc_statistics(file_paths, output_json_path="wfc_statistics.json")
         if tc_num and tc_num >= 164:
             call_type = "" # No suffix
         else:
-            if any(x in filename_upper for x in ["_MO_", "_MO-", "-MO_", "-MO-"]):
-                call_type = "MO"
-            elif any(x in filename_upper for x in ["_MT_", "_MT-", "-MT_", "-MT-"]):
-                call_type = "MT"
+            match_call = re.search(r'[-_ ](MO|MT)[-_ ]', filename_upper)
+            if match_call:
+                call_type = match_call.group(1)
         
         if not call_type and (not tc_num or tc_num < 164):
             # If no MO/MT in filename and it's an old TC, skip

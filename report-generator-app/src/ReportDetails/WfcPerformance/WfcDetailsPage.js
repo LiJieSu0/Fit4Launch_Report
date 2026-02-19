@@ -29,7 +29,8 @@ const WfcDetailsPage = () => {
       <WfcTestDetailsPage tc="TC150" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline" sectionNumber={1} />
       {/* TC151 */}
-
+      <WfcTestDetailsPage tc="TC151" label="Call Performance Baseline"
+        caseTitle="Cellular Call Performance and Audio Quality Baseline (LinkSys Hydra Pro 6E)" />
       {/* WFC Call Performance */}
       {/* WFC call overall performance */}
       {/* TC152 */}

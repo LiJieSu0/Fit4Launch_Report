@@ -23,14 +23,14 @@ const WfcCallPerformance = ({ title, tc }) => {
                 <table className="mini-performance-table general-table-style" style={{ width: '100%', fontSize: '12px', textAlign: 'center', margin: '0 auto' }}>
                     <thead>
                         <tr>
-                            <th>Profile</th>
+                            <th style={{ width: '15%', whiteSpace: 'nowrap' }}>Profile</th>
                             <th>Device</th>
                             <th>Attempts</th>
                             <th>Mean Setup Time (s)</th>
                             <th>MO MOS</th>
                             <th>MT MOS</th>
-                            <th>Initiations Failure (%)</th>
-                            <th>Retention Failure (%)</th>
+                            <th style={{ width: '8%', whiteSpace: 'normal', wordWrap: 'break-word' }}>Initiations Failure (%)</th>
+                            <th style={{ width: '8%', whiteSpace: 'normal', wordWrap: 'break-word' }}>Retention Failure (%)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,6 +90,66 @@ const WfcCallPerformance = ({ title, tc }) => {
                         })}
                     </tbody>
                 </table>
+
+                {/* Combined P-Value Table */}
+                <div className="p-value-table-container" style={{ marginTop: '20px' }}>
+                    <h4 style={{ textAlign: 'center', margin: '10px 0' }}>P-Value Table</h4>
+                    <table className="mini-performance-table general-table-style" style={{ width: '80%', fontSize: '12px', textAlign: 'center', margin: '0 auto' }}>
+                        <thead>
+                            <tr>
+                                <th>Metrics</th>
+                                {tcList.map((testCase, index) => (
+                                    <th key={`p-header-${testCase}`}>{profileNames[index] || `Profile ${index + 1}`}</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Call Initiation</td>
+                                {tcList.map(testCase => {
+                                    const cityData = projectData[city]?.wfcPerformance?.['WFC']?.[testCase] || {};
+                                    const dutMoData = cityData['DUT MO'] || cityData['DUT'] || {};
+
+                                    const moAttempts = dutMoData.total_mo_attempts || 0;
+                                    const initFailures = dutMoData.total_initiation_failures || 0;
+                                    const moInitFailureRate = moAttempts > 0 ? initFailures / moAttempts : 0;
+
+                                    const pValue = cityData.initiation_p_value !== undefined ? cityData.initiation_p_value : 1;
+
+                                    const cellColor = getKpiCellColor('WfcCallCriteria', pValue, moInitFailureRate);
+
+                                    return (
+                                        <td key={`init-${testCase}`} style={{ backgroundColor: cellColor }}>
+                                            {pValue.toFixed(3)}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                            <tr>
+                                <td>Call Retention</td>
+                                {tcList.map(testCase => {
+                                    const cityData = projectData[city]?.wfcPerformance?.['WFC']?.[testCase] || {};
+                                    const dutMoData = cityData['DUT MO'] || cityData['DUT'] || {};
+
+                                    const moAttempts = dutMoData.total_mo_attempts || 0;
+                                    const retFailures = dutMoData.total_retention_failures || 0;
+                                    const moRetFailureRate = moAttempts > 0 ? retFailures / moAttempts : 0;
+
+                                    const pValue = cityData.retention_p_value !== undefined ? cityData.retention_p_value : 1;
+
+                                    const cellColor = getKpiCellColor('WfcCallCriteria', pValue, moRetFailureRate);
+
+                                    return (
+                                        <td key={`ret-${testCase}`} style={{ backgroundColor: cellColor }}>
+                                            {pValue.toFixed(3)}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         );
     };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useReportData } from '../../Contexts/ReportContext';
 import {
     LineChart,
     Line,
@@ -11,6 +12,7 @@ import {
 } from 'recharts';
 
 const WfcRssiLineChart = ({ tc, city = 'Seattle' }) => {
+    const { project } = useReportData();
     const [chartData, setChartData] = useState([]);
     const [entities, setEntities] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -20,7 +22,8 @@ const WfcRssiLineChart = ({ tc, city = 'Seattle' }) => {
             setLoading(true);
             try {
                 // Filename format: wfc_rssi_statistics_tc151.json
-                const response = await fetch(`/AnalyzeResults/${city}/wfc_rssi_linechart_data/wfc_rssi_statistics_${tc.toLowerCase()}.json`);
+                const folderName = project?.dataFolderName ? `${encodeURIComponent(project.dataFolderName)}/` : '';
+                const response = await fetch(`/AnalyzeResults/${folderName}${city}/wfc_rssi_linechart_data/wfc_rssi_statistics_${tc.toLowerCase()}.json`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -70,10 +73,10 @@ const WfcRssiLineChart = ({ tc, city = 'Seattle' }) => {
             }
         };
 
-        if (tc) {
+        if (tc && project) {
             loadData();
         }
-    }, [tc, city]);
+    }, [tc, city, project]);
 
     const formatYAxis = (tick) => `${tick}%`;
 

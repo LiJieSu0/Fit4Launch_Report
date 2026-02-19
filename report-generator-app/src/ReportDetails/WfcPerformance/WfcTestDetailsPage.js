@@ -88,124 +88,127 @@ const WfcTestDetailsPage = ({ tc, caseTitle = "", label, sectionNumber = 0 }) =>
                                     getChartValue(cityData['REF MT']?.mos_average)
                                 ] : [getChartValue(cityData['REF']?.mos_average)]}
                             />
+                            {label !== 'Call Performance Baseline' && (
+                                <>
+                                    {/* RSSI Section */}
+                                    <div className="metric-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                        <table className="mini-performance-table general-table-style" style={{ width: '100%', marginBottom: '10px', fontSize: '12px' }}>
+                                            <thead>
+                                                <tr>
+                                                    <th>RSSI (dBm)</th>
+                                                    {hasMoMt ? (
+                                                        <>
+                                                            <th>MO</th>
+                                                            <th>MT</th>
+                                                        </>
+                                                    ) : (
+                                                        <th>Result</th>
+                                                    )}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>DUT</td>
+                                                    {hasMoMt ? (
+                                                        <>
+                                                            <td>{formatVal(cityData['DUT MO']?.rssi_average)}</td>
+                                                            <td>{formatVal(cityData['DUT MT']?.rssi_average)}</td>
+                                                        </>
+                                                    ) : (
+                                                        <td style={{ backgroundColor: 'var(--performance-pass)' }}>{formatVal(cityData['DUT']?.rssi_average)}</td>
+                                                    )}
+                                                </tr>
+                                                <tr>
+                                                    <td>REF</td>
+                                                    {hasMoMt ? (
+                                                        <>
+                                                            <td>{formatVal(cityData['REF MO']?.rssi_average)}</td>
+                                                            <td>{formatVal(cityData['REF MT']?.rssi_average)}</td>
+                                                        </>
+                                                    ) : (
+                                                        <td>{formatVal(cityData['REF']?.rssi_average)}</td>
+                                                    )}
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <WfcPerformanceChart
+                                            title="Average RSSI"
+                                            labels={hasMoMt ? ['MO', 'MT'] : ['Result']}
+                                            yAxisTitle="RSSI (dBm)"
+                                            dutValues={hasMoMt ? [
+                                                getChartValue(cityData['DUT MO']?.rssi_average),
+                                                getChartValue(cityData['DUT MT']?.rssi_average)
+                                            ] : [getChartValue(cityData['DUT']?.rssi_average)]}
+                                            refValues={hasMoMt ? [
+                                                getChartValue(cityData['REF MO']?.rssi_average),
+                                                getChartValue(cityData['REF MT']?.rssi_average)
+                                            ] : [getChartValue(cityData['REF']?.rssi_average)]}
+                                        />
+                                    </div>
 
-                            {/* RSSI Section */}
-                            <div className="metric-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                <table className="mini-performance-table general-table-style" style={{ width: '100%', marginBottom: '10px', fontSize: '12px' }}>
-                                    <thead>
-                                        <tr>
-                                            <th>RSSI (dBm)</th>
-                                            {hasMoMt ? (
-                                                <>
-                                                    <th>MO</th>
-                                                    <th>MT</th>
-                                                </>
-                                            ) : (
-                                                <th>Result</th>
-                                            )}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>DUT</td>
-                                            {hasMoMt ? (
-                                                <>
-                                                    <td>{formatVal(cityData['DUT MO']?.rssi_average)}</td>
-                                                    <td>{formatVal(cityData['DUT MT']?.rssi_average)}</td>
-                                                </>
-                                            ) : (
-                                                <td style={{ backgroundColor: 'var(--performance-pass)' }}>{formatVal(cityData['DUT']?.rssi_average)}</td>
-                                            )}
-                                        </tr>
-                                        <tr>
-                                            <td>REF</td>
-                                            {hasMoMt ? (
-                                                <>
-                                                    <td>{formatVal(cityData['REF MO']?.rssi_average)}</td>
-                                                    <td>{formatVal(cityData['REF MT']?.rssi_average)}</td>
-                                                </>
-                                            ) : (
-                                                <td>{formatVal(cityData['REF']?.rssi_average)}</td>
-                                            )}
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <WfcPerformanceChart
-                                    title="Average RSSI"
-                                    labels={hasMoMt ? ['MO', 'MT'] : ['Result']}
-                                    yAxisTitle="RSSI (dBm)"
-                                    dutValues={hasMoMt ? [
-                                        getChartValue(cityData['DUT MO']?.rssi_average),
-                                        getChartValue(cityData['DUT MT']?.rssi_average)
-                                    ] : [getChartValue(cityData['DUT']?.rssi_average)]}
-                                    refValues={hasMoMt ? [
-                                        getChartValue(cityData['REF MO']?.rssi_average),
-                                        getChartValue(cityData['REF MT']?.rssi_average)
-                                    ] : [getChartValue(cityData['REF']?.rssi_average)]}
-                                />
-                            </div>
-
-                            {/* RSRP Section */}
-                            <div className="metric-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                <table className="mini-performance-table general-table-style" style={{ width: '100%', marginBottom: '10px', fontSize: '12px' }}>
-                                    <thead>
-                                        <tr>
-                                            <th>RSRP (dBm)</th>
-                                            {hasMoMt ? (
-                                                <>
-                                                    <th>MO</th>
-                                                    <th>MT</th>
-                                                </>
-                                            ) : (
-                                                <th>Result</th>
-                                            )}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>DUT</td>
-                                            {hasMoMt ? (
-                                                <>
-                                                    <td>{formatVal(cityData['DUT MO']?.rsrp_average)}</td>
-                                                    <td>{formatVal(cityData['DUT MT']?.rsrp_average)}</td>
-                                                </>
-                                            ) : (
-                                                <td style={{ backgroundColor: 'var(--performance-pass)' }}>{formatVal(cityData['DUT']?.rsrp_average)}</td>
-                                            )}
-                                        </tr>
-                                        <tr>
-                                            <td>REF</td>
-                                            {hasMoMt ? (
-                                                <>
-                                                    <td>{formatVal(cityData['REF MO']?.rsrp_average)}</td>
-                                                    <td>{formatVal(cityData['REF MT']?.rsrp_average)}</td>
-                                                </>
-                                            ) : (
-                                                <td>{formatVal(cityData['REF']?.rsrp_average)}</td>
-                                            )}
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <WfcPerformanceChart
-                                    title="Average RSRP"
-                                    labels={hasMoMt ? ['MO', 'MT'] : ['Result']}
-                                    yAxisTitle="RSRP (dBm)"
-                                    dutValues={hasMoMt ? [
-                                        getChartValue(cityData['DUT MO']?.rsrp_average),
-                                        getChartValue(cityData['DUT MT']?.rsrp_average)
-                                    ] : [getChartValue(cityData['DUT']?.rsrp_average)]}
-                                    refValues={hasMoMt ? [
-                                        getChartValue(cityData['REF MO']?.rsrp_average),
-                                        getChartValue(cityData['REF MT']?.rsrp_average)
-                                    ] : [getChartValue(cityData['REF']?.rsrp_average)]}
-                                />
-                            </div>
+                                    {/* RSRP Section */}
+                                    <div className="metric-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                        <table className="mini-performance-table general-table-style" style={{ width: '100%', marginBottom: '10px', fontSize: '12px' }}>
+                                            <thead>
+                                                <tr>
+                                                    <th>RSRP (dBm)</th>
+                                                    {hasMoMt ? (
+                                                        <>
+                                                            <th>MO</th>
+                                                            <th>MT</th>
+                                                        </>
+                                                    ) : (
+                                                        <th>Result</th>
+                                                    )}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>DUT</td>
+                                                    {hasMoMt ? (
+                                                        <>
+                                                            <td>{formatVal(cityData['DUT MO']?.rsrp_average)}</td>
+                                                            <td>{formatVal(cityData['DUT MT']?.rsrp_average)}</td>
+                                                        </>
+                                                    ) : (
+                                                        <td style={{ backgroundColor: 'var(--performance-pass)' }}>{formatVal(cityData['DUT']?.rsrp_average)}</td>
+                                                    )}
+                                                </tr>
+                                                <tr>
+                                                    <td>REF</td>
+                                                    {hasMoMt ? (
+                                                        <>
+                                                            <td>{formatVal(cityData['REF MO']?.rsrp_average)}</td>
+                                                            <td>{formatVal(cityData['REF MT']?.rsrp_average)}</td>
+                                                        </>
+                                                    ) : (
+                                                        <td>{formatVal(cityData['REF']?.rsrp_average)}</td>
+                                                    )}
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <WfcPerformanceChart
+                                            title="Average RSRP"
+                                            labels={hasMoMt ? ['MO', 'MT'] : ['Result']}
+                                            yAxisTitle="RSRP (dBm)"
+                                            dutValues={hasMoMt ? [
+                                                getChartValue(cityData['DUT MO']?.rsrp_average),
+                                                getChartValue(cityData['DUT MT']?.rsrp_average)
+                                            ] : [getChartValue(cityData['DUT']?.rsrp_average)]}
+                                            refValues={hasMoMt ? [
+                                                getChartValue(cityData['REF MO']?.rsrp_average),
+                                                getChartValue(cityData['REF MT']?.rsrp_average)
+                                            ] : [getChartValue(cityData['REF']?.rsrp_average)]}
+                                        />
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </PageBreak>
                 <div>
                     <PageBreak>
-                        <WfcRssiLineChart tc={tc} city={city} />
+                        {label !== 'Call Performance Baseline' && <WfcRssiLineChart tc={tc} city={city} />}
                         {/* <WfcRssiTimeLineChart tc={tc} city={city} /> */}
                         <WfcMosLineChart tc={tc} city={city} />
                     </PageBreak>

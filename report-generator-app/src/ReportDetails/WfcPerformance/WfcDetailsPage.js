@@ -1,56 +1,65 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
-import WfcTestDetailsPage from './WfcTestDetailsPage';
+import WfcBaselineDetails from './WfcBaselineDetails';
+import PageBreak from '../../CommonPage/PageBreak';
+import WfcCallPerformance from './WfcCallPerformance';
+import DynamicHeader from '../../CommonPage/DynamicHeader';
 const WfcDetailsPage = () => {
 
   return (
     <>
-      {/* <WfcTestDetailsPage tc="TC150" label="Call Performance Baseline" sectionNumber={1} />
-      <WfcTestDetailsPage tc="TC151" label="Call Performance Baseline" />
-      <WfcTestDetailsPage tc="TC152" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC153" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC154" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC155" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC156" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC157" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC158" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC159" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC160" label="Call Performance" />
-      <WfcTestDetailsPage tc="TC161" label="Call Performance" />
+      {/* <WfcBaselineDetails tc="TC150" label="Call Performance Baseline" sectionNumber={1} />
+      <WfcBaselineDetails tc="TC151" label="Call Performance Baseline" />
+      <WfcBaselineDetails tc="TC152" label="Call Performance" />
+      <WfcBaselineDetails tc="TC153" label="Call Performance" />
+      <WfcBaselineDetails tc="TC154" label="Call Performance" />
+      <WfcBaselineDetails tc="TC155" label="Call Performance" />
+      <WfcBaselineDetails tc="TC156" label="Call Performance" />
+      <WfcBaselineDetails tc="TC157" label="Call Performance" />
+      <WfcBaselineDetails tc="TC158" label="Call Performance" />
+      <WfcBaselineDetails tc="TC159" label="Call Performance" />
+      <WfcBaselineDetails tc="TC160" label="Call Performance" />
+      <WfcBaselineDetails tc="TC161" label="Call Performance" />
 
-      <WfcTestDetailsPage tc="TC164" label="Multi Handovers" sectionNumber={2} />
-      <WfcTestDetailsPage tc="TC167" label="Multi Handovers" />
-      <WfcTestDetailsPage tc="TC170" label="Multi Handovers" />
-      <WfcTestDetailsPage tc="TC172" label="IP Impairments" />
-      <WfcTestDetailsPage tc="TC175" label="In of WFC Coverage" /> */}
-      {/* <WfcTestDetailsPage tc="TC178" label="Out of WFC Coverage" /> */}
+      <WfcBaselineDetails tc="TC164" label="Multi Handovers" sectionNumber={2} />
+      <WfcBaselineDetails tc="TC167" label="Multi Handovers" />
+      <WfcBaselineDetails tc="TC170" label="Multi Handovers" />
+      <WfcBaselineDetails tc="TC172" label="IP Impairments" />
+      <WfcBaselineDetails tc="TC175" label="In of WFC Coverage" /> */}
+      {/* <WfcBaselineDetails tc="TC178" label="Out of WFC Coverage" /> */}
 
       {/* Baseline Celluar and wfc call performance */}
-      <WfcTestDetailsPage tc="TC150" label="Call Performance Baseline"
+      <WfcBaselineDetails tc="TC150" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline" sectionNumber={1} />
-      <WfcTestDetailsPage tc="TC151" label="Call Performance Baseline"
+      <WfcBaselineDetails tc="TC151" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline (LinkSys Hydra Pro 6E)" />
 
 
 
       {/* WFC Call Performance */}
-      {/* WFC call overall performance */}
+      <PageBreak>
+        <DynamicHeader level={1}>Wifi Call Performance</DynamicHeader>
+        {/* WFC call overall performance table, total call numbers*/}
+      </PageBreak>
 
+      {/* No impairment */}
+      {/* TC152 */}
 
       {/* LinkSys Hydra Pro 6E */}
-      {/* TC153 */}
-      {/* TC154 */}
-      {/* TC155 */}
+      <WfcCallPerformance title="LinkSys Hydra Pro 6E" tc="TC153 TC154 TC155" />
+      {/* TC153 ETSI-B*/}
+      {/* TC154 NSD-A*/}
+      {/* TC155 NSD-C*/}
 
       {/* ASUS RT-AC68U */}
-      {/* TC156 */}
-      {/* TC157 */}
-      {/* TC158 */}
+      {/* TC156 ETSI-B*/}
+      {/* TC157 NSD-A*/}
+      {/* TC158 NSD-C*/}
 
       {/* Google Nest AP AC2200 */}
-      {/* TC159 */}
-      {/* TC160 */}
-      {/* TC161 */}
+      {/* TC159 ETSI-B*/}
+      {/* TC160 NSD-A*/}
+      {/* TC161 NSD-C*/}
 
 
 
@@ -85,7 +94,6 @@ const WfcDetailsPage = () => {
 
 
       {/* haven't classified yet */}
-      {/* TC152 */}
       {/* TC180 */}
 
 

@@ -11,7 +11,7 @@ import WfcCpTable from './WfcCpTable';
 import WfcHandoverTable from './WfcHandoverTable';
 import WfcRssiTimeLineChart from './WfcRssiTimeLineChart';
 
-const WfcTestDetailsPage = ({ tc, caseTitle = "", label, sectionNumber = 0 }) => {
+const WfcBaselineDetails = ({ tc, caseTitle = "", label, sectionNumber = 0 }) => {
     const { projectData, availableCities } = useReportData();
 
     const renderMarketTable = (city) => {
@@ -224,4 +224,4 @@ const WfcTestDetailsPage = ({ tc, caseTitle = "", label, sectionNumber = 0 }) =>
     );
 };
 
-export default WfcTestDetailsPage;
+export default WfcBaselineDetails;

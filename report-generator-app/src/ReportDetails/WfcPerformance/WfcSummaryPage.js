@@ -192,61 +192,6 @@ const WfcSummaryPage = () => {
           {seattleHandoverData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
         </tbody>
       </table>
-      {/* 
-      <DynamicHeader level={2}>New York Market</DynamicHeader>
-      <h4>Call Performance and Voice Quality</h4>
-      <table className="general-table-style">
-        <thead>
-          <tr>
-            <th>Test</th>
-            <th>Call Setup Time</th>
-            <th>Call Initiation</th>
-            <th>Call Retention</th>
-            <th>MO MOS</th>
-            <th>MT MOS</th>
-          </tr>
-        </thead>
-        <tbody>
-          {newYorkData.map((row, index) => (
-            <tr key={index}>
-              <td>{row.test}</td>
-              <td style={{ backgroundColor: row.callSetupTimeColor }}><a href={row.link}>Result</a></td>
-              <td style={{ backgroundColor: row.callInitiationColor }}><a href={row.link}>Result</a></td>
-              <td style={{ backgroundColor: row.callRetentionColor }}><a href={row.link}>Result</a></td>
-              <td style={{ backgroundColor: row.moMosColor }}><a href={row.link}>Result</a></td>
-              <td style={{ backgroundColor: row.mtMosColor }}><a href={row.link}>Result</a></td>
-            </tr>
-          ))}
-          {newYorkData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
-        </tbody>
-      </table>
-
-      <h4>Handover Case</h4>
-      <table className="general-table-style">
-        <thead>
-          <tr>
-            <th>Test</th>
-            <th>Average MOS</th>
-            <th>Average RSSI</th>
-            <th>Average RSRP</th>
-            <th>Call Drops</th>
-            <th>Handovers</th>
-          </tr>
-        </thead>
-        <tbody>
-          {newYorkHandoverData.map((row, index) => (
-            <tr key={index}>
-              <td>{row.test}</td>
-              <td style={{ backgroundColor: row.mosColor }}><a href={row.link}>Result</a></td>
-              <td>{row.rssi}</td>
-              <td>{row.rsrp}</td>
-              <td>{row.callDrops}</td>
-              <td>{row.handovers}</td>
-            </tr>
-          ))}
-          {newYorkHandoverData.length === 0 && <tr><td colSpan="6" style={{ textAlign: 'center' }}>No data available</td></tr>}
-        </tbody>
-      </table> */}
     </PageBreak>
   );
 };

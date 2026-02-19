@@ -154,7 +154,7 @@ function App() {
 
       {currentReport === "WFC" && (
         <>
-          <WfcSummaryPage />
+          {/* <WfcSummaryPage /> */}
           <WfcDetailsPage />
           <WfcKpiPage />
         </>

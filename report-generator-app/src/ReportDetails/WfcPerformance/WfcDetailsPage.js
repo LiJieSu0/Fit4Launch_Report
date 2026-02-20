@@ -29,11 +29,11 @@ const WfcDetailsPage = () => {
       {/* <WfcBaselineDetails tc="TC178" label="Out of WFC Coverage" /> */}
 
       {/* Baseline Celluar and wfc call performance */}
-      <WfcBaselineDetails tc="TC150" label="Call Performance Baseline"
+      {/* <WfcBaselineDetails tc="TC150" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline" sectionNumber={1} />
       <WfcBaselineDetails tc="TC151" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline (LinkSys Hydra Pro 6E)" />
-
+ */}
 
 
       {/* WFC Call Performance */}

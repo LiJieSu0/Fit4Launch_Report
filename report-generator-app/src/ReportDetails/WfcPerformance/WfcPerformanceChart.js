@@ -27,7 +27,7 @@ const WfcPerformanceChart = ({ labels, dutValues, refValues, title, yAxisTitle, 
     };
 
     const options = {
-        responsive: false,
+        responsive: true,
         maintainAspectRatio: false,
         plugins: {
             legend: {

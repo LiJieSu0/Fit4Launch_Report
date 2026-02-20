@@ -11,7 +11,7 @@ import {
     ResponsiveContainer
 } from 'recharts';
 
-const WfcMosLineChart = ({ tc, city = 'Seattle' }) => {
+const WfcMosLineChart = ({ tc, city = 'Seattle', hideTitle = false, chartWidth = '50%' }) => {
     const { project } = useReportData();
     const [chartData, setChartData] = useState([]);
     const [entities, setEntities] = useState([]);
@@ -89,8 +89,8 @@ const WfcMosLineChart = ({ tc, city = 'Seattle' }) => {
     }
 
     return (
-        <div style={{ width: '50%', height: 300, marginTop: '5px' }}>
-            <h4 style={{ textAlign: 'center', marginBottom: '10px' }}>MOS Distribution</h4>
+        <div style={{ width: chartWidth, height: 300, marginTop: '5px' }}>
+            {!hideTitle && <h4 style={{ textAlign: 'center', marginBottom: '10px' }}>MOS Distribution</h4>}
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                     data={chartData}

@@ -61,7 +61,10 @@ const WfcBaselineDetails = ({ tc, caseTitle = "", label, sectionNumber = 0 }) =>
                             <WfcHandoverTable cityData={cityData} />
                         )}
 
-                        <div className="charts-grid-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '10px', width: '100%', boxSizing: 'border-box' }}>
+                        <div className="charts-grid-container" style={{
+                            display: 'grid', gridTemplateColumns: '1fr 1fr',
+                            gap: '40px', marginTop: '10px', width: '50%', boxSizing: 'border-box', marginBottom: '80px'
+                        }}>
                             <WfcPerformanceChart
                                 title="Mean Setup Time"
                                 labels={hasMoMt ? ['MO', 'MT'] : ['Result']}
@@ -204,14 +207,13 @@ const WfcBaselineDetails = ({ tc, caseTitle = "", label, sectionNumber = 0 }) =>
                                 </>
                             )}
                         </div>
-                    </div>
-                </PageBreak>
-                <div>
-                    <PageBreak>
                         {label !== 'Call Performance Baseline' && <WfcRssiLineChart tc={tc} city={city} />}
                         {/* <WfcRssiTimeLineChart tc={tc} city={city} /> */}
                         <WfcMosLineChart tc={tc} city={city} />
-                    </PageBreak>
+                    </div>
+                </PageBreak>
+                <div>
+
                 </div>
             </>
         );

@@ -193,7 +193,7 @@ const WfcCallPerformance = ({ title, tc }) => {
         const { chartLabels, setupTimeDutValues, setupTimeRefValues, mosDutValues, mosRefValues } = getChartData(city);
 
         return (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', width: '60%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '50%' }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
                     <WfcPerformanceChart
                         labels={chartLabels}
@@ -220,7 +220,7 @@ const WfcCallPerformance = ({ title, tc }) => {
 
     const renderLineCharts = (city) => {
         return (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', alignItems: 'center', width: '100%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', width: '80%', marginLeft: '-150px' }}>
                 {tcList.map((testCase, index) => (
                     <div key={`mos-dist-${index}`} style={{ width: '90%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <WfcMosLineChart tc={testCase} city={city} hideTitle={true} chartWidth="70%" />
@@ -232,7 +232,7 @@ const WfcCallPerformance = ({ title, tc }) => {
     };
 
     return (
-        <div className="market-section" style={{ marginBottom: '60px' }}>
+        <>
             <PageBreak>
                 <DynamicHeader level={2}>{title}</DynamicHeader>
                 {availableCities.filter(city => city === 'Seattle').map(city => (
@@ -251,12 +251,13 @@ const WfcCallPerformance = ({ title, tc }) => {
             </PageBreak>
             <PageBreak>
                 {availableCities.filter(city => city === 'Seattle').map(city => (
-                    <div key={`line-charts-${city}`} style={{ paddingTop: '20px' }}>
+                    <div key={`line-charts-${city}`} style={{ paddingTop: '5px' }}>
                         {renderLineCharts(city)}
                     </div>
                 ))}
             </PageBreak>
-        </div>
+        </>
+
     );
 };
 

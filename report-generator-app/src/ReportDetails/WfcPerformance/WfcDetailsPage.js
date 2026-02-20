@@ -29,17 +29,17 @@ const WfcDetailsPage = () => {
       {/* <WfcBaselineDetails tc="TC178" label="Out of WFC Coverage" /> */}
 
       {/* Baseline Celluar and wfc call performance */}
-      {/* <WfcBaselineDetails tc="TC150" label="Call Performance Baseline"
+      <WfcBaselineDetails tc="TC150" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline" sectionNumber={1} />
       <WfcBaselineDetails tc="TC151" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline (LinkSys Hydra Pro 6E)" />
- */}
+
 
 
       {/* WFC Call Performance */}
+      {/* WFC call overall performance table, total call numbers*/}
       <PageBreak>
-        <DynamicHeader level={1}>Wifi Call Performance</DynamicHeader>
-        {/* WFC call overall performance table, total call numbers*/}
+        <DynamicHeader level={1}>Wifi Call Performance Overview</DynamicHeader>
       </PageBreak>
 
       {/* No impairment */}
@@ -50,12 +50,12 @@ const WfcDetailsPage = () => {
       {/* TC153 ETSI-B*/}
       {/* TC154 NSD-A*/}
       {/* TC155 NSD-C*/}
-
+      <WfcCallPerformance title="ASUS RT-AC68U" tc="TC156 TC157 TC158" />
       {/* ASUS RT-AC68U */}
       {/* TC156 ETSI-B*/}
       {/* TC157 NSD-A*/}
       {/* TC158 NSD-C*/}
-
+      <WfcCallPerformance title="Google Nest AP AC2200" tc="TC159 TC160 TC161" />
       {/* Google Nest AP AC2200 */}
       {/* TC159 ETSI-B*/}
       {/* TC160 NSD-A*/}

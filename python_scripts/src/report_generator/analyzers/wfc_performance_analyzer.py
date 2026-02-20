@@ -21,6 +21,7 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
         self.rssi_header = '[WiFi] [Serving AP] RSSI'
         self.rsrp_header = '[Call Test] [Voice Quality] [Per Rx Clip] [RF Quality] 5G RSRP'
         self.rsrp_fallback_header = '[NR5G] [RF] RSRP'
+        self.rsrp_fallback_header_2 = '[NR5G] [Cell Info] Dominant Cell RSRP'
         # Handover Header
         self.network_type_header = '[Mobile Info] [Android] [Radio] Network Type (Data Svc)'
 
@@ -268,6 +269,8 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                         rsrp_avg = self._calculate_column_average(df, self.rsrp_header)
                         if rsrp_avg is None:
                             rsrp_avg = self._calculate_column_average(df, self.rsrp_fallback_header)
+                        if rsrp_avg is None:
+                            rsrp_avg = self._calculate_column_average(df, self.rsrp_fallback_header_2)
                         
                         if mos_avg is not None: category_metrics["mos"].append(mos_avg)
                         if setup_time is not None: category_metrics["setup_time"].append(setup_time)

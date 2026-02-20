@@ -3,6 +3,7 @@ import '../../StyleScript/Restricted_Report_Style.css';
 import WfcBaselineDetails from './WfcBaselineDetails';
 import PageBreak from '../../CommonPage/PageBreak';
 import WfcCallPerformance from './WfcCallPerformance';
+import WfcMultiHandover from './WfcMultiHandover';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 const WfcDetailsPage = () => {
 
@@ -65,17 +66,20 @@ const WfcDetailsPage = () => {
 
       {/* Multi Handover */}
       {/* Profile 1 */}
-      {/* TC162 */}
-      {/* TC163 */}
-      {/* TC164 */}
+        <WfcMultiHandover title="T-Mobile HINT Gateway" tc="TC162 TC163 TC164" />
+        {/* TC162 */}
+        {/* TC163 */}
+        {/* TC164 */}
       {/* Profile 2 */}
-      {/* TC165 */}
-      {/* TC166 */}
-      {/* TC167 */}
+        <WfcMultiHandover title="ASUS RT-AC68U" tc="TC165 TC166 TC167" />
+        {/* TC165 */}
+        {/* TC166 */}
+        {/* TC167 */}
       {/* Profile 3 */}
-      {/* TC168 */}
-      {/* TC169 */}
-      {/* TC170 */}
+        <WfcMultiHandover title="LinkSys Hydra Pro 6E" tc="TC168 TC169 TC170" />
+        {/* TC168 */}
+        {/* TC169 */}
+        {/* TC170 */}
 
       {/* IP Impairments */}
       {/* TC171 */}

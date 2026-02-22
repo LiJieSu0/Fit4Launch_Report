@@ -25,35 +25,42 @@ const SecondaryKpiTable = ({ data }) => (
         <tbody>
             {data.map((runData, runIndex) => (
                 <React.Fragment key={runIndex}>
-                    {runData.segments.map((segmentData, segmentIndex) => (
-                        <tr
-                            key={`${runIndex}-${segmentIndex}`}
-                            className={segmentIndex === runData.segments.length - 1 ? 'run-divider' : ''}
-                        >
-                            {segmentIndex === 0 && (
-                                <td className="run-divider" rowSpan={runData.segments.length}>{runData.run}</td>
-                            )}
-                            <td>{segmentData.segment}</td>
-                            <td>{segmentData.DUT && typeof segmentData.DUT.bler === 'number' ? segmentData.DUT.bler.toFixed(2) : '0.00'}</td>
-                            <td>{segmentData.REF && typeof segmentData.REF.bler === 'number' ? segmentData.REF.bler.toFixed(2) : '0.00'}</td>
-                            <td>{segmentData.DUT && typeof segmentData.DUT.dlMcs === 'number' ? segmentData.DUT.dlMcs.toFixed(2) : '0.00'}</td>
-                            <td>{segmentData.REF && typeof segmentData.REF.dlMcs === 'number' ? segmentData.REF.dlMcs.toFixed(2) : '0.00'}</td>
-                            <td>{segmentData.DUT && typeof segmentData.DUT.ulMcs === 'number' ? segmentData.DUT.ulMcs.toFixed(2) : '0.00'}</td>
-                            <td>{segmentData.REF && typeof segmentData.REF.ulMcs === 'number' ? segmentData.REF.ulMcs.toFixed(2) : '0.00'}</td>
+                    {runData.segments.map((segmentData, segmentIndex) => {
+                        const totalSegments = runData.segments.length;
+                        const isFirst30 = segmentIndex < Math.ceil(totalSegments * 0.3);
+                        const isLast30 = segmentIndex >= totalSegments - Math.ceil(totalSegments * 0.3);
+                        const highlightClass = (isFirst30 || isLast30) ? 'highlight-beige' : '';
 
-                            {/* Render TxPower only on the first row of the run, spanning all segments */}
-                            {segmentIndex === 0 && (
-                                <>
-                                    <td className="run-divider" rowSpan={runData.segments.length}>
-                                        {runData.txPower && typeof runData.txPower.DUT === 'number' ? runData.txPower.DUT.toFixed(2) : '0.00'}
-                                    </td>
-                                    <td className="run-divider" rowSpan={runData.segments.length}>
-                                        {runData.txPower && typeof runData.txPower.REF === 'number' ? runData.txPower.REF.toFixed(2) : '0.00'}
-                                    </td>
-                                </>
-                            )}
-                        </tr>
-                    ))}
+                        return (
+                            <tr
+                                key={`${runIndex}-${segmentIndex}`}
+                                className={segmentIndex === totalSegments - 1 ? 'run-divider' : ''}
+                            >
+                                {segmentIndex === 0 && (
+                                    <td className="run-divider" rowSpan={totalSegments}>{runData.run}</td>
+                                )}
+                                <td className={highlightClass}>{segmentData.segment}</td>
+                                <td className={highlightClass}>{segmentData.DUT && typeof segmentData.DUT.bler === 'number' ? segmentData.DUT.bler.toFixed(2) : '0.00'}</td>
+                                <td className={highlightClass}>{segmentData.REF && typeof segmentData.REF.bler === 'number' ? segmentData.REF.bler.toFixed(2) : '0.00'}</td>
+                                <td className={highlightClass}>{segmentData.DUT && typeof segmentData.DUT.dlMcs === 'number' ? segmentData.DUT.dlMcs.toFixed(2) : '0.00'}</td>
+                                <td className={highlightClass}>{segmentData.REF && typeof segmentData.REF.dlMcs === 'number' ? segmentData.REF.dlMcs.toFixed(2) : '0.00'}</td>
+                                <td className={highlightClass}>{segmentData.DUT && typeof segmentData.DUT.ulMcs === 'number' ? segmentData.DUT.ulMcs.toFixed(2) : '0.00'}</td>
+                                <td className={highlightClass}>{segmentData.REF && typeof segmentData.REF.ulMcs === 'number' ? segmentData.REF.ulMcs.toFixed(2) : '0.00'}</td>
+
+                                {/* Render TxPower only on the first row of the run, spanning all segments */}
+                                {segmentIndex === 0 && (
+                                    <>
+                                        <td className="run-divider" rowSpan={totalSegments}>
+                                            {runData.txPower && typeof runData.txPower.DUT === 'number' ? runData.txPower.DUT.toFixed(2) : '0.00'}
+                                        </td>
+                                        <td className="run-divider" rowSpan={totalSegments}>
+                                            {runData.txPower && typeof runData.txPower.REF === 'number' ? runData.txPower.REF.toFixed(2) : '0.00'}
+                                        </td>
+                                    </>
+                                )}
+                            </tr>
+                        );
+                    })}
                 </React.Fragment>
             ))}
         </tbody>

@@ -9,16 +9,19 @@ const WfcCallOverviewTable = () => {
     const apDataConfig = [
         {
             apName: "LinkSys Hydra Pro 6E",
+            anchorId: "section-linksys-hydra-pro-6e",
             tcs: ["TC153", "TC154", "TC155"],
             profiles: ["ETSI-B", "NSD-A", "NSD-C"]
         },
         {
             apName: "Google Nest AP AC2200",
+            anchorId: "section-google-nest-ap-ac2200",
             tcs: ["TC159", "TC160", "TC161"],
             profiles: ["ETSI-B", "NSD-A", "NSD-C"]
         },
         {
             apName: "ASUS RT-AC68U",
+            anchorId: "section-asus-rt-ac68u",
             tcs: ["TC156", "TC157", "TC158"],
             profiles: ["ETSI-B", "NSD-A", "NSD-C"]
         }
@@ -108,7 +111,13 @@ const WfcCallOverviewTable = () => {
 
                                     return (
                                         <tr key={`${apConfig.apName}-${tc}-${deviceType}`}>
-                                            {tcIndex === 0 && isFirstDevice && <td rowSpan={apConfig.tcs.length * 2}>{apConfig.apName}</td>}
+                                            {tcIndex === 0 && isFirstDevice && (
+                                                <td rowSpan={apConfig.tcs.length * 2}>
+                                                    <a href={`#${apConfig.anchorId}`} style={{ color: 'inherit', textDecoration: 'underline', cursor: 'pointer' }}>
+                                                        {apConfig.apName}
+                                                    </a>
+                                                </td>
+                                            )}
                                             {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
                                             <td>{attempts !== undefined ? attempts : 'N/A'}</td>

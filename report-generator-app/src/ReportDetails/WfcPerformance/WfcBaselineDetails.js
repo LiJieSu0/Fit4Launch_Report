@@ -42,7 +42,7 @@ const WfcBaselineDetails = ({ tc, caseTitle = "", label, sectionNumber = 0 }) =>
                     <div key={city} className="market-section" style={{ marginBottom: '60px', pageBreakAfter: 'always' }}>
                         {/* {sectionNumber == 1 && <DynamicHeader level={2}>Call Performance and Voice Quality</DynamicHeader>} */}
                         {/* {sectionNumber == 2 && <DynamicHeader level={2}>Handover Performance and Voice Quality </DynamicHeader>} */}
-                        <DynamicHeader level={2}>{caseTitle} </DynamicHeader>
+                        <DynamicHeader level={2} id={`section-${caseTitle?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>{caseTitle} </DynamicHeader>
                         {(label === 'Call Performance' || label === 'Call Performance Baseline') && (
                             <>
                                 <WfcCpTable cityData={cityData} />

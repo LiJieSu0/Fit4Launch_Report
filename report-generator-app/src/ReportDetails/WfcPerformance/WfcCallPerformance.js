@@ -234,7 +234,7 @@ const WfcCallPerformance = ({ title, tc }) => {
     return (
         <>
             <PageBreak>
-                <DynamicHeader level={2}>{title}</DynamicHeader>
+                <DynamicHeader level={2} id={`section-${title?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>{title}</DynamicHeader>
                 {availableCities.filter(city => city === 'Seattle').map(city => (
                     <div key={city}>
                         <div style={{ marginBottom: '20px' }}>

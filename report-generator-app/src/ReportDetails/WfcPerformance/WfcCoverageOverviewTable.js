@@ -9,16 +9,19 @@ const WfcCoverageOverviewTable = () => {
     const apDataConfig = [
         {
             apName: "ASUS RT-AC68U",
+            anchorId: "coverage-section-asus-rt-ac68u",
             tcs: ["TC177", "TC174"],
             profiles: ["Profile 5 (Walk In)", "Profile 6 (Walk Out)"]
         },
         {
             apName: "LinkSys Hydra Pro 6E",
+            anchorId: "coverage-section-linksys-hydra-pro-6e",
             tcs: ["TC178", "TC175"],
             profiles: ["Profile 5 (Walk In)", "Profile 6 (Walk Out)"]
         },
         {
             apName: "T-Mobile HINT Gateway",
+            anchorId: "coverage-section-t-mobile-hint-gateway",
             tcs: ["TC179", "TC176"],
             profiles: ["Profile 5 (Walk In)", "Profile 6 (Walk Out)"]
         }
@@ -97,7 +100,13 @@ const WfcCoverageOverviewTable = () => {
 
                                     return (
                                         <tr key={`${apConfig.apName}-${tc}-${deviceType}`}>
-                                            {tcIndex === 0 && isFirstDevice && <td rowSpan={apConfig.tcs.length * 2}>{apConfig.apName}</td>}
+                                            {tcIndex === 0 && isFirstDevice && (
+                                                <td rowSpan={apConfig.tcs.length * 2}>
+                                                    <a href={`#${apConfig.anchorId}`} style={{ color: 'inherit', textDecoration: 'underline', cursor: 'pointer' }}>
+                                                        {apConfig.apName}
+                                                    </a>
+                                                </td>
+                                            )}
                                             {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
                                             <td>2</td> {/* Hardcoded to match standard display format earlier */}

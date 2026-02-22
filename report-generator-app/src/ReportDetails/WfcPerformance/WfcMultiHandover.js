@@ -32,7 +32,7 @@ const WfcMultiHandover = ({ title, tc }) => {
 
             const dutData = cityData['DUT'] || {};
             const refData = cityData['REF'] || {};
-            
+
             chartLabels.push(profileName);
             setupTimeDutValues.push(dutData.mean_setup_time);
             setupTimeRefValues.push(refData.mean_setup_time);
@@ -160,7 +160,7 @@ const WfcMultiHandover = ({ title, tc }) => {
     return (
         <>
             <PageBreak>
-                <DynamicHeader level={2}>{title}</DynamicHeader>
+                <DynamicHeader level={2} id={`multihandover-section-${title?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>{title}</DynamicHeader>
                 {availableCities.filter(city => city === 'Seattle').map(city => (
                     <div key={city}>
                         <div style={{ marginBottom: '20px' }}>

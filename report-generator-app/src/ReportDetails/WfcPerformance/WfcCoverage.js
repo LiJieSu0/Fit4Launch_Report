@@ -115,7 +115,7 @@ const WfcCoverage = ({ title, tc, section = 0 }) => {
         <>
             <PageBreak>
                 {section == 1 && <h2>Walk in/out of WFC Coverage</h2>}
-                <DynamicHeader level={2}>{title}</DynamicHeader>
+                <DynamicHeader level={2} id={`coverage-section-${title?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>{title}</DynamicHeader>
                 {availableCities.filter(city => city === 'Seattle').map(city => {
                     const data = getChartData(city);
                     return (

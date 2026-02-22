@@ -9,11 +9,13 @@ const WfcBaselineOverviewTable = () => {
     const apDataConfig = [
         {
             apName: "Cellular Baseline",
+            anchorId: "section-cellular-call-performance-and-audio-quality-baseline",
             tcs: ["TC150"],
             profiles: ["Baseline"]
         },
         {
             apName: "LinkSys Hydra Pro 6E",
+            anchorId: "section-cellular-call-performance-and-audio-quality-baseline-linksys-hydra-pro-6e",
             tcs: ["TC151"],
             profiles: ["Baseline"]
         }
@@ -90,7 +92,13 @@ const WfcBaselineOverviewTable = () => {
 
                                     return (
                                         <tr key={`${apConfig.apName}-${tc}-${deviceType}`}>
-                                            {tcIndex === 0 && isFirstDevice && <td rowSpan={apConfig.tcs.length * 2}>{apConfig.apName}</td>}
+                                            {tcIndex === 0 && isFirstDevice && (
+                                                <td rowSpan={apConfig.tcs.length * 2}>
+                                                    <a href={`#${apConfig.anchorId}`} style={{ color: 'inherit', textDecoration: 'underline', cursor: 'pointer' }}>
+                                                        {apConfig.apName}
+                                                    </a>
+                                                </td>
+                                            )}
                                             {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
                                             <td>{attempts !== undefined ? attempts : 'N/A'}</td>

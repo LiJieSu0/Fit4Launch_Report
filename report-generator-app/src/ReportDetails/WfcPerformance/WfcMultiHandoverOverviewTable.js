@@ -9,16 +9,19 @@ const WfcMultiHandoverOverviewTable = () => {
     const apDataConfig = [
         {
             apName: "T-Mobile HINT Gateway",
+            anchorId: "multihandover-section-t-mobile-hint-gateway",
             tcs: ["TC162", "TC163", "TC164"],
             profiles: ["Profile 1", "Profile 2", "Profile 3"]
         },
         {
             apName: "ASUS RT-AC68U",
+            anchorId: "multihandover-section-asus-rt-ac68u",
             tcs: ["TC165", "TC166", "TC167"],
             profiles: ["Profile 1", "Profile 2", "Profile 3"]
         },
         {
             apName: "LinkSys Hydra Pro 6E",
+            anchorId: "multihandover-section-linksys-hydra-pro-6e",
             tcs: ["TC168", "TC169", "TC170"],
             profiles: ["Profile 1", "Profile 2", "Profile 3"]
         }
@@ -90,7 +93,13 @@ const WfcMultiHandoverOverviewTable = () => {
 
                                     return (
                                         <tr key={`${apConfig.apName}-${tc}-${deviceType}`}>
-                                            {tcIndex === 0 && isFirstDevice && <td rowSpan={apConfig.tcs.length * 2}>{apConfig.apName}</td>}
+                                            {tcIndex === 0 && isFirstDevice && (
+                                                <td rowSpan={apConfig.tcs.length * 2}>
+                                                    <a href={`#${apConfig.anchorId}`} style={{ color: 'inherit', textDecoration: 'underline', cursor: 'pointer' }}>
+                                                        {apConfig.apName}
+                                                    </a>
+                                                </td>
+                                            )}
                                             {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
                                             <td>{attempts !== undefined ? attempts : 'N/A'}</td>

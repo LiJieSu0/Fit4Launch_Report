@@ -140,6 +140,26 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => { // only
         return 'var(--performance-fail)';
       }
       break;
+    case 'IpImpairmentMOS':
+      if (dutValue > refValue) {
+        return 'var(--performance-excellent)';
+      } else if (dutValue > refValue - 0.1) {
+        return 'var(--performance-pass)';
+      } else if (dutValue < refValue - 0.25) {
+        return 'var(--performance-fail)';
+      } else {
+        return 'var(--performance-marginal-fail)';
+      }
+      break;
+    case 'IpImpairmentCallDrops':
+      if (dutValue === 0) {
+        return 'var(--performance-pass)';
+      } else if (dutValue === 1) {
+        return 'var(--performance-marginal-fail)';
+      } else if (dutValue >= 2) {
+        return 'var(--performance-fail)';
+      }
+      break;
     default:
       if (refValue === null) { // Apply refValue check for other KPI types
         return;

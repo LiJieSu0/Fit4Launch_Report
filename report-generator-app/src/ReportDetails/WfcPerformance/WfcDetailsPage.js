@@ -5,6 +5,8 @@ import PageBreak from '../../CommonPage/PageBreak';
 import WfcCallPerformance from './WfcCallPerformance';
 import WfcMultiHandover from './WfcMultiHandover';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
+import WfcIpImpairment from './WfcIpImpairment';
+
 const WfcDetailsPage = () => {
 
   return (
@@ -30,33 +32,33 @@ const WfcDetailsPage = () => {
       {/* <WfcBaselineDetails tc="TC178" label="Out of WFC Coverage" /> */}
 
       {/* Baseline Celluar and wfc call performance */}
-      <WfcBaselineDetails tc="TC150" label="Call Performance Baseline"
+      {/* <WfcBaselineDetails tc="TC150" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline" sectionNumber={1} />
       <WfcBaselineDetails tc="TC151" label="Call Performance Baseline"
-        caseTitle="Cellular Call Performance and Audio Quality Baseline (LinkSys Hydra Pro 6E)" />
+        caseTitle="Cellular Call Performance and Audio Quality Baseline (LinkSys Hydra Pro 6E)" /> */}
 
 
 
       {/* WFC Call Performance */}
       {/* WFC call overall performance table, total call numbers*/}
-      <PageBreak>
+      {/* <PageBreak>
         <DynamicHeader level={1}>Wifi Call Performance Overview</DynamicHeader>
-      </PageBreak>
+      </PageBreak> */}
 
       {/* No impairment */}
       {/* TC152 */}
 
       {/* LinkSys Hydra Pro 6E */}
-      <WfcCallPerformance title="LinkSys Hydra Pro 6E" tc="TC153 TC154 TC155" />
+      {/* <WfcCallPerformance title="LinkSys Hydra Pro 6E" tc="TC153 TC154 TC155" /> */}
       {/* TC153 ETSI-B*/}
       {/* TC154 NSD-A*/}
       {/* TC155 NSD-C*/}
-      <WfcCallPerformance title="ASUS RT-AC68U" tc="TC156 TC157 TC158" />
+      {/* <WfcCallPerformance title="ASUS RT-AC68U" tc="TC156 TC157 TC158" /> */}
       {/* ASUS RT-AC68U */}
       {/* TC156 ETSI-B*/}
       {/* TC157 NSD-A*/}
       {/* TC158 NSD-C*/}
-      <WfcCallPerformance title="Google Nest AP AC2200" tc="TC159 TC160 TC161" />
+      {/* <WfcCallPerformance title="Google Nest AP AC2200" tc="TC159 TC160 TC161" /> */}
       {/* Google Nest AP AC2200 */}
       {/* TC159 ETSI-B*/}
       {/* TC160 NSD-A*/}
@@ -64,22 +66,22 @@ const WfcDetailsPage = () => {
 
 
 
-      <PageBreak>
+      {/* <PageBreak>
         <DynamicHeader level={1}>Multi Handovers Overview</DynamicHeader>
-      </PageBreak>
+      </PageBreak> */}
       {/* Multi Handover */}
       {/* Profile 1 */}
-      <WfcMultiHandover title="T-Mobile HINT Gateway" tc="TC162 TC163 TC164" />
+      {/* <WfcMultiHandover title="T-Mobile HINT Gateway" tc="TC162 TC163 TC164" /> */}
       {/* TC162 */}
       {/* TC163 */}
       {/* TC164 */}
       {/* Profile 2 */}
-      <WfcMultiHandover title="ASUS RT-AC68U" tc="TC165 TC166 TC167" />
+      {/* <WfcMultiHandover title="ASUS RT-AC68U" tc="TC165 TC166 TC167" /> */}
       {/* TC165 */}
       {/* TC166 */}
       {/* TC167 */}
       {/* Profile 3 */}
-      <WfcMultiHandover title="LinkSys Hydra Pro 6E" tc="TC168 TC169 TC170" />
+      {/* <WfcMultiHandover title="LinkSys Hydra Pro 6E" tc="TC168 TC169 TC170" /> */}
       {/* TC168 */}
       {/* TC169 */}
       {/* TC170 */}
@@ -87,6 +89,7 @@ const WfcDetailsPage = () => {
 
 
       {/* IP Impairments Component*/}
+      <WfcIpImpairment />
       {/* TC171 ASUS RT-AC68U*/}
       {/* TC172 LinkSys Hydra Pro 6E*/}
       {/* TC173 Google Nest AP AC2200*/}

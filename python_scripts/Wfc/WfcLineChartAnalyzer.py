@@ -46,8 +46,8 @@ def calculate_wfc_statistics(file_paths, output_json_path="wfc_statistics.json")
         # 2. Determine MO/MT
         call_type = ""
         
-        # For TC164+, we only want DUT/REF, no MO/MT separation
-        if tc_num and tc_num >= 164:
+        # For TC162+, we only want DUT/REF, no MO/MT separation
+        if tc_num and tc_num >= 162:
             call_type = "" # No suffix
         else:
             # Improved regex to catch MO/MT with various delimiters (any non-alphanumeric) or at boundaries
@@ -55,7 +55,7 @@ def calculate_wfc_statistics(file_paths, output_json_path="wfc_statistics.json")
             if match_call:
                 call_type = match_call.group(1)
         
-        if not call_type and (not tc_num or tc_num < 164):
+        if not call_type and (not tc_num or tc_num < 162):
             # If no MO/MT in filename and it's an old TC, skip
             continue
             
@@ -171,7 +171,7 @@ def calculate_wfc_rssi_statistics(file_paths, output_json_path="wfc_rssi_statist
 
         # 2. Determine MO/MT
         call_type = ""
-        if tc_num and tc_num >= 164:
+        if tc_num and tc_num >= 162:
             call_type = ""
             json_key = device
             csv_key = device

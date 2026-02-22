@@ -14,6 +14,23 @@ import WfcBaselineOverviewTable from './WfcBaselineOverviewTable';
 
 const WfcDetailsPage = () => {
 
+  {/* 
+  
+  REF Device
+TCL Goldfinch or TCL 50XL 5G
+SW Version: 5EAY
+HW Version: 03
+IMEI:016519000016882
+Serial Number: 8PPVGA5TQ46XUWWO
+IMEI:016519000016080
+Serial Number: JFAQWSG6HMZLXC89
+DUT
+Samsung Xcover
+Please use any device information you already
+have for the DUT.
+  */}
+
+
   return (
     <>
       {/* Baseline Celluar and wfc call performance */}

@@ -7,10 +7,13 @@ const SecondaryKpiTable = ({ data }) => (
                 <th rowSpan="2">Run</th>
                 <th rowSpan="2">Segment</th>
                 <th colSpan="2">AVG BLER</th>
-                <th colSpan="2">AVG MCS</th>
+                <th colSpan="2">AVG DL MCS</th>
+                <th colSpan="2">AVG UL MCS</th>
                 <th colSpan="2">AVG TxPower (dBm)</th>
             </tr>
             <tr>
+                <th>DUT</th>
+                <th>REF</th>
                 <th>DUT</th>
                 <th>REF</th>
                 <th>DUT</th>
@@ -30,8 +33,10 @@ const SecondaryKpiTable = ({ data }) => (
                             <td>{segmentData.segment}</td>
                             <td>{segmentData.DUT && typeof segmentData.DUT.bler === 'number' ? segmentData.DUT.bler.toFixed(2) : '0.00'}</td>
                             <td>{segmentData.REF && typeof segmentData.REF.bler === 'number' ? segmentData.REF.bler.toFixed(2) : '0.00'}</td>
-                            <td>{segmentData.DUT && typeof segmentData.DUT.mcs === 'number' ? segmentData.DUT.mcs.toFixed(2) : '0.00'}</td>
-                            <td>{segmentData.REF && typeof segmentData.REF.mcs === 'number' ? segmentData.REF.mcs.toFixed(2) : '0.00'}</td>
+                            <td>{segmentData.DUT && typeof segmentData.DUT.dlMcs === 'number' ? segmentData.DUT.dlMcs.toFixed(2) : '0.00'}</td>
+                            <td>{segmentData.REF && typeof segmentData.REF.dlMcs === 'number' ? segmentData.REF.dlMcs.toFixed(2) : '0.00'}</td>
+                            <td>{segmentData.DUT && typeof segmentData.DUT.ulMcs === 'number' ? segmentData.DUT.ulMcs.toFixed(2) : '0.00'}</td>
+                            <td>{segmentData.REF && typeof segmentData.REF.ulMcs === 'number' ? segmentData.REF.ulMcs.toFixed(2) : '0.00'}</td>
 
                             {/* Render TxPower only on the first row of the run, spanning all segments */}
                             {segmentIndex === 0 && (
@@ -53,3 +58,4 @@ const SecondaryKpiTable = ({ data }) => (
 );
 
 export default SecondaryKpiTable;
+

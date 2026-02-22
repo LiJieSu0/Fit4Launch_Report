@@ -92,9 +92,9 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
             run: `RUN ${i + 1}`,
             txPower: { DUT: 0, REF: 0 },
             segments: [
-                { segment: 'First 30%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
-                { segment: 'Middle 40%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
-                { segment: 'Last 30%', DUT: { bler: 0, mcs: 0 }, REF: { bler: 0, mcs: 0 } },
+                { segment: 'First 30%', DUT: { bler: 0, dlMcs: 0, ulMcs: 0 }, REF: { bler: 0, dlMcs: 0, ulMcs: 0 } },
+                { segment: 'Middle 40%', DUT: { bler: 0, dlMcs: 0, ulMcs: 0 }, REF: { bler: 0, dlMcs: 0, ulMcs: 0 } },
+                { segment: 'Last 30%', DUT: { bler: 0, dlMcs: 0, ulMcs: 0 }, REF: { bler: 0, dlMcs: 0, ulMcs: 0 } },
             ]
         }));
 
@@ -126,11 +126,13 @@ const LteCoverageSection = ({ city: propCity, firstSection = false }) => {
                         segment: seg,
                         DUT: {
                             bler: dutStats['AVG BLER'] || 0,
-                            mcs: dutStats['AVG MCS'] || 0
+                            dlMcs: dutStats['AVG DL MCS'] || 0,
+                            ulMcs: dutStats['AVG UL MCS'] || 0
                         },
                         REF: {
                             bler: refStats['AVG BLER'] || 0,
-                            mcs: refStats['AVG MCS'] || 0
+                            dlMcs: refStats['AVG DL MCS'] || 0,
+                            ulMcs: refStats['AVG UL MCS'] || 0
                         }
                     };
                 })

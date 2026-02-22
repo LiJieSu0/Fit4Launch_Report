@@ -49,8 +49,17 @@ def analyze_n41_coverage(folder_path, device_type_filter=None):
                 print(f"Warning: Missing columns {missing_cols} in {filename}. Skipping.")
                 continue
 
-            device_type_match = re.search(r'(DUT\d+|REF\d+|PC\d+)', filename, re.IGNORECASE)
-            device_type = device_type_match.group(0) if device_type_match else 'Unknown Device'
+            device_type_match = re.search(r'(DUT\d*|REF\d*|PC\d*)', filename, re.IGNORECASE)
+            if device_type_match:
+                matched = device_type_match.group(0).upper()
+                if matched.startswith('DUT'):
+                    device_type = 'PC2'
+                elif matched.startswith('REF'):
+                    device_type = 'PC3'
+                else:
+                    device_type = matched
+            else:
+                device_type = 'Unknown Device'
 
             no_service_indices = df[df[serving_network_column].astype(str).str.contains('No service', case=False, na=False)].index.tolist()
 
@@ -81,9 +90,12 @@ def analyze_n41_coverage(folder_path, device_type_filter=None):
                         
                         # Apply Power Class filtering - ONLY for HPUE tests
                         if "HPUE" in file_path.upper() and tx_power_value is not None:
-                            if 'PC2' in device_type.upper() and tx_power_value > 26:
+                            is_pc2 = 'PC2' in device_type.upper() or 'DUT' in device_type.upper()
+                            is_pc3 = 'PC3' in device_type.upper() or 'REF' in device_type.upper()
+                            
+                            if is_pc2 and tx_power_value > 26:
                                 tx_power_value = None
-                            elif 'PC3' in device_type.upper() and tx_power_value > 24:
+                            elif is_pc3 and tx_power_value > 24:
                                 tx_power_value = None
                         
                         # Only append if tx_power_value is still valid after filtering
@@ -157,7 +169,11 @@ def extract_coverage_data_to_csv(folder_path, output_folder='.', device_type_fil
                     matched_val = device_match.group(1).upper()
                     if matched_val.startswith("CH"):
                         ch_num = int(device_match.group(2))
-                        header_name = "REF" if ch_num % 2 != 0 else "DUT"
+                        header_name = "PC3" if ch_num % 2 != 0 else "PC2"
+                    elif "DUT" in matched_val:
+                        header_name = "PC2"
+                    elif "REF" in matched_val:
+                        header_name = "PC3"
                     else:
                         header_name = matched_val
 
@@ -210,10 +226,10 @@ def extract_coverage_data_to_csv(folder_path, output_folder='.', device_type_fil
             for col in temp_df.columns:
                 temp_df[col] = pd.to_numeric(temp_df[col], errors='coerce')
                 
-                # Apply Power Class thresholds (PC3: 24, PC2: 26)
-                if 'PC3' in col.upper():
+                # Apply Power Class thresholds (PC3/REF: 24, PC2/DUT: 26)
+                if 'PC3' in col.upper() or 'REF' in col.upper():
                     temp_df.loc[temp_df[col] > 24, col] = pd.NA
-                elif 'PC2' in col.upper():
+                elif 'PC2' in col.upper() or 'DUT' in col.upper():
                     temp_df.loc[temp_df[col] > 26, col] = pd.NA
             
             # Filter out rows where any value is NaN or 0

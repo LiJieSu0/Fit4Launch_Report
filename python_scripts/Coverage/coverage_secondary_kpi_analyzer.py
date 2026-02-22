@@ -10,12 +10,14 @@ def analyze_secondary_kpis(file_path):
     try:
         # Define necessary columns
         col_bler = '[NR5G] [BLER & HARQ] PDSCH BLER'
-        col_mcs = '[NR5G] [PCC] [PUSCH] [Modulation] MCS (Avg)'
+        col_dl_mcs = '[NR5G] [PCC] [PDSCH] [Modulation (TB0+TB1)] MCS (Avg)'
+        col_ul_mcs = '[NR5G] [PCC] [PUSCH] [Modulation] MCS (Avg)'
         col_cqi = '[NR5G] [Quality Report] [CQI] WB CQI (Avg)'
         
         # LTE Headers
         col_bler_lte = '[LTE] [L1] [BLER] PDSCH BLER'
-        col_mcs_lte = '[LTE-A] [PCell] [L1] [MCS] DL MCS (TB0 & TB1 - Avg)'
+        col_dl_mcs_lte = '[LTE] [L1] [Modulation] DL MCS (TB0 & TB1 - Avg)'
+        col_ul_mcs_lte = '[LTE] [L1] [Modulation] UL MCS (TB0 - Average)'
         
         col_network = '[General] Serving Network'
         
@@ -46,7 +48,8 @@ def analyze_secondary_kpis(file_path):
             
             # Use LTE specific headers for BLER/MCS
             target_bler = col_bler_lte
-            target_mcs = col_mcs_lte
+            target_dl_mcs = col_dl_mcs_lte
+            target_ul_mcs = col_ul_mcs_lte
             target_cqi = col_cqi 
             
             # For Tx Power in LTE mode, we try the known LTE column first.
@@ -59,7 +62,8 @@ def analyze_secondary_kpis(file_path):
         else:
              # Default to 5G headers logic
              target_bler = col_bler
-             target_mcs = col_mcs
+             target_dl_mcs = col_dl_mcs
+             target_ul_mcs = col_ul_mcs
              target_cqi = col_cqi
              tx_power_col = None
 
@@ -89,7 +93,7 @@ def analyze_secondary_kpis(file_path):
                     break
 
         # Core required columns for segmentation (if any of these exist, we do segmentation)
-        seg_cols = [target_bler, target_mcs, target_cqi]
+        seg_cols = [target_bler, target_dl_mcs, target_ul_mcs, target_cqi]
         present_seg_cols = [c for c in seg_cols if c in available_cols]
         
         # If no target columns are found at all, return empty
@@ -150,9 +154,9 @@ def analyze_secondary_kpis(file_path):
         # Apply Power Class filtering for Tx Power - ONLY for HPUE tests
         if "HPUE" in file_path.upper() and tx_power_col and tx_power_col in df.columns:
             filename = os.path.basename(file_path).upper()
-            if 'PC2' in filename:
+            if 'PC2' in filename or 'DUT' in filename:
                 df.loc[df[tx_power_col] > 26, tx_power_col] = np.nan
-            elif 'PC3' in filename:
+            elif 'PC3' in filename or 'REF' in filename:
                 df.loc[df[tx_power_col] > 24, tx_power_col] = np.nan
 
         total_rows = len(df)
@@ -175,15 +179,18 @@ def analyze_secondary_kpis(file_path):
             if not seg_df.empty:
                 if target_bler in available_cols:
                     results[seg_name]["AVG BLER"] = round(seg_df[target_bler].mean(), 2) if pd.notna(seg_df[target_bler].mean()) else 0
-                if target_mcs in available_cols:
-                    results[seg_name]["AVG MCS"] = round(seg_df[target_mcs].mean(), 2) if pd.notna(seg_df[target_mcs].mean()) else 0
+                if target_dl_mcs in available_cols:
+                    results[seg_name]["AVG DL MCS"] = round(seg_df[target_dl_mcs].mean(), 2) if pd.notna(seg_df[target_dl_mcs].mean()) else 0
+                if target_ul_mcs in available_cols:
+                    results[seg_name]["AVG UL MCS"] = round(seg_df[target_ul_mcs].mean(), 2) if pd.notna(seg_df[target_ul_mcs].mean()) else 0
                 if target_cqi in available_cols:
                     results[seg_name]["AVG CQI"] = round(seg_df[target_cqi].mean(), 2) if pd.notna(seg_df[target_cqi].mean()) else 0
                 if tx_power_col:
                     results[seg_name]["AVG TxPower"] = round(seg_df[tx_power_col].mean(), 2) if pd.notna(seg_df[tx_power_col].mean()) else 0
             else:
                 if target_bler in available_cols: results[seg_name]["AVG BLER"] = 0
-                if target_mcs in available_cols: results[seg_name]["AVG MCS"] = 0
+                if target_dl_mcs in available_cols: results[seg_name]["AVG DL MCS"] = 0
+                if target_ul_mcs in available_cols: results[seg_name]["AVG UL MCS"] = 0
                 if target_cqi in available_cols: results[seg_name]["AVG CQI"] = 0
                 if tx_power_col: results[seg_name]["AVG TxPower"] = 0
 

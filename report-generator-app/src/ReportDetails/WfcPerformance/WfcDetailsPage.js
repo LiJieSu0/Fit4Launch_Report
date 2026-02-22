@@ -35,9 +35,9 @@ const WfcDetailsPage = () => {
         <WfcCallOverviewTable />
       </PageBreak>
 
-      {/* <WfcCallPerformance title="LinkSys Hydra Pro 6E" tc="TC153 TC154 TC155" /> */}
-      {/* <WfcCallPerformance title="Google Nest AP AC2200" tc="TC159 TC160 TC161" /> */}
-      {/* <WfcCallPerformance title="ASUS RT-AC68U" tc="TC156 TC157 TC158" /> */}
+      <WfcCallPerformance title="LinkSys Hydra Pro 6E" tc="TC153 TC154 TC155" />
+      <WfcCallPerformance title="Google Nest AP AC2200" tc="TC159 TC160 TC161" />
+      <WfcCallPerformance title="ASUS RT-AC68U" tc="TC156 TC157 TC158" />
       {/* No impairment */}
       {/* TC152 */}
 
@@ -63,9 +63,9 @@ const WfcDetailsPage = () => {
         <WfcMultiHandoverOverviewTable />
       </PageBreak>
 
-      {/* <WfcMultiHandover title="T-Mobile HINT Gateway" tc="TC162 TC163 TC164" /> */}
-      {/* <WfcMultiHandover title="ASUS RT-AC68U" tc="TC165 TC166 TC167" /> */}
-      {/* <WfcMultiHandover title="LinkSys Hydra Pro 6E" tc="TC168 TC169 TC170" /> */}
+      <WfcMultiHandover title="T-Mobile HINT Gateway" tc="TC162 TC163 TC164" />
+      <WfcMultiHandover title="ASUS RT-AC68U" tc="TC165 TC166 TC167" />
+      <WfcMultiHandover title="LinkSys Hydra Pro 6E" tc="TC168 TC169 TC170" />
       {/* Multi Handover */}
       {/* Profile 1 */}
       {/* TC162 */}

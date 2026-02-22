@@ -26,9 +26,12 @@ const SecondaryKpiTable = ({ data }) => (
             {data.map((runData, runIndex) => (
                 <React.Fragment key={runIndex}>
                     {runData.segments.map((segmentData, segmentIndex) => (
-                        <tr key={`${runIndex}-${segmentIndex}`}>
+                        <tr
+                            key={`${runIndex}-${segmentIndex}`}
+                            className={segmentIndex === runData.segments.length - 1 ? 'run-divider' : ''}
+                        >
                             {segmentIndex === 0 && (
-                                <td rowSpan={runData.segments.length}>{runData.run}</td>
+                                <td className="run-divider" rowSpan={runData.segments.length}>{runData.run}</td>
                             )}
                             <td>{segmentData.segment}</td>
                             <td>{segmentData.DUT && typeof segmentData.DUT.bler === 'number' ? segmentData.DUT.bler.toFixed(2) : '0.00'}</td>
@@ -41,10 +44,10 @@ const SecondaryKpiTable = ({ data }) => (
                             {/* Render TxPower only on the first row of the run, spanning all segments */}
                             {segmentIndex === 0 && (
                                 <>
-                                    <td rowSpan={runData.segments.length}>
+                                    <td className="run-divider" rowSpan={runData.segments.length}>
                                         {runData.txPower && typeof runData.txPower.DUT === 'number' ? runData.txPower.DUT.toFixed(2) : '0.00'}
                                     </td>
-                                    <td rowSpan={runData.segments.length}>
+                                    <td className="run-divider" rowSpan={runData.segments.length}>
                                         {runData.txPower && typeof runData.txPower.REF === 'number' ? runData.txPower.REF.toFixed(2) : '0.00'}
                                     </td>
                                 </>

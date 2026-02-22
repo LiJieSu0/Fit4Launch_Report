@@ -568,7 +568,7 @@ VQ
   width: 15px;
   height: 15px;
   display: block;
-  border: 1px solid white; 
+  border: 1px solid white;
 }
 
 .ref-icon {
@@ -581,10 +581,15 @@ VQ
 }
 
 .base-station-label {
-    background: none;
-    border: none;
-    box-shadow: none;
-    font-weight: bold;
-    color: black;
-    white-space: nowrap;
+  background: none;
+  border: none;
+  box-shadow: none;
+  font-weight: bold;
+  color: black;
+  white-space: nowrap;
+}
+
+.run-divider td,
+td.run-divider {
+  border-bottom: 4px double #777 !important;
 }

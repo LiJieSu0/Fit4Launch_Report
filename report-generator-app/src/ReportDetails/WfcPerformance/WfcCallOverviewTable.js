@@ -1,5 +1,6 @@
 import React from 'react';
 import { useReportData } from '../../Contexts/ReportContext';
+import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const WfcCallOverviewTable = () => {
     const { projectData, availableCities } = useReportData();
@@ -63,11 +64,14 @@ const WfcCallOverviewTable = () => {
                                 }
 
                                 const renderDeviceRow = (deviceType, isFirstDevice) => {
-                                    let moData, mtData;
+                                    let moData, mtData, refMoData, refMtData, cityDataForKpi;
 
                                     if (deviceType === 'DUT') {
                                         moData = cityData['DUT MO'] || cityData['DUT'];
                                         mtData = cityData['DUT MT'] || cityData['DUT'];
+                                        refMoData = cityData['REF MO'] || cityData['REF'];
+                                        refMtData = cityData['REF MT'] || cityData['REF'];
+                                        cityDataForKpi = cityData;
                                     } else {
                                         moData = cityData['REF MO'] || cityData['REF'];
                                         mtData = cityData['REF MT'] || cityData['REF'];
@@ -77,8 +81,30 @@ const WfcCallOverviewTable = () => {
                                     const initFailures = moData?.total_initiation_failures;
                                     const retFailures = moData?.total_retention_failures;
 
-                                    const initFailurePct = (attempts > 0 && initFailures !== undefined) ? ((initFailures / attempts) * 100).toFixed(2) + '%' : '0.0%';
-                                    const retFailurePct = (attempts > 0 && retFailures !== undefined) ? ((retFailures / attempts) * 100).toFixed(2) + '%' : '0.0%';
+                                    const initFailureRate = (attempts > 0 && initFailures !== undefined) ? (initFailures / attempts) : 0;
+                                    const retFailureRate = (attempts > 0 && retFailures !== undefined) ? (retFailures / attempts) : 0;
+
+                                    const initFailurePct = (attempts > 0 && initFailures !== undefined) ? (initFailureRate * 100).toFixed(2) + '%' : '0.0%';
+                                    const retFailurePct = (attempts > 0 && retFailures !== undefined) ? (retFailureRate * 100).toFixed(2) + '%' : '0.0%';
+
+                                    let setupTimeStyle = {};
+                                    let initFailureStyle = {};
+                                    let retFailureStyle = {};
+                                    let moMosStyle = {};
+                                    let mtMosStyle = {};
+
+                                    if (deviceType === 'DUT') {
+                                        setupTimeStyle = { backgroundColor: getKpiCellColor('CallSetupTime', moData?.mean_setup_time, refMoData?.mean_setup_time) };
+
+                                        const initiationPValue = cityDataForKpi?.initiation_p_value !== undefined ? cityDataForKpi.initiation_p_value : 1;
+                                        initFailureStyle = { backgroundColor: getKpiCellColor('WfcCallCriteria', initiationPValue, initFailureRate) };
+
+                                        const retentionPValue = cityDataForKpi?.retention_p_value !== undefined ? cityDataForKpi.retention_p_value : 1;
+                                        retFailureStyle = { backgroundColor: getKpiCellColor('WfcCallCriteria', retentionPValue, retFailureRate) };
+
+                                        moMosStyle = { backgroundColor: getKpiCellColor('WfcMOS', moData?.mos_average, refMoData?.mos_average) };
+                                        mtMosStyle = { backgroundColor: getKpiCellColor('WfcMOS', mtData?.mos_average, refMtData?.mos_average) };
+                                    }
 
                                     return (
                                         <tr key={`${apConfig.apName}-${tc}-${deviceType}`}>
@@ -86,11 +112,11 @@ const WfcCallOverviewTable = () => {
                                             {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
                                             <td>{attempts !== undefined ? attempts : 'N/A'}</td>
-                                            <td>{formatVal(moData?.mean_setup_time)}</td>
-                                            <td>{initFailurePct}</td>
-                                            <td>{retFailurePct}</td>
-                                            <td>{formatVal(moData?.mos_average)}</td>
-                                            <td>{formatVal(mtData?.mos_average)}</td>
+                                            <td style={setupTimeStyle}>{formatVal(moData?.mean_setup_time)}</td>
+                                            <td style={initFailureStyle}>{initFailurePct}</td>
+                                            <td style={retFailureStyle}>{retFailurePct}</td>
+                                            <td style={moMosStyle}>{formatVal(moData?.mos_average)}</td>
+                                            <td style={mtMosStyle}>{formatVal(mtData?.mos_average)}</td>
                                         </tr>
                                     );
                                 };

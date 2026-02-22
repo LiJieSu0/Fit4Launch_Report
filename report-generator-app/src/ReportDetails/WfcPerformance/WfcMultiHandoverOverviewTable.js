@@ -1,5 +1,6 @@
 import React from 'react';
 import { useReportData } from '../../Contexts/ReportContext';
+import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const WfcMultiHandoverOverviewTable = () => {
     const { projectData, availableCities } = useReportData();
@@ -62,11 +63,13 @@ const WfcMultiHandoverOverviewTable = () => {
                                 }
 
                                 const renderDeviceRow = (deviceType, isFirstDevice) => {
-                                    let moData, mtData;
+                                    let moData, mtData, refMoData, refMtData;
 
                                     if (deviceType === 'DUT') {
                                         moData = cityData['DUT MO'] || cityData['DUT'];
                                         mtData = cityData['DUT MT'] || cityData['DUT'];
+                                        refMoData = cityData['REF MO'] || cityData['REF'];
+                                        refMtData = cityData['REF MT'] || cityData['REF'];
                                     } else {
                                         moData = cityData['REF MO'] || cityData['REF'];
                                         mtData = cityData['REF MT'] || cityData['REF'];
@@ -75,6 +78,16 @@ const WfcMultiHandoverOverviewTable = () => {
                                     const attempts = moData?.total_mo_attempts;
                                     const retFailures = moData?.total_retention_failures;
 
+                                    let setupTimeStyle = {};
+                                    let moMosStyle = {};
+                                    let mtMosStyle = {};
+
+                                    if (deviceType === 'DUT') {
+                                        setupTimeStyle = { backgroundColor: getKpiCellColor('CallSetupTime', moData?.mean_setup_time, refMoData?.mean_setup_time) };
+                                        moMosStyle = { backgroundColor: getKpiCellColor('WfcMOS', moData?.mos_average, refMoData?.mos_average) };
+                                        mtMosStyle = { backgroundColor: getKpiCellColor('WfcMOS', mtData?.mos_average, refMtData?.mos_average) };
+                                    }
+
                                     return (
                                         <tr key={`${apConfig.apName}-${tc}-${deviceType}`}>
                                             {tcIndex === 0 && isFirstDevice && <td rowSpan={apConfig.tcs.length * 2}>{apConfig.apName}</td>}
@@ -82,9 +95,9 @@ const WfcMultiHandoverOverviewTable = () => {
                                             <td>{deviceType}</td>
                                             <td>{attempts !== undefined ? attempts : 'N/A'}</td>
                                             <td>{retFailures !== undefined ? retFailures : 'N/A'}</td>
-                                            <td>{formatVal(moData?.mean_setup_time)}</td>
-                                            <td>{formatVal(moData?.mos_average)}</td>
-                                            <td>{formatVal(mtData?.mos_average)}</td>
+                                            <td style={setupTimeStyle}>{formatVal(moData?.mean_setup_time)}</td>
+                                            <td style={moMosStyle}>{formatVal(moData?.mos_average)}</td>
+                                            <td style={mtMosStyle}>{formatVal(mtData?.mos_average)}</td>
                                         </tr>
                                     );
                                 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useReportData } from '../../Contexts/ReportContext';
+import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const WfcCoverageOverviewTable = () => {
     const { projectData, availableCities } = useReportData();
@@ -64,6 +65,7 @@ const WfcCoverageOverviewTable = () => {
 
                                 const renderDeviceRow = (deviceType, isFirstDevice) => {
                                     const deviceData = cityData[deviceType];
+                                    const refData = cityData['REF'];
 
                                     if (!deviceData) {
                                         return (
@@ -83,17 +85,27 @@ const WfcCoverageOverviewTable = () => {
                                     const rsrp = deviceData?.rsrp_average;
                                     const callDrops = deviceData?.total_retention_failures;
 
+                                    let mosBeforeStyle = {};
+                                    let mosAfterStyle = {};
+                                    let callDropsStyle = {};
+
+                                    if (deviceType === 'DUT') {
+                                        mosBeforeStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosBefore, refData?.mos_before_handover_average) };
+                                        mosAfterStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosAfter, refData?.mos_after_handover_average) };
+                                        callDropsStyle = { backgroundColor: getKpiCellColor('IpImpairmentCallDrops', callDrops) };
+                                    }
+
                                     return (
                                         <tr key={`${apConfig.apName}-${tc}-${deviceType}`}>
                                             {tcIndex === 0 && isFirstDevice && <td rowSpan={apConfig.tcs.length * 2}>{apConfig.apName}</td>}
                                             {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
                                             <td>2</td> {/* Hardcoded to match standard display format earlier */}
-                                            <td>{formatVal(mosBefore)}</td>
-                                            <td>{formatVal(mosAfter)}</td>
+                                            <td style={mosBeforeStyle}>{formatVal(mosBefore)}</td>
+                                            <td style={mosAfterStyle}>{formatVal(mosAfter)}</td>
                                             <td>{formatVal(rssi)}</td>
                                             <td>{formatVal(rsrp)}</td>
-                                            <td>{callDrops !== undefined ? callDrops : 'N/A'}</td>
+                                            <td style={callDropsStyle}>{callDrops !== undefined ? callDrops : 'N/A'}</td>
                                         </tr>
                                     );
                                 };

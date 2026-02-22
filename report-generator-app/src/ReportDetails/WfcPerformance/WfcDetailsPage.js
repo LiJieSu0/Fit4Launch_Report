@@ -64,27 +64,32 @@ const WfcDetailsPage = () => {
 
 
 
+      <PageBreak>
+        <DynamicHeader level={1}>Multi Handovers Overview</DynamicHeader>
+      </PageBreak>
       {/* Multi Handover */}
       {/* Profile 1 */}
-        <WfcMultiHandover title="T-Mobile HINT Gateway" tc="TC162 TC163 TC164" />
-        {/* TC162 */}
-        {/* TC163 */}
-        {/* TC164 */}
+      <WfcMultiHandover title="T-Mobile HINT Gateway" tc="TC162 TC163 TC164" />
+      {/* TC162 */}
+      {/* TC163 */}
+      {/* TC164 */}
       {/* Profile 2 */}
-        <WfcMultiHandover title="ASUS RT-AC68U" tc="TC165 TC166 TC167" />
-        {/* TC165 */}
-        {/* TC166 */}
-        {/* TC167 */}
+      <WfcMultiHandover title="ASUS RT-AC68U" tc="TC165 TC166 TC167" />
+      {/* TC165 */}
+      {/* TC166 */}
+      {/* TC167 */}
       {/* Profile 3 */}
-        <WfcMultiHandover title="LinkSys Hydra Pro 6E" tc="TC168 TC169 TC170" />
-        {/* TC168 */}
-        {/* TC169 */}
-        {/* TC170 */}
+      <WfcMultiHandover title="LinkSys Hydra Pro 6E" tc="TC168 TC169 TC170" />
+      {/* TC168 */}
+      {/* TC169 */}
+      {/* TC170 */}
 
-      {/* IP Impairments */}
-      {/* TC171 */}
-      {/* TC172 */}
-      {/* TC173 */}
+
+
+      {/* IP Impairments Component*/}
+      {/* TC171 ASUS RT-AC68U*/}
+      {/* TC172 LinkSys Hydra Pro 6E*/}
+      {/* TC173 Google Nest AP AC2200*/}
 
       {/* In of WFC Coverage */}
       {/* TC174 */}

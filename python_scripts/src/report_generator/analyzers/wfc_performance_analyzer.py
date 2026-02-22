@@ -114,6 +114,79 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                 return round(float(mos_values.mean()), 4)
         return None
 
+    def _calculate_ip_impairments_mos(self, df):
+        """
+        Calculates MOS Before/After Handover for IP Impairment cases (TC171, TC172, TC173).
+        Finds the first transition from IWLAN to NR(NR_SA).
+        Block 1: IWLAN part before transition.
+        Block 2: NR part after transition (until it changes back to IWLAN or ends).
+        """
+        if self.network_type_header not in df.columns:
+            return None
+            
+        target_column = None
+        if self.primary_mos_column in df.columns:
+            target_column = self.primary_mos_column
+        elif self.secondary_mos_column in df.columns:
+            target_column = self.secondary_mos_column
+            
+        if not target_column:
+            return None
+
+        # Forward fill the network type to ensure all rows have a state
+        df_temp = df.copy()
+        df_temp[self.network_type_header] = df_temp[self.network_type_header].replace('', pd.NA).ffill()
+        df_temp[target_column] = pd.to_numeric(df_temp[target_column], errors='coerce')
+        
+        # Filter out rows without MOS value to get effective blocks
+        df_valid_mos = df_temp.dropna(subset=[target_column])
+        if df_valid_mos.empty:
+            return None
+            
+        types = df_valid_mos[self.network_type_header].astype(str).str.strip().str.upper()
+        
+        # Find the transition IWLAN -> NR
+        transition_idx = -1
+        for i in range(len(types) - 1):
+            prev = types.iloc[i]
+            curr = types.iloc[i+1]
+            if "IWLAN" in prev and "NR" in curr:
+                transition_idx = i
+                break
+                
+        if transition_idx == -1:
+            return None
+            
+        # Block 1: The contiguous IWLAN rows ending at transition_idx
+        block1_start = transition_idx
+        while block1_start >= 0 and "IWLAN" in types.iloc[block1_start]:
+            block1_start -= 1
+        block1_start += 1
+        
+        # Block 2: The contiguous NR rows starting at transition_idx + 1
+        block2_end = transition_idx + 1
+        while block2_end < len(types) and "NR" in types.iloc[block2_end]:
+            block2_end += 1
+            
+        block1_mos = df_valid_mos[target_column].iloc[block1_start : transition_idx + 1]
+        block2_mos = df_valid_mos[target_column].iloc[transition_idx + 1 : block2_end]
+        
+        mos_before = None
+        mos_after = None
+        
+        if not block1_mos.empty:
+            mos_before = round(float(block1_mos.mean()), 4)
+            
+        if not block2_mos.empty:
+            mos_after = round(float(block2_mos.mean()), 4)
+            
+        if mos_before is not None or mos_after is not None:
+            return {
+                "mos_before_handover": mos_before,
+                "mos_after_handover": mos_after
+            }
+        return None
+
     def _calculate_setup_time(self, df):
         """Calculates the Mean Setup Time using multiple fallback methods."""
         setup_times = []
@@ -277,6 +350,17 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                         if rssi_avg is not None: category_metrics["rssi"].append(rssi_avg)
                         if rsrp_avg is not None: category_metrics["rsrp"].append(rsrp_avg)
                         
+                        if tc_num in [171, 172, 173]:
+                            ip_mos = self._calculate_ip_impairments_mos(df)
+                            if ip_mos:
+                                if "ip_mos_before" not in category_metrics:
+                                    category_metrics["ip_mos_before"] = []
+                                    category_metrics["ip_mos_after"] = []
+                                if ip_mos.get("mos_before_handover") is not None:
+                                    category_metrics["ip_mos_before"].append(ip_mos["mos_before_handover"])
+                                if ip_mos.get("mos_after_handover") is not None:
+                                    category_metrics["ip_mos_after"].append(ip_mos["mos_after_handover"])
+                        
                         if "MT" not in category:
                             cp_stats = self._calculate_call_performance(df)
                             if cp_stats: category_metrics["cp"].append(cp_stats)
@@ -306,6 +390,13 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                 if tc_num and tc_num >= 162:
                     ho_values = category_metrics["handover_counts"]
                     tc_results[category]["minimum_handover"] = sum(ho_values) if ho_values else 0
+
+                if "ip_mos_before" in category_metrics:
+                    mos_before_vals = category_metrics["ip_mos_before"]
+                    tc_results[category]["mos_before_handover_average"] = round(sum(mos_before_vals) / len(mos_before_vals), 4) if mos_before_vals else "N/A"
+                if "ip_mos_after" in category_metrics:
+                    mos_after_vals = category_metrics["ip_mos_after"]
+                    tc_results[category]["mos_after_handover_average"] = round(sum(mos_after_vals) / len(mos_after_vals), 4) if mos_after_vals else "N/A"
 
                 if category_metrics["cp"]:
                     agg_cp = {

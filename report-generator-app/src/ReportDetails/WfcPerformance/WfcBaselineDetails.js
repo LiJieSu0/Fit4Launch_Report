@@ -40,7 +40,6 @@ const WfcBaselineDetails = ({ tc, caseTitle = "", label, sectionNumber = 0 }) =>
             <>
                 <PageBreak>
                     <div key={city} className="market-section" style={{ marginBottom: '60px', pageBreakAfter: 'always' }}>
-                        {sectionNumber == 1 && <DynamicHeader level={1}>WFC Performance Test Details</DynamicHeader>}
                         {/* {sectionNumber == 1 && <DynamicHeader level={2}>Call Performance and Voice Quality</DynamicHeader>} */}
                         {/* {sectionNumber == 2 && <DynamicHeader level={2}>Handover Performance and Voice Quality </DynamicHeader>} */}
                         <DynamicHeader level={2}>{caseTitle} </DynamicHeader>

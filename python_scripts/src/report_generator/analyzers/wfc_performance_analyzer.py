@@ -114,12 +114,12 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                 return round(float(mos_values.mean()), 4)
         return None
 
-    def _calculate_ip_impairments_mos(self, df):
+    def _calculate_ip_impairments_mos(self, df, transition_type="IWLAN_TO_NR"):
         """
-        Calculates MOS Before/After Handover for IP Impairment cases (TC171, TC172, TC173).
-        Finds the first transition from IWLAN to NR(NR_SA).
-        Block 1: IWLAN part before transition.
-        Block 2: NR part after transition (until it changes back to IWLAN or ends).
+        Calculates MOS Before/After Handover for IP Impairment cases.
+        Finds the first transition based on transition_type.
+        Block 1: Initial network part before transition.
+        Block 2: Target network part after transition.
         """
         if self.network_type_header not in df.columns:
             return None
@@ -145,27 +145,30 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
             
         types = df_valid_mos[self.network_type_header].astype(str).str.strip().str.upper()
         
-        # Find the transition IWLAN -> NR
+        from_net = "IWLAN" if transition_type == "IWLAN_TO_NR" else "NR"
+        to_net = "NR" if transition_type == "IWLAN_TO_NR" else "IWLAN"
+
+        # Find the transition from_net -> to_net
         transition_idx = -1
         for i in range(len(types) - 1):
             prev = types.iloc[i]
             curr = types.iloc[i+1]
-            if "IWLAN" in prev and "NR" in curr:
+            if from_net in prev and to_net in curr:
                 transition_idx = i
                 break
                 
         if transition_idx == -1:
             return None
             
-        # Block 1: The contiguous IWLAN rows ending at transition_idx
+        # Block 1: The contiguous from_net rows ending at transition_idx
         block1_start = transition_idx
-        while block1_start >= 0 and "IWLAN" in types.iloc[block1_start]:
+        while block1_start >= 0 and from_net in types.iloc[block1_start]:
             block1_start -= 1
         block1_start += 1
         
-        # Block 2: The contiguous NR rows starting at transition_idx + 1
+        # Block 2: The contiguous to_net rows starting at transition_idx + 1
         block2_end = transition_idx + 1
-        while block2_end < len(types) and "NR" in types.iloc[block2_end]:
+        while block2_end < len(types) and to_net in types.iloc[block2_end]:
             block2_end += 1
             
         block1_mos = df_valid_mos[target_column].iloc[block1_start : transition_idx + 1]
@@ -350,8 +353,9 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                         if rssi_avg is not None: category_metrics["rssi"].append(rssi_avg)
                         if rsrp_avg is not None: category_metrics["rsrp"].append(rsrp_avg)
                         
-                        if tc_num in [171, 172, 173]:
-                            ip_mos = self._calculate_ip_impairments_mos(df)
+                        if tc_num in [171, 172, 173, 174, 175, 176, 177, 178, 179]:
+                            transition_type = "NR_TO_IWLAN" if tc_num in [177, 178, 179] else "IWLAN_TO_NR"
+                            ip_mos = self._calculate_ip_impairments_mos(df, transition_type=transition_type)
                             if ip_mos:
                                 if "ip_mos_before" not in category_metrics:
                                     category_metrics["ip_mos_before"] = []

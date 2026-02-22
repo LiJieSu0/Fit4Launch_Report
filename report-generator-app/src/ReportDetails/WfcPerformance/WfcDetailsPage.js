@@ -7,6 +7,8 @@ import WfcMultiHandover from './WfcMultiHandover';
 import DynamicHeader from '../../CommonPage/DynamicHeader';
 import WfcIpImpairment from './WfcIpImpairment';
 
+import WfcCoverage from './WfcCoverage';
+
 const WfcDetailsPage = () => {
 
   return (
@@ -89,20 +91,14 @@ const WfcDetailsPage = () => {
 
 
       {/* IP Impairments Component*/}
-      <WfcIpImpairment />
+      {/* <WfcIpImpairment /> */}
       {/* TC171 ASUS RT-AC68U*/}
       {/* TC172 LinkSys Hydra Pro 6E*/}
       {/* TC173 Google Nest AP AC2200*/}
 
-      {/* In of WFC Coverage */}
-      {/* TC174 */}
-      {/* TC175 */}
-      {/* TC176 */}
-
-      {/* Out of WFC Coverage */}
-      {/* TC177 */}
-      {/* TC178 */}
-      {/* TC179 */}
+      <WfcCoverage title="ASUS RT-AC68U" tc="TC174 TC177" section={1} />
+      <WfcCoverage title="LinkSys Hydra Pro 6E" tc="TC175 TC178" />
+      <WfcCoverage title="T-Mobile HINT Gateway" tc="TC176 TC179" />
 
 
       {/* haven't classified yet */}

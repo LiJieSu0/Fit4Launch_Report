@@ -3,7 +3,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import PageBreak from '../../../CommonPage/PageBreak';
-import { getKpiCellClass } from '../../../Utils/KpiRules';
+import { getKpiCellClass, getWorstKpiClass } from '../../../Utils/KpiRules';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -127,21 +127,32 @@ const VqAmrWbVq = ({ city: propCity }) => {
   ];
 
 
+  const getWorstClassForMetric = (metricName) => {
+    const row = vqTableData2.find(r => r.metric === metricName);
+    if (!row) return "";
+    return getWorstKpiClass([
+      row.base.dut1Class,
+      row.base.dut2Class,
+      row.mobile.dut1Class,
+      row.mobile.dut2Class
+    ]);
+  };
+
   const vqTableData3 = [
     {
       metric: "MOS Average",
       results: "",
-      highlightClass: ""
+      highlightClass: getWorstClassForMetric("MOS Average")
     },
     {
       metric: "% MOS < 2.0",
       results: "",
-      highlightClass: ""
+      highlightClass: getWorstClassForMetric("% MOS < 2.0")
     },
     {
       metric: "% MOS < 3.0",
       results: "",
-      highlightClass: ""
+      highlightClass: getWorstClassForMetric("% MOS < 3.0")
     }
   ];
 

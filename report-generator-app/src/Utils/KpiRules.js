@@ -275,3 +275,24 @@ export const getKpiCellClass = (kpiType, dutValue, refValue = null) => {
     default: return '';
   }
 };
+
+export const getWorstKpiClass = (classes) => {
+  const priority = [
+    'bg-performance-fail',
+    'bg-performance-marginal-fail',
+    'bg-performance-pass',
+    'bg-performance-excellent'
+  ];
+
+  let worstIndex = priority.length;
+
+  classes.forEach(cls => {
+    const index = priority.indexOf(cls);
+    if (index !== -1 && index < worstIndex) {
+      worstIndex = index;
+    }
+  });
+
+  return worstIndex < priority.length ? priority[worstIndex] : '';
+};
+

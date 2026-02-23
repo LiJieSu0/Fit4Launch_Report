@@ -1,16 +1,20 @@
 // NOTE: This component intentionally uses dynamic imports to load JSON data directly. 
 // It is an exception to the standard DataLoader/ReportContext pattern.
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { ReportContext } from '../../../Contexts/ReportContext';
 
 const VqMosTable = ({ dataSource, city }) => {
-  const [tableData, setTableData] = useState([]);
+  const { project } = useContext(ReportContext);
+  const [tableData, setTableData] = useState(null);
   const [mosCategories, setMosCategories] = useState([]);
   const [entities, setEntities] = useState([]);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch(`/AnalyzeResults/${city}/vq_linechart_data/vq_mos_statistics_5g_auto_${dataSource}.json`);
+        const folderName = typeof project === 'object' ? project.dataFolderName : project;
+        const projectPath = folderName ? `${encodeURIComponent(folderName)}/` : '';
+        const response = await fetch(`/AnalyzeResults/${projectPath}${encodeURIComponent(city)}/vq_linechart_data/vq_mos_statistics_5g_auto_${dataSource}.json`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -40,10 +44,14 @@ const VqMosTable = ({ dataSource, city }) => {
       }
     };
 
-    if (dataSource) {
+    if (dataSource && city && project) {
       loadData();
     }
-  }, [dataSource]);
+  }, [dataSource, city, project]);
+
+  if (tableData === null) {
+    return <div>Loading data...</div>;
+  }
 
   if (tableData.length === 0) {
     return <div>No data available for the selected source.</div>;

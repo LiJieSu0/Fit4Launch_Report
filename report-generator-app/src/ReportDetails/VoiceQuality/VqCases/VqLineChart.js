@@ -1,6 +1,7 @@
 // NOTE: This component intentionally uses dynamic imports to load JSON data directly. 
 // It is an exception to the standard DataLoader/ReportContext pattern.
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { ReportContext } from '../../../Contexts/ReportContext';
 import {
   LineChart,
   Line,
@@ -13,19 +14,27 @@ import {
 } from 'recharts';
 
 const VqLineChart = ({ dataSource, city }) => {
-  const [chartData, setChartData] = useState([]);
+  const { project } = useContext(ReportContext);
+  const [chartData, setChartData] = useState(null);
   const [entities, setEntities] = useState([]);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch(`/AnalyzeResults/${city}/vq_linechart_data/vq_mos_statistics_5g_auto_${dataSource}.json`);
+        const folderName = typeof project === 'object' ? project.dataFolderName : project;
+        const projectPath = folderName ? `${encodeURIComponent(folderName)}/` : '';
+        const response = await fetch(`/AnalyzeResults/${projectPath}${encodeURIComponent(city)}/vq_linechart_data/vq_mos_statistics_5g_auto_${dataSource}.json`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const vqMosStatistics = await response.json();
 
-        const mosCategories = Object.keys(vqMosStatistics.DUT1);
+        const firstEntity = Object.keys(vqMosStatistics)[0];
+        if (!firstEntity) {
+          setChartData([]);
+          return;
+        }
+        const mosCategories = Object.keys(vqMosStatistics[firstEntity]);
 
         const processedData = mosCategories.map(category => {
           const dataPoint = { category: category };
@@ -50,12 +59,16 @@ const VqLineChart = ({ dataSource, city }) => {
       }
     };
 
-    if (dataSource) {
+    if (dataSource && city && project) {
       loadData();
     }
-  }, [dataSource]);
+  }, [dataSource, city, project]);
 
   const formatYAxis = (tick) => `${tick}%`;
+
+  if (chartData === null) {
+    return <div>Loading data...</div>;
+  }
 
   if (chartData.length === 0) {
     return <div>No data available for the selected source.</div>;

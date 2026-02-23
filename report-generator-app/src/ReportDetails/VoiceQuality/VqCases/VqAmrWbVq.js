@@ -93,18 +93,18 @@ const VqAmrWbVq = ({ city: propCity }) => {
   const vqTableData3 = [
     {
       metric: "MOS Average",
-      results: getAmrWbValue("Mobile", "DUT1", "MOS Average"),
-      highlightClass: "bg-performance-excellent"
+      results: "",
+      highlightClass: ""
     },
     {
       metric: "% MOS < 2.0",
-      results: getAmrWbValue("Mobile", "DUT1", "% MOS < 2.0", true, 2),
-      highlightClass: "bg-performance-excellent"
+      results: "",
+      highlightClass: ""
     },
     {
       metric: "% MOS < 3.0",
-      results: getAmrWbValue("Mobile", "DUT1", "% MOS < 3.0", true, 2),
-      highlightClass: "bg-performance-excellent"
+      results: "",
+      highlightClass: ""
     }
   ];
 

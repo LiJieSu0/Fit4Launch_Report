@@ -94,20 +94,20 @@ const VqEvsWbVqEnabled = ({ city: propCity }) => {
   const vqTableDataEVStoEVS_3_3 = [
     {
       metric: "MOS Average",
-      downlink: { value: "", className: "bg-performance-fail" },
-      uplink: { value: "", className: "bg-performance-fail" },
+      downlink: { value: getEvsWbValue("Base", "DUT1", "MOS Average"), className: "bg-performance-fail" },
+      uplink: { value: getEvsWbValue("Mobile", "DUT1", "MOS Average"), className: "bg-performance-fail" },
       highlight: true
     },
     {
       metric: "% MOS < 3.4",
-      downlink: { value: "", className: "bg-performance-pass" },
-      uplink: { value: "", className: "bg-performance-pass" },
+      downlink: { value: getEvsWbValue("Base", "DUT1", "% MOS < 3.4", true, 2), className: "bg-performance-pass" },
+      uplink: { value: getEvsWbValue("Mobile", "DUT1", "% MOS < 3.4", true, 2), className: "bg-performance-pass" },
       highlight: false
     },
     {
       metric: "% MOS < 3.0",
-      downlink: { value: "", className: "bg-performance-pass" },
-      uplink: { value: "", className: "bg-performance-fail" },
+      downlink: { value: getEvsWbValue("Base", "DUT1", "% MOS < 3.0", true, 2), className: "bg-performance-pass" },
+      uplink: { value: getEvsWbValue("Mobile", "DUT1", "% MOS < 3.0", true, 2), className: "bg-performance-fail" },
       highlight: true
     }
   ];
@@ -115,20 +115,20 @@ const VqEvsWbVqEnabled = ({ city: propCity }) => {
   const vqTableDataEVStoAMR_3_3 = [
     {
       metric: "MOS Average",
-      downlink: { value: "", className: "bg-performance-fail" },
-      uplink: { value: "", className: "bg-performance-fail" },
+      downlink: { value: getEvsWbValue("Base", "DUT2", "MOS Average"), className: "bg-performance-fail" },
+      uplink: { value: getEvsWbValue("Mobile", "DUT2", "MOS Average"), className: "bg-performance-fail" },
       highlight: true
     },
     {
       metric: "% MOS < 3.4",
-      downlink: { value: "", className: "bg-performance-excellent" },
-      uplink: { value: "", className: "bg-performance-fail" },
+      downlink: { value: getEvsWbValue("Base", "DUT2", "% MOS < 3.4", true, 2), className: "bg-performance-excellent" },
+      uplink: { value: getEvsWbValue("Mobile", "DUT2", "% MOS < 3.4", true, 2), className: "bg-performance-fail" },
       highlight: false
     },
     {
       metric: "% MOS < 3.0",
-      downlink: { value: "", className: "bg-performance-excellent" },
-      uplink: { value: "", className: "bg-performance-pass" },
+      downlink: { value: getEvsWbValue("Base", "DUT2", "% MOS < 3.0", true, 2), className: "bg-performance-excellent" },
+      uplink: { value: getEvsWbValue("Mobile", "DUT2", "% MOS < 3.0", true, 2), className: "bg-performance-pass" },
       highlight: true
     }
   ];

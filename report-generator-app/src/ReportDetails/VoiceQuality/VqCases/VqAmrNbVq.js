@@ -54,12 +54,12 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
     {
       metric: "MOS Average",
       downlink: {
-        ref: getAmrNbValue("REF", "dl", "mean"),
+        ref: getAmrNbValue("REF1", "dl", "mean"),
         dut1: getAmrNbValue("DUT1", "dl", "mean"),
         dut2: getAmrNbValue("DUT2", "dl", "mean")
       },
       uplink: {
-        ref: getAmrNbValue("REF", "ul", "mean"),
+        ref: getAmrNbValue("REF1", "ul", "mean"),
         dut1: getAmrNbValue("DUT1", "ul", "mean"),
         dut2: getAmrNbValue("DUT2", "ul", "mean")
       },
@@ -68,12 +68,12 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
     {
       metric: "MOS Stdev",
       downlink: {
-        ref: getAmrNbValue("REF", "dl", "std_dev"),
+        ref: getAmrNbValue("REF1", "dl", "std_dev"),
         dut1: getAmrNbValue("DUT1", "dl", "std_dev"),
         dut2: getAmrNbValue("DUT2", "dl", "std_dev")
       },
       uplink: {
-        ref: getAmrNbValue("REF", "ul", "std_dev"),
+        ref: getAmrNbValue("REF1", "ul", "std_dev"),
         dut1: getAmrNbValue("DUT1", "ul", "std_dev"),
         dut2: getAmrNbValue("DUT2", "ul", "std_dev")
       },
@@ -82,12 +82,12 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
     {
       metric: "Maximum MOS",
       downlink: {
-        ref: getAmrNbValue("REF", "dl", "max"),
+        ref: getAmrNbValue("REF1", "dl", "max"),
         dut1: getAmrNbValue("DUT1", "dl", "max"),
         dut2: getAmrNbValue("DUT2", "dl", "max")
       },
       uplink: {
-        ref: getAmrNbValue("REF", "ul", "max"),
+        ref: getAmrNbValue("REF1", "ul", "max"),
         dut1: getAmrNbValue("DUT1", "ul", "max"),
         dut2: getAmrNbValue("DUT2", "ul", "max")
       },
@@ -96,12 +96,12 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
     {
       metric: "Count",
       downlink: {
-        ref: getAmrNbValue("REF", "dl", "count", false, 0),
+        ref: getAmrNbValue("REF1", "dl", "count", false, 0),
         dut1: getAmrNbValue("DUT1", "dl", "count", false, 0),
         dut2: getAmrNbValue("DUT2", "dl", "count", false, 0)
       },
       uplink: {
-        ref: getAmrNbValue("REF", "ul", "count", false, 0),
+        ref: getAmrNbValue("REF1", "ul", "count", false, 0),
         dut1: getAmrNbValue("DUT1", "ul", "count", false, 0),
         dut2: getAmrNbValue("DUT2", "ul", "count", false, 0)
       },
@@ -110,12 +110,12 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
     {
       metric: "% MOS < 2.0",
       downlink: {
-        ref: getAmrNbValue("REF", "dl", "% MOS < 2.0", true, 2),
+        ref: getAmrNbValue("REF1", "dl", "% MOS < 2.0", true, 2),
         dut1: getAmrNbValue("DUT1", "dl", "% MOS < 2.0", true, 2),
         dut2: getAmrNbValue("DUT2", "dl", "% MOS < 2.0", true, 2)
       },
       uplink: {
-        ref: getAmrNbValue("REF", "ul", "% MOS < 2.0", true, 2),
+        ref: getAmrNbValue("REF1", "ul", "% MOS < 2.0", true, 2),
         dut1: getAmrNbValue("DUT1", "ul", "% MOS < 2.0", true, 2),
         dut2: getAmrNbValue("DUT2", "ul", "% MOS < 2.0", true, 2)
       },
@@ -124,12 +124,12 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
     {
       metric: "% MOS < 3.0",
       downlink: {
-        ref: getAmrNbValue("REF", "dl", "% MOS < 3.0", true, 2),
+        ref: getAmrNbValue("REF1", "dl", "% MOS < 3.0", true, 2),
         dut1: getAmrNbValue("DUT1", "dl", "% MOS < 3.0", true, 2),
         dut2: getAmrNbValue("DUT2", "dl", "% MOS < 3.0", true, 2)
       },
       uplink: {
-        ref: getAmrNbValue("REF", "ul", "% MOS < 3.0", true, 2),
+        ref: getAmrNbValue("REF1", "ul", "% MOS < 3.0", true, 2),
         dut1: getAmrNbValue("DUT1", "ul", "% MOS < 3.0", true, 2),
         dut2: getAmrNbValue("DUT2", "ul", "% MOS < 3.0", true, 2)
       },
@@ -170,7 +170,7 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
           {vqTableData2.map((row, index) => (
             <tr key={index}>
               <td>{row.metric}</td>
-              <td className={row.highlightClass}></td>
+              <td className={row.highlightClass}>{row.results}</td>
             </tr>
           ))}
         </tbody>

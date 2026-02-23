@@ -157,8 +157,8 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
               {vqTableDataEVStoEVS_3_3.map((row, index) => (
                 <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
                   <td>{row.metric}</td>
-                  <td className={row.downlink.className}></td>
-                  <td className={row.uplink.className}></td>
+                  <td className={row.downlink.className}>{row.downlink.value}</td>
+                  <td className={row.uplink.className}>{row.uplink.value}</td>
                 </tr>
               ))}
             </tbody>
@@ -182,8 +182,8 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
               {vqTableDataEVStoAMR_3_3.map((row, index) => (
                 <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
                   <td>{row.metric}</td>
-                  <td className={row.downlink.className}></td>
-                  <td className={row.uplink.className}></td>
+                  <td className={row.downlink.className}>{row.downlink.value}</td>
+                  <td className={row.uplink.className}>{row.uplink.value}</td>
                 </tr>
               ))}
             </tbody>

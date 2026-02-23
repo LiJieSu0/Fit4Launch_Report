@@ -53,38 +53,38 @@ const VqAmrWbVq = ({ city: propCity }) => {
   const vqTableData2 = [
     {
       metric: "MOS Average",
-      base: { ref: getAmrWbValue("Base", "REF", "MOS Average"), dut1: getAmrWbValue("Base", "DUT1", "MOS Average"), dut2: getAmrWbValue("Base", "DUT2", "MOS Average") },
-      mobile: { ref: getAmrWbValue("Mobile", "REF", "MOS Average"), dut1: getAmrWbValue("Mobile", "DUT1", "MOS Average"), dut2: getAmrWbValue("Mobile", "DUT2", "MOS Average") },
+      base: { ref: getAmrWbValue("Base", "REF1", "MOS Average"), dut1: getAmrWbValue("Base", "DUT1", "MOS Average"), dut2: getAmrWbValue("Base", "DUT2", "MOS Average") },
+      mobile: { ref: getAmrWbValue("Mobile", "REF1", "MOS Average"), dut1: getAmrWbValue("Mobile", "DUT1", "MOS Average"), dut2: getAmrWbValue("Mobile", "DUT2", "MOS Average") },
       highlight: true
     },
     {
       metric: "MOS Stdev",
-      base: { ref: getAmrWbValue("Base", "REF", "MOS Stdev"), dut1: getAmrWbValue("Base", "DUT1", "MOS Stdev"), dut2: getAmrWbValue("Base", "DUT2", "MOS Stdev") },
-      mobile: { ref: getAmrWbValue("Mobile", "REF", "MOS Stdev"), dut1: getAmrWbValue("Mobile", "DUT1", "MOS Stdev"), dut2: getAmrWbValue("Mobile", "DUT2", "MOS Stdev") },
+      base: { ref: getAmrWbValue("Base", "REF1", "MOS Stdev"), dut1: getAmrWbValue("Base", "DUT1", "MOS Stdev"), dut2: getAmrWbValue("Base", "DUT2", "MOS Stdev") },
+      mobile: { ref: getAmrWbValue("Mobile", "REF1", "MOS Stdev"), dut1: getAmrWbValue("Mobile", "DUT1", "MOS Stdev"), dut2: getAmrWbValue("Mobile", "DUT2", "MOS Stdev") },
       highlight: false
     },
     {
       metric: "Maximum MOS",
-      base: { ref: getAmrWbValue("Base", "REF", "Maximum MOS"), dut1: getAmrWbValue("Base", "DUT1", "Maximum MOS"), dut2: getAmrWbValue("Base", "DUT2", "Maximum MOS") },
-      mobile: { ref: getAmrWbValue("Mobile", "REF", "Maximum MOS"), dut1: getAmrWbValue("Mobile", "DUT1", "Maximum MOS"), dut2: getAmrWbValue("Mobile", "DUT2", "Maximum MOS") },
+      base: { ref: getAmrWbValue("Base", "REF1", "Maximum MOS"), dut1: getAmrWbValue("Base", "DUT1", "Maximum MOS"), dut2: getAmrWbValue("Base", "DUT2", "Maximum MOS") },
+      mobile: { ref: getAmrWbValue("Mobile", "REF1", "Maximum MOS"), dut1: getAmrWbValue("Mobile", "DUT1", "Maximum MOS"), dut2: getAmrWbValue("Mobile", "DUT2", "Maximum MOS") },
       highlight: false
     },
     {
       metric: "Count",
-      base: { ref: getAmrWbValue("Base", "REF", "Counts", false, 0), dut1: getAmrWbValue("Base", "DUT1", "Counts", false, 0), dut2: getAmrWbValue("Base", "DUT2", "Counts", false, 0) },
-      mobile: { ref: getAmrWbValue("Mobile", "REF", "Counts", false, 0), dut1: getAmrWbValue("Mobile", "DUT1", "Counts", false, 0), dut2: getAmrWbValue("Mobile", "DUT2", "Counts", false, 0) },
+      base: { ref: getAmrWbValue("Base", "REF1", "Counts", false, 0), dut1: getAmrWbValue("Base", "DUT1", "Counts", false, 0), dut2: getAmrWbValue("Base", "DUT2", "Counts", false, 0) },
+      mobile: { ref: getAmrWbValue("Mobile", "REF1", "Counts", false, 0), dut1: getAmrWbValue("Mobile", "DUT1", "Counts", false, 0), dut2: getAmrWbValue("Mobile", "DUT2", "Counts", false, 0) },
       highlight: false
     },
     {
       metric: "% MOS < 2.0",
-      base: { ref: getAmrWbValue("Base", "REF", "% MOS < 2.0", true, 2), dut1: getAmrWbValue("Base", "DUT1", "% MOS < 2.0", true, 2), dut2: getAmrWbValue("Base", "DUT2", "% MOS < 2.0", true, 2) },
-      mobile: { ref: getAmrWbValue("Mobile", "REF", "% MOS < 2.0", true, 2), dut1: getAmrWbValue("Mobile", "DUT1", "% MOS < 2.0", true, 2), dut2: getAmrWbValue("Mobile", "DUT2", "% MOS < 2.0", true, 2) },
+      base: { ref: getAmrWbValue("Base", "REF1", "% MOS < 2.0", true, 2), dut1: getAmrWbValue("Base", "DUT1", "% MOS < 2.0", true, 2), dut2: getAmrWbValue("Base", "DUT2", "% MOS < 2.0", true, 2) },
+      mobile: { ref: getAmrWbValue("Mobile", "REF1", "% MOS < 2.0", true, 2), dut1: getAmrWbValue("Mobile", "DUT1", "% MOS < 2.0", true, 2), dut2: getAmrWbValue("Mobile", "DUT2", "% MOS < 2.0", true, 2) },
       highlight: true
     },
     {
       metric: "% MOS < 3.0",
-      base: { ref: getAmrWbValue("Base", "REF", "% MOS < 3.0", true, 2), dut1: getAmrWbValue("Base", "DUT1", "% MOS < 3.0", true, 2), dut2: getAmrWbValue("Base", "DUT2", "% MOS < 3.0", true, 2) },
-      mobile: { ref: getAmrWbValue("Mobile", "REF", "% MOS < 3.0", true, 2), dut1: getAmrWbValue("Mobile", "DUT1", "% MOS < 3.0", true, 2), dut2: getAmrWbValue("Mobile", "DUT2", "% MOS < 3.0", true, 2) },
+      base: { ref: getAmrWbValue("Base", "REF1", "% MOS < 3.0", true, 2), dut1: getAmrWbValue("Base", "DUT1", "% MOS < 3.0", true, 2), dut2: getAmrWbValue("Base", "DUT2", "% MOS < 3.0", true, 2) },
+      mobile: { ref: getAmrWbValue("Mobile", "REF1", "% MOS < 3.0", true, 2), dut1: getAmrWbValue("Mobile", "DUT1", "% MOS < 3.0", true, 2), dut2: getAmrWbValue("Mobile", "DUT2", "% MOS < 3.0", true, 2) },
       highlight: true
     }
   ];
@@ -123,7 +123,7 @@ const VqAmrWbVq = ({ city: propCity }) => {
           {vqTableData3.map((row, index) => (
             <tr key={index}>
               <td>{row.metric}</td>
-              <td className={row.highlightClass}></td>
+              <td className={row.highlightClass}>{row.results}</td>
             </tr>
           ))}
         </tbody>

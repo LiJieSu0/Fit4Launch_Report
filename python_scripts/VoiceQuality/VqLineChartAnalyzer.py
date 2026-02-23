@@ -27,12 +27,13 @@ def calculate_vq_statistics(directory_path, column_name="[Call Test] [Voice Qual
             print(f"Processing file: {csv_file_path}")
 
             # Extract DUT/REF identifier from filename
+            # Handles patterns like DUT1, DUT1_Base, REF2_Mobile, etc.
             match = re.search(r'(DUT[12]|REF[12])', filename, re.IGNORECASE)
             if not match:
                 print(f"Warning: Could not find DUT1, DUT2, REF1, or REF2 in filename: {filename}. Skipping.")
                 continue
             
-            # Use the extracted identifier as the key
+            # Use the extracted identifier as the key (e.g., DUT1, REF2)
             json_key = match.group(1).upper()
 
             try:
@@ -41,12 +42,19 @@ def calculate_vq_statistics(directory_path, column_name="[Call Test] [Voice Qual
                 print(f"Error reading CSV file {filename}: {e}")
                 continue
 
-            if column_name not in df.columns:
-                print(f"Error: Column '{column_name}' not found in {filename}.")
+            # Determine which MOS column to use
+            actual_column = None
+            if column_name in df.columns:
+                actual_column = column_name
+            elif "[Call Test] [Voice Quality] [Sampled Values] MOS (POLQA)" in df.columns:
+                actual_column = "[Call Test] [Voice Quality] [Sampled Values] MOS (POLQA)"
+            
+            if not actual_column:
+                print(f"Error: Neither '{column_name}' nor fallback column found in {filename}.")
                 print(f"Available columns: {df.columns.tolist()}")
                 continue
 
-            mos_values = pd.to_numeric(df[column_name], errors='coerce').dropna()
+            mos_values = pd.to_numeric(df[actual_column], errors='coerce').dropna()
 
             if mos_values.empty:
                 print(f"No valid numeric data found in column '{column_name}' in {filename}.")

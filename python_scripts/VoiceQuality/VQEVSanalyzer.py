@@ -14,14 +14,17 @@ def parse_mos_metrics(file_path):
         
         # Find the header row index
         header_row_index = -1
+        primary_header = '[Call Test] [Voice Quality] [Per Rx Clip] MOS Value'
+        fallback_header = '[Call Test] [Voice Quality] [Sampled Values] MOS (POLQA)'
+        
         with open(file_path, 'r', encoding='utf-8') as f:
             for i, line in enumerate(f):
-                if '[Call Test] [Voice Quality] [Per Rx Clip] MOS Value' in line:
+                if primary_header in line or fallback_header in line:
                     header_row_index = i
                     break
         
         if header_row_index == -1:
-            print(f"Warning: Header '[Call Test] [Voice Quality] [Per Rx Clip] MOS Value' not found in {file_path}")
+            print(f"Warning: Neither '{primary_header}' nor '{fallback_header}' found in {file_path}")
             return None
 
         df = pd.read_csv(file_path, skiprows=header_row_index, encoding='utf-8')
@@ -29,12 +32,12 @@ def parse_mos_metrics(file_path):
         # Identify the correct column for MOS Value
         mos_value_col = None
         for col in df.columns:
-            if '[Call Test] [Voice Quality] [Per Rx Clip] MOS Value' in col:
+            if primary_header in col or fallback_header in col:
                 mos_value_col = col
                 break
         
         if mos_value_col is None:
-            print(f"Warning: Column '[Call Test] [Voice Quality] [Per Rx Clip] MOS Value' not found in {file_path}")
+            print(f"Warning: Column for MOS Value not found in {file_path}")
             return None
 
         # Extract MOS values, convert to numeric, and drop NaNs
@@ -92,10 +95,20 @@ def analyze_vqe_vs_quality(paths):
             for csv_file_name in found_csv_files:
                 file_path = os.path.join(subfolder_path, csv_file_name)
                 
-                print(f"Processing {file_path}...")
+                # Extract device identifier (DUT1, DUT2, REF1, etc.)
+                match = re.search(r'(DUT[12]|REF[12]?)', csv_file_name, re.IGNORECASE)
+                device = match.group(1).upper() if match else csv_file_name.replace('.csv', '')
+                
+                # Determine enable/disable status from scenario name
+                status = "enable" if "Enabled" in scenario_name else "disable"
+                
+                # Formulate the standardized key for React (e.g., "vonr enable evs wb DUT1 mobile")
+                react_key = f"vonr {status} evs wb {device} {subfolder.lower()}"
+                
+                print(f"Processing {file_path} as key '{react_key}'...")
                 metrics = parse_mos_metrics(file_path)
                 if metrics:
-                    all_results[scenario_name][subfolder][csv_file_name.replace('.csv', '')] = metrics
+                    all_results[scenario_name][subfolder][react_key] = metrics
     
     return all_results
 

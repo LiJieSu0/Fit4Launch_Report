@@ -228,11 +228,11 @@ const VqEvsWbVqEnabled = ({ city: propCity }) => {
       </PageBreak>
       <PageBreak>
         <h4>VoNR Enabled EVS WB VQ Downlink MOS Distribution - {city}</h4>
-        <VqLineChart dataSource="vonr_enabled_evs_wb_vq_mobile" />
-        <VqMosTable dataSource="vonr_enabled_evs_wb_vq_mobile" />
+        <VqLineChart dataSource="vonr_enabled_evs_wb_vq_mobile" city={city} />
+        <VqMosTable dataSource="vonr_enabled_evs_wb_vq_mobile" city={city} />
         <h4>VoNR Enabled EVS WB VQ Uplink MOS Distribution - {city}</h4>
-        <VqLineChart dataSource="vonr_enabled_evs_wb_vq_base" />
-        <VqMosTable dataSource="vonr_enabled_evs_wb_vq_base" />
+        <VqLineChart dataSource="vonr_enabled_evs_wb_vq_base" city={city} />
+        <VqMosTable dataSource="vonr_enabled_evs_wb_vq_base" city={city} />
       </PageBreak>
     </>
   );

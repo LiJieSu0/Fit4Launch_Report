@@ -12,14 +12,14 @@ import {
   ResponsiveContainer
 } from 'recharts';
 
-const VqLineChart = ({ dataSource }) => {
+const VqLineChart = ({ dataSource, city }) => {
   const [chartData, setChartData] = useState([]);
   const [entities, setEntities] = useState([]);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch(`/AnalyzeResults/Seattle/vq_linechart_data/vq_mos_statistics_5g_auto_${dataSource}.json`);
+        const response = await fetch(`/AnalyzeResults/${city}/vq_linechart_data/vq_mos_statistics_5g_auto_${dataSource}.json`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

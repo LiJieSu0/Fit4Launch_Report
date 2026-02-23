@@ -5,24 +5,16 @@ import argparse
 def extract_device_type(file_path):
     """
     Extracts device type from the filename.
-    Handles specific cases like DUT1.csv, DUT2.csv, REF.csv,
-    and assumes filename format like 'YYYY-MM-DD_TMO_DeviceType_...' for others.
+    Handles specific cases like DUT1, DUT2, REF1, REF2.
     """
+    import re
     base_name = os.path.basename(file_path)
     
-    # Handle specific cases
-    if base_name.lower() == "dut1.csv":
-        return "DUT1"
-    if base_name.lower() == "dut2.csv":
-        return "DUT2"
-    if base_name.lower() == "ref.csv":
-        return "REF"
-
-    # Existing logic for other filenames
-    parts = base_name.split('_')
-    if len(parts) >= 4:
-        # Assuming device type is like 'Wingtech_Plunkett' from 'TMO_Wingtech_Plunkett_...'
-        return f"{parts[2]}_{parts[3]}"
+    # Use re to find DUT1, DUT2, REF1, REF2
+    match = re.search(r'(DUT[12]|REF[12]?)', base_name, re.IGNORECASE)
+    if match:
+        return match.group(1).upper()
+        
     return "Unknown Device"
 
 def analyze_csv(file_path):
@@ -38,19 +30,24 @@ def analyze_csv(file_path):
 
     ul_mos_header = '[Call Test] [Voice Quality] [UL MOS] MOS'
     dl_mos_header = '[Call Test] [Voice Quality] [Per Rx Clip] MOS Value'
+    fallback_mos_header = '[Call Test] [Voice Quality] [Sampled Values] MOS (POLQA)'
 
     ul_mos_scores = []
     dl_mos_scores = []
 
     if ul_mos_header in df.columns:
         ul_mos_scores = df[ul_mos_header].dropna().tolist()
+    elif fallback_mos_header in df.columns:
+        ul_mos_scores = df[fallback_mos_header].dropna().tolist()
     else:
-        print(f"Warning: '{ul_mos_header}' not found in {file_path}")
+        print(f"Warning: Neither '{ul_mos_header}' nor '{fallback_mos_header}' found in {file_path}")
 
     if dl_mos_header in df.columns:
         dl_mos_scores = df[dl_mos_header].dropna().tolist()
+    elif fallback_mos_header in df.columns:
+        dl_mos_scores = df[fallback_mos_header].dropna().tolist()
     else:
-        print(f"Warning: '{dl_mos_header}' not found in {file_path}")
+        print(f"Warning: Neither '{dl_mos_header}' nor '{fallback_mos_header}' found in {file_path}")
 
     ul_stats = calculate_statistics(ul_mos_scores)
     dl_stats = calculate_statistics(dl_mos_scores)

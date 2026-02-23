@@ -27,7 +27,7 @@ class VoiceQualityAnalyzer(BaseAnalyzer):
                 self.logger.info(f"Processing Voice Quality subfolder: {sub_dir_name}")
                 
                 if "5G Auto VoNR Enabled AMR NB VQ" in sub_dir_name:
-                    nb_vq_results = analyze_vq_amr_nb(sub_dir_full_path, subdir_filter="VQ")
+                    nb_vq_results = analyze_vq_amr_nb(sub_dir_full_path)
                     if nb_vq_results:
                         organized_nb_vq_results = {}
                         for file_stats in nb_vq_results:

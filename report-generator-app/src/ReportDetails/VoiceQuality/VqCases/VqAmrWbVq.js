@@ -3,6 +3,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import PageBreak from '../../../CommonPage/PageBreak';
+import { getKpiCellClass } from '../../../Utils/KpiRules';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -53,8 +54,20 @@ const VqAmrWbVq = ({ city: propCity }) => {
   const vqTableData2 = [
     {
       metric: "MOS Average",
-      base: { ref: getAmrWbValue("Base", "REF1", "MOS Average"), dut1: getAmrWbValue("Base", "DUT1", "MOS Average"), dut2: getAmrWbValue("Base", "DUT2", "MOS Average") },
-      mobile: { ref: getAmrWbValue("Mobile", "REF1", "MOS Average"), dut1: getAmrWbValue("Mobile", "DUT1", "MOS Average"), dut2: getAmrWbValue("Mobile", "DUT2", "MOS Average") },
+      base: {
+        ref: getAmrWbValue("Base", "REF1", "MOS Average"),
+        dut1: getAmrWbValue("Base", "DUT1", "MOS Average"),
+        dut2: getAmrWbValue("Base", "DUT2", "MOS Average"),
+        dut1Class: getKpiCellClass('AmrMosAverage', getAmrWbValue("Base", "DUT1", "MOS Average"), getAmrWbValue("Base", "REF1", "MOS Average")),
+        dut2Class: getKpiCellClass('AmrMosAverage', getAmrWbValue("Base", "DUT2", "MOS Average"), getAmrWbValue("Base", "REF1", "MOS Average"))
+      },
+      mobile: {
+        ref: getAmrWbValue("Mobile", "REF1", "MOS Average"),
+        dut1: getAmrWbValue("Mobile", "DUT1", "MOS Average"),
+        dut2: getAmrWbValue("Mobile", "DUT2", "MOS Average"),
+        dut1Class: getKpiCellClass('AmrMosAverage', getAmrWbValue("Mobile", "DUT1", "MOS Average"), getAmrWbValue("Mobile", "REF1", "MOS Average")),
+        dut2Class: getKpiCellClass('AmrMosAverage', getAmrWbValue("Mobile", "DUT2", "MOS Average"), getAmrWbValue("Mobile", "REF1", "MOS Average"))
+      },
       highlight: true
     },
     {
@@ -77,14 +90,38 @@ const VqAmrWbVq = ({ city: propCity }) => {
     },
     {
       metric: "% MOS < 2.0",
-      base: { ref: getAmrWbValue("Base", "REF1", "% MOS < 2.0", true, 2), dut1: getAmrWbValue("Base", "DUT1", "% MOS < 2.0", true, 2), dut2: getAmrWbValue("Base", "DUT2", "% MOS < 2.0", true, 2) },
-      mobile: { ref: getAmrWbValue("Mobile", "REF1", "% MOS < 2.0", true, 2), dut1: getAmrWbValue("Mobile", "DUT1", "% MOS < 2.0", true, 2), dut2: getAmrWbValue("Mobile", "DUT2", "% MOS < 2.0", true, 2) },
+      base: {
+        ref: getAmrWbValue("Base", "REF1", "% MOS < 2.0", true, 2),
+        dut1: getAmrWbValue("Base", "DUT1", "% MOS < 2.0", true, 2),
+        dut2: getAmrWbValue("Base", "DUT2", "% MOS < 2.0", true, 2),
+        dut1Class: getKpiCellClass('AmrMosTwoPointZero', getAmrWbValue("Base", "DUT1", "% MOS < 2.0"), getAmrWbValue("Base", "REF1", "% MOS < 2.0")),
+        dut2Class: getKpiCellClass('AmrMosTwoPointZero', getAmrWbValue("Base", "DUT2", "% MOS < 2.0"), getAmrWbValue("Base", "REF1", "% MOS < 2.0"))
+      },
+      mobile: {
+        ref: getAmrWbValue("Mobile", "REF1", "% MOS < 2.0", true, 2),
+        dut1: getAmrWbValue("Mobile", "DUT1", "% MOS < 2.0", true, 2),
+        dut2: getAmrWbValue("Mobile", "DUT2", "% MOS < 2.0", true, 2),
+        dut1Class: getKpiCellClass('AmrMosTwoPointZero', getAmrWbValue("Mobile", "DUT1", "% MOS < 2.0"), getAmrWbValue("Mobile", "REF1", "% MOS < 2.0")),
+        dut2Class: getKpiCellClass('AmrMosTwoPointZero', getAmrWbValue("Mobile", "DUT2", "% MOS < 2.0"), getAmrWbValue("Mobile", "REF1", "% MOS < 2.0"))
+      },
       highlight: true
     },
     {
       metric: "% MOS < 3.0",
-      base: { ref: getAmrWbValue("Base", "REF1", "% MOS < 3.0", true, 2), dut1: getAmrWbValue("Base", "DUT1", "% MOS < 3.0", true, 2), dut2: getAmrWbValue("Base", "DUT2", "% MOS < 3.0", true, 2) },
-      mobile: { ref: getAmrWbValue("Mobile", "REF1", "% MOS < 3.0", true, 2), dut1: getAmrWbValue("Mobile", "DUT1", "% MOS < 3.0", true, 2), dut2: getAmrWbValue("Mobile", "DUT2", "% MOS < 3.0", true, 2) },
+      base: {
+        ref: getAmrWbValue("Base", "REF1", "% MOS < 3.0", true, 2),
+        dut1: getAmrWbValue("Base", "DUT1", "% MOS < 3.0", true, 2),
+        dut2: getAmrWbValue("Base", "DUT2", "% MOS < 3.0", true, 2),
+        dut1Class: getKpiCellClass('AmrMosThreePointZero', getAmrWbValue("Base", "DUT1", "% MOS < 3.0"), getAmrWbValue("Base", "REF1", "% MOS < 3.0")),
+        dut2Class: getKpiCellClass('AmrMosThreePointZero', getAmrWbValue("Base", "DUT2", "% MOS < 3.0"), getAmrWbValue("Base", "REF1", "% MOS < 3.0"))
+      },
+      mobile: {
+        ref: getAmrWbValue("Mobile", "REF1", "% MOS < 3.0", true, 2),
+        dut1: getAmrWbValue("Mobile", "DUT1", "% MOS < 3.0", true, 2),
+        dut2: getAmrWbValue("Mobile", "DUT2", "% MOS < 3.0", true, 2),
+        dut1Class: getKpiCellClass('AmrMosThreePointZero', getAmrWbValue("Mobile", "DUT1", "% MOS < 3.0"), getAmrWbValue("Mobile", "REF1", "% MOS < 3.0")),
+        dut2Class: getKpiCellClass('AmrMosThreePointZero', getAmrWbValue("Mobile", "DUT2", "% MOS < 3.0"), getAmrWbValue("Mobile", "REF1", "% MOS < 3.0"))
+      },
       highlight: true
     }
   ];
@@ -150,11 +187,11 @@ const VqAmrWbVq = ({ city: propCity }) => {
             <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
               <td>{row.metric}</td>
               <td>{row.base.ref}</td>
-              <td>{row.base.dut1}</td>
-              <td>{row.base.dut2}</td>
+              <td className={row.base.dut1Class}>{row.base.dut1}</td>
+              <td className={row.base.dut2Class}>{row.base.dut2}</td>
               <td>{row.mobile.ref}</td>
-              <td>{row.mobile.dut1}</td>
-              <td>{row.mobile.dut2}</td>
+              <td className={row.mobile.dut1Class}>{row.mobile.dut1}</td>
+              <td className={row.mobile.dut2Class}>{row.mobile.dut2}</td>
             </tr>
           ))}
         </tbody>

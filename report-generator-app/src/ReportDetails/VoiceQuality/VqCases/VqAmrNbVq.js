@@ -3,6 +3,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import PageBreak from '../../../CommonPage/PageBreak';
+import { getKpiCellClass } from '../../../Utils/KpiRules';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -56,12 +57,16 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
       downlink: {
         ref: getAmrNbValue("REF1", "dl", "mean"),
         dut1: getAmrNbValue("DUT1", "dl", "mean"),
-        dut2: getAmrNbValue("DUT2", "dl", "mean")
+        dut2: getAmrNbValue("DUT2", "dl", "mean"),
+        dut1Class: getKpiCellClass('AmrMosAverage', getAmrNbValue("DUT1", "dl", "mean"), getAmrNbValue("REF1", "dl", "mean")),
+        dut2Class: getKpiCellClass('AmrMosAverage', getAmrNbValue("DUT2", "dl", "mean"), getAmrNbValue("REF1", "dl", "mean"))
       },
       uplink: {
         ref: getAmrNbValue("REF1", "ul", "mean"),
         dut1: getAmrNbValue("DUT1", "ul", "mean"),
-        dut2: getAmrNbValue("DUT2", "ul", "mean")
+        dut2: getAmrNbValue("DUT2", "ul", "mean"),
+        dut1Class: getKpiCellClass('AmrMosAverage', getAmrNbValue("DUT1", "ul", "mean"), getAmrNbValue("REF1", "ul", "mean")),
+        dut2Class: getKpiCellClass('AmrMosAverage', getAmrNbValue("DUT2", "ul", "mean"), getAmrNbValue("REF1", "ul", "mean"))
       },
       highlight: true
     },
@@ -112,12 +117,16 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
       downlink: {
         ref: getAmrNbValue("REF1", "dl", "% MOS < 2.0", true, 2),
         dut1: getAmrNbValue("DUT1", "dl", "% MOS < 2.0", true, 2),
-        dut2: getAmrNbValue("DUT2", "dl", "% MOS < 2.0", true, 2)
+        dut2: getAmrNbValue("DUT2", "dl", "% MOS < 2.0", true, 2),
+        dut1Class: getKpiCellClass('AmrMosTwoPointZero', getAmrNbValue("DUT1", "dl", "% MOS < 2.0"), getAmrNbValue("REF1", "dl", "% MOS < 2.0")),
+        dut2Class: getKpiCellClass('AmrMosTwoPointZero', getAmrNbValue("DUT2", "dl", "% MOS < 2.0"), getAmrNbValue("REF1", "dl", "% MOS < 2.0"))
       },
       uplink: {
         ref: getAmrNbValue("REF1", "ul", "% MOS < 2.0", true, 2),
         dut1: getAmrNbValue("DUT1", "ul", "% MOS < 2.0", true, 2),
-        dut2: getAmrNbValue("DUT2", "ul", "% MOS < 2.0", true, 2)
+        dut2: getAmrNbValue("DUT2", "ul", "% MOS < 2.0", true, 2),
+        dut1Class: getKpiCellClass('AmrMosTwoPointZero', getAmrNbValue("DUT1", "ul", "% MOS < 2.0"), getAmrNbValue("REF1", "ul", "% MOS < 2.0")),
+        dut2Class: getKpiCellClass('AmrMosTwoPointZero', getAmrNbValue("DUT2", "ul", "% MOS < 2.0"), getAmrNbValue("REF1", "ul", "% MOS < 2.0"))
       },
       highlight: true
     },
@@ -126,12 +135,16 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
       downlink: {
         ref: getAmrNbValue("REF1", "dl", "% MOS < 3.0", true, 2),
         dut1: getAmrNbValue("DUT1", "dl", "% MOS < 3.0", true, 2),
-        dut2: getAmrNbValue("DUT2", "dl", "% MOS < 3.0", true, 2)
+        dut2: getAmrNbValue("DUT2", "dl", "% MOS < 3.0", true, 2),
+        dut1Class: getKpiCellClass('AmrMosThreePointZero', getAmrNbValue("DUT1", "dl", "% MOS < 3.0"), getAmrNbValue("REF1", "dl", "% MOS < 3.0")),
+        dut2Class: getKpiCellClass('AmrMosThreePointZero', getAmrNbValue("DUT2", "dl", "% MOS < 3.0"), getAmrNbValue("REF1", "dl", "% MOS < 3.0"))
       },
       uplink: {
         ref: getAmrNbValue("REF1", "ul", "% MOS < 3.0", true, 2),
         dut1: getAmrNbValue("DUT1", "ul", "% MOS < 3.0", true, 2),
-        dut2: getAmrNbValue("DUT2", "ul", "% MOS < 3.0", true, 2)
+        dut2: getAmrNbValue("DUT2", "ul", "% MOS < 3.0", true, 2),
+        dut1Class: getKpiCellClass('AmrMosThreePointZero', getAmrNbValue("DUT1", "ul", "% MOS < 3.0"), getAmrNbValue("REF1", "ul", "% MOS < 3.0")),
+        dut2Class: getKpiCellClass('AmrMosThreePointZero', getAmrNbValue("DUT2", "ul", "% MOS < 3.0"), getAmrNbValue("REF1", "ul", "% MOS < 3.0"))
       },
       highlight: true
     }
@@ -197,11 +210,11 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
             <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
               <td>{row.metric}</td>
               <td>{row.downlink.ref}</td>
-              <td>{row.downlink.dut1}</td>
-              <td>{row.downlink.dut2}</td>
+              <td className={row.downlink.dut1Class}>{row.downlink.dut1}</td>
+              <td className={row.downlink.dut2Class}>{row.downlink.dut2}</td>
               <td>{row.uplink.ref}</td>
-              <td>{row.uplink.dut1}</td>
-              <td>{row.uplink.dut2}</td>
+              <td className={row.uplink.dut1Class}>{row.uplink.dut1}</td>
+              <td className={row.uplink.dut2Class}>{row.uplink.dut2}</td>
             </tr>
           ))}
         </tbody>

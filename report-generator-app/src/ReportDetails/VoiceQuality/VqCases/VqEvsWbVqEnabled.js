@@ -5,7 +5,7 @@ import VqLineChart from './VqLineChart';
 import VqMosTable from './VqMosTable';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import PageBreak from '../../../CommonPage/PageBreak';
-import { getKpiCellClass } from '../../../Utils/KpiRules';
+import { getKpiCellClass, getWorstKpiClass } from '../../../Utils/KpiRules';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -134,23 +134,29 @@ const VqEvsWbVqEnabled = ({ city: propCity }) => {
     }
   ];
 
+  const getEVSClass = (metricName, type, dutType) => { // type: 'mobile' or 'base', dutType: 'dut1' or 'dut2'
+    const row = vqTableData4.find(r => r.metric === metricName);
+    if (!row) return "";
+    return dutType === 'dut1' ? row[type].dut1Class : row[type].dut2Class;
+  };
+
   const vqTableDataEVStoEVS_3_3 = [
     {
       metric: "MOS Average",
-      downlink: { value: "", className: "" },
-      uplink: { value: "", className: "" },
+      downlink: { value: "", className: getEVSClass("MOS Average", "mobile", "dut1") },
+      uplink: { value: "", className: getEVSClass("MOS Average", "base", "dut1") },
       highlight: true
     },
     {
       metric: "% MOS < 3.4",
-      downlink: { value: "", className: "" },
-      uplink: { value: "", className: "" },
+      downlink: { value: "", className: getEVSClass("% MOS < 3.4", "mobile", "dut1") },
+      uplink: { value: "", className: getEVSClass("% MOS < 3.4", "base", "dut1") },
       highlight: false
     },
     {
       metric: "% MOS < 3.0",
-      downlink: { value: "", className: "" },
-      uplink: { value: "", className: "" },
+      downlink: { value: "", className: getEVSClass("% MOS < 3.0", "mobile", "dut1") },
+      uplink: { value: "", className: getEVSClass("% MOS < 3.0", "base", "dut1") },
       highlight: true
     }
   ];
@@ -158,20 +164,20 @@ const VqEvsWbVqEnabled = ({ city: propCity }) => {
   const vqTableDataEVStoAMR_3_3 = [
     {
       metric: "MOS Average",
-      downlink: { value: "", className: "" },
-      uplink: { value: "", className: "" },
+      downlink: { value: "", className: getEVSClass("MOS Average", "mobile", "dut2") },
+      uplink: { value: "", className: getEVSClass("MOS Average", "base", "dut2") },
       highlight: true
     },
     {
       metric: "% MOS < 3.4",
-      downlink: { value: "", className: "" },
-      uplink: { value: "", className: "" },
+      downlink: { value: "", className: getEVSClass("% MOS < 3.4", "mobile", "dut2") },
+      uplink: { value: "", className: getEVSClass("% MOS < 3.4", "base", "dut2") },
       highlight: false
     },
     {
       metric: "% MOS < 3.0",
-      downlink: { value: "", className: "" },
-      uplink: { value: "", className: "" },
+      downlink: { value: "", className: getEVSClass("% MOS < 3.0", "mobile", "dut2") },
+      uplink: { value: "", className: getEVSClass("% MOS < 3.0", "base", "dut2") },
       highlight: true
     }
   ];

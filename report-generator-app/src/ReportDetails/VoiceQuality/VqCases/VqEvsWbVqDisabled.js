@@ -5,6 +5,7 @@ import VqLineChart from './VqLineChart';
 import VqMosTable from './VqMosTable';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import PageBreak from '../../../CommonPage/PageBreak';
+import { getKpiCellClass } from '../../../Utils/KpiRules';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -55,8 +56,22 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
   const vqTableData3 = [
     {
       metric: "MOS Average",
-      mobile: { dut1: getEvsWbValue("Mobile", "DUT1", "MOS Average"), dut2: getEvsWbValue("Mobile", "DUT2", "MOS Average"), ref1: getEvsWbValue("Mobile", "REF1", "MOS Average"), ref2: getEvsWbValue("Mobile", "REF2", "MOS Average") },
-      base: { dut1: getEvsWbValue("Base", "DUT1", "MOS Average"), dut2: getEvsWbValue("Base", "DUT2", "MOS Average"), ref1: getEvsWbValue("Base", "REF1", "MOS Average"), ref2: getEvsWbValue("Base", "REF2", "MOS Average") },
+      mobile: {
+        dut1: getEvsWbValue("Mobile", "DUT1", "MOS Average"),
+        dut2: getEvsWbValue("Mobile", "DUT2", "MOS Average"),
+        ref1: getEvsWbValue("Mobile", "REF1", "MOS Average"),
+        ref2: getEvsWbValue("Mobile", "REF2", "MOS Average"),
+        dut1Class: getKpiCellClass('EvsToEvsMosAverage', getEvsWbValue("Mobile", "DUT1", "MOS Average")),
+        dut2Class: getKpiCellClass('EvsToAmrMosAverage', getEvsWbValue("Mobile", "DUT2", "MOS Average"))
+      },
+      base: {
+        dut1: getEvsWbValue("Base", "DUT1", "MOS Average"),
+        dut2: getEvsWbValue("Base", "DUT2", "MOS Average"),
+        ref1: getEvsWbValue("Base", "REF1", "MOS Average"),
+        ref2: getEvsWbValue("Base", "REF2", "MOS Average"),
+        dut1Class: getKpiCellClass('EvsToEvsMosAverage', getEvsWbValue("Base", "DUT1", "MOS Average")),
+        dut2Class: getKpiCellClass('EvsToAmrMosAverage', getEvsWbValue("Base", "DUT2", "MOS Average"))
+      },
       highlight: true
     },
     {
@@ -79,14 +94,42 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
     },
     {
       metric: "% MOS < 3.4",
-      mobile: { dut1: getEvsWbValue("Mobile", "DUT1", "% MOS < 3.4", true, 2), dut2: getEvsWbValue("Mobile", "DUT2", "% MOS < 3.4", true, 2), ref1: getEvsWbValue("Mobile", "REF1", "% MOS < 3.4", true, 2), ref2: getEvsWbValue("Mobile", "REF2", "% MOS < 3.4", true, 2) },
-      base: { dut1: getEvsWbValue("Base", "DUT1", "% MOS < 3.4", true, 2), dut2: getEvsWbValue("Base", "DUT2", "% MOS < 3.4", true, 2), ref1: getEvsWbValue("Base", "REF1", "% MOS < 3.4", true, 2), ref2: getEvsWbValue("Base", "REF2", "% MOS < 3.4", true, 2) },
+      mobile: {
+        dut1: getEvsWbValue("Mobile", "DUT1", "% MOS < 3.4", true, 2),
+        dut2: getEvsWbValue("Mobile", "DUT2", "% MOS < 3.4", true, 2),
+        ref1: getEvsWbValue("Mobile", "REF1", "% MOS < 3.4", true, 2),
+        ref2: getEvsWbValue("Mobile", "REF2", "% MOS < 3.4", true, 2),
+        dut1Class: getKpiCellClass('EvsToEvsMosThreePointFour', getEvsWbValue("Mobile", "DUT1", "% MOS < 3.4"), getEvsWbValue("Mobile", "REF1", "% MOS < 3.4")),
+        dut2Class: getKpiCellClass('EvsToAmrMosThreePointFour', getEvsWbValue("Mobile", "DUT2", "% MOS < 3.4"), getEvsWbValue("Mobile", "REF2", "% MOS < 3.4"))
+      },
+      base: {
+        dut1: getEvsWbValue("Base", "DUT1", "% MOS < 3.4", true, 2),
+        dut2: getEvsWbValue("Base", "DUT2", "% MOS < 3.4", true, 2),
+        ref1: getEvsWbValue("Base", "REF1", "% MOS < 3.4", true, 2),
+        ref2: getEvsWbValue("Base", "REF2", "% MOS < 3.4", true, 2),
+        dut1Class: getKpiCellClass('EvsToEvsMosThreePointFour', getEvsWbValue("Base", "DUT1", "% MOS < 3.4"), getEvsWbValue("Base", "REF1", "% MOS < 3.4")),
+        dut2Class: getKpiCellClass('EvsToAmrMosThreePointFour', getEvsWbValue("Base", "DUT2", "% MOS < 3.4"), getEvsWbValue("Base", "REF2", "% MOS < 3.4"))
+      },
       highlight: true
     },
     {
       metric: "% MOS < 3.0",
-      mobile: { dut1: getEvsWbValue("Mobile", "DUT1", "% MOS < 3.0", true, 2), dut2: getEvsWbValue("Mobile", "DUT2", "% MOS < 3.0", true, 2), ref1: getEvsWbValue("Mobile", "REF1", "% MOS < 3.0", true, 2), ref2: getEvsWbValue("Mobile", "REF2", "% MOS < 3.0", true, 2) },
-      base: { dut1: getEvsWbValue("Base", "DUT1", "% MOS < 3.0", true, 2), dut2: getEvsWbValue("Base", "DUT2", "% MOS < 3.0", true, 2), ref1: getEvsWbValue("Base", "REF1", "% MOS < 3.0", true, 2), ref2: getEvsWbValue("Base", "REF2", "% MOS < 3.0", true, 2) },
+      mobile: {
+        dut1: getEvsWbValue("Mobile", "DUT1", "% MOS < 3.0", true, 2),
+        dut2: getEvsWbValue("Mobile", "DUT2", "% MOS < 3.0", true, 2),
+        ref1: getEvsWbValue("Mobile", "REF1", "% MOS < 3.0", true, 2),
+        ref2: getEvsWbValue("Mobile", "REF2", "% MOS < 3.0", true, 2),
+        dut1Class: getKpiCellClass('EvsToEvsMosThreePointZero', getEvsWbValue("Mobile", "DUT1", "% MOS < 3.0"), getEvsWbValue("Mobile", "REF1", "% MOS < 3.0")),
+        dut2Class: getKpiCellClass('EvsToAmrMosThreePointZero', getEvsWbValue("Mobile", "DUT2", "% MOS < 3.0"), getEvsWbValue("Mobile", "REF2", "% MOS < 3.0"))
+      },
+      base: {
+        dut1: getEvsWbValue("Base", "DUT1", "% MOS < 3.0", true, 2),
+        dut2: getEvsWbValue("Base", "DUT2", "% MOS < 3.0", true, 2),
+        ref1: getEvsWbValue("Base", "REF1", "% MOS < 3.0", true, 2),
+        ref2: getEvsWbValue("Base", "REF2", "% MOS < 3.0", true, 2),
+        dut1Class: getKpiCellClass('EvsToEvsMosThreePointZero', getEvsWbValue("Base", "DUT1", "% MOS < 3.0"), getEvsWbValue("Base", "REF1", "% MOS < 3.0")),
+        dut2Class: getKpiCellClass('EvsToAmrMosThreePointZero', getEvsWbValue("Base", "DUT2", "% MOS < 3.0"), getEvsWbValue("Base", "REF2", "% MOS < 3.0"))
+      },
       highlight: true
     },
   ];
@@ -212,13 +255,13 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
             {vqTableData3.map((row, index) => (
               <tr key={index} className={row.highlight ? 'highlight-row' : ''}>
                 <td>{row.metric}</td>
-                <td>{row.mobile.dut1}</td>
+                <td className={row.mobile.dut1Class}>{row.mobile.dut1}</td>
                 <td>{row.mobile.ref1}</td>
-                <td>{row.mobile.dut2}</td>
+                <td className={row.mobile.dut2Class}>{row.mobile.dut2}</td>
                 <td>{row.mobile.ref2}</td>
-                <td>{row.base.dut1}</td>
+                <td className={row.base.dut1Class}>{row.base.dut1}</td>
                 <td>{row.base.ref1}</td>
-                <td>{row.base.dut2}</td>
+                <td className={row.base.dut2Class}>{row.base.dut2}</td>
                 <td>{row.base.ref2}</td>
               </tr>
             ))}

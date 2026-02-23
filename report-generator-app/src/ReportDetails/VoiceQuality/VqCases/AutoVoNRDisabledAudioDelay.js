@@ -3,6 +3,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import PageBreak from '../../../CommonPage/PageBreak';
+import { getKpiCellClass } from '../../../Utils/KpiRules';
 
 const processAudioDelayData = (audioDelayData) => {
   if (!audioDelayData || !audioDelayData.DUT1 || !audioDelayData.REF1 || !audioDelayData.DUT2 || !audioDelayData.REF2) {
@@ -35,6 +36,7 @@ const processAudioDelayData = (audioDelayData) => {
       metric: "Average of 2 Devices (ms)",
       dut: averageDut,
       ref: averageRef,
+      className: getKpiCellClass('AudioDelay', averageDut, averageRef),
       highlight: true
     },
     {
@@ -114,7 +116,7 @@ const AutoVoNRDisabledAudioDelay = ({ city: propCity }) => {
               <td>{row.metric}</td>
               {row.metric === "Average of 2 Devices (ms)" ? (
                 <>
-                  <td colSpan="2" className="bg-performance-pass">{row.dut}</td>
+                  <td colSpan="2" className={row.className}>{row.dut}</td>
                   <td colSpan="2">{row.ref}</td>
                 </>
               ) : (

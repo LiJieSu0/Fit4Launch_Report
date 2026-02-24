@@ -300,6 +300,14 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => {
         return 'var(--performance-fail)';
       }
       break;
+    case 'WfcRsrp':
+      if (dut === undefined || dut === null || dut === 'N/A') return null;
+      if (parseFloat(dut) >= -119) {
+        return 'var(--performance-pass)';
+      } else {
+        return 'var(--performance-fail)';
+      }
+      break;
     default:
       return null;
   }

@@ -51,6 +51,7 @@ const WfcMultiHandover = ({ title, tc }) => {
                         <th style={{ width: '15%', whiteSpace: 'nowrap' }}>Profile</th>
                         <th>Device</th>
                         <th>RSSI</th>
+                        <th>RSRP</th>
                         <th>Handovers</th>
                         <th>Call Drop</th>
                         <th>Mean Setup Time (s)</th>
@@ -73,18 +74,21 @@ const WfcMultiHandover = ({ title, tc }) => {
 
                         const renderRow = (deviceType, deviceData, refData) => {
                             const rssi = deviceData?.rssi_average;
+                            const rsrp = deviceData?.rsrp_average;
                             const handovers = deviceData?.minimum_handover;
                             const callDrop = deviceData?.total_retention_failures;
                             const setupTime = deviceData?.mean_setup_time;
                             const mos = deviceData?.mos_average;
 
                             let rssiStyle = {};
+                            let rsrpStyle = {};
                             let handoverStyle = {};
                             let setupTimeStyle = {};
                             let mosStyle = {};
 
                             if (deviceType === 'DUT') {
                                 rssiStyle = { backgroundColor: getKpiCellColor('WfcRssiProfile6', rssi) };
+                                rsrpStyle = { backgroundColor: getKpiCellColor('WfcRsrp', rsrp) };
                                 handoverStyle = { backgroundColor: getKpiCellColor('MinimumHandovers', handovers) };
                                 setupTimeStyle = { backgroundColor: getKpiCellColor('CallSetupTime', setupTime, refData?.mean_setup_time) };
                                 mosStyle = { backgroundColor: getKpiCellColor('WfcMOS', mos, refData?.mos_average) };
@@ -97,6 +101,7 @@ const WfcMultiHandover = ({ title, tc }) => {
                                         {deviceType}
                                     </td>
                                     <td style={rssiStyle}>{formatVal(rssi)}</td>
+                                    <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                     <td style={handoverStyle}>{handovers !== undefined ? handovers : 'N/A'}</td>
                                     <td style={deviceType === 'DUT' ? { backgroundColor: getKpiCellColor('WfcCallDrops', callDrop) } : {}}>{callDrop !== undefined ? callDrop : 'N/A'}</td>
                                     <td style={setupTimeStyle}>{formatVal(setupTime)}</td>

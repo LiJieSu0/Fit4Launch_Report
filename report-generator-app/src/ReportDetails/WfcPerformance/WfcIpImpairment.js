@@ -170,6 +170,7 @@ const WfcIpImpairment = () => {
                                             let handoverDelayStyle = {};
                                             let packetLossStyle = {};
                                             let rssiStyle = {};
+                                            let rsrpStyle = {};
 
                                             if (deviceType === 'DUT') {
                                                 mosBeforeStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosBefore, referenceData?.mos_before_handover_average) };
@@ -178,6 +179,7 @@ const WfcIpImpairment = () => {
                                                 handoverDelayStyle = { backgroundColor: getKpiCellColor('HandoverDelay', deviceData.handover_impact_delay) };
                                                 packetLossStyle = { backgroundColor: getKpiCellColor('WfcPacketLoss', 1) };
                                                 rssiStyle = { backgroundColor: getKpiCellColor('WfcRssiProfile6', rssi) };
+                                                rsrpStyle = { backgroundColor: getKpiCellColor('WfcRsrp', rsrp) };
                                             }
 
                                             return (
@@ -187,7 +189,7 @@ const WfcIpImpairment = () => {
                                                     <td style={mosBeforeStyle}>{formatVal(mosBefore)}</td>
                                                     <td style={mosAfterStyle}>{formatVal(mosAfter)}</td>
                                                     <td style={rssiStyle}>{formatVal(rssi)}</td>
-                                                    <td>{formatVal(rsrp)}</td>
+                                                    <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                                     <td style={callDropsStyle}>{callDrops}</td>
                                                     <td style={handoverDelayStyle}>{formatVal(deviceData.handover_impact_delay)}</td>
                                                     <td style={packetLossStyle}>1 %</td>

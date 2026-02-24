@@ -171,7 +171,7 @@ For individual CSV files (Data Performance, etc.), the `_determine_analysis_para
 | Metric | logic/Header |
 | :--- | :--- |
 | **MOS** | Average of `[Per Rx Clip] MOS Value` (Primary) or `[Sampled Values] MOS (POLQA)` (Secondary). |
-| **IP Impairments MOS** | Specifically for **TC171, TC172, TC173**. Finds the first `IWLAN` -> `NR` transition. Averages MOS for the preceding `IWLAN` block (`mos_before_handover_average`) and succeeding `NR` block (`mos_after_handover_average`). Missing Network Type values are forward-filled. |
+| **IP Impairments MOS** | Specifically for **TC171-TC179**. Finds the first relevant network transition (e.g., `IWLAN` -> `NR`). Averages MOS for the **last 10 samples** of the preceding block (`mos_before_handover_average`) and the **first 10 samples** of the succeeding block (`mos_after_handover_average`). Missing Network Type values are forward-filled. |
 | **Setup Time** | Tries 1. `SIP Setup Duration` header, 2. `Setup Success` - `Orig Success` event diff, 3. `Answer Request` - `Scheduling Start` event diff. |
 | **Call Performance** | Calculates `Total attempts`, `Failures (Orig/Drop)`, and `Successes` for MO calls. |
 | **P-Value** | Calculates p-values for MO Initiation and MO Retention using Fisher's Exact test (comparing DUT MO vs REF MO). |

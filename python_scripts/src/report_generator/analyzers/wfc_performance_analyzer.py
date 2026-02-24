@@ -171,8 +171,8 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
         while block2_end < len(types) and to_net in types.iloc[block2_end]:
             block2_end += 1
             
-        block1_mos = df_valid_mos[target_column].iloc[block1_start : transition_idx + 1]
-        block2_mos = df_valid_mos[target_column].iloc[transition_idx + 1 : block2_end]
+        block1_mos = df_valid_mos[target_column].iloc[block1_start : transition_idx + 1].tail(10)
+        block2_mos = df_valid_mos[target_column].iloc[transition_idx + 1 : block2_end].head(10)
         
         mos_before = None
         mos_after = None

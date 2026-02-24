@@ -34,7 +34,6 @@ const WfcBaselineOverviewTable = () => {
                     <thead>
                         <tr>
                             <th>AP Name</th>
-                            <th>Profile</th>
                             <th>Device</th>
                             <th>Attempts</th>
                             <th>Mean Setup Time (s)</th>
@@ -54,7 +53,6 @@ const WfcBaselineOverviewTable = () => {
                                     return (
                                         <tr key={`kpi-${apConfig.apName}-${tc}`}>
                                             {tcIndex === 0 && <td rowSpan={apConfig.tcs.length * 2}>{apConfig.apName}</td>}
-                                            <td rowSpan="2">{profileName}</td>
                                             <td colSpan="7">No data found for TC in {city}</td>
                                         </tr>
                                     );
@@ -99,7 +97,6 @@ const WfcBaselineOverviewTable = () => {
                                                     </a>
                                                 </td>
                                             )}
-                                            {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
                                             <td>{attempts !== undefined ? attempts : 'N/A'}</td>
                                             <td style={setupTimeStyle}>{formatVal(moData?.mean_setup_time)}</td>

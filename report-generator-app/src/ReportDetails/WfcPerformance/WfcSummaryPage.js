@@ -20,6 +20,18 @@ const WfcSummaryPage = () => {
     return color;
   };
 
+  const getResultText = (color) => {
+    if (
+      color === 'var(--performance-pass)' ||
+      color === 'var(--performance-fail)' ||
+      color === 'var(--performance-marginal-fail)' ||
+      color === 'var(--performance-excellent)'
+    ) {
+      return 'Result';
+    }
+    return 'N/A';
+  };
+
   const getWfcData = (tc) => projectData[city]?.wfcPerformance?.['WFC']?.[tc];
 
   // ---- Section 1: Baseline ----
@@ -175,11 +187,11 @@ const WfcSummaryPage = () => {
               </td>
             )}
             <td>{tcEntry.label}</td>
-            <td style={{ backgroundColor: setupColor }}>{formatVal(dutMo?.mean_setup_time)}</td>
-            <td style={{ backgroundColor: initColor }}>{tcData && ((initRate * 100).toFixed(1) + '%')}</td>
-            <td style={{ backgroundColor: retColor }}>{tcData && ((retRate * 100).toFixed(1) + '%')}</td>
-            <td style={{ backgroundColor: moMosColor }}>{formatVal(dutMo?.mos_average)}</td>
-            <td style={{ backgroundColor: mtMosColor }}>{formatVal(dutMt?.mos_average)}</td>
+            <td style={{ backgroundColor: setupColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(setupColor)}</a></td>
+            <td style={{ backgroundColor: initColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(initColor)}</a></td>
+            <td style={{ backgroundColor: retColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(retColor)}</a></td>
+            <td style={{ backgroundColor: moMosColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(moMosColor)}</a></td>
+            <td style={{ backgroundColor: mtMosColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mtMosColor)}</a></td>
           </tr>
         );
       })
@@ -195,6 +207,7 @@ const WfcSummaryPage = () => {
 
         const mosColor = mapToPass(getKpiCellColor('WfcMOS', dutData?.mos_average, refData?.mos_average));
         const handoverColor = getKpiCellColor('MinimumHandovers', dutData?.minimum_handover);
+        const dropsColor = mapToPass(getKpiCellColor('IpImpairmentCallDrops', dutData?.total_retention_failures));
 
         return (
           <tr key={`${ap.apName}-${tcEntry.tc}`}>
@@ -204,9 +217,9 @@ const WfcSummaryPage = () => {
               </td>
             )}
             <td>{tcEntry.label}</td>
-            <td style={{ backgroundColor: mosColor }}>{formatVal(dutData?.mos_average)}</td>
-            <td style={{ backgroundColor: handoverColor }}>{dutData?.minimum_handover ?? 'N/A'}</td>
-            <td>{dutData?.total_retention_failures ?? 'N/A'}</td>
+            <td style={{ backgroundColor: mosColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mosColor)}</a></td>
+            <td style={{ backgroundColor: handoverColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(handoverColor)}</a></td>
+            <td style={{ backgroundColor: dropsColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(dropsColor)}</a></td>
           </tr>
         );
       })
@@ -231,10 +244,9 @@ const WfcSummaryPage = () => {
                 <a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'underline' }}>{ap.apName}</a>
               </td>
             )}
-            <td>{tcEntry.label}</td>
-            <td style={{ backgroundColor: mosBeforeColor }}>{formatVal(dutData?.mos_before_handover_average)}</td>
-            <td style={{ backgroundColor: mosAfterColor }}>{formatVal(dutData?.mos_after_handover_average)}</td>
-            <td style={{ backgroundColor: dropsColor }}>{dutData?.total_retention_failures ?? 'N/A'}</td>
+            <td style={{ backgroundColor: mosBeforeColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mosBeforeColor)}</a></td>
+            <td style={{ backgroundColor: mosAfterColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mosAfterColor)}</a></td>
+            <td style={{ backgroundColor: dropsColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(dropsColor)}</a></td>
           </tr>
         );
       })
@@ -250,6 +262,7 @@ const WfcSummaryPage = () => {
 
         const mosBeforeColor = mapToPass(getKpiCellColor('IpImpairmentMOS', dutData?.mos_before_handover_average, refData?.mos_before_handover_average));
         const mosAfterColor = mapToPass(getKpiCellColor('IpImpairmentMOS', dutData?.mos_after_handover_average, refData?.mos_after_handover_average));
+        const rssiColor = mapToPass(getKpiCellColor(tcEntry.label.includes('P5') ? 'WfcRssiProfile5' : 'WfcRssiProfile6', dutData?.rssi_average));
         const dropsColor = mapToPass(getKpiCellColor('IpImpairmentCallDrops', dutData?.total_retention_failures));
 
         return (
@@ -260,10 +273,10 @@ const WfcSummaryPage = () => {
               </td>
             )}
             <td>{tcEntry.label}</td>
-            <td style={{ backgroundColor: mosBeforeColor }}>{formatVal(dutData?.mos_before_handover_average)}</td>
-            <td style={{ backgroundColor: mosAfterColor }}>{formatVal(dutData?.mos_after_handover_average)}</td>
-            <td>{formatVal(dutData?.rssi_average)}</td>
-            <td style={{ backgroundColor: dropsColor }}>{dutData?.total_retention_failures ?? 'N/A'}</td>
+            <td style={{ backgroundColor: mosBeforeColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mosBeforeColor)}</a></td>
+            <td style={{ backgroundColor: mosAfterColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mosAfterColor)}</a></td>
+            <td style={{ backgroundColor: rssiColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(rssiColor)}</a></td>
+            <td style={{ backgroundColor: dropsColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(dropsColor)}</a></td>
           </tr>
         );
       })
@@ -311,11 +324,11 @@ const WfcSummaryPage = () => {
               return (
                 <tr key={tc}>
                   <td><a href={anchor} style={{ color: 'inherit', textDecoration: 'underline' }}>{label}</a></td>
-                  <td style={{ backgroundColor: setupColor }}>{formatVal(dutMo?.mean_setup_time)}</td>
-                  <td style={{ backgroundColor: initColor }}>{(initRate * 100).toFixed(1)}%</td>
-                  <td style={{ backgroundColor: retColor }}>{(retRate * 100).toFixed(1)}%</td>
-                  <td style={{ backgroundColor: moMosColor }}>{formatVal(dutMo?.mos_average)}</td>
-                  <td style={{ backgroundColor: mtMosColor }}>{formatVal(dutMt?.mos_average)}</td>
+                  <td style={{ backgroundColor: setupColor }}><a href={anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(setupColor)}</a></td>
+                  <td style={{ backgroundColor: initColor }}><a href={anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(initColor)}</a></td>
+                  <td style={{ backgroundColor: retColor }}><a href={anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(retColor)}</a></td>
+                  <td style={{ backgroundColor: moMosColor }}><a href={anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(moMosColor)}</a></td>
+                  <td style={{ backgroundColor: mtMosColor }}><a href={anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mtMosColor)}</a></td>
                 </tr>
               );
             })}
@@ -362,7 +375,6 @@ const WfcSummaryPage = () => {
           <thead>
             <tr>
               <th style={thStyle}>AP Name</th>
-              <th style={thStyle}>Transition</th>
               <th style={thStyle}>MOS Before HO</th>
               <th style={thStyle}>MOS During/After HO</th>
               <th style={thStyle}>Call Drops</th>

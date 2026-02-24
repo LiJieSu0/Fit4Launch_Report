@@ -103,7 +103,7 @@ const WfcMultiHandoverOverviewTable = () => {
                                             {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
                                             <td>{attempts !== undefined ? attempts : 'N/A'}</td>
-                                            <td>{retFailures !== undefined ? retFailures : 'N/A'}</td>
+                                            <td style={deviceType === 'DUT' ? { backgroundColor: getKpiCellColor('WfcCallDrops', retFailures) } : {}}>{retFailures !== undefined ? retFailures : 'N/A'}</td>
                                             <td style={setupTimeStyle}>{formatVal(moData?.mean_setup_time)}</td>
                                             <td style={moMosStyle}>{formatVal(moData?.mos_average)}</td>
                                             <td style={mtMosStyle}>{formatVal(mtData?.mos_average)}</td>

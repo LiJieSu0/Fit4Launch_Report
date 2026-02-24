@@ -259,6 +259,23 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => {
         return 'var(--performance-fail)';
       }
       break;
+    case 'WfcCallDrops':
+      if (dut === 0) {
+        return 'var(--performance-pass)';
+      } else if (dut === 1) {
+        return 'var(--performance-marginal-fail)';
+      } else if (dut >= 2) {
+        return 'var(--performance-fail)';
+      }
+      break;
+    case 'HandoverDelay':
+      if (dut === undefined || dut === null || dut === 'N/A') return null; // Changed from {} to null to match existing default behavior
+      if (parseFloat(dut) < 2) {
+        return 'var(--performance-pass)';
+      } else {
+        return 'var(--performance-fail)';
+      }
+      break;
     default:
       return null;
   }

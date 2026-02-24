@@ -93,7 +93,7 @@ const WfcMultiHandover = ({ title, tc }) => {
                                         {deviceType}
                                     </td>
                                     <td style={handoverStyle}>{handovers !== undefined ? handovers : 'N/A'}</td>
-                                    <td>{callDrop !== undefined ? callDrop : 'N/A'}</td>
+                                    <td style={deviceType === 'DUT' ? { backgroundColor: getKpiCellColor('WfcCallDrops', callDrop) } : {}}>{callDrop !== undefined ? callDrop : 'N/A'}</td>
                                     <td style={setupTimeStyle}>{formatVal(setupTime)}</td>
                                     <td style={mosStyle}>{formatVal(mos)}</td>
                                 </tr>

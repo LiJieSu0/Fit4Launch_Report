@@ -164,11 +164,13 @@ const WfcCoverage = ({ title, tc, section = 0 }) => {
                                             let mosBeforeStyle = {};
                                             let mosAfterStyle = {};
                                             let callDropsStyle = {};
+                                            let handoverDelayStyle = {};
 
                                             if (deviceType === 'DUT') {
                                                 mosBeforeStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosBefore, referenceData?.mos_before_handover_average) };
                                                 mosAfterStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosAfter, referenceData?.mos_after_handover_average) };
                                                 callDropsStyle = { backgroundColor: getKpiCellColor('IpImpairmentCallDrops', callDrops) };
+                                                handoverDelayStyle = { backgroundColor: getKpiCellColor('HandoverDelay', deviceData.handover_impact_delay) };
                                             }
 
                                             return (
@@ -180,7 +182,7 @@ const WfcCoverage = ({ title, tc, section = 0 }) => {
                                                     <td>{formatVal(rssi)}</td>
                                                     <td>{formatVal(rsrp)}</td>
                                                     <td style={callDropsStyle}>{callDrops}</td>
-                                                    <td>{formatVal(deviceData.handover_impact_delay)}</td>
+                                                    <td style={handoverDelayStyle}>{formatVal(deviceData.handover_impact_delay)}</td>
                                                     <td>1</td>
                                                     <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
                                                 </tr>

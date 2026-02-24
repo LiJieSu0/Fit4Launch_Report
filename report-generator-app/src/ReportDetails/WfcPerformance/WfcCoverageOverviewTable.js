@@ -42,12 +42,14 @@ const WfcCoverageOverviewTable = () => {
                             <th>AP Name</th>
                             <th>Profile</th>
                             <th>Device</th>
-                            <th>Attempts</th>
                             <th>MOS before handover</th>
                             <th>MOS during/after handover</th>
-                            <th>RSSI (dBm)</th>
-                            <th>RSRP (dBm)</th>
+                            <th>RSSI</th>
+                            <th>RSRP</th>
                             <th>Call Drops</th>
+                            <th>Handover Delay impact to speech</th>
+                            <th>Handovers occured</th>
+                            <th>Attempts</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,23 +83,27 @@ const WfcCoverageOverviewTable = () => {
                                         );
                                     }
 
-                                    const attempts = deviceData?.total_retention_failures !== undefined ? "N/A" : "N/A"; // Coverage doesn't normally output attempts explicitly this way, but using N/A as placeholder or omitting
                                     const mosBefore = deviceData?.mos_before_handover_average;
                                     const mosAfter = deviceData?.mos_after_handover_average;
                                     const rssi = deviceData?.rssi_average;
                                     const rsrp = deviceData?.rsrp_average;
                                     const callDrops = deviceData?.total_retention_failures;
+                                    const handoverDelay = deviceData?.handover_impact_delay;
 
                                     let mosBeforeStyle = {};
                                     let mosAfterStyle = {};
                                     let callDropsStyle = {};
+                                    let handoverDelayStyle = {};
                                     let rssiStyle = {};
+                                    let rsrpStyle = {};
 
                                     if (deviceType === 'DUT') {
                                         mosBeforeStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosBefore, refData?.mos_before_handover_average) };
                                         mosAfterStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosAfter, refData?.mos_after_handover_average) };
                                         callDropsStyle = { backgroundColor: getKpiCellColor('IpImpairmentCallDrops', callDrops) };
+                                        handoverDelayStyle = { backgroundColor: getKpiCellColor('HandoverDelay', handoverDelay) };
                                         rssiStyle = { backgroundColor: getKpiCellColor(profileName.includes("Profile 5") ? 'WfcRssiProfile5' : 'WfcRssiProfile6', rssi) };
+                                        rsrpStyle = { backgroundColor: getKpiCellColor('WfcRsrp', rsrp) };
                                     }
 
                                     return (
@@ -111,12 +117,14 @@ const WfcCoverageOverviewTable = () => {
                                             )}
                                             {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
-                                            <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
                                             <td style={mosBeforeStyle}>{formatVal(mosBefore)}</td>
                                             <td style={mosAfterStyle}>{formatVal(mosAfter)}</td>
                                             <td style={rssiStyle}>{formatVal(rssi)}</td>
-                                            <td>{formatVal(rsrp)}</td>
+                                            <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                             <td style={callDropsStyle}>{callDrops !== undefined ? callDrops : 'N/A'}</td>
+                                            <td style={handoverDelayStyle}>{formatVal(handoverDelay)}</td>
+                                            <td>1</td>
+                                            <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
                                         </tr>
                                     );
                                 };

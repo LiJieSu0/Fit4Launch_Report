@@ -21,14 +21,11 @@ const VqDetailsPage = () => {
       <VqEvsWbVqDisabled city='New York' />
       <VqEvsWbVqEnabled city='Seattle' />
       <VqEvsWbVqEnabled city='New York' />
-      <PageBreak>
-        <AutoVoNRDisabledAudioDelay city='Seattle' />
-        <AutoVoNRDisabledAudioDelay city='New York' />
-      </PageBreak>
-      <PageBreak>
-        <AutoVoNREnabledAudioDelay city='Seattle' />
-        <AutoVoNREnabledAudioDelay city='New York' />
-      </PageBreak>
+      <AutoVoNRDisabledAudioDelay city='Seattle' />
+      <AutoVoNRDisabledAudioDelay city='New York' />
+
+      <AutoVoNREnabledAudioDelay city='Seattle' />
+      <AutoVoNREnabledAudioDelay city='New York' />
     </div>
   );
 };

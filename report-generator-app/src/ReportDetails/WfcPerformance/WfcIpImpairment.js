@@ -182,9 +182,9 @@ const WfcIpImpairment = () => {
                                                     <td>{formatVal(rssi)}</td>
                                                     <td>{formatVal(rsrp)}</td>
                                                     <td style={callDropsStyle}>{callDrops}</td>
-                                                    <td>0</td>
+                                                    <td>{formatVal(deviceData.handover_impact_delay)}</td>
                                                     <td>1</td>
-                                                    <td>2</td>
+                                                    <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
                                                 </tr>
                                             );
                                         };

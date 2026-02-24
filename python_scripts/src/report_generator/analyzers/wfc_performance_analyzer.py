@@ -24,6 +24,8 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
         self.rsrp_fallback_header_2 = '[NR5G] [Cell Info] Dominant Cell RSRP'
         # Handover Header
         self.network_type_header = '[Mobile Info] [Android] [Radio] Network Type (Data Svc)'
+        # Delay Header
+        self.delay_header = '[Call Test] [Voice Quality] [Per Rx Clip] Mouth to Ear Delay (Avg)'
 
     def _calculate_column_average(self, df, header):
         """Calculates the average of a specific column, handling numeric conversion."""
@@ -138,8 +140,14 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
         df_temp[self.network_type_header] = df_temp[self.network_type_header].replace('', pd.NA).ffill()
         df_temp[target_column] = pd.to_numeric(df_temp[target_column], errors='coerce')
         
-        # Filter out rows without MOS value to get effective blocks
-        df_valid_mos = df_temp.dropna(subset=[target_column])
+        # Filter out rows without MOS or Delay value to get effective blocks
+        # We use MOS for boundary detection, but we also want Delay for the impact metric
+        df_valid = df_temp.copy()
+        df_valid[target_column] = pd.to_numeric(df_valid[target_column], errors='coerce')
+        if self.delay_header in df_valid.columns:
+            df_valid[self.delay_header] = pd.to_numeric(df_valid[self.delay_header], errors='coerce')
+        
+        df_valid_mos = df_valid.dropna(subset=[target_column])
         if df_valid_mos.empty:
             return None
             
@@ -184,10 +192,21 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
             mos_after = round(float(block2_mos.mean()), 4)
             
         if mos_before is not None or mos_after is not None:
-            return {
+            res = {
                 "mos_before_handover": mos_before,
                 "mos_after_handover": mos_after
             }
+            
+            # Find the first valid delay AFTER handover
+            # We look in df_valid (full rows with numeric conversion) starting from the handover point
+            if self.delay_header in df_valid.columns:
+                handover_row_idx = df_valid_mos.index[transition_idx]
+                after_handover_all = df_valid.loc[handover_row_idx:].iloc[1:]
+                valid_delays = after_handover_all[self.delay_header].dropna()
+                if not valid_delays.empty:
+                    res["handover_impact_delay"] = round(float(valid_delays.iloc[0]), 4)
+            
+            return res
         return None
 
     def _calculate_setup_time(self, df):
@@ -364,6 +383,10 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                                     category_metrics["ip_mos_before"].append(ip_mos["mos_before_handover"])
                                 if ip_mos.get("mos_after_handover") is not None:
                                     category_metrics["ip_mos_after"].append(ip_mos["mos_after_handover"])
+                                if ip_mos.get("handover_impact_delay") is not None:
+                                    if "handover_impact_delay" not in category_metrics:
+                                        category_metrics["handover_impact_delay"] = []
+                                    category_metrics["handover_impact_delay"].append(ip_mos["handover_impact_delay"])
                         
                         if "MT" not in category:
                             cp_stats = self._calculate_call_performance(df)
@@ -398,9 +421,14 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                 if "ip_mos_before" in category_metrics:
                     mos_before_vals = category_metrics["ip_mos_before"]
                     tc_results[category]["mos_before_handover_average"] = round(sum(mos_before_vals) / len(mos_before_vals), 4) if mos_before_vals else "N/A"
+
                 if "ip_mos_after" in category_metrics:
                     mos_after_vals = category_metrics["ip_mos_after"]
                     tc_results[category]["mos_after_handover_average"] = round(sum(mos_after_vals) / len(mos_after_vals), 4) if mos_after_vals else "N/A"
+
+                if "handover_impact_delay" in category_metrics:
+                    delay_vals = category_metrics["handover_impact_delay"]
+                    tc_results[category]["handover_impact_delay"] = round(sum(delay_vals) / len(delay_vals), 4) if delay_vals else "N/A"
 
                 if category_metrics["cp"]:
                     agg_cp = {

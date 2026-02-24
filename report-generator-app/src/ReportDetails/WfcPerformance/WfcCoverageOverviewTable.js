@@ -109,7 +109,7 @@ const WfcCoverageOverviewTable = () => {
                                             )}
                                             {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
-                                            <td>2</td> {/* Hardcoded to match standard display format earlier */}
+                                            <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
                                             <td style={mosBeforeStyle}>{formatVal(mosBefore)}</td>
                                             <td style={mosAfterStyle}>{formatVal(mosAfter)}</td>
                                             <td>{formatVal(rssi)}</td>

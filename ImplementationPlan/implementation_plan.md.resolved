@@ -1,0 +1,34 @@
+# Update Pipeline Logic Documentation
+
+Review the current pipeline functionality and update [D:\ReportGenerator\pipeline_logic_documentation.md](file:///D:/ReportGenerator/pipeline_logic_documentation.md) with missing header requirements, file naming rules, and path restrictions.
+
+## Proposed Changes
+
+### Documentation Updates
+
+#### [MODIFY] [pipeline_logic_documentation.md](file:///D:/ReportGenerator/pipeline_logic_documentation.md)
+- Update **Data Performance** section with:
+    - Expanded Header search order (Primary > Fallback > Third Fallback > Fuzzy).
+    - CDF analysis logic and binning details.
+- Update **Voice Quality** section with:
+    - Detailed breakdown for EVS WB (Base/Mobile scenarios).
+    - Clearer header fallback logic for NB/WB.
+- Update **Coverage Performance** section with:
+    - Specific secondary KPI headers for both 5G and LTE contexts.
+    - Tx Power fuzzy search priority list.
+    - Detailed HPUE filtering rules (PC2: 26dBm, PC3: 24dBm).
+    - N41 Coverage specific logic (Searching upwards from "No Service" for first UL TP > 1 Mbps).
+- Update **WFC Performance** section with:
+    - Handover count logic (TC >= 162).
+    - IP Impairments MOS analysis (TC 171-179) including "Before/After" blocks and "Handover Impact Delay".
+    - Updated MOS and Delay headers.
+- Update **Filename Naming Conventions** section with:
+    - Token-based validation details.
+    - Device type mapping (DUT=PC2, REF=PC3).
+    - Robust MO/MT detection regex details.
+
+## Verification Plan
+
+### Manual Verification
+- Review the updated [pipeline_logic_documentation.md](file:///D:/ReportGenerator/pipeline_logic_documentation.md) to ensure all technical details extracted from the Python scripts are correctly represented.
+- Check formatting and clarity of the new sections.

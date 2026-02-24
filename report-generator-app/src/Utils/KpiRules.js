@@ -276,6 +276,14 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => {
         return 'var(--performance-fail)';
       }
       break;
+    case 'WfcPacketLoss':
+      if (dut === undefined || dut === null || dut === 'N/A') return null;
+      if (parseFloat(dut) <= 35) {
+        return 'var(--performance-pass)';
+      } else {
+        return 'var(--performance-fail)';
+      }
+      break;
     default:
       return null;
   }

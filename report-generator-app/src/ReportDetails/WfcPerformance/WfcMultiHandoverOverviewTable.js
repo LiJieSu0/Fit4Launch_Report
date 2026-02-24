@@ -42,11 +42,12 @@ const WfcMultiHandoverOverviewTable = () => {
                             <th>AP Name</th>
                             <th>Profile</th>
                             <th>Device</th>
-                            <th>Attempts</th>
+                            <th>RSSI</th>
+                            <th>RSRP</th>
+                            <th>Handovers</th>
                             <th>Call Drops</th>
                             <th>Mean Setup Time (s)</th>
-                            <th>MO MOS</th>
-                            <th>MT MOS</th>
+                            <th>Average MOS</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,29 +67,29 @@ const WfcMultiHandoverOverviewTable = () => {
                                 }
 
                                 const renderDeviceRow = (deviceType, isFirstDevice) => {
-                                    let moData, mtData, refMoData, refMtData;
+                                    const dutData = cityData['DUT'] || {};
+                                    const refData = cityData['REF'] || {};
+                                    const deviceData = deviceType === 'DUT' ? dutData : refData;
 
-                                    if (deviceType === 'DUT') {
-                                        moData = cityData['DUT MO'] || cityData['DUT'];
-                                        mtData = cityData['DUT MT'] || cityData['DUT'];
-                                        refMoData = cityData['REF MO'] || cityData['REF'];
-                                        refMtData = cityData['REF MT'] || cityData['REF'];
-                                    } else {
-                                        moData = cityData['REF MO'] || cityData['REF'];
-                                        mtData = cityData['REF MT'] || cityData['REF'];
-                                    }
+                                    const rssi = deviceData?.rssi_average;
+                                    const rsrp = deviceData?.rsrp_average;
+                                    const handovers = deviceData?.minimum_handover;
+                                    const retFailures = deviceData?.total_retention_failures;
+                                    const setupTime = deviceData?.mean_setup_time;
+                                    const mos = deviceData?.mos_average;
 
-                                    const attempts = moData?.total_mo_attempts;
-                                    const retFailures = moData?.total_retention_failures;
-
+                                    let rssiStyle = {};
+                                    let rsrpStyle = {};
+                                    let handoverStyle = {};
                                     let setupTimeStyle = {};
-                                    let moMosStyle = {};
-                                    let mtMosStyle = {};
+                                    let mosStyle = {};
 
                                     if (deviceType === 'DUT') {
-                                        setupTimeStyle = { backgroundColor: getKpiCellColor('CallSetupTime', moData?.mean_setup_time, refMoData?.mean_setup_time) };
-                                        moMosStyle = { backgroundColor: getKpiCellColor('WfcMOS', moData?.mos_average, refMoData?.mos_average) };
-                                        mtMosStyle = { backgroundColor: getKpiCellColor('WfcMOS', mtData?.mos_average, refMtData?.mos_average) };
+                                        rssiStyle = { backgroundColor: getKpiCellColor('WfcRssiProfile6', rssi) };
+                                        rsrpStyle = { backgroundColor: getKpiCellColor('WfcRsrp', rsrp) };
+                                        handoverStyle = { backgroundColor: getKpiCellColor('MinimumHandovers', handovers) };
+                                        setupTimeStyle = { backgroundColor: getKpiCellColor('CallSetupTime', setupTime, refData?.mean_setup_time) };
+                                        mosStyle = { backgroundColor: getKpiCellColor('WfcMOS', mos, refData?.mos_average) };
                                     }
 
                                     return (
@@ -102,11 +103,12 @@ const WfcMultiHandoverOverviewTable = () => {
                                             )}
                                             {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
-                                            <td>{attempts !== undefined ? attempts : 'N/A'}</td>
+                                            <td style={rssiStyle}>{formatVal(rssi)}</td>
+                                            <td style={rsrpStyle}>{formatVal(rsrp)}</td>
+                                            <td style={handoverStyle}>{handovers !== undefined ? handovers : 'N/A'}</td>
                                             <td style={deviceType === 'DUT' ? { backgroundColor: getKpiCellColor('WfcCallDrops', retFailures) } : {}}>{retFailures !== undefined ? retFailures : 'N/A'}</td>
-                                            <td style={setupTimeStyle}>{formatVal(moData?.mean_setup_time)}</td>
-                                            <td style={moMosStyle}>{formatVal(moData?.mos_average)}</td>
-                                            <td style={mtMosStyle}>{formatVal(mtData?.mos_average)}</td>
+                                            <td style={setupTimeStyle}>{formatVal(setupTime)}</td>
+                                            <td style={mosStyle}>{formatVal(mos)}</td>
                                         </tr>
                                     );
                                 };

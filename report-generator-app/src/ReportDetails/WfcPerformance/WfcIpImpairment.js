@@ -169,6 +169,7 @@ const WfcIpImpairment = () => {
                                             let callDropsStyle = {};
                                             let handoverDelayStyle = {};
                                             let packetLossStyle = {};
+                                            let rssiStyle = {};
 
                                             if (deviceType === 'DUT') {
                                                 mosBeforeStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosBefore, referenceData?.mos_before_handover_average) };
@@ -176,6 +177,7 @@ const WfcIpImpairment = () => {
                                                 callDropsStyle = { backgroundColor: getKpiCellColor('IpImpairmentCallDrops', callDrops) };
                                                 handoverDelayStyle = { backgroundColor: getKpiCellColor('HandoverDelay', deviceData.handover_impact_delay) };
                                                 packetLossStyle = { backgroundColor: getKpiCellColor('WfcPacketLoss', 1) };
+                                                rssiStyle = { backgroundColor: getKpiCellColor('WfcRssiProfile6', rssi) };
                                             }
 
                                             return (
@@ -184,7 +186,7 @@ const WfcIpImpairment = () => {
                                                     <td>{deviceType}</td>
                                                     <td style={mosBeforeStyle}>{formatVal(mosBefore)}</td>
                                                     <td style={mosAfterStyle}>{formatVal(mosAfter)}</td>
-                                                    <td>{formatVal(rssi)}</td>
+                                                    <td style={rssiStyle}>{formatVal(rssi)}</td>
                                                     <td>{formatVal(rsrp)}</td>
                                                     <td style={callDropsStyle}>{callDrops}</td>
                                                     <td style={handoverDelayStyle}>{formatVal(deviceData.handover_impact_delay)}</td>

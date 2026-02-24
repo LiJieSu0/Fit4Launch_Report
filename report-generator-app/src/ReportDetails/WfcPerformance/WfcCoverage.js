@@ -165,12 +165,14 @@ const WfcCoverage = ({ title, tc, section = 0 }) => {
                                             let mosAfterStyle = {};
                                             let callDropsStyle = {};
                                             let handoverDelayStyle = {};
+                                            let rssiStyle = {};
 
                                             if (deviceType === 'DUT') {
                                                 mosBeforeStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosBefore, referenceData?.mos_before_handover_average) };
                                                 mosAfterStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosAfter, referenceData?.mos_after_handover_average) };
                                                 callDropsStyle = { backgroundColor: getKpiCellColor('IpImpairmentCallDrops', callDrops) };
                                                 handoverDelayStyle = { backgroundColor: getKpiCellColor('HandoverDelay', deviceData.handover_impact_delay) };
+                                                rssiStyle = { backgroundColor: getKpiCellColor(profileName === "Profile 5" ? 'WfcRssiProfile5' : 'WfcRssiProfile6', rssi) };
                                             }
 
                                             return (
@@ -179,7 +181,7 @@ const WfcCoverage = ({ title, tc, section = 0 }) => {
                                                     <td>{deviceType}</td>
                                                     <td style={mosBeforeStyle}>{formatVal(mosBefore)}</td>
                                                     <td style={mosAfterStyle}>{formatVal(mosAfter)}</td>
-                                                    <td>{formatVal(rssi)}</td>
+                                                    <td style={rssiStyle}>{formatVal(rssi)}</td>
                                                     <td>{formatVal(rsrp)}</td>
                                                     <td style={callDropsStyle}>{callDrops}</td>
                                                     <td style={handoverDelayStyle}>{formatVal(deviceData.handover_impact_delay)}</td>

@@ -10,19 +10,19 @@ const WfcCoverageOverviewTable = () => {
         {
             apName: "ASUS RT-AC68U",
             anchorId: "coverage-section-asus-rt-ac68u",
-            tcs: ["TC177", "TC174"],
+            tcs: ["TC174", "TC177"],
             profiles: ["Profile 5 (Walk In)", "Profile 6 (Walk Out)"]
         },
         {
             apName: "LinkSys Hydra Pro 6E",
             anchorId: "coverage-section-linksys-hydra-pro-6e",
-            tcs: ["TC178", "TC175"],
+            tcs: ["TC175", "TC178"],
             profiles: ["Profile 5 (Walk In)", "Profile 6 (Walk Out)"]
         },
         {
             apName: "T-Mobile HINT Gateway",
             anchorId: "coverage-section-t-mobile-hint-gateway",
-            tcs: ["TC179", "TC176"],
+            tcs: ["TC176", "TC179"],
             profiles: ["Profile 5 (Walk In)", "Profile 6 (Walk Out)"]
         }
     ];
@@ -91,11 +91,13 @@ const WfcCoverageOverviewTable = () => {
                                     let mosBeforeStyle = {};
                                     let mosAfterStyle = {};
                                     let callDropsStyle = {};
+                                    let rssiStyle = {};
 
                                     if (deviceType === 'DUT') {
                                         mosBeforeStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosBefore, refData?.mos_before_handover_average) };
                                         mosAfterStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosAfter, refData?.mos_after_handover_average) };
                                         callDropsStyle = { backgroundColor: getKpiCellColor('IpImpairmentCallDrops', callDrops) };
+                                        rssiStyle = { backgroundColor: getKpiCellColor(profileName.includes("Profile 5") ? 'WfcRssiProfile5' : 'WfcRssiProfile6', rssi) };
                                     }
 
                                     return (
@@ -112,7 +114,7 @@ const WfcCoverageOverviewTable = () => {
                                             <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
                                             <td style={mosBeforeStyle}>{formatVal(mosBefore)}</td>
                                             <td style={mosAfterStyle}>{formatVal(mosAfter)}</td>
-                                            <td>{formatVal(rssi)}</td>
+                                            <td style={rssiStyle}>{formatVal(rssi)}</td>
                                             <td>{formatVal(rsrp)}</td>
                                             <td style={callDropsStyle}>{callDrops !== undefined ? callDrops : 'N/A'}</td>
                                         </tr>

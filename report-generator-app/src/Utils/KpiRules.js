@@ -284,6 +284,22 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => {
         return 'var(--performance-fail)';
       }
       break;
+    case 'WfcRssiProfile6':
+      if (dut === undefined || dut === null || dut === 'N/A') return null;
+      if (parseFloat(dut) >= -73) {
+        return 'var(--performance-pass)';
+      } else {
+        return 'var(--performance-fail)';
+      }
+      break;
+    case 'WfcRssiProfile5':
+      if (dut === undefined || dut === null || dut === 'N/A') return null;
+      if (parseFloat(dut) <= -77) {
+        return 'var(--performance-pass)';
+      } else {
+        return 'var(--performance-fail)';
+      }
+      break;
     default:
       return null;
   }

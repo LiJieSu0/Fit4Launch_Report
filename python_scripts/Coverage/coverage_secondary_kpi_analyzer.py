@@ -22,7 +22,7 @@ def analyze_secondary_kpis(file_path):
         col_network = '[General] Serving Network'
         
         # Tx Power Columns
-        col_tx_power_lte = '[LTE] [Power] [Tx Power] Tx power (PUSCH Total)'
+        col_tx_power_lte = '[LTE] [Power] [Tx Power] Tx Power (PUSCH Actual)'
         col_tx_power_5g = '[NR5G] [Power] Tx power (Total)'
         
         # Read only necessary columns to optimize performance

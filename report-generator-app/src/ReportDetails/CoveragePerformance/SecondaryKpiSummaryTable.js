@@ -6,6 +6,7 @@ import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const SECONDARY_KPI_CONFIG = [
     { name: "DL MCS", kpiType: "SecondaryMcs", segment: "Overall" },
+    { name: "UL MCS", kpiType: "SecondaryMcs", segment: "Overall" },
     { name: "AVG BLER", kpiType: "SecondaryBler", segment: "Overall" },
     { name: "AVG Tx Power (dBm)", kpiType: "SecondaryTxPower", segment: "Overall" }
 ];
@@ -83,6 +84,7 @@ const SecondaryKpiSummaryTable = () => {
 
                     let val;
                     if (kpiName === "DL MCS") val = stats["AVG DL MCS"];
+                    if (kpiName === "UL MCS") val = stats["AVG UL MCS"];
                     if (kpiName === "AVG BLER") val = stats["AVG BLER"];
 
                     if (typeof val === 'number') {

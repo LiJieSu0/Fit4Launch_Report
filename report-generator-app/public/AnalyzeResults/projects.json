@@ -2,7 +2,7 @@
     {
         "dataFolderName": "#Dry Run",
         "displayProjectName": "ATMC Labs Pilot",
-        "testDuration": "-",
+        "testDuration": "02/10/2026-02/11/2026",
         "deviceData": [
             {
                 "testDeviceLabel": "Samsung XCover Pro7",
@@ -21,13 +21,19 @@
                 ]
             },
             {
-                "testDeviceLabel": "TCL 50XL 5G",
+                "testDeviceLabel": "Samsung GS23",
                 "role": "Reference",
-                "softwareVersion": "5EAY",
-                "hardwareVersion": "03",
+                "softwareVersion": "UP1A.231005.007.S911USQU1BWK4",
+                "hardwareVersion": "REV1.0",
                 "imei": [
-                    "016519000016882",
-                    "016519000016080"
+                    "350932550010987",
+                    "355123541733938",
+                    "355123540010296",
+                    "351246873596070",
+                    "352766397820481",
+                    "352766397867003",
+                    "352766397820184",
+                    "352766397822875"
                 ]
             }
         ]
@@ -78,6 +84,16 @@
                     "352766397867003",
                     "352766397820184",
                     "352766397822875"
+                ]
+            },
+            {
+                "testDeviceLabel": "TCL 50XL 5G",
+                "role": "Reference",
+                "softwareVersion": "5EAY",
+                "hardwareVersion": "03",
+                "imei": [
+                    "016519000016882",
+                    "016519000016080"
                 ]
             }
         ]

@@ -140,30 +140,33 @@ const CoverageSummaryTable = () => {
             </thead>
             <tbody>
                 {BANDS.map((band, bandIndex) => (
-                    KPI_CONFIG.map((kpi, kpiIndex) => (
-                        <tr key={`${band.key}-${kpi.key}`}>
-                            {kpiIndex === 0 && (
-                                <td rowSpan={KPI_CONFIG.length}>
-                                    {band.name}
-                                </td>
-                            )}
-                            <td>{kpi.name}</td>
-                            {markets.map(market => {
-                                const result = getResult(market, band, kpi);
-                                return (
-                                    <td
-                                        key={`${market}-${band.key}-${kpi.key}`}
-                                        className={mapColorToClass(result.color)}
-                                        style={{ backgroundColor: result.color !== 'default' ? result.color : '' }}
-                                    >
-                                        {mapColorToClass(result.color) === '' ? "N/A" : <a href={result.link} style={{ color: 'black' }}>
-                                            Results
-                                        </a>}
+                    KPI_CONFIG.map((kpi, kpiIndex) => {
+                        const isLastInBand = kpiIndex === KPI_CONFIG.length - 1;
+                        return (
+                            <tr key={`${band.key}-${kpi.key}`}>
+                                {kpiIndex === 0 && (
+                                    <td className="run-divider" rowSpan={KPI_CONFIG.length}>
+                                        {band.name}
                                     </td>
-                                );
-                            })}
-                        </tr>
-                    ))
+                                )}
+                                <td className={isLastInBand ? 'run-divider' : ''}>{kpi.name}</td>
+                                {markets.map(market => {
+                                    const result = getResult(market, band, kpi);
+                                    return (
+                                        <td
+                                            key={`${market}-${band.key}-${kpi.key}`}
+                                            className={`${mapColorToClass(result.color)} ${isLastInBand ? 'run-divider' : ''}`}
+                                            style={{ backgroundColor: result.color !== 'default' ? result.color : '' }}
+                                        >
+                                            {mapColorToClass(result.color) === '' ? "N/A" : <a href={result.link} style={{ color: 'black' }}>
+                                                Results
+                                            </a>}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        );
+                    })
                 ))}
             </tbody>
         </table>

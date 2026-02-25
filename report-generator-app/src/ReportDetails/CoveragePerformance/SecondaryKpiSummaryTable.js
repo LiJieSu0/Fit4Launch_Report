@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './CoverageSummaryTable.module.css';
 import { useReportData } from '../../Contexts/ReportContext';
+import { HeaderContext } from '../../Contexts/HeaderContext';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const SECONDARY_KPI_CONFIG = [
@@ -11,6 +12,7 @@ const SECONDARY_KPI_CONFIG = [
 
 const SecondaryKpiSummaryTable = () => {
     const { projectData, availableCities, project } = useReportData();
+    const { numberedHeaders } = useContext(HeaderContext);
     const markets = availableCities || ["Seattle", "New York"];
 
     const getDeviceLabel = () => {
@@ -27,6 +29,23 @@ const SecondaryKpiSummaryTable = () => {
         { name: `${deviceLabel} (NR 71)`, key: "n71" },
         { name: `${deviceLabel} (LTE B66)`, key: "b66" },
     ];
+
+    const getDynamicLink = (market, bandKey) => {
+        const citySearch = market.toLowerCase();
+        const bandLabel = bandKey.toUpperCase(); // e.g. N25
+
+        // Find header that matches city, band, and "Secondary KPI" keyword
+        const header = numberedHeaders.find(h => {
+            const text = h.text.toLowerCase();
+            const matchesCity = text.includes(citySearch);
+            const matchesBand = text.includes(bandLabel.toLowerCase());
+            const matchesSecondary = text.includes('secondary kpi');
+
+            return matchesCity && matchesBand && matchesSecondary;
+        });
+
+        return header ? `#${header.id}` : '#';
+    };
 
     const calculateSecondaryAvg = (cityData, band, deviceType, kpiName) => {
         const root = cityData?.coveragePerformance?.["Coverage Performance"];
@@ -119,25 +138,26 @@ const SecondaryKpiSummaryTable = () => {
 
     const getResult = (market, band, kpi) => {
         const cityData = projectData[market];
-        if (!cityData) return { status: "N/A", color: "default" };
+        if (!cityData) return { status: "N/A", color: "default", link: "#" };
 
         const dutAvg = calculateSecondaryAvg(cityData, band.key, "DUT", kpi.name);
         const refAvg = calculateSecondaryAvg(cityData, band.key, "REF", kpi.name);
 
-        if (dutAvg === null || refAvg === null) return { status: "N/A", color: "default" };
+        if (dutAvg === null || refAvg === null) return { status: "N/A", color: "default", link: "#" };
 
+        const link = getDynamicLink(market, band.key);
         const primaryFailed = isPrimaryFailed(cityData, band.key);
 
         // Rule: Only applicable if distance KPI fails
         // If primary passed, we force "Pass" (represented as Success color)
         if (!primaryFailed) {
-            return { status: "Result", color: 'var(--performance-pass)' };
+            return { status: "Result", color: 'var(--performance-pass)', link };
         }
 
         const color = getKpiCellColor(kpi.kpiType, dutAvg, refAvg);
         const status = (color === 'var(--performance-pass)' || color === 'var(--performance-fail)') ? "Result" : "N/A";
 
-        return { status, color };
+        return { status, color, link };
     };
 
     const mapColorToClass = (color) => {
@@ -174,31 +194,40 @@ const SecondaryKpiSummaryTable = () => {
             </thead>
             <tbody>
                 {BANDS.map((band, bandIndex) => (
-                    SECONDARY_KPI_CONFIG.map((kpi, kpiIndex) => (
-                        <tr key={`${band.key}-${kpi.name}`}>
-                            {kpiIndex === 0 && (
-                                <td rowSpan={SECONDARY_KPI_CONFIG.length}>
-                                    {band.name}
-                                </td>
-                            )}
-                            <td>{kpi.name}</td>
-                            {markets.map(market => {
-                                const result = getResult(market, band, kpi);
-                                return (
-                                    <td
-                                        key={`${market}-${band.key}-${kpi.name}`}
-                                        className={mapColorToClass(result.color)}
-                                        style={{
-                                            backgroundColor: result.color !== 'default' ? result.color : '',
-                                            color: result.status === "N/A" ? '' : 'black'
-                                        }}
-                                    >
-                                        {result.status}
+                    SECONDARY_KPI_CONFIG.map((kpi, kpiIndex) => {
+                        const isLastInBand = kpiIndex === SECONDARY_KPI_CONFIG.length - 1;
+                        return (
+                            <tr
+                                key={`${band.key}-${kpi.name}`}
+                            >
+                                {kpiIndex === 0 && (
+                                    <td className="run-divider" rowSpan={SECONDARY_KPI_CONFIG.length}>
+                                        {band.name}
                                     </td>
-                                );
-                            })}
-                        </tr>
-                    ))
+                                )}
+                                <td className={isLastInBand ? 'run-divider' : ''}>{kpi.name}</td>
+                                {markets.map(market => {
+                                    const result = getResult(market, band, kpi);
+                                    return (
+                                        <td
+                                            key={`${market}-${band.key}-${kpi.name}`}
+                                            className={`${mapColorToClass(result.color)} ${isLastInBand ? 'run-divider' : ''}`}
+                                            style={{
+                                                backgroundColor: result.color !== 'default' ? result.color : '',
+                                                color: result.status === "N/A" ? '' : 'black'
+                                            }}
+                                        >
+                                            {result.status === "N/A" ? "N/A" : (
+                                                <a href={result.link} style={{ color: 'inherit', textDecoration: 'none' }}>
+                                                    {result.status}
+                                                </a>
+                                            )}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        );
+                    })
                 ))}
             </tbody>
         </table>

@@ -7,11 +7,16 @@ import PageBreak from '../../CommonPage/PageBreak';
 
 function CoverageSummaryPage() {
   return (
-    <PageBreak id="summary-page">
-      <DynamicHeader level={1}>Coverage Test Overview</DynamicHeader>
-      <CoverageSummaryTable />
-      <SecondaryKpiSummaryTable />
-    </PageBreak>
+    <>
+      <PageBreak id="summary-page">
+        <DynamicHeader level={1}>Coverage Test Overview</DynamicHeader>
+        <CoverageSummaryTable />
+      </PageBreak>
+      <PageBreak>
+        <SecondaryKpiSummaryTable />
+      </PageBreak>
+    </>
+
   );
 }
 

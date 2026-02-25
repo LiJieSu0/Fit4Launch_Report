@@ -138,6 +138,56 @@ const SecondaryKpiSummaryTable = () => {
         return count > 0 ? (sum / count) * 1000 : null;
     };
 
+    const hasAnyDetailedFailure = (cityData, bandKey, kpi) => {
+        const root = cityData?.coveragePerformance?.["Coverage Performance"];
+        if (!root) return false;
+
+        const isLte = bandKey && bandKey.toLowerCase().startsWith('b');
+        const sectionName = isLte ? "LTE Coverage Test" : "5G VoNR Coverage Test";
+        const bandData = root[sectionName]?.[bandKey];
+        if (!bandData) return false;
+
+        const dutData = bandData.DUT || {};
+        const refData = bandData.REF || {};
+        const runs = Object.keys(dutData).filter(key => key.startsWith('Run'));
+
+        for (const runKey of runs) {
+            const secondaryKpiDut = dutData[runKey]?.secondary_kpi;
+            const secondaryKpiRef = refData[runKey]?.secondary_kpi;
+            if (!secondaryKpiDut || !secondaryKpiRef) continue;
+
+            if (kpi.name === "AVG Tx Power (dBm)") {
+                const dutTx = secondaryKpiDut["TxPower"];
+                const refTx = secondaryKpiRef["TxPower"];
+                const color = getKpiCellColor(kpi.kpiType, dutTx, refTx);
+                if (color === 'var(--performance-fail)' || color === 'var(--performance-marginal-fail)') return true;
+            } else {
+                const segments = ['First 30%', 'Middle 40%', 'Last 30%'];
+                for (const seg of segments) {
+                    const statsDut = secondaryKpiDut[seg];
+                    const statsRef = secondaryKpiRef[seg];
+                    if (!statsDut || !statsRef) continue;
+
+                    let dutVal, refVal;
+                    if (kpi.name === "DL MCS") {
+                        dutVal = statsDut["AVG DL MCS"];
+                        refVal = statsRef["AVG DL MCS"];
+                    } else if (kpi.name === "UL MCS") {
+                        dutVal = statsDut["AVG UL MCS"];
+                        refVal = statsRef["AVG UL MCS"];
+                    } else if (kpi.name === "AVG BLER") {
+                        dutVal = statsDut["AVG BLER"];
+                        refVal = statsRef["AVG BLER"];
+                    }
+
+                    const color = getKpiCellColor(kpi.kpiType, dutVal, refVal);
+                    if (color === 'var(--performance-fail)' || color === 'var(--performance-marginal-fail)') return true;
+                }
+            }
+        }
+        return false;
+    };
+
     const getResult = (market, band, kpi) => {
         const cityData = projectData[market];
         if (!cityData) return { status: "N/A", color: "default", link: "#" };
@@ -148,18 +198,13 @@ const SecondaryKpiSummaryTable = () => {
         if (dutAvg === null || refAvg === null) return { status: "N/A", color: "default", link: "#" };
 
         const link = getDynamicLink(market, band.key);
-        const primaryFailed = isPrimaryFailed(cityData, band.key);
+        const anyFailed = hasAnyDetailedFailure(cityData, band.key, kpi);
 
-        // Rule: Only applicable if distance KPI fails
-        // If primary passed, we force "Pass" (represented as Success color)
-        if (!primaryFailed) {
-            return { status: "Result", color: 'var(--performance-pass)', link };
-        }
+        // Show Red (Fail) if any detailed segment failed. 
+        // Show Green (Pass) otherwise.
+        let color = anyFailed ? 'var(--performance-fail)' : 'var(--performance-pass)';
 
-        const color = getKpiCellColor(kpi.kpiType, dutAvg, refAvg);
-        const status = (color === 'var(--performance-pass)' || color === 'var(--performance-fail)') ? "Result" : "N/A";
-
-        return { status, color, link };
+        return { status: "Results", color, link };
     };
 
     const mapColorToClass = (color) => {

@@ -8,6 +8,10 @@ const WfcKpiPage = () => {
             <PageBreak>
                 <DynamicHeader level={1}>KPI Page</DynamicHeader>
                 <img src="/Kpi/Wfc/wfc_kpi1.png" alt="wfc" style={{ maxWidth: '100%', height: '50%' }} />
+                <img src="/Kpi/Wfc/wfc_kpi2.png" alt="wfc" style={{ maxWidth: '100%', height: '50%' }} />
+            </PageBreak>
+            <PageBreak>
+                <img src="/Kpi/Wfc/wfc_kpi3.png" alt="wfc" style={{ maxWidth: '100%', height: '50%' }} />
             </PageBreak>
         </>
     );

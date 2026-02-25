@@ -23,6 +23,10 @@ const WfcMultiHandover = ({ title, tc }) => {
         const chartLabels = [];
         const mosDutValues = [];
         const mosRefValues = [];
+        const rssiDutValues = [];
+        const rssiRefValues = [];
+        const rsrpDutValues = [];
+        const rsrpRefValues = [];
 
         tcList.forEach((testCase, index) => {
             const profileName = profileNames[index] || `Profile ${index + 1}`;
@@ -34,9 +38,13 @@ const WfcMultiHandover = ({ title, tc }) => {
             chartLabels.push(profileName);
             mosDutValues.push(dutData.mos_average);
             mosRefValues.push(refData.mos_average);
+            rssiDutValues.push(dutData.rssi_average);
+            rssiRefValues.push(refData.rssi_average);
+            rsrpDutValues.push(dutData.rsrp_average);
+            rsrpRefValues.push(refData.rsrp_average);
         });
 
-        return { chartLabels, mosDutValues, mosRefValues };
+        return { chartLabels, mosDutValues, mosRefValues, rssiDutValues, rssiRefValues, rsrpDutValues, rsrpRefValues };
     };
 
     const renderKpiTable = (city) => {
@@ -117,10 +125,10 @@ const WfcMultiHandover = ({ title, tc }) => {
     };
 
     const renderBarCharts = (city) => {
-        const { chartLabels, mosDutValues, mosRefValues } = getChartData(city);
+        const { chartLabels, mosDutValues, mosRefValues, rssiDutValues, rssiRefValues, rsrpDutValues, rsrpRefValues } = getChartData(city);
 
         return (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '50%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '50%', margin: '0 auto', marginLeft: '-50px' }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
                     <WfcPerformanceChart
                         labels={chartLabels}
@@ -128,7 +136,29 @@ const WfcMultiHandover = ({ title, tc }) => {
                         refValues={mosRefValues}
                         title="Average MOS"
                         yAxisTitle="MOS Score"
-                        style={{ height: '250px' }}
+                        style={{ height: '200px' }}
+                    />
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                    <WfcPerformanceChart
+                        labels={chartLabels}
+                        dutValues={rssiDutValues}
+                        refValues={rssiRefValues}
+                        title="RSSI"
+                        yAxisTitle="dBm"
+                        style={{ height: '200px' }}
+                        beginAtZero={false}
+                    />
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                    <WfcPerformanceChart
+                        labels={chartLabels}
+                        dutValues={rsrpDutValues}
+                        refValues={rsrpRefValues}
+                        title="RSRP"
+                        yAxisTitle="dBm"
+                        style={{ height: '200px' }}
+                        beginAtZero={false}
                     />
                 </div>
             </div>

@@ -1,0 +1,208 @@
+import React from 'react';
+import styles from './CoverageSummaryTable.module.css';
+import { useReportData } from '../../Contexts/ReportContext';
+import { getKpiCellColor } from '../../Utils/KpiRules';
+
+const SECONDARY_KPI_CONFIG = [
+    { name: "DL MCS", kpiType: "SecondaryMcs", segment: "Overall" },
+    { name: "AVG BLER", kpiType: "SecondaryBler", segment: "Overall" },
+    { name: "AVG Tx Power (dBm)", kpiType: "SecondaryTxPower", segment: "Overall" }
+];
+
+const SecondaryKpiSummaryTable = () => {
+    const { projectData, availableCities, project } = useReportData();
+    const markets = availableCities || ["Seattle", "New York"];
+
+    const getDeviceLabel = () => {
+        if (!project || !project.deviceData) return "Device";
+        const dut = project.deviceData.find(d => d.role === "Device Under Test");
+        return dut ? dut.testDeviceLabel : "Device";
+    };
+
+    const deviceLabel = getDeviceLabel();
+
+    const BANDS = [
+        { name: `${deviceLabel} (NR 25)`, key: "n25" },
+        { name: `${deviceLabel} (NR 41)`, key: "n41" },
+        { name: `${deviceLabel} (NR 71)`, key: "n71" },
+        { name: `${deviceLabel} (LTE B66)`, key: "b66" },
+    ];
+
+    const calculateSecondaryAvg = (cityData, band, deviceType, kpiName) => {
+        const root = cityData?.coveragePerformance?.["Coverage Performance"];
+        if (!root) return null;
+
+        const isLte = band && band.toLowerCase().startsWith('b');
+        const sectionName = isLte ? "LTE Coverage Test" : "5G VoNR Coverage Test";
+        const bandData = root[sectionName]?.[band]?.[deviceType];
+        if (!bandData) return null;
+
+        const runs = Object.keys(bandData).filter(key => key.startsWith('Run'));
+        if (runs.length === 0) return null;
+
+        let sum = 0;
+        let count = 0;
+
+        runs.forEach(runKey => {
+            const secondaryKpi = bandData[runKey]?.secondary_kpi;
+            if (!secondaryKpi) return;
+
+            if (kpiName === "AVG Tx Power (dBm)") {
+                const val = secondaryKpi["TxPower"];
+                if (typeof val === 'number') {
+                    sum += val;
+                    count++;
+                }
+            } else {
+                // For MCS and BLER, we might want to average across segments or pick a specific one.
+                // The requirements mentions "at Initial 30%, Middle 40% and Last 30%".
+                // In detailed table, it shows segments. For summary, we can average them.
+                const segments = ['First 30%', 'Middle 40%', 'Last 30%'];
+                segments.forEach(seg => {
+                    const stats = secondaryKpi[seg];
+                    if (!stats) return;
+
+                    let val;
+                    if (kpiName === "DL MCS") val = stats["AVG DL MCS"];
+                    if (kpiName === "AVG BLER") val = stats["AVG BLER"];
+
+                    if (typeof val === 'number') {
+                        sum += val;
+                        count++;
+                    }
+                });
+            }
+        });
+
+        return count > 0 ? sum / count : null;
+    };
+
+    const isPrimaryFailed = (cityData, bandKey) => {
+        const root = cityData?.coveragePerformance?.["Coverage Performance"];
+        if (!root) return false;
+
+        const isLte = bandKey && bandKey.toLowerCase().startsWith('b');
+        const sectionName = isLte ? "LTE Coverage Test" : "5G VoNR Coverage Test";
+        const bandData = root[sectionName]?.[bandKey];
+        if (!bandData) return false;
+
+        const primaryKpis = ["first_dl_tp_gt_1", "first_ul_tp_gt_1", "mos_before_drop", "call_drop"];
+
+        // Helper to check if a specific KPI failed
+        const checkKpiFail = (kpiKey) => {
+            const dutAvg = calculateAvgDistance(cityData, bandKey, "DUT", kpiKey);
+            const refAvg = calculateAvgDistance(cityData, bandKey, "REF", kpiKey);
+            if (dutAvg === null || refAvg === null) return false;
+            const color = getKpiCellColor('CoverageDistance', dutAvg, refAvg);
+            return color === 'var(--performance-fail)';
+        };
+
+        return primaryKpis.some(kpi => checkKpiFail(kpi));
+    };
+
+    // Duplicate logic from CoverageSummaryTable for consistency
+    const calculateAvgDistance = (cityData, band, deviceType, kpiKey) => {
+        const root = cityData?.coveragePerformance?.["Coverage Performance"];
+        if (!root) return null;
+        const isLte = band && band.toLowerCase().startsWith('b');
+        const sectionName = isLte ? "LTE Coverage Test" : "5G VoNR Coverage Test";
+        const bandData = root[sectionName]?.[band]?.[deviceType];
+        if (!bandData) return null;
+        const runs = Object.keys(bandData).filter(key => key.startsWith('Run'));
+        let sum = 0, count = 0;
+        runs.forEach(runKey => {
+            const val = bandData[runKey]?.[kpiKey]?.distance_km;
+            if (typeof val === 'number') { sum += val; count++; }
+        });
+        return count > 0 ? (sum / count) * 1000 : null;
+    };
+
+    const getResult = (market, band, kpi) => {
+        const cityData = projectData[market];
+        if (!cityData) return { status: "N/A", color: "default" };
+
+        const dutAvg = calculateSecondaryAvg(cityData, band.key, "DUT", kpi.name);
+        const refAvg = calculateSecondaryAvg(cityData, band.key, "REF", kpi.name);
+
+        if (dutAvg === null || refAvg === null) return { status: "N/A", color: "default" };
+
+        const primaryFailed = isPrimaryFailed(cityData, band.key);
+
+        // Rule: Only applicable if distance KPI fails
+        // If primary passed, we force "Pass" (represented as Success color)
+        if (!primaryFailed) {
+            return { status: "Result", color: 'var(--performance-pass)' };
+        }
+
+        const color = getKpiCellColor(kpi.kpiType, dutAvg, refAvg);
+        const status = (color === 'var(--performance-pass)' || color === 'var(--performance-fail)') ? "Result" : "N/A";
+
+        return { status, color };
+    };
+
+    const mapColorToClass = (color) => {
+        if (color === 'var(--performance-pass)') return styles['result-pass'];
+        if (color === 'var(--performance-fail)') return styles['result-fail'];
+        return '';
+    };
+
+    return (
+        <table className={`general-table-style ${styles['coverage-summary-table']}`} style={{ marginTop: '30px' }}>
+            <colgroup>
+                <col style={{ width: '25%' }} />
+                <col style={{ width: '35%' }} />
+                {markets.map(market => (
+                    <col key={market} style={{ width: `${40 / markets.length}%` }} />
+                ))}
+            </colgroup>
+            <thead>
+                <tr>
+                    <th colSpan={markets.length + 2} style={{ textAlign: 'left', padding: '10px' }}>
+                        Secondary KPI Summary Table (Only evaluated if Primary Distance KPI fails)
+                    </th>
+                </tr>
+                <tr>
+                    <th rowSpan="2">Device</th>
+                    <th rowSpan="2">Secondary KPI</th>
+                    <th colSpan={markets.length}>Market</th>
+                </tr>
+                <tr>
+                    {markets.map(market => (
+                        <th key={market}>{market}</th>
+                    ))}
+                </tr>
+            </thead>
+            <tbody>
+                {BANDS.map((band, bandIndex) => (
+                    SECONDARY_KPI_CONFIG.map((kpi, kpiIndex) => (
+                        <tr key={`${band.key}-${kpi.name}`}>
+                            {kpiIndex === 0 && (
+                                <td rowSpan={SECONDARY_KPI_CONFIG.length}>
+                                    {band.name}
+                                </td>
+                            )}
+                            <td>{kpi.name}</td>
+                            {markets.map(market => {
+                                const result = getResult(market, band, kpi);
+                                return (
+                                    <td
+                                        key={`${market}-${band.key}-${kpi.name}`}
+                                        className={mapColorToClass(result.color)}
+                                        style={{
+                                            backgroundColor: result.color !== 'default' ? result.color : '',
+                                            color: result.status === "N/A" ? '' : 'black'
+                                        }}
+                                    >
+                                        {result.status}
+                                    </td>
+                                );
+                            })}
+                        </tr>
+                    ))
+                ))}
+            </tbody>
+        </table>
+    );
+};
+
+export default SecondaryKpiSummaryTable;

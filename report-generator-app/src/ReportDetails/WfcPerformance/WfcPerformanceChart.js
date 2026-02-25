@@ -1,7 +1,7 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-const WfcPerformanceChart = ({ labels, dutValues, refValues, title, yAxisTitle, style }) => {
+const WfcPerformanceChart = ({ labels, dutValues, refValues, title, yAxisTitle, style, beginAtZero = true }) => {
     const chartData = {
         labels: labels,
         datasets: [
@@ -65,7 +65,7 @@ const WfcPerformanceChart = ({ labels, dutValues, refValues, title, yAxisTitle, 
                 }
             },
             y: {
-                beginAtZero: true,
+                beginAtZero: beginAtZero,
                 title: {
                     display: !!yAxisTitle,
                     text: yAxisTitle,
@@ -87,7 +87,7 @@ const WfcPerformanceChart = ({ labels, dutValues, refValues, title, yAxisTitle, 
     };
 
     return (
-        <div className="wfc-chart-wrapper" style={{ height: '250px', width: '100%', flex: '1', margin: '0px 0', boxSizing: 'border-box', ...style }}>
+        <div className="wfc-chart-wrapper" style={{ height: '200px', width: '80%', flex: '1', margin: '0px 0', boxSizing: 'border-box', ...style }}>
             <h4 style={{ textAlign: 'center', marginBottom: '10px' }}>{title}</h4>
             <Bar data={chartData} options={options} />
         </div>

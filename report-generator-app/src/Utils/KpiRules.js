@@ -308,6 +308,30 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => {
         return 'var(--performance-fail)';
       }
       break;
+    case 'SecondaryMcs':
+      if (dut === undefined || dut === null || dut === 'N/A') return null;
+      if (parseFloat(dut) >= parseFloat(ref) - 2) {
+        return 'var(--performance-pass)';
+      } else {
+        return 'var(--performance-fail)';
+      }
+      break;
+    case 'SecondaryBler':
+      if (dut === undefined || dut === null || dut === 'N/A') return null;
+      if (parseFloat(dut) <= parseFloat(ref) + 2) {
+        return 'var(--performance-pass)';
+      } else {
+        return 'var(--performance-fail)';
+      }
+      break;
+    case 'SecondaryTxPower':
+      if (dut === undefined || dut === null || dut === 'N/A') return null;
+      if (parseFloat(dut) >= parseFloat(ref) - 0.5) {
+        return 'var(--performance-pass)';
+      } else {
+        return 'var(--performance-fail)';
+      }
+      break;
     default:
       return null;
   }

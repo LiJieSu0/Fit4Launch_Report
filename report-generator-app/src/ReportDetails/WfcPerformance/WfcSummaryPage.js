@@ -106,26 +106,23 @@ const WfcSummaryPage = () => {
   const ipImpApConfig = [
     {
       apName: 'ASUS RT-AC68U',
-      anchor: '#section-asus-rt-ac68u',
+      anchor: '#section-wfc-ip-impairment',
       tcs: [
         { tc: 'TC171', label: 'IWLAN→NR' },
-        { tc: 'TC174', label: 'NR→IWLAN' },
       ],
     },
     {
       apName: 'LinkSys Hydra Pro 6E',
-      anchor: '#section-linksys-hydra-pro-6e',
+      anchor: '#section-wfc-ip-impairment',
       tcs: [
         { tc: 'TC172', label: 'IWLAN→NR' },
-        { tc: 'TC175', label: 'NR→IWLAN' },
       ],
     },
     {
       apName: 'T-Mobile HINT Gateway',
-      anchor: '#section-t-mobile-hint-gateway',
+      anchor: '#section-wfc-ip-impairment',
       tcs: [
         { tc: 'TC173', label: 'IWLAN→NR' },
-        { tc: 'TC176', label: 'NR→IWLAN' },
       ],
     },
   ];
@@ -209,6 +206,12 @@ const WfcSummaryPage = () => {
         const handoverColor = getKpiCellColor('MinimumHandovers', dutData?.minimum_handover);
         const dropsColor = mapToPass(getKpiCellColor('IpImpairmentCallDrops', dutData?.total_retention_failures));
 
+        const rssi = dutData?.rssi_average;
+        const rsrp = dutData?.rsrp_average;
+
+        const rssiColor = mapToPass(getKpiCellColor('WfcRssiProfile6', rssi));
+        const rsrpColor = mapToPass(getKpiCellColor('WfcRsrp', rsrp));
+
         return (
           <tr key={`${ap.apName}-${tcEntry.tc}`}>
             {tcIdx === 0 && (
@@ -218,6 +221,8 @@ const WfcSummaryPage = () => {
             )}
             <td>{tcEntry.label}</td>
             <td style={{ backgroundColor: mosColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mosColor)}</a></td>
+            <td style={{ backgroundColor: rssiColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(rssiColor)}</a></td>
+            <td style={{ backgroundColor: rsrpColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(rsrpColor)}</a></td>
             <td style={{ backgroundColor: handoverColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(handoverColor)}</a></td>
             <td style={{ backgroundColor: dropsColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(dropsColor)}</a></td>
           </tr>
@@ -237,6 +242,17 @@ const WfcSummaryPage = () => {
         const mosAfterColor = mapToPass(getKpiCellColor('IpImpairmentMOS', dutData?.mos_after_handover_average, refData?.mos_after_handover_average));
         const dropsColor = mapToPass(getKpiCellColor('IpImpairmentCallDrops', dutData?.total_retention_failures));
 
+        const rssi = dutData?.rssi_average;
+        const rsrp = dutData?.rsrp_average;
+        const handoverDelay = dutData?.handover_impact_delay;
+
+        const rssiColor = mapToPass(getKpiCellColor('WfcRssiProfile6', rssi));
+        const rsrpColor = mapToPass(getKpiCellColor('WfcRsrp', rsrp));
+        const handoverDelayColor = mapToPass(getKpiCellColor('HandoverDelay', handoverDelay));
+
+        const packetLoss = 1;
+        const packetLossColor = getKpiCellColor('WfcPacketLoss', packetLoss);
+
         return (
           <tr key={`${ap.apName}-${tcEntry.tc}`}>
             {tcIdx === 0 && (
@@ -246,6 +262,10 @@ const WfcSummaryPage = () => {
             )}
             <td style={{ backgroundColor: mosBeforeColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mosBeforeColor)}</a></td>
             <td style={{ backgroundColor: mosAfterColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mosAfterColor)}</a></td>
+            <td style={{ backgroundColor: rssiColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(rssiColor)}</a></td>
+            <td style={{ backgroundColor: rsrpColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(rsrpColor)}</a></td>
+            <td style={{ backgroundColor: handoverDelayColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(handoverDelayColor)}</a></td>
+            <td style={{ backgroundColor: packetLossColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(packetLossColor)}</a></td>
             <td style={{ backgroundColor: dropsColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(dropsColor)}</a></td>
           </tr>
         );
@@ -265,6 +285,9 @@ const WfcSummaryPage = () => {
         const rssiColor = mapToPass(getKpiCellColor(tcEntry.label.includes('P5') ? 'WfcRssiProfile5' : 'WfcRssiProfile6', dutData?.rssi_average));
         const dropsColor = mapToPass(getKpiCellColor('IpImpairmentCallDrops', dutData?.total_retention_failures));
 
+        const handoverDelay = dutData?.handover_impact_delay;
+        const handoverDelayColor = mapToPass(getKpiCellColor('HandoverDelay', handoverDelay));
+
         return (
           <tr key={`${ap.apName}-${tcEntry.tc}`}>
             {tcIdx === 0 && (
@@ -276,6 +299,7 @@ const WfcSummaryPage = () => {
             <td style={{ backgroundColor: mosBeforeColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mosBeforeColor)}</a></td>
             <td style={{ backgroundColor: mosAfterColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(mosAfterColor)}</a></td>
             <td style={{ backgroundColor: rssiColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(rssiColor)}</a></td>
+            <td style={{ backgroundColor: handoverDelayColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(handoverDelayColor)}</a></td>
             <td style={{ backgroundColor: dropsColor }}><a href={ap.anchor} style={{ color: 'inherit', textDecoration: 'none' }}>{getResultText(dropsColor)}</a></td>
           </tr>
         );
@@ -292,7 +316,7 @@ const WfcSummaryPage = () => {
         <DynamicHeader level={1}>WFC Performance Test Summary</DynamicHeader>
 
         {/* ---- Baseline ---- */}
-        <div style={sectionHeaderStyle}>1. Baseline Cellular &amp; WFC Call Performance</div>
+        <div style={sectionHeaderStyle}>Baseline Cellular &amp; WFC Call Performance</div>
         <table className="mini-performance-table general-table-style" style={{ width: '100%', fontSize: '11px', textAlign: 'center' }}>
           <thead>
             <tr>
@@ -336,7 +360,7 @@ const WfcSummaryPage = () => {
         </table>
 
         {/* ---- Call Performance ---- */}
-        <div style={sectionHeaderStyle}>2. WiFi Call Performance</div>
+        <div style={sectionHeaderStyle}>WiFi Call Performance</div>
         <table className="mini-performance-table general-table-style" style={{ width: '100%', fontSize: '11px', textAlign: 'center' }}>
           <thead>
             <tr>
@@ -353,13 +377,15 @@ const WfcSummaryPage = () => {
         </table>
 
         {/* ---- Multi Handovers ---- */}
-        <div style={sectionHeaderStyle}>3. Multi Handovers</div>
+        <div style={sectionHeaderStyle}>Multi Handovers</div>
         <table className="mini-performance-table general-table-style" style={{ width: '100%', fontSize: '11px', textAlign: 'center' }}>
           <thead>
             <tr>
               <th style={thStyle}>AP Name</th>
               <th style={thStyle}>Profile</th>
               <th style={thStyle}>Avg MOS</th>
+              <th style={thStyle}>RSSI (dBm)</th>
+              <th style={thStyle}>RSRP (dBm)</th>
               <th style={thStyle}>Handovers</th>
               <th style={thStyle}>Call Drops</th>
             </tr>
@@ -370,13 +396,17 @@ const WfcSummaryPage = () => {
 
       <PageBreak>
         {/* ---- IP Impairments ---- */}
-        <div style={sectionHeaderStyle}>4. IP Impairments</div>
+        <div style={sectionHeaderStyle}>IP Impairments</div>
         <table className="mini-performance-table general-table-style" style={{ width: '100%', fontSize: '11px', textAlign: 'center' }}>
           <thead>
             <tr>
               <th style={thStyle}>AP Name</th>
               <th style={thStyle}>MOS Before HO</th>
               <th style={thStyle}>MOS During/After HO</th>
+              <th style={thStyle}>RSSI (dBm)</th>
+              <th style={thStyle}>RSRP (dBm)</th>
+              <th style={thStyle}>Handover Delay</th>
+              <th style={thStyle}>Packet Loss (%)</th>
               <th style={thStyle}>Call Drops</th>
             </tr>
           </thead>
@@ -384,7 +414,7 @@ const WfcSummaryPage = () => {
         </table>
 
         {/* ---- Walk In/Out WFC Coverage ---- */}
-        <div style={{ ...sectionHeaderStyle, marginTop: '28px' }}>5. Walk In / Out of WFC Coverage</div>
+        <div style={{ ...sectionHeaderStyle, marginTop: '28px' }}>Walk In / Out of WFC Coverage</div>
         <table className="mini-performance-table general-table-style" style={{ width: '100%', fontSize: '11px', textAlign: 'center' }}>
           <thead>
             <tr>
@@ -393,6 +423,7 @@ const WfcSummaryPage = () => {
               <th style={thStyle}>MOS Before HO</th>
               <th style={thStyle}>MOS During/After HO</th>
               <th style={thStyle}>RSSI (dBm)</th>
+              <th style={thStyle}>Handover Delay</th>
               <th style={thStyle}>Call Drops</th>
             </tr>
           </thead>

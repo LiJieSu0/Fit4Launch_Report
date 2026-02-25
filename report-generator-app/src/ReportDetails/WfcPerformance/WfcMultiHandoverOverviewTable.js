@@ -46,7 +46,6 @@ const WfcMultiHandoverOverviewTable = () => {
                             <th>RSRP</th>
                             <th>Handovers</th>
                             <th>Call Drops</th>
-                            <th>Mean Setup Time (s)</th>
                             <th>Average MOS</th>
                         </tr>
                     </thead>
@@ -61,7 +60,7 @@ const WfcMultiHandoverOverviewTable = () => {
                                         <tr key={`kpi-${apConfig.apName}-${tc}`}>
                                             {tcIndex === 0 && <td rowSpan={apConfig.tcs.length * 2}>{apConfig.apName}</td>}
                                             <td rowSpan="2">{profileName}</td>
-                                            <td colSpan="6">No data found for TC in {city}</td>
+                                            <td colSpan="5">No data found for TC in {city}</td>
                                         </tr>
                                     );
                                 }
@@ -75,20 +74,17 @@ const WfcMultiHandoverOverviewTable = () => {
                                     const rsrp = deviceData?.rsrp_average;
                                     const handovers = deviceData?.minimum_handover;
                                     const retFailures = deviceData?.total_retention_failures;
-                                    const setupTime = deviceData?.mean_setup_time;
                                     const mos = deviceData?.mos_average;
 
                                     let rssiStyle = {};
                                     let rsrpStyle = {};
                                     let handoverStyle = {};
-                                    let setupTimeStyle = {};
                                     let mosStyle = {};
 
                                     if (deviceType === 'DUT') {
                                         rssiStyle = { backgroundColor: getKpiCellColor('WfcRssiProfile6', rssi) };
                                         rsrpStyle = { backgroundColor: getKpiCellColor('WfcRsrp', rsrp) };
                                         handoverStyle = { backgroundColor: getKpiCellColor('MinimumHandovers', handovers) };
-                                        setupTimeStyle = { backgroundColor: getKpiCellColor('CallSetupTime', setupTime, refData?.mean_setup_time) };
                                         mosStyle = { backgroundColor: getKpiCellColor('WfcMOS', mos, refData?.mos_average) };
                                     }
 
@@ -107,7 +103,6 @@ const WfcMultiHandoverOverviewTable = () => {
                                             <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                             <td style={handoverStyle}>{handovers !== undefined ? handovers : 'N/A'}</td>
                                             <td style={deviceType === 'DUT' ? { backgroundColor: getKpiCellColor('WfcCallDrops', retFailures) } : {}}>{retFailures !== undefined ? retFailures : 'N/A'}</td>
-                                            <td style={setupTimeStyle}>{formatVal(setupTime)}</td>
                                             <td style={mosStyle}>{formatVal(mos)}</td>
                                         </tr>
                                     );

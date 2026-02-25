@@ -21,8 +21,6 @@ const WfcMultiHandover = ({ title, tc }) => {
 
     const getChartData = (city) => {
         const chartLabels = [];
-        const setupTimeDutValues = [];
-        const setupTimeRefValues = [];
         const mosDutValues = [];
         const mosRefValues = [];
 
@@ -34,13 +32,11 @@ const WfcMultiHandover = ({ title, tc }) => {
             const refData = cityData['REF'] || {};
 
             chartLabels.push(profileName);
-            setupTimeDutValues.push(dutData.mean_setup_time);
-            setupTimeRefValues.push(refData.mean_setup_time);
             mosDutValues.push(dutData.mos_average);
             mosRefValues.push(refData.mos_average);
         });
 
-        return { chartLabels, setupTimeDutValues, setupTimeRefValues, mosDutValues, mosRefValues };
+        return { chartLabels, mosDutValues, mosRefValues };
     };
 
     const renderKpiTable = (city) => {
@@ -54,7 +50,6 @@ const WfcMultiHandover = ({ title, tc }) => {
                         <th>RSRP</th>
                         <th>Handovers</th>
                         <th>Call Drop</th>
-                        <th>Mean Setup Time (s)</th>
                         <th>Average MOS</th>
                     </tr>
                 </thead>
@@ -67,7 +62,7 @@ const WfcMultiHandover = ({ title, tc }) => {
                             return (
                                 <tr key={`kpi-${testCase}`}>
                                     <td>{profileName}</td>
-                                    <td colSpan="5">No data found for Test Case: {testCase} in {city}</td>
+                                    <td colSpan="4">No data found for Test Case: {testCase} in {city}</td>
                                 </tr>
                             );
                         }
@@ -77,20 +72,17 @@ const WfcMultiHandover = ({ title, tc }) => {
                             const rsrp = deviceData?.rsrp_average;
                             const handovers = deviceData?.minimum_handover;
                             const callDrop = deviceData?.total_retention_failures;
-                            const setupTime = deviceData?.mean_setup_time;
                             const mos = deviceData?.mos_average;
 
                             let rssiStyle = {};
                             let rsrpStyle = {};
                             let handoverStyle = {};
-                            let setupTimeStyle = {};
                             let mosStyle = {};
 
                             if (deviceType === 'DUT') {
                                 rssiStyle = { backgroundColor: getKpiCellColor('WfcRssiProfile6', rssi) };
                                 rsrpStyle = { backgroundColor: getKpiCellColor('WfcRsrp', rsrp) };
                                 handoverStyle = { backgroundColor: getKpiCellColor('MinimumHandovers', handovers) };
-                                setupTimeStyle = { backgroundColor: getKpiCellColor('CallSetupTime', setupTime, refData?.mean_setup_time) };
                                 mosStyle = { backgroundColor: getKpiCellColor('WfcMOS', mos, refData?.mos_average) };
                             }
 
@@ -104,7 +96,6 @@ const WfcMultiHandover = ({ title, tc }) => {
                                     <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                     <td style={handoverStyle}>{handovers !== undefined ? handovers : 'N/A'}</td>
                                     <td style={deviceType === 'DUT' ? { backgroundColor: getKpiCellColor('WfcCallDrops', callDrop) } : {}}>{callDrop !== undefined ? callDrop : 'N/A'}</td>
-                                    <td style={setupTimeStyle}>{formatVal(setupTime)}</td>
                                     <td style={mosStyle}>{formatVal(mos)}</td>
                                 </tr>
                             );
@@ -126,20 +117,10 @@ const WfcMultiHandover = ({ title, tc }) => {
     };
 
     const renderBarCharts = (city) => {
-        const { chartLabels, setupTimeDutValues, setupTimeRefValues, mosDutValues, mosRefValues } = getChartData(city);
+        const { chartLabels, mosDutValues, mosRefValues } = getChartData(city);
 
         return (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '50%' }}>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                    <WfcPerformanceChart
-                        labels={chartLabels}
-                        dutValues={setupTimeDutValues}
-                        refValues={setupTimeRefValues}
-                        title="Mean Setup Time (s)"
-                        yAxisTitle="Setup Time (s)"
-                        style={{ height: '250px' }}
-                    />
-                </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                     <WfcPerformanceChart
                         labels={chartLabels}

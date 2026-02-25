@@ -119,7 +119,7 @@ const WfcIpImpairment = () => {
     return (
         <>
             <PageBreak>
-                <DynamicHeader level={1}>IP Impairments</DynamicHeader>
+                <DynamicHeader level={1} id="section-wfc-ip-impairment">IP Impairments</DynamicHeader>
                 {availableCities.filter(city => city === 'Seattle').map(city => {
                     const data = getChartData(city);
                     return (

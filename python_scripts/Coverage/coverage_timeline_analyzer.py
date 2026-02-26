@@ -46,24 +46,33 @@ def get_valid_coverage_range(file_path):
     return first_no_service_index
 
 
-def extract_timeline_data(file_path, column_name):
+def extract_timeline_data(file_path, column_names):
     """
     Extracts timeline data for a specific column within valid coverage range.
     
     Args:
         file_path: Path to the CSV file
-        column_name: Header name to extract data from
+        column_names: Header name (str) or list of header names to try in order
         
     Returns:
         List of numeric values (from top to bottom within valid range)
     """
+    if isinstance(column_names, str):
+        column_names = [column_names]
+    
     try:
         df = pd.read_csv(file_path)
     except Exception as e:
         print(f"Error reading file {file_path}: {e}")
         return []
     
-    if column_name not in df.columns:
+    selected_column = None
+    for col in column_names:
+        if col in df.columns:
+            selected_column = col
+            break
+    
+    if selected_column is None:
         return []
     
     end_index = get_valid_coverage_range(file_path)
@@ -73,9 +82,9 @@ def extract_timeline_data(file_path, column_name):
     
     df_valid = df.iloc[:end_index].copy()
     
-    df_valid[column_name] = pd.to_numeric(df_valid[column_name], errors='coerce')
+    df_valid[selected_column] = pd.to_numeric(df_valid[selected_column], errors='coerce')
     
-    values = df_valid[column_name].dropna().tolist()
+    values = df_valid[selected_column].dropna().tolist()
     
     return values
 
@@ -84,45 +93,57 @@ def analyze_rsrp_timeline(file_path):
     """
     Extracts RSRP timeline data.
     5G Header: [NR5G] [RF] RSRP
-    LTE Header: TBD
+    LTE Header: [LTE] [L1] [RF] RSRP
     """
     is_lte_mode = "lte" in file_path.lower()
     
     if is_lte_mode:
-        return []
+        column_names = [
+            '[LTE] [L1] [RF] RSRP',
+            '[NR5G] [RF] RSRP'
+        ]
+    else:
+        column_names = ['[NR5G] [RF] RSRP']
     
-    column_name = '[NR5G] [RF] RSRP'
-    return extract_timeline_data(file_path, column_name)
+    return extract_timeline_data(file_path, column_names)
 
 
 def analyze_sinr_timeline(file_path):
     """
     Extracts SINR timeline data.
     5G Header: [NR5G] [RF] SINR
-    LTE Header: TBD
+    LTE Header: [LTE] [Cell Info] [Serving Cell List] [Top N] [Top1] SINR
     """
     is_lte_mode = "lte" in file_path.lower()
     
     if is_lte_mode:
-        return []
+        column_names = [
+            '[LTE] [Cell Info] [Serving Cell List] [Top N] [Top1] SINR',
+            '[NR5G] [RF] SINR'
+        ]
+    else:
+        column_names = ['[NR5G] [RF] SINR']
     
-    column_name = '[NR5G] [RF] SINR'
-    return extract_timeline_data(file_path, column_name)
+    return extract_timeline_data(file_path, column_names)
 
 
 def analyze_txpower_timeline(file_path):
     """
     Extracts Tx Power timeline data.
     5G Header: [NR5G] [Power] Tx power (PUSCH Actual)
-    LTE Header: TBD
+    LTE Header: [LTE] [Power] [Tx Power] Tx Power (PUSCH Actual)
     """
     is_lte_mode = "lte" in file_path.lower()
     
     if is_lte_mode:
-        return []
+        column_names = [
+            '[LTE] [Power] [Tx Power] Tx Power (PUSCH Actual)',
+            '[NR5G] [Power] Tx power (PUSCH Actual)'
+        ]
+    else:
+        column_names = ['[NR5G] [Power] Tx power (PUSCH Actual)']
     
-    column_name = '[NR5G] [Power] Tx power (PUSCH Actual)'
-    return extract_timeline_data(file_path, column_name)
+    return extract_timeline_data(file_path, column_names)
 
 
 def get_device_type(file_name):

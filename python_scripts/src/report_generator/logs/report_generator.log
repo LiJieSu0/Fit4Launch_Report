@@ -51734,3 +51734,942 @@
 2026-02-26 09:58:02,333 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
 2026-02-26 09:58:02,333 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
 2026-02-26 09:58:02,333 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-26 11:25:09,555 - pipeline - INFO - Project: #Dry Run
+2026-02-26 11:25:09,555 - pipeline - INFO - Market: New York
+2026-02-26 11:25:09,555 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\New York
+2026-02-26 11:25:09,555 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-26 11:25:09,555 - pipeline - INFO - Starting analysis pipeline...
+2026-02-26 11:25:09,561 - pipeline - INFO - Grouping 240 CSV files by directory and device type...
+2026-02-26 11:25:09,563 - pipeline - INFO - Created 104 file groups for analysis
+2026-02-26 11:25:09,564 - pipeline - INFO - Analyzing 2 file(s) for REF in 5G Auto Data Web-Kepler
+2026-02-26 11:25:09,610 - pipeline - INFO - Analyzing 2 file(s) for DUT in 5G Auto Data Web-Kepler
+2026-02-26 11:25:09,651 - pipeline - INFO - Analyzing 1 file(s) for DUT in 5G VoNR MRAB Stationary
+2026-02-26 11:25:09,652 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\New York\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260203_125220_CH01_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 DUT_.csv']
+2026-02-26 11:25:09,668 - pipeline - INFO - Analyzing 1 file(s) for REF in 5G VoNR MRAB Stationary
+2026-02-26 11:25:09,669 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\New York\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260203_125220_CH02_NYC TMO_5G Auto_5G DP 5G MRAB_NYC L1 REF_.csv']
+2026-02-26 11:25:09,685 - pipeline - INFO - Analyzing 5 file(s) for REF in Good
+2026-02-26 11:25:09,763 - pipeline - INFO - Analyzing 5 file(s) for DUT in Good
+2026-02-26 11:25:09,836 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:09,891 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:09,947 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:09,977 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:10,009 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-26 11:25:10,056 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-26 11:25:10,113 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:10,183 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:10,237 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:10,263 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:10,293 - pipeline - INFO - Analyzing 3 file(s) for REF in Good
+2026-02-26 11:25:10,373 - pipeline - INFO - Analyzing 3 file(s) for DUT in Good
+2026-02-26 11:25:10,453 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:10,527 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:10,606 - pipeline - INFO - Analyzing 3 file(s) for DUT in Poor
+2026-02-26 11:25:10,668 - pipeline - INFO - Analyzing 3 file(s) for REF in Poor
+2026-02-26 11:25:10,735 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-26 11:25:10,769 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-26 11:25:10,800 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:10,833 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:10,865 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:10,908 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:10,940 - pipeline - INFO - Analyzing 3 file(s) for DUT in 5G Auto Data Test Drive
+2026-02-26 11:25:11,293 - pipeline - INFO - Analyzing 3 file(s) for REF in 5G Auto Data Test Drive
+2026-02-26 11:25:11,670 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-26 11:25:11,750 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-26 11:25:11,832 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:11,911 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:11,991 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:12,070 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:12,148 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-26 11:25:12,226 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-26 11:25:12,309 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:12,386 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:12,464 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:12,548 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:12,628 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-26 11:25:12,707 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-26 11:25:12,786 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:12,865 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:12,945 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:13,025 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:13,107 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-26 11:25:13,189 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-26 11:25:13,267 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:13,345 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:13,426 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:13,511 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:13,587 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-26 11:25:13,659 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-26 11:25:13,733 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:13,807 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:13,881 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:13,956 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:14,031 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:14,091 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:14,146 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:14,199 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:14,255 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:14,300 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:14,345 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:14,385 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:14,422 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:14,496 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:14,573 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:14,646 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:14,719 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:14,747 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:14,776 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:14,809 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:14,839 - pipeline - INFO - Analyzing 3 file(s) for DUT in Mobility Test
+2026-02-26 11:25:15,155 - pipeline - INFO - Analyzing 3 file(s) for REF in Mobility Test
+2026-02-26 11:25:15,472 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:15,552 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:15,626 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:15,700 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:15,773 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:15,844 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:15,916 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:15,989 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:16,063 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:16,136 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:16,207 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:16,281 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:16,353 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:16,424 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:16,495 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:16,565 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:16,638 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:16,707 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:16,777 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:16,847 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:16,916 - pipeline - INFO - Processing directory-level analyses...
+2026-02-26 11:25:16,916 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Call Performance
+2026-02-26 11:25:16,917 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-02-26 11:25:19,286 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-02-26 11:25:20,871 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-02-26 11:25:23,132 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-02-26 11:25:24,780 - pipeline - INFO - Analyzing Voice Quality directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Voice Quality
+2026-02-26 11:25:24,781 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled Audio Delay
+2026-02-26 11:25:24,815 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled EVS WB VQ
+2026-02-26 11:25:24,933 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR NB VQ
+2026-02-26 11:25:24,992 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR WB VQ
+2026-02-26 11:25:25,194 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled Audio Delay
+2026-02-26 11:25:25,227 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled EVS WB VQ
+2026-02-26 11:25:25,387 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance (Type: coverage_coordinate)
+2026-02-26 11:25:25,387 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-26 11:25:25,431 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-26 11:25:26,039 - pipeline - INFO - Running timeline analysis for: Coverage Performance/5G VoNR Coverage Test
+2026-02-26 11:25:26,039 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G VoNR Coverage Test (Type: coverage_timeline)
+2026-02-26 11:25:26,039 - pipeline - INFO - Analyzing Coverage Timeline for: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/5G VoNR Coverage Test
+2026-02-26 11:25:26,039 - pipeline - INFO - Processing rsrp timeline...
+2026-02-26 11:25:26,365 - pipeline - INFO - Processing sinr timeline...
+2026-02-26 11:25:26,724 - pipeline - INFO - Processing txpower timeline...
+2026-02-26 11:25:27,059 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-26 11:25:27,431 - pipeline - INFO - Running timeline analysis for: Coverage Performance/LTE Coverage Test
+2026-02-26 11:25:27,431 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/LTE Coverage Test (Type: coverage_timeline)
+2026-02-26 11:25:27,432 - pipeline - INFO - Analyzing Coverage Timeline for: D:/ReportGenerator/Raw Data\#Dry Run\New York\Coverage Performance/LTE Coverage Test
+2026-02-26 11:25:27,432 - pipeline - INFO - Processing rsrp timeline...
+2026-02-26 11:25:27,433 - pipeline - INFO - Processing sinr timeline...
+2026-02-26 11:25:27,434 - pipeline - INFO - Processing txpower timeline...
+2026-02-26 11:25:27,436 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-26 11:25:27,437 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-26 11:25:27,447 - pipeline - INFO - Successfully analyzed _20260122_162123_CH01_REF_TMO_Playstore APP-100MB_NJ_L1.csv: 201.80939047619046
+2026-02-26 11:25:27,448 - pipeline - INFO - Processing Play Store file: _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-26 11:25:27,455 - pipeline - INFO - Successfully analyzed _20260122_162123_CH02_DUT_TMO_Playstore APP-100MB_NJ_L1.csv: 106.65787198912199
+2026-02-26 11:25:27,456 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-26 11:25:27,466 - pipeline - INFO - Successfully analyzed _20260122_163503_CH01_REF_TMO_Playstore 60MB_NJ_L1.csv: 151.11654
+2026-02-26 11:25:27,466 - pipeline - INFO - Processing Play Store file: _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-26 11:25:27,474 - pipeline - INFO - Successfully analyzed _20260122_163503_CH02_DUT_TMO_Playstore 60MB_NJ_L1.csv: 154.40230444444444
+2026-02-26 11:25:27,475 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-26 11:25:27,482 - pipeline - INFO - Successfully analyzed _20260122_164816_CH01_REF_TMO_Playstore 30MB_NJ_L1.csv: 183.348031292517
+2026-02-26 11:25:27,482 - pipeline - INFO - Processing Play Store file: _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-26 11:25:27,489 - pipeline - INFO - Successfully analyzed _20260122_164816_CH02_DUT_TMO_Playstore 30MB_NJ_L1.csv: 117.78983869911602
+2026-02-26 11:25:27,489 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-26 11:25:27,494 - pipeline - INFO - Successfully analyzed _20260203_141400_CH01_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 DUT_.csv: 140.6186
+2026-02-26 11:25:27,495 - pipeline - INFO - Processing Play Store file: _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-26 11:25:27,500 - pipeline - INFO - Successfully analyzed _20260203_141400_CH02_NYC TMO_5G Auto_5G DP Play Store 60M _NYC L1 REF_.csv: 238.354
+2026-02-26 11:25:27,500 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-26 11:25:27,505 - pipeline - INFO - Successfully analyzed _20260203_141528_CH01_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 DUT_.csv: 78.27300000000001
+2026-02-26 11:25:27,506 - pipeline - INFO - Processing Play Store file: _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-26 11:25:27,511 - pipeline - INFO - Successfully analyzed _20260203_141528_CH02_NYC TMO_5G Auto_5G DP Play Store 30M _NYC L1 REF_.csv: 75.78566666666667
+2026-02-26 11:25:27,512 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-26 11:25:27,517 - pipeline - INFO - Successfully analyzed _20260203_141714_CH01_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 DUT_.csv: 262.726
+2026-02-26 11:25:27,517 - pipeline - INFO - Processing Play Store file: _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-26 11:25:27,523 - pipeline - INFO - Successfully analyzed _20260203_141714_CH02_NYC TMO_5G Auto_5G DP Play Store 100M _NYC L1 REF_.csv: 263.202
+2026-02-26 11:25:27,524 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-26 11:25:27,528 - pipeline - INFO - Successfully analyzed _20260123_142447_CH01_REF_TMO_Play Store 100 MB_NJ_L2.csv: 199.38622564102565
+2026-02-26 11:25:27,528 - pipeline - INFO - Processing Play Store file: _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:27,533 - pipeline - INFO - Successfully analyzed _20260123_142447_CH02_DUT_TMO_Play Store 100 MB_NJ_L2.csv: 130.38925768359607
+2026-02-26 11:25:27,533 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-26 11:25:27,539 - pipeline - INFO - Successfully analyzed _20260123_143839_CH01_REF_TMO_Play Store 60 MB_NJ_L2.csv: 134.55456031746033
+2026-02-26 11:25:27,539 - pipeline - INFO - Processing Play Store file: _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:27,547 - pipeline - INFO - Successfully analyzed _20260123_143839_CH02_DUT_TMO_Play Store 60 MB_NJ_L2.csv: 144.7251455782313
+2026-02-26 11:25:27,547 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-26 11:25:27,556 - pipeline - INFO - Successfully analyzed _20260123_144448_CH01_REF_TMO_Play Store 30 MB_NJ_L2.csv: 74.65798181818182
+2026-02-26 11:25:27,557 - pipeline - INFO - Processing Play Store file: _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:27,562 - pipeline - INFO - Successfully analyzed _20260123_144448_CH02_DUT_TMO_Play Store 30 MB_NJ_L2.csv: 63.67727272727273
+2026-02-26 11:25:27,562 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-26 11:25:27,573 - pipeline - INFO - Successfully analyzed _20260202_204910_CH01_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 REF_.csv: 196.85621014492753
+2026-02-26 11:25:27,574 - pipeline - INFO - Processing Play Store file: _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:27,582 - pipeline - INFO - Successfully analyzed _20260202_204910_CH02_NJNYC TMO_5G AUTO_PLAY STORE 30MB_L2 DUT_.csv: 119.37199855072464
+2026-02-26 11:25:27,583 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-26 11:25:27,592 - pipeline - INFO - Successfully analyzed _20260202_212127_CH01_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 REF_.csv: 176.1300491883117
+2026-02-26 11:25:27,592 - pipeline - INFO - Processing Play Store file: _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:27,600 - pipeline - INFO - Successfully analyzed _20260202_212127_CH02_NJNYC TMO_5G AUTO_PLAY STORE 60MB_L2 DUT_.csv: 117.79193697916666
+2026-02-26 11:25:27,600 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-26 11:25:27,610 - pipeline - INFO - Successfully analyzed _20260202_212648_CH01_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 REF_.csv: 149.105912676733
+2026-02-26 11:25:27,610 - pipeline - INFO - Processing Play Store file: _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:27,622 - pipeline - INFO - Successfully analyzed _20260202_212648_CH02_NJNYC TMO_5G AUTO_PLAY STORE 100MB_L2 DUT_.csv: 104.78977219980874
+2026-02-26 11:25:27,623 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-26 11:25:27,630 - pipeline - INFO - Successfully analyzed _20260124_194023_CH01_REF_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 49.54232289238539
+2026-02-26 11:25:27,631 - pipeline - INFO - Processing Play Store file: _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-26 11:25:27,636 - pipeline - INFO - Successfully analyzed _20260124_194023_CH02_DUT_TMO-AUTO_Playstore 100MB Downlink_NJ_L3.csv: 83.81849905911082
+2026-02-26 11:25:27,636 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-26 11:25:27,643 - pipeline - INFO - Successfully analyzed _20260124_200014_CH01_REF_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 58.24894230560767
+2026-02-26 11:25:27,643 - pipeline - INFO - Processing Play Store file: _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-26 11:25:27,649 - pipeline - INFO - Successfully analyzed _20260124_200014_CH02_DUT_TMO-AUTO_Playstore 60MB Downlink_NJ_L3.csv: 65.55823299416632
+2026-02-26 11:25:27,649 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-26 11:25:27,655 - pipeline - INFO - Successfully analyzed _20260124_201137_CH01_REF_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.13884175824176
+2026-02-26 11:25:27,655 - pipeline - INFO - Processing Play Store file: _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-26 11:25:27,661 - pipeline - INFO - Successfully analyzed _20260124_201137_CH02_DUT_TMO-AUTO_Playstore 30MB Downlink_NJ_L3.csv: 51.62678260869565
+2026-02-26 11:25:27,661 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-26 11:25:27,668 - pipeline - INFO - Successfully analyzed _20260203_180004_CH01_NJNYC TMO_5G AUTO_Playstore 30MB_L3 REF_.csv: 124.50955311355311
+2026-02-26 11:25:27,668 - pipeline - INFO - Processing Play Store file: _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-26 11:25:27,676 - pipeline - INFO - Successfully analyzed _20260203_180004_CH02_NJNYC TMO_5G AUTO_Playstore 30MB_L3 DUT_.csv: 89.59927121212121
+2026-02-26 11:25:27,676 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-26 11:25:27,683 - pipeline - INFO - Successfully analyzed _20260203_180549_CH01_NJNYC TMO_5G AUTO_Playstore 60MB_L3 REF_.csv: 141.11671079545454
+2026-02-26 11:25:27,684 - pipeline - INFO - Processing Play Store file: _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-26 11:25:27,692 - pipeline - INFO - Successfully analyzed _20260203_180549_CH02_NJNYC TMO_5G AUTO_Playstore 60MB_L3 DUT_.csv: 99.62210783279221
+2026-02-26 11:25:27,692 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-26 11:25:27,700 - pipeline - INFO - Successfully analyzed _20260203_181036_CH01_NJNYC TMO_5G AUTO_Playstore 100MB_L3 REF_.csv: 251.54180277777778
+2026-02-26 11:25:27,700 - pipeline - INFO - Processing Play Store file: _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-26 11:25:27,712 - pipeline - INFO - Successfully analyzed _20260203_181036_CH02_NJNYC TMO_5G AUTO_Playstore 100MB_L3 DUT_.csv: 72.53284699869847
+2026-02-26 11:25:27,713 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-26 11:25:27,713 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-26 11:25:27,713 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-26 11:25:28,989 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\New York\Data Performance/5G NSA DP/Mobility Test
+2026-02-26 11:25:30,150 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-26 11:25:30,702 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-26 11:25:30,726 - pipeline - INFO - Exported 60 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\cdf_throughput_data
+2026-02-26 11:25:30,731 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\data_performance_results.json
+2026-02-26 11:25:30,731 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\call_performance_results.json
+2026-02-26 11:25:30,732 - pipeline - INFO - Voice Quality results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\voice_quality_results.json
+2026-02-26 11:25:30,737 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\coverage_performance_results.json
+2026-02-26 11:25:30,739 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York\processing_summary.json
+2026-02-26 11:25:30,739 - pipeline - INFO - Running final data validation...
+2026-02-26 11:25:30,777 - pipeline - WARNING - Summary of Empty collections found in JSON files:
+2026-02-26 11:25:30,777 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,777 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,778 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,778 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,778 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,778 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> UL -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,778 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,778 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> UL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,778 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,779 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,779 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,779 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,779 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,779 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> UL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,780 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> UL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,780 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobility Test -> 5G Auto Data Test Drive -> DUT -> UL Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,780 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobility Test -> 5G Auto Data Test Drive -> REF -> DL Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,780 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,780 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,781 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,781 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,781 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,781 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,781 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,781 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,781 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,781 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,781 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,782 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,782 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,782 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,782 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,782 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,782 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,783 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,783 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,783 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,783 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,783 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,783 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> DL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,783 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,783 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,784 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> UL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,784 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> UL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,784 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Single Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,784 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Single Stream -> DL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,784 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Single Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,784 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Single Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,785 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,785 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,785 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,785 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,785 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,785 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 10 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,786 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 10 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,786 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 10 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,786 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 10 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,786 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,786 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,786 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 20 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,787 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 20 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:30,787 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\New York
+2026-02-26 11:25:30,792 - pipeline - INFO - Project: #Dry Run
+2026-02-26 11:25:30,792 - pipeline - INFO - Project: #Dry Run
+2026-02-26 11:25:30,793 - pipeline - INFO - Market: Seattle
+2026-02-26 11:25:30,793 - pipeline - INFO - Market: Seattle
+2026-02-26 11:25:30,793 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-26 11:25:30,793 - pipeline - INFO - Reading from: D:/ReportGenerator/Raw Data\#Dry Run\Seattle
+2026-02-26 11:25:30,793 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-26 11:25:30,793 - pipeline - INFO - Writing to: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-26 11:25:30,793 - pipeline - INFO - Starting analysis pipeline...
+2026-02-26 11:25:30,793 - pipeline - INFO - Starting analysis pipeline...
+2026-02-26 11:25:30,799 - pipeline - INFO - Grouping 170 CSV files by directory and device type...
+2026-02-26 11:25:30,799 - pipeline - INFO - Grouping 170 CSV files by directory and device type...
+2026-02-26 11:25:30,800 - pipeline - INFO - Created 142 file groups for analysis
+2026-02-26 11:25:30,800 - pipeline - INFO - Created 142 file groups for analysis
+2026-02-26 11:25:30,801 - pipeline - INFO - Analyzing 2 file(s) for DUT in 5G Auto Data Web-Kepler
+2026-02-26 11:25:30,801 - pipeline - INFO - Analyzing 2 file(s) for DUT in 5G Auto Data Web-Kepler
+2026-02-26 11:25:30,838 - pipeline - INFO - Analyzing 2 file(s) for REF in 5G Auto Data Web-Kepler
+2026-02-26 11:25:30,838 - pipeline - INFO - Analyzing 2 file(s) for REF in 5G Auto Data Web-Kepler
+2026-02-26 11:25:30,875 - pipeline - INFO - Analyzing 1 file(s) for REF in 5G VoNR MRAB Stationary
+2026-02-26 11:25:30,875 - pipeline - INFO - Analyzing 1 file(s) for REF in 5G VoNR MRAB Stationary
+2026-02-26 11:25:30,876 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv']
+2026-02-26 11:25:30,876 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH01_TMO_5G DP_VoNR MRAB Stationary_L1 REF_SEA.csv']
+2026-02-26 11:25:30,891 - pipeline - INFO - Analyzing 1 file(s) for DUT in 5G VoNR MRAB Stationary
+2026-02-26 11:25:30,891 - pipeline - INFO - Analyzing 1 file(s) for DUT in 5G VoNR MRAB Stationary
+2026-02-26 11:25:30,891 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv']
+2026-02-26 11:25:30,891 - pipeline - INFO - Analyzing MRAB Performance for: ['D:/ReportGenerator/Raw Data\\#Dry Run\\Seattle\\Data Performance/5G AUTO DP\\5G VoNR MRAB Stationary\\_20260208_174927_CH02_TMO_5G DP_VoNR MRAB Stationary_L1 DUT_SEA.csv']
+2026-02-26 11:25:30,908 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:30,908 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:30,942 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:30,942 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:30,974 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:30,974 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:31,018 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:31,018 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:31,063 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:31,063 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:31,103 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:31,103 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:31,139 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:31,139 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:31,166 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:31,166 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:31,196 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:31,196 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:31,224 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:31,224 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:31,252 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:31,252 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:31,281 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:31,281 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:31,309 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:31,309 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:31,359 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:31,359 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:31,409 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:31,409 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:31,457 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:31,457 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:31,505 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:31,505 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:31,552 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:31,552 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:31,598 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:31,598 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:31,618 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:31,618 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:31,635 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:31,635 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:31,671 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:31,671 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:31,706 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:31,706 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:31,733 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:31,733 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:31,766 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:31,766 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:31,801 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:31,801 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:31,830 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:31,830 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:31,861 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:31,861 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:31,890 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:31,890 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:31,917 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:31,917 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:31,942 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:31,942 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:31,968 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:31,968 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:31,994 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:31,994 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,037 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,037 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,079 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:32,079 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:32,121 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:32,121 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:32,163 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,163 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,180 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,180 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,197 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:32,197 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:32,226 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:32,226 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:32,261 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,261 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,301 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,301 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,342 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:32,342 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:32,384 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:32,384 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:32,426 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,426 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,469 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,469 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,512 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:32,512 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:32,555 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:32,555 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:32,596 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,596 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,638 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,638 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,682 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:32,682 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:32,725 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:32,725 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:32,767 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,767 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,800 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,800 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,833 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:32,833 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:32,888 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:32,888 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:32,941 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,941 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:32,975 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:32,975 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:33,010 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:33,010 - pipeline - INFO - Analyzing 2 file(s) for DUT in Poor
+2026-02-26 11:25:33,068 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:33,068 - pipeline - INFO - Analyzing 2 file(s) for REF in Poor
+2026-02-26 11:25:33,121 - pipeline - INFO - Analyzing 1 file(s) for DUT in 5G Auto Data Test Drive
+2026-02-26 11:25:33,121 - pipeline - INFO - Analyzing 1 file(s) for DUT in 5G Auto Data Test Drive
+2026-02-26 11:25:33,369 - pipeline - INFO - Analyzing 1 file(s) for REF in 5G Auto Data Test Drive
+2026-02-26 11:25:33,369 - pipeline - INFO - Analyzing 1 file(s) for REF in 5G Auto Data Test Drive
+2026-02-26 11:25:33,613 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:33,613 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:33,658 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:33,658 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:33,704 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:33,704 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:33,754 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:33,754 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:33,800 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:33,800 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:33,844 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:33,844 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:33,889 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-26 11:25:33,889 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-26 11:25:33,955 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-26 11:25:33,955 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-26 11:25:34,019 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:34,019 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:34,063 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:34,063 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:34,110 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:34,110 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:34,156 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:34,156 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:34,201 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-26 11:25:34,201 - pipeline - INFO - Analyzing 2 file(s) for DUT in Good
+2026-02-26 11:25:34,270 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-26 11:25:34,270 - pipeline - INFO - Analyzing 2 file(s) for REF in Good
+2026-02-26 11:25:34,340 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:34,340 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:34,385 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:34,385 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:34,431 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:34,431 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:34,477 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:34,477 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:34,523 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:34,523 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:34,564 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:34,564 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:34,606 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:34,606 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:34,647 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:34,647 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:34,688 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:34,688 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:34,730 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:34,730 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:34,773 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:34,773 - pipeline - INFO - Analyzing 1 file(s) for DUT in Good
+2026-02-26 11:25:34,816 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:34,816 - pipeline - INFO - Analyzing 1 file(s) for REF in Good
+2026-02-26 11:25:34,859 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:34,859 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:34,899 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:34,899 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:34,943 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:34,943 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:34,986 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:34,986 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,028 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,028 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,062 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,062 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,094 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,094 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,128 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,128 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,161 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,161 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,192 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,192 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,222 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,222 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,250 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,250 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,279 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,279 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,330 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,330 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,382 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,382 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,433 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,433 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,484 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,484 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,516 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,516 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,548 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,548 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,576 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,576 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,604 - pipeline - INFO - Analyzing 1 file(s) for DUT in Mobility Test
+2026-02-26 11:25:35,604 - pipeline - INFO - Analyzing 1 file(s) for DUT in Mobility Test
+2026-02-26 11:25:35,646 - pipeline - INFO - Analyzing 1 file(s) for REF in Mobility Test
+2026-02-26 11:25:35,646 - pipeline - INFO - Analyzing 1 file(s) for REF in Mobility Test
+2026-02-26 11:25:35,668 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,668 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,713 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,713 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,757 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,757 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,800 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,800 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,845 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,845 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:35,890 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,890 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:35,933 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,933 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:35,979 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:35,979 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:36,022 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:36,022 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:36,069 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:36,069 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:36,114 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:36,114 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:36,160 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:36,160 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:36,203 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:36,203 - pipeline - INFO - Analyzing 1 file(s) for DUT in Moderate
+2026-02-26 11:25:36,245 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:36,245 - pipeline - INFO - Analyzing 1 file(s) for REF in Moderate
+2026-02-26 11:25:36,287 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:36,287 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:36,330 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:36,330 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:36,372 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:36,372 - pipeline - INFO - Analyzing 2 file(s) for DUT in Moderate
+2026-02-26 11:25:36,443 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:36,443 - pipeline - INFO - Analyzing 2 file(s) for REF in Moderate
+2026-02-26 11:25:36,504 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:36,504 - pipeline - INFO - Analyzing 1 file(s) for DUT in Poor
+2026-02-26 11:25:36,545 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:36,545 - pipeline - INFO - Analyzing 1 file(s) for REF in Poor
+2026-02-26 11:25:36,587 - pipeline - INFO - Processing directory-level analyses...
+2026-02-26 11:25:36,587 - pipeline - INFO - Processing directory-level analyses...
+2026-02-26 11:25:36,588 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Call Performance
+2026-02-26 11:25:36,588 - pipeline - INFO - Analyzing Call Performance root directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Call Performance
+2026-02-26 11:25:36,588 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-02-26 11:25:36,588 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MO Drive
+2026-02-26 11:25:39,030 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-02-26 11:25:39,030 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Disabled CP MT Drive
+2026-02-26 11:25:40,898 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-02-26 11:25:40,898 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MO Drive
+2026-02-26 11:25:44,247 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-02-26 11:25:44,247 - pipeline - INFO - Analyzing Call performance for scenario: 5G Auto VoNR Enabled CP MT Drive
+2026-02-26 11:25:45,884 - pipeline - INFO - Analyzing Voice Quality directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Voice Quality
+2026-02-26 11:25:45,884 - pipeline - INFO - Analyzing Voice Quality directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Voice Quality
+2026-02-26 11:25:45,885 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled Audio Delay
+2026-02-26 11:25:45,885 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled Audio Delay
+2026-02-26 11:25:45,921 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled EVS WB VQ
+2026-02-26 11:25:45,921 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Disabled EVS WB VQ
+2026-02-26 11:25:46,074 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR NB VQ
+2026-02-26 11:25:46,074 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR NB VQ
+2026-02-26 11:25:46,126 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR WB VQ
+2026-02-26 11:25:46,126 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled AMR WB VQ
+2026-02-26 11:25:46,219 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled Audio Delay
+2026-02-26 11:25:46,219 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled Audio Delay
+2026-02-26 11:25:46,255 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled EVS WB VQ
+2026-02-26 11:25:46,255 - pipeline - INFO - Processing Voice Quality subfolder: 5G Auto VoNR Enabled EVS WB VQ
+2026-02-26 11:25:46,397 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-02-26 11:25:46,397 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance (Type: coverage_coordinate)
+2026-02-26 11:25:46,398 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-26 11:25:46,398 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G n41 HPUE Coverage Test (Type: n41_coverage)
+2026-02-26 11:25:46,431 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-26 11:25:46,431 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: vonr_coverage_performance)
+2026-02-26 11:25:47,172 - pipeline - INFO - Running timeline analysis for: Coverage Performance/5G VoNR Coverage Test
+2026-02-26 11:25:47,172 - pipeline - INFO - Running timeline analysis for: Coverage Performance/5G VoNR Coverage Test
+2026-02-26 11:25:47,172 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: coverage_timeline)
+2026-02-26 11:25:47,172 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test (Type: coverage_timeline)
+2026-02-26 11:25:47,173 - pipeline - INFO - Analyzing Coverage Timeline for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test
+2026-02-26 11:25:47,173 - pipeline - INFO - Analyzing Coverage Timeline for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/5G VoNR Coverage Test
+2026-02-26 11:25:47,173 - pipeline - INFO - Processing rsrp timeline...
+2026-02-26 11:25:47,173 - pipeline - INFO - Processing rsrp timeline...
+2026-02-26 11:25:47,598 - pipeline - INFO - Processing sinr timeline...
+2026-02-26 11:25:47,598 - pipeline - INFO - Processing sinr timeline...
+2026-02-26 11:25:48,020 - pipeline - INFO - Processing txpower timeline...
+2026-02-26 11:25:48,020 - pipeline - INFO - Processing txpower timeline...
+2026-02-26 11:25:48,466 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-26 11:25:48,466 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test (Type: vonr_coverage_performance)
+2026-02-26 11:25:48,466 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-26 11:25:48,466 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-26 11:25:49,015 - pipeline - INFO - Running timeline analysis for: Coverage Performance/LTE Coverage Test
+2026-02-26 11:25:49,015 - pipeline - INFO - Running timeline analysis for: Coverage Performance/LTE Coverage Test
+2026-02-26 11:25:49,016 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test (Type: coverage_timeline)
+2026-02-26 11:25:49,016 - pipeline - INFO - Analyzing Coverage directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test (Type: coverage_timeline)
+2026-02-26 11:25:49,016 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-26 11:25:49,016 - pipeline - INFO - Using Seattle_LTE coordinates for LTE Coverage Test
+2026-02-26 11:25:49,016 - pipeline - INFO - Analyzing Coverage Timeline for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test
+2026-02-26 11:25:49,016 - pipeline - INFO - Analyzing Coverage Timeline for: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Coverage Performance/LTE Coverage Test
+2026-02-26 11:25:49,017 - pipeline - INFO - Processing rsrp timeline...
+2026-02-26 11:25:49,017 - pipeline - INFO - Processing rsrp timeline...
+2026-02-26 11:25:49,018 - pipeline - INFO - Processing sinr timeline...
+2026-02-26 11:25:49,018 - pipeline - INFO - Processing sinr timeline...
+2026-02-26 11:25:49,019 - pipeline - INFO - Processing txpower timeline...
+2026-02-26 11:25:49,019 - pipeline - INFO - Processing txpower timeline...
+2026-02-26 11:25:49,021 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-26 11:25:49,021 - pipeline - INFO - Analyzing Google Throughput directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/5G Auto Data Play-store app Download
+2026-02-26 11:25:49,021 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-26 11:25:49,021 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Good)
+2026-02-26 11:25:49,035 - pipeline - INFO - Successfully analyzed _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv: 147.1285119047619
+2026-02-26 11:25:49,035 - pipeline - INFO - Successfully analyzed _20260205_134219_CH01_TMO_5G DP_APP 30M_L1 DUT_SEA.csv: 147.1285119047619
+2026-02-26 11:25:49,036 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-26 11:25:49,036 - pipeline - INFO - Processing Play Store file: _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv (Size: 30M, Device: REF, Location: Good)
+2026-02-26 11:25:49,045 - pipeline - INFO - Successfully analyzed _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv: 60.84161072545875
+2026-02-26 11:25:49,045 - pipeline - INFO - Successfully analyzed _20260205_134219_CH02_TMO_5G DP_APP 30M_L1 REF_SEA.csv: 60.84161072545875
+2026-02-26 11:25:49,046 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-26 11:25:49,046 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Good)
+2026-02-26 11:25:49,055 - pipeline - INFO - Successfully analyzed _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv: 213.39915641025638
+2026-02-26 11:25:49,055 - pipeline - INFO - Successfully analyzed _20260205_135124_CH01_TMO_5G DP_APP 60M_L1 DUT_SEA.csv: 213.39915641025638
+2026-02-26 11:25:49,056 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-26 11:25:49,056 - pipeline - INFO - Processing Play Store file: _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv (Size: 60M, Device: REF, Location: Good)
+2026-02-26 11:25:49,067 - pipeline - INFO - Successfully analyzed _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv: 62.726704619722376
+2026-02-26 11:25:49,067 - pipeline - INFO - Successfully analyzed _20260205_135124_CH02_TMO_5G DP_APP 60M_L1 REF_SEA.csv: 62.726704619722376
+2026-02-26 11:25:49,068 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-26 11:25:49,068 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Good)
+2026-02-26 11:25:49,079 - pipeline - INFO - Successfully analyzed _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv: 249.94195769230768
+2026-02-26 11:25:49,079 - pipeline - INFO - Successfully analyzed _20260205_135640_CH01_TMO_5G DP_APP 100M_L1 DUT_SEA.csv: 249.94195769230768
+2026-02-26 11:25:49,080 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-26 11:25:49,080 - pipeline - INFO - Processing Play Store file: _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv (Size: 100M, Device: REF, Location: Good)
+2026-02-26 11:25:49,093 - pipeline - INFO - Successfully analyzed _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv: 120.83504523809523
+2026-02-26 11:25:49,093 - pipeline - INFO - Successfully analyzed _20260205_135640_CH02_TMO_5G DP_APP 100M_L1 REF_SEA.csv: 120.83504523809523
+2026-02-26 11:25:49,093 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:49,093 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:49,100 - pipeline - INFO - Successfully analyzed _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv: 0.039857142857142855
+2026-02-26 11:25:49,100 - pipeline - INFO - Successfully analyzed _20260208_140433_CH01_TMO_5G DP_APP 30M_L2 DUT_SEA.csv: 0.039857142857142855
+2026-02-26 11:25:49,101 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-26 11:25:49,101 - pipeline - INFO - Processing Play Store file: _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv (Size: 30M, Device: REF, Location: Moderate)
+2026-02-26 11:25:49,108 - pipeline - INFO - Successfully analyzed _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv: 0.0491
+2026-02-26 11:25:49,108 - pipeline - INFO - Successfully analyzed _20260208_140433_CH02_TMO_5G DP_APP 30M_L2 REF_SEA.csv: 0.0491
+2026-02-26 11:25:49,109 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:49,109 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:49,117 - pipeline - INFO - Successfully analyzed _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv: 228.6272625
+2026-02-26 11:25:49,117 - pipeline - INFO - Successfully analyzed _20260208_140858_CH01_TMO_5G DP_APP 60M_L2 DUT_SEA.csv: 228.6272625
+2026-02-26 11:25:49,118 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-26 11:25:49,118 - pipeline - INFO - Processing Play Store file: _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv (Size: 60M, Device: REF, Location: Moderate)
+2026-02-26 11:25:49,126 - pipeline - INFO - Successfully analyzed _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv: 131.27356176470587
+2026-02-26 11:25:49,126 - pipeline - INFO - Successfully analyzed _20260208_140858_CH02_TMO_5G DP_APP 60M_L2 REF_SEA.csv: 131.27356176470587
+2026-02-26 11:25:49,127 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:49,127 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Moderate)
+2026-02-26 11:25:49,133 - pipeline - INFO - Successfully analyzed _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv: 260.2947194444444
+2026-02-26 11:25:49,133 - pipeline - INFO - Successfully analyzed _20260208_141155_CH01_TMO_5G DP_APP 100M_L2 DUT_SEA.csv: 260.2947194444444
+2026-02-26 11:25:49,134 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-26 11:25:49,134 - pipeline - INFO - Processing Play Store file: _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv (Size: 100M, Device: REF, Location: Moderate)
+2026-02-26 11:25:49,141 - pipeline - INFO - Successfully analyzed _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv: 201.0624455687831
+2026-02-26 11:25:49,141 - pipeline - INFO - Successfully analyzed _20260208_141155_CH02_TMO_5G DP_APP 100M_L2 REF_SEA.csv: 201.0624455687831
+2026-02-26 11:25:49,141 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-26 11:25:49,141 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv (Size: 100M, Device: DUT, Location: Poor)
+2026-02-26 11:25:49,154 - pipeline - INFO - Successfully analyzed _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv: 24.38934015715434
+2026-02-26 11:25:49,154 - pipeline - INFO - Successfully analyzed _20260208_144417_CH01_TMO_5G DP_APP 100M_L3 DUT_SEA.csv: 24.38934015715434
+2026-02-26 11:25:49,154 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-26 11:25:49,154 - pipeline - INFO - Processing Play Store file: _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv (Size: 100M, Device: REF, Location: Poor)
+2026-02-26 11:25:49,165 - pipeline - INFO - Successfully analyzed _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv: 3.250008635808636
+2026-02-26 11:25:49,165 - pipeline - INFO - Successfully analyzed _20260208_144417_CH02_TMO_5G DP_APP 100M_L3 REF_SEA.csv: 3.250008635808636
+2026-02-26 11:25:49,165 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-26 11:25:49,165 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv (Size: 60M, Device: DUT, Location: Poor)
+2026-02-26 11:25:49,175 - pipeline - INFO - Successfully analyzed _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv: 3.3509206789909762
+2026-02-26 11:25:49,175 - pipeline - INFO - Successfully analyzed _20260208_145650_CH01_TMO_5G DP_APP 60M_L3 DUT_SEA.csv: 3.3509206789909762
+2026-02-26 11:25:49,176 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-26 11:25:49,176 - pipeline - INFO - Processing Play Store file: _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv (Size: 60M, Device: REF, Location: Poor)
+2026-02-26 11:25:49,185 - pipeline - INFO - Successfully analyzed _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv: 2.330117389653276
+2026-02-26 11:25:49,185 - pipeline - INFO - Successfully analyzed _20260208_145650_CH02_TMO_5G DP_APP 60M_L3 REF_SEA.csv: 2.330117389653276
+2026-02-26 11:25:49,186 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-26 11:25:49,186 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv (Size: 30M, Device: DUT, Location: Poor)
+2026-02-26 11:25:49,196 - pipeline - INFO - Successfully analyzed _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv: 2.193686111111111
+2026-02-26 11:25:49,196 - pipeline - INFO - Successfully analyzed _20260208_150728_CH01_TMO_5G DP_APP 30M_L3 DUT_SEA.csv: 2.193686111111111
+2026-02-26 11:25:49,197 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-26 11:25:49,197 - pipeline - INFO - Processing Play Store file: _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv (Size: 30M, Device: REF, Location: Poor)
+2026-02-26 11:25:49,205 - pipeline - INFO - Successfully analyzed _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv: 2.144216666666667
+2026-02-26 11:25:49,205 - pipeline - INFO - Successfully analyzed _20260208_150728_CH02_TMO_5G DP_APP 30M_L3 REF_SEA.csv: 2.144216666666667
+2026-02-26 11:25:49,205 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-26 11:25:49,205 - pipeline - INFO - Google Throughput analysis directory processing complete. Results found: True
+2026-02-26 11:25:49,205 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-26 11:25:49,205 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test MHS Drive
+2026-02-26 11:25:50,247 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-26 11:25:50,247 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G AUTO DP/Mobility Test/5G Auto Data Test Drive
+2026-02-26 11:25:51,152 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-26 11:25:51,152 - pipeline - INFO - Analyzing MHS Drive directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\Data Performance/5G NSA DP/Mobility Test
+2026-02-26 11:25:51,256 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\WFC
+2026-02-26 11:25:51,256 - pipeline - INFO - Analyzing WFC root directory: D:/ReportGenerator/Raw Data\#Dry Run\Seattle\WFC
+2026-02-26 11:25:51,258 - pipeline - INFO - Processing WFC Test Case: TC148
+2026-02-26 11:25:51,258 - pipeline - INFO - Processing WFC Test Case: TC148
+2026-02-26 11:25:51,272 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-02-26 11:25:51,272 - pipeline - INFO - Processing WFC Test Case: TC150
+2026-02-26 11:25:51,294 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-02-26 11:25:51,294 - pipeline - INFO - Processing WFC Test Case: TC151
+2026-02-26 11:25:51,321 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-02-26 11:25:51,321 - pipeline - INFO - Processing WFC Test Case: TC152
+2026-02-26 11:25:51,390 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-02-26 11:25:51,390 - pipeline - INFO - Processing WFC Test Case: TC153
+2026-02-26 11:25:51,461 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-02-26 11:25:51,461 - pipeline - INFO - Processing WFC Test Case: TC154
+2026-02-26 11:25:51,534 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-02-26 11:25:51,534 - pipeline - INFO - Processing WFC Test Case: TC155
+2026-02-26 11:25:51,603 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-02-26 11:25:51,603 - pipeline - INFO - Processing WFC Test Case: TC156
+2026-02-26 11:25:51,672 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-02-26 11:25:51,672 - pipeline - INFO - Processing WFC Test Case: TC157
+2026-02-26 11:25:51,738 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-02-26 11:25:51,738 - pipeline - INFO - Processing WFC Test Case: TC158
+2026-02-26 11:25:51,807 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-02-26 11:25:51,807 - pipeline - INFO - Processing WFC Test Case: TC159
+2026-02-26 11:25:51,876 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-02-26 11:25:51,876 - pipeline - INFO - Processing WFC Test Case: TC160
+2026-02-26 11:25:51,945 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-02-26 11:25:51,945 - pipeline - INFO - Processing WFC Test Case: TC161
+2026-02-26 11:25:52,018 - pipeline - INFO - Processing WFC Test Case: TC162
+2026-02-26 11:25:52,018 - pipeline - INFO - Processing WFC Test Case: TC162
+2026-02-26 11:25:52,031 - pipeline - INFO - Processing WFC Test Case: TC163
+2026-02-26 11:25:52,031 - pipeline - INFO - Processing WFC Test Case: TC163
+2026-02-26 11:25:52,042 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-02-26 11:25:52,042 - pipeline - INFO - Processing WFC Test Case: TC164
+2026-02-26 11:25:52,056 - pipeline - INFO - Processing WFC Test Case: TC165
+2026-02-26 11:25:52,056 - pipeline - INFO - Processing WFC Test Case: TC165
+2026-02-26 11:25:52,067 - pipeline - INFO - Processing WFC Test Case: TC166
+2026-02-26 11:25:52,067 - pipeline - INFO - Processing WFC Test Case: TC166
+2026-02-26 11:25:52,081 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-02-26 11:25:52,081 - pipeline - INFO - Processing WFC Test Case: TC167
+2026-02-26 11:25:52,102 - pipeline - INFO - Processing WFC Test Case: TC168
+2026-02-26 11:25:52,102 - pipeline - INFO - Processing WFC Test Case: TC168
+2026-02-26 11:25:52,113 - pipeline - INFO - Processing WFC Test Case: TC169
+2026-02-26 11:25:52,113 - pipeline - INFO - Processing WFC Test Case: TC169
+2026-02-26 11:25:52,124 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-02-26 11:25:52,124 - pipeline - INFO - Processing WFC Test Case: TC170
+2026-02-26 11:25:52,139 - pipeline - INFO - Processing WFC Test Case: TC171
+2026-02-26 11:25:52,139 - pipeline - INFO - Processing WFC Test Case: TC171
+2026-02-26 11:25:52,204 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-02-26 11:25:52,204 - pipeline - INFO - Processing WFC Test Case: TC172
+2026-02-26 11:25:52,280 - pipeline - INFO - Processing WFC Test Case: TC173
+2026-02-26 11:25:52,280 - pipeline - INFO - Processing WFC Test Case: TC173
+2026-02-26 11:25:52,343 - pipeline - INFO - Processing WFC Test Case: TC174
+2026-02-26 11:25:52,343 - pipeline - INFO - Processing WFC Test Case: TC174
+2026-02-26 11:25:52,381 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-02-26 11:25:52,381 - pipeline - INFO - Processing WFC Test Case: TC175
+2026-02-26 11:25:52,418 - pipeline - INFO - Processing WFC Test Case: TC176
+2026-02-26 11:25:52,418 - pipeline - INFO - Processing WFC Test Case: TC176
+2026-02-26 11:25:52,456 - pipeline - INFO - Processing WFC Test Case: TC177
+2026-02-26 11:25:52,456 - pipeline - INFO - Processing WFC Test Case: TC177
+2026-02-26 11:25:52,492 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-02-26 11:25:52,492 - pipeline - INFO - Processing WFC Test Case: TC178
+2026-02-26 11:25:52,524 - pipeline - INFO - Processing WFC Test Case: TC179
+2026-02-26 11:25:52,524 - pipeline - INFO - Processing WFC Test Case: TC179
+2026-02-26 11:25:52,563 - pipeline - INFO - Processing WFC Test Case: TC180
+2026-02-26 11:25:52,563 - pipeline - INFO - Processing WFC Test Case: TC180
+2026-02-26 11:25:52,577 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-26 11:25:52,577 - pipeline - INFO - Running post-processing (VqLineChart, Coverage extraction)...
+2026-02-26 11:25:53,056 - pipeline - INFO - Grouping WFC CSV files by Test Case for line chart generation...
+2026-02-26 11:25:53,056 - pipeline - INFO - Grouping WFC CSV files by Test Case for line chart generation...
+2026-02-26 11:25:55,351 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-26 11:25:55,351 - pipeline - INFO - Checking for CDF Throughput data to export...
+2026-02-26 11:25:55,382 - pipeline - INFO - Exported 84 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\cdf_throughput_data
+2026-02-26 11:25:55,382 - pipeline - INFO - Exported 84 CDF throughput JSON files to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\cdf_throughput_data
+2026-02-26 11:25:55,391 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-26 11:25:55,391 - pipeline - INFO - Data Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\data_performance_results.json
+2026-02-26 11:25:55,393 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\call_performance_results.json
+2026-02-26 11:25:55,393 - pipeline - INFO - Call Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\call_performance_results.json
+2026-02-26 11:25:55,394 - pipeline - INFO - Voice Quality results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\voice_quality_results.json
+2026-02-26 11:25:55,394 - pipeline - INFO - Voice Quality results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\voice_quality_results.json
+2026-02-26 11:25:55,399 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\coverage_performance_results.json
+2026-02-26 11:25:55,399 - pipeline - INFO - Coverage Performance results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\coverage_performance_results.json
+2026-02-26 11:25:55,403 - pipeline - INFO - WFC results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\wfc_performance_results.json
+2026-02-26 11:25:55,403 - pipeline - INFO - WFC results exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\wfc_performance_results.json
+2026-02-26 11:25:55,405 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-26 11:25:55,405 - pipeline - INFO - Processing summary exported to D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle\processing_summary.json
+2026-02-26 11:25:55,405 - pipeline - INFO - Running final data validation...
+2026-02-26 11:25:55,405 - pipeline - INFO - Running final data validation...
+2026-02-26 11:25:55,440 - pipeline - WARNING - Summary of Empty collections found in JSON files:
+2026-02-26 11:25:55,440 - pipeline - WARNING - Summary of Empty collections found in JSON files:
+2026-02-26 11:25:55,440 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,440 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,441 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,441 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,441 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,441 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,441 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,441 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,442 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,442 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,442 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> UL -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,442 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> UL -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,442 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,442 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Multi Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,442 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,442 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,443 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,443 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,443 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,443 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,443 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,443 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,443 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> UL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,443 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> UL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,444 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,444 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,444 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> UL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,444 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> UL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,444 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> UL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,444 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> HTTP Single Stream -> UL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,444 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> DL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,444 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> DL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,444 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,444 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,445 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,445 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,445 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> UL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,445 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> UL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,445 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,445 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,446 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> UL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,446 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Multi Stream -> UL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,446 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> DL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,446 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> DL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,446 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,446 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,447 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,447 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,447 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,447 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,447 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,447 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,448 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> UL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,448 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> HTTP Single Stream -> UL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,448 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,448 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,449 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,449 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,449 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,449 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,449 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,449 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,450 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,450 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,450 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,450 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,451 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,451 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,451 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,451 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Mobile Hotspot Test -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,451 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,451 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,452 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,452 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,452 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,452 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,453 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,453 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,453 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,453 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,453 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,453 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> DL -> UDP Download Task at 400 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,454 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,454 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Good -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,454 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,454 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,454 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,454 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 10 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,455 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,455 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Good -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,455 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,455 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,456 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,456 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,456 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,456 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G AUTO DP -> Udp Test -> UL -> UDP Upload Task at 20 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,456 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> DL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,456 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> DL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,457 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,457 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,458 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,458 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,458 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,458 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> DL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,459 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,459 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> UL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,459 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> UL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,459 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> UL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,459 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> UL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,459 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Multi Stream -> UL -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,459 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Single Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,459 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Single Stream -> DL -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,460 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Single Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,460 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Single Stream -> DL -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,460 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Single Stream -> UL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,460 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> HTTP Single Stream -> UL -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,460 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Mobility Test -> DUT -> DL Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,460 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Mobility Test -> DUT -> DL Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,461 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Mobility Test -> REF -> DL Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,461 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Mobility Test -> REF -> DL Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,461 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Mobility Test -> REF -> UL Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,461 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Mobility Test -> REF -> UL Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,461 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,461 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Moderate -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,462 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,462 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> DUT -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,462 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,462 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> DL -> UDP Download Task at 200 Mbps for 10 seconds -> Poor -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,463 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 10 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,463 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 10 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,463 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,463 - pipeline - WARNING -   - data_performance_results.json -> Data Performance -> 5G NSA DP -> Udp Test -> UL -> 5G NSA_UDP Upload Task at 20 Mbps for 10 seconds -> Moderate -> REF -> Throughput -> Outliers -> Empty List
+2026-02-26 11:25:55,464 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle
+2026-02-26 11:25:55,464 - pipeline - INFO - Pipeline execution completed. Results in: D:/ReportGenerator/report-generator-app/public/AnalyzeResults\#Dry Run\Seattle

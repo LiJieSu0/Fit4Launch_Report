@@ -2,27 +2,56 @@
 import React from 'react';
 import { VictoryChart, VictoryBoxPlot, VictoryAxis, VictoryLabel, VictoryScatter } from 'victory';
 
-const DpBoxPlot = ({ data, title, yAxisLabel, width = 600, height = 300 }) => {
-    if (!data || data.length === 0) {
+const DpBoxPlot = ({ data: rawData, title, yAxisLabel, width = 600, height = 300 }) => {
+    if (!rawData || rawData.length === 0) {
         return <div className="no-data-message">No Data Available for Box Plot</div>;
+    }
+
+    // Process data to add "Overall" if it doesn't exist
+    const data = [...rawData];
+    const hasOverall = data.some(d => d.x.includes('Overall'));
+
+    if (!hasOverall) {
+        const dutPoints = data.filter(d => d.x.includes('(DUT)'));
+        const refPoints = data.filter(d => d.x.includes('(REF)'));
+
+        const calculateOverall = (points, label) => {
+            if (points.length === 0) return null;
+            const validPoints = points.filter(p => p.min !== undefined && p.max !== undefined);
+            if (validPoints.length === 0) return null;
+
+            return {
+                x: label,
+                min: Math.min(...validPoints.map(p => p.min)),
+                max: Math.max(...validPoints.map(p => p.max)),
+                q1: validPoints.reduce((acc, p) => acc + p.q1, 0) / validPoints.length,
+                median: validPoints.reduce((acc, p) => acc + p.median, 0) / validPoints.length,
+                q3: validPoints.reduce((acc, p) => acc + p.q3, 0) / validPoints.length,
+                outliers: validPoints.flatMap(p => p.outliers || [])
+            };
+        };
+
+        const overallDut = calculateOverall(dutPoints, 'Overall (DUT)');
+        const overallRef = calculateOverall(refPoints, 'Overall (REF)');
+
+        if (overallDut) data.push(overallDut);
+        if (overallRef) data.push(overallRef);
     }
 
     // Calculate domain to include outliers
     let minVal = Infinity;
     let maxVal = -Infinity;
 
-    if (data && data.length > 0) {
-        data.forEach(d => {
-            let low = d.min;
-            let high = d.max;
-            if (d.outliers && Array.isArray(d.outliers) && d.outliers.length > 0) {
-                low = Math.min(low, ...d.outliers);
-                high = Math.max(high, ...d.outliers);
-            }
-            if (low < minVal) minVal = low;
-            if (high > maxVal) maxVal = high;
-        });
-    }
+    data.forEach(d => {
+        let low = d.min;
+        let high = d.max;
+        if (d.outliers && Array.isArray(d.outliers) && d.outliers.length > 0) {
+            low = Math.min(low, ...d.outliers);
+            high = Math.max(high, ...d.outliers);
+        }
+        if (low < minVal) minVal = low;
+        if (high > maxVal) maxVal = high;
+    });
 
     // Default domain if data is missing or weird
     if (minVal === Infinity) {
@@ -36,18 +65,23 @@ const DpBoxPlot = ({ data, title, yAxisLabel, width = 600, height = 300 }) => {
 
     // Extract outlier data for explicit rendering
     const outlierData = [];
-    if (data && data.length > 0) {
-        data.forEach((d) => {
-            if (d.outliers && Array.isArray(d.outliers)) {
-                d.outliers.forEach((outlierVal) => {
+    data.forEach((d) => {
+        if (d.outliers && Array.isArray(d.outliers)) {
+            const iqr = d.q3 - d.q1;
+            const lowerFence = iqr === 0 ? d.min : d.q1 - 1.5 * iqr;
+            const upperFence = iqr === 0 ? d.max : d.q3 + 1.5 * iqr;
+
+            d.outliers.forEach((outlierVal) => {
+                // Only include if it's actually outside the whisker range
+                if (outlierVal < lowerFence || outlierVal > upperFence) {
                     outlierData.push({ x: d.x, y: outlierVal });
-                });
-            }
-        });
-    }
+                }
+            });
+        }
+    });
 
     // Dynamic sizing: scale width with number of entries
-    const dynamicWidth = Math.min(width, Math.max(300, data.length * 120 + 120));
+    const dynamicWidth = Math.min(width, Math.max(300, data.length * 100 + 120));
     const dynamicDomainPadding = Math.max(15, Math.min(40, 120 / data.length));
 
     return (
@@ -58,14 +92,14 @@ const DpBoxPlot = ({ data, title, yAxisLabel, width = 600, height = 300 }) => {
                 width={dynamicWidth}
                 height={height}
                 domain={{ y: yDomain }}
-                padding={{ top: 20, bottom: 50, left: 80, right: 20 }} // Increased left padding for Y-axis label
+                padding={{ top: 20, bottom: 60, left: 80, right: 20 }} // Increased bottom padding for X-axis labels
             >
                 <VictoryAxis
                     crossAxis={false} // Prevent axis from moving to y=0
-                    offsetY={50} // Force axis to bottom (Victory coordinates are bottom-up, this sets the baseline)
+                    offsetY={50} // Force axis to bottom
                     tickFormat={(x) => x}
                     style={{
-                        tickLabels: { fontSize: 10, padding: 5 }
+                        tickLabels: { fontSize: 8, padding: 5, angle: -25, textAnchor: 'end' } // Smaller font and rotated for space
                     }}
                 />
                 <VictoryAxis
@@ -73,12 +107,12 @@ const DpBoxPlot = ({ data, title, yAxisLabel, width = 600, height = 300 }) => {
                     crossAxis={false} // Ensure Y-axis stays at left
                     label={yAxisLabel}
                     style={{
-                        axisLabel: { padding: 45, fontSize: 12 }, // Increased padding
+                        axisLabel: { padding: 55, fontSize: 12 }, // Increased padding
                         tickLabels: { fontSize: 10, padding: 5 }
                     }}
                 />
                 <VictoryBoxPlot
-                    boxWidth={20}
+                    boxWidth={15} // Slightly narrower boxes
                     data={data}
                     style={{
                         min: { stroke: "black", strokeWidth: 1 },

@@ -269,6 +269,11 @@ class DataAnalysisPipeline:
                 self.config.data['project']['market'] = self.market # Inject current market into config instance
                 
                 stats = analyzer.analyze(full_path, analysis_type=ana_type)
+                
+                if dir_info.get("timeline_analysis", False):
+                    self.logger.info(f"Running timeline analysis for: {dir_info['path']}")
+                    output_dir = self.output_dir
+                    timeline_stats = analyzer.analyze(full_path, analysis_type="coverage_timeline", output_dir=output_dir)
             else:
                 stats = analyzer.analyze(full_path)
 

@@ -9,13 +9,14 @@ from Coverage.coverage_coordinate_analyzer import (
 from Coverage.n41_coverage_analyzer import analyze_n41_coverage
 from Coverage.coverage_performance_analyzer import analyze_csv as analyze_vonr_coverage_performance
 from Coverage.coverage_secondary_kpi_analyzer import analyze_secondary_kpis
+from Coverage.coverage_timeline_analyzer import analyze_coverage_timeline
 
 class CoveragePerformanceAnalyzer(BaseAnalyzer):
     def __init__(self, config, logger):
         self.config = config
         self.logger = logger
 
-    def analyze(self, directory_path: str, analysis_type: str = "coverage_coordinate"):
+    def analyze(self, directory_path: str, analysis_type: str = "coverage_coordinate", output_dir: str = None):
         self.logger.info(f"Analyzing Coverage directory: {directory_path} (Type: {analysis_type})")
         
         if not os.path.isdir(directory_path):
@@ -42,6 +43,8 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
             return self._analyze_n41(directory_path)
         elif analysis_type == "vonr_coverage_performance":
             return self._analyze_vonr(directory_path)
+        elif analysis_type == "coverage_timeline":
+            return self._analyze_timeline(directory_path, output_dir)
         
         return None
 
@@ -136,6 +139,25 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
                                 band_results[device_type][run_name]["secondary_kpi"] = secondary
                 if band_results["DUT"] or band_results["REF"]:
                     results[band_folder_name] = band_results
+        return results
+
+    def _analyze_timeline(self, path, output_dir=None):
+        self.logger.info(f"Analyzing Coverage Timeline for: {path}")
+        
+        results = {}
+        
+        timeline_types = ['rsrp', 'sinr', 'txpower']
+        
+        if output_dir:
+            timeline_output_base = os.path.join(output_dir, 'CoverageTimeLine')
+        else:
+            timeline_output_base = os.path.join(path, 'CoverageTimeLine')
+        
+        for timeline_type in timeline_types:
+            self.logger.info(f"Processing {timeline_type} timeline...")
+            timeline_results = analyze_coverage_timeline(path, timeline_output_base, timeline_type)
+            results[timeline_type] = timeline_results
+        
         return results
 
     def validate(self, results) -> bool:

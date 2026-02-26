@@ -1,33 +1,30 @@
-# Implementation Plan - Update IP Impairment Table Columns
+# Implementation Plan - VoNR Coverage Section Layout Update
 
-The goal is to synchronize the columns of the "IP Impairments" table in the [WfcSummaryPage.js](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/WfcPerformance/WfcSummaryPage.js) with those present in [WfcIpImpairment.js](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/WfcPerformance/WfcIpImpairment.js).
+Modify the VoNR coverage section to arrange three key metric charts (RSRP, SINR, and TxPower) vertically for each run and reduce their size.
 
 ## Proposed Changes
 
-### [WfcPerformance Component]
+### [Component Name] CoveragePerformance
 
-#### [MODIFY] [WfcSummaryPage.js](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/WfcPerformance/WfcSummaryPage.js)
+#### [MODIFY] [VonrTimeLineChart.js](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/CoveragePerformance/VonrTimeLineChart.js)
+- Update the component to accept `height` and `width` props.
+- Use these props in the container div style.
+- Default `height` to `300px` and `width` to `100%` to maintain compatibility with other uses if any.
 
-- Update the table header in Section 4 (IP Impairments) to include:
-    - Profile
-    - MOS Before HO
-    - MOS During/After HO
-    - RSSI (dBm)
-    - RSRP (dBm)
-    - Handover Delay
-    - Packet Loss (%)
-    - Handovers
-    - Call Drops
-    - Attempts
-- Update [renderIpImpRows](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/WfcPerformance/WfcSummaryPage.js#240-266) function:
-    - Include logic to fetch data for the new columns: RSSI, RSRP, Handover Delay, Packet Loss, Handovers, and Attempts.
-    - Use [getKpiCellColor](file:///d:/ReportGenerator/report-generator-app/src/Utils/KpiRules.js#3-316) and [mapToPass](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/WfcPerformance/WfcSummaryPage.js#18-22) for coloring.
-    - Use [getResultText](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/WfcPerformance/WfcSummaryPage.js#23-34) to display "Result" (linked to the detail section) for KPI columns.
-    - Display the actual count for `Attempts`.
+#### [MODIFY] [VonrCoverageSection.js](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/CoveragePerformance/VonrCoverageSection.js)
+- Reorganize the "TimeLine Analysis" sections.
+- For each run, display RSRP, SINR, and TxPower charts vertically.
+- Pass reduced `height` (e.g., `220px`) and `width` (e.g., `90%`) to [VonrTimeLineChart](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/CoveragePerformance/VonrTimeLineChart.js#24-170).
+- Ensure appropriate headers and `PageBreak` usage to keep runs separated if needed, or group them logically.
+- **Clarification**: I will confirm if the user wants exactly 3 runs or if "Three TimelineCharts" refers to the 3 metrics. Based on the "vertical arrangement" request, grouping by metric (RSRP, SINR, TxPower) for each run seems most likely.
 
 ## Verification Plan
 
+### Automated Tests
+- None available for UI layout.
+
 ### Manual Verification
-- Verify the "IP Impairments" table in the Summary page has the correct columns.
-- Ensure the "Result" links correctly navigate to the corresponding detail section.
-- Verify that the colors are correctly applied based on the KPI rules.
+- Start the app with `npm start`.
+- Navigate to the VoNR Coverage section.
+- Verify that for each run, the RSRP, SINR, and TxPower charts are stacked vertically.
+- Verify that the charts are smaller as requested.

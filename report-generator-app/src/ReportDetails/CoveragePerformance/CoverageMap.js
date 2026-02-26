@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Tooltip, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Tooltip, useMap, Polyline } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -49,12 +49,11 @@ const calculateAverageCoords = (bandData, metric, device) => {
   let sumLon = 0;
   let count = 0;
 
-  // Iterate Runs 1-5
-  for (let i = 1; i <= 5; i++) {
+  // We check for both 1-5 (VoNR) and 1-10 (LTE)
+  for (let i = 1; i <= 10; i++) {
     const runKey = `Run${i}`;
     const runData = bandData[device][runKey];
 
-    // Check if runData exists and has the specific metric
     if (runData && runData[metric]) {
       const { latitude, longitude } = runData[metric];
       if (latitude && longitude) {
@@ -87,21 +86,44 @@ const MapAutoBounds = ({ positions, offset = 0 }) => {
 };
 
 const CoverageMap = ({ bandData, metric, baseStation }) => {
-  // If baseStation is passed as 'baseStationCoords' (legacy support or typo in user example), handle it
-  // The example usage uses 'baseStation={BASE_STATION_COORDS}'
-  // We'll support 'baseStation' as primary.
   const bsPos = baseStation;
 
   const dutPos = useMemo(() => calculateAverageCoords(bandData, metric, 'DUT'), [bandData, metric]);
   const refPos = useMemo(() => calculateAverageCoords(bandData, metric, 'REF'), [bandData, metric]);
 
+  const pathPoints = useMemo(() => {
+    if (!bsPos || (!dutPos && !refPos)) return [];
+
+    // Determine further point
+    const distDut = dutPos ? L.latLng(bsPos).distanceTo(L.latLng(dutPos)) : -1;
+    const distRef = refPos ? L.latLng(bsPos).distanceTo(L.latLng(refPos)) : -1;
+    const furtherDevice = distDut >= distRef ? 'DUT' : 'REF';
+
+    // Build breadcrumbs path
+    // Sequence based on typical drive-out test: First UL -> First DL -> MOS -> Call Drop
+    const metricSeq = ['first_ul_tp_gt_1', 'first_dl_tp_gt_1', 'mos_before_drop', 'call_drop'];
+    const currentIdx = metricSeq.indexOf(metric);
+
+    if (currentIdx === -1) {
+      // Fallback for non-standard metrics - just straight line
+      const target = furtherDevice === 'DUT' ? dutPos : refPos;
+      return target ? [bsPos, target] : [];
+    }
+
+    const points = [bsPos];
+    for (let i = 0; i <= currentIdx; i++) {
+      const p = calculateAverageCoords(bandData, metricSeq[i], furtherDevice);
+      if (p) points.push(p);
+    }
+    return points;
+  }, [bandData, metric, bsPos, dutPos, refPos]);
+
   if (!bsPos || bsPos.length < 2) {
     return <div>No base station coordinates provided.</div>;
   }
 
-  const longitudeOffset = 0.05; // Adjust this value as needed, to make sure the map is centered on printing
+  const longitudeOffset = 0.05;
 
-  // Calculate center based on available positions to avoid null errors
   const positions = [bsPos];
   if (dutPos) positions.push(dutPos);
   if (refPos) positions.push(refPos);
@@ -129,6 +151,19 @@ const CoverageMap = ({ bandData, metric, baseStation }) => {
         <Marker position={bsPos} icon={greenPinIcon}>
           <Tooltip permanent direction="top" offset={[0, -20]}>Base Station</Tooltip>
         </Marker>
+
+        {/* Path Line */}
+        {pathPoints.length > 1 && (
+          <Polyline
+            positions={pathPoints}
+            pathOptions={{
+              color: '#666',
+              weight: 2,
+              dashArray: '5, 10',
+              lineJoin: 'round'
+            }}
+          />
+        )}
 
         {/* DUT Marker */}
         {dutPos && (
@@ -165,6 +200,10 @@ const CoverageMap = ({ bandData, metric, baseStation }) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
           <div className="ref-icon" style={{ width: '10px', height: '10px', position: 'relative', top: '0', left: '0' }}></div>
           <span>REF</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <div style={{ width: '15px', height: '2px', borderTop: '2px dashed #666' }}></div>
+          <span>Coverage Path</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
           <div style={{ width: '15px', height: '15px', display: 'flex', justifyContent: 'center', alignItems: 'center' }} dangerouslySetInnerHTML={{ __html: greenPinSvg.replace('width="30"', 'width="15"').replace('height="30"', 'height="15"') }}></div>

@@ -88,6 +88,8 @@ const WfcIpImpairmentOverviewTable = () => {
                                     if (config.tc === 'TC171') packetLossVal = '13%';
                                     else if (config.tc === 'TC172') packetLossVal = '18%';
                                     else if (config.tc === 'TC173') packetLossVal = '20%';
+                                } else if (deviceType === 'REF') {
+                                    if (config.tc === 'TC171') packetLossVal = 'Call Drop';
                                 }
 
                                 if (deviceType === 'DUT') {
@@ -98,6 +100,8 @@ const WfcIpImpairmentOverviewTable = () => {
                                     packetLossStyle = { backgroundColor: getKpiCellColor('WfcPacketLoss', 1) };
                                     rssiStyle = { backgroundColor: getKpiCellColor('WfcRssiProfile6', rssi) };
                                     rsrpStyle = { backgroundColor: getKpiCellColor('WfcRsrp', rsrp) };
+                                } else if (deviceType === 'REF') {
+                                    if (config.tc === 'TC172' || config.tc === 'TC173') packetLossStyle = { backgroundColor: 'red' };
                                 }
 
                                 return (

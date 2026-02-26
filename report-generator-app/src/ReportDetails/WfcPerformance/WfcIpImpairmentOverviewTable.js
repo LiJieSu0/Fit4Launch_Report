@@ -83,6 +83,13 @@ const WfcIpImpairmentOverviewTable = () => {
                                 let rssiStyle = {};
                                 let rsrpStyle = {};
 
+                                let packetLossVal = '';
+                                if (deviceType === 'DUT') {
+                                    if (config.tc === 'TC171') packetLossVal = '13%';
+                                    else if (config.tc === 'TC172') packetLossVal = '18%';
+                                    else if (config.tc === 'TC173') packetLossVal = '20%';
+                                }
+
                                 if (deviceType === 'DUT') {
                                     mosBeforeStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosBefore, refData?.mos_before_handover_average) };
                                     mosAfterStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosAfter, refData?.mos_after_handover_average) };
@@ -109,7 +116,7 @@ const WfcIpImpairmentOverviewTable = () => {
                                         <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                         <td style={callDropsStyle}>{callDrops}</td>
                                         <td style={handoverDelayStyle}>{formatVal(handoverDelay)}</td>
-                                        <td style={packetLossStyle}>1 %</td>
+                                        <td style={packetLossStyle}>{packetLossVal}</td>
                                         <td>1</td>
                                         <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
                                     </tr>
@@ -125,6 +132,9 @@ const WfcIpImpairmentOverviewTable = () => {
                         })}
                     </tbody>
                 </table>
+                <div style={{ fontSize: '12px', textAlign: 'left', marginTop: '5px', width: '100%' }}>
+                    Note: No values indicated device failed to execute testcase. No data represents call drop or device held onto call to signal call was initiated from.
+                </div>
             </div>
         );
     };

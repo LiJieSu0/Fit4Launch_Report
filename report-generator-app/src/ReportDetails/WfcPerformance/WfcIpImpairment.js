@@ -172,6 +172,13 @@ const WfcIpImpairment = () => {
                                             let rssiStyle = {};
                                             let rsrpStyle = {};
 
+                                            let packetLossVal = '';
+                                            if (deviceType === 'DUT') {
+                                                if (tc === 'TC171') packetLossVal = '13%';
+                                                else if (tc === 'TC172') packetLossVal = '18%';
+                                                else if (tc === 'TC173') packetLossVal = '20%';
+                                            }
+
                                             if (deviceType === 'DUT') {
                                                 mosBeforeStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosBefore, referenceData?.mos_before_handover_average) };
                                                 mosAfterStyle = { backgroundColor: getKpiCellColor('IpImpairmentMOS', mosAfter, referenceData?.mos_after_handover_average) };
@@ -192,7 +199,7 @@ const WfcIpImpairment = () => {
                                                     <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                                     <td style={callDropsStyle}>{callDrops}</td>
                                                     <td style={handoverDelayStyle}>{formatVal(deviceData.handover_impact_delay)}</td>
-                                                    <td style={packetLossStyle}>1 %</td>
+                                                    <td style={packetLossStyle}>{packetLossVal}</td>
                                                     <td>1</td>
                                                     <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
                                                 </tr>
@@ -208,6 +215,9 @@ const WfcIpImpairment = () => {
                                     })}
                                 </tbody>
                             </table>
+                            <div style={{ fontSize: '12px', textAlign: 'left', marginTop: '5px', width: '100%' }}>
+                                Note: No values indicated device failed to execute testcase. No data represents call drop or device held onto call to signal call was initiated from.
+                            </div>
                             {renderMosCharts(data)}
                         </div>
                     );

@@ -205,57 +205,63 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                     <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - Secondary KPI - {city}</DynamicHeader>
                     <SecondaryKpiTable data={secondaryKpi} />
                 </PageBreak>
-                <PageBreak>
-                    <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - RSRP TimeLine Analysis - {city}</DynamicHeader>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
-                        {[1, 2, 3, 4, 5].map(run => (
-                            <VonrTimeLineChart
-                                key={`rsrp-${run}`}
-                                analysisType="RSRP"
-                                band={band}
-                                run={run}
-                                city={city}
-                                projectFolderName={project?.dataFolderName || ''}
-                                height="220px"
-                                width="30%"
-                            />
-                        ))}
-                    </div>
-                </PageBreak>
-                <PageBreak>
-                    <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - SINR TimeLine Analysis - {city}</DynamicHeader>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
-                        {[1, 2, 3, 4, 5].map(run => (
-                            <VonrTimeLineChart
-                                key={`sinr-${run}`}
-                                analysisType="SINR"
-                                band={band}
-                                run={run}
-                                city={city}
-                                projectFolderName={project?.dataFolderName || ''}
-                                height="220px"
-                                width="30%"
-                            />
-                        ))}
-                    </div>
-                </PageBreak>
-                <PageBreak>
-                    <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - TxPower TimeLine Analysis - {city}</DynamicHeader>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
-                        {[1, 2, 3, 4, 5].map(run => (
-                            <VonrTimeLineChart
-                                key={`txpower-${run}`}
-                                analysisType="TxPower"
-                                band={band}
-                                run={run}
-                                city={city}
-                                projectFolderName={project?.dataFolderName || ''}
-                                height="220px"
-                                width="30%"
-                            />
-                        ))}
-                    </div>
-                </PageBreak>
+                {[[1, 2, 3], [4, 5]].map((chunk, index) => (
+                    <PageBreak key={`rsrp-page-${index}`}>
+                        <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - RSRP TimeLine Analysis - {city}{index > 0 ? ` (Part ${index + 1})` : ''}</DynamicHeader>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
+                            {chunk.map(run => (
+                                <VonrTimeLineChart
+                                    key={`rsrp-${run}`}
+                                    analysisType="RSRP"
+                                    band={band}
+                                    run={run}
+                                    city={city}
+                                    projectFolderName={project?.dataFolderName || ''}
+                                    height="220px"
+                                    width="30%"
+                                />
+                            ))}
+                        </div>
+                    </PageBreak>
+                ))}
+                {[[1, 2, 3], [4, 5]].map((chunk, index) => (
+                    <PageBreak key={`sinr-page-${index}`}>
+                        <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - SINR TimeLine Analysis - {city}{index > 0 ? ` (Part ${index + 1})` : ''}</DynamicHeader>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
+                            {chunk.map(run => (
+                                <VonrTimeLineChart
+                                    key={`sinr-${run}`}
+                                    analysisType="SINR"
+                                    band={band}
+                                    run={run}
+                                    city={city}
+                                    projectFolderName={project?.dataFolderName || ''}
+                                    height="220px"
+                                    width="30%"
+                                />
+                            ))}
+                        </div>
+                    </PageBreak>
+                ))}
+                {[[1, 2, 3], [4, 5]].map((chunk, index) => (
+                    <PageBreak key={`txpower-page-${index}`}>
+                        <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - TxPower TimeLine Analysis - {city}{index > 0 ? ` (Part ${index + 1})` : ''}</DynamicHeader>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
+                            {chunk.map(run => (
+                                <VonrTimeLineChart
+                                    key={`txpower-${run}`}
+                                    analysisType="TxPower"
+                                    band={band}
+                                    run={run}
+                                    city={city}
+                                    projectFolderName={project?.dataFolderName || ''}
+                                    height="220px"
+                                    width="30%"
+                                />
+                            ))}
+                        </div>
+                    </PageBreak>
+                ))}
             </div>
         );
     };

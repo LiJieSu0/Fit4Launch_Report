@@ -141,6 +141,7 @@ const CoverageMap = ({ bandData, metric, baseStation }) => {
         scrollWheelZoom={false}
         dragging={false}
         zoomControl={false}
+        attributionControl={false}
       >
         <MapAutoBounds positions={positions} offset={longitudeOffset} />
         <TileLayer
@@ -157,7 +158,7 @@ const CoverageMap = ({ bandData, metric, baseStation }) => {
           <Polyline
             positions={pathPoints}
             pathOptions={{
-              color: '#666',
+              color: '#ff0000ff',
               weight: 2,
               dashArray: '5, 10',
               lineJoin: 'round'

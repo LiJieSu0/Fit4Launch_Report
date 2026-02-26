@@ -36,6 +36,10 @@ have for the DUT.
     <>
       {/* Baseline Celluar and wfc call performance */}
       <PageBreak>
+        <h3>Baseline Audio Performance Overview</h3>
+        {/*Baseline Audio Performance table */}
+      </PageBreak>
+      <PageBreak>
         <h3>Baseline Cellular and WFC Call Performance Overview</h3>
         <WfcBaselineOverviewTable />
       </PageBreak>

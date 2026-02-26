@@ -39,6 +39,21 @@ have for the DUT.
         <WfcBaselineOverviewTable />
       </PageBreak>
 
+      <PageBreak>
+        <DynamicHeader level={1}>Wifi Call Performance Overview</DynamicHeader>
+        <WfcCallOverviewTable />
+      </PageBreak>
+
+      <PageBreak>
+        <DynamicHeader level={1}>Multi Handovers Overview</DynamicHeader>
+        <WfcMultiHandoverOverviewTable />
+      </PageBreak>
+
+      <PageBreak>
+        <DynamicHeader level={1}>Walk in/out of WFC Coverage Overview</DynamicHeader>
+        <WfcCoverageOverviewTable />
+      </PageBreak>
+
       <WfcBaselineDetails tc="TC150" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline" sectionNumber={1} />
       <WfcBaselineDetails tc="TC151" label="Call Performance Baseline"
@@ -75,10 +90,7 @@ have for the DUT.
 
 
 
-      <PageBreak>
-        <DynamicHeader level={1}>Multi Handovers Overview</DynamicHeader>
-        <WfcMultiHandoverOverviewTable />
-      </PageBreak>
+
 
       <WfcMultiHandover title="T-Mobile HINT Gateway" tc="TC162 TC163 TC164" />
       <WfcMultiHandover title="ASUS RT-AC68U" tc="TC165 TC166 TC167" />
@@ -106,10 +118,7 @@ have for the DUT.
       {/* TC172 LinkSys Hydra Pro 6E*/}
       {/* TC173 Google Nest AP AC2200*/}
 
-      <PageBreak>
-        <DynamicHeader level={1}>Walk in/out of WFC Coverage Overview</DynamicHeader>
-        <WfcCoverageOverviewTable />
-      </PageBreak>
+
 
       <WfcCoverage title="ASUS RT-AC68U" tc="TC174 TC177" section={1} />
       <WfcCoverage title="LinkSys Hydra Pro 6E" tc="TC175 TC178" />

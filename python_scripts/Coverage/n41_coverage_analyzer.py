@@ -63,6 +63,10 @@ def analyze_n41_coverage(folder_path, device_type_filter=None):
 
             no_service_indices = df[df[serving_network_column].astype(str).str.contains('No service', case=False, na=False)].index.tolist()
 
+            if not no_service_indices:
+                # Fallback: if no "No service" entry is found, search upwards from the end of the file
+                no_service_indices = [len(df) - 1]
+
             found_data_point = False
             for no_service_idx in no_service_indices: # Iterate from top to bottom for 'No service'
                 # Search upwards from the 'No service' index for the first UL TP value > 1

@@ -6,7 +6,7 @@ import { getKpiCellColor } from '../../Utils/KpiRules';
 import WfcPerformanceChart from './WfcPerformanceChart';
 import WfcMosLineChart from './WfcMosLineChart';
 
-const WfcCallPerformance = ({ title, tc }) => {
+const WfcCallPerformance = ({ title, tc, sectionNumber = 0 }) => {
     const { projectData, availableCities } = useReportData();
     const tcList = tc ? tc.split(' ').filter(Boolean) : [];
 
@@ -234,6 +234,7 @@ const WfcCallPerformance = ({ title, tc }) => {
     return (
         <>
             <PageBreak>
+                {sectionNumber == 1 && <DynamicHeader level={1}>Wifi Call Performance</DynamicHeader>}
                 <DynamicHeader level={2} id={`section-${title?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>{title}</DynamicHeader>
                 {availableCities.filter(city => city === 'Seattle').map(city => (
                     <div key={city}>

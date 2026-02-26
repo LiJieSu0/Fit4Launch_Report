@@ -6,7 +6,7 @@ import { getKpiCellColor } from '../../Utils/KpiRules';
 import WfcPerformanceChart from './WfcPerformanceChart';
 import WfcMosLineChart from './WfcMosLineChart';
 
-const WfcMultiHandover = ({ title, tc }) => {
+const WfcMultiHandover = ({ title, tc, sectionNumber = 0 }) => {
     const { projectData, availableCities } = useReportData();
     const tcList = tc ? tc.split(' ').filter(Boolean) : [];
 
@@ -181,6 +181,7 @@ const WfcMultiHandover = ({ title, tc }) => {
     return (
         <>
             <PageBreak>
+                {sectionNumber == 1 && <DynamicHeader level={1}>Multi Handovers</DynamicHeader>}
                 <DynamicHeader level={2} id={`multihandover-section-${title?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>{title}</DynamicHeader>
                 {availableCities.filter(city => city === 'Seattle').map(city => (
                     <div key={city}>

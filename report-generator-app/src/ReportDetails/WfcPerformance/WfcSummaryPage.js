@@ -106,21 +106,21 @@ const WfcSummaryPage = () => {
   const ipImpApConfig = [
     {
       apName: 'ASUS RT-AC68U',
-      anchor: '#section-wfc-ip-impairment',
+      anchor: '#WfcImpairment',
       tcs: [
         { tc: 'TC171', label: 'IWLAN→NR' },
       ],
     },
     {
       apName: 'LinkSys Hydra Pro 6E',
-      anchor: '#section-wfc-ip-impairment',
+      anchor: '#WfcImpairment',
       tcs: [
         { tc: 'TC172', label: 'IWLAN→NR' },
       ],
     },
     {
       apName: 'T-Mobile HINT Gateway',
-      anchor: '#section-wfc-ip-impairment',
+      anchor: '#WfcImpairment',
       tcs: [
         { tc: 'TC173', label: 'IWLAN→NR' },
       ],

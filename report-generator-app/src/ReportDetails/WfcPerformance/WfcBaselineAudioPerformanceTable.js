@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
 import { useReportData } from '../../Contexts/ReportContext';
+import { getKpiCellColor } from '../../Utils/KpiRules';
 
 const WfcBaselineAudioPerformanceTable = () => {
     const { projectData, availableCities } = useReportData();
@@ -47,7 +48,7 @@ const WfcBaselineAudioPerformanceTable = () => {
                             <td>dBov</td>
                             <td>{formatVal(p56Wfc)}</td>
                             <td>{formatVal(p56Cell)}</td>
-                            <td style={p56Delta !== 'N/A' ? { backgroundColor: '#00FF00', color: 'black' } : {}}>{p56Delta}</td>
+                            <td style={p56Delta !== 'N/A' ? { backgroundColor: getKpiCellColor('p56Delta', p56Delta), color: 'black' } : {}}>{p56Delta}</td>
                         </tr>
 
                         <tr>

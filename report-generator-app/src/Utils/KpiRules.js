@@ -284,6 +284,17 @@ export const getKpiCellColor = (kpiType, dutValue, refValue = null) => {
         return 'var(--performance-fail)';
       }
       break;
+    case 'p56Delta':
+      if (dut === undefined || dut === null || dut === 'N/A') return null;
+      const absDut = Math.abs(parseFloat(dut));
+      if (absDut <= 2) {
+        return 'var(--performance-pass)';
+      } else if (absDut > 2 && absDut < 3.5) {
+        return 'var(--performance-marginal-fail)';
+      } else if (absDut >= 3.5) {
+        return 'var(--performance-fail)';
+      }
+      break;
     case 'WfcRssiProfile6':
       if (dut === undefined || dut === null || dut === 'N/A') return null;
       if (parseFloat(dut) >= -73) {

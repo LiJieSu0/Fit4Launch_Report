@@ -1,30 +1,48 @@
-# Implementation Plan - VoNR Coverage Section Layout Update
+# Implementation Plan - Market-based IMEI Classification
 
-Modify the VoNR coverage section to arrange three key metric charts (RSRP, SINR, and TxPower) vertically for each run and reduce their size.
+Modify the [DeviceInfoPage](file:///d:/ReportGenerator/report-generator-app/src/CommonPage/DeviceInfoPage.js#6-53) and [projects.json](file:///d:/ReportGenerator/report-generator-app/public/AnalyzeResults/projects.json) to support displaying IMEIs categorized by market (New York and Seattle).
 
 ## Proposed Changes
 
-### [Component Name] CoveragePerformance
+### Data Layer
 
-#### [MODIFY] [VonrTimeLineChart.js](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/CoveragePerformance/VonrTimeLineChart.js)
-- Update the component to accept `height` and `width` props.
-- Use these props in the container div style.
-- Default `height` to `300px` and `width` to `100%` to maintain compatibility with other uses if any.
+#### [MODIFY] [projects.json](file:///d:/ReportGenerator/report-generator-app/public/AnalyzeResults/projects.json)
+Update the `deviceData` structure. Replace the `imei` array with a `marketData` array that contains both the market name and its associated IMEIs.
 
-#### [MODIFY] [VonrCoverageSection.js](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/CoveragePerformance/VonrCoverageSection.js)
-- Reorganize the "TimeLine Analysis" sections.
-- For each run, display RSRP, SINR, and TxPower charts vertically.
-- Pass reduced `height` (e.g., `220px`) and `width` (e.g., `90%`) to [VonrTimeLineChart](file:///d:/ReportGenerator/report-generator-app/src/ReportDetails/CoveragePerformance/VonrTimeLineChart.js#24-170).
-- Ensure appropriate headers and `PageBreak` usage to keep runs separated if needed, or group them logically.
-- **Clarification**: I will confirm if the user wants exactly 3 runs or if "Three TimelineCharts" refers to the 3 metrics. Based on the "vertical arrangement" request, grouping by metric (RSRP, SINR, TxPower) for each run seems most likely.
+Example structure:
+```json
+{
+    "testDeviceLabel": "Samsung XCover Pro7",
+    "role": "Device Under Test",
+    "softwareVersion": "...",
+    "hardwareVersion": "REV1.0",
+    "marketData": [
+        {
+            "market": "New York",
+            "imei": ["354877970011048"]
+        },
+        {
+            "market": "Seattle",
+            "imei": ["354877970012475"]
+        }
+    ]
+}
+```
+
+### UI Layer
+
+#### [MODIFY] [DeviceInfoPage.js](file:///d:/ReportGenerator/report-generator-app/src/CommonPage/DeviceInfoPage.js)
+- Update the table header to include a "Market" column after "Hardware Version".
+- Update the table body to iterate through `marketData` for each device.
+- Use `rowSpan` for device-level information (Label, Role, SW/HW Versions) if a device is associated with multiple markets.
 
 ## Verification Plan
 
-### Automated Tests
-- None available for UI layout.
-
 ### Manual Verification
-- Start the app with `npm start`.
-- Navigate to the VoNR Coverage section.
-- Verify that for each run, the RSRP, SINR, and TxPower charts are stacked vertically.
-- Verify that the charts are smaller as requested.
+1.  Run the application using `npm start` (already running).
+2.  Open the browser and navigate to the report generator.
+3.  Select a project (e.g., "ATMC Labs Pilot").
+4.  Verify the **Device Information** section:
+    -   Check for the new **Market** column.
+    -   Validate that IMEIs are correctly grouped under "New York" or "Seattle".
+    -   Ensure the table layout is clean (using row spans for multiple markets per device).

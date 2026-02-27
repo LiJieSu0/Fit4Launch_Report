@@ -9,19 +9,51 @@
                 "role": "Device Under Test",
                 "softwareVersion": "SP1A.210812.016.A125USQU3CVG4",
                 "hardwareVersion": "REV1.0",
-                "imei": [
-                    "354877970011048",
-                    "354877970012475"
+                "marketData": [
+                    {
+                        "market": "New York",
+                        "imei": [
+                            "354877970010297",
+                            "354877970012335",
+                            "354877970012160",
+                            "354877970022535"
+                        ]
+                    },
+                    {
+                        "market": "Seattle",
+                        "imei": [
+                            "354877970011048",
+                            "354877970012475",
+                            "354877970011139",
+                            "354877970011428"
+                        ]
+                    }
                 ]
             },
             {
-                "testDeviceLabel": "TCL 50XL 5G",
+                "testDeviceLabel": "Samsung GS23",
                 "role": "Reference",
-                "softwareVersion": "5EAY",
-                "hardwareVersion": "03",
-                "imei": [
-                    "016519000016882",
-                    "016519000016080"
+                "softwareVersion": "SP1A.210812.016.A125USQU3CVG4",
+                "hardwareVersion": "REV1.0",
+                "marketData": [
+                    {
+                        "market": "New York",
+                        "imei": [
+                            "350932550010987",
+                            "355123541733938",
+                            "355123540010296",
+                            "351246873596070"
+                        ]
+                    },
+                    {
+                        "market": "Seattle",
+                        "imei": [
+                            "352766397820481",
+                            "352766397867003",
+                            "352766397820184",
+                            "352766397822875"
+                        ]
+                    }
                 ]
             }
         ]
@@ -108,6 +140,36 @@
                 "imei": [
                     "016519000016882",
                     "016519000016080"
+                ]
+            },
+            {
+                "testDeviceLabel": "Samsung XCover Pro7",
+                "role": "Device Under Test",
+                "softwareVersion": "SP1A.210812.016.A125USQU3CVG4",
+                "hardwareVersion": "REV1.0",
+                "marketData": [
+                    {
+                        "market": "Seattle",
+                        "imei": [
+                            "354877970012475",
+                            "354877970011048"
+                        ]
+                    }
+                ]
+            },
+            {
+                "testDeviceLabel": "TCL 50XL 5G",
+                "role": "Reference",
+                "softwareVersion": "5EAY",
+                "hardwareVersion": "03",
+                "marketData": [
+                    {
+                        "market": "Seattle",
+                        "imei": [
+                            "016519000016080",
+                            "016519000016882"
+                        ]
+                    }
                 ]
             }
         ]

@@ -50,15 +50,15 @@ const SecondaryKpiTable = ({ data }) => (
                                     <td className="run-divider" rowSpan={totalSegments}>{runData.run}</td>
                                 )}
                                 <td>{segmentData.segment}</td>
-                                <td style={{ backgroundColor: blerColor || '', color: blerColor ? 'black' : '' }}>
+                                <td style={{ backgroundColor: blerColor ? `color-mix(in srgb, ${blerColor}, white var(--secondary-kpi-lightness))` : '', color: blerColor ? 'black' : '' }}>
                                     {typeof dutBler === 'number' ? dutBler.toFixed(2) : '0.00'}
                                 </td>
                                 <td>{typeof refBler === 'number' ? refBler.toFixed(2) : '0.00'}</td>
-                                <td style={{ backgroundColor: dlMcsColor || '', color: dlMcsColor ? 'black' : '' }}>
+                                <td style={{ backgroundColor: dlMcsColor ? `color-mix(in srgb, ${dlMcsColor}, white var(--secondary-kpi-lightness))` : '', color: dlMcsColor ? 'black' : '' }}>
                                     {typeof dutDlMcs === 'number' ? dutDlMcs.toFixed(2) : '0.00'}
                                 </td>
                                 <td>{typeof refDlMcs === 'number' ? refDlMcs.toFixed(2) : '0.00'}</td>
-                                <td style={{ backgroundColor: ulMcsColor || '', color: ulMcsColor ? 'black' : '' }}>
+                                <td style={{ backgroundColor: ulMcsColor ? `color-mix(in srgb, ${ulMcsColor}, white var(--secondary-kpi-lightness))` : '', color: ulMcsColor ? 'black' : '' }}>
                                     {typeof dutUlMcs === 'number' ? dutUlMcs.toFixed(2) : '0.00'}
                                 </td>
                                 <td>{typeof refUlMcs === 'number' ? refUlMcs.toFixed(2) : '0.00'}</td>
@@ -71,7 +71,7 @@ const SecondaryKpiTable = ({ data }) => (
                                             const txColor = getKpiCellColor('SecondaryTxPower', dutTx, refTx);
                                             return (
                                                 <>
-                                                    <td className="run-divider" rowSpan={totalSegments} style={{ backgroundColor: txColor || '', color: txColor ? 'black' : '' }}>
+                                                    <td className="run-divider" rowSpan={totalSegments} style={{ backgroundColor: txColor ? `color-mix(in srgb, ${txColor}, white var(--secondary-kpi-lightness))` : '', color: txColor ? 'black' : '' }}>
                                                         {typeof dutTx === 'number' ? dutTx.toFixed(2) : '0.00'}
                                                     </td>
                                                     <td className="run-divider" rowSpan={totalSegments}>

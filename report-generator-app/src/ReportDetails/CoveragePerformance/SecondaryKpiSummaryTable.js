@@ -260,7 +260,7 @@ const SecondaryKpiSummaryTable = () => {
                                             key={`${market}-${band.key}-${kpi.name}`}
                                             className={`${mapColorToClass(result.color)} ${isLastInBand ? 'run-divider' : ''}`}
                                             style={{
-                                                backgroundColor: result.color !== 'default' ? result.color : '',
+                                                backgroundColor: result.color !== 'default' ? `color-mix(in srgb, ${result.color}, white var(--secondary-kpi-lightness))` : '',
                                                 color: result.status === "N/A" ? '' : 'black'
                                             }}
                                         >

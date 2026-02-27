@@ -295,6 +295,48 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
             "total_initiation_successes": int(total_initiation_successes)
         }
 
+    def _calculate_tc148_audio_performance(self, df):
+        """Calculates p56 Active Speech Level and POLQA Attenuation for WFC vs Cellular."""
+        speech_header = "[Call Test] [Voice Quality] [Loudness] [Volume] [Received signal's Level] Received signal's Level #1"
+        att_header = "[Call Test] [Voice Quality] [Loudness] Attenuation #1"
+        
+        if self.network_type_header not in df.columns or speech_header not in df.columns or att_header not in df.columns:
+            return None
+            
+        df_temp = df.copy()
+        df_temp[self.network_type_header] = df_temp[self.network_type_header].replace('', pd.NA).ffill()
+        df_temp[speech_header] = pd.to_numeric(df_temp[speech_header], errors='coerce')
+        df_temp[att_header] = pd.to_numeric(df_temp[att_header], errors='coerce')
+        
+        df_valid = df_temp.dropna(subset=[speech_header, att_header], how='all')
+        if df_valid.empty:
+            return None
+            
+        wfc_speech = []
+        wfc_att = []
+        cell_speech = []
+        cell_att = []
+        
+        for _, row in df_valid.iterrows():
+            net_type = str(row.get(self.network_type_header, "")).strip().upper()
+            speech_val = row[speech_header]
+            att_val = row[att_header]
+            
+            is_wfc = "IWLAN" in net_type
+            is_cell = "NR" in net_type
+            
+            if is_wfc:
+                if pd.notna(speech_val): wfc_speech.append(float(speech_val))
+                if pd.notna(att_val): wfc_att.append(float(att_val))
+            elif is_cell:
+                if pd.notna(speech_val): cell_speech.append(float(speech_val))
+                if pd.notna(att_val): cell_att.append(float(att_val))
+                
+        return {
+            "WFC": {"speech": wfc_speech, "att": wfc_att},
+            "Cellular": {"speech": cell_speech, "att": cell_att}
+        }
+
     def analyze(self, root_directory: str):
         """
         Analyzes a WFC directory. Groups results by TC -> Category -> Metrics.
@@ -340,8 +382,38 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
         sorted_tc_items = sorted(tc_groups.items(), key=lambda x: self._extract_tc_number(x[0]) or 0)
         for tc_name, categories in sorted_tc_items:
             self.logger.info(f"Processing WFC Test Case: {tc_name}")
-            tc_results = {}
             tc_num = self._extract_tc_number(tc_name)
+            
+            if tc_num == 148:
+                tc148_results = {
+                    "WFC": {"p56 Active Speech Level": 0, "POLQA Attenuation": 0},
+                    "Cellular": {"p56 Active Speech Level": 0, "POLQA Attenuation": 0}
+                }
+                
+                if "DUT MO" in categories:
+                    wfc_speech, wfc_att = [], []
+                    cell_speech, cell_att = [], []
+                    for file_path in categories["DUT MO"]:
+                        try:
+                            df = pd.read_csv(file_path, low_memory=False)
+                            res = self._calculate_tc148_audio_performance(df)
+                            if res:
+                                wfc_speech.extend(res["WFC"]["speech"])
+                                wfc_att.extend(res["WFC"]["att"])
+                                cell_speech.extend(res["Cellular"]["speech"])
+                                cell_att.extend(res["Cellular"]["att"])
+                        except Exception as e:
+                            self.logger.error(f"Error processing {file_path}: {e}")
+                    
+                    if wfc_speech: tc148_results["WFC"]["p56 Active Speech Level"] = round(sum(wfc_speech)/len(wfc_speech), 4)
+                    if wfc_att: tc148_results["WFC"]["POLQA Attenuation"] = round(sum(wfc_att)/len(wfc_att), 4)
+                    if cell_speech: tc148_results["Cellular"]["p56 Active Speech Level"] = round(sum(cell_speech)/len(cell_speech), 4)
+                    if cell_att: tc148_results["Cellular"]["POLQA Attenuation"] = round(sum(cell_att)/len(cell_att), 4)
+                
+                results[tc_name] = tc148_results
+                continue
+
+            tc_results = {}
             
             for category, file_paths in categories.items():
                 category_metrics = {

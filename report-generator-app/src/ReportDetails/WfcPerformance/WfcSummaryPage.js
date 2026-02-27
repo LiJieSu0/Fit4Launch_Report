@@ -397,6 +397,8 @@ const WfcSummaryPage = () => {
           </thead>
           <tbody>{renderHandoverRows(handoverApConfig)}</tbody>
         </table>
+
+
       </PageBreak>
 
       <PageBreak>

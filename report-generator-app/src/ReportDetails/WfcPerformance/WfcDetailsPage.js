@@ -41,29 +41,21 @@ have for the DUT.
         <h3>Baseline Audio Performance Overview</h3>
         {/* Baseline audio table */}
         <WfcBaselineAudioPerformanceOverviewTable />
-        {/* TC148 */}
-      </PageBreak>
-      <PageBreak>
         <h3>Baseline Cellular and WFC Call Performance Overview</h3>
         <WfcBaselineOverviewTable />
-      </PageBreak>
-
-      <PageBreak>
         <h3>Wifi Call Performance Overview</h3>
         <WfcCallOverviewTable />
+
+        {/* TC148 */}
       </PageBreak>
 
       <PageBreak>
         <h3>Multi Handovers Overview</h3>
         <WfcMultiHandoverOverviewTable />
       </PageBreak>
-
       <PageBreak>
         <h3>IP Impairments Overview</h3>
         <WfcIpImpairmentOverviewTable />
-      </PageBreak>
-
-      <PageBreak>
         <h3>Walk in/out of WFC Coverage Overview</h3>
         <WfcCoverageOverviewTable />
       </PageBreak>

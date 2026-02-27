@@ -139,7 +139,10 @@ const WfcBaselineAudioPerformance = () => {
         };
 
         const chart = (
-            <div className="wfc-chart-wrapper" style={{ height: '300px', width: '80%', margin: '0 auto', boxSizing: 'border-box' }}>
+            <div className="wfc-chart-wrapper" style={{
+                height: '300px', width: '50%',
+                margin: '0 auto', boxSizing: 'border-box', marginLeft: '-40px'
+            }}>
                 <Bar data={chartData} options={options} />
             </div>
         );

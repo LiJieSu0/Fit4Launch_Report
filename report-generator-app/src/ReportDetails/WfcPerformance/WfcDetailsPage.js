@@ -66,7 +66,7 @@ have for the DUT.
         <WfcCoverageOverviewTable />
       </PageBreak>
 
-
+      {/* Baseline Audio Performance Details Component */}
 
       <WfcBaselineDetails tc="TC150" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline" sectionNumber={1} />

@@ -4,6 +4,7 @@ import DynamicHeader from '../../CommonPage/DynamicHeader';
 import { useReportData } from '../../Contexts/ReportContext';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 import PageBreak from '../../CommonPage/PageBreak';
+import WfcBaselineAudioPerformanceTable from './WfcBaselineAudioPerformanceTable';
 
 const WfcSummaryPage = () => {
   const { projectData, availableCities } = useReportData();
@@ -314,6 +315,10 @@ const WfcSummaryPage = () => {
     <>
       <PageBreak id="summary-page">
         <DynamicHeader level={1}>WFC Performance Test Summary</DynamicHeader>
+
+        {/* ---- Baseline Audio Performance ---- */}
+        <div style={sectionHeaderStyle}>Baseline Audio Performance</div>
+        <WfcBaselineAudioPerformanceTable />
 
         {/* ---- Baseline ---- */}
         <div style={sectionHeaderStyle}>Baseline Cellular &amp; WFC Call Performance</div>

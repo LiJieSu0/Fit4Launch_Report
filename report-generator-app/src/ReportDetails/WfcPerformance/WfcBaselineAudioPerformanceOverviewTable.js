@@ -3,7 +3,7 @@ import '../../StyleScript/Restricted_Report_Style.css';
 import { useReportData } from '../../Contexts/ReportContext';
 import { getKpiCellColor } from '../../Utils/KpiRules';
 
-const WfcBaselineAudioPerformanceTable = () => {
+const WfcBaselineAudioPerformanceOverviewTable = () => {
     const { projectData, availableCities } = useReportData();
 
     const formatVal = (val) => {
@@ -31,22 +31,36 @@ const WfcBaselineAudioPerformanceTable = () => {
         }
 
         return (
-            <div key={`baseline-audio-${city}`} style={{ marginBottom: '20px' }}>
+            <div key={`baseline-audio-overview-${city}`} style={{ marginBottom: '20px' }}>
                 <table className="mini-performance-table general-table-style" style={{ width: '100%', fontSize: '12px', textAlign: 'center', margin: '0 auto' }}>
                     <thead>
                         <tr>
                             <th style={{ textAlign: 'left' }}>Audio NAT Functional</th>
+                            <th>Unit</th>
+                            <th>WFC</th>
+                            <th>Cellular</th>
                             <th>Delta</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td style={{ textAlign: 'left', backgroundColor: 'white', color: 'black' }}>
-                                <a href="#baseline-audio-performance-details" style={{ color: 'inherit', textDecoration: 'underline' }}>p.56 Audio Active Speech Level (ASL) Delta</a>
+                            <td style={{ textAlign: 'left' }}>
+                                <a href="#baseline-audio-performance-details" style={{ color: 'inherit', textDecoration: 'underline' }}>p.56 active speech level</a>
                             </td>
-                            <td style={p56Delta !== 'N/A' ? { backgroundColor: getKpiCellColor('p56Delta', p56Delta), color: 'black', width: '20%' } : { width: '20%' }}>
-                                {p56Delta !== 'N/A' ? 'Result' : 'N/A'}
+                            <td>dBov</td>
+                            <td>{formatVal(p56Wfc)}</td>
+                            <td>{formatVal(p56Cell)}</td>
+                            <td style={p56Delta !== 'N/A' ? { backgroundColor: getKpiCellColor('p56Delta', p56Delta), color: 'black' } : {}}>{p56Delta}</td>
+                        </tr>
+
+                        <tr>
+                            <td style={{ textAlign: 'left' }}>
+                                <a href="#baseline-audio-performance-details" style={{ color: 'inherit', textDecoration: 'underline' }}>POLQA Attenuation</a>
                             </td>
+                            <td>dBov</td>
+                            <td>{formatVal(polqaWfc)}</td>
+                            <td>{formatVal(polqaCell)}</td>
+                            <td>{polqaDelta}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -61,4 +75,4 @@ const WfcBaselineAudioPerformanceTable = () => {
     );
 };
 
-export default WfcBaselineAudioPerformanceTable;
+export default WfcBaselineAudioPerformanceOverviewTable;

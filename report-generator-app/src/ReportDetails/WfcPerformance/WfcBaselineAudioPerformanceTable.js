@@ -1,37 +1,71 @@
 import React from 'react';
 import '../../StyleScript/Restricted_Report_Style.css';
+import { useReportData } from '../../Contexts/ReportContext';
 
 const WfcBaselineAudioPerformanceTable = () => {
-    return (
-        <div style={{ marginBottom: '20px' }}>
-            <table className="mini-performance-table general-table-style" style={{ width: '100%', fontSize: '12px', textAlign: 'center', margin: '0 auto' }}>
-                <thead>
-                    <tr>
-                        <th>Audio NAT Functional</th>
-                        <th>Unit</th>
-                        <th>WFC</th>
-                        <th>Cellular</th>
-                        <th>Delta</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style={{ textAlign: 'left' }}>p.56 active speech level</td>
-                        <td>dBov</td>
-                        <td>-26.31</td>
-                        <td>-26.41</td>
-                        <td style={{ backgroundColor: '#00FF00', color: 'black' }}>0.10</td>
-                    </tr>
+    const { projectData, availableCities } = useReportData();
 
-                    <tr>
-                        <td style={{ textAlign: 'left' }}>POLQA Attenuation</td>
-                        <td>dBov</td>
-                        <td>-0.24</td>
-                        <td>-0.18</td>
-                        <td>-0.05</td>
-                    </tr>
-                </tbody>
-            </table>
+    const formatVal = (val) => {
+        if (val === undefined || val === null || val === 'N/A') return 'N/A';
+        const num = parseFloat(val);
+        return isNaN(num) ? 'N/A' : num.toFixed(2);
+    };
+
+    const renderTableForCity = (city) => {
+        const tc148Data = projectData[city]?.wfcPerformance?.['WFC']?.['TC148'];
+
+        let p56Wfc = tc148Data?.['WFC']?.['p56 Active Speech Level'];
+        let p56Cell = tc148Data?.['Cellular']?.['p56 Active Speech Level'];
+        let polqaWfc = tc148Data?.['WFC']?.['POLQA Attenuation'];
+        let polqaCell = tc148Data?.['Cellular']?.['POLQA Attenuation'];
+
+        let p56Delta = 'N/A';
+        let polqaDelta = 'N/A';
+
+        if (p56Wfc !== undefined && p56Cell !== undefined && p56Wfc !== 'N/A' && p56Cell !== 'N/A') {
+            p56Delta = (parseFloat(p56Wfc) - parseFloat(p56Cell)).toFixed(2);
+        }
+        if (polqaWfc !== undefined && polqaCell !== undefined && polqaWfc !== 'N/A' && polqaCell !== 'N/A') {
+            polqaDelta = (parseFloat(polqaWfc) - parseFloat(polqaCell)).toFixed(2);
+        }
+
+        return (
+            <div key={`baseline-audio-${city}`} style={{ marginBottom: '20px' }}>
+                <table className="mini-performance-table general-table-style" style={{ width: '100%', fontSize: '12px', textAlign: 'center', margin: '0 auto' }}>
+                    <thead>
+                        <tr>
+                            <th>Audio NAT Functional</th>
+                            <th>Unit</th>
+                            <th>WFC</th>
+                            <th>Cellular</th>
+                            <th>Delta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style={{ textAlign: 'left' }}>p.56 active speech level</td>
+                            <td>dBov</td>
+                            <td>{formatVal(p56Wfc)}</td>
+                            <td>{formatVal(p56Cell)}</td>
+                            <td style={p56Delta !== 'N/A' ? { backgroundColor: '#00FF00', color: 'black' } : {}}>{p56Delta}</td>
+                        </tr>
+
+                        <tr>
+                            <td style={{ textAlign: 'left' }}>POLQA Attenuation</td>
+                            <td>dBov</td>
+                            <td>{formatVal(polqaWfc)}</td>
+                            <td>{formatVal(polqaCell)}</td>
+                            <td>{polqaDelta}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        );
+    };
+
+    return (
+        <div>
+            {availableCities.filter(city => city === 'Seattle').map(city => renderTableForCity(city))}
         </div>
     );
 };

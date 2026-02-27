@@ -12,7 +12,7 @@ import WfcMultiHandoverOverviewTable from './WfcMultiHandoverOverviewTable';
 import WfcIpImpairmentOverviewTable from './WfcIpImpairmentOverviewTable';
 import WfcCoverageOverviewTable from './WfcCoverageOverviewTable';
 import WfcBaselineOverviewTable from './WfcBaselineOverviewTable';
-import WfcBaselineAudioPerformanceTable from './WfcBaselineAudioPerformanceTable';
+import WfcBaselineAudioPerformance from './WfcBaselineAudioPerformance';
 
 const WfcDetailsPage = () => {
 
@@ -39,7 +39,6 @@ have for the DUT.
       <PageBreak>
         <h3>Baseline Audio Performance Overview</h3>
         {/* TC148 */}
-        <WfcBaselineAudioPerformanceTable />
       </PageBreak>
       <PageBreak>
         <h3>Baseline Cellular and WFC Call Performance Overview</h3>
@@ -67,6 +66,7 @@ have for the DUT.
       </PageBreak>
 
       {/* Baseline Audio Performance Details Component */}
+      <WfcBaselineAudioPerformance />
 
       <WfcBaselineDetails tc="TC150" label="Call Performance Baseline"
         caseTitle="Cellular Call Performance and Audio Quality Baseline" sectionNumber={1} />

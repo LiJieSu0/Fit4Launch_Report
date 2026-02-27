@@ -69,7 +69,7 @@ const WfcIpImpairment = () => {
                         refValues={data.mosBeforeRef}
                         title="MOS before handover"
                         yAxisTitle="MOS Score"
-                        style={{ height: '300px' }}
+                        style={{ height: '250px' }}
                     />
                 </div>
                 <div style={{ width: '60%', minWidth: 0 }}>
@@ -79,7 +79,7 @@ const WfcIpImpairment = () => {
                         refValues={data.mosAfterRef}
                         title="MOS during/after handover"
                         yAxisTitle="MOS Score"
-                        style={{ height: '300px' }}
+                        style={{ height: '250px' }}
                     />
                 </div>
             </div>

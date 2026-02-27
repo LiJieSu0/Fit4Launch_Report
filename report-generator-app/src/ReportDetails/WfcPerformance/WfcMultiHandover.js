@@ -128,7 +128,7 @@ const WfcMultiHandover = ({ title, tc, sectionNumber = 0 }) => {
         const { chartLabels, mosDutValues, mosRefValues, rssiDutValues, rssiRefValues, rsrpDutValues, rsrpRefValues } = getChartData(city);
 
         return (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '50%', margin: '0 auto', marginLeft: '-50px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '50%', margin: '0 auto', marginLeft: '-50px' }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
                     <WfcPerformanceChart
                         labels={chartLabels}
@@ -136,7 +136,7 @@ const WfcMultiHandover = ({ title, tc, sectionNumber = 0 }) => {
                         refValues={mosRefValues}
                         title="Average MOS"
                         yAxisTitle="MOS Score"
-                        style={{ height: '200px' }}
+                        style={{ height: '180px' }}
                     />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
@@ -146,7 +146,7 @@ const WfcMultiHandover = ({ title, tc, sectionNumber = 0 }) => {
                         refValues={rssiRefValues}
                         title="RSSI"
                         yAxisTitle="dBm"
-                        style={{ height: '200px' }}
+                        style={{ height: '180px' }}
                         beginAtZero={false}
                     />
                 </div>
@@ -157,7 +157,7 @@ const WfcMultiHandover = ({ title, tc, sectionNumber = 0 }) => {
                         refValues={rsrpRefValues}
                         title="RSRP"
                         yAxisTitle="dBm"
-                        style={{ height: '200px' }}
+                        style={{ height: '180px' }}
                         beginAtZero={false}
                     />
                 </div>
@@ -188,7 +188,7 @@ const WfcMultiHandover = ({ title, tc, sectionNumber = 0 }) => {
                         <div style={{ marginBottom: '20px' }}>
                             {renderKpiTable(city)}
                         </div>
-                        <div style={{ marginTop: '40px', marginBottom: '40px' }}>
+                        <div style={{ marginTop: '20px', marginBottom: '20px' }}>
                             {renderBarCharts(city)}
                         </div>
                     </div>

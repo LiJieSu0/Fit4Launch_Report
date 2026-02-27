@@ -201,7 +201,7 @@ const WfcCallPerformance = ({ title, tc, sectionNumber = 0 }) => {
                         refValues={setupTimeRefValues}
                         title="Mean Setup Time (s)"
                         yAxisTitle="Setup Time (s)"
-                        style={{ height: '250px' }}
+                        style={{ height: '200px' }}
                     />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
@@ -211,7 +211,7 @@ const WfcCallPerformance = ({ title, tc, sectionNumber = 0 }) => {
                         refValues={mosRefValues}
                         title="Average MOS"
                         yAxisTitle="MOS Score"
-                        style={{ height: '250px' }}
+                        style={{ height: '200px' }}
                     />
                 </div>
             </div>
@@ -241,10 +241,10 @@ const WfcCallPerformance = ({ title, tc, sectionNumber = 0 }) => {
                         <div style={{ marginBottom: '20px' }}>
                             {renderKpiTable(city)}
                         </div>
-                        <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+                        <div style={{ marginTop: '20px', marginBottom: '10px' }}>
                             {renderPValueTable(city)}
                         </div>
-                        <div style={{ marginTop: '40px', marginBottom: '40px' }}>
+                        <div style={{ marginTop: '40px', marginBottom: '20px' }}>
                             {renderBarCharts(city)}
                         </div>
                     </div>

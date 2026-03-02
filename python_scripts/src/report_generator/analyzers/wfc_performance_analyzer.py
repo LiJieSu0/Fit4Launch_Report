@@ -3,7 +3,7 @@ import logging
 import pandas as pd
 import re
 from report_generator.base_analyzer import BaseAnalyzer
-from CallPerformance.call_analyze import _calculate_fisher_exact_criteria
+from CallPerformance.call_analyze import _calculate_fisher_exact_criteria, _calculate_critical_failure_count
 
 class WfcPerformanceAnalyzer(BaseAnalyzer):
     def __init__(self, config, logger):
@@ -537,6 +537,22 @@ class WfcPerformanceAnalyzer(BaseAnalyzer):
                         criteria_type="WFC MO Retention"
                     )
                     if p_ret is not None: tc_results["retention_p_value"] = p_ret
+
+                    initiation_critical = _calculate_critical_failure_count(
+                        ref_mo.get('total_initiation_failures', 0),
+                        ref_mo.get('total_mo_attempts', 0) - ref_mo.get('total_initiation_failures', 0),
+                        dut_mo.get('total_mo_attempts', 0)
+                    )
+                    if initiation_critical is not None:
+                        tc_results["initiation_critical_failures"] = initiation_critical
+
+                    retention_critical = _calculate_critical_failure_count(
+                        ref_mo.get('total_retention_failures', 0),
+                        ref_mo.get('total_initiation_successes', 0),
+                        dut_mo.get('total_initiation_successes', 0)
+                    )
+                    if retention_critical is not None:
+                        tc_results["retention_critical_failures"] = retention_critical
 
             if tc_results:
                 results[tc_name] = tc_results

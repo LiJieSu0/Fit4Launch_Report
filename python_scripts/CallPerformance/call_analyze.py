@@ -370,6 +370,65 @@ def _calculate_fisher_exact_criteria(dut_failures, dut_successes, ref_failures, 
     else:
         return "N/A (Could not determine Fisher Exact criteria)" + result_string, p_value
 
+
+def _calculate_critical_failure_count(ref_failures, ref_successes, dut_total, target_p_value=0.05):
+    """
+    使用二分搜尋法找到最大的 DUT failure 次數，使得 p-value >= target_p_value (0.05)。
+    也就是低於這個次數時，DUT 與 REF 沒有統計顯著差異。
+    
+    Args:
+        ref_failures: REF 的失敗次數
+        ref_successes: REF 的成功次數
+        dut_total: DUT 的總次數 (failures + successes)
+        target_p_value: 目標 p-value 閾值，預設 0.05
+    
+    Returns:
+        臨界失敗次數（整數），即 p-value >= 0.05 的最大失敗次數
+        如果無法計算則返回 None
+    """
+    if dut_total <= 0:
+        return None
+    
+    if ref_failures < 0 or ref_successes < 0:
+        return None
+    
+    if ref_failures + ref_successes == 0:
+        return None
+    
+    low = 0
+    high = dut_total
+    
+    while high - low > 1:
+        mid = (low + high) // 2
+        if mid == dut_total:
+            mid = dut_total - 1
+        
+        dut_failures = mid
+        dut_successes = dut_total - mid
+        
+        if dut_successes < 0 or dut_failures < 0:
+            high = mid
+            continue
+        
+        try:
+            table = [[dut_successes, dut_failures], [ref_successes, ref_failures]]
+            _, p = fisher_exact(table, alternative='less')
+            
+            if p is None or (hasattr(p, '__float__') and float('nan') == float(p)):
+                high = mid
+                continue
+            
+            if p >= target_p_value:
+                low = mid
+            else:
+                high = mid
+        except Exception:
+            high = mid
+            continue
+    
+    return low
+
+
 def _calculate_call_setup_time_criteria(dut_mean_setup_time, ref_mean_setup_time):
     if dut_mean_setup_time is None or ref_mean_setup_time is None or ref_mean_setup_time == 0:
         return "N/A (Insufficient data for Call Setup Time criteria)"

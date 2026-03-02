@@ -3,7 +3,7 @@ import logging
 import pandas as pd
 from collections import defaultdict
 from report_generator.base_analyzer import BaseAnalyzer
-from CallPerformance.call_analyze import analyze_directory, _calculate_fisher_exact_criteria
+from CallPerformance.call_analyze import analyze_directory, _calculate_fisher_exact_criteria, _calculate_critical_failure_count
 
 class CallPerformanceAnalyzer(BaseAnalyzer):
     def __init__(self, config, logger):
@@ -58,6 +58,22 @@ class CallPerformanceAnalyzer(BaseAnalyzer):
                         criteria_type="MO"
                     )
                     if p_ret is not None: scenario_results['retention_p_value'] = p_ret
+
+                    initiation_critical = _calculate_critical_failure_count(
+                        rr['total_initiation_failures'],
+                        rr['total_attempts'] - rr['total_initiation_failures'],
+                        dr['total_attempts']
+                    )
+                    if initiation_critical is not None:
+                        scenario_results['initiation_critical_failures'] = initiation_critical
+
+                    retention_critical = _calculate_critical_failure_count(
+                        rr['total_retention_failures'],
+                        rr['total_initiation_successes'],
+                        dr['total_initiation_successes']
+                    )
+                    if retention_critical is not None:
+                        scenario_results['retention_critical_failures'] = retention_critical
 
                 if scenario_results:
                     results[sub_dir_name] = scenario_results

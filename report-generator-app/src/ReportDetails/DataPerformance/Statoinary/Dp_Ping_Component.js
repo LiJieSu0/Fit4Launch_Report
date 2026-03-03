@@ -60,19 +60,19 @@ function Dp_Ping_Component({ city: propCity }) {
             // DUT Data
             if (Dp_Ping_Data[location].DUT && Dp_Ping_Data[location].DUT["Ping RTT"]) {
                 const pingRTT = Dp_Ping_Data[location].DUT["Ping RTT"];
-                processedPingData.average.DUT[location] = pingRTT.avg.toFixed(2);
-                processedPingData.std_dev.DUT[location] = pingRTT.std_dev.toFixed(2);
-                processedPingData.max.DUT[location] = pingRTT.max.toFixed(2);
-                processedPingData.min.DUT[location] = pingRTT.min.toFixed(2);
+                processedPingData.average.DUT[location] = pingRTT.Mean !== undefined ? pingRTT.Mean.toFixed(2) : "0.00";
+                processedPingData.std_dev.DUT[location] = pingRTT["Standard Deviation"] !== undefined ? pingRTT["Standard Deviation"].toFixed(2) : "0.00";
+                processedPingData.max.DUT[location] = pingRTT.Maximum !== undefined ? pingRTT.Maximum.toFixed(2) : "0.00";
+                processedPingData.min.DUT[location] = pingRTT.Minimum !== undefined ? pingRTT.Minimum.toFixed(2) : "0.00";
             }
 
             // REF Data
             if (Dp_Ping_Data[location].REF && Dp_Ping_Data[location].REF["Ping RTT"]) {
                 const pingRTT = Dp_Ping_Data[location].REF["Ping RTT"];
-                processedPingData.average.REF[location] = pingRTT.avg.toFixed(2);
-                processedPingData.std_dev.REF[location] = pingRTT.std_dev.toFixed(2);
-                processedPingData.max.REF[location] = pingRTT.max.toFixed(2);
-                processedPingData.min.REF[location] = pingRTT.min.toFixed(2);
+                processedPingData.average.REF[location] = pingRTT.Mean !== undefined ? pingRTT.Mean.toFixed(2) : "0.00";
+                processedPingData.std_dev.REF[location] = pingRTT["Standard Deviation"] !== undefined ? pingRTT["Standard Deviation"].toFixed(2) : "0.00";
+                processedPingData.max.REF[location] = pingRTT.Maximum !== undefined ? pingRTT.Maximum.toFixed(2) : "0.00";
+                processedPingData.min.REF[location] = pingRTT.Minimum !== undefined ? pingRTT.Minimum.toFixed(2) : "0.00";
             }
         }
     });

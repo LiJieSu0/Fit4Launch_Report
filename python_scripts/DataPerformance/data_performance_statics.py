@@ -304,29 +304,38 @@ def _find_related_ping_file(current_file_path, device_type):
 def _calculate_statistics(data_series, column_name):
     """
     Calculates statistical data for a given pandas Series.
+    Mean, Std, Min, and Max are calculated WITHOUT outliers.
+    Q1, Median, Q3, and Outliers are calculated WITH full dataset.
     Returns a dictionary of statistics.
     """
     if data_series.empty:
-        # print(f"\nNo valid data found to calculate statistics for '{column_name}'.")
-        return {} # Return empty dict instead of None
+        return {} 
     
-    mean_val = data_series.mean()
-    std_dev_val = data_series.std()
-    min_val = data_series.min()
-    max_val = data_series.max()
+    # Calculate Quartiles and IQR on FULL data
+    q1_val = float(data_series.quantile(0.25))
+    median_val = float(data_series.median())
+    q3_val = float(data_series.quantile(0.75))
     
-    # Calculate Quartiles
-    q1_val = data_series.quantile(0.25)
-    median_val = data_series.median()
-    q3_val = data_series.quantile(0.75)
-    
-    # Calculate IQR and Outliers
     iqr = q3_val - q1_val
     lower_bound = q1_val - 1.5 * iqr
     upper_bound = q3_val + 1.5 * iqr
     
-    # Identify outliers
+    # Identify outliers on FULL data
     outliers = data_series[(data_series < lower_bound) | (data_series > upper_bound)].tolist()
+    
+    # Create a cleaned series excluding outliers for summary metrics
+    clean_series = data_series[(data_series >= lower_bound) & (data_series <= upper_bound)]
+    
+    if clean_series.empty:
+        # Fallback if everything is technically an outlier or series is too small
+        # but identifying outliers requires at least some points. 
+        # If clean_series is empty, we use original to avoid returning nulls.
+        clean_series = data_series
+
+    mean_val = float(clean_series.mean())
+    std_dev_val = float(clean_series.std()) if len(clean_series) > 1 else 0.0
+    min_val = float(clean_series.min())
+    max_val = float(clean_series.max())
     
     stats = {
         "Mean": mean_val,
@@ -336,7 +345,7 @@ def _calculate_statistics(data_series, column_name):
         "Q1": q1_val,
         "Median": median_val,
         "Q3": q3_val,
-        "Outliers": outliers
+        "Outliers": [float(o) for o in outliers]
     }
     
     return stats

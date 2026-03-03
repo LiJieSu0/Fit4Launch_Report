@@ -48,10 +48,10 @@ const DpDriveTestTable = ({ data, tableName }) => {
             metrics.push({
                 name: "Ping RTT (ms)",
                 subMetrics: [
-                    { key: "min", label: "Minimum" },
-                    { key: "max", label: "Maximum" },
-                    { key: "avg", label: "Mean" },
-                    { key: "std_dev", label: "Std Dev" },
+                    { key: "Minimum", label: "Minimum" },
+                    { key: "Maximum", label: "Maximum" },
+                    { key: "Mean", label: "Mean" },
+                    { key: "Standard Deviation", label: "Std Dev" },
                 ],
                 path: "Ping RTT",
                 kpiType: "PingLatency",

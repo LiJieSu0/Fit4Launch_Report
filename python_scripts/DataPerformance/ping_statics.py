@@ -1,5 +1,14 @@
+import os
+import sys
 import pandas as pd
 import re
+
+# Add the directory containing data_performance_statics to sys.path
+script_dir = os.path.dirname(os.path.abspath(__file__))
+if script_dir not in sys.path:
+    sys.path.insert(0, script_dir)
+
+import data_performance_statics
 
 def _clean_header(header):
     """
@@ -88,18 +97,13 @@ def calculate_ping_statistics(file_path, device_type=None):
     if not all_rtt_values:
         return {"min": None, "max": None, "avg": None, "std_dev": None}
 
-    min_rtt = min(all_rtt_values)
-    max_rtt = max(all_rtt_values)
-    avg_rtt = sum(all_rtt_values) / len(all_rtt_values)
-    std_dev_rtt = pd.Series(all_rtt_values).std()
+    rtt_series = pd.Series(all_rtt_values)
+    rtt_stats = data_performance_statics._calculate_statistics(rtt_series, "Ping RTT")
 
+    # Maintain backward compatibility with existing keys if necessary, 
+    # but the report-generator generally expects the structure from _calculate_statistics
     result = {
-        "Ping RTT": {
-            "min": min_rtt,
-            "max": max_rtt,
-            "avg": avg_rtt,
-            "std_dev": std_dev_rtt
-        }
+        "Ping RTT": rtt_stats
     }
     if device_type:
         result["Device Type"] = device_type

@@ -136,12 +136,9 @@ def analyze_mhs_drive_data(file_path, device_type_detected):
 
     if all_rtt_values:
         rtt_series = pd.Series(all_rtt_values)
-        all_mhs_stats["Ping RTT"] = {
-            "Mean": float(rtt_series.mean()),
-            "Min": float(rtt_series.min()),
-            "Max": float(rtt_series.max()),
-            "Std Dev": float(rtt_series.std()) if len(all_rtt_values) > 1 else 0.0
-        }
+        rtt_stats = _calculate_statistics(rtt_series, "Ping RTT")
+        if rtt_stats:
+            all_mhs_stats["Ping RTT"] = rtt_stats
 
     return all_mhs_stats
 

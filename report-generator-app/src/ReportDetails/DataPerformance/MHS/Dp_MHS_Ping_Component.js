@@ -37,7 +37,7 @@ function Dp_MHS_Ping_Component({ city: propCity }) {
 
   const getPingMetrics = (coverage, device) => {
     const metrics = pingDataRaw?.[coverage]?.[device]?.["Ping RTT"];
-    return metrics || { min: 0, max: 0, avg: 0, std_dev: 0 };
+    return metrics || { Minimum: 0, Maximum: 0, Mean: 0, "Standard Deviation": 0 };
   };
 
   // MHS Ping data only has Moderate and Poor in the JSON
@@ -46,8 +46,8 @@ function Dp_MHS_Ping_Component({ city: propCity }) {
   const goodREF = getPingMetrics("Moderate", "REF");
   const modDUT = getPingMetrics("Poor", "DUT");
   const modREF = getPingMetrics("Poor", "REF");
-  const poorDUT = { min: 0, max: 0, avg: 0, std_dev: 0 };
-  const poorREF = { min: 0, max: 0, avg: 0, std_dev: 0 };
+  const poorDUT = { Minimum: 0, Maximum: 0, Mean: 0, "Standard Deviation": 0 };
+  const poorREF = { Minimum: 0, Maximum: 0, Mean: 0, "Standard Deviation": 0 };
 
 
   const calculateOverall = (val1, val2, val3) => {
@@ -60,58 +60,58 @@ function Dp_MHS_Ping_Component({ city: propCity }) {
   const data = {
     average: {
       DUT: {
-        Good: goodDUT.avg,
-        Moderate: modDUT.avg,
-        Poor: poorDUT.avg,
-        Overall: calculateOverall(goodDUT.avg, modDUT.avg, poorDUT.avg),
+        Good: goodDUT.Mean,
+        Moderate: modDUT.Mean,
+        Poor: poorDUT.Mean,
+        Overall: calculateOverall(goodDUT.Mean, modDUT.Mean, poorDUT.Mean),
       },
       REF: {
-        Good: goodREF.avg,
-        Moderate: modREF.avg,
-        Poor: poorREF.avg,
-        Overall: calculateOverall(goodREF.avg, modREF.avg, poorREF.avg),
+        Good: goodREF.Mean,
+        Moderate: modREF.Mean,
+        Poor: poorREF.Mean,
+        Overall: calculateOverall(goodREF.Mean, modREF.Mean, poorREF.Mean),
       },
     },
     std_dev: {
       DUT: {
-        Good: goodDUT.std_dev,
-        Moderate: modDUT.std_dev,
-        Poor: poorDUT.std_dev,
-        Overall: calculateOverall(goodDUT.std_dev, modDUT.std_dev, poorDUT.std_dev),
+        Good: goodDUT["Standard Deviation"],
+        Moderate: modDUT["Standard Deviation"],
+        Poor: poorDUT["Standard Deviation"],
+        Overall: calculateOverall(goodDUT["Standard Deviation"], modDUT["Standard Deviation"], poorDUT["Standard Deviation"]),
       },
       REF: {
-        Good: goodREF.std_dev,
-        Moderate: modREF.std_dev,
-        Poor: poorREF.std_dev,
-        Overall: calculateOverall(goodREF.std_dev, modREF.std_dev, poorREF.std_dev),
+        Good: goodREF["Standard Deviation"],
+        Moderate: modREF["Standard Deviation"],
+        Poor: poorREF["Standard Deviation"],
+        Overall: calculateOverall(goodREF["Standard Deviation"], modREF["Standard Deviation"], poorREF["Standard Deviation"]),
       },
     },
     max: {
       DUT: {
-        Good: goodDUT.max,
-        Moderate: modDUT.max,
-        Poor: poorDUT.max,
-        Overall: calculateOverall(goodDUT.max, modDUT.max, poorDUT.max),
+        Good: goodDUT.Maximum,
+        Moderate: modDUT.Maximum,
+        Poor: poorDUT.Maximum,
+        Overall: calculateOverall(goodDUT.Maximum, modDUT.Maximum, poorDUT.Maximum),
       },
       REF: {
-        Good: goodREF.max,
-        Moderate: modREF.max,
-        Poor: poorREF.max,
-        Overall: calculateOverall(goodREF.max, modREF.max, poorREF.max),
+        Good: goodREF.Maximum,
+        Moderate: modREF.Maximum,
+        Poor: poorREF.Maximum,
+        Overall: calculateOverall(goodREF.Maximum, modREF.Maximum, poorREF.Maximum),
       },
     },
     min: {
       DUT: {
-        Good: goodDUT.min,
-        Moderate: modDUT.min,
-        Poor: poorDUT.min,
-        Overall: calculateOverall(goodDUT.min, modDUT.min, poorDUT.min),
+        Good: goodDUT.Minimum,
+        Moderate: modDUT.Minimum,
+        Poor: poorDUT.Minimum,
+        Overall: calculateOverall(goodDUT.Minimum, modDUT.Minimum, poorDUT.Minimum),
       },
       REF: {
-        Good: goodREF.min,
-        Moderate: modREF.min,
-        Poor: poorREF.min,
-        Overall: calculateOverall(goodREF.min, modREF.min, poorREF.min),
+        Good: goodREF.Minimum,
+        Moderate: modREF.Minimum,
+        Poor: poorREF.Minimum,
+        Overall: calculateOverall(goodREF.Minimum, modREF.Minimum, poorREF.Minimum),
       },
     },
   };

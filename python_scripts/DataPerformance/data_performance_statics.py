@@ -159,7 +159,7 @@ def _determine_analysis_parameters(file_path):
         params["protocol_type_detected"] = "WEB_PAGE"
     elif "http" in file_name:
         params["protocol_type_detected"] = "HTTP"
-    elif "udp" in file_name or "mobility" in file_name or "mobility" in file_path_lower:
+    elif "udp" in file_name or "mobility" in file_name or "mobility" in file_path_lower or "udp" in file_path_lower:
         params["protocol_type_detected"] = "UDP"
     elif "ping" in file_name: # Detect PING protocol
         params["protocol_type_detected"] = "PING"
@@ -190,6 +190,9 @@ def _determine_analysis_parameters(file_path):
         params["analysis_direction_detected"] = "DL" # Explicitly set to DL for Play-store app DL Stationary
     elif "5g auto dp" in file_path_lower or "5g nsa dp" in file_path_lower:
         params["analysis_type_detected"] = "data_performance"
+        # Force protocol to UDP if "udp" is in path but not detected from filename
+        if params["protocol_type_detected"] is None and "udp" in file_path_lower:
+            params["protocol_type_detected"] = "UDP"
     elif "5g n41 hpue coverage test" in file_path_lower:
         params["analysis_type_detected"] = "n41_coverage"
     elif "coverage" in file_path_lower: # Generic condition for other coverage analysis
@@ -256,15 +259,17 @@ def _determine_analysis_parameters(file_path):
         params["end_event"] = "IPERF_T_End"
 
         if params["analysis_direction_detected"] == "DL":
-            params["column_to_analyze_throughput"] = _clean_header("[Call Test] [Throughput] Application DL TP") if params["network_type_detected"] in ["5G", "5G NSA", "5G SA"] else _clean_header("[LTE] [Data Throughput] [Downlink (All)] [PDSCH] PDSCH TP (Total)")
-            params["column_to_analyze_throughput_fallback"] = _clean_header("[NR5G] [(NR + LTE)] [Throughput] PDSCH TP") # Added fallback for 5G DL UDP
-            params["column_to_analyze_throughput_third_fallback"] = _clean_header("DL TP (excl. slow start)") # Third fallback for DL UDP
+            # Priority: Avg TP (iPerf) -> Application DL TP -> Network specific TP
+            params["column_to_analyze_throughput"] = _clean_header("DL Avg TP") 
+            params["column_to_analyze_throughput_fallback"] = _clean_header("[Call Test] [Throughput] Application DL TP") if params["network_type_detected"] in ["5G", "5G NSA", "5G SA"] else _clean_header("[LTE] [Data Throughput] [Downlink (All)] [PDSCH] PDSCH TP (Total)")
+            params["column_to_analyze_throughput_third_fallback"] = _clean_header("[NR5G] [(NR + LTE)] [Throughput] PDSCH TP")
             params["column_to_analyze_jitter"] = _clean_header("[Call Test] [iPerf] [Throughput] DL Jitter")
             params["column_to_analyze_error_ratio"] = _clean_header("[Call Test] [iPerf] [Throughput] DL Error Ratio")
         elif params["analysis_direction_detected"] == "UL":
-            params["column_to_analyze_throughput"] = _clean_header("[Call Test] [Throughput] Application UL TP") # Primary UL Throughput
-            params["column_to_analyze_throughput_fallback"] = _clean_header("[NR5G] [Throughput] PUSCH TP") # Fallback UL Throughput
-            params["column_to_analyze_throughput_third_fallback"] = _clean_header("UL Avg TP") # Third fallback for UL Throughput
+            # Priority: Avg TP (iPerf) -> Application UL TP -> Network specific TP
+            params["column_to_analyze_throughput"] = _clean_header("UL Avg TP")
+            params["column_to_analyze_throughput_fallback"] = _clean_header("[Call Test] [Throughput] Application UL TP")
+            params["column_to_analyze_throughput_third_fallback"] = _clean_header("[NR5G] [Throughput] PUSCH TP")
             params["column_to_analyze_ul_jitter"] = _clean_header("[Call Test] [iPerf] [Call Average] [Jitter and Error] UL Jitter")
             params["column_to_analyze_ul_error_ratio"] = _clean_header("[Call Test] [iPerf] [Call Average] [Jitter and Error] UL Error Ratio")
     elif params["protocol_type_detected"] == "WEB_PAGE":

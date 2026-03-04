@@ -9,7 +9,7 @@ import PageBreak from '../../CommonPage/PageBreak';
 
 // CITY_COORDS removed - now fetched from config.json
 
-const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
+const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDevice = false }) => {
     const { city: globalCity, projectData, loadCityData, appConfig, project } = useContext(ReportContext);
     const city = propCity || globalCity;
 
@@ -183,24 +183,28 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false }) => {
                         baseStation={BASE_STATION_COORDS}
                     />
                 </PageBreak>
-                <PageBreak>
-                    <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - Last MOS Before Silence - {city}</DynamicHeader>
-                    <CoverageTestTable tableData={dataMOS.slice(0, -1)} status={dataMOS[dataMOS.length - 1]} />
-                    <CoverageMap
-                        bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.[band]}
-                        metric="mos_before_drop"
-                        baseStation={BASE_STATION_COORDS}
-                    />
-                </PageBreak>
-                <PageBreak>
-                    <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - Audio Call Drop - {city}</DynamicHeader>
-                    <CoverageTestTable tableData={dataAudio.slice(0, -1)} status={bandStatus} />
-                    <CoverageMap
-                        bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.[band]}
-                        metric="call_drop"
-                        baseStation={BASE_STATION_COORDS}
-                    />
-                </PageBreak>
+                {!dataOnlyDevice && (
+                    <>
+                        <PageBreak>
+                            <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - Last MOS Before Silence - {city}</DynamicHeader>
+                            <CoverageTestTable tableData={dataMOS.slice(0, -1)} status={dataMOS[dataMOS.length - 1]} />
+                            <CoverageMap
+                                bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.[band]}
+                                metric="mos_before_drop"
+                                baseStation={BASE_STATION_COORDS}
+                            />
+                        </PageBreak>
+                        <PageBreak>
+                            <DynamicHeader level={3} hideInTOC={true}>5G VoNR Coverage Test {bandLabel} - Audio Call Drop - {city}</DynamicHeader>
+                            <CoverageTestTable tableData={dataAudio.slice(0, -1)} status={bandStatus} />
+                            <CoverageMap
+                                bandData={reportData?.coveragePerformance?.['Coverage Performance']?.['5G VoNR Coverage Test']?.[band]}
+                                metric="call_drop"
+                                baseStation={BASE_STATION_COORDS}
+                            />
+                        </PageBreak>
+                    </>
+                )}
                 <PageBreak>
                     <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - Secondary KPI - {city}</DynamicHeader>
                     <SecondaryKpiTable data={secondaryKpi} />

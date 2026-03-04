@@ -6,13 +6,14 @@ import HpueCoverageSection from './HpueCoverageSection';
 import LteCoverageSection from './LteCoverageSection';
 
 function CoverageDetails() {
+  const DataOnlyDevice = true;
   return (
     <div>
-      <VonrCoverageSection city="Seattle" firstSection={true} />
-      <VonrCoverageSection city="New York" />
+      <VonrCoverageSection city="Seattle" firstSection={true} dataOnlyDevice={DataOnlyDevice} />
+      <VonrCoverageSection city="New York" dataOnlyDevice={DataOnlyDevice} />
       {/* LTE Coverage section */}
-      <LteCoverageSection city="Seattle" firstSection={true} />
-      <LteCoverageSection city="New York" />
+      <LteCoverageSection city="Seattle" firstSection={true} dataOnlyDevice={DataOnlyDevice} />
+      <LteCoverageSection city="New York" dataOnlyDevice={DataOnlyDevice} />
       {/* HPUE Coverage section */}
       <HpueCoverageSection city="Seattle" firstSection={true} />
       <HpueCoverageSection city="New York" />

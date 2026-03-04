@@ -6,11 +6,12 @@ import DynamicHeader from '../../CommonPage/DynamicHeader';
 import PageBreak from '../../CommonPage/PageBreak';
 
 function CoverageSummaryPage() {
+  const DataOnlyDevice = true;
   return (
     <>
       <PageBreak id="summary-page">
         <DynamicHeader level={1}>Coverage Test Overview</DynamicHeader>
-        <CoverageSummaryTable />
+        <CoverageSummaryTable dataOnlyDevice={DataOnlyDevice} />
       </PageBreak>
       <PageBreak>
         <SecondaryKpiSummaryTable />

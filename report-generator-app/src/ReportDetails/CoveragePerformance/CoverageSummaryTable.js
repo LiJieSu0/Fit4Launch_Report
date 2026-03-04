@@ -9,11 +9,15 @@ import { getKpiCellColor } from '../../Utils/KpiRules';
 const KPI_CONFIG = [
     { name: "DL Throughput < 1Mbps", key: "first_dl_tp_gt_1", link: "DL" },
     { name: "UL Throughput < 1Mbps", key: "first_ul_tp_gt_1", link: "UL" },
-    { name: "Last MOS Before Silence", key: "mos_before_drop", link: "MOS" },
-    { name: "Audio Call Drop", key: "call_drop", link: "Call" }
+    { name: "Last MOS Before Silence", key: "mos_before_drop", link: "MOS", isVoice: true },
+    { name: "Audio Call Drop", key: "call_drop", link: "Call", isVoice: true }
 ];
 
-const CoverageSummaryTable = () => {
+const CoverageSummaryTable = ({ dataOnlyDevice }) => {
+    const filteredKpiConfig = dataOnlyDevice
+        ? KPI_CONFIG.filter(kpi => !kpi.isVoice)
+        : KPI_CONFIG;
+
     const { projectData, availableCities, loadCityData, project } = useReportData();
     const { numberedHeaders } = useContext(HeaderContext);
     const markets = availableCities || ["Seattle", "New York"];
@@ -140,12 +144,12 @@ const CoverageSummaryTable = () => {
             </thead>
             <tbody>
                 {BANDS.map((band, bandIndex) => (
-                    KPI_CONFIG.map((kpi, kpiIndex) => {
-                        const isLastInBand = kpiIndex === KPI_CONFIG.length - 1;
+                    filteredKpiConfig.map((kpi, kpiIndex) => {
+                        const isLastInBand = kpiIndex === filteredKpiConfig.length - 1;
                         return (
                             <tr key={`${band.key}-${kpi.key}`}>
                                 {kpiIndex === 0 && (
-                                    <td className="run-divider" rowSpan={KPI_CONFIG.length}>
+                                    <td className="run-divider" rowSpan={filteredKpiConfig.length}>
                                         {band.name}
                                     </td>
                                 )}

@@ -157,7 +157,7 @@ const WfcCallPerformance = ({ title, tc, sectionNumber = 0 }) => {
 
                                 return (
                                     <td key={`init-${testCase}`} style={{ backgroundColor: cellColor }}>
-                                        {pValue.toFixed(3)}
+                                        {typeof pValue === 'number' ? pValue.toFixed(3) : 'N/A'}
                                     </td>
                                 );
                             })}
@@ -178,7 +178,7 @@ const WfcCallPerformance = ({ title, tc, sectionNumber = 0 }) => {
 
                                 return (
                                     <td key={`ret-${testCase}`} style={{ backgroundColor: cellColor }}>
-                                        {pValue.toFixed(3)}
+                                        {typeof pValue === 'number' ? pValue.toFixed(3) : 'N/A'}
                                     </td>
                                 );
                             })}

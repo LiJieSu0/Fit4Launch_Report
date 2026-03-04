@@ -51,17 +51,17 @@ const SecondaryKpiTable = ({ data }) => (
                                 )}
                                 <td>{segmentData.segment}</td>
                                 <td style={{ backgroundColor: blerColor ? `color-mix(in srgb, ${blerColor}, white var(--secondary-kpi-lightness))` : '', color: blerColor ? 'black' : '' }}>
-                                    {typeof dutBler === 'number' ? dutBler.toFixed(2) : '0.00'}
+                                    {typeof dutBler === 'number' ? dutBler.toFixed(2) : 'N/A'}
                                 </td>
-                                <td>{typeof refBler === 'number' ? refBler.toFixed(2) : '0.00'}</td>
+                                <td>{typeof refBler === 'number' ? refBler.toFixed(2) : 'N/A'}</td>
                                 <td style={{ backgroundColor: dlMcsColor ? `color-mix(in srgb, ${dlMcsColor}, white var(--secondary-kpi-lightness))` : '', color: dlMcsColor ? 'black' : '' }}>
-                                    {typeof dutDlMcs === 'number' ? dutDlMcs.toFixed(2) : '0.00'}
+                                    {typeof dutDlMcs === 'number' ? dutDlMcs.toFixed(2) : 'N/A'}
                                 </td>
-                                <td>{typeof refDlMcs === 'number' ? refDlMcs.toFixed(2) : '0.00'}</td>
+                                <td>{typeof refDlMcs === 'number' ? refDlMcs.toFixed(2) : 'N/A'}</td>
                                 <td style={{ backgroundColor: ulMcsColor ? `color-mix(in srgb, ${ulMcsColor}, white var(--secondary-kpi-lightness))` : '', color: ulMcsColor ? 'black' : '' }}>
-                                    {typeof dutUlMcs === 'number' ? dutUlMcs.toFixed(2) : '0.00'}
+                                    {typeof dutUlMcs === 'number' ? dutUlMcs.toFixed(2) : 'N/A'}
                                 </td>
-                                <td>{typeof refUlMcs === 'number' ? refUlMcs.toFixed(2) : '0.00'}</td>
+                                <td>{typeof refUlMcs === 'number' ? refUlMcs.toFixed(2) : 'N/A'}</td>
 
                                 {segmentIndex === 0 && (
                                     <>
@@ -72,10 +72,10 @@ const SecondaryKpiTable = ({ data }) => (
                                             return (
                                                 <>
                                                     <td className="run-divider" rowSpan={totalSegments} style={{ backgroundColor: txColor ? `color-mix(in srgb, ${txColor}, white var(--secondary-kpi-lightness))` : '', color: txColor ? 'black' : '' }}>
-                                                        {typeof dutTx === 'number' ? dutTx.toFixed(2) : '0.00'}
+                                                        {typeof dutTx === 'number' ? dutTx.toFixed(2) : 'N/A'}
                                                     </td>
                                                     <td className="run-divider" rowSpan={totalSegments}>
-                                                        {typeof refTx === 'number' ? refTx.toFixed(2) : '0.00'}
+                                                        {typeof refTx === 'number' ? refTx.toFixed(2) : 'N/A'}
                                                     </td>
                                                 </>
                                             );

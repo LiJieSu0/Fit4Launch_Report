@@ -39,8 +39,8 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDev
 
     const processVoNRCoverageData = (band, metric) => {
         const defaultRows = [
-            { device: 'DUT', run1: 0, run2: 0, run3: 0, run4: 0, run5: 0, average: 0 },
-            { device: 'REF', run1: 0, run2: 0, run3: 0, run4: 0, run5: 0, average: 0 },
+            { device: 'DUT', run1: null, run2: null, run3: null, run4: null, run5: null, average: null },
+            { device: 'REF', run1: null, run2: null, run3: null, run4: null, run5: null, average: null },
             "N/A"
         ];
 
@@ -64,12 +64,12 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDev
             for (let i = 1; i <= 5; i++) {
                 const runKey = `Run${i}`;
                 const runInfo = deviceRuns[runKey];
-                let val = 0;
+                let val = null;
                 if (runInfo && runInfo[metric] && typeof runInfo[metric].distance_km === 'number') {
                     val = runInfo[metric].distance_km * 1000;
                 }
 
-                runData[`run${i}`] = val > 0 ? parseFloat(val.toFixed(2)) : 0;
+                runData[`run${i}`] = (val !== null && val > 0) ? parseFloat(val.toFixed(2)) : null;
 
                 if (val > 0) {
                     sum += val;
@@ -77,7 +77,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDev
                 }
             }
 
-            runData.average = count > 0 ? parseFloat((sum / count).toFixed(2)) : 0;
+            runData.average = count > 0 ? parseFloat((sum / count).toFixed(2)) : null;
             return runData;
         });
 
@@ -91,11 +91,11 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDev
     const processSecondaryKpiData = (band) => {
         const defaultData = Array.from({ length: 5 }, (_, i) => ({
             run: `RUN ${i + 1}`,
-            txPower: { DUT: 0, REF: 0 },
+            txPower: { DUT: null, REF: null },
             segments: [
-                { segment: 'First 30%', DUT: { bler: 0, dlMcs: 0, ulMcs: 0 }, REF: { bler: 0, dlMcs: 0, ulMcs: 0 } },
-                { segment: 'Middle 40%', DUT: { bler: 0, dlMcs: 0, ulMcs: 0 }, REF: { bler: 0, dlMcs: 0, ulMcs: 0 } },
-                { segment: 'Last 30%', DUT: { bler: 0, dlMcs: 0, ulMcs: 0 }, REF: { bler: 0, dlMcs: 0, ulMcs: 0 } },
+                { segment: 'First 30%', DUT: { bler: null, dlMcs: null, ulMcs: null }, REF: { bler: null, dlMcs: null, ulMcs: null } },
+                { segment: 'Middle 40%', DUT: { bler: null, dlMcs: null, ulMcs: null }, REF: { bler: null, dlMcs: null, ulMcs: null } },
+                { segment: 'Last 30%', DUT: { bler: null, dlMcs: null, ulMcs: null }, REF: { bler: null, dlMcs: null, ulMcs: null } },
             ]
         }));
 
@@ -111,8 +111,8 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDev
             const runKey = `Run${i + 1}`;
 
             // TxPower is now at the run level in secondary_kpi, not inside segments
-            const dutTxPower = bandData['DUT']?.[runKey]?.['secondary_kpi']?.['TxPower'] || 0;
-            const refTxPower = bandData['REF']?.[runKey]?.['secondary_kpi']?.['TxPower'] || 0;
+            const dutTxPower = bandData['DUT']?.[runKey]?.['secondary_kpi']?.['TxPower'] ?? null;
+            const refTxPower = bandData['REF']?.[runKey]?.['secondary_kpi']?.['TxPower'] ?? null;
 
             return {
                 run: `RUN ${i + 1}`,
@@ -126,14 +126,14 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDev
                     return {
                         segment: seg,
                         DUT: {
-                            bler: dutStats['AVG BLER'] || 0,
-                            dlMcs: dutStats['AVG DL MCS'] || 0,
-                            ulMcs: dutStats['AVG UL MCS'] || 0
+                            bler: dutStats['AVG BLER'] ?? null,
+                            dlMcs: dutStats['AVG DL MCS'] ?? null,
+                            ulMcs: dutStats['AVG UL MCS'] ?? null
                         },
                         REF: {
-                            bler: refStats['AVG BLER'] || 0,
-                            dlMcs: refStats['AVG DL MCS'] || 0,
-                            ulMcs: refStats['AVG UL MCS'] || 0
+                            bler: refStats['AVG BLER'] ?? null,
+                            dlMcs: refStats['AVG DL MCS'] ?? null,
+                            ulMcs: refStats['AVG UL MCS'] ?? null
                         }
                     };
                 })

@@ -51,10 +51,8 @@ function Dp_MHS_Ping_Component({ city: propCity }) {
 
 
   const calculateOverall = (val1, val2, val3) => {
-    const values = [val1, val2, val3].map(v => parseFloat(v || 0)).filter(v => v > 0);
-    if (values.length === 0) return 0;
-    const sum = values.reduce((a, b) => a + b, 0);
-    return (sum / values.length).toFixed(2);
+    const values = [val1, val2, val3].map(v => parseFloat(v)).filter(v => !isNaN(v) && v > 0);
+    return values.length > 0 ? (values.reduce((a, b) => a + b, 0) / values.length).toFixed(2) : "N/A";
   };
 
   const data = {

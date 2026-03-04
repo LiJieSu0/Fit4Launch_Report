@@ -60,19 +60,19 @@ function Dp_Ping_Component({ city: propCity }) {
             // DUT Data
             if (Dp_Ping_Data[location].DUT && Dp_Ping_Data[location].DUT["Ping RTT"]) {
                 const pingRTT = Dp_Ping_Data[location].DUT["Ping RTT"];
-                processedPingData.average.DUT[location] = pingRTT.Mean !== undefined ? pingRTT.Mean.toFixed(2) : "0.00";
-                processedPingData.std_dev.DUT[location] = pingRTT["Standard Deviation"] !== undefined ? pingRTT["Standard Deviation"].toFixed(2) : "0.00";
-                processedPingData.max.DUT[location] = pingRTT.Maximum !== undefined ? pingRTT.Maximum.toFixed(2) : "0.00";
-                processedPingData.min.DUT[location] = pingRTT.Minimum !== undefined ? pingRTT.Minimum.toFixed(2) : "0.00";
+                processedPingData.average.DUT[location] = pingRTT.Mean !== undefined ? pingRTT.Mean.toFixed(2) : "N/A";
+                processedPingData.std_dev.DUT[location] = pingRTT["Standard Deviation"] !== undefined ? pingRTT["Standard Deviation"].toFixed(2) : "N/A";
+                processedPingData.max.DUT[location] = pingRTT.Maximum !== undefined ? pingRTT.Maximum.toFixed(2) : "N/A";
+                processedPingData.min.DUT[location] = pingRTT.Minimum !== undefined ? pingRTT.Minimum.toFixed(2) : "N/A";
             }
 
             // REF Data
             if (Dp_Ping_Data[location].REF && Dp_Ping_Data[location].REF["Ping RTT"]) {
                 const pingRTT = Dp_Ping_Data[location].REF["Ping RTT"];
-                processedPingData.average.REF[location] = pingRTT.Mean !== undefined ? pingRTT.Mean.toFixed(2) : "0.00";
-                processedPingData.std_dev.REF[location] = pingRTT["Standard Deviation"] !== undefined ? pingRTT["Standard Deviation"].toFixed(2) : "0.00";
-                processedPingData.max.REF[location] = pingRTT.Maximum !== undefined ? pingRTT.Maximum.toFixed(2) : "0.00";
-                processedPingData.min.REF[location] = pingRTT.Minimum !== undefined ? pingRTT.Minimum.toFixed(2) : "0.00";
+                processedPingData.average.REF[location] = pingRTT.Mean !== undefined ? pingRTT.Mean.toFixed(2) : "N/A";
+                processedPingData.std_dev.REF[location] = pingRTT["Standard Deviation"] !== undefined ? pingRTT["Standard Deviation"].toFixed(2) : "N/A";
+                processedPingData.max.REF[location] = pingRTT.Maximum !== undefined ? pingRTT.Maximum.toFixed(2) : "N/A";
+                processedPingData.min.REF[location] = pingRTT.Minimum !== undefined ? pingRTT.Minimum.toFixed(2) : "N/A";
             }
         }
     });
@@ -94,11 +94,16 @@ function Dp_Ping_Component({ city: propCity }) {
             }
         });
 
+        const calculateOverall = (vals) => {
+            const numericVals = vals.filter(v => v !== "N/A" && !isNaN(parseFloat(v)));
+            return numericVals.length > 0 ? (numericVals.reduce((a, b) => a + parseFloat(b), 0) / numericVals.length).toFixed(2) : "N/A";
+        };
+
         if (count > 0) {
-            processedPingData.average[deviceType].Overall = (avgSum / count).toFixed(2);
-            processedPingData.std_dev[deviceType].Overall = (stdDevSum / count).toFixed(2);
-            processedPingData.max[deviceType].Overall = (maxSum / count).toFixed(2);
-            processedPingData.min[deviceType].Overall = (minSum / count).toFixed(2);
+            processedPingData.average[deviceType].Overall = calculateOverall(locations.map(loc => processedPingData.average[deviceType][loc]));
+            processedPingData.std_dev[deviceType].Overall = calculateOverall(locations.map(loc => processedPingData.std_dev[deviceType][loc]));
+            processedPingData.max[deviceType].Overall = calculateOverall(locations.map(loc => processedPingData.max[deviceType][loc]));
+            processedPingData.min[deviceType].Overall = calculateOverall(locations.map(loc => processedPingData.min[deviceType][loc]));
         }
     });
 

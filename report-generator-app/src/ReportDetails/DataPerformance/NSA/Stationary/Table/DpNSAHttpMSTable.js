@@ -6,56 +6,80 @@ function DpNSAHttpMSTable({ data, tableName }) {
     {
       category: "Average",
       deviceName: "DUT",
-      overall: (((data?.Moderate?.DUT?.Mean || 0) + (data?.Poor?.DUT?.Mean || 0)) / 2).toFixed(2),
+      overall: (() => {
+        const vals = [data?.Moderate?.DUT?.Mean, data?.Poor?.DUT?.Mean].filter(v => typeof v === 'number');
+        return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+      })(),
       site1: data?.Moderate?.DUT?.Mean?.toFixed(2) ?? "N/A",
       site2: data?.Poor?.DUT?.Mean?.toFixed(2) ?? "N/A",
     },
     {
       category: "Average",
       deviceName: "REF",
-      overall: (((data?.Moderate?.REF?.Mean || 0) + (data?.Poor?.REF?.Mean || 0)) / 2).toFixed(2),
+      overall: (() => {
+        const vals = [data?.Moderate?.REF?.Mean, data?.Poor?.REF?.Mean].filter(v => typeof v === 'number');
+        return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+      })(),
       site1: data?.Moderate?.REF?.Mean?.toFixed(2) ?? "N/A",
       site2: data?.Poor?.REF?.Mean?.toFixed(2) ?? "N/A",
     },
     {
       category: "Standard Deviation",
       deviceName: "DUT",
-      overall: (((data?.Moderate?.DUT?.["Standard Deviation"] || 0) + (data?.Poor?.DUT?.["Standard Deviation"] || 0)) / 2).toFixed(2),
+      overall: (() => {
+        const vals = [data?.Moderate?.DUT?.["Standard Deviation"], data?.Poor?.DUT?.["Standard Deviation"]].filter(v => typeof v === 'number');
+        return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+      })(),
       site1: data?.Moderate?.DUT?.["Standard Deviation"]?.toFixed(2) ?? "N/A",
       site2: data?.Poor?.DUT?.["Standard Deviation"]?.toFixed(2) ?? "N/A",
     },
     {
       category: "Standard Deviation",
       deviceName: "REF",
-      overall: (((data?.Moderate?.REF?.["Standard Deviation"] || 0) + (data?.Poor?.REF?.["Standard Deviation"] || 0)) / 2).toFixed(2),
+      overall: (() => {
+        const vals = [data?.Moderate?.REF?.["Standard Deviation"], data?.Poor?.REF?.["Standard Deviation"]].filter(v => typeof v === 'number');
+        return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+      })(),
       site1: data?.Moderate?.REF?.["Standard Deviation"]?.toFixed(2) ?? "N/A",
       site2: data?.Poor?.REF?.["Standard Deviation"]?.toFixed(2) ?? "N/A",
     },
     {
       category: "Maximum",
       deviceName: "DUT",
-      overall: (((data?.Moderate?.DUT?.Maximum || 0) + (data?.Poor?.DUT?.Maximum || 0)) / 2).toFixed(2),
+      overall: (() => {
+        const vals = [data?.Moderate?.DUT?.Maximum, data?.Poor?.DUT?.Maximum].filter(v => typeof v === 'number');
+        return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+      })(),
       site1: data?.Moderate?.DUT?.Maximum?.toFixed(2) ?? "N/A",
       site2: data?.Poor?.DUT?.Maximum?.toFixed(2) ?? "N/A",
     },
     {
       category: "Maximum",
       deviceName: "REF",
-      overall: (((data?.Moderate?.REF?.Maximum || 0) + (data?.Poor?.REF?.Maximum || 0)) / 2).toFixed(2),
+      overall: (() => {
+        const vals = [data?.Moderate?.REF?.Maximum, data?.Poor?.REF?.Maximum].filter(v => typeof v === 'number');
+        return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+      })(),
       site1: data?.Moderate?.REF?.Maximum?.toFixed(2) ?? "N/A",
       site2: data?.Poor?.REF?.Maximum?.toFixed(2) ?? "N/A",
     },
     {
       category: "Minimum",
       deviceName: "DUT",
-      overall: (((data?.Moderate?.DUT?.Minimum || 0) + (data?.Poor?.DUT?.Minimum || 0)) / 2).toFixed(2),
+      overall: (() => {
+        const vals = [data?.Moderate?.DUT?.Minimum, data?.Poor?.DUT?.Minimum].filter(v => typeof v === 'number');
+        return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+      })(),
       site1: data?.Moderate?.DUT?.Minimum?.toFixed(2) ?? "N/A",
       site2: data?.Poor?.DUT?.Minimum?.toFixed(2) ?? "N/A",
     },
     {
       category: "Minimum",
       deviceName: "REF",
-      overall: (((data?.Moderate?.REF?.Minimum || 0) + (data?.Poor?.REF?.Minimum || 0)) / 2).toFixed(2),
+      overall: (() => {
+        const vals = [data?.Moderate?.REF?.Minimum, data?.Poor?.REF?.Minimum].filter(v => typeof v === 'number');
+        return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+      })(),
       site1: data?.Moderate?.REF?.Minimum?.toFixed(2) ?? "N/A",
       site2: data?.Poor?.REF?.Minimum?.toFixed(2) ?? "N/A",
     },

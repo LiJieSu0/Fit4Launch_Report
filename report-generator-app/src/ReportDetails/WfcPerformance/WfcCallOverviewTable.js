@@ -84,11 +84,11 @@ const WfcCallOverviewTable = () => {
                                     const initFailures = moData?.total_initiation_failures;
                                     const retFailures = moData?.total_retention_failures;
 
-                                    const initFailureRate = (attempts > 0 && initFailures !== undefined) ? (initFailures / attempts) : 0;
-                                    const retFailureRate = (attempts > 0 && retFailures !== undefined) ? (retFailures / attempts) : 0;
+                                    const initFailureRate = (attempts > 0 && initFailures !== undefined) ? (initFailures / attempts) : null;
+                                    const retFailureRate = (attempts > 0 && retFailures !== undefined) ? (retFailures / attempts) : null;
 
-                                    const initFailurePct = (attempts > 0 && initFailures !== undefined) ? (initFailureRate * 100).toFixed(2) + '%' : '0.0%';
-                                    const retFailurePct = (attempts > 0 && retFailures !== undefined) ? (retFailureRate * 100).toFixed(2) + '%' : '0.0%';
+                                    const initFailurePct = initFailureRate !== null ? (initFailureRate * 100).toFixed(2) + '%' : 'N/A';
+                                    const retFailurePct = retFailureRate !== null ? (retFailureRate * 100).toFixed(2) + '%' : 'N/A';
 
                                     let setupTimeStyle = {};
                                     let initFailureStyle = {};
@@ -99,10 +99,10 @@ const WfcCallOverviewTable = () => {
                                     if (deviceType === 'DUT') {
                                         setupTimeStyle = { backgroundColor: getKpiCellColor('CallSetupTime', moData?.mean_setup_time, refMoData?.mean_setup_time) };
 
-                                        const initiationPValue = cityDataForKpi?.initiation_p_value !== undefined ? cityDataForKpi.initiation_p_value : 1;
+                                        const initiationPValue = (attempts > 0 && cityDataForKpi?.initiation_p_value !== undefined) ? cityDataForKpi.initiation_p_value : null;
                                         initFailureStyle = { backgroundColor: getKpiCellColor('WfcCallCriteria', initiationPValue, initFailureRate) };
 
-                                        const retentionPValue = cityDataForKpi?.retention_p_value !== undefined ? cityDataForKpi.retention_p_value : 1;
+                                        const retentionPValue = (attempts > 0 && cityDataForKpi?.retention_p_value !== undefined) ? cityDataForKpi.retention_p_value : null;
                                         retFailureStyle = { backgroundColor: getKpiCellColor('WfcCallCriteria', retentionPValue, retFailureRate) };
 
                                         moMosStyle = { backgroundColor: getKpiCellColor('WfcMOS', moData?.mos_average, refMoData?.mos_average) };

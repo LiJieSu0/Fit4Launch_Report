@@ -123,8 +123,8 @@ const WfcCoverageOverviewTable = () => {
                                             <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                             <td style={callDropsStyle}>{callDrops !== undefined ? callDrops : 'N/A'}</td>
                                             <td style={handoverDelayStyle}>{formatVal(handoverDelay)}</td>
-                                            <td>1</td>
-                                            <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
+                                            <td>{deviceData ? 1 : 'N/A'}</td>
+                                            <td>{deviceData ? (typeof callDrops === 'number' ? callDrops : 0) + 1 : 'N/A'}</td>
                                         </tr>
                                     );
                                 };

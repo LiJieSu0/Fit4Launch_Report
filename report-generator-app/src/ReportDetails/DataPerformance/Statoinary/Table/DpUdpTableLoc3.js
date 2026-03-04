@@ -3,8 +3,13 @@ import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
 function DpUdpTableLoc3({ data, tableName }) {
   const calculateOverallAverage = (good, moderate, poor) => {
-    const sum = parseFloat(good) + parseFloat(moderate) + parseFloat(poor);
-    return (sum / 3).toFixed(2); // Calculate average and format to 2 decimal places
+    const vals = [good, moderate, poor].map(v => parseFloat(v)).filter(v => !isNaN(v));
+    return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+  };
+
+  const formatVal = (val) => {
+    const num = parseFloat(val);
+    return isNaN(num) ? "N/A" : num.toFixed(2);
   };
 
   // Dummy data structure for now, will be replaced with actual data
@@ -104,7 +109,7 @@ function DpUdpTableLoc3({ data, tableName }) {
                     )
                     : 'inherit'
                 }}>
-                  {row.location.good.toFixed(2)}
+                  {formatVal(row.location.good)}
                 </td>
                 <td style={{
                   backgroundColor: row.deviceName === 'DUT' && refRow && row.metric !== 'Max Throughput (Mbps)' && row.metric !== 'Min Throughput (Mbps)'
@@ -117,7 +122,7 @@ function DpUdpTableLoc3({ data, tableName }) {
                     )
                     : 'inherit'
                 }}>
-                  {row.location.moderate.toFixed(2)}
+                  {formatVal(row.location.moderate)}
                 </td>
                 <td style={{
                   backgroundColor: row.deviceName === 'DUT' && refRow && row.metric !== 'Max Throughput (Mbps)' && row.metric !== 'Min Throughput (Mbps)'
@@ -130,7 +135,7 @@ function DpUdpTableLoc3({ data, tableName }) {
                     )
                     : 'inherit'
                 }}>
-                  {row.location.poor.toFixed(2)}
+                  {formatVal(row.location.poor)}
                 </td>
               </tr>
             );

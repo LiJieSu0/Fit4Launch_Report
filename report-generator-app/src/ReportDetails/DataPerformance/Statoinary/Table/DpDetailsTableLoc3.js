@@ -2,72 +2,37 @@ import React from 'react';
 import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
 function DpDetailsTableLoc3({ data, tableName, kpiRule, kpiTargetCells }) {
-  const tableData = [
-    {
-      category: "Average (Mbps)",
-      deviceName: "DUT",
-      overall: (((data?.Good?.DUT?.Mean || 0) + (data?.Moderate?.DUT?.Mean || 0) + (data?.Poor?.DUT?.Mean || 0)) / 3).toFixed(2),
-      site1: data?.Good?.DUT?.Mean?.toFixed(2) ?? "N/A",
-      site2: data?.Moderate?.DUT?.Mean?.toFixed(2) ?? "N/A",
-      site3: data?.Poor?.DUT?.Mean?.toFixed(2) ?? "N/A"
-    },
-    {
-      category: "Average (Mbps)",
-      deviceName: "REF",
-      overall: (((data?.Good?.REF?.Mean || 0) + (data?.Moderate?.REF?.Mean || 0) + (data?.Poor?.REF?.Mean || 0)) / 3).toFixed(2),
-      site1: data?.Good?.REF?.Mean?.toFixed(2) ?? "N/A",
-      site2: data?.Moderate?.REF?.Mean?.toFixed(2) ?? "N/A",
-      site3: data?.Poor?.REF?.Mean?.toFixed(2) ?? "N/A"
-    },
-    {
-      category: "Standard Deviation (Mbps)",
-      deviceName: "DUT",
-      overall: (((data?.Good?.DUT?.["Standard Deviation"] || 0) + (data?.Moderate?.DUT?.["Standard Deviation"] || 0) + (data?.Poor?.DUT?.["Standard Deviation"] || 0)) / 3).toFixed(2),
-      site1: data?.Good?.DUT?.["Standard Deviation"]?.toFixed(2) ?? "N/A",
-      site2: data?.Moderate?.DUT?.["Standard Deviation"]?.toFixed(2) ?? "N/A",
-      site3: data?.Poor?.DUT?.["Standard Deviation"]?.toFixed(2) ?? "N/A"
-    },
-    {
-      category: "Standard Deviation (Mbps)",
-      deviceName: "REF",
-      overall: (((data?.Good?.REF?.["Standard Deviation"] || 0) + (data?.Moderate?.REF?.["Standard Deviation"] || 0) + (data?.Poor?.REF?.["Standard Deviation"] || 0)) / 3).toFixed(2),
-      site1: data?.Good?.REF?.["Standard Deviation"]?.toFixed(2) ?? "N/A",
-      site2: data?.Moderate?.REF?.["Standard Deviation"]?.toFixed(2) ?? "N/A",
-      site3: data?.Poor?.REF?.["Standard Deviation"]?.toFixed(2) ?? "N/A"
-    },
-    {
-      category: "Maximum (Mbps)",
-      deviceName: "DUT",
-      overall: (((data?.Good?.DUT?.Maximum || 0) + (data?.Moderate?.DUT?.Maximum || 0) + (data?.Poor?.DUT?.Maximum || 0)) / 3).toFixed(2),
-      site1: data?.Good?.DUT?.Maximum?.toFixed(2) ?? "N/A",
-      site2: data?.Moderate?.DUT?.Maximum?.toFixed(2) ?? "N/A",
-      site3: data?.Poor?.DUT?.Maximum?.toFixed(2) ?? "N/A"
-    },
-    {
-      category: "Maximum (Mbps)",
-      deviceName: "REF",
-      overall: (((data?.Good?.REF?.Maximum || 0) + (data?.Moderate?.REF?.Maximum || 0) + (data?.Poor?.REF?.Maximum || 0)) / 3).toFixed(2),
-      site1: data?.Good?.REF?.Maximum?.toFixed(2) ?? "N/A",
-      site2: data?.Moderate?.REF?.Maximum?.toFixed(2) ?? "N/A",
-      site3: data?.Poor?.REF?.Maximum?.toFixed(2) ?? "N/A"
-    },
-    {
-      category: "Minimum (Mbps)",
-      deviceName: "DUT",
-      overall: (((data?.Good?.DUT?.Minimum || 0) + (data?.Moderate?.DUT?.Minimum || 0) + (data?.Poor?.DUT?.Minimum || 0)) / 3).toFixed(2),
-      site1: data?.Good?.DUT?.Minimum?.toFixed(2) ?? "N/A",
-      site2: data?.Moderate?.DUT?.Minimum?.toFixed(2) ?? "N/A",
-      site3: data?.Poor?.DUT?.Minimum?.toFixed(2) ?? "N/A"
-    },
-    {
-      category: "Minimum (Mbps)",
-      deviceName: "REF",
-      overall: (((data?.Good?.REF?.Minimum || 0) + (data?.Moderate?.REF?.Minimum || 0) + (data?.Poor?.REF?.Minimum || 0)) / 3).toFixed(2),
-      site1: data?.Good?.REF?.Minimum?.toFixed(2) ?? "N/A",
-      site2: data?.Moderate?.REF?.Minimum?.toFixed(2) ?? "N/A",
-      site3: data?.Poor?.REF?.Minimum?.toFixed(2) ?? "N/A"
-    },
+  const formatVal = (val) => (val !== undefined && val !== null && typeof val === 'number') ? val.toFixed(2) : "N/A";
+
+  const calculateOverall = (good, moderate, poor) => {
+    const vals = [good, moderate, poor].filter(v => typeof v === 'number');
+    return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+  };
+
+  const metrics = [
+    { label: "Average (Mbps)", key: "Mean" },
+    { label: "Standard Deviation (Mbps)", key: "Standard Deviation" },
+    { label: "Maximum (Mbps)", key: "Maximum" },
+    { label: "Minimum (Mbps)", key: "Minimum" }
   ];
+
+  const tableData = [];
+  metrics.forEach(metric => {
+    ["DUT", "REF"].forEach(device => {
+      const good = data?.Good?.[device]?.[metric.key];
+      const moderate = data?.Moderate?.[device]?.[metric.key];
+      const poor = data?.Poor?.[device]?.[metric.key];
+
+      tableData.push({
+        category: metric.label,
+        deviceName: device,
+        overall: calculateOverall(good, moderate, poor),
+        site1: formatVal(good),
+        site2: formatVal(moderate),
+        site3: formatVal(poor)
+      });
+    });
+  });
 
   return (
     <div className="">

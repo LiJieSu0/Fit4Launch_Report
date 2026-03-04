@@ -5,8 +5,8 @@ const processPingData = (pingRawData) => {
   const poorREF = pingRawData?.Poor?.REF?.["Ping RTT"] || {};
 
   const calculateOverall = (valModerate, valPoor) => {
-    const vals = [valModerate, valPoor].filter(v => v !== undefined && v !== null);
-    if (vals.length === 0) return "0.00";
+    const vals = [valModerate, valPoor].filter(v => v !== undefined && v !== null && typeof v === 'number');
+    if (vals.length === 0) return "N/A";
     return (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2);
   };
 

@@ -30,9 +30,13 @@ const CoverageTestTable = ({ tableData, status }) => {
                         <tr key={index}>
                             <td>{row.device}</td>
                             {runKeys.map(key => (
-                                <td key={key}>{row[key]?.toFixed(2) || '0.00'}</td>
+                                <td key={key}>
+                                    {typeof row[key] === 'number' ? row[key].toFixed(2) : 'N/A'}
+                                </td>
                             ))}
-                            <td className={averageClassName}>{row.average.toFixed(2)}</td>
+                            <td className={averageClassName}>
+                                {typeof row.average === 'number' ? row.average.toFixed(2) : 'N/A'}
+                            </td>
                         </tr>
                     );
                 })}

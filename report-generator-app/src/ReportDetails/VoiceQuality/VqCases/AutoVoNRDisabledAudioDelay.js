@@ -20,16 +20,25 @@ const processAudioDelayData = (audioDelayData) => {
   const dut2Data = audioDelayData.DUT2[dut2Key];
   const ref2Data = audioDelayData.REF2[ref2Key];
 
-  const averageDut = ((dut1Data.mean + dut2Data.mean) / 2).toFixed(2);
-  const averageRef = ((ref1Data.mean + ref2Data.mean) / 2).toFixed(2);
+  const toNA = (val) => (val !== undefined && val !== null && typeof val === 'number') ? val.toFixed(2) : "N/A";
+
+  const averageDut = (() => {
+    const vals = [dut1Data.mean, dut2Data.mean].filter(v => typeof v === 'number');
+    return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+  })();
+
+  const averageRef = (() => {
+    const vals = [ref1Data.mean, ref2Data.mean].filter(v => typeof v === 'number');
+    return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
+  })();
 
   return [
     {
       metric: "Average (ms)",
-      dut1: dut1Data.mean.toFixed(2),
-      dut2: dut2Data.mean.toFixed(2),
-      ref1: ref1Data.mean.toFixed(2),
-      ref2: ref2Data.mean.toFixed(2),
+      dut1: toNA(dut1Data.mean),
+      dut2: toNA(dut2Data.mean),
+      ref1: toNA(ref1Data.mean),
+      ref2: toNA(ref2Data.mean),
       highlight: false
     },
     {
@@ -41,26 +50,26 @@ const processAudioDelayData = (audioDelayData) => {
     },
     {
       metric: "Stdev (ms)",
-      dut1: dut1Data.std_dev.toFixed(2),
-      dut2: dut2Data.std_dev.toFixed(2),
-      ref1: ref1Data.std_dev.toFixed(2),
-      ref2: ref2Data.std_dev.toFixed(2),
+      dut1: toNA(dut1Data.std_dev),
+      dut2: toNA(dut2Data.std_dev),
+      ref1: toNA(ref1Data.std_dev),
+      ref2: toNA(ref2Data.std_dev),
       highlight: false
     },
     {
       metric: "Maximum (ms)",
-      dut1: dut1Data.max.toFixed(2),
-      dut2: dut2Data.max.toFixed(2),
-      ref1: ref1Data.max.toFixed(2),
-      ref2: ref2Data.max.toFixed(2),
+      dut1: toNA(dut1Data.max),
+      dut2: toNA(dut2Data.max),
+      ref1: toNA(ref1Data.max),
+      ref2: toNA(ref2Data.max),
       highlight: false
     },
     {
       metric: "Minimum (ms)",
-      dut1: dut1Data.min.toFixed(2),
-      dut2: dut2Data.min.toFixed(2),
-      ref1: ref1Data.min.toFixed(2),
-      ref2: ref2Data.min.toFixed(2),
+      dut1: toNA(dut1Data.min),
+      dut2: toNA(dut2Data.min),
+      ref1: toNA(ref1Data.min),
+      ref2: toNA(ref2Data.min),
       highlight: false
     },
     {

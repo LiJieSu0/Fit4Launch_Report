@@ -166,12 +166,13 @@ const WfcSummaryPage = () => {
         const dutMt = tcData?.['DUT MT'] || tcData?.['DUT'];
         const refMt = tcData?.['REF MT'] || tcData?.['REF'];
 
-        const initRate = dutMo?.total_mo_attempts > 0 ? (dutMo?.total_initiation_failures || 0) / dutMo.total_mo_attempts : 0;
-        const retRate = dutMo?.total_mo_attempts > 0 ? (dutMo?.total_retention_failures || 0) / dutMo.total_mo_attempts : 0;
+        const isMissing = !dutMo || dutMo.total_mo_attempts === undefined;
+        const initRate = !isMissing && dutMo.total_mo_attempts > 0 ? (dutMo?.total_initiation_failures || 0) / dutMo.total_mo_attempts : null;
+        const retRate = !isMissing && dutMo.total_mo_attempts > 0 ? (dutMo?.total_retention_failures || 0) / dutMo.total_mo_attempts : null;
 
         const setupColor = mapToPass(getKpiCellColor('CallSetupTime', dutMo?.mean_setup_time, refMo?.mean_setup_time));
-        const initPval = tcData?.initiation_p_value ?? 1;
-        const retPval = tcData?.retention_p_value ?? 1;
+        const initPval = isMissing ? null : (tcData?.initiation_p_value ?? 1);
+        const retPval = isMissing ? null : (tcData?.retention_p_value ?? 1);
         const initColor = mapToPass(getKpiCellColor('WfcCallCriteria', initPval, initRate));
         const retColor = mapToPass(getKpiCellColor('WfcCallCriteria', retPval, retRate));
         const moMosColor = mapToPass(getKpiCellColor('WfcMOS', dutMo?.mos_average, refMo?.mos_average));
@@ -341,12 +342,13 @@ const WfcSummaryPage = () => {
               const dutMt = tcData?.['DUT MT'] || tcData?.['DUT'];
               const refMt = tcData?.['REF MT'] || tcData?.['REF'];
 
-              const initRate = dutMo?.total_mo_attempts > 0 ? (dutMo?.total_initiation_failures || 0) / dutMo.total_mo_attempts : 0;
-              const retRate = dutMo?.total_mo_attempts > 0 ? (dutMo?.total_retention_failures || 0) / dutMo.total_mo_attempts : 0;
+              const isMissing = !dutMo || dutMo.total_mo_attempts === undefined;
+              const initRate = !isMissing && dutMo.total_mo_attempts > 0 ? (dutMo?.total_initiation_failures || 0) / dutMo.total_mo_attempts : null;
+              const retRate = !isMissing && dutMo.total_mo_attempts > 0 ? (dutMo?.total_retention_failures || 0) / dutMo.total_mo_attempts : null;
 
               const setupColor = mapToPass(getKpiCellColor('CallSetupTime', dutMo?.mean_setup_time, refMo?.mean_setup_time));
-              const initColor = mapToPass(getKpiCellColor('WfcCallCriteria', tcData?.initiation_p_value ?? 1, initRate));
-              const retColor = mapToPass(getKpiCellColor('WfcCallCriteria', tcData?.retention_p_value ?? 1, retRate));
+              const initColor = mapToPass(getKpiCellColor('WfcCallCriteria', isMissing ? null : (tcData?.initiation_p_value ?? 1), initRate));
+              const retColor = mapToPass(getKpiCellColor('WfcCallCriteria', isMissing ? null : (tcData?.retention_p_value ?? 1), retRate));
               const moMosColor = mapToPass(getKpiCellColor('WfcMOS', dutMo?.mos_average, refMo?.mos_average));
               const mtMosColor = mapToPass(getKpiCellColor('WfcMOS', dutMt?.mos_average, refMt?.mos_average));
 

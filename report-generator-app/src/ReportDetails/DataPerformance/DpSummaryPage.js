@@ -242,7 +242,7 @@ function DpSummaryPage() {
     ],
     rows: NR_MARKETS.map((market, marketIdx) => {
       const cityData = projectData[market.city];
-      const result = getAveragedKPI(cityData, market.network, "Ping", ["Ping RTT", "avg"], "PingLatency");
+      const result = getAveragedKPI(cityData, market.network, "Ping", ["Ping RTT", "Mean"], "PingLatency");
       if (result === 'default') return null;
       return {
         cells: [
@@ -389,7 +389,7 @@ function DpSummaryPage() {
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "RTT" }],
     rows: NR_MARKETS.map((market, marketIdx) => {
       const cityData = projectData[market.city];
-      const res = getAveragedKPI(cityData, market.network, "Mobile Hotspot Test", ["Ping RTT", "avg"], "PingLatency", "Ping");
+      const res = getAveragedKPI(cityData, market.network, "Mobile Hotspot Test", ["Ping RTT", "Mean"], "PingLatency", "Ping");
       if (res === 'default') return null;
       return {
         cells: [
@@ -437,8 +437,8 @@ function DpSummaryPage() {
       return getKpiCellColor('ErrorRatio', dutVal, refVal);
     }
     if (metricType === 'PingLatency') {
-      const dutVal = dut["Ping RTT"]?.Mean ?? dut["Ping RTT"]?.avg;
-      const refVal = ref["Ping RTT"]?.Mean ?? ref["Ping RTT"]?.avg;
+      const dutVal = dut["Ping RTT"]?.Mean;
+      const refVal = ref["Ping RTT"]?.Mean;
       return getKpiCellColor('PingLatency', dutVal, refVal);
     }
     return 'default';
@@ -570,7 +570,7 @@ function DpSummaryPage() {
     subHeaders: [{ label: "Market" }, { label: "Metrics" }, { label: "RTT" }],
     rows: NSA_MARKETS.map((market, marketIdx) => {
       const cityData = projectData[market.city];
-      const res = getAveragedKPI(cityData, market.network, "Ping", ["Ping RTT", "avg"], "PingLatency");
+      const res = getAveragedKPI(cityData, market.network, "Ping", ["Ping RTT", "Mean"], "PingLatency");
       if (res === 'default') return null;
       return {
         cells: [

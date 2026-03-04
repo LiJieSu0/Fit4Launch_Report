@@ -47,12 +47,12 @@ const DpNSATestDriveOverallTable = ({ data, tableName }) => {
             refValue: getDlValue(refDl, 'Error Ratio'),
         });
 
-        // Ping RTT (no DL/UL, try both "Mean" and "avg" keys)
+        // Ping RTT (no DL/UL, all data uses "Mean")
         overallMetrics.push({
             metric: "Mean Round Trip Time (ms)",
             kpiType: "PingLatency",
-            dutValue: getSafeValue(dutDl, 'Ping RTT.Mean') !== "N/A" ? getSafeValue(dutDl, 'Ping RTT.Mean') : getSafeValue(dutDl, 'Ping RTT.avg'),
-            refValue: getSafeValue(refDl, 'Ping RTT.Mean') !== "N/A" ? getSafeValue(refDl, 'Ping RTT.Mean') : getSafeValue(refDl, 'Ping RTT.avg'),
+            dutValue: getSafeValue(dutDl, 'Ping RTT.Mean'),
+            refValue: getSafeValue(refDl, 'Ping RTT.Mean'),
         });
 
         return overallMetrics;

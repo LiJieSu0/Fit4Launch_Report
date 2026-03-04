@@ -68,10 +68,10 @@ function DpNSATestDriveTable({ data, tableName }) {
 
     // Process Ping RTT (no DL/UL prefix)
     const pingSubMetrics = [
-      { key: "Min", label: "Minimum" },
-      { key: "Max", label: "Maximum" },
+      { key: "Minimum", label: "Minimum" },
+      { key: "Maximum", label: "Maximum" },
       { key: "Mean", label: "Mean" },
-      { key: "Std Dev", label: "Std Dev" },
+      { key: "Standard Deviation", label: "Std Dev" },
     ];
 
     pingSubMetrics.forEach(subMetric => {

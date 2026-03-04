@@ -41,8 +41,8 @@ const DpDriveTestOverallTable = ({ data, tableName }) => {
             overallMetrics.push({
                 metric: "Ping RTT (ms)",
                 kpiType: "PingLatency",
-                dutValue: (dutDl?.['Ping RTT']?.avg || 0).toFixed(2),
-                refValue: (refDl?.['Ping RTT']?.avg || 0).toFixed(2),
+                dutValue: (dutDl?.['Ping RTT']?.Mean || 0).toFixed(2),
+                refValue: (refDl?.['Ping RTT']?.Mean || 0).toFixed(2),
             });
         }
 

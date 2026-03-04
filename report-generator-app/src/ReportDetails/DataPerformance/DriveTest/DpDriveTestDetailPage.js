@@ -82,10 +82,10 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
         Mean: dutDriveTest?.['DL Error Ratio']?.Mean || 0,
       },
       'Ping RTT': {
-        avg: dutDriveTest?.['Ping RTT']?.Mean || 0,
-        min: dutDriveTest?.['Ping RTT']?.Min || 0,
-        max: dutDriveTest?.['Ping RTT']?.Max || 0,
-        std_dev: dutDriveTest?.['Ping RTT']?.['Std Dev'] || 0,
+        Mean: dutDriveTest?.['Ping RTT']?.Mean || 0,
+        Minimum: dutDriveTest?.['Ping RTT']?.Minimum || 0,
+        Maximum: dutDriveTest?.['Ping RTT']?.Maximum || 0,
+        'Standard Deviation': dutDriveTest?.['Ping RTT']?.['Standard Deviation'] || 0,
       },
     },
     "REF UDP DL": {
@@ -102,10 +102,10 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
         Mean: refDriveTest?.['DL Error Ratio']?.Mean || 0,
       },
       'Ping RTT': {
-        avg: refDriveTest?.['Ping RTT']?.Mean || 0,
-        min: refDriveTest?.['Ping RTT']?.Min || 0,
-        max: refDriveTest?.['Ping RTT']?.Max || 0,
-        std_dev: refDriveTest?.['Ping RTT']?.['Std Dev'] || 0,
+        Mean: refDriveTest?.['Ping RTT']?.Mean || 0,
+        Minimum: refDriveTest?.['Ping RTT']?.Minimum || 0,
+        Maximum: refDriveTest?.['Ping RTT']?.Maximum || 0,
+        'Standard Deviation': refDriveTest?.['Ping RTT']?.['Standard Deviation'] || 0,
       },
     },
   };
@@ -142,10 +142,10 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
         'UL Mean': dutMHS?.['UL Error Ratio']?.Mean || 0,
       },
       'Ping RTT': {
-        avg: dutMHS?.['Ping RTT']?.Mean || 0,
-        min: dutMHS?.['Ping RTT']?.Min || 0,
-        max: dutMHS?.['Ping RTT']?.Max || 0,
-        std_dev: dutMHS?.['Ping RTT']?.['Std Dev'] || 0,
+        Mean: dutMHS?.['Ping RTT']?.Mean || 0,
+        Minimum: dutMHS?.['Ping RTT']?.Minimum || 0,
+        Maximum: dutMHS?.['Ping RTT']?.Maximum || 0,
+        'Standard Deviation': dutMHS?.['Ping RTT']?.['Standard Deviation'] || 0,
       },
     },
     "REF UDP DL": {
@@ -172,10 +172,10 @@ const DpDriveTestDetailPage = ({ city: propCity, firstSection = false }) => {
         'UL Mean': refMHS?.['UL Error Ratio']?.Mean || 0,
       },
       'Ping RTT': {
-        avg: refMHS?.['Ping RTT']?.Mean || 0,
-        min: refMHS?.['Ping RTT']?.Min || 0,
-        max: refMHS?.['Ping RTT']?.Max || 0,
-        std_dev: refMHS?.['Ping RTT']?.['Std Dev'] || 0,
+        Mean: refMHS?.['Ping RTT']?.Mean || 0,
+        Minimum: refMHS?.['Ping RTT']?.Minimum || 0,
+        Maximum: refMHS?.['Ping RTT']?.Maximum || 0,
+        'Standard Deviation': refMHS?.['Ping RTT']?.['Standard Deviation'] || 0,
       },
     },
   } : null;

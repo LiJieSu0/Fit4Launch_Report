@@ -45,10 +45,10 @@ function DpMHSTestDriveTable({ data, tableName }) {
       {
         name: "Ping RTT (ms)",
         subMetrics: [
-          { key: "min", label: "Minimum (ms)" },
-          { key: "max", label: "Maximum (ms)" },
-          { key: "avg", label: "Mean (ms)" },
-          { key: "std_dev", label: "Std Dev (ms)" },
+          { key: "Minimum", label: "Minimum (ms)" },
+          { key: "Maximum", label: "Maximum (ms)" },
+          { key: "Mean", label: "Mean (ms)" },
+          { key: "Standard Deviation", label: "Std Dev (ms)" },
         ],
         path: "Ping RTT",
         kpiType: "PingLatency",

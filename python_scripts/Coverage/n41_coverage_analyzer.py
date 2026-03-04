@@ -49,17 +49,23 @@ def analyze_n41_coverage(folder_path, device_type_filter=None):
                 print(f"Warning: Missing columns {missing_cols} in {filename}. Skipping.")
                 continue
 
-            device_type_match = re.search(r'(DUT\d*|REF\d*|PC\d*)', filename, re.IGNORECASE)
-            if device_type_match:
-                matched = device_type_match.group(0).upper()
-                if matched.startswith('DUT'):
-                    device_type = 'PC2'
-                elif matched.startswith('REF'):
-                    device_type = 'PC3'
-                else:
-                    device_type = matched
+            # Prioritize PC2/PC3 if they exist anywhere in the name
+            pc_match = re.search(r'PC\d+', filename, re.IGNORECASE)
+            if pc_match:
+                device_type = pc_match.group(0).upper()
             else:
-                device_type = 'Unknown Device'
+                # Fallback to DUT/REF
+                device_type_match = re.search(r'(DUT\d*|REF\d*)', filename, re.IGNORECASE)
+                if device_type_match:
+                    matched = device_type_match.group(0).upper()
+                    if matched.startswith('DUT'):
+                        device_type = 'PC2'
+                    elif matched.startswith('REF'):
+                        device_type = 'PC3'
+                    else:
+                        device_type = matched
+                else:
+                    device_type = 'Unknown Device'
 
             no_service_indices = df[df[serving_network_column].astype(str).str.contains('No service', case=False, na=False)].index.tolist()
 

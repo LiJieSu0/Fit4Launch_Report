@@ -115,14 +115,18 @@ class CoveragePerformanceAnalyzer(BaseAnalyzer):
                             else:
                                 enriched[key] = {"latitude": None, "longitude": None, "distance_km": None}
                         
-                        # Prioritize literal DUT/REF in filename
+                        # Prioritize PC2/PC3 over DUT/REF
                         device_type = "Unknown"
-                        if re.search(r"DUT", file_name, re.IGNORECASE):
+                        pc_match = re.search(r"PC(\d+)", file_name, re.IGNORECASE)
+                        if pc_match:
+                            pc_num = int(pc_match.group(1))
+                            device_type = "DUT" if pc_num == 2 else "REF" if pc_num == 3 else f"PC{pc_num}"
+                        elif re.search(r"DUT", file_name, re.IGNORECASE):
                             device_type = "DUT"
                         elif re.search(r"REF", file_name, re.IGNORECASE):
                             device_type = "REF"
                         else:
-                            # Fallback to CHxx logic if no literal DUT/REF found
+                            # Fallback to CHxx logic
                             ch_match = re.search(r"CH(\d+)", file_name, re.IGNORECASE)
                             if ch_match:
                                 ch_num = int(ch_match.group(1))

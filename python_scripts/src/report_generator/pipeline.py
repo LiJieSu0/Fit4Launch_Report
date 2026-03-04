@@ -133,35 +133,28 @@ class DataAnalysisPipeline:
             filename_upper = filename.upper()
             device_type = "DUT"  # Default
             
-            # Try to match device type markers near the end of filename (before .csv)
-            # Pattern: _DUT_ or _REF_ or _PC2_ or _PC3_ near the end
+            # Try to match device type markers
             import re
-            # First try to match explicit markers at the end (more reliable)
-            end_match = re.search(r'_(DUT|REF|PC\d+)_\.CSV$', filename_upper)
-            if end_match:
-                matched = end_match.group(1)
-                if matched == "PC2":
-                    device_type = "DUT"
-                elif matched == "PC3":
-                    device_type = "REF"
-                else:
-                    device_type = matched  # DUT or REF
+            
+            # 1. Prioritize PCx anywhere in the filename
+            pc_match = re.search(r'PC(\d+)', filename_upper)
+            if pc_match:
+                device_type = pc_match.group(0) # Keep as PC2, PC3 etc.
             else:
-                # Fall back to general pattern matching (first occurrence)
-                general_match = re.search(r'(DUT|REF|PC\d+)', filename_upper)
-                if general_match:
-                    matched = general_match.group(1)
-                    if matched == "PC2":
-                        device_type = "DUT"
-                    elif matched == "PC3":
+                # 2. Try to match explicit DUT/REF markers near the end
+                end_match = re.search(r'_(DUT|REF)_\.CSV$', filename_upper)
+                if end_match:
+                    device_type = end_match.group(1)
+                else:
+                    # 3. Fall back to general pattern matching for DUT/REF
+                    general_match = re.search(r'(DUT|REF)', filename_upper)
+                    if general_match:
+                        device_type = general_match.group(1)
+                    # 4. If still no match, try channel numbers as last resort
+                    elif "CH01" in filename_upper:
                         device_type = "REF"
-                    else:
-                        device_type = matched
-                # If still no match, try channel numbers as last resort
-                elif "CH01" in filename_upper:
-                    device_type = "REF"
-                elif "CH02" in filename_upper:
-                    device_type = "DUT"
+                    elif "CH02" in filename_upper:
+                        device_type = "DUT"
             
             # Create nested structure
             if dir_path not in groups:

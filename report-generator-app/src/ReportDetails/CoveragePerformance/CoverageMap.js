@@ -122,7 +122,7 @@ const CoverageMap = ({ bandData, metric, baseStation }) => {
     return <div>No base station coordinates provided.</div>;
   }
 
-  const longitudeOffset = 0.05;
+  const longitudeOffset = 0.1;
 
   const positions = [bsPos];
   if (dutPos) positions.push(dutPos);

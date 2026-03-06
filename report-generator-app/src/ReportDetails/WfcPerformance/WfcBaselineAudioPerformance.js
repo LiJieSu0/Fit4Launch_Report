@@ -192,7 +192,9 @@ const WfcBaselineAudioPerformance = () => {
             <PageBreak>
                 <DynamicHeader level={1} >Baseline Audio Performance</DynamicHeader>
                 {availableCities.filter(city => city === 'Seattle').map(city => renderDataForCity(city))}
-                {/* import wfc_freq.png */}
+                <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                    <img src="/WFC_Freq.png" alt="WFC Frequency" style={{ width: '80%', maxWidth: '800px' }} />
+                </div>
             </PageBreak>
         </>
     );

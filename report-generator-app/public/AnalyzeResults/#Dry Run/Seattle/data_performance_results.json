@@ -2,8 +2,8 @@
     "Data Performance": {
         "5G AUTO DP": {
             "5G Auto Data Web-Kepler": {
-                "DUT": {
-                    "Device Type": "DUT",
+                "REF": {
+                    "Device Type": "Unknown",
                     "Network Type": "5G",
                     "Analysis Type": "data_performance",
                     "Protocol Type": "WEB_PAGE",
@@ -15,8 +15,8 @@
                         "Standard Deviation": 5.411965740230882
                     }
                 },
-                "REF": {
-                    "Device Type": "REF",
+                "DUT": {
+                    "Device Type": "Unknown",
                     "Network Type": "5G",
                     "Analysis Type": "data_performance",
                     "Protocol Type": "WEB_PAGE",
@@ -51,7 +51,7 @@
                             "Standard Deviation": 73.05112467334158
                         }
                     },
-                    "Device Type": "REF",
+                    "Device Type": "Unknown",
                     "Network Type": "5G",
                     "Analysis Type": "mrab_performance"
                 },
@@ -76,7 +76,7 @@
                             "Standard Deviation": 74.11495980277779
                         }
                     },
-                    "Device Type": "DUT",
+                    "Device Type": "Unknown",
                     "Network Type": "5G",
                     "Analysis Type": "mrab_performance"
                 }
@@ -84,8 +84,8 @@
             "HTTP Multi Stream": {
                 "DL": {
                     "Good": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -102,8 +102,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -162,8 +162,8 @@
                         }
                     },
                     "Poor": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -180,8 +180,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -202,8 +202,8 @@
                 },
                 "UL": {
                     "Good": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -222,8 +222,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -242,8 +242,8 @@
                         }
                     },
                     "Moderate": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -262,8 +262,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -282,8 +282,8 @@
                         }
                     },
                     "Poor": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -305,8 +305,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -332,8 +332,8 @@
             "HTTP Single Stream": {
                 "DL": {
                     "Good": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -350,8 +350,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -372,8 +372,8 @@
                         }
                     },
                     "Moderate": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -392,8 +392,8 @@
                                 "Number of Intervals": 19
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -412,8 +412,8 @@
                         }
                     },
                     "Poor": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -430,8 +430,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -452,8 +452,8 @@
                 },
                 "UL": {
                     "Good": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -473,8 +473,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -495,8 +495,8 @@
                         }
                     },
                     "Moderate": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -513,8 +513,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -533,8 +533,8 @@
                         }
                     },
                     "Poor": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -551,8 +551,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -576,8 +576,8 @@
                 "HTTP Multi Stream": {
                     "DL": {
                         "Moderate": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -594,8 +594,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -616,8 +616,8 @@
                             }
                         },
                         "Poor": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -634,8 +634,8 @@
                                     "Number of Intervals": 19
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -656,8 +656,8 @@
                     },
                     "UL": {
                         "Moderate": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -674,8 +674,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -694,8 +694,8 @@
                             }
                         },
                         "Poor": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -715,8 +715,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -739,8 +739,8 @@
                 "HTTP Single Stream": {
                     "DL": {
                         "Moderate": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -757,8 +757,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -777,8 +777,8 @@
                             }
                         },
                         "Poor": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -795,8 +795,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -817,8 +817,8 @@
                     },
                     "UL": {
                         "Moderate": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -844,8 +844,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -907,8 +907,8 @@
                 },
                 "Ping": {
                     "Moderate": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Protocol Type": "PING",
@@ -1058,8 +1058,8 @@
                                 ]
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Protocol Type": "PING",
@@ -1083,8 +1083,8 @@
                         }
                     },
                     "Poor": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Protocol Type": "PING",
@@ -1141,8 +1141,8 @@
                                 ]
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G",
                             "Analysis Type": "data_performance",
                             "Protocol Type": "PING",
@@ -1171,8 +1171,8 @@
                     "DL": {
                         "UDP Download Task at 200 Mbps for 10 seconds": {
                             "Moderate": {
-                                "DUT": {
-                                    "Device Type": "DUT",
+                                "REF": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "DL",
@@ -1200,8 +1200,8 @@
                                         "Number of Intervals": 20
                                     }
                                 },
-                                "REF": {
-                                    "Device Type": "REF",
+                                "DUT": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "DL",
@@ -1235,8 +1235,8 @@
                                 }
                             },
                             "Poor": {
-                                "DUT": {
-                                    "Device Type": "DUT",
+                                "REF": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "DL",
@@ -1261,8 +1261,8 @@
                                         "Number of Intervals": 20
                                     }
                                 },
-                                "REF": {
-                                    "Device Type": "REF",
+                                "DUT": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "DL",
@@ -1291,8 +1291,8 @@
                         },
                         "UDP Download Task at 400 Mbps for 10 seconds": {
                             "Moderate": {
-                                "DUT": {
-                                    "Device Type": "DUT",
+                                "REF": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "DL",
@@ -1322,8 +1322,8 @@
                                         "Number of Intervals": 20
                                     }
                                 },
-                                "REF": {
-                                    "Device Type": "REF",
+                                "DUT": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "DL",
@@ -1354,8 +1354,8 @@
                                 }
                             },
                             "Poor": {
-                                "DUT": {
-                                    "Device Type": "DUT",
+                                "REF": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "DL",
@@ -1380,8 +1380,8 @@
                                         "Number of Intervals": 20
                                     }
                                 },
-                                "REF": {
-                                    "Device Type": "REF",
+                                "DUT": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "DL",
@@ -1412,8 +1412,8 @@
                     "UL": {
                         "UDP Upload Task at 10 Mbps for 10 seconds": {
                             "Moderate": {
-                                "DUT": {
-                                    "Device Type": "DUT",
+                                "REF": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "UL",
@@ -1440,8 +1440,8 @@
                                         "Number of Intervals": 20
                                     }
                                 },
-                                "REF": {
-                                    "Device Type": "REF",
+                                "DUT": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "UL",
@@ -1468,8 +1468,8 @@
                                 }
                             },
                             "Poor": {
-                                "DUT": {
-                                    "Device Type": "DUT",
+                                "REF": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "UL",
@@ -1496,8 +1496,8 @@
                                         "Number of Intervals": 20
                                     }
                                 },
-                                "REF": {
-                                    "Device Type": "REF",
+                                "DUT": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "UL",
@@ -1526,8 +1526,8 @@
                         },
                         "UDP Upload Task at 20 Mbps for 10 seconds": {
                             "Moderate": {
-                                "DUT": {
-                                    "Device Type": "DUT",
+                                "REF": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "UL",
@@ -1552,8 +1552,8 @@
                                         "Number of Intervals": 20
                                     }
                                 },
-                                "REF": {
-                                    "Device Type": "REF",
+                                "DUT": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "UL",
@@ -1583,8 +1583,8 @@
                                 }
                             },
                             "Poor": {
-                                "DUT": {
-                                    "Device Type": "DUT",
+                                "REF": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "UL",
@@ -1609,8 +1609,8 @@
                                         "Number of Intervals": 20
                                     }
                                 },
-                                "REF": {
-                                    "Device Type": "REF",
+                                "DUT": {
+                                    "Device Type": "Unknown",
                                     "Network Type": "5G",
                                     "Analysis Type": "data_performance",
                                     "Analysis Direction": "UL",
@@ -1644,1655 +1644,81 @@
             },
             "Mobility Test": {
                 "5G Auto Data Test Drive": {
-                    "DUT": {
-                        "Device Type": "DUT",
+                    "REF": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G",
-                        "Analysis Type": "mhs_drive_performance",
-                        "DL Throughput": {
-                            "Mean": 9.99624511784512,
-                            "Standard Deviation": 0.005259949375573359,
-                            "Minimum": 9.984444444444446,
-                            "Maximum": 10.00078888888889,
-                            "Q1": 9.989816666666666,
-                            "Median": 9.999066666666668,
-                            "Q3": 9.999961111111112,
+                        "Analysis Type": "data_performance",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "UDP",
+                        "Throughput": {
+                            "Mean": 9.882354838709677,
+                            "Standard Deviation": 0.32445364829582846,
+                            "Minimum": 8.651,
+                            "Maximum": 10.0,
+                            "Q1": 9.3065,
+                            "Median": 10.0,
+                            "Q3": 10.0,
                             "Outliers": [
-                                10.112422222222223,
-                                9.703933333333334,
-                                9.933200000000001,
-                                9.961322222222222,
-                                9.925933333333335
+                                7.017,
+                                7.711,
+                                1.321,
+                                3.935,
+                                3.389,
+                                3.439,
+                                3.724
                             ],
                             "Number of Intervals": 38
                         },
-                        "UL Throughput": {
-                            "Mean": 6.89658634152767,
-                            "Standard Deviation": 1.9637867715804436,
-                            "Minimum": 2.517215277777778,
-                            "Maximum": 11.42243956043956,
-                            "Q1": 5.677756331569665,
-                            "Median": 7.631960129454157,
-                            "Q3": 8.063448787427177,
-                            "Outliers": [
-                                1.0925419847328244
-                            ],
-                            "Number of Intervals": 38
-                        },
-                        "DL Jitter": {
-                            "Mean": 1.706587719298245,
-                            "Number of Intervals": 38
-                        },
-                        "UL Jitter": {
+                        "Jitter": {
                             "Mean": 2.678500000000001,
                             "Number of Intervals": 38
                         },
-                        "DL Error Ratio": {
-                            "Mean": 0.1920111111111111,
-                            "Number of Intervals": 20
-                        },
-                        "UL Error Ratio": {
+                        "Error Ratio": {
                             "Mean": 0.6054999999999999,
                             "Number of Intervals": 20
-                        },
-                        "Ping RTT": {
-                            "Mean": 51.465799886941774,
-                            "Standard Deviation": 8.539061269812546,
-                            "Minimum": 27.0,
-                            "Maximum": 75.0,
-                            "Q1": 45.0,
-                            "Median": 52.0,
-                            "Q3": 57.0,
-                            "Outliers": [
-                                137.0,
-                                79.0,
-                                121.0,
-                                83.0,
-                                82.0,
-                                76.0,
-                                81.0,
-                                84.0,
-                                81.0,
-                                85.0,
-                                77.0,
-                                84.0,
-                                132.0,
-                                114.0,
-                                103.0,
-                                151.0,
-                                78.0,
-                                78.0,
-                                84.0,
-                                78.0,
-                                84.0,
-                                80.0,
-                                77.0,
-                                77.0,
-                                90.0,
-                                76.0,
-                                78.0,
-                                90.0,
-                                100.0,
-                                76.0,
-                                76.0,
-                                90.0,
-                                93.0,
-                                92.0,
-                                89.0,
-                                88.0,
-                                89.0,
-                                101.0,
-                                116.0,
-                                97.0,
-                                87.0,
-                                203.0,
-                                98.0,
-                                82.0,
-                                87.0,
-                                81.0,
-                                93.0,
-                                113.0,
-                                96.0,
-                                91.0,
-                                80.0,
-                                144.0,
-                                217.0,
-                                89.0,
-                                103.0,
-                                133.0,
-                                80.0,
-                                82.0,
-                                81.0,
-                                118.0,
-                                116.0,
-                                95.0,
-                                84.0,
-                                76.0,
-                                114.0,
-                                94.0,
-                                80.0,
-                                87.0,
-                                76.0,
-                                88.0,
-                                84.0,
-                                77.0,
-                                92.0,
-                                84.0,
-                                77.0,
-                                93.0,
-                                77.0,
-                                81.0,
-                                77.0,
-                                81.0,
-                                86.0,
-                                82.0,
-                                101.0,
-                                77.0,
-                                97.0,
-                                76.0,
-                                76.0,
-                                82.0,
-                                77.0,
-                                81.0,
-                                77.0,
-                                82.0,
-                                82.0,
-                                82.0,
-                                81.0,
-                                86.0,
-                                76.0,
-                                76.0,
-                                91.0,
-                                88.0,
-                                76.0,
-                                106.0,
-                                81.0,
-                                81.0,
-                                76.0,
-                                81.0,
-                                81.0,
-                                81.0,
-                                81.0,
-                                81.0,
-                                80.0,
-                                88.0,
-                                82.0,
-                                86.0,
-                                87.0,
-                                80.0,
-                                76.0,
-                                81.0,
-                                80.0,
-                                80.0,
-                                80.0,
-                                81.0,
-                                82.0,
-                                78.0,
-                                90.0,
-                                80.0,
-                                81.0,
-                                76.0,
-                                82.0,
-                                82.0,
-                                94.0,
-                                87.0,
-                                92.0,
-                                83.0,
-                                87.0,
-                                76.0,
-                                278.0,
-                                138.0,
-                                259.0,
-                                78.0,
-                                76.0,
-                                76.0,
-                                103.0,
-                                93.0,
-                                81.0,
-                                87.0,
-                                77.0,
-                                83.0,
-                                96.0,
-                                101.0,
-                                97.0,
-                                81.0,
-                                77.0,
-                                76.0,
-                                80.0,
-                                221.0,
-                                80.0,
-                                77.0,
-                                204.0,
-                                77.0
-                            ]
                         }
                     },
-                    "REF": {
-                        "Device Type": "REF",
+                    "DUT": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G",
-                        "Analysis Type": "mhs_drive_performance",
-                        "DL Throughput": {
-                            "Mean": 9.998674603174605,
-                            "Standard Deviation": 0.002567860618997923,
-                            "Minimum": 9.989255555555555,
-                            "Maximum": 10.0002,
-                            "Q1": 9.993852777777777,
-                            "Median": 9.999400000000001,
-                            "Q3": 9.999755555555558,
+                        "Analysis Type": "data_performance",
+                        "Analysis Direction": "UL",
+                        "Protocol Type": "UDP",
+                        "Throughput": {
+                            "Mean": 9.983407407407409,
+                            "Standard Deviation": 0.056699789213595087,
+                            "Minimum": 9.735,
+                            "Maximum": 10.0,
+                            "Q1": 9.799,
+                            "Median": 10.0,
+                            "Q3": 10.0,
                             "Outliers": [
-                                8.970455555555557,
-                                10.110055555555554,
-                                9.983322222222224,
-                                7.426977777777779,
-                                7.0463111111111125,
-                                4.764492957746479,
-                                9.933711111111112,
-                                9.966533333333333
+                                4.998,
+                                8.555,
+                                7.86,
+                                0.806,
+                                1.244,
+                                0.96,
+                                0.598,
+                                8.581
                             ],
-                            "Number of Intervals": 36
+                            "Number of Intervals": 35
                         },
-                        "UL Throughput": {
-                            "Mean": 7.224204862682354,
-                            "Standard Deviation": 1.4417987272912562,
-                            "Minimum": 3.6045986394557823,
-                            "Maximum": 8.620262711864408,
-                            "Q1": 5.539137142857143,
-                            "Median": 7.760368,
-                            "Q3": 8.257491525423728,
-                            "Outliers": [
-                                0.6800381679389313,
-                                1.0874000000000001,
-                                0.8395396825396826,
-                                0.4509594594594595,
-                                0.07378571428571426
-                            ],
-                            "Number of Intervals": 37
-                        },
-                        "DL Jitter": {
-                            "Mean": 2.058641979536615,
-                            "Number of Intervals": 36
-                        },
-                        "UL Jitter": {
+                        "Jitter": {
                             "Mean": 6.357833333333334,
                             "Number of Intervals": 36
                         },
-                        "DL Error Ratio": {
-                            "Mean": 4.106326560121765,
-                            "Number of Intervals": 20
-                        },
-                        "UL Error Ratio": {
+                        "Error Ratio": {
                             "Mean": 9.160999999999998,
                             "Number of Intervals": 20
-                        },
-                        "Ping RTT": {
-                            "Mean": 53.11046847888953,
-                            "Standard Deviation": 9.596906155853825,
-                            "Minimum": 29.0,
-                            "Maximum": 81.0,
-                            "Q1": 46.0,
-                            "Median": 53.0,
-                            "Q3": 60.0,
-                            "Outliers": [
-                                99.0,
-                                114.0,
-                                93.0,
-                                90.0,
-                                317.0,
-                                107.0,
-                                112.0,
-                                158.0,
-                                110.0,
-                                118.0,
-                                83.0,
-                                97.0,
-                                128.0,
-                                104.0,
-                                90.0,
-                                90.0,
-                                90.0,
-                                82.0,
-                                88.0,
-                                98.0,
-                                96.0,
-                                86.0,
-                                101.0,
-                                82.0,
-                                92.0,
-                                87.0,
-                                89.0,
-                                82.0,
-                                88.0,
-                                127.0,
-                                128.0,
-                                125.0,
-                                98.0,
-                                92.0,
-                                84.0,
-                                89.0,
-                                86.0,
-                                86.0,
-                                92.0,
-                                82.0,
-                                82.0,
-                                83.0,
-                                82.0,
-                                90.0,
-                                96.0,
-                                97.0,
-                                82.0,
-                                87.0,
-                                92.0,
-                                88.0,
-                                93.0,
-                                85.0,
-                                90.0,
-                                89.0,
-                                84.0,
-                                89.0,
-                                85.0,
-                                97.0,
-                                86.0,
-                                246.0,
-                                85.0,
-                                85.0,
-                                83.0,
-                                82.0,
-                                274.0,
-                                83.0,
-                                82.0,
-                                84.0,
-                                99.0,
-                                82.0,
-                                183.0,
-                                258.0,
-                                83.0,
-                                141.0,
-                                85.0,
-                                84.0,
-                                86.0,
-                                83.0,
-                                83.0,
-                                86.0,
-                                84.0,
-                                83.0,
-                                83.0,
-                                85.0,
-                                90.0,
-                                90.0,
-                                86.0,
-                                82.0,
-                                86.0,
-                                84.0,
-                                84.0,
-                                91.0,
-                                83.0,
-                                97.0,
-                                88.0,
-                                85.0,
-                                83.0,
-                                85.0,
-                                83.0,
-                                96.0,
-                                92.0,
-                                91.0,
-                                264.0,
-                                242.0,
-                                86.0,
-                                84.0,
-                                91.0,
-                                84.0,
-                                83.0,
-                                85.0,
-                                158.0,
-                                93.0,
-                                84.0,
-                                109.0,
-                                86.0,
-                                103.0,
-                                84.0,
-                                82.0,
-                                86.0,
-                                88.0
-                            ]
-                        }
-                    }
-                },
-                "5G Auto Data Test MHS Drive": {
-                    "DUT": {
-                        "Device Type": "DUT",
-                        "Network Type": "5G",
-                        "Analysis Type": "mhs_drive_performance",
-                        "DL Throughput": {
-                            "Mean": 9.927219013970111,
-                            "Standard Deviation": 0.04571110646884146,
-                            "Minimum": 9.799233333333333,
-                            "Maximum": 9.99981111111111,
-                            "Q1": 9.887316666666667,
-                            "Median": 9.925944444444445,
-                            "Q3": 9.949238888888889,
-                            "Outliers": [
-                                10.044088888888888,
-                                9.661933333333334,
-                                9.759588888888889,
-                                9.341955555555556,
-                                9.768744444444444,
-                                9.637711111111113,
-                                9.676555555555554
-                            ],
-                            "Number of Intervals": 43
-                        },
-                        "DL Jitter": {
-                            "Mean": 1.463090187678499,
-                            "Number of Intervals": 43
-                        },
-                        "UL Jitter": {
-                            "Mean": 1.9766428571428563,
-                            "Number of Intervals": 42
-                        },
-                        "DL Error Ratio": {
-                            "Mean": 0.9332083333333332,
-                            "Number of Intervals": 20
-                        },
-                        "UL Error Ratio": {
-                            "Mean": 14.303999999999998,
-                            "Number of Intervals": 20
-                        },
-                        "Ping RTT": {
-                            "Mean": 106.52091535433071,
-                            "Standard Deviation": 36.46078281906737,
-                            "Minimum": 34.0,
-                            "Maximum": 212.0,
-                            "Q1": 71.0,
-                            "Median": 119.0,
-                            "Q3": 128.0,
-                            "Outliers": [
-                                307.0,
-                                218.0,
-                                332.0,
-                                280.0,
-                                995.0,
-                                246.0,
-                                257.0,
-                                272.0,
-                                215.0,
-                                216.0,
-                                221.0,
-                                216.0,
-                                227.0,
-                                294.0,
-                                260.0,
-                                327.0,
-                                595.0,
-                                299.0,
-                                224.0,
-                                309.0,
-                                352.0,
-                                261.0,
-                                259.0,
-                                274.0,
-                                290.0,
-                                220.0,
-                                217.0,
-                                221.0,
-                                235.0,
-                                281.0,
-                                297.0,
-                                312.0,
-                                337.0,
-                                240.0,
-                                361.0,
-                                272.0,
-                                285.0,
-                                298.0,
-                                319.0,
-                                218.0,
-                                337.0,
-                                238.0,
-                                354.0,
-                                232.0,
-                                278.0,
-                                293.0,
-                                300.0,
-                                319.0,
-                                220.0,
-                                336.0,
-                                230.0,
-                                235.0,
-                                230.0,
-                                285.0,
-                                231.0,
-                                229.0,
-                                270.0,
-                                280.0,
-                                223.0,
-                                227.0,
-                                221.0,
-                                301.0,
-                                230.0,
-                                247.0,
-                                301.0,
-                                316.0,
-                                216.0,
-                                232.0,
-                                235.0,
-                                273.0,
-                                252.0,
-                                218.0,
-                                214.0,
-                                219.0,
-                                295.0,
-                                259.0,
-                                515.0,
-                                249.0,
-                                273.0,
-                                216.0,
-                                246.0,
-                                247.0,
-                                274.0,
-                                214.0,
-                                235.0,
-                                261.0,
-                                280.0,
-                                219.0,
-                                261.0,
-                                300.0,
-                                228.0,
-                                244.0,
-                                279.0,
-                                220.0,
-                                298.0,
-                                298.0,
-                                241.0,
-                                291.0,
-                                431.0,
-                                247.0,
-                                350.0,
-                                354.0,
-                                274.0,
-                                283.0,
-                                291.0,
-                                413.0,
-                                251.0,
-                                228.0,
-                                248.0,
-                                237.0,
-                                259.0,
-                                217.0,
-                                293.0,
-                                231.0,
-                                274.0,
-                                235.0,
-                                271.0,
-                                289.0,
-                                227.0,
-                                256.0,
-                                302.0,
-                                298.0,
-                                341.0,
-                                297.0,
-                                237.0,
-                                262.0,
-                                522.0,
-                                336.0,
-                                289.0,
-                                228.0,
-                                299.0,
-                                238.0,
-                                258.0
-                            ]
-                        }
-                    },
-                    "REF": {
-                        "Device Type": "REF",
-                        "Network Type": "5G",
-                        "Analysis Type": "mhs_drive_performance",
-                        "DL Throughput": {
-                            "Mean": 10.000598084025857,
-                            "Standard Deviation": 0.004342323701890515,
-                            "Minimum": 9.988866666666667,
-                            "Maximum": 10.007122222222224,
-                            "Q1": 9.996783333333333,
-                            "Median": 10.001088888888889,
-                            "Q3": 10.003433333333335,
-                            "Outliers": [
-                                8.727077777777776,
-                                9.79498888888889,
-                                9.98648888888889,
-                                9.7268,
-                                10.019333333333334
-                            ],
-                            "Number of Intervals": 43
-                        },
-                        "DL Jitter": {
-                            "Mean": 1.6998296613627097,
-                            "Number of Intervals": 43
-                        },
-                        "UL Jitter": {
-                            "Mean": 2.027404761904762,
-                            "Number of Intervals": 42
-                        },
-                        "DL Error Ratio": {
-                            "Mean": 0.04640087719298245,
-                            "Number of Intervals": 20
-                        },
-                        "UL Error Ratio": {
-                            "Mean": 9.9475,
-                            "Number of Intervals": 20
-                        },
-                        "Ping RTT": {
-                            "Mean": 114.69394128669582,
-                            "Standard Deviation": 7.535235619348666,
-                            "Minimum": 86.0,
-                            "Maximum": 137.0,
-                            "Q1": 105.0,
-                            "Median": 117.0,
-                            "Q3": 118.0,
-                            "Outliers": [
-                                138.0,
-                                138.0,
-                                205.0,
-                                183.0,
-                                151.0,
-                                191.0,
-                                171.0,
-                                217.0,
-                                72.0,
-                                54.0,
-                                76.0,
-                                78.0,
-                                53.0,
-                                146.0,
-                                140.0,
-                                156.0,
-                                153.0,
-                                224.0,
-                                204.0,
-                                138.0,
-                                155.0,
-                                174.0,
-                                154.0,
-                                191.0,
-                                170.0,
-                                185.0,
-                                231.0,
-                                139.0,
-                                192.0,
-                                173.0,
-                                261.0,
-                                171.0,
-                                157.0,
-                                36.0,
-                                58.0,
-                                58.0,
-                                63.0,
-                                62.0,
-                                53.0,
-                                62.0,
-                                44.0,
-                                45.0,
-                                59.0,
-                                57.0,
-                                62.0,
-                                63.0,
-                                53.0,
-                                62.0,
-                                51.0,
-                                70.0,
-                                70.0,
-                                74.0,
-                                156.0,
-                                51.0,
-                                140.0,
-                                143.0,
-                                65.0,
-                                65.0,
-                                56.0,
-                                54.0,
-                                42.0,
-                                76.0,
-                                60.0,
-                                62.0,
-                                57.0,
-                                73.0,
-                                52.0,
-                                53.0,
-                                59.0,
-                                53.0,
-                                59.0,
-                                60.0,
-                                58.0,
-                                52.0,
-                                216.0,
-                                181.0,
-                                216.0,
-                                196.0,
-                                161.0,
-                                200.0,
-                                138.0,
-                                179.0,
-                                285.0,
-                                156.0,
-                                53.0,
-                                138.0,
-                                211.0,
-                                52.0,
-                                164.0,
-                                204.0,
-                                183.0,
-                                222.0,
-                                168.0,
-                                53.0,
-                                74.0,
-                                56.0,
-                                74.0,
-                                53.0,
-                                53.0,
-                                66.0,
-                                82.0,
-                                56.0,
-                                85.0,
-                                59.0,
-                                51.0,
-                                57.0,
-                                140.0,
-                                214.0,
-                                151.0,
-                                179.0,
-                                225.0,
-                                202.0,
-                                215.0,
-                                78.0,
-                                266.0,
-                                163.0,
-                                74.0,
-                                81.0,
-                                71.0,
-                                139.0,
-                                53.0,
-                                51.0,
-                                61.0,
-                                46.0,
-                                66.0,
-                                36.0,
-                                83.0,
-                                42.0,
-                                46.0,
-                                55.0,
-                                64.0,
-                                51.0,
-                                60.0,
-                                54.0,
-                                81.0,
-                                62.0,
-                                52.0,
-                                53.0,
-                                81.0,
-                                47.0,
-                                84.0,
-                                69.0,
-                                78.0,
-                                153.0,
-                                155.0,
-                                66.0,
-                                75.0,
-                                85.0,
-                                157.0,
-                                60.0,
-                                170.0,
-                                54.0,
-                                55.0,
-                                139.0,
-                                177.0,
-                                214.0,
-                                53.0,
-                                45.0,
-                                177.0,
-                                43.0,
-                                48.0,
-                                74.0,
-                                71.0,
-                                51.0,
-                                72.0,
-                                45.0,
-                                62.0,
-                                58.0,
-                                77.0,
-                                68.0,
-                                66.0,
-                                71.0,
-                                65.0,
-                                67.0,
-                                61.0,
-                                84.0,
-                                57.0,
-                                59.0,
-                                54.0,
-                                176.0,
-                                51.0,
-                                67.0,
-                                50.0,
-                                64.0,
-                                58.0,
-                                63.0,
-                                62.0,
-                                83.0,
-                                61.0,
-                                84.0,
-                                64.0,
-                                78.0,
-                                51.0,
-                                81.0,
-                                150.0,
-                                54.0,
-                                54.0,
-                                167.0,
-                                203.0,
-                                176.0,
-                                215.0,
-                                196.0,
-                                51.0,
-                                74.0,
-                                205.0,
-                                46.0,
-                                269.0,
-                                141.0,
-                                189.0,
-                                193.0,
-                                77.0,
-                                311.0,
-                                68.0,
-                                82.0,
-                                67.0,
-                                83.0,
-                                62.0,
-                                71.0,
-                                57.0,
-                                76.0,
-                                59.0,
-                                74.0,
-                                72.0,
-                                51.0,
-                                50.0,
-                                84.0,
-                                51.0,
-                                57.0,
-                                80.0,
-                                51.0,
-                                85.0,
-                                68.0,
-                                73.0,
-                                81.0,
-                                59.0,
-                                63.0,
-                                84.0,
-                                57.0,
-                                64.0,
-                                81.0,
-                                59.0,
-                                52.0,
-                                61.0,
-                                85.0,
-                                80.0,
-                                73.0,
-                                48.0,
-                                65.0,
-                                83.0,
-                                84.0,
-                                59.0,
-                                56.0,
-                                78.0,
-                                62.0,
-                                140.0,
-                                78.0,
-                                145.0,
-                                68.0,
-                                74.0,
-                                65.0,
-                                144.0,
-                                71.0,
-                                66.0,
-                                62.0,
-                                142.0,
-                                73.0,
-                                166.0,
-                                162.0,
-                                66.0,
-                                61.0,
-                                158.0,
-                                159.0,
-                                63.0,
-                                58.0,
-                                58.0,
-                                53.0,
-                                51.0,
-                                63.0,
-                                62.0,
-                                76.0,
-                                49.0,
-                                58.0,
-                                57.0,
-                                59.0,
-                                53.0,
-                                50.0,
-                                58.0,
-                                66.0,
-                                49.0,
-                                46.0,
-                                62.0,
-                                68.0,
-                                47.0,
-                                56.0,
-                                55.0,
-                                63.0,
-                                60.0,
-                                65.0,
-                                60.0,
-                                65.0,
-                                65.0,
-                                42.0,
-                                64.0,
-                                78.0,
-                                82.0,
-                                203.0,
-                                204.0,
-                                188.0,
-                                59.0,
-                                160.0,
-                                153.0,
-                                140.0,
-                                46.0,
-                                50.0,
-                                47.0,
-                                70.0,
-                                65.0,
-                                66.0,
-                                62.0,
-                                61.0,
-                                60.0,
-                                55.0,
-                                61.0,
-                                51.0,
-                                55.0,
-                                52.0,
-                                54.0,
-                                228.0,
-                                67.0,
-                                53.0,
-                                60.0,
-                                57.0,
-                                50.0,
-                                61.0,
-                                55.0,
-                                50.0,
-                                51.0,
-                                63.0,
-                                46.0,
-                                55.0,
-                                51.0,
-                                49.0,
-                                68.0,
-                                50.0,
-                                57.0,
-                                53.0,
-                                85.0,
-                                45.0,
-                                60.0,
-                                207.0,
-                                227.0,
-                                138.0,
-                                138.0,
-                                147.0,
-                                152.0,
-                                205.0,
-                                183.0,
-                                232.0,
-                                156.0,
-                                189.0,
-                                227.0,
-                                203.0,
-                                379.0,
-                                44.0,
-                                60.0,
-                                47.0,
-                                59.0,
-                                55.0,
-                                59.0,
-                                61.0,
-                                54.0,
-                                66.0,
-                                67.0,
-                                64.0,
-                                63.0,
-                                62.0,
-                                59.0,
-                                55.0,
-                                54.0,
-                                53.0,
-                                62.0,
-                                80.0,
-                                52.0,
-                                155.0,
-                                168.0,
-                                206.0,
-                                139.0,
-                                169.0,
-                                155.0,
-                                193.0,
-                                46.0,
-                                42.0,
-                                61.0,
-                                59.0,
-                                62.0,
-                                60.0,
-                                58.0,
-                                58.0,
-                                85.0,
-                                52.0,
-                                68.0,
-                                65.0,
-                                66.0,
-                                62.0,
-                                59.0,
-                                59.0,
-                                55.0,
-                                140.0,
-                                66.0,
-                                63.0,
-                                63.0,
-                                83.0,
-                                54.0,
-                                152.0,
-                                58.0,
-                                193.0,
-                                174.0,
-                                226.0,
-                                178.0,
-                                213.0,
-                                190.0,
-                                208.0,
-                                215.0,
-                                138.0,
-                                184.0,
-                                153.0,
-                                190.0,
-                                171.0,
-                                278.0,
-                                178.0,
-                                211.0,
-                                191.0,
-                                318.0,
-                                206.0,
-                                214.0,
-                                260.0,
-                                145.0,
-                                153.0,
-                                174.0,
-                                40.0,
-                                62.0,
-                                62.0,
-                                62.0,
-                                55.0,
-                                63.0,
-                                60.0,
-                                58.0,
-                                59.0,
-                                58.0,
-                                60.0,
-                                59.0,
-                                55.0,
-                                54.0,
-                                53.0,
-                                70.0,
-                                150.0,
-                                55.0,
-                                160.0,
-                                47.0,
-                                66.0,
-                                48.0,
-                                64.0,
-                                64.0,
-                                139.0,
-                                175.0,
-                                265.0,
-                                149.0,
-                                185.0,
-                                42.0,
-                                61.0,
-                                61.0,
-                                61.0,
-                                61.0,
-                                62.0,
-                                62.0,
-                                62.0,
-                                65.0,
-                                43.0,
-                                66.0,
-                                65.0,
-                                61.0,
-                                61.0,
-                                41.0,
-                                70.0,
-                                61.0,
-                                62.0,
-                                61.0,
-                                61.0,
-                                61.0,
-                                61.0,
-                                61.0,
-                                63.0,
-                                62.0,
-                                62.0,
-                                61.0,
-                                154.0,
-                                61.0,
-                                71.0,
-                                60.0,
-                                64.0,
-                                55.0,
-                                47.0,
-                                46.0,
-                                62.0,
-                                61.0,
-                                65.0,
-                                62.0,
-                                60.0,
-                                63.0,
-                                61.0,
-                                61.0,
-                                61.0,
-                                61.0,
-                                61.0,
-                                61.0,
-                                61.0,
-                                62.0,
-                                61.0,
-                                62.0,
-                                61.0,
-                                61.0,
-                                65.0,
-                                60.0,
-                                61.0,
-                                62.0,
-                                61.0,
-                                62.0,
-                                63.0,
-                                52.0,
-                                139.0,
-                                215.0,
-                                196.0,
-                                162.0,
-                                199.0,
-                                175.0,
-                                211.0,
-                                67.0,
-                                57.0,
-                                62.0,
-                                58.0,
-                                62.0,
-                                63.0,
-                                63.0,
-                                77.0,
-                                155.0,
-                                85.0,
-                                60.0,
-                                205.0,
-                                174.0,
-                                214.0,
-                                194.0,
-                                76.0,
-                                162.0,
-                                197.0,
-                                66.0,
-                                152.0,
-                                189.0,
-                                57.0,
-                                60.0,
-                                59.0,
-                                60.0,
-                                54.0,
-                                211.0,
-                                190.0,
-                                262.0,
-                                162.0,
-                                198.0,
-                                175.0,
-                                80.0,
-                                85.0,
-                                155.0,
-                                60.0,
-                                57.0,
-                                62.0,
-                                59.0,
-                                70.0,
-                                44.0,
-                                53.0,
-                                60.0,
-                                173.0,
-                                58.0,
-                                62.0,
-                                63.0,
-                                141.0,
-                                139.0,
-                                151.0,
-                                161.0,
-                                189.0,
-                                172.0,
-                                206.0,
-                                143.0,
-                                181.0,
-                                213.0,
-                                193.0,
-                                44.0,
-                                191.0,
-                                200.0,
-                                74.0,
-                                362.0,
-                                188.0,
-                                272.0,
-                                157.0,
-                                180.0,
-                                180.0,
-                                300.0,
-                                162.0,
-                                192.0,
-                                54.0,
-                                63.0,
-                                61.0,
-                                49.0,
-                                63.0,
-                                67.0,
-                                61.0,
-                                51.0,
-                                59.0,
-                                58.0,
-                                65.0,
-                                185.0,
-                                65.0,
-                                63.0,
-                                77.0,
-                                56.0,
-                                56.0,
-                                62.0,
-                                75.0,
-                                58.0,
-                                64.0,
-                                64.0,
-                                64.0,
-                                65.0,
-                                170.0,
-                                49.0,
-                                310.0,
-                                68.0,
-                                150.0,
-                                154.0,
-                                174.0,
-                                53.0,
-                                174.0,
-                                228.0,
-                                144.0,
-                                82.0,
-                                63.0,
-                                50.0,
-                                66.0,
-                                65.0,
-                                62.0,
-                                67.0,
-                                76.0,
-                                209.0,
-                                190.0,
-                                278.0,
-                                158.0,
-                                184.0,
-                                145.0,
-                                183.0,
-                                303.0,
-                                153.0,
-                                54.0,
-                                57.0,
-                                66.0,
-                                85.0,
-                                58.0,
-                                50.0,
-                                192.0,
-                                255.0,
-                                158.0,
-                                166.0,
-                                139.0,
-                                176.0,
-                                282.0,
-                                144.0,
-                                221.0,
-                                60.0,
-                                63.0,
-                                65.0,
-                                66.0,
-                                61.0,
-                                56.0,
-                                62.0,
-                                77.0,
-                                72.0,
-                                72.0,
-                                138.0,
-                                138.0,
-                                69.0,
-                                80.0,
-                                180.0,
-                                305.0,
-                                147.0,
-                                187.0,
-                                221.0,
-                                200.0,
-                                163.0,
-                                206.0,
-                                61.0,
-                                63.0,
-                                65.0,
-                                166.0,
-                                59.0,
-                                66.0,
-                                192.0,
-                                61.0,
-                                60.0,
-                                67.0,
-                                65.0,
-                                153.0,
-                                77.0,
-                                176.0,
-                                224.0,
-                                180.0,
-                                218.0,
-                                199.0,
-                                155.0,
-                                156.0,
-                                56.0,
-                                64.0,
-                                64.0,
-                                182.0,
-                                72.0,
-                                64.0,
-                                56.0,
-                                62.0,
-                                59.0,
-                                80.0,
-                                183.0,
-                                238.0,
-                                142.0,
-                                190.0,
-                                168.0,
-                                261.0,
-                                138.0,
-                                172.0,
-                                46.0,
-                                64.0,
-                                62.0,
-                                60.0,
-                                61.0,
-                                58.0,
-                                61.0,
-                                55.0,
-                                55.0,
-                                58.0,
-                                53.0,
-                                59.0,
-                                67.0,
-                                65.0,
-                                64.0,
-                                62.0,
-                                61.0,
-                                60.0,
-                                59.0,
-                                59.0,
-                                59.0,
-                                49.0,
-                                65.0,
-                                64.0,
-                                62.0,
-                                58.0,
-                                62.0,
-                                58.0,
-                                57.0,
-                                61.0,
-                                53.0,
-                                50.0,
-                                64.0,
-                                63.0,
-                                61.0,
-                                60.0,
-                                59.0,
-                                58.0,
-                                44.0,
-                                196.0,
-                                49.0,
-                                47.0,
-                                66.0,
-                                64.0,
-                                63.0,
-                                61.0,
-                                61.0,
-                                151.0,
-                                154.0,
-                                57.0,
-                                56.0,
-                                59.0,
-                                57.0,
-                                55.0,
-                                54.0,
-                                62.0,
-                                56.0,
-                                55.0,
-                                65.0,
-                                66.0,
-                                42.0,
-                                63.0,
-                                64.0,
-                                57.0,
-                                57.0,
-                                57.0,
-                                60.0,
-                                57.0,
-                                57.0,
-                                55.0,
-                                63.0,
-                                43.0,
-                                61.0,
-                                56.0,
-                                57.0,
-                                55.0,
-                                51.0,
-                                52.0,
-                                50.0,
-                                49.0,
-                                178.0,
-                                215.0,
-                                195.0,
-                                270.0,
-                                166.0,
-                                201.0,
-                                183.0,
-                                214.0,
-                                66.0,
-                                65.0,
-                                67.0,
-                                65.0,
-                                54.0,
-                                64.0,
-                                54.0,
-                                65.0,
-                                62.0,
-                                63.0,
-                                42.0,
-                                60.0,
-                                56.0,
-                                55.0,
-                                51.0,
-                                70.0,
-                                71.0,
-                                58.0,
-                                68.0,
-                                158.0,
-                                201.0,
-                                175.0,
-                                46.0,
-                                140.0,
-                                177.0,
-                                162.0,
-                                153.0,
-                                60.0,
-                                56.0,
-                                57.0,
-                                58.0,
-                                56.0,
-                                52.0,
-                                51.0,
-                                49.0,
-                                68.0,
-                                65.0,
-                                64.0,
-                                64.0,
-                                64.0,
-                                63.0,
-                                61.0,
-                                62.0,
-                                63.0,
-                                60.0,
-                                59.0,
-                                59.0,
-                                57.0,
-                                62.0,
-                                55.0,
-                                69.0,
-                                65.0,
-                                168.0,
-                                63.0,
-                                62.0,
-                                59.0,
-                                58.0,
-                                58.0,
-                                41.0,
-                                62.0,
-                                61.0,
-                                59.0,
-                                57.0,
-                                63.0,
-                                53.0,
-                                143.0,
-                                65.0,
-                                63.0,
-                                153.0,
-                                61.0,
-                                73.0,
-                                60.0,
-                                58.0,
-                                57.0,
-                                61.0,
-                                58.0,
-                                65.0,
-                                85.0,
-                                147.0,
-                                376.0,
-                                207.0,
-                                140.0,
-                                199.0,
-                                158.0,
-                                196.0,
-                                46.0,
-                                166.0,
-                                40.0,
-                                60.0,
-                                68.0,
-                                38.0,
-                                38.0,
-                                57.0,
-                                57.0,
-                                56.0,
-                                56.0,
-                                49.0,
-                                66.0,
-                                65.0,
-                                62.0,
-                                44.0,
-                                62.0,
-                                57.0,
-                                56.0,
-                                55.0,
-                                54.0,
-                                52.0,
-                                182.0,
-                                50.0,
-                                189.0,
-                                54.0,
-                                48.0,
-                                51.0,
-                                53.0,
-                                179.0,
-                                80.0,
-                                52.0,
-                                65.0,
-                                63.0,
-                                66.0,
-                                168.0,
-                                203.0,
-                                184.0,
-                                246.0,
-                                150.0,
-                                189.0,
-                                223.0,
-                                203.0,
-                                156.0,
-                                163.0,
-                                68.0,
-                                64.0,
-                                62.0,
-                                67.0,
-                                64.0,
-                                138.0,
-                                81.0,
-                                149.0,
-                                153.0,
-                                229.0,
-                                207.0,
-                                172.0,
-                                210.0,
-                                189.0,
-                                237.0,
-                                163.0,
-                                173.0,
-                                139.0,
-                                192.0,
-                                83.0,
-                                72.0,
-                                52.0,
-                                72.0,
-                                140.0,
-                                144.0,
-                                64.0,
-                                173.0,
-                                300.0,
-                                307.0,
-                                214.0,
-                                196.0,
-                                147.0,
-                                65.0,
-                                69.0,
-                                67.0,
-                                63.0,
-                                155.0,
-                                59.0,
-                                65.0,
-                                54.0,
-                                61.0,
-                                60.0,
-                                66.0,
-                                64.0,
-                                65.0
-                            ]
                         }
                     }
                 }
             },
             "Ping": {
                 "Good": {
-                    "DUT": {
-                        "Device Type": "DUT",
+                    "REF": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G",
                         "Analysis Type": "data_performance",
                         "Protocol Type": "PING",
@@ -3319,8 +1745,8 @@
                             ]
                         }
                     },
-                    "REF": {
-                        "Device Type": "REF",
+                    "DUT": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G",
                         "Analysis Type": "data_performance",
                         "Protocol Type": "PING",
@@ -3341,8 +1767,8 @@
                     }
                 },
                 "Moderate": {
-                    "DUT": {
-                        "Device Type": "DUT",
+                    "REF": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G",
                         "Analysis Type": "data_performance",
                         "Protocol Type": "PING",
@@ -3375,8 +1801,8 @@
                             ]
                         }
                     },
-                    "REF": {
-                        "Device Type": "REF",
+                    "DUT": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G",
                         "Analysis Type": "data_performance",
                         "Protocol Type": "PING",
@@ -3401,8 +1827,8 @@
                     }
                 },
                 "Poor": {
-                    "DUT": {
-                        "Device Type": "DUT",
+                    "REF": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G",
                         "Analysis Type": "data_performance",
                         "Protocol Type": "PING",
@@ -3422,8 +1848,8 @@
                             ]
                         }
                     },
-                    "REF": {
-                        "Device Type": "REF",
+                    "DUT": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G",
                         "Analysis Type": "data_performance",
                         "Protocol Type": "PING",
@@ -3455,6 +1881,58 @@
             },
             "Udp Test": {
                 "DL": {
+                    "REF": {
+                        "Device Type": "REF",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "UDP",
+                        "Throughput": {
+                            "Mean": 108.17556,
+                            "Standard Deviation": 17.692946998922103,
+                            "Minimum": 81.585,
+                            "Maximum": 138.851,
+                            "Q1": 93.393,
+                            "Median": 105.049,
+                            "Q3": 120.408,
+                            "Outliers": [],
+                            "Number of Intervals": 25
+                        },
+                        "Jitter": {
+                            "Mean": 0.3104400000000001,
+                            "Number of Intervals": 25
+                        },
+                        "Error Ratio": {
+                            "Mean": 37.97405,
+                            "Number of Intervals": 20
+                        }
+                    },
+                    "DUT": {
+                        "Device Type": "Unknown",
+                        "Network Type": "5G",
+                        "Analysis Type": "data_performance",
+                        "Analysis Direction": "DL",
+                        "Protocol Type": "UDP",
+                        "Throughput": {
+                            "Mean": 106.13412,
+                            "Standard Deviation": 14.94990340637691,
+                            "Minimum": 90.121,
+                            "Maximum": 138.851,
+                            "Q1": 96.224,
+                            "Median": 99.413,
+                            "Q3": 116.542,
+                            "Outliers": [],
+                            "Number of Intervals": 25
+                        },
+                        "Jitter": {
+                            "Mean": 0.21261999999999998,
+                            "Number of Intervals": 25
+                        },
+                        "Error Ratio": {
+                            "Mean": 37.0544,
+                            "Number of Intervals": 20
+                        }
+                    },
                     "UDP Download Task at 200 Mbps for 10 seconds": {
                         "Good": {
                             "DUT": {
@@ -3516,32 +1994,6 @@
                             }
                         },
                         "Moderate": {
-                            "DUT": {
-                                "Device Type": "DUT",
-                                "Network Type": "5G",
-                                "Analysis Type": "data_performance",
-                                "Analysis Direction": "DL",
-                                "Protocol Type": "UDP",
-                                "Throughput": {
-                                    "Mean": 78.62639999999999,
-                                    "Standard Deviation": 14.871161807867917,
-                                    "Minimum": 53.46,
-                                    "Maximum": 101.32,
-                                    "Q1": 69.06099999999999,
-                                    "Median": 79.02850000000001,
-                                    "Q3": 89.61824999999999,
-                                    "Outliers": [],
-                                    "Number of Intervals": 20
-                                },
-                                "Jitter": {
-                                    "Mean": 0.35487,
-                                    "Number of Intervals": 20
-                                },
-                                "Error Ratio": {
-                                    "Mean": 23.546750000000003,
-                                    "Number of Intervals": 20
-                                }
-                            },
                             "REF": {
                                 "Device Type": "REF",
                                 "Network Type": "5G",
@@ -3549,15 +2001,16 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 99.82015789473685,
-                                    "Standard Deviation": 9.8057101463221,
-                                    "Minimum": 78.025,
+                                    "Mean": 103.19227777777776,
+                                    "Standard Deviation": 6.417210249702661,
+                                    "Minimum": 93.552,
                                     "Maximum": 114.376,
-                                    "Q1": 94.8035,
-                                    "Median": 102.8815,
-                                    "Q3": 106.251,
+                                    "Q1": 97.3205,
+                                    "Median": 103.732,
+                                    "Q3": 107.79075,
                                     "Outliers": [
-                                        74.341
+                                        78.025,
+                                        125.438
                                     ],
                                     "Number of Intervals": 20
                                 },
@@ -3568,6 +2021,34 @@
                                 "Error Ratio": {
                                     "Mean": 27.581105263157898,
                                     "Number of Intervals": 19
+                                }
+                            },
+                            "DUT": {
+                                "Device Type": "Unknown",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 107.47442105263156,
+                                    "Standard Deviation": 13.173788218849115,
+                                    "Minimum": 85.43,
+                                    "Maximum": 129.866,
+                                    "Q1": 98.412,
+                                    "Median": 104.25,
+                                    "Q3": 116.68799999999999,
+                                    "Outliers": [
+                                        60.514
+                                    ],
+                                    "Number of Intervals": 20
+                                },
+                                "Jitter": {
+                                    "Mean": 0.35487,
+                                    "Number of Intervals": 20
+                                },
+                                "Error Ratio": {
+                                    "Mean": 23.546750000000003,
+                                    "Number of Intervals": 20
                                 }
                             }
                         },
@@ -3686,8 +2167,34 @@
                             }
                         },
                         "Moderate": {
+                            "REF": {
+                                "Device Type": "REF",
+                                "Network Type": "5G",
+                                "Analysis Type": "data_performance",
+                                "Analysis Direction": "DL",
+                                "Protocol Type": "UDP",
+                                "Throughput": {
+                                    "Mean": 108.17556,
+                                    "Standard Deviation": 17.692946998922103,
+                                    "Minimum": 81.585,
+                                    "Maximum": 138.851,
+                                    "Q1": 93.393,
+                                    "Median": 105.049,
+                                    "Q3": 120.408,
+                                    "Outliers": [],
+                                    "Number of Intervals": 25
+                                },
+                                "Jitter": {
+                                    "Mean": 0.3104400000000001,
+                                    "Number of Intervals": 25
+                                },
+                                "Error Ratio": {
+                                    "Mean": 37.97405,
+                                    "Number of Intervals": 20
+                                }
+                            },
                             "DUT": {
-                                "Device Type": "DUT",
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -3715,32 +2222,6 @@
                                 },
                                 "Error Ratio": {
                                     "Mean": 37.0544,
-                                    "Number of Intervals": 20
-                                }
-                            },
-                            "REF": {
-                                "Device Type": "REF",
-                                "Network Type": "5G",
-                                "Analysis Type": "data_performance",
-                                "Analysis Direction": "DL",
-                                "Protocol Type": "UDP",
-                                "Throughput": {
-                                    "Mean": 108.17556,
-                                    "Standard Deviation": 17.692946998922103,
-                                    "Minimum": 81.585,
-                                    "Maximum": 138.851,
-                                    "Q1": 93.393,
-                                    "Median": 105.049,
-                                    "Q3": 120.408,
-                                    "Outliers": [],
-                                    "Number of Intervals": 25
-                                },
-                                "Jitter": {
-                                    "Mean": 0.3104400000000001,
-                                    "Number of Intervals": 25
-                                },
-                                "Error Ratio": {
-                                    "Mean": 37.97405,
                                     "Number of Intervals": 20
                                 }
                             }
@@ -3807,8 +2288,8 @@
                 "UL": {
                     "UDP Upload Task at 10 Mbps for 10 seconds": {
                         "Good": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -3838,8 +2319,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -3873,13 +2354,13 @@
                                 "Analysis Direction": "UL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 7.9529,
-                                    "Standard Deviation": 1.1886667409550213,
-                                    "Minimum": 5.621,
-                                    "Maximum": 9.903,
-                                    "Q1": 7.3355,
-                                    "Median": 7.9655000000000005,
-                                    "Q3": 8.6655,
+                                    "Mean": 9.214100000000002,
+                                    "Standard Deviation": 0.574990150945397,
+                                    "Minimum": 8.103,
+                                    "Maximum": 9.966,
+                                    "Q1": 8.76575,
+                                    "Median": 9.341999999999999,
+                                    "Q3": 9.61825,
                                     "Outliers": [],
                                     "Number of Intervals": 20
                                 },
@@ -3899,14 +2380,16 @@
                                 "Analysis Direction": "UL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 7.646050000000001,
-                                    "Standard Deviation": 2.0016356331497343,
-                                    "Minimum": 3.804,
-                                    "Maximum": 9.932,
-                                    "Q1": 6.4795,
-                                    "Median": 7.534000000000001,
-                                    "Q3": 9.505500000000001,
-                                    "Outliers": [],
+                                    "Mean": 9.42721052631579,
+                                    "Standard Deviation": 0.5700822142412022,
+                                    "Minimum": 7.817,
+                                    "Maximum": 9.935,
+                                    "Q1": 9.07825,
+                                    "Median": 9.4165,
+                                    "Q3": 9.9305,
+                                    "Outliers": [
+                                        3.804
+                                    ],
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
@@ -4144,88 +2627,14 @@
                         }
                     }
                 }
-            },
-            "5G Auto Data Play-store app Download": {
-                "Good": {
-                    "DUT": {
-                        "30M": {
-                            "overall_average_throughput": 147.1285119047619
-                        },
-                        "60M": {
-                            "overall_average_throughput": 213.39915641025638
-                        },
-                        "100M": {
-                            "overall_average_throughput": 249.94195769230768
-                        }
-                    },
-                    "REF": {
-                        "30M": {
-                            "overall_average_throughput": 60.84161072545875
-                        },
-                        "60M": {
-                            "overall_average_throughput": 62.726704619722376
-                        },
-                        "100M": {
-                            "overall_average_throughput": 120.83504523809523
-                        }
-                    }
-                },
-                "Moderate": {
-                    "DUT": {
-                        "30M": {
-                            "overall_average_throughput": 0.039857142857142855
-                        },
-                        "60M": {
-                            "overall_average_throughput": 228.6272625
-                        },
-                        "100M": {
-                            "overall_average_throughput": 260.2947194444444
-                        }
-                    },
-                    "REF": {
-                        "30M": {
-                            "overall_average_throughput": 0.0491
-                        },
-                        "60M": {
-                            "overall_average_throughput": 131.27356176470587
-                        },
-                        "100M": {
-                            "overall_average_throughput": 201.0624455687831
-                        }
-                    }
-                },
-                "Poor": {
-                    "DUT": {
-                        "100M": {
-                            "overall_average_throughput": 24.38934015715434
-                        },
-                        "60M": {
-                            "overall_average_throughput": 3.3509206789909762
-                        },
-                        "30M": {
-                            "overall_average_throughput": 2.193686111111111
-                        }
-                    },
-                    "REF": {
-                        "100M": {
-                            "overall_average_throughput": 3.250008635808636
-                        },
-                        "60M": {
-                            "overall_average_throughput": 2.330117389653276
-                        },
-                        "30M": {
-                            "overall_average_throughput": 2.144216666666667
-                        }
-                    }
-                }
             }
         },
         "5G NSA DP": {
             "HTTP Multi Stream": {
                 "DL": {
                     "Moderate": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -4242,8 +2651,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -4262,8 +2671,8 @@
                         }
                     },
                     "Poor": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -4280,8 +2689,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -4302,8 +2711,8 @@
                 },
                 "UL": {
                     "Moderate": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -4324,8 +2733,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -4344,8 +2753,8 @@
                         }
                     },
                     "Poor": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -4362,8 +2771,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -4386,8 +2795,8 @@
             "HTTP Single Stream": {
                 "DL": {
                     "Moderate": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -4406,8 +2815,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -4426,8 +2835,8 @@
                         }
                     },
                     "Poor": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -4444,8 +2853,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "DL",
@@ -4468,8 +2877,8 @@
                 },
                 "UL": {
                     "Moderate": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -4486,8 +2895,8 @@
                                 "Number of Intervals": 19
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -4509,8 +2918,8 @@
                         }
                     },
                     "Poor": {
-                        "DUT": {
-                            "Device Type": "DUT",
+                        "REF": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -4529,8 +2938,8 @@
                                 "Number of Intervals": 20
                             }
                         },
-                        "REF": {
-                            "Device Type": "REF",
+                        "DUT": {
+                            "Device Type": "Unknown",
                             "Network Type": "5G NSA",
                             "Analysis Type": "data_performance",
                             "Analysis Direction": "UL",
@@ -4712,8 +3121,8 @@
             },
             "Ping": {
                 "Moderate": {
-                    "DUT": {
-                        "Device Type": "DUT",
+                    "REF": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G NSA",
                         "Analysis Type": "data_performance",
                         "Protocol Type": "PING",
@@ -4746,8 +3155,8 @@
                             ]
                         }
                     },
-                    "REF": {
-                        "Device Type": "REF",
+                    "DUT": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G NSA",
                         "Analysis Type": "data_performance",
                         "Protocol Type": "PING",
@@ -4791,8 +3200,8 @@
                     }
                 },
                 "Poor": {
-                    "DUT": {
-                        "Device Type": "DUT",
+                    "REF": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G NSA",
                         "Analysis Type": "data_performance",
                         "Protocol Type": "PING",
@@ -4814,8 +3223,8 @@
                             ]
                         }
                     },
-                    "REF": {
-                        "Device Type": "REF",
+                    "DUT": {
+                        "Device Type": "Unknown",
                         "Network Type": "5G NSA",
                         "Analysis Type": "data_performance",
                         "Protocol Type": "PING",
@@ -4863,8 +3272,8 @@
                 "DL": {
                     "UDP Download Task at 200 Mbps for 10 seconds": {
                         "Moderate": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -4889,8 +3298,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -4921,8 +3330,8 @@
                             }
                         },
                         "Poor": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -4947,8 +3356,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -4977,8 +3386,8 @@
                     },
                     "UDP Download Task at 400 Mbps for 10 seconds": {
                         "Moderate": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -5006,8 +3415,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -5036,8 +3445,8 @@
                             }
                         },
                         "Poor": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -5064,8 +3473,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "DL",
@@ -5099,8 +3508,8 @@
                 "UL": {
                     "5G NSA_UDP Upload Task at 10 Mbps for 10 seconds": {
                         "Moderate": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -5131,8 +3540,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -5159,8 +3568,8 @@
                             }
                         },
                         "Poor": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -5187,8 +3596,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -5219,8 +3628,8 @@
                     },
                     "5G NSA_UDP Upload Task at 20 Mbps for 10 seconds": {
                         "Moderate": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -5248,8 +3657,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -5279,8 +3688,8 @@
                             }
                         },
                         "Poor": {
-                            "DUT": {
-                                "Device Type": "DUT",
+                            "REF": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",
@@ -5307,8 +3716,8 @@
                                     "Number of Intervals": 20
                                 }
                             },
-                            "REF": {
-                                "Device Type": "REF",
+                            "DUT": {
+                                "Device Type": "Unknown",
                                 "Network Type": "5G NSA",
                                 "Analysis Type": "data_performance",
                                 "Analysis Direction": "UL",

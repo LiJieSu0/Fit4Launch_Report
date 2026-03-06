@@ -46,45 +46,67 @@ const CoverageLineChart = ({ analysisType, run, city, projectFolderName }) => {
         const fetchData = async () => {
             if (!analysisType || !run) return;
 
-            const url = `${dataFolderPath}/Run${run}${fileNamePart}`;
+            const runsToFetch = run === 'Average' ? 5 : 1;
+            const allRunsData = [];
+
             try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const text = await response.text();
+                for (let r = 1; r <= runsToFetch; r++) {
+                    const currentRun = run === 'Average' ? r : run;
+                    const url = `${dataFolderPath}/Run${currentRun}${fileNamePart}`;
 
-                // Parse CSV
-                const lines = text.trim().split('\n');
-                // skip header
-                const dataRows = lines.slice(1);
+                    const response = await fetch(url);
+                    if (response.ok) {
+                        const text = await response.text();
+                        const lines = text.trim().split('\n');
+                        const dataRows = lines.slice(1);
 
-                const pc2Data = [];
-                const pc3Data = [];
-                const labels = [];
-
-                dataRows.forEach((line, index) => {
-                    // Trim line to avoid issues with CR/LF
-                    const parts = line.trim().split(',');
-                    if (parts.length >= 2) {
-                        const pc2 = parseFloat(parts[0]);
-                        const pc3 = parseFloat(parts[1]);
-                        if (!isNaN(pc2) && !isNaN(pc3)) {
-                            pc2Data.push(pc2);
-                            pc3Data.push(pc3);
-                            labels.push(index + 1); // 1-based index
+                        const runPc2 = [];
+                        const runPc3 = [];
+                        dataRows.forEach((line) => {
+                            const parts = line.trim().split(',');
+                            if (parts.length >= 2) {
+                                const pc2 = parseFloat(parts[0]);
+                                const pc3 = parseFloat(parts[1]);
+                                if (!isNaN(pc2) && !isNaN(pc3)) {
+                                    runPc2.push(pc2);
+                                    runPc3.push(pc3);
+                                }
+                            }
+                        });
+                        if (runPc2.length > 0) {
+                            allRunsData.push({ pc2: runPc2, pc3: runPc3 });
                         }
+                    } else if (run !== 'Average') {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                });
+                }
 
-                if (labels.length > 0) {
+                if (allRunsData.length > 0) {
+                    const minLength = Math.min(...allRunsData.map(d => d.pc2.length));
+
+                    const finalPc2Data = [];
+                    const finalPc3Data = [];
+                    const labels = [];
+
+                    for (let i = 0; i < minLength; i++) {
+                        let pc2Sum = 0;
+                        let pc3Sum = 0;
+                        allRunsData.forEach(runData => {
+                            pc2Sum += runData.pc2[i];
+                            pc3Sum += runData.pc3[i];
+                        });
+                        finalPc2Data.push(parseFloat((pc2Sum / allRunsData.length).toFixed(2)));
+                        finalPc3Data.push(parseFloat((pc3Sum / allRunsData.length).toFixed(2)));
+                        labels.push(i + 1);
+                    }
+
                     setChartData({
                         labels,
                         datasets: [
                             {
                                 label: 'PC2',
-                                data: pc2Data,
-                                borderColor: '#FF9999', // Pinkish
+                                data: finalPc2Data,
+                                borderColor: '#FF9999',
                                 backgroundColor: '#FF9999',
                                 borderWidth: 2,
                                 pointRadius: 0,
@@ -93,8 +115,8 @@ const CoverageLineChart = ({ analysisType, run, city, projectFolderName }) => {
                             },
                             {
                                 label: 'PC3',
-                                data: pc3Data,
-                                borderColor: '#36A2EB', // Blueish
+                                data: finalPc3Data,
+                                borderColor: '#36A2EB',
                                 backgroundColor: '#36A2EB',
                                 borderWidth: 2,
                                 pointRadius: 0,
@@ -104,9 +126,8 @@ const CoverageLineChart = ({ analysisType, run, city, projectFolderName }) => {
                         ],
                     });
                 }
-
             } catch (error) {
-                console.error(`Error loading data for Run ${run} from ${url}:`, error);
+                console.error(`Error loading data for Run ${run} from ${dataFolderPath}:`, error);
             }
         };
 
@@ -114,11 +135,11 @@ const CoverageLineChart = ({ analysisType, run, city, projectFolderName }) => {
     }, [analysisType, run, dataFolderPath, fileNamePart, city, projectFolderName]);
 
     if (!chartData) {
-        return <div style={{ height: '400px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading Run {run}...</div>;
+        return <div style={{ height: '280px', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading {run === 'Average' ? 'Averaged' : `Run ${run}`}...</div>;
     }
     // 寬度百分比顯示會因為螢幕不同而改變大小，這段需要修改
     return (
-        <div style={{ height: '350px', width: '40%', marginBottom: '20px' }}>
+        <div style={{ height: '280px', width: run === 'Average' ? '50%' : '50%', marginBottom: '20px' }}>
             <Line
                 data={chartData}
                 options={{
@@ -137,7 +158,7 @@ const CoverageLineChart = ({ analysisType, run, city, projectFolderName }) => {
                         },
                         title: {
                             display: true,
-                            text: `Run ${run} ${chartTitleContext} (PC2 vs PC3)`,
+                            text: `${run === 'Average' ? 'Averaged' : `Run ${run}`} ${chartTitleContext} (PC2 vs PC3)`,
                             font: { size: 16, weight: 'bold' },
                             color: '#333'
                         },

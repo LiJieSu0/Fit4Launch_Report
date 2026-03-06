@@ -87,27 +87,9 @@ const HpueCoverageSection = ({ city: propCity, firstSection = false }) => {
                 <DynamicHeader level={2}>N41 HPUE Coverage Test - {city} </DynamicHeader>
                 <HPUECoverageTable n41Data={n41HPUEData} />
                 <DynamicHeader level={3} hideInTOC={true}>5G n41 HPUE Coverage Test - RSRP Analysis - {city}</DynamicHeader>
-                <CoverageLineChart analysisType="RSRP" run={1} city={city} projectFolderName={projectFolderName} />
-                <CoverageLineChart analysisType="RSRP" run={2} city={city} projectFolderName={projectFolderName} />
-            </PageBreak>
-            <PageBreak>
-                <CoverageLineChart analysisType="RSRP" run={3} city={city} projectFolderName={projectFolderName} />
-                <CoverageLineChart analysisType="RSRP" run={4} city={city} projectFolderName={projectFolderName} />
-            </PageBreak>
-            <PageBreak>
-                <CoverageLineChart analysisType="RSRP" run={5} city={city} projectFolderName={projectFolderName} />
-            </PageBreak>
-            <PageBreak>
+                <CoverageLineChart analysisType="RSRP" run="Average" city={city} projectFolderName={projectFolderName} />
                 <DynamicHeader level={3} hideInTOC={true}>5G n41 HPUE Coverage Test - Tx Power Analysis - {city}</DynamicHeader>
-                <CoverageLineChart analysisType="TxPower" run={1} city={city} projectFolderName={projectFolderName} />
-                <CoverageLineChart analysisType="TxPower" run={2} city={city} projectFolderName={projectFolderName} />
-            </PageBreak>
-            <PageBreak>
-                <CoverageLineChart analysisType="TxPower" run={3} city={city} projectFolderName={projectFolderName} />
-                <CoverageLineChart analysisType="TxPower" run={4} city={city} projectFolderName={projectFolderName} />
-            </PageBreak>
-            <PageBreak>
-                <CoverageLineChart analysisType="TxPower" run={5} city={city} projectFolderName={projectFolderName} />
+                <CoverageLineChart analysisType="TxPower" run="Average" city={city} projectFolderName={projectFolderName} />
             </PageBreak>
         </>
     );

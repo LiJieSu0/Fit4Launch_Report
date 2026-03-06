@@ -41,42 +41,67 @@ const VonrTimeLineChart = ({ analysisType, band, run, city, projectFolderName, h
         const fetchData = async () => {
             if (!analysisType || !band || !run) return;
 
-            const url = `/AnalyzeResults/${encodeURIComponent(projectFolderName)}/${encodeURIComponent(city)}/CoverageTimeLine/${analysisType}TimeLine/${band.toUpperCase()}_Run${run}.csv`;
+            const runsToFetch = run === 'Average' ? (band.toLowerCase().startsWith('b') ? 10 : 5) : 1;
+            const allRunsData = [];
 
             try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const text = await response.text();
+                for (let r = 1; r <= runsToFetch; r++) {
+                    const currentRun = run === 'Average' ? r : run;
+                    const url = `/AnalyzeResults/${encodeURIComponent(projectFolderName)}/${encodeURIComponent(city)}/CoverageTimeLine/${analysisType}TimeLine/${band.toUpperCase()}_Run${currentRun}.csv`;
 
-                const lines = text.trim().split('\n');
-                const dataRows = lines.slice(1);
+                    const response = await fetch(url);
+                    if (response.ok) {
+                        const text = await response.text();
+                        const lines = text.trim().split('\n');
+                        const dataRows = lines.slice(1);
 
-                const dutData = [];
-                const refData = [];
-                const labels = [];
-
-                dataRows.forEach((line, index) => {
-                    const parts = line.trim().split(',');
-                    if (parts.length >= 2) {
-                        const dut = parseFloat(parts[0]);
-                        const ref = parseFloat(parts[1]);
-                        if (!isNaN(dut) && !isNaN(ref)) {
-                            dutData.push(dut);
-                            refData.push(ref);
-                            labels.push(index + 1);
+                        const runDut = [];
+                        const runRef = [];
+                        dataRows.forEach((line) => {
+                            const parts = line.trim().split(',');
+                            if (parts.length >= 2) {
+                                const dut = parseFloat(parts[0]);
+                                const ref = parseFloat(parts[1]);
+                                if (!isNaN(dut) && !isNaN(ref)) {
+                                    runDut.push(dut);
+                                    runRef.push(ref);
+                                }
+                            }
+                        });
+                        if (runDut.length > 0) {
+                            allRunsData.push({ dut: runDut, ref: runRef });
                         }
+                    } else if (run !== 'Average') {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                });
+                }
 
-                if (labels.length > 0) {
+                if (allRunsData.length > 0) {
+                    // Find minimum length across all fetched runs
+                    const minLength = Math.min(...allRunsData.map(d => d.dut.length));
+
+                    const finalDutData = [];
+                    const finalRefData = [];
+                    const labels = [];
+
+                    for (let i = 0; i < minLength; i++) {
+                        let dutSum = 0;
+                        let refSum = 0;
+                        allRunsData.forEach(runData => {
+                            dutSum += runData.dut[i];
+                            refSum += runData.ref[i];
+                        });
+                        finalDutData.push(parseFloat((dutSum / allRunsData.length).toFixed(2)));
+                        finalRefData.push(parseFloat((refSum / allRunsData.length).toFixed(2)));
+                        labels.push(i + 1);
+                    }
+
                     setChartData({
                         labels,
                         datasets: [
                             {
                                 label: 'DUT',
-                                data: dutData,
+                                data: finalDutData,
                                 borderColor: '#FF6384',
                                 backgroundColor: '#FF6384',
                                 borderWidth: 1,
@@ -86,7 +111,7 @@ const VonrTimeLineChart = ({ analysisType, band, run, city, projectFolderName, h
                             },
                             {
                                 label: 'REF',
-                                data: refData,
+                                data: finalRefData,
                                 borderColor: '#36A2EB',
                                 backgroundColor: '#36A2EB',
                                 borderWidth: 1,
@@ -97,7 +122,6 @@ const VonrTimeLineChart = ({ analysisType, band, run, city, projectFolderName, h
                         ],
                     });
                 }
-
             } catch (error) {
                 console.error(`Error loading VonrTimeLineChart data for ${band} Run ${run}:`, error);
             }
@@ -125,7 +149,7 @@ const VonrTimeLineChart = ({ analysisType, band, run, city, projectFolderName, h
                     plugins: {
                         title: {
                             display: true,
-                            text: `Run ${run} ${analysisType}`,
+                            text: `${run === 'Average' ? 'Averaged' : `Run ${run}`} ${analysisType}`,
                             font: { size: 14, weight: 'bold' },
                             color: '#333'
                         },

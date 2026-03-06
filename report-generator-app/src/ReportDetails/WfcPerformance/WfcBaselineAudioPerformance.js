@@ -19,14 +19,26 @@ const WfcBaselineAudioPerformance = () => {
 
         let p56Wfc = tc148Data?.['WFC']?.['p56 Active Speech Level'];
         let p56Cell = tc148Data?.['Cellular']?.['p56 Active Speech Level'];
+        let p56RmsWfc = tc148Data?.['WFC']?.['p56 rms'];
+        let p56RmsCell = tc148Data?.['Cellular']?.['p56 rms'];
+        let p56PeakWfc = tc148Data?.['WFC']?.['p56 peack-factor'];
+        let p56PeakCell = tc148Data?.['Cellular']?.['p56 peack-factor'];
         let polqaWfc = tc148Data?.['WFC']?.['POLQA Attenuation'];
         let polqaCell = tc148Data?.['Cellular']?.['POLQA Attenuation'];
 
         let p56Delta = 'N/A';
+        let p56RmsDelta = 'N/A';
+        let p56PeakDelta = 'N/A';
         let polqaDelta = 'N/A';
 
         if (p56Wfc !== undefined && p56Cell !== undefined && p56Wfc !== 'N/A' && p56Cell !== 'N/A') {
             p56Delta = (parseFloat(p56Wfc) - parseFloat(p56Cell)).toFixed(2);
+        }
+        if (p56RmsWfc !== undefined && p56RmsCell !== undefined && p56RmsWfc !== 'N/A' && p56RmsCell !== 'N/A') {
+            p56RmsDelta = (parseFloat(p56RmsWfc) - parseFloat(p56RmsCell)).toFixed(2);
+        }
+        if (p56PeakWfc !== undefined && p56PeakCell !== undefined && p56PeakWfc !== 'N/A' && p56PeakCell !== 'N/A') {
+            p56PeakDelta = (parseFloat(p56PeakWfc) - parseFloat(p56PeakCell)).toFixed(2);
         }
         if (polqaWfc !== undefined && polqaCell !== undefined && polqaWfc !== 'N/A' && polqaCell !== 'N/A') {
             polqaDelta = (parseFloat(polqaWfc) - parseFloat(polqaCell)).toFixed(2);
@@ -55,6 +67,22 @@ const WfcBaselineAudioPerformance = () => {
                         </tr>
 
                         <tr>
+                            <td style={{ textAlign: 'left' }}>p.56 rms long term energy</td>
+                            <td>dBov</td>
+                            <td>{formatVal(p56RmsWfc)}</td>
+                            <td>{formatVal(p56RmsCell)}</td>
+                            <td>{p56RmsDelta}</td>
+                        </tr>
+
+                        <tr>
+                            <td style={{ textAlign: 'left' }}>p.56 active peak-factor</td>
+                            <td>dB</td>
+                            <td>{formatVal(p56PeakWfc)}</td>
+                            <td>{formatVal(p56PeakCell)}</td>
+                            <td>{p56PeakDelta}</td>
+                        </tr>
+
+                        <tr>
                             <td style={{ textAlign: 'left' }}>POLQA Attenuation</td>
                             <td>dBov</td>
                             <td>{formatVal(polqaWfc)}</td>
@@ -68,12 +96,14 @@ const WfcBaselineAudioPerformance = () => {
 
         // --- Chart ---
         const chartData = {
-            labels: ['p.56 Active Speech Level', 'POLQA Attenuation'],
+            labels: ['p.56 Active Speech Level', 'p.56 rms long term energy', 'p.56 active peak-factor', 'POLQA Attenuation'],
             datasets: [
                 {
                     label: 'WFC',
                     data: [
                         p56Wfc !== undefined && p56Wfc !== 'N/A' ? parseFloat(p56Wfc) : 0,
+                        p56RmsWfc !== undefined && p56RmsWfc !== 'N/A' ? parseFloat(p56RmsWfc) : 0,
+                        p56PeakWfc !== undefined && p56PeakWfc !== 'N/A' ? parseFloat(p56PeakWfc) : 0,
                         polqaWfc !== undefined && polqaWfc !== 'N/A' ? parseFloat(polqaWfc) : 0
                     ],
                     backgroundColor: '#4472c4',
@@ -86,6 +116,8 @@ const WfcBaselineAudioPerformance = () => {
                     label: 'Cellular',
                     data: [
                         p56Cell !== undefined && p56Cell !== 'N/A' ? parseFloat(p56Cell) : 0,
+                        p56RmsCell !== undefined && p56RmsCell !== 'N/A' ? parseFloat(p56RmsCell) : 0,
+                        p56PeakCell !== undefined && p56PeakCell !== 'N/A' ? parseFloat(p56PeakCell) : 0,
                         polqaCell !== undefined && polqaCell !== 'N/A' ? parseFloat(polqaCell) : 0
                     ],
                     backgroundColor: '#ed7d31', // Using distinct color for Cellular
@@ -160,6 +192,7 @@ const WfcBaselineAudioPerformance = () => {
             <PageBreak>
                 <DynamicHeader level={1} >Baseline Audio Performance</DynamicHeader>
                 {availableCities.filter(city => city === 'Seattle').map(city => renderDataForCity(city))}
+                {/* import wfc_freq.png */}
             </PageBreak>
         </>
     );

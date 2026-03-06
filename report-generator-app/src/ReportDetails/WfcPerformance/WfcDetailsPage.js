@@ -60,6 +60,9 @@ have for the DUT.
         <WfcCoverageOverviewTable />
       </PageBreak>
 
+      {/* -------------------------Details Section------------------------------------------------------------- */}
+
+
       {/* Baseline Audio Performance Details Component */}
       <div id="baseline-audio-performance-details">
         <WfcBaselineAudioPerformance />

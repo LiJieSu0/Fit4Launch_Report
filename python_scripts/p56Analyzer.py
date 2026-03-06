@@ -4,7 +4,7 @@ import numpy as np
 import json
 
 # 1. 讀取音訊
-file_path = "test.wav"
+file_path = "Cellular.wav"
 signal, fs = sf.read(file_path)
 
 # 如果是多聲道，取第一聲道

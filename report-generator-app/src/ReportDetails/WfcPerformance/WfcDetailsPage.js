@@ -98,9 +98,9 @@ have for the DUT.
       {/* TC160 NSD-A*/}
       {/* TC161 NSD-C*/}
 
-      <WfcMultiHandover title="T-Mobile HINT Gateway" tc="TC162 TC163 TC164" sectionNumber={1} />
-      <WfcMultiHandover title="ASUS RT-AC68U" tc="TC165 TC166 TC167" />
-      <WfcMultiHandover title="LinkSys Hydra Pro 6E" tc="TC168 TC169 TC170" />
+      <WfcMultiHandover title="T-Mobile HINT Gateway" tc="TC162 TC165 TC168" sectionNumber={1} />
+      <WfcMultiHandover title="ASUS RT-AC68U" tc="TC163 TC166 TC169" />
+      <WfcMultiHandover title="LinkSys Hydra Pro 6E" tc="TC164 TC167 TC170" />
       {/* Multi Handover */}
       {/* Profile 1 */}
       {/* TC162 */}

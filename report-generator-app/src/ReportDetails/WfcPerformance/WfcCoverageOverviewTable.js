@@ -48,8 +48,6 @@ const WfcCoverageOverviewTable = () => {
                             <th>RSRP</th>
                             <th>Call Drops</th>
                             <th>Handover Delay impact to speech</th>
-                            <th>Handovers occured</th>
-                            <th>Attempts</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,7 +61,7 @@ const WfcCoverageOverviewTable = () => {
                                         <tr key={`kpi-${apConfig.apName}-${tc}`}>
                                             {tcIndex === 0 && <td rowSpan={apConfig.tcs.length * 2}>{apConfig.apName}</td>}
                                             <td rowSpan="2">{profileName}</td>
-                                            <td colSpan="7">No data found for TC in {city}</td>
+                                            <td colSpan="5">No data found for TC in {city}</td>
                                         </tr>
                                     );
                                 }
@@ -78,7 +76,7 @@ const WfcCoverageOverviewTable = () => {
                                                 {tcIndex === 0 && isFirstDevice && <td rowSpan={apConfig.tcs.length * 2}>{apConfig.apName}</td>}
                                                 {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                                 <td>{deviceType}</td>
-                                                <td colSpan="6">N/A</td>
+                                                <td colSpan="4">N/A</td>
                                             </tr>
                                         );
                                     }
@@ -123,8 +121,6 @@ const WfcCoverageOverviewTable = () => {
                                             <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                             <td style={callDropsStyle}>{callDrops !== undefined ? callDrops : 'N/A'}</td>
                                             <td style={handoverDelayStyle}>{formatVal(handoverDelay)}</td>
-                                            <td>{deviceData ? 1 : 'N/A'}</td>
-                                            <td>{deviceData ? (typeof callDrops === 'number' ? callDrops : 0) + 1 : 'N/A'}</td>
                                         </tr>
                                     );
                                 };

@@ -131,8 +131,6 @@ const WfcCoverage = ({ title, tc, section = 0 }) => {
                                         <th>RSRP</th>
                                         <th>Call Drops</th>
                                         <th>Handover Delay impact to speech</th>
-                                        <th>Handovers occured</th>
-                                        <th>Attempts</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -144,7 +142,7 @@ const WfcCoverage = ({ title, tc, section = 0 }) => {
                                             return (
                                                 <tr key={`kpi-${tc}`}>
                                                     <td>{profileName}</td>
-                                                    <td colSpan="9">No data found for Test Case: {tc} in {city}</td>
+                                                    <td colSpan="7">No data found for Test Case: {tc} in {city}</td>
                                                 </tr>
                                             );
                                         }
@@ -187,8 +185,6 @@ const WfcCoverage = ({ title, tc, section = 0 }) => {
                                                     <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                                     <td style={callDropsStyle}>{callDrops}</td>
                                                     <td style={handoverDelayStyle}>{formatVal(deviceData.handover_impact_delay)}</td>
-                                                    <td>1</td>
-                                                    <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
                                                 </tr>
                                             );
                                         };

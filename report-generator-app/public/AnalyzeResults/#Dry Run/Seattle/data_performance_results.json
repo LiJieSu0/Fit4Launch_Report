@@ -3464,22 +3464,24 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 191.53559090909093,
-                                    "Standard Deviation": 3.4001138028446016,
-                                    "Minimum": 183.864,
-                                    "Maximum": 195.183,
-                                    "Q1": 188.65275,
-                                    "Median": 192.772,
-                                    "Q3": 194.32125000000002,
-                                    "Outliers": [],
-                                    "Number of Intervals": 22
+                                    "Mean": 186.40747368421052,
+                                    "Standard Deviation": 1.6211415857153506,
+                                    "Minimum": 183.683,
+                                    "Maximum": 190.4,
+                                    "Q1": 185.51125,
+                                    "Median": 186.449,
+                                    "Q3": 187.7405,
+                                    "Outliers": [
+                                        206.32
+                                    ],
+                                    "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.0804818181818182,
-                                    "Number of Intervals": 22
+                                    "Mean": 0.08499000000000002,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 4.5333,
+                                    "Mean": 8.080400000000001,
                                     "Number of Intervals": 20
                                 }
                             },
@@ -3490,22 +3492,25 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 199.13932000000005,
-                                    "Standard Deviation": 0.19854380708884445,
-                                    "Minimum": 198.698,
-                                    "Maximum": 199.457,
-                                    "Q1": 199.036,
-                                    "Median": 199.143,
-                                    "Q3": 199.274,
-                                    "Outliers": [],
-                                    "Number of Intervals": 25
+                                    "Mean": 199.67594444444444,
+                                    "Standard Deviation": 0.13080451162493437,
+                                    "Minimum": 199.364,
+                                    "Maximum": 199.882,
+                                    "Q1": 199.60625,
+                                    "Median": 199.6915,
+                                    "Q3": 199.77075,
+                                    "Outliers": [
+                                        200.032,
+                                        199.33
+                                    ],
+                                    "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.08741200000000003,
-                                    "Number of Intervals": 25
+                                    "Mean": 0.08092500000000001,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 0.4141,
+                                    "Mean": 0.15714999999999996,
                                     "Number of Intervals": 20
                                 }
                             }
@@ -3518,22 +3523,22 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 42.53245,
-                                    "Standard Deviation": 21.875680035083903,
-                                    "Minimum": 10.755,
-                                    "Maximum": 77.975,
-                                    "Q1": 23.201999999999998,
-                                    "Median": 42.905,
-                                    "Q3": 60.71375,
+                                    "Mean": 78.62639999999999,
+                                    "Standard Deviation": 14.871161807867917,
+                                    "Minimum": 53.46,
+                                    "Maximum": 101.32,
+                                    "Q1": 69.06099999999999,
+                                    "Median": 79.02850000000001,
+                                    "Q3": 89.61824999999999,
                                     "Outliers": [],
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.1087900000000002,
+                                    "Mean": 0.35487,
                                     "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 68.01755,
+                                    "Mean": 23.546750000000003,
                                     "Number of Intervals": 20
                                 }
                             },
@@ -3544,27 +3549,25 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 14.25529411764706,
-                                    "Standard Deviation": 4.8624705624392455,
-                                    "Minimum": 6.592,
-                                    "Maximum": 24.919,
-                                    "Q1": 10.918000000000001,
-                                    "Median": 14.5425,
-                                    "Q3": 19.64275,
+                                    "Mean": 99.82015789473685,
+                                    "Standard Deviation": 9.8057101463221,
+                                    "Minimum": 78.025,
+                                    "Maximum": 114.376,
+                                    "Q1": 94.8035,
+                                    "Median": 102.8815,
+                                    "Q3": 106.251,
                                     "Outliers": [
-                                        46.928,
-                                        32.999,
-                                        53.611
+                                        74.341
                                     ],
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 1.77232,
-                                    "Number of Intervals": 20
+                                    "Mean": 0.3518578947368421,
+                                    "Number of Intervals": 19
                                 },
                                 "Error Ratio": {
-                                    "Mean": 85.87764999999999,
-                                    "Number of Intervals": 20
+                                    "Mean": 27.581105263157898,
+                                    "Number of Intervals": 19
                                 }
                             }
                         },
@@ -3576,23 +3579,23 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 91.79647368421054,
-                                    "Standard Deviation": 71.60697691129174,
-                                    "Minimum": 22.312,
-                                    "Maximum": 194.827,
-                                    "Q1": 34.092,
-                                    "Median": 40.166,
-                                    "Q3": 158.2065,
+                                    "Mean": 62.932950000000005,
+                                    "Standard Deviation": 5.564336736140068,
+                                    "Minimum": 52.193,
+                                    "Maximum": 73.081,
+                                    "Q1": 59.298,
+                                    "Median": 62.3255,
+                                    "Q3": 66.04599999999999,
                                     "Outliers": [],
-                                    "Number of Intervals": 19
+                                    "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.40207368421052636,
-                                    "Number of Intervals": 19
+                                    "Mean": 0.35928,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 47.74205263157896,
-                                    "Number of Intervals": 19
+                                    "Mean": 57.261750000000006,
+                                    "Number of Intervals": 20
                                 }
                             },
                             "REF": {
@@ -3602,24 +3605,22 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 173.02126315789474,
-                                    "Standard Deviation": 30.235986678573937,
-                                    "Minimum": 107.132,
-                                    "Maximum": 211.887,
-                                    "Q1": 139.48975000000002,
-                                    "Median": 185.64499999999998,
-                                    "Q3": 195.31575,
-                                    "Outliers": [
-                                        18.478
-                                    ],
+                                    "Mean": 53.272149999999996,
+                                    "Standard Deviation": 5.406186916516647,
+                                    "Minimum": 45.447,
+                                    "Maximum": 61.685,
+                                    "Q1": 48.556000000000004,
+                                    "Median": 52.525999999999996,
+                                    "Q3": 57.329,
+                                    "Outliers": [],
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.20329000000000003,
+                                    "Mean": 0.8546750000000001,
                                     "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 14.274200000000002,
+                                    "Mean": 64.54110000000001,
                                     "Number of Intervals": 20
                                 }
                             }
@@ -3634,26 +3635,26 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 227.28592307692304,
-                                    "Standard Deviation": 7.028808837480653,
-                                    "Minimum": 212.802,
-                                    "Maximum": 244.909,
-                                    "Q1": 223.761,
-                                    "Median": 227.87,
-                                    "Q3": 232.284,
+                                    "Mean": 380.9754117647059,
+                                    "Standard Deviation": 1.7515023215379817,
+                                    "Minimum": 376.786,
+                                    "Maximum": 383.854,
+                                    "Q1": 379.57624999999996,
+                                    "Median": 380.573,
+                                    "Q3": 381.61375,
                                     "Outliers": [
-                                        289.914,
-                                        245.435,
-                                        247.89
+                                        376.211,
+                                        375.455,
+                                        373.858
                                     ],
-                                    "Number of Intervals": 29
+                                    "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.051093103448275876,
-                                    "Number of Intervals": 29
+                                    "Mean": 0.03814,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 43.297599999999996,
+                                    "Mean": 5.367649999999999,
                                     "Number of Intervals": 20
                                 }
                             },
@@ -3664,25 +3665,22 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 394.53932000000003,
-                                    "Standard Deviation": 1.7954644645142142,
-                                    "Minimum": 389.926,
-                                    "Maximum": 396.578,
-                                    "Q1": 392.73850000000004,
-                                    "Median": 395.246,
-                                    "Q3": 395.604,
-                                    "Outliers": [
-                                        372.726,
-                                        260.55
-                                    ],
-                                    "Number of Intervals": 27
+                                    "Mean": 396.8734,
+                                    "Standard Deviation": 1.6017441283274818,
+                                    "Minimum": 394.186,
+                                    "Maximum": 400.03,
+                                    "Q1": 395.56725,
+                                    "Median": 396.866,
+                                    "Q3": 398.28499999999997,
+                                    "Outliers": [],
+                                    "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.0523925925925926,
-                                    "Number of Intervals": 27
+                                    "Mean": 0.05389499999999999,
+                                    "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 3.2703,
+                                    "Mean": 1.28965,
                                     "Number of Intervals": 20
                                 }
                             }
@@ -3695,22 +3693,28 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 64.34775,
-                                    "Standard Deviation": 18.946686831253082,
-                                    "Minimum": 20.849,
-                                    "Maximum": 84.427,
-                                    "Q1": 50.07575,
-                                    "Median": 70.033,
-                                    "Q3": 78.51875,
-                                    "Outliers": [],
-                                    "Number of Intervals": 20
+                                    "Mean": 87.49095000000001,
+                                    "Standard Deviation": 3.570014322173837,
+                                    "Minimum": 79.89,
+                                    "Maximum": 94.941,
+                                    "Q1": 81.303,
+                                    "Median": 87.3,
+                                    "Q3": 88.628,
+                                    "Outliers": [
+                                        67.265,
+                                        67.76,
+                                        70.262,
+                                        69.609,
+                                        66.542
+                                    ],
+                                    "Number of Intervals": 25
                                 },
                                 "Jitter": {
-                                    "Mean": 0.3598799999999999,
-                                    "Number of Intervals": 20
+                                    "Mean": 0.21261999999999998,
+                                    "Number of Intervals": 25
                                 },
                                 "Error Ratio": {
-                                    "Mean": 74.46050000000001,
+                                    "Mean": 37.0544,
                                     "Number of Intervals": 20
                                 }
                             },
@@ -3721,25 +3725,22 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 39.95022222222222,
-                                    "Standard Deviation": 6.633627838570203,
-                                    "Minimum": 26.151,
-                                    "Maximum": 53.58,
-                                    "Q1": 36.84,
-                                    "Median": 41.265,
-                                    "Q3": 44.5565,
-                                    "Outliers": [
-                                        76.53,
-                                        64.699
-                                    ],
-                                    "Number of Intervals": 20
+                                    "Mean": 108.17556,
+                                    "Standard Deviation": 17.692946998922103,
+                                    "Minimum": 81.585,
+                                    "Maximum": 138.851,
+                                    "Q1": 93.393,
+                                    "Median": 105.049,
+                                    "Q3": 120.408,
+                                    "Outliers": [],
+                                    "Number of Intervals": 25
                                 },
                                 "Jitter": {
-                                    "Mean": 0.4588900000000001,
-                                    "Number of Intervals": 20
+                                    "Mean": 0.3104400000000001,
+                                    "Number of Intervals": 25
                                 },
                                 "Error Ratio": {
-                                    "Mean": 82.317,
+                                    "Mean": 37.97405,
                                     "Number of Intervals": 20
                                 }
                             }
@@ -3752,28 +3753,25 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 34.83493333333333,
-                                    "Standard Deviation": 3.424309575179596,
-                                    "Minimum": 30.404,
-                                    "Maximum": 43.284,
-                                    "Q1": 32.533,
-                                    "Median": 36.166,
-                                    "Q3": 55.763,
+                                    "Mean": 60.96811111111111,
+                                    "Standard Deviation": 4.756882640712963,
+                                    "Minimum": 49.985,
+                                    "Maximum": 67.445,
+                                    "Q1": 57.124,
+                                    "Median": 60.5095,
+                                    "Q3": 64.5025,
                                     "Outliers": [
-                                        199.7,
-                                        181.107,
-                                        93.2,
-                                        195.069,
-                                        168.281
+                                        44.996,
+                                        44.295
                                     ],
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.6289300000000001,
+                                    "Mean": 0.5111800000000002,
                                     "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 75.94694999999999,
+                                    "Mean": 77.4528,
                                     "Number of Intervals": 20
                                 }
                             },
@@ -3784,22 +3782,22 @@
                                 "Analysis Direction": "DL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 165.04194999999999,
-                                    "Standard Deviation": 62.24141898622187,
-                                    "Minimum": 25.542,
-                                    "Maximum": 236.003,
-                                    "Q1": 131.709,
-                                    "Median": 182.364,
-                                    "Q3": 205.72475,
+                                    "Mean": 58.24374999999999,
+                                    "Standard Deviation": 5.598287942003246,
+                                    "Minimum": 48.012,
+                                    "Maximum": 67.899,
+                                    "Q1": 55.149249999999995,
+                                    "Median": 59.1725,
+                                    "Q3": 61.06,
                                     "Outliers": [],
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 0.31944,
+                                    "Mean": 0.3159350000000001,
                                     "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 51.176300000000005,
+                                    "Mean": 78.16449999999999,
                                     "Number of Intervals": 20
                                 }
                             }
@@ -3929,24 +3927,22 @@
                                 "Analysis Direction": "UL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 3.5907368421052634,
-                                    "Standard Deviation": 0.2018007383824348,
-                                    "Minimum": 3.405,
-                                    "Maximum": 4.032,
-                                    "Q1": 3.44875,
-                                    "Median": 3.5010000000000003,
-                                    "Q3": 3.72375,
-                                    "Outliers": [
-                                        4.692
-                                    ],
+                                    "Mean": 7.478100000000002,
+                                    "Standard Deviation": 1.396566500197425,
+                                    "Minimum": 4.837,
+                                    "Maximum": 9.833,
+                                    "Q1": 6.77325,
+                                    "Median": 7.05,
+                                    "Q3": 9.154499999999999,
+                                    "Outliers": [],
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 4.024750000000001,
+                                    "Mean": 1.7816500000000004,
                                     "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 25.064,
+                                    "Mean": 0.6355000000000001,
                                     "Number of Intervals": 20
                                 }
                             },
@@ -3957,22 +3953,22 @@
                                 "Analysis Direction": "UL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 4.298399999999999,
-                                    "Standard Deviation": 0.28063094326141136,
-                                    "Minimum": 3.923,
-                                    "Maximum": 4.899,
-                                    "Q1": 4.08525,
-                                    "Median": 4.2325,
-                                    "Q3": 4.44725,
+                                    "Mean": 7.1156999999999995,
+                                    "Standard Deviation": 2.283880702479421,
+                                    "Minimum": 4.799,
+                                    "Maximum": 9.903,
+                                    "Q1": 4.916,
+                                    "Median": 7.02,
+                                    "Q3": 9.2995,
                                     "Outliers": [],
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 2.9114999999999993,
+                                    "Mean": 2.13765,
                                     "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 13.014499999999998,
+                                    "Mean": 3.0874999999999995,
                                     "Number of Intervals": 20
                                 }
                             }
@@ -4100,22 +4096,22 @@
                                 "Analysis Direction": "UL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 4.79665,
-                                    "Standard Deviation": 0.7575933692673762,
-                                    "Minimum": 3.848,
-                                    "Maximum": 5.678,
-                                    "Q1": 3.96875,
-                                    "Median": 4.8469999999999995,
-                                    "Q3": 5.63425,
+                                    "Mean": 7.527749999999999,
+                                    "Standard Deviation": 1.620202354970709,
+                                    "Minimum": 6.019,
+                                    "Maximum": 9.912,
+                                    "Q1": 6.082,
+                                    "Median": 6.6365,
+                                    "Q3": 9.0575,
                                     "Outliers": [],
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 2.5124,
+                                    "Mean": 1.8417,
                                     "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 9.3755,
+                                    "Mean": 1.0690000000000002,
                                     "Number of Intervals": 20
                                 }
                             },
@@ -4126,24 +4122,22 @@
                                 "Analysis Direction": "UL",
                                 "Protocol Type": "UDP",
                                 "Throughput": {
-                                    "Mean": 4.597105263157895,
-                                    "Standard Deviation": 0.3127622268214559,
-                                    "Minimum": 3.965,
-                                    "Maximum": 5.089,
-                                    "Q1": 4.4845,
-                                    "Median": 4.654999999999999,
-                                    "Q3": 4.8397499999999996,
-                                    "Outliers": [
-                                        7.868
-                                    ],
+                                    "Mean": 6.6850000000000005,
+                                    "Standard Deviation": 1.804618781728823,
+                                    "Minimum": 4.286,
+                                    "Maximum": 8.878,
+                                    "Q1": 4.895,
+                                    "Median": 8.0915,
+                                    "Q3": 8.211,
+                                    "Outliers": [],
                                     "Number of Intervals": 20
                                 },
                                 "Jitter": {
-                                    "Mean": 2.5409000000000006,
+                                    "Mean": 2.1457999999999995,
                                     "Number of Intervals": 20
                                 },
                                 "Error Ratio": {
-                                    "Mean": 8.267,
+                                    "Mean": 3.566499999999999,
                                     "Number of Intervals": 20
                                 }
                             }

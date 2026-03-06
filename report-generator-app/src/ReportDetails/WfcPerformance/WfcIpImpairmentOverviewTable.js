@@ -45,8 +45,6 @@ const WfcIpImpairmentOverviewTable = () => {
                             <th>Call Drops</th>
                             <th>Handover Delay impact to speech</th>
                             <th>Packet Loss (%)</th>
-                            <th>Handovers occured</th>
-                            <th>Attempts</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +55,7 @@ const WfcIpImpairmentOverviewTable = () => {
                                 return (
                                     <tr key={`kpi-${config.apName}-${config.tc}`}>
                                         <td>{config.apName}</td>
-                                        <td colSpan="10">No data found for TC in {city}</td>
+                                        <td colSpan="8">No data found for TC in {city}</td>
                                     </tr>
                                 );
                             }
@@ -121,8 +119,6 @@ const WfcIpImpairmentOverviewTable = () => {
                                         <td style={callDropsStyle}>{callDrops}</td>
                                         <td style={handoverDelayStyle}>{formatVal(handoverDelay)}</td>
                                         <td style={packetLossStyle}>{packetLossVal}</td>
-                                        <td>1</td>
-                                        <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
                                     </tr>
                                 );
                             };

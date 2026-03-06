@@ -136,8 +136,6 @@ const WfcIpImpairment = () => {
                                         <th>Call Drops</th>
                                         <th>Handover Delay impact to speech</th>
                                         <th>Packet Loss (%)</th>
-                                        <th>Handovers occured</th>
-                                        <th>Attempts</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -147,7 +145,7 @@ const WfcIpImpairment = () => {
                                             return (
                                                 <tr key={`kpi-${tc}`}>
                                                     <td>{tcLabels[tc]}</td>
-                                                    <td colSpan="10">No data found for Test Case: {tc} in {city}</td>
+                                                    <td colSpan="8">No data found for Test Case: {tc} in {city}</td>
                                                 </tr>
                                             );
                                         }
@@ -204,8 +202,6 @@ const WfcIpImpairment = () => {
                                                     <td style={callDropsStyle}>{callDrops}</td>
                                                     <td style={handoverDelayStyle}>{formatVal(deviceData.handover_impact_delay)}</td>
                                                     <td style={packetLossStyle}>{packetLossVal}</td>
-                                                    <td>1</td>
-                                                    <td>{(typeof callDrops === 'number' ? callDrops : 0) + 1}</td>
                                                 </tr>
                                             );
                                         };

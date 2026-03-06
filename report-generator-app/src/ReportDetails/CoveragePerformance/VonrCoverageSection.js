@@ -89,28 +89,34 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDev
     };
 
     const processSecondaryKpiData = (band) => {
+        const segments = ['First 30%', 'Middle 40%', 'Last 30%'];
         const defaultData = Array.from({ length: 5 }, (_, i) => ({
             run: `RUN ${i + 1}`,
             txPower: { DUT: null, REF: null },
-            segments: [
-                { segment: 'First 30%', DUT: { bler: null, dlMcs: null, ulMcs: null }, REF: { bler: null, dlMcs: null, ulMcs: null } },
-                { segment: 'Middle 40%', DUT: { bler: null, dlMcs: null, ulMcs: null }, REF: { bler: null, dlMcs: null, ulMcs: null } },
-                { segment: 'Last 30%', DUT: { bler: null, dlMcs: null, ulMcs: null }, REF: { bler: null, dlMcs: null, ulMcs: null } },
-            ]
+            segments: segments.map(seg => ({
+                segment: seg,
+                DUT: { bler: null, dlMcs: null, ulMcs: null },
+                REF: { bler: null, dlMcs: null, ulMcs: null }
+            }))
         }));
 
         const rootData = reportData && reportData.coveragePerformance && reportData.coveragePerformance['Coverage Performance'];
         if (!rootData || !rootData['5G VoNR Coverage Test'] || !rootData['5G VoNR Coverage Test'][band]) {
-            return defaultData;
+            return [{
+                run: 'Average',
+                txPower: { DUT: null, REF: null },
+                segments: segments.map(seg => ({
+                    segment: seg,
+                    DUT: { bler: null, dlMcs: null, ulMcs: null },
+                    REF: { bler: null, dlMcs: null, ulMcs: null }
+                }))
+            }, ...defaultData];
         }
 
         const bandData = rootData['5G VoNR Coverage Test'][band];
-        const segments = ['First 30%', 'Middle 40%', 'Last 30%'];
 
-        return Array.from({ length: 5 }, (_, i) => {
+        const runsData = Array.from({ length: 5 }, (_, i) => {
             const runKey = `Run${i + 1}`;
-
-            // TxPower is now at the run level in secondary_kpi, not inside segments
             const dutTxPower = bandData['DUT']?.[runKey]?.['secondary_kpi']?.['TxPower'] ?? null;
             const refTxPower = bandData['REF']?.[runKey]?.['secondary_kpi']?.['TxPower'] ?? null;
 
@@ -139,6 +145,63 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDev
                 })
             };
         });
+
+        // Calculate Average
+        const avgRow = {
+            run: 'Average',
+            txPower: { DUT: 0, REF: 0 },
+            segments: segments.map(seg => ({
+                segment: seg,
+                DUT: { bler: 0, dlMcs: 0, ulMcs: 0 },
+                REF: { bler: 0, dlMcs: 0, ulMcs: 0 }
+            }))
+        };
+
+        const counts = {
+            txPower: { DUT: 0, REF: 0 },
+            segments: segments.map(() => ({
+                DUT: { bler: 0, dlMcs: 0, ulMcs: 0 },
+                REF: { bler: 0, dlMcs: 0, ulMcs: 0 }
+            }))
+        };
+
+        runsData.forEach(run => {
+            if (typeof run.txPower.DUT === 'number') { avgRow.txPower.DUT += run.txPower.DUT; counts.txPower.DUT++; }
+            if (typeof run.txPower.REF === 'number') { avgRow.txPower.REF += run.txPower.REF; counts.txPower.REF++; }
+
+            run.segments.forEach((seg, idx) => {
+                const metrics = ['bler', 'dlMcs', 'ulMcs'];
+                const devices = ['DUT', 'REF'];
+                devices.forEach(dev => {
+                    metrics.forEach(met => {
+                        if (typeof seg[dev][met] === 'number') {
+                            avgRow.segments[idx][dev][met] += seg[dev][met];
+                            counts.segments[idx][dev][met]++;
+                        }
+                    });
+                });
+            });
+        });
+
+        // Finalize averages
+        if (counts.txPower.DUT > 0) avgRow.txPower.DUT /= counts.txPower.DUT; else avgRow.txPower.DUT = null;
+        if (counts.txPower.REF > 0) avgRow.txPower.REF /= counts.txPower.REF; else avgRow.txPower.REF = null;
+
+        avgRow.segments.forEach((seg, idx) => {
+            const metrics = ['bler', 'dlMcs', 'ulMcs'];
+            const devices = ['DUT', 'REF'];
+            devices.forEach(dev => {
+                metrics.forEach(met => {
+                    if (counts.segments[idx][dev][met] > 0) {
+                        seg[dev][met] /= counts.segments[idx][dev][met];
+                    } else {
+                        seg[dev][met] = null;
+                    }
+                });
+            });
+        });
+
+        return [avgRow, ...runsData];
     };
 
 

@@ -29,17 +29,19 @@ const SecondaryKpiTable = ({ data }) => (
                     {runData.segments.map((segmentData, segmentIndex) => {
                         const totalSegments = runData.segments.length;
 
+                        const isAverage = runData.run === 'Average';
+
                         const dutBler = segmentData.DUT?.bler;
                         const refBler = segmentData.REF?.bler;
-                        const blerColor = getKpiCellColor('SecondaryBler', dutBler, refBler);
+                        const blerColor = isAverage ? getKpiCellColor('SecondaryBler', dutBler, refBler) : null;
 
                         const dutDlMcs = segmentData.DUT?.dlMcs;
                         const refDlMcs = segmentData.REF?.dlMcs;
-                        const dlMcsColor = getKpiCellColor('SecondaryMcs', dutDlMcs, refDlMcs);
+                        const dlMcsColor = isAverage ? getKpiCellColor('SecondaryMcs', dutDlMcs, refDlMcs) : null;
 
                         const dutUlMcs = segmentData.DUT?.ulMcs;
                         const refUlMcs = segmentData.REF?.ulMcs;
-                        const ulMcsColor = getKpiCellColor('SecondaryMcs', dutUlMcs, refUlMcs);
+                        const ulMcsColor = isAverage ? getKpiCellColor('SecondaryMcs', dutUlMcs, refUlMcs) : null;
 
                         return (
                             <tr
@@ -68,7 +70,7 @@ const SecondaryKpiTable = ({ data }) => (
                                         {(() => {
                                             const dutTx = runData.txPower?.DUT;
                                             const refTx = runData.txPower?.REF;
-                                            const txColor = getKpiCellColor('SecondaryTxPower', dutTx, refTx);
+                                            const txColor = isAverage ? getKpiCellColor('SecondaryTxPower', dutTx, refTx) : null;
                                             return (
                                                 <>
                                                     <td className="run-divider" rowSpan={totalSegments} style={{ backgroundColor: txColor ? `color-mix(in srgb, ${txColor}, white var(--secondary-kpi-lightness))` : '', color: txColor ? 'black' : '' }}>

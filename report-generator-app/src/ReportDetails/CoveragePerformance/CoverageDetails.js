@@ -6,7 +6,7 @@ import HpueCoverageSection from './HpueCoverageSection';
 import LteCoverageSection from './LteCoverageSection';
 
 function CoverageDetails() {
-  const DataOnlyDevice = true;
+  const DataOnlyDevice = false;
   return (
     <div>
       <VonrCoverageSection city="Seattle" firstSection={true} dataOnlyDevice={DataOnlyDevice} />

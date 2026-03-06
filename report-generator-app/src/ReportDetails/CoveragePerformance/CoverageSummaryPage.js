@@ -6,7 +6,7 @@ import DynamicHeader from '../../CommonPage/DynamicHeader';
 import PageBreak from '../../CommonPage/PageBreak';
 
 function CoverageSummaryPage() {
-  const DataOnlyDevice = true;
+  const DataOnlyDevice = false;
   return (
     <>
       <PageBreak id="summary-page">

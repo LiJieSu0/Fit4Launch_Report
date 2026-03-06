@@ -151,22 +151,26 @@ const SecondaryKpiSummaryTable = () => {
         const refData = bandData.REF || {};
         const runs = Object.keys(dutData).filter(key => key.startsWith('Run'));
 
-        for (const runKey of runs) {
-            const secondaryKpiDut = dutData[runKey]?.secondary_kpi;
-            const secondaryKpiRef = refData[runKey]?.secondary_kpi;
-            if (!secondaryKpiDut || !secondaryKpiRef) continue;
-
-            if (kpi.name === "AVG Tx Power (dBm)") {
-                const dutTx = secondaryKpiDut["TxPower"];
-                const refTx = secondaryKpiRef["TxPower"];
-                const color = getKpiCellColor(kpi.kpiType, dutTx, refTx);
-                if (color === 'var(--performance-fail)' || color === 'var(--performance-marginal-fail)') return true;
-            } else {
-                const segments = ['First 30%', 'Middle 40%', 'Last 30%'];
-                for (const seg of segments) {
-                    const statsDut = secondaryKpiDut[seg];
-                    const statsRef = secondaryKpiRef[seg];
-                    if (!statsDut || !statsRef) continue;
+        if (kpi.name === "AVG Tx Power (dBm)") {
+            let dutSum = 0, refSum = 0, dutCount = 0, refCount = 0;
+            runs.forEach(runKey => {
+                const dutTx = dutData[runKey]?.secondary_kpi?.["TxPower"];
+                const refTx = refData[runKey]?.secondary_kpi?.["TxPower"];
+                if (typeof dutTx === 'number') { dutSum += dutTx; dutCount++; }
+                if (typeof refTx === 'number') { refSum += refTx; refCount++; }
+            });
+            if (dutCount > 0 && refCount > 0) {
+                const color = getKpiCellColor(kpi.kpiType, dutSum / dutCount, refSum / refCount);
+                return color === 'var(--performance-fail)' || color === 'var(--performance-marginal-fail)';
+            }
+        } else {
+            const segments = ['First 30%', 'Middle 40%', 'Last 30%'];
+            for (const seg of segments) {
+                let dutSum = 0, refSum = 0, dutCount = 0, refCount = 0;
+                runs.forEach(runKey => {
+                    const statsDut = dutData[runKey]?.secondary_kpi?.[seg];
+                    const statsRef = refData[runKey]?.secondary_kpi?.[seg];
+                    if (!statsDut || !statsRef) return;
 
                     let dutVal, refVal;
                     if (kpi.name === "DL MCS") {
@@ -180,7 +184,12 @@ const SecondaryKpiSummaryTable = () => {
                         refVal = statsRef["AVG BLER"];
                     }
 
-                    const color = getKpiCellColor(kpi.kpiType, dutVal, refVal);
+                    if (typeof dutVal === 'number') { dutSum += dutVal; dutCount++; }
+                    if (typeof refVal === 'number') { refSum += refVal; refCount++; }
+                });
+
+                if (dutCount > 0 && refCount > 0) {
+                    const color = getKpiCellColor(kpi.kpiType, dutSum / dutCount, refSum / refCount);
                     if (color === 'var(--performance-fail)' || color === 'var(--performance-marginal-fail)') return true;
                 }
             }

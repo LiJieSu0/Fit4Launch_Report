@@ -14,49 +14,49 @@ const processPingData = (pingRawData) => {
     average: {
       DUT: {
         Overall: calculateOverall(moderateDUT.Mean, poorDUT.Mean),
-        Moderate: moderateDUT.Mean?.toFixed(2) || "N/A",
-        Poor: poorDUT.Mean?.toFixed(2) || "N/A",
+        Moderate: moderateDUT.Mean !== undefined ? moderateDUT.Mean.toFixed(2) : "N/A",
+        Poor: poorDUT.Mean !== undefined ? poorDUT.Mean.toFixed(2) : "N/A",
       },
       REF: {
         Overall: calculateOverall(moderateREF.Mean, poorREF.Mean),
-        Moderate: moderateREF.Mean?.toFixed(2) || "N/A",
-        Poor: poorREF.Mean?.toFixed(2) || "N/A",
+        Moderate: moderateREF.Mean !== undefined ? moderateREF.Mean.toFixed(2) : "N/A",
+        Poor: poorREF.Mean !== undefined ? poorREF.Mean.toFixed(2) : "N/A",
       },
     },
     std_dev: {
       DUT: {
         Overall: calculateOverall(moderateDUT["Standard Deviation"], poorDUT["Standard Deviation"]),
-        Moderate: moderateDUT["Standard Deviation"]?.toFixed(2) || "N/A",
-        Poor: poorDUT["Standard Deviation"]?.toFixed(2) || "N/A",
+        Moderate: moderateDUT["Standard Deviation"] !== undefined ? moderateDUT["Standard Deviation"].toFixed(2) : "N/A",
+        Poor: poorDUT["Standard Deviation"] !== undefined ? poorDUT["Standard Deviation"].toFixed(2) : "N/A",
       },
       REF: {
         Overall: calculateOverall(moderateREF["Standard Deviation"], poorREF["Standard Deviation"]),
-        Moderate: moderateREF["Standard Deviation"]?.toFixed(2) || "N/A",
-        Poor: poorREF["Standard Deviation"]?.toFixed(2) || "N/A",
+        Moderate: moderateREF["Standard Deviation"] !== undefined ? moderateREF["Standard Deviation"].toFixed(2) : "N/A",
+        Poor: poorREF["Standard Deviation"] !== undefined ? poorREF["Standard Deviation"].toFixed(2) : "N/A",
       },
     },
     max: {
       DUT: {
         Overall: calculateOverall(moderateDUT.Maximum, poorDUT.Maximum),
-        Moderate: moderateDUT.Maximum?.toFixed(2) || "N/A",
-        Poor: poorDUT.Maximum?.toFixed(2) || "N/A",
+        Moderate: moderateDUT.Maximum !== undefined ? moderateDUT.Maximum.toFixed(2) : "N/A",
+        Poor: poorDUT.Maximum !== undefined ? poorDUT.Maximum.toFixed(2) : "N/A",
       },
       REF: {
         Overall: calculateOverall(moderateREF.Maximum, poorREF.Maximum),
-        Moderate: moderateREF.Maximum?.toFixed(2) || "N/A",
-        Poor: poorREF.Maximum?.toFixed(2) || "N/A",
+        Moderate: moderateREF.Maximum !== undefined ? moderateREF.Maximum.toFixed(2) : "N/A",
+        Poor: poorREF.Maximum !== undefined ? poorREF.Maximum.toFixed(2) : "N/A",
       },
     },
     min: {
       DUT: {
         Overall: calculateOverall(moderateDUT.Minimum, poorDUT.Minimum),
-        Moderate: moderateDUT.Minimum?.toFixed(2) || "N/A",
-        Poor: poorDUT.Minimum?.toFixed(2) || "N/A",
+        Moderate: moderateDUT.Minimum !== undefined ? moderateDUT.Minimum.toFixed(2) : "N/A",
+        Poor: poorDUT.Minimum !== undefined ? poorDUT.Minimum.toFixed(2) : "N/A",
       },
       REF: {
         Overall: calculateOverall(moderateREF.Minimum, poorREF.Minimum),
-        Moderate: moderateREF.Minimum?.toFixed(2) || "N/A",
-        Poor: poorREF.Minimum?.toFixed(2) || "N/A",
+        Moderate: moderateREF.Minimum !== undefined ? moderateREF.Minimum.toFixed(2) : "N/A",
+        Poor: poorREF.Minimum !== undefined ? poorREF.Minimum.toFixed(2) : "N/A",
       },
     },
   };

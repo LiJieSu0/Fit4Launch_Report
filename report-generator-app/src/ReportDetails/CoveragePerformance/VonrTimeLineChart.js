@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -23,6 +23,7 @@ ChartJS.register(
 
 const VonrTimeLineChart = ({ analysisType, band, run, city, projectFolderName, height = '300px', width = '50%' }) => {
     const [chartData, setChartData] = useState(null);
+    const chartRef = useRef(null);
 
     const getYAxisLabel = (type) => {
         switch (type) {
@@ -130,6 +131,27 @@ const VonrTimeLineChart = ({ analysisType, band, run, city, projectFolderName, h
         fetchData();
     }, [analysisType, band, run, city, projectFolderName]);
 
+    // Chart.js uses canvas; CSS width cannot constrain canvas during print.
+    // Use beforeprint/afterprint to manually resize the chart to a fixed pixel width.
+    useEffect(() => {
+        const handleBeforePrint = () => {
+            if (chartRef.current) {
+                chartRef.current.resize(700, 280);
+            }
+        };
+        const handleAfterPrint = () => {
+            if (chartRef.current) {
+                chartRef.current.resize();
+            }
+        };
+        window.addEventListener('beforeprint', handleBeforePrint);
+        window.addEventListener('afterprint', handleAfterPrint);
+        return () => {
+            window.removeEventListener('beforeprint', handleBeforePrint);
+            window.removeEventListener('afterprint', handleAfterPrint);
+        };
+    }, []);
+
     if (!chartData) {
         return (
             <div style={{ height, width, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -141,6 +163,7 @@ const VonrTimeLineChart = ({ analysisType, band, run, city, projectFolderName, h
     return (
         <div style={{ height, width }}>
             <Line
+                ref={chartRef}
                 data={chartData}
                 options={{
                     responsive: true,

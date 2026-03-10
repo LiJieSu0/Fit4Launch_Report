@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -23,6 +23,7 @@ ChartJS.register(
 
 const CoverageLineChart = ({ analysisType, run, city, projectFolderName }) => {
     const [chartData, setChartData] = useState(null);
+    const chartRef = useRef(null);
 
     // Determine settings based on analysisType
     let dataFolderPath = "";
@@ -134,13 +135,35 @@ const CoverageLineChart = ({ analysisType, run, city, projectFolderName }) => {
         fetchData();
     }, [analysisType, run, dataFolderPath, fileNamePart, city, projectFolderName]);
 
+    // Chart.js uses canvas; CSS width cannot constrain canvas during print.
+    // Use beforeprint/afterprint to manually resize the chart to a fixed pixel width.
+    useEffect(() => {
+        const handleBeforePrint = () => {
+            if (chartRef.current) {
+                chartRef.current.resize(700, 280);
+            }
+        };
+        const handleAfterPrint = () => {
+            if (chartRef.current) {
+                chartRef.current.resize();
+            }
+        };
+        window.addEventListener('beforeprint', handleBeforePrint);
+        window.addEventListener('afterprint', handleAfterPrint);
+        return () => {
+            window.removeEventListener('beforeprint', handleBeforePrint);
+            window.removeEventListener('afterprint', handleAfterPrint);
+        };
+    }, []);
+
     if (!chartData) {
-        return <div style={{ height: '280px', width: '40%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading {run === 'Average' ? 'Averaged' : `Run ${run}`}...</div>;
+        return <div className="coverage-line-chart-container" style={{ height: '280px', width: '40%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading {run === 'Average' ? 'Averaged' : `Run ${run}`}...</div>;
     }
     // 寬度百分比顯示會因為螢幕不同而改變大小，這段需要修改
     return (
-        <div style={{ height: '280px', width: run === 'Average' ? '50%' : '50%', marginBottom: '20px' }}>
+        <div className="coverage-line-chart-container" style={{ height: '280px', width: run === 'Average' ? '50%' : '50%', marginBottom: '20px' }}>
             <Line
+                ref={chartRef}
                 data={chartData}
                 options={{
                     responsive: true,

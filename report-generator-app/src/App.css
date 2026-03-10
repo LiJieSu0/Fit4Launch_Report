@@ -32,7 +32,17 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media print {
+  .coverage-line-chart-container {
+    width: 35% !important;
+    max-width: 35% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
   }
 }

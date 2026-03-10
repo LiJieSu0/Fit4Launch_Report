@@ -24,6 +24,7 @@ def analyze_secondary_kpis(file_path):
         # Tx Power Columns
         col_tx_power_lte = '[LTE] [Power] [Tx Power] Tx Power (PUSCH Actual)'
         col_tx_power_lte_total = '[LTE] [Power] [Tx Power] Tx power (Total)'
+        col_tx_power_lte_pusch_total = '[LTE] [Power] [Tx Power] Tx power (PUSCH Total)'
         col_tx_power_5g = '[NR5G] [Power] Tx power (Total)'
         
         # Read only necessary columns to optimize performance
@@ -54,13 +55,16 @@ def analyze_secondary_kpis(file_path):
             target_cqi = col_cqi 
             
             # For Tx Power in LTE mode, we try the known LTE column first.
-            if col_tx_power_lte in available_cols:
-                 tx_power_col = col_tx_power_lte
-            elif col_tx_power_lte_total in available_cols:
-                 tx_power_col = col_tx_power_lte_total
+            # Priority: PUSCH Actual -> Total -> PUSCH Total (fallback if no valid data in previous)
+            if col_tx_power_lte in available_cols and not df[col_tx_power_lte].dropna().eq(0).all() and df[col_tx_power_lte].dropna().shape[0] > 0:
+                tx_power_col = col_tx_power_lte
+            elif col_tx_power_lte_total in available_cols and not df[col_tx_power_lte_total].dropna().eq(0).all() and df[col_tx_power_lte_total].dropna().shape[0] > 0:
+                tx_power_col = col_tx_power_lte_total
+            elif col_tx_power_lte_pusch_total in available_cols:
+                tx_power_col = col_tx_power_lte_pusch_total
             else:
-                 # Fallback to the new fuzzy search if strict LTE column not found
-                 tx_power_col = None
+                # Fallback to the fuzzy search if no strict LTE column found
+                tx_power_col = None
 
         else:
              # Default to 5G headers logic

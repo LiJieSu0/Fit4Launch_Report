@@ -279,7 +279,7 @@ const LteCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDevi
                         city={city}
                         projectFolderName={project?.dataFolderName || ''}
                         height="280px"
-                        width="50%"
+                        width="40%"
                     />
 
                     <DynamicHeader level={3} hideInTOC={true}>LTE Coverage Test {bandLabel} - SINR TimeLine Analysis - {city}</DynamicHeader>
@@ -290,7 +290,7 @@ const LteCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDevi
                         city={city}
                         projectFolderName={project?.dataFolderName || ''}
                         height="280px"
-                        width="50%"
+                        width="40%"
                     />
                     <DynamicHeader level={3} hideInTOC={true}>LTE Coverage Test {bandLabel} - TxPower TimeLine Analysis - {city}</DynamicHeader>
                     <VonrTimeLineChart
@@ -300,7 +300,7 @@ const LteCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDevi
                         city={city}
                         projectFolderName={project?.dataFolderName || ''}
                         height="280px"
-                        width="50%"
+                        width="40%"
                     />
                 </PageBreak>
             </div>

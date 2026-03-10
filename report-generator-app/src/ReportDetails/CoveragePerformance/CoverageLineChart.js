@@ -135,7 +135,7 @@ const CoverageLineChart = ({ analysisType, run, city, projectFolderName }) => {
     }, [analysisType, run, dataFolderPath, fileNamePart, city, projectFolderName]);
 
     if (!chartData) {
-        return <div style={{ height: '280px', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading {run === 'Average' ? 'Averaged' : `Run ${run}`}...</div>;
+        return <div style={{ height: '280px', width: '40%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading {run === 'Average' ? 'Averaged' : `Run ${run}`}...</div>;
     }
     // 寬度百分比顯示會因為螢幕不同而改變大小，這段需要修改
     return (

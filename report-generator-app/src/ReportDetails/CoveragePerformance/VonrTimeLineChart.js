@@ -21,7 +21,7 @@ ChartJS.register(
     Legend
 );
 
-const VonrTimeLineChart = ({ analysisType, band, run, city, projectFolderName, height = '300px', width = '100%' }) => {
+const VonrTimeLineChart = ({ analysisType, band, run, city, projectFolderName, height = '300px', width = '50%' }) => {
     const [chartData, setChartData] = useState(null);
 
     const getYAxisLabel = (type) => {

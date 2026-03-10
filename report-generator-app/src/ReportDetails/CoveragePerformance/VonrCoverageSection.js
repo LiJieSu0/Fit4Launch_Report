@@ -281,7 +281,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDev
                         city={city}
                         projectFolderName={project?.dataFolderName || ''}
                         height="280px"
-                        width="50%"
+                        width="40%"
                     />
                     <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - SINR TimeLine Analysis - {city}</DynamicHeader>
                     <VonrTimeLineChart
@@ -291,7 +291,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDev
                         city={city}
                         projectFolderName={project?.dataFolderName || ''}
                         height="280px"
-                        width="50%"
+                        width="40%"
                     />
                     <DynamicHeader level={3} hideInTOC={true}>5G NR Coverage Test {bandLabel} - TxPower TimeLine Analysis - {city}</DynamicHeader>
                     <VonrTimeLineChart
@@ -301,7 +301,7 @@ const VonrCoverageSection = ({ city: propCity, firstSection = false, dataOnlyDev
                         city={city}
                         projectFolderName={project?.dataFolderName || ''}
                         height="280px"
-                        width="50%"
+                        width="40%"
                     />
                 </PageBreak>
             </div>

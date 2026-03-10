@@ -41,6 +41,15 @@ const reportType = {
   'DP': "Data Performance",
   'WFC': "Wifi Call"
 }
+
+const controlNumber = {
+  'CV': "261245-02",
+  'VQ': "NA",
+  'CP': "NA",
+  'DP': "261245-01",
+  'WFC': "NA"
+};
+
 function App() {
   const { project, setProject, availableProjects } = useContext(ReportContext);
   const [currentReport, setCurrentReport] = useState(null);
@@ -115,7 +124,7 @@ function App() {
           ← Menu
         </button>
       </div>
-      <CoverPage reportType={reportType[currentReport]} projectName={displayProjectName} />
+      <CoverPage reportType={reportType[currentReport]} projectName={displayProjectName} controlNumber={controlNumber[currentReport]} />
       <ReportHeader projectName={displayProjectName} />
       <DeviceInfoPage />
       <ContentsIndexPage />

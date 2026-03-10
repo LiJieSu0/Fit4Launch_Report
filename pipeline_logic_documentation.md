@@ -292,13 +292,14 @@ The pipeline uses a 4-tier header search strategy:
 
 ### F. Google Throughput (`DataPerformance/google_throughput_analyzer.py`)
 
-*   **Logic:** Identifies intervals where **Throughput > 2 Mbps**. Ends interval after 3 consecutive values < 2 Mbps.
+*   **Logic:** Identifies intervals where **Throughput > 2 Mbps**. Ends interval after 3 consecutive values < 2 Mbps. Excludes `0` values from the interval average calculation.
 *   **Header Search Order:**
-    1.  `[Call Test] [Throughput] Application DL TP`
-    2.  `[NR5G] [(NR + LTE)] [Throughput] PDSCH TP`
-    3.  `[NR5G] [Throughput] PDSCH TP`
-    4.  `[LTE] [Data Throughput] [Downlink (All)] [PDSCH] PDSCH TP (Total)`
-    5.  *Fuzzy Match:* Header contains `throughput`, `dl tp`, or `ul tp`.
+    1.  `[WiFi] [MPTCP] [Throughput] [Downlink] Android (Mobile + WiFi) DL Throughput`
+    2.  `[Call Test] [Throughput] Application DL TP`
+    3.  `[NR5G] [(NR + LTE)] [Throughput] PDSCH TP`
+    4.  `[NR5G] [Throughput] PDSCH TP`
+    5.  `[LTE] [Data Throughput] [Downlink (All)] [PDSCH] PDSCH TP (Total)`
+    6.  *Fuzzy Match:* Header contains `throughput`, `dl tp`, or `ul tp`.
 
 ---
 

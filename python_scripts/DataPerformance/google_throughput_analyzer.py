@@ -37,6 +37,7 @@ def analyze_throughput(file_path):
 
     # Define the possible column names for Throughput
     possible_columns = [
+        '[WiFi] [MPTCP] [Throughput] [Downlink] Android (Mobile + WiFi) DL Throughput',
         '[Call Test] [Throughput] Application DL TP',
         '[NR5G] [(NR + LTE)] [Throughput] PDSCH TP',
         '[NR5G] [Throughput] PDSCH TP',
@@ -148,6 +149,7 @@ def analyze_throughput(file_path):
                     if consecutive_low_count >= 3:
                         if len(current_interval_data) > 3:
                             interval_to_average = current_interval_data[:-3]
+                            interval_to_average = [v for v in interval_to_average if v > 0]
                             if interval_to_average:
                                 all_interval_averages.append(sum(interval_to_average) / len(interval_to_average))
                                 all_interval_counts.append(len(interval_to_average))
@@ -157,8 +159,10 @@ def analyze_throughput(file_path):
                         consecutive_low_count = 0
 
             if in_interval and current_interval_data:
-                all_interval_averages.append(sum(current_interval_data) / len(current_interval_data))
-                all_interval_counts.append(len(current_interval_data))
+                interval_to_average = [v for v in current_interval_data if v > 0]
+                if interval_to_average:
+                    all_interval_averages.append(sum(interval_to_average) / len(interval_to_average))
+                    all_interval_counts.append(len(interval_to_average))
 
         except Exception as e:
             print(f"Error reading and analyzing {current_file_path}: {e}")

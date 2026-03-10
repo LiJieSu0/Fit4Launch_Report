@@ -279,7 +279,7 @@ The pipeline uses a 4-tier header search strategy:
 | :--- | :--- | :--- |
 | **BLER** | `[NR5G] [BLER & HARQ] PDSCH BLER` | `[LTE] [L1] [BLER] PDSCH BLER` |
 | **MCS** | `[NR5G] [PCC] [PUSCH] [Modulation] MCS (Avg)` | `[LTE-A] [PCell] [L1] [MCS] DL MCS (TB0 & TB1 - Avg)` |
-| **Tx Power**| Fuzzy Priority: `PUSCH Actual` > `Total` > `Total Actual` | `[LTE] [Power] [Tx Power] Tx power (PUSCH Total)` |
+| **Tx Power**| Fuzzy Priority: `PUSCH Actual` > `Total` > `Total Actual` | `[LTE] [Power] [Tx Power] Tx power (PUSCH Total)` (or `Tx power (Total)`) |
 
 ---
 

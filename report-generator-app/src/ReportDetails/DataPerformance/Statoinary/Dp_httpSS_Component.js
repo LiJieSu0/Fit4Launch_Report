@@ -37,7 +37,7 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
   // Path: ["Data Performance"]["5G AUTO DP"]["HTTP Single Stream"]
   const httpSS_Data_Source = reportData.dataPerformance?.["Data Performance"]?.["5G AUTO DP"]?.["HTTP Single Stream"] || { DL: {}, UL: {} };
 
-  const defaultThroughput = { Mean: 0, "Standard Deviation": 0, Minimum: 0, Maximum: 0 };
+  const defaultThroughput = { Mean: undefined, "Standard Deviation": undefined, Minimum: undefined, Maximum: undefined };
 
   const getThroughput = (dir, category, device) => {
     return httpSS_Data_Source?.[dir]?.[category]?.[device]?.Throughput || defaultThroughput;
@@ -75,17 +75,17 @@ function Dp_httpSS_Component({ city: propCity, firstSection = false }) {
 
   // Helper to calculate average only for non-zero means (available data)
   const calculateOverallMean = (dataObj, device, field = 'Mean') => {
-    const values = [dataObj.Good[device][field], dataObj.Moderate[device][field], dataObj.Poor[device][field]].filter(v => typeof v === 'number' && v > 0);
+    const values = [dataObj.Good[device][field], dataObj.Moderate[device][field], dataObj.Poor[device][field]].filter(v => typeof v === 'number');
     return values.length > 0 ? (values.reduce((a, b) => a + b, 0) / values.length).toFixed(2) : "N/A";
   };
 
   const calculateOverallMin = (dataObj, device) => {
-    const values = [dataObj.Good[device].Minimum, dataObj.Moderate[device].Minimum, dataObj.Poor[device].Minimum].filter(v => typeof v === 'number' && v > 0);
+    const values = [dataObj.Good[device].Minimum, dataObj.Moderate[device].Minimum, dataObj.Poor[device].Minimum].filter(v => typeof v === 'number');
     return values.length > 0 ? Math.min(...values).toFixed(2) : "N/A";
   };
 
   const calculateOverallMax = (dataObj, device) => {
-    const values = [dataObj.Good[device].Maximum, dataObj.Moderate[device].Maximum, dataObj.Poor[device].Maximum].filter(v => typeof v === 'number' && v > 0);
+    const values = [dataObj.Good[device].Maximum, dataObj.Moderate[device].Maximum, dataObj.Poor[device].Maximum].filter(v => typeof v === 'number');
     return values.length > 0 ? Math.max(...values).toFixed(2) : "N/A";
   };
 

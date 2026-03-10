@@ -65,25 +65,26 @@ def extract_timeline_data(file_path, column_names):
     except Exception as e:
         print(f"Error reading file {file_path}: {e}")
         return []
-    
-    selected_column = None
-    for col in column_names:
-        if col in df.columns:
-            selected_column = col
-            break
-    
-    if selected_column is None:
-        return []
-    
+
     end_index = get_valid_coverage_range(file_path)
-    
     if end_index is None:
         end_index = len(df)
     
     df_valid = df.iloc[:end_index].copy()
     
-    df_valid[selected_column] = pd.to_numeric(df_valid[selected_column], errors='coerce')
+    selected_column = None
+    for col in column_names:
+        if col in df_valid.columns:
+            # Check if this column actually contains non-NaN numeric data within the valid range
+            temp_series = pd.to_numeric(df_valid[col], errors='coerce').dropna()
+            if not temp_series.empty:
+                selected_column = col
+                break
     
+    if selected_column is None:
+        return []
+    
+    df_valid[selected_column] = pd.to_numeric(df_valid[selected_column], errors='coerce')
     values = df_valid[selected_column].dropna().tolist()
     
     return values
@@ -138,6 +139,7 @@ def analyze_txpower_timeline(file_path):
     if is_lte_mode:
         column_names = [
             '[LTE] [Power] [Tx Power] Tx Power (PUSCH Actual)',
+            '[LTE] [Power] [Tx Power] Tx power (Total)',
             '[NR5G] [Power] Tx power (PUSCH Actual)'
         ]
     else:

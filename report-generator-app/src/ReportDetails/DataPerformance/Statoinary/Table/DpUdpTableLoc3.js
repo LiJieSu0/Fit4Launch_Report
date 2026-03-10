@@ -3,11 +3,12 @@ import { getKpiCellColor } from '../../../../Utils/KpiRules';
 
 function DpUdpTableLoc3({ data, tableName }) {
   const calculateOverallAverage = (good, moderate, poor) => {
-    const vals = [good, moderate, poor].map(v => parseFloat(v)).filter(v => !isNaN(v));
+    const vals = [good, moderate, poor].map(v => (v !== undefined && v !== null) ? parseFloat(v) : NaN).filter(v => !isNaN(v));
     return vals.length > 0 ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : "N/A";
   };
 
   const formatVal = (val) => {
+    if (val === undefined || val === null) return "N/A";
     const num = parseFloat(val);
     return isNaN(num) ? "N/A" : num.toFixed(2);
   };

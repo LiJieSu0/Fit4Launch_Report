@@ -39,11 +39,11 @@ function Dp_Udp_Component({ city: propCity }) {
 
   // Helper for safe access
   const getUdpMetric = (dir, task, category, device, metric) => {
-    return udp_Data_Source?.[dir]?.[task]?.[category]?.[device]?.[metric]?.Mean || 0;
+    return udp_Data_Source?.[dir]?.[task]?.[category]?.[device]?.[metric]?.Mean;
   };
 
   const getThroughputMetric = (dir, task, category, device, field = 'Mean') => {
-    return udp_Data_Source?.[dir]?.[task]?.[category]?.[device]?.Throughput?.[field] || 0;
+    return udp_Data_Source?.[dir]?.[task]?.[category]?.[device]?.Throughput?.[field];
   };
 
   // DL Mean Throughput for 200 Mbps
@@ -56,8 +56,8 @@ function Dp_Udp_Component({ city: propCity }) {
   const dlMeanThroughput200_REF_Poor = getThroughputMetric('DL', dl200TaskName, 'Poor', 'REF');
 
   const calculateAverage = (vals) => {
-    const activeVals = vals.filter(v => v > 0);
-    return activeVals.length > 0 ? activeVals.reduce((a, b) => a + b, 0) / activeVals.length : 0;
+    const activeVals = vals.filter(v => typeof v === 'number');
+    return activeVals.length > 0 ? (activeVals.reduce((a, b) => a + b, 0) / activeVals.length).toFixed(2) : "N/A";
   };
 
   const dlMeanThroughput200HistogramData = [
@@ -70,6 +70,7 @@ function Dp_Udp_Component({ city: propCity }) {
       REF: calculateAverage([dlMeanThroughput200_REF_Good, dlMeanThroughput200_REF_Moderate, dlMeanThroughput200_REF_Poor])
     },
   ];
+
 
   // DL Mean Throughput for 400 Mbps
   const dl400TaskName = "UDP Download Task at 400 Mbps for 10 seconds";
@@ -583,7 +584,7 @@ function Dp_Udp_Component({ city: propCity }) {
   ];
 
   const dlOverallTableData = udp_Stationary_DL.map(item => {
-    const overallValue = ((item.location.good + item.location.moderate + item.location.poor) / 3).toFixed(2);
+    const overallValue = calculateAverage([item.location.good, item.location.moderate, item.location.poor]);
     return {
       Metric: item.metric,
       "Ideal Throughput": item.idealThroughput,
@@ -595,7 +596,7 @@ function Dp_Udp_Component({ city: propCity }) {
   const dlOverallTableHeaders = ["Metric", "Ideal Throughput", "Device Name", "Overall"];
 
   const ulOverallTableData = udp_Stationary_UL.map(item => {
-    const overallValue = ((item.location.good + item.location.moderate + item.location.poor) / 3).toFixed(2);
+    const overallValue = calculateAverage([item.location.good, item.location.moderate, item.location.poor]);
     return {
       Metric: item.metric,
       "Ideal Throughput": item.idealThroughput,

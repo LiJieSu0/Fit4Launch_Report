@@ -23,6 +23,7 @@ def analyze_secondary_kpis(file_path):
         
         # Tx Power Columns
         col_tx_power_lte = '[LTE] [Power] [Tx Power] Tx Power (PUSCH Actual)'
+        col_tx_power_lte_total = '[LTE] [Power] [Tx Power] Tx power (Total)'
         col_tx_power_5g = '[NR5G] [Power] Tx power (Total)'
         
         # Read only necessary columns to optimize performance
@@ -55,6 +56,8 @@ def analyze_secondary_kpis(file_path):
             # For Tx Power in LTE mode, we try the known LTE column first.
             if col_tx_power_lte in available_cols:
                  tx_power_col = col_tx_power_lte
+            elif col_tx_power_lte_total in available_cols:
+                 tx_power_col = col_tx_power_lte_total
             else:
                  # Fallback to the new fuzzy search if strict LTE column not found
                  tx_power_col = None

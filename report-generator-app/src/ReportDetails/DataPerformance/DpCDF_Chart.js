@@ -66,6 +66,19 @@ const DpCDF_Chart = ({ project, city, dutFilename, refFilename, title }) => {
         }
     }, [project, city, dutFilename, refFilename]);
 
+    const [isPrinting, setIsPrinting] = useState(false);
+
+    useEffect(() => {
+        const handleBeforePrint = () => setIsPrinting(true);
+        const handleAfterPrint = () => setIsPrinting(false);
+        window.addEventListener('beforeprint', handleBeforePrint);
+        window.addEventListener('afterprint', handleAfterPrint);
+        return () => {
+            window.removeEventListener('beforeprint', handleBeforePrint);
+            window.removeEventListener('afterprint', handleAfterPrint);
+        };
+    }, []);
+
     if (loading) {
         return <div style={{ textAlign: 'center', padding: '20px' }}>Loading CDF Chart...</div>;
     }
@@ -75,9 +88,9 @@ const DpCDF_Chart = ({ project, city, dutFilename, refFilename, title }) => {
     }
 
     return (
-        <div className="cdf-chart-container" style={{ margin: '20px 0', padding: '0px', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
+        <div className="cdf-chart-container" style={{ margin: '20px 0', padding: '0px', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)', marginLeft: '-10px' }}>
             <h4 style={{ textAlign: 'center', marginBottom: '0px' }}>{title || 'Throughput CDF Comparison'}</h4>
-            <div style={{ width: '50%', height: '250px' }}>
+            <div style={{ width: isPrinting ? '700px' : '40%', height: isPrinting ? '300px' : '280px' }}>
                 <ResponsiveContainer>
                     <LineChart
                         margin={{

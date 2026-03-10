@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -27,7 +27,29 @@ ChartJS.register(
 );
 
 function DpRangeChart({ data, chartTitle, yAxisTitle }) {
+  const chartRef = useRef(null);
   const labels = Object.keys(data); // e.g., ['good', 'moderate', 'poor']
+
+  // Chart.js uses canvas; CSS width cannot constrain canvas during print.
+  // Use beforeprint/afterprint to manually resize the chart to a fixed pixel width.
+  useEffect(() => {
+    const handleBeforePrint = () => {
+      if (chartRef.current) {
+        chartRef.current.resize(700, 300);
+      }
+    };
+    const handleAfterPrint = () => {
+      if (chartRef.current) {
+        chartRef.current.resize();
+      }
+    };
+    window.addEventListener('beforeprint', handleBeforePrint);
+    window.addEventListener('afterprint', handleAfterPrint);
+    return () => {
+      window.removeEventListener('beforeprint', handleBeforePrint);
+      window.removeEventListener('afterprint', handleAfterPrint);
+    };
+  }, []);
 
   const dutRanges = labels.map(region => [data[region].dutMin, data[region].dutMax]);
   const refRanges = labels.map(region => [data[region].refMin, data[region].refMax]);
@@ -61,6 +83,8 @@ function DpRangeChart({ data, chartTitle, yAxisTitle }) {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
+    animation: false,
     plugins: {
       legend: {
         display: true,
@@ -142,8 +166,8 @@ function DpRangeChart({ data, chartTitle, yAxisTitle }) {
   };
 
   return (
-    <div style={{ width: '600px', margin: 'auto',marginTop:20 }}>
-      <Bar data={chartData} options={options} />
+    <div style={{ width: '600px', height: '350px', margin: 'auto', marginTop: 20 }}>
+      <Bar ref={chartRef} data={chartData} options={options} />
     </div>
   );
 }

@@ -1,8 +1,20 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { VictoryChart, VictoryBoxPlot, VictoryAxis, VictoryLabel, VictoryScatter } from 'victory';
 
 const DpBoxPlot = ({ data: rawData, title, yAxisLabel, width = 600, height = 300 }) => {
+    const [isPrinting, setIsPrinting] = useState(false);
+
+    useEffect(() => {
+        const handleBeforePrint = () => setIsPrinting(true);
+        const handleAfterPrint = () => setIsPrinting(false);
+        window.addEventListener('beforeprint', handleBeforePrint);
+        window.addEventListener('afterprint', handleAfterPrint);
+        return () => {
+            window.removeEventListener('beforeprint', handleBeforePrint);
+            window.removeEventListener('afterprint', handleAfterPrint);
+        };
+    }, []);
+
     if (!rawData || rawData.length === 0) {
         return <div className="no-data-message">No Data Available for Box Plot</div>;
     }
@@ -81,11 +93,11 @@ const DpBoxPlot = ({ data: rawData, title, yAxisLabel, width = 600, height = 300
     });
 
     // Dynamic sizing: scale width with number of entries
-    const dynamicWidth = Math.min(width, Math.max(300, data.length * 100 + 120));
+    const dynamicWidth = isPrinting ? 700 : Math.min(width, Math.max(300, data.length * 100 + 120));
     const dynamicDomainPadding = Math.max(15, Math.min(40, 120 / data.length));
 
     return (
-        <div className="box-plot-container" style={{ width: `${dynamicWidth}px`, height: 'auto', textAlign: 'center' }}>
+        <div className="box-plot-container" style={{ width: `${dynamicWidth}px`, height: 'auto', textAlign: 'center', margin: 'auto' }}>
             <h4>{title}</h4>
             <VictoryChart
                 domainPadding={dynamicDomainPadding}

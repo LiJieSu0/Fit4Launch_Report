@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BarChart,
   Bar,
@@ -12,7 +12,20 @@ import {
 } from 'recharts';
 
 const DpHistogramComponent = ({ data, title, yAxisLabel, barKeys }) => {
-  const chartWidth = data.length === 1 ? 300 : 500;
+  const [isPrinting, setIsPrinting] = useState(false);
+
+  useEffect(() => {
+    const handleBeforePrint = () => setIsPrinting(true);
+    const handleAfterPrint = () => setIsPrinting(false);
+    window.addEventListener('beforeprint', handleBeforePrint);
+    window.addEventListener('afterprint', handleAfterPrint);
+    return () => {
+      window.removeEventListener('beforeprint', handleBeforePrint);
+      window.removeEventListener('afterprint', handleAfterPrint);
+    };
+  }, []);
+
+  const chartWidth = isPrinting ? 700 : (data.length === 1 ? 300 : 500);
   return (
     <div>
 

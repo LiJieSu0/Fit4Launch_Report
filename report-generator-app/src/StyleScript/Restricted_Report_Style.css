@@ -427,7 +427,7 @@ VQ
 }
 
 .call-categories-chart-container {
-  margin-top: -100px;
+  margin-top: -150px;
   margin-bottom: 10px;
   /* Added to reduce space after the chart */
   border-radius: 8px;
@@ -521,7 +521,7 @@ VQ
   padding: 10px;
   border-radius: 8px;
   background-color: #ffffff;
-  transform: scale(0.6);
+  transform: scale(0.5);
   transform-origin: left top;
   /* Scale from the top-left corner */
 }

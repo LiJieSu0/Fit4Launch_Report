@@ -83,7 +83,7 @@ const processAudioDelayData = (audioDelayData) => {
   ];
 };
 
-const AutoVoNREnabledAudioDelay = ({ city: propCity }) => {
+const AutoVoNREnabledAudioDelay = ({ city: propCity, firstSection = false }) => {
   const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
   const [vqTableData6, setVqTableData6] = useState([]);
@@ -105,6 +105,7 @@ const AutoVoNREnabledAudioDelay = ({ city: propCity }) => {
 
   return (
     <PageBreak>
+      {firstSection && <DynamicHeader level={1} style={{ textAlign: 'center' }}>Voice Quality Test</DynamicHeader>}
       <DynamicHeader level={2}>5G Auto VoNR Enabled Audio Delay - {city}</DynamicHeader>
       <table className="general-table-style vq-details-table">
         <thead>

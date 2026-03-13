@@ -118,12 +118,13 @@ const VqSummaryPage = () => {
   };
 
   const VqSummaryData = [
+    { testCase: '5G Auto VoNR Disabled Audio Delay' },
+    { testCase: '5G Auto VoNR Enabled Audio Delay' },
     { testCase: '5G Auto VoNR Enabled AMR NB VQ' },
     { testCase: '5G Auto VoNR Enabled AMR WB VQ' },
     { testCase: '5G Auto VoNR Disabled EVS WB VQ' },
     { testCase: '5G Auto VoNR Enabled EVS WB VQ' },
-    { testCase: '5G Auto VoNR Disabled Audio Delay' },
-    { testCase: '5G Auto VoNR Enabled Audio Delay' },
+
   ];
 
   return (

@@ -79,25 +79,25 @@ const WfcSummaryPage = () => {
       anchor: '#multihandover-section-t-mobile-hint-gateway',
       tcs: [
         { tc: 'TC162', label: 'Profile 1' },
-        { tc: 'TC163', label: 'Profile 2' },
-        { tc: 'TC164', label: 'Profile 3' },
+        { tc: 'TC165', label: 'Profile 2' },
+        { tc: 'TC168', label: 'Profile 3' },
       ],
     },
     {
       apName: 'ASUS RT-AC68U',
       anchor: '#multihandover-section-asus-rt-ac68u',
       tcs: [
-        { tc: 'TC165', label: 'Profile 1' },
+        { tc: 'TC163', label: 'Profile 1' },
         { tc: 'TC166', label: 'Profile 2' },
-        { tc: 'TC167', label: 'Profile 3' },
+        { tc: 'TC169', label: 'Profile 3' },
       ],
     },
     {
       apName: 'LinkSys Hydra Pro 6E',
       anchor: '#multihandover-section-linksys-hydra-pro-6e',
       tcs: [
-        { tc: 'TC168', label: 'Profile 1' },
-        { tc: 'TC169', label: 'Profile 2' },
+        { tc: 'TC164', label: 'Profile 1' },
+        { tc: 'TC167', label: 'Profile 2' },
         { tc: 'TC170', label: 'Profile 3' },
       ],
     },

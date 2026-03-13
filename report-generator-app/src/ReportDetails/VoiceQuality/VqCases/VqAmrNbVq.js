@@ -23,7 +23,7 @@ const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   return value;
 };
 
-const VqAmrNbVq = ({ city: propCity, firstSection }) => {
+const VqAmrNbVq = ({ city: propCity }) => {
   const { city: globalCity, projectData, loadCityData } = useContext(ReportContext);
   const city = propCity || globalCity;
 
@@ -180,7 +180,6 @@ const VqAmrNbVq = ({ city: propCity, firstSection }) => {
   ];
   return (
     <PageBreak>
-      {firstSection && <DynamicHeader level={1} style={{ textAlign: 'center' }}>Voice Quality Test</DynamicHeader>}
       <DynamicHeader level={2}>5G Auto VoNR Enabled AMR NB VQ - {city}</DynamicHeader>
       <h4>Results</h4>
       <table className="general-table-style performance-table">

@@ -13,7 +13,9 @@ import PageBreak from '../../CommonPage/PageBreak';
 const VqDetailsPage = () => {
   return (
     <div>
-      <VqAmrNbVq city='Seattle' firstSection={true} />
+      <AutoVoNREnabledAudioDelay city='Seattle' firstSection={true} />
+      <AutoVoNREnabledAudioDelay city='New York' />
+      <VqAmrNbVq city='Seattle' />
       <VqAmrNbVq city='New York' />
       <VqAmrWbVq city='Seattle' />
       <VqAmrWbVq city='New York' />
@@ -21,11 +23,9 @@ const VqDetailsPage = () => {
       <VqEvsWbVqDisabled city='New York' />
       <VqEvsWbVqEnabled city='Seattle' />
       <VqEvsWbVqEnabled city='New York' />
-      <AutoVoNRDisabledAudioDelay city='Seattle' />
-      <AutoVoNRDisabledAudioDelay city='New York' />
 
-      <AutoVoNREnabledAudioDelay city='Seattle' />
-      <AutoVoNREnabledAudioDelay city='New York' />
+
+
     </div>
   );
 };

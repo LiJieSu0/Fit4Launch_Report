@@ -246,12 +246,13 @@ def _determine_analysis_parameters(file_path):
             params["start_event"] = "Upload Started"
             params["end_event"] = "Upload Ended"
             if params["network_type_detected"] in ["5G", "5G NSA", "5G SA"]:
-                params["column_to_analyze_throughput"] = _clean_header("[Call Test] [Throughput] Application UL TP")
-                params["column_to_analyze_throughput_fallback"] = _clean_header("[NR5G] [(NR + LTE)] [Throughput] PUSCH TP") # Fallback for 5G UL HTTP
-                params["column_to_analyze_throughput_third_fallback"] = _clean_header("UL Avg TP") # Third fallback for 5G UL HTTP
+                params["column_to_analyze_throughput"] = _clean_header("[Call Test] [HTTP Transfer] [UL] HTTP UL TP (Avg)")
+                params["column_to_analyze_throughput_fallback"] = _clean_header("[Call Test] [Throughput] Application UL TP")
+                params["column_to_analyze_throughput_third_fallback"] = _clean_header("[NR5G] [(NR + LTE)] [Throughput] PUSCH TP")
             else: # LTE
-                params["column_to_analyze_throughput"] = _clean_header("[LTE] [Data Throughput] [Uplink (All)] [PUSCH] PUSCH TP (Total)")
-                params["column_to_analyze_throughput_third_fallback"] = _clean_header("UL Avg TP") # Third fallback for LTE UL HTTP
+                params["column_to_analyze_throughput"] = _clean_header("[Call Test] [HTTP Transfer] [UL] HTTP UL TP (Avg)")
+                params["column_to_analyze_throughput_fallback"] = _clean_header("[LTE] [Data Throughput] [Uplink (All)] [PUSCH] PUSCH TP (Total)")
+                params["column_to_analyze_throughput_third_fallback"] = _clean_header("UL Avg TP")
     elif params["protocol_type_detected"] == "UDP":
         params["event_col"] = _clean_header("[Event][Data call test detail events]IPERF Call Event") # Primary event column
         params["event_col_fallback"] = _clean_header("[Event] [Data call test detail events] IPERF Call Event") # Fallback event column
@@ -284,6 +285,33 @@ def _determine_analysis_parameters(file_path):
         params["column_to_analyze_ping_rtt"] = _clean_header("[Call Test] [PING] [RTT] RTT")
     logger.debug(f"_determine_analysis_parameters returning: {params}")
     return params
+
+def _filter_outliers(segment_data):
+    """
+    Filters outliers from a pandas Series or list using the 1.5 * IQR rule.
+    Returns a cleaned pandas Series.
+    """
+    if isinstance(segment_data, list):
+        series = pd.Series(segment_data)
+    else:
+        series = segment_data
+
+    if series.empty:
+        return series
+
+    q1 = series.quantile(0.25)
+    q3 = series.quantile(0.75)
+    iqr = q3 - q1
+    lower_bound = q1 - 1.5 * iqr
+    upper_bound = q3 + 1.5 * iqr
+
+    cleaned = series[(series >= lower_bound) & (series <= upper_bound)]
+    
+    if cleaned.empty:
+        # If all points are outliers (can happen with small/uniform sets + one spike), 
+        # return original to avoid losing data completely.
+        return series
+    return cleaned
 
 def _find_related_ping_file(current_file_path, device_type):
     """
@@ -443,7 +471,15 @@ def analyze_throughput(file_path, column_name_to_analyze, event_col_name, start_
                 interval_data = interval_data[interval_data != 0]
                 
                 if not interval_data.empty:
-                    interval_avg = interval_data.mean()
+                    # Convert Kbps to Mbps if values are large (e.g., > 1000) 
+                    # OR if specifically identified as HTTP UL/DL Transfer headers.
+                    # Based on user feedback, these headers often provide Kbps.
+                    if "HTTP" in current_column_to_use and interval_data.mean() > 500:
+                         interval_data = interval_data / 1000.0
+
+                    # Filter outliers WITHIN the interval before averaging
+                    clean_interval_data = _filter_outliers(interval_data)
+                    interval_avg = clean_interval_data.mean()
                     all_interval_averages.append(interval_avg)
 
         except FileNotFoundError:
@@ -532,6 +568,11 @@ def analyze_throughput_cdf(file_path, column_name_to_analyze, event_col_name, st
                     interval_tp = data.loc[start_idx : end_idx, tp_col_clean].dropna()
                     # Exclude zero values
                     interval_tp = interval_tp[interval_tp != 0]
+                    
+                    # Convert Kbps to Mbps if values are large
+                    if "HTTP" in tp_col_clean and interval_tp.mean() > 500:
+                        interval_tp = interval_tp / 1000.0
+
                     all_tp_points.extend(interval_tp.tolist())
 
         except Exception as e:
@@ -542,8 +583,10 @@ def analyze_throughput_cdf(file_path, column_name_to_analyze, event_col_name, st
     # After processing all files, calculate CDF on combined data
     if not all_tp_points:
         return {}
-        
-    tp_series = pd.Series(all_tp_points)
+    
+    # Filter outliers from the combined points before generating CDF
+    tp_series = _filter_outliers(all_tp_points)
+    
     min_val = float(tp_series.min())
     max_val = float(tp_series.max())
     total_count = len(tp_series)

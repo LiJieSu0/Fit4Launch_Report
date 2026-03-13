@@ -201,6 +201,11 @@ const SecondaryKpiSummaryTable = () => {
         const cityData = projectData[market];
         if (!cityData) return { status: "N/A", color: "default", link: "#" };
 
+        // New requirement: If all primary KPIs pass, secondary KPI table cell should be blank
+        if (!isPrimaryFailed(cityData, band.key)) {
+            return { status: "", color: "default", link: "#" };
+        }
+
         const dutAvg = calculateSecondaryAvg(cityData, band.key, "DUT", kpi.name);
         const refAvg = calculateSecondaryAvg(cityData, band.key, "REF", kpi.name);
 
@@ -274,9 +279,11 @@ const SecondaryKpiSummaryTable = () => {
                                             }}
                                         >
                                             {result.status === "N/A" ? "N/A" : (
-                                                <a href={result.link} style={{ color: 'inherit', textDecoration: 'none' }}>
-                                                    {result.status}
-                                                </a>
+                                                result.status === "" ? "" : (
+                                                    <a href={result.link} style={{ color: 'inherit', textDecoration: 'none' }}>
+                                                        {result.status}
+                                                    </a>
+                                                )
                                             )}
                                         </td>
                                     );

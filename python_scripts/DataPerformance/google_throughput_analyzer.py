@@ -14,6 +14,27 @@ def _clean_header(header):
     # Strip leading/trailing whitespace
     return cleaned_header.strip()
 
+def _filter_outliers(data_list):
+    """
+    Filters outliers from a list using the 1.5 * IQR rule.
+    Returns a cleaned list.
+    """
+    if not data_list:
+        return data_list
+    
+    series = pd.Series(data_list)
+    q1 = series.quantile(0.25)
+    q3 = series.quantile(0.75)
+    iqr = q3 - q1
+    lower_bound = q1 - 1.5 * iqr
+    upper_bound = q3 + 1.5 * iqr
+
+    cleaned = series[(series >= lower_bound) & (series <= upper_bound)]
+    
+    if cleaned.empty:
+        return data_list
+    return cleaned.tolist()
+
 def analyze_throughput(file_path):
     """
     Analyzes one or more CSV files for PDSCH Throughput, identifies intervals,
@@ -151,8 +172,10 @@ def analyze_throughput(file_path):
                             interval_to_average = current_interval_data[:-3]
                             interval_to_average = [v for v in interval_to_average if v > 0]
                             if interval_to_average:
-                                all_interval_averages.append(sum(interval_to_average) / len(interval_to_average))
-                                all_interval_counts.append(len(interval_to_average))
+                                # Filter outliers WITHIN the interval before averaging
+                                clean_interval = _filter_outliers(interval_to_average)
+                                all_interval_averages.append(sum(clean_interval) / len(clean_interval))
+                                all_interval_counts.append(len(clean_interval))
                         
                         in_interval = False
                         current_interval_data = []
@@ -161,8 +184,10 @@ def analyze_throughput(file_path):
             if in_interval and current_interval_data:
                 interval_to_average = [v for v in current_interval_data if v > 0]
                 if interval_to_average:
-                    all_interval_averages.append(sum(interval_to_average) / len(interval_to_average))
-                    all_interval_counts.append(len(interval_to_average))
+                    # Filter outliers WITHIN the interval before averaging
+                    clean_interval = _filter_outliers(interval_to_average)
+                    all_interval_averages.append(sum(clean_interval) / len(clean_interval))
+                    all_interval_counts.append(len(clean_interval))
 
         except Exception as e:
             print(f"Error reading and analyzing {current_file_path}: {e}")

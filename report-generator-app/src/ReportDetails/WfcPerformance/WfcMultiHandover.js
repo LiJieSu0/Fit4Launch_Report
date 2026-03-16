@@ -54,11 +54,11 @@ const WfcMultiHandover = ({ title, tc, sectionNumber = 0 }) => {
                     <tr>
                         <th style={{ width: '15%', whiteSpace: 'nowrap' }}>Profile</th>
                         <th>Device</th>
+                        <th>Average MOS</th>
                         <th>RSSI</th>
                         <th>RSRP</th>
                         <th>Handovers</th>
                         <th>Call Drop</th>
-                        <th>Average MOS</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -100,11 +100,11 @@ const WfcMultiHandover = ({ title, tc, sectionNumber = 0 }) => {
                                     <td>
                                         {deviceType}
                                     </td>
+                                    <td style={mosStyle}>{formatVal(mos)}</td>
                                     <td style={rssiStyle}>{formatVal(rssi)}</td>
                                     <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                     <td style={handoverStyle}>{handovers !== undefined ? handovers : 'N/A'}</td>
                                     <td style={deviceType === 'DUT' ? { backgroundColor: getKpiCellColor('WfcCallDrops', callDrop) } : {}}>{callDrop !== undefined ? callDrop : 'N/A'}</td>
-                                    <td style={mosStyle}>{formatVal(mos)}</td>
                                 </tr>
                             );
                         };

@@ -42,11 +42,11 @@ const WfcMultiHandoverOverviewTable = () => {
                             <th>AP Name</th>
                             <th>Profile</th>
                             <th>Device</th>
+                            <th>Average MOS</th>
                             <th>RSSI</th>
                             <th>RSRP</th>
                             <th>Handovers</th>
                             <th>Call Drops</th>
-                            <th>Average MOS</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -99,11 +99,11 @@ const WfcMultiHandoverOverviewTable = () => {
                                             )}
                                             {isFirstDevice && <td rowSpan="2">{profileName}</td>}
                                             <td>{deviceType}</td>
+                                            <td style={mosStyle}>{formatVal(mos)}</td>
                                             <td style={rssiStyle}>{formatVal(rssi)}</td>
                                             <td style={rsrpStyle}>{formatVal(rsrp)}</td>
                                             <td style={handoverStyle}>{handovers !== undefined && handovers !== null ? handovers : 'N/A'}</td>
                                             <td style={deviceType === 'DUT' ? { backgroundColor: getKpiCellColor('WfcCallDrops', retFailures) } : {}}>{retFailures !== undefined && retFailures !== null ? retFailures : 'N/A'}</td>
-                                            <td style={mosStyle}>{formatVal(mos)}</td>
                                         </tr>
                                     );
                                 };

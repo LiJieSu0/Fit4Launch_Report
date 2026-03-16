@@ -4,6 +4,7 @@ import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import PageBreak from '../../../CommonPage/PageBreak';
 import { getKpiCellClass, getWorstKpiClass } from '../../../Utils/KpiRules';
+import VqAttenuationTable from './VqAttenuationTable';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -181,6 +182,16 @@ const VqAmrNbVq = ({ city: propCity }) => {
   return (
     <PageBreak>
       <DynamicHeader level={2}>5G Auto VoNR Enabled AMR NB VQ - {city}</DynamicHeader>
+      <VqAttenuationTable data={[
+        {
+          market: city,
+          testType: amrNbKey,
+          mobile: { REF: 'N/A', DUT1: 'N/A', DUT2: 'N/A' },
+          base: { REF: 'N/A', DUT1: 'N/A', DUT2: 'N/A' },
+          downlink: { REF: 'N/A', DUT1: 'N/A', DUT2: 'N/A' },
+          uplink: { REF: 'N/A', DUT1: 'N/A', DUT2: 'N/A' }
+        }
+      ]} />
       <h4>Results</h4>
       <table className="general-table-style performance-table">
         <thead>

@@ -3,7 +3,25 @@
 This document outlines the logic used by the `ReportGenerator` pipeline to process data, calculate statistics, and handle fallbacks.
 
 ## 1. High-Level Routing Logic
-The entry point is `pipeline.py` (or `pipeline_main.py`). It iterates through files and directories to determine the appropriate analyzer based on path and filename patterns.
+The entry point is `pipeline.py`. It auto-discovers projects and markets, then iterates through files and directories to determine the appropriate analyzer based on path and filename patterns.
+
+### Project & Market Auto-Discovery
+- **Project Discovery**: Scans `[base_raw_data_dir]` for folders starting with `#` (e.g., `#ProjectName`)
+- **Market Discovery**: For each project folder, scans subfolders and filters against a whitelist in `config.yaml` (`markets` key)
+- **Directory Structure**:
+  - With Project: `[base_raw_data_dir]/[Project]/[Market]`
+  - Without Project: `[base_raw_data_dir]/[Market]`
+
+### Excluded Analysis Types (File-Level)
+The following analysis types are processed as directory-level analysis only (individual CSV files in these categories are skipped):
+- `call_performance`
+- `voice_quality_combined`
+- `coverage_coordinate`
+- `n41_coverage`
+- `vonr_coverage_performance`
+- `google_throughput_analysis`
+- `mhs_drive_performance`
+- `wfc_performance`
 
 ### Directory-Based Routing (config.yaml)
 For folder-level analysis types, the pipeline uses configuration from `config.yaml`:
@@ -16,6 +34,7 @@ For folder-level analysis types, the pipeline uses configuration from `config.ya
 | **Data Performance** | Path contains `5g auto dp` OR `5g nsa dp` |
 | **N41 Coverage** | Path contains `5g n41 hpue coverage test` |
 | **VoNR Coverage** | Path contains `5g vonr coverage test` |
+| **VoNR Coverage Performance** | Directory config: `vonr_coverage_performance` |
 | **LTE Coverage** | Path contains `lte coverage test` |
 | **Coverage (Coord)** | Path contains `coverage performance` |
 | **Voice Quality** | Path contains `voice quality` |
@@ -29,6 +48,15 @@ For folder-level analysis types, the pipeline uses configuration from `config.ya
 | **HTTP** | Filename contains `http` OR Path contains `play-store app` |
 | **UDP** | Filename contains `udp` OR Filename/Path contains `mobility` |
 | **PING** | Filename contains `ping` |
+
+### Device Detection Priority (File-Level Analysis)
+When grouping CSV files for analysis, the pipeline determines device type using this priority order:
+1. **PCx Match** (Highest Priority): Regex `PC(\d+)` matches anywhere in filename → Maps to `PC2`, `PC3`, etc.
+2. **Explicit DUT/REF at End**: Regex `_(DUT|REF)_\.CSV$` matches at end of filename
+3. **General DUT/REF**: First occurrence of `DUT` or `REF` in filename
+4. **Channel Number Fallback** (Lowest Priority):
+   - `CH01` → `REF`
+   - `CH02` → `DUT`
 
 ---
 
@@ -382,7 +410,60 @@ The pipeline uses a 4-tier header search strategy:
 
 ---
 
-## 3. Filename Naming Conventions (`rules.py`)
+## 3. Post-Processing Steps
+After the main analysis, the pipeline executes additional post-processing steps:
+
+### A. VQ Line Chart Data
+- **Input**: Voice Quality CSV files from specific EVS WB VQ scenarios
+- **Scenarios Processed**:
+  - `5G Auto VoNR Disabled EVS WB VQ/Base`
+  - `5G Auto VoNR Disabled EVS WB VQ/Mobile`
+  - `5G Auto VoNR Enabled EVS WB VQ/Base`
+  - `5G Auto VoNR Enabled EVS WB VQ/Mobile`
+- **Output**: JSON files in `vq_linechart_data/` with MOS statistics (binned distributions)
+
+### B. WFC Line Chart Data
+- **Input**: All WFC CSV files grouped by Test Case (TC)
+- **Processing**:
+  1. **MOS Line Chart**: Calculates MOS value distributions (binned intervals)
+  2. **RSSI Line Chart**: Calculates RSSI distributions + exports raw samples to CSV
+- **Excluded**: Skips `MOS PATCH` directories (uses standard analysis)
+- **Output**: `wfc_linechart_data/` and `wfc_rssi_linechart_data/` directories
+
+### C. RSRP & Tx Power Extraction
+- **Input**: Coverage Performance runs from `5G n41 HPUE Coverage Test`
+- **Devices**: PC2, PC3
+- **Metrics Extracted**:
+  - RSRP: Column `[NR5G] [RF] RSRP`
+  - Tx Power: Primary `[NR5G] [Power] Tx power (PUSCH Actual)`, Fallback `[NR5G] [Power] Tx power (Total)`
+- **Output**: CSV files in `rsrp_data/` and `tx_power_data/` directories
+
+### D. CDF Throughput Data Export
+- **Logic**: Recursively traverses `data_performance` results and exports any `Throughput_CDF` data to separate JSON files
+- **Output Directory**: `cdf_throughput_data/`
+- **Filename Format**: `{path_parts}_{device}.json` (e.g., `5g_auto_dp_tc_name_DUT.json`)
+- **Note**: The `Throughput_CDF` key is removed from the main results JSON after export
+
+---
+
+## 4. Export Structure
+The pipeline exports results into the following JSON files:
+
+| Category | Output File | Root Key |
+| :--- | :--- | :--- |
+| Data Performance | `data_performance_results.json` | `"Data Performance"` |
+| Call Performance | `call_performance_results.json` | `"Call Performance"` |
+| Voice Quality | `voice_quality_results.json` | `"Voice Quality"` |
+| Coverage Performance | `coverage_performance_results.json` | `"Coverage Performance"` |
+| WFC Performance | `wfc_performance_results.json` | `"WFC"` |
+
+### Additional Output Files
+- `processing_summary.json`: Contains market, total files processed, success/failure counts, and lists of valid/invalid files
+- `Processed File Count.txt`: Quick reference text file with processing counts
+
+---
+
+## 5. Filename Naming Conventions (`rules.py`)
 
 The pipeline uses token-based matching to validate and classify files. Standard tokens include:
 

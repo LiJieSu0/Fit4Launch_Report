@@ -6,6 +6,7 @@ import VqMosTable from './VqMosTable';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import PageBreak from '../../../CommonPage/PageBreak';
 import { getKpiCellClass, getWorstKpiClass } from '../../../Utils/KpiRules';
+import VqAttenuationTable from './VqAttenuationTable';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
   let value = data;
@@ -186,6 +187,16 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
     <>
       <PageBreak>
         <DynamicHeader level={2}>5G Auto VoNR Disabled EVS WB VQ - {city}</DynamicHeader>
+        <VqAttenuationTable data={[
+          {
+            market: city,
+            testType: evsWbKey,
+            mobile: { REF: 'N/A', REF2: 'N/A', DUT1: 'N/A', DUT2: 'N/A' },
+            base: { REF: 'N/A', REF2: 'N/A', DUT1: 'N/A', DUT2: 'N/A' },
+            downlink: { REF: 'N/A', REF2: 'N/A', DUT1: 'N/A', DUT2: 'N/A' },
+            uplink: { REF: 'N/A', REF2: 'N/A', DUT1: 'N/A', DUT2: 'N/A' }
+          }
+        ]} />
         <h4>Results</h4>
         <div className="two-column-layout">
           <table className="general-table-style half-width-table vq-summary-table">

@@ -65,11 +65,11 @@ const VqSummaryPage = () => {
           ['DUT1', 'DUT2'].forEach(dut => {
             metrics.forEach(m => {
               const valDl = getFormattedValue(caseData, [dut, 'dl_mos_stats', m.name]);
-              const refDl = getFormattedValue(caseData, ['REF1', 'dl_mos_stats', m.name]);
+              const refDl = getFormattedValue(caseData, ['REF1', 'dl_mos_stats', m.name]) || getFormattedValue(caseData, ['REF', 'dl_mos_stats', m.name]);
               if (valDl !== null && refDl !== null) classes.push(mapExcellentToPass(getKpiCellClass(m.rule, valDl, refDl)));
 
               const valUl = getFormattedValue(caseData, [dut, 'ul_mos_stats', m.name]);
-              const refUl = getFormattedValue(caseData, ['REF1', 'ul_mos_stats', m.name]);
+              const refUl = getFormattedValue(caseData, ['REF1', 'ul_mos_stats', m.name]) || getFormattedValue(caseData, ['REF', 'ul_mos_stats', m.name]);
               if (valUl !== null && refUl !== null) classes.push(mapExcellentToPass(getKpiCellClass(m.rule, valUl, refUl)));
             });
           });
@@ -85,7 +85,7 @@ const VqSummaryPage = () => {
               const prefix = `vonr enable amr wb`;
               metrics.forEach(m => {
                 const val = getFormattedValue(caseData, [cat, `${prefix} ${dut} ${suffix}`, m.name]);
-                const ref = getFormattedValue(caseData, [cat, `${prefix} REF1 ${suffix}`, m.name]);
+                const ref = getFormattedValue(caseData, [cat, `${prefix} REF1 ${suffix}`, m.name]) || getFormattedValue(caseData, [cat, `${prefix} REF ${suffix}`, m.name]);
                 if (val !== null && ref !== null) classes.push(mapExcellentToPass(getKpiCellClass(m.rule, val, ref)));
               });
             });

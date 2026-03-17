@@ -20,7 +20,7 @@ import '../../../StyleScript/Restricted_Report_Style.css';
  * @param {Array} props.entities - Optional list of entity names in Row 2 (e.g., ['REF', 'DUT1', 'DUT2']).
  *                                If not provided, it will be inferred from the first data row's 'mobile' object.
  */
-const VqAttenuationTable = ({ data, entities: propEntities }) => {
+const VqAttenuationTable = ({ data, entities: propEntities, title }) => {
   if (!data || data.length === 0) {
     return <div>No attenuation data available.</div>;
   }
@@ -31,12 +31,12 @@ const VqAttenuationTable = ({ data, entities: propEntities }) => {
 
   return (
     <div className="vq-attenuation-table-container">
-      <h4>Audio input/output levels and average attenuation</h4>
+      <h4>{title || "Audio input/output levels and average attenuation"}</h4>
       <table className="general-table-style performance-table">
         <thead>
           <tr>
-            <th colSpan={entityCount}>Mobile Input Level</th>
-            <th colSpan={entityCount}>Base Output Level</th>
+            <th colSpan={entityCount}>Input Level</th>
+            <th colSpan={entityCount}>Output Level</th>
             <th colSpan={entityCount}>Downlink Attenuation</th>
             <th colSpan={entityCount}>Uplink Attenuation</th>
           </tr>

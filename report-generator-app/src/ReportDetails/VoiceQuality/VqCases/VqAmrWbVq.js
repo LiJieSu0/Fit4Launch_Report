@@ -3,6 +3,7 @@ import { ReportContext } from '../../../Contexts/ReportContext';
 import '../../../StyleScript/Restricted_Report_Style.css';
 import DynamicHeader from '../../../CommonPage/DynamicHeader';
 import PageBreak from '../../../CommonPage/PageBreak';
+import VqAttenuationTable from './VqAttenuationTable';
 import { getKpiCellClass, getWorstKpiClass } from '../../../Utils/KpiRules';
 
 const getFormattedValue = (data, path, isPercentage = false, decimals = 2) => {
@@ -159,7 +160,62 @@ const VqAmrWbVq = ({ city: propCity }) => {
   return (
     <PageBreak>
       <DynamicHeader level={2}>5G Auto VoNR Enabled AMR WB VQ - {city}</DynamicHeader>
-      {/* VqAttenuationTable */}
+      <VqAttenuationTable 
+        title="Audio input/output levels and average attenuation - Mobile"
+        data={[
+          {
+            mobile: {
+              'REF': getAmrWbValue("Mobile", "REF1", "INPUT LEVEL"),
+              'DUT 1': getAmrWbValue("Mobile", "DUT1", "INPUT LEVEL"),
+              'DUT 2': getAmrWbValue("Mobile", "DUT2", "INPUT LEVEL")
+            },
+            base: {
+              'REF': getAmrWbValue("Mobile", "REF1", "OUTPUT LEVEL"),
+              'DUT 1': getAmrWbValue("Mobile", "DUT1", "OUTPUT LEVEL"),
+              'DUT 2': getAmrWbValue("Mobile", "DUT2", "OUTPUT LEVEL")
+            },
+            downlink: {
+              'REF': getAmrWbValue("Mobile", "REF1", "DL MOS ATTN"),
+              'DUT 1': getAmrWbValue("Mobile", "DUT1", "DL MOS ATTN"),
+              'DUT 2': getAmrWbValue("Mobile", "DUT2", "DL MOS ATTN")
+            },
+            uplink: {
+              'REF': getAmrWbValue("Mobile", "REF1", "UL MOS ATTN"),
+              'DUT 1': getAmrWbValue("Mobile", "DUT1", "UL MOS ATTN"),
+              'DUT 2': getAmrWbValue("Mobile", "DUT2", "UL MOS ATTN")
+            }
+          }
+        ]}
+        entities={['REF', 'DUT 1', 'DUT 2']}
+      />
+      <VqAttenuationTable 
+        title="Audio input/output levels and average attenuation - Base"
+        data={[
+          {
+            mobile: {
+              'REF': getAmrWbValue("Base", "REF1", "INPUT LEVEL"),
+              'DUT 1': getAmrWbValue("Base", "DUT1", "INPUT LEVEL"),
+              'DUT 2': getAmrWbValue("Base", "DUT2", "INPUT LEVEL")
+            },
+            base: {
+              'REF': getAmrWbValue("Base", "REF1", "OUTPUT LEVEL"),
+              'DUT 1': getAmrWbValue("Base", "DUT1", "OUTPUT LEVEL"),
+              'DUT 2': getAmrWbValue("Base", "DUT2", "OUTPUT LEVEL")
+            },
+            downlink: {
+              'REF': getAmrWbValue("Base", "REF1", "DL MOS ATTN"),
+              'DUT 1': getAmrWbValue("Base", "DUT1", "DL MOS ATTN"),
+              'DUT 2': getAmrWbValue("Base", "DUT2", "DL MOS ATTN")
+            },
+            uplink: {
+              'REF': getAmrWbValue("Base", "REF1", "UL MOS ATTN"),
+              'DUT 1': getAmrWbValue("Base", "DUT1", "UL MOS ATTN"),
+              'DUT 2': getAmrWbValue("Base", "DUT2", "UL MOS ATTN")
+            }
+          }
+        ]}
+        entities={['REF', 'DUT 1', 'DUT 2']}
+      />
       <h4>Results</h4>
       <table className="general-table-style performance-table">
         <thead>

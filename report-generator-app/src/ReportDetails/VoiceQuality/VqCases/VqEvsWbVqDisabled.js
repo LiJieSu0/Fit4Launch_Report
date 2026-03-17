@@ -187,36 +187,70 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
     <>
       <PageBreak>
         <DynamicHeader level={2}>5G Auto VoNR Disabled EVS WB VQ - {city}</DynamicHeader>
-        <VqAttenuationTable data={[
-          {
-            market: city,
-            testType: evsWbKey,
-            mobile: { 
-              REF: getEvsWbValue("Mobile", "REF1", "INPUT LEVEL"), 
-              REF2: getEvsWbValue("Mobile", "REF2", "INPUT LEVEL"), 
-              DUT1: getEvsWbValue("Mobile", "DUT1", "INPUT LEVEL"), 
-              DUT2: getEvsWbValue("Mobile", "DUT2", "INPUT LEVEL") 
-            },
-            base: { 
-              REF: getEvsWbValue("Base", "REF1", "OUTPUT LEVEL"), 
-              REF2: getEvsWbValue("Base", "REF2", "OUTPUT LEVEL"), 
-              DUT1: getEvsWbValue("Base", "DUT1", "OUTPUT LEVEL"), 
-              DUT2: getEvsWbValue("Base", "DUT2", "OUTPUT LEVEL") 
-            },
-            downlink: { 
-              REF: getEvsWbValue("Base", "REF1", "DL MOS ATTN"), 
-              REF2: getEvsWbValue("Base", "REF2", "DL MOS ATTN"), 
-              DUT1: getEvsWbValue("Base", "DUT1", "DL MOS ATTN"), 
-              DUT2: getEvsWbValue("Base", "DUT2", "DL MOS ATTN") 
-            },
-            uplink: { 
-              REF: getEvsWbValue("Base", "REF1", "UL MOS ATTN"), 
-              REF2: getEvsWbValue("Base", "REF2", "UL MOS ATTN"), 
-              DUT1: getEvsWbValue("Base", "DUT1", "UL MOS ATTN"), 
-              DUT2: getEvsWbValue("Base", "DUT2", "UL MOS ATTN") 
+        <VqAttenuationTable 
+          title="Audio input/output levels and average attenuation - Mobile"
+          data={[
+            {
+              mobile: { 
+                'DUT 1': getEvsWbValue("Mobile", "DUT1", "INPUT LEVEL"), 
+                'REF 1': getEvsWbValue("Mobile", "REF1", "INPUT LEVEL"), 
+                'DUT 2': getEvsWbValue("Mobile", "DUT2", "INPUT LEVEL"), 
+                'REF 2': getEvsWbValue("Mobile", "REF2", "INPUT LEVEL") 
+              },
+              base: { 
+                'DUT 1': getEvsWbValue("Mobile", "DUT1", "OUTPUT LEVEL"), 
+                'REF 1': getEvsWbValue("Mobile", "REF1", "OUTPUT LEVEL"), 
+                'DUT 2': getEvsWbValue("Mobile", "DUT2", "OUTPUT LEVEL"), 
+                'REF 2': getEvsWbValue("Mobile", "REF2", "OUTPUT LEVEL") 
+              },
+              downlink: { 
+                'DUT 1': getEvsWbValue("Mobile", "DUT1", "DL MOS ATTN"), 
+                'REF 1': getEvsWbValue("Mobile", "REF1", "DL MOS ATTN"), 
+                'DUT 2': getEvsWbValue("Mobile", "DUT2", "DL MOS ATTN"), 
+                'REF 2': getEvsWbValue("Mobile", "REF2", "DL MOS ATTN") 
+              },
+              uplink: { 
+                'DUT 1': getEvsWbValue("Mobile", "DUT1", "UL MOS ATTN"), 
+                'REF 1': getEvsWbValue("Mobile", "REF1", "UL MOS ATTN"), 
+                'DUT 2': getEvsWbValue("Mobile", "DUT2", "UL MOS ATTN"), 
+                'REF 2': getEvsWbValue("Mobile", "REF2", "UL MOS ATTN") 
+              }
             }
-          }
-        ]} />
+          ]}
+          entities={['DUT 1', 'REF 1', 'DUT 2', 'REF 2']}
+        />
+        <VqAttenuationTable 
+          title="Audio input/output levels and average attenuation - Base"
+          data={[
+            {
+              mobile: { 
+                'DUT 1': getEvsWbValue("Base", "DUT1", "INPUT LEVEL"), 
+                'REF 1': getEvsWbValue("Base", "REF1", "INPUT LEVEL"), 
+                'DUT 2': getEvsWbValue("Base", "DUT2", "INPUT LEVEL"), 
+                'REF 2': getEvsWbValue("Base", "REF2", "INPUT LEVEL") 
+              },
+              base: { 
+                'DUT 1': getEvsWbValue("Base", "DUT1", "OUTPUT LEVEL"), 
+                'REF 1': getEvsWbValue("Base", "REF1", "OUTPUT LEVEL"), 
+                'DUT 2': getEvsWbValue("Base", "DUT2", "OUTPUT LEVEL"), 
+                'REF 2': getEvsWbValue("Base", "REF2", "OUTPUT LEVEL") 
+              },
+              downlink: { 
+                'DUT 1': getEvsWbValue("Base", "DUT1", "DL MOS ATTN"), 
+                'REF 1': getEvsWbValue("Base", "REF1", "DL MOS ATTN"), 
+                'DUT 2': getEvsWbValue("Base", "DUT2", "DL MOS ATTN"), 
+                'REF 2': getEvsWbValue("Base", "REF2", "DL MOS ATTN") 
+              },
+              uplink: { 
+                'DUT 1': getEvsWbValue("Base", "DUT1", "UL MOS ATTN"), 
+                'REF 1': getEvsWbValue("Base", "REF1", "UL MOS ATTN"), 
+                'DUT 2': getEvsWbValue("Base", "DUT2", "UL MOS ATTN"), 
+                'REF 2': getEvsWbValue("Base", "REF2", "UL MOS ATTN") 
+              }
+            }
+          ]}
+          entities={['DUT 1', 'REF 1', 'DUT 2', 'REF 2']}
+        />
         <h4>Results</h4>
         <div className="two-column-layout">
           <table className="general-table-style half-width-table vq-summary-table">

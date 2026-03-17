@@ -35,8 +35,8 @@ const VqAttenuationTable = ({ data, entities: propEntities }) => {
       <table className="general-table-style performance-table">
         <thead>
           <tr>
-            <th colSpan={entityCount}>Mobile Input/Output</th>
-            <th colSpan={entityCount}>Base Input/Output</th>
+            <th colSpan={entityCount}>Mobile Input Level</th>
+            <th colSpan={entityCount}>Base Output Level</th>
             <th colSpan={entityCount}>Downlink Attenuation</th>
             <th colSpan={entityCount}>Uplink Attenuation</th>
           </tr>

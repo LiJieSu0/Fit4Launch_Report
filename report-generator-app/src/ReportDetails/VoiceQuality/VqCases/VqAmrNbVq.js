@@ -48,19 +48,28 @@ const VqAmrNbVq = ({ city: propCity }) => {
   }
 
   const getAmrNbValue = (device, location, stat, isPercentage = false, decimals = 2) => {
-    // Check if data is structured by Base/Mobile subfolders
     let path;
-    if (amrNbDataPath[location]) {
-      path = [location, device, stat];
-    } else {
-      // Fallback for legacy structured data (where device is top level)
-      // Note: stat might be nested inside mos_stats for legacy, but for ATTN/LEVEL it's at device level
-      if (stat.includes('mean') || stat.includes('std_dev') || stat.includes('max') || stat.includes('count') || stat.includes('MOS')) {
-         const type = stat.includes('dl') ? 'dl' : 'ul';
-         const actualStat = stat.split('.').pop(); // Handle nested if provided
-         path = [device, `${type}_mos_stats`, actualStat];
+    const isDl = stat.startsWith('dl.');
+    const isUl = stat.startsWith('ul.');
+
+    if (isDl || isUl) {
+      const type = isDl ? 'dl_mos_stats' : 'ul_mos_stats';
+      const actualStat = stat.substring(3); // Remove 'dl.' or 'ul.'
+
+      if (amrNbDataPath[location] && amrNbDataPath[location][device]) {
+        path = [location, device, type, actualStat];
+      } else if (amrNbDataPath[device]) {
+        path = [device, type, actualStat];
       } else {
-         path = [device, stat];
+        path = [device, type, actualStat]; // Fallback
+      }
+    } else {
+      if (amrNbDataPath[location] && amrNbDataPath[location][device]) {
+        path = [location, device, stat];
+      } else if (amrNbDataPath[device]) {
+        path = [device, stat];
+      } else {
+        path = [device, stat]; // Fallback
       }
     }
     return getFormattedValue(amrNbDataPath, path, isPercentage, decimals);

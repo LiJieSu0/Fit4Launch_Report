@@ -191,10 +191,30 @@ const VqEvsWbVqDisabled = ({ city: propCity }) => {
           {
             market: city,
             testType: evsWbKey,
-            mobile: { REF: 'N/A', REF2: 'N/A', DUT1: 'N/A', DUT2: 'N/A' },
-            base: { REF: 'N/A', REF2: 'N/A', DUT1: 'N/A', DUT2: 'N/A' },
-            downlink: { REF: 'N/A', REF2: 'N/A', DUT1: 'N/A', DUT2: 'N/A' },
-            uplink: { REF: 'N/A', REF2: 'N/A', DUT1: 'N/A', DUT2: 'N/A' }
+            mobile: { 
+              REF: getEvsWbValue("Mobile", "REF1", "INPUT LEVEL"), 
+              REF2: getEvsWbValue("Mobile", "REF2", "INPUT LEVEL"), 
+              DUT1: getEvsWbValue("Mobile", "DUT1", "INPUT LEVEL"), 
+              DUT2: getEvsWbValue("Mobile", "DUT2", "INPUT LEVEL") 
+            },
+            base: { 
+              REF: getEvsWbValue("Base", "REF1", "OUTPUT LEVEL"), 
+              REF2: getEvsWbValue("Base", "REF2", "OUTPUT LEVEL"), 
+              DUT1: getEvsWbValue("Base", "DUT1", "OUTPUT LEVEL"), 
+              DUT2: getEvsWbValue("Base", "DUT2", "OUTPUT LEVEL") 
+            },
+            downlink: { 
+              REF: getEvsWbValue("Base", "REF1", "DL MOS ATTN"), 
+              REF2: getEvsWbValue("Base", "REF2", "DL MOS ATTN"), 
+              DUT1: getEvsWbValue("Base", "DUT1", "DL MOS ATTN"), 
+              DUT2: getEvsWbValue("Base", "DUT2", "DL MOS ATTN") 
+            },
+            uplink: { 
+              REF: getEvsWbValue("Base", "REF1", "UL MOS ATTN"), 
+              REF2: getEvsWbValue("Base", "REF2", "UL MOS ATTN"), 
+              DUT1: getEvsWbValue("Base", "DUT1", "UL MOS ATTN"), 
+              DUT2: getEvsWbValue("Base", "DUT2", "UL MOS ATTN") 
+            }
           }
         ]} />
         <h4>Results</h4>

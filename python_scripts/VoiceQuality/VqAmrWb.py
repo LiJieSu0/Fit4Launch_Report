@@ -119,7 +119,36 @@ def analyze_wb_voice_quality(base_path):
             print(f"Processing {file_path} as key '{react_key}'...")
             metrics = parse_mos_metrics(file_path)
             if metrics:
-                results[subfolder][react_key] = metrics
+                if react_key not in results[subfolder]:
+                    results[subfolder][react_key] = metrics
+                else:
+                    existing = results[subfolder][react_key]
+                    merged = {}
+                    total_counts = existing['Counts'] + metrics['Counts']
+                    
+                    if total_counts > 0:
+                        merged['Counts'] = total_counts
+                        merged['MOS Average'] = round((existing['MOS Average'] * existing['Counts'] + metrics['MOS Average'] * metrics['Counts']) / total_counts, 4)
+                        merged['MOS Stdev'] = round((existing['MOS Stdev'] * existing['Counts'] + metrics['MOS Stdev'] * metrics['Counts']) / total_counts, 4)
+                        merged['Maximum MOS'] = max(existing['Maximum MOS'], metrics['Maximum MOS'])
+                        merged['% MOS < 3.0'] = round((existing['% MOS < 3.0'] * existing['Counts'] + metrics['% MOS < 3.0'] * metrics['Counts']) / total_counts, 4)
+                        merged['% MOS < 2.0'] = round((existing['% MOS < 2.0'] * existing['Counts'] + metrics['% MOS < 2.0'] * metrics['Counts']) / total_counts, 4)
+                    else:
+                        merged = existing
+                    
+                    # Merge Attenuation and Levels
+                    for extra in ['UL MOS ATTN', 'DL MOS ATTN', 'INPUT LEVEL', 'OUTPUT LEVEL']:
+                        e_v = existing.get(extra, "N/A")
+                        n_v = metrics.get(extra, "N/A")
+                        if e_v != "N/A" and n_v != "N/A":
+                            merged[extra] = round((e_v * existing['Counts'] + n_v * metrics['Counts']) / total_counts, 4) if total_counts > 0 else e_v
+                        elif e_v != "N/A":
+                            merged[extra] = e_v
+                        else:
+                            merged[extra] = n_v
+                    
+                    results[subfolder][react_key] = merged
+
     
     return results
 

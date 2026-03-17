@@ -37,7 +37,7 @@ class VoiceQualityAnalyzer(BaseAnalyzer):
                                 organized_nb_vq_results = {}
                                 for file_stats in nb_vq_results:
                                     device_type = file_stats["device_type"]
-                                    organized_nb_vq_results[device_type] = {
+                                    new_data = {
                                         "ul_mos_stats": file_stats["ul_mos_stats"],
                                         "dl_mos_stats": file_stats["dl_mos_stats"],
                                         "UL MOS ATTN": file_stats.get("UL MOS ATTN", "N/A"),
@@ -45,6 +45,55 @@ class VoiceQualityAnalyzer(BaseAnalyzer):
                                         "INPUT LEVEL": file_stats.get("INPUT LEVEL", "N/A"),
                                         "OUTPUT LEVEL": file_stats.get("OUTPUT LEVEL", "N/A")
                                     }
+                                    
+                                    if device_type not in organized_nb_vq_results:
+                                        organized_nb_vq_results[device_type] = new_data
+                                    else:
+                                        # Merge logic: combine existing and new data
+                                        existing = organized_nb_vq_results[device_type]
+                                        merged = {}
+                                        
+                                        for stat_type in ["ul_mos_stats", "dl_mos_stats"]:
+                                            e_s = existing[stat_type]
+                                            n_s = file_stats[stat_type]
+                                            total_count = e_s["count"] + n_s["count"]
+                                            
+                                            if total_count > 0:
+                                                merged_stat = {
+                                                    "count": total_count,
+                                                    "mean": round((e_s["mean"] * e_s["count"] + n_s["mean"] * n_s["count"]) / total_count, 4),
+                                                    "std_dev": round((e_s["std_dev"] * e_s["count"] + n_s["std_dev"] * n_s["count"]) / total_count, 4), # Approximation
+                                                    "max": max(e_s["max"], n_s["max"]),
+                                                    "min": min(e_s["min"], n_s["min"]) if e_s["min"] > 0 and n_s["min"] > 0 else (e_s["min"] or n_s["min"]),
+                                                    "% MOS < 2.0": round((e_s["% MOS < 2.0"] * e_s["count"] + n_s["% MOS < 2.0"] * n_s["count"]) / total_count, 4),
+                                                    "% MOS < 3.0": round((e_s["% MOS < 3.0"] * e_s["count"] + n_s["% MOS < 3.0"] * n_s["count"]) / total_count, 4)
+                                                }
+                                            else:
+                                                merged_stat = e_s
+                                            merged[stat_type] = merged_stat
+                                            
+                                        # Merge extra metrics (Weighted average based on MOS count)
+                                        for extra in ["UL MOS ATTN", "DL MOS ATTN", "INPUT LEVEL", "OUTPUT LEVEL"]:
+                                            e_v = existing[extra]
+                                            n_v = file_stats.get(extra, "N/A")
+                                            
+                                            # Use DL MOS count for DL metrics, UL MOS count for UL metrics/levels
+                                            weight_stat = "dl_mos_stats" if "DL" in extra else "ul_mos_stats"
+                                            e_c = existing[weight_stat]["count"]
+                                            n_c = file_stats[weight_stat]["count"]
+                                            
+                                            if e_v != "N/A" and n_v != "N/A":
+                                                total_c = e_c + n_c
+                                                if total_c > 0:
+                                                    merged[extra] = round((e_v * e_c + n_v * n_c) / total_c, 4)
+                                                else:
+                                                    merged[extra] = e_v
+                                            elif e_v != "N/A":
+                                                merged[extra] = e_v
+                                            else:
+                                                merged[extra] = n_v
+                                                
+                                        organized_nb_vq_results[device_type] = merged
                                 results[sub_dir_name][subfolder] = organized_nb_vq_results
                         else:
                             # Handle case where files might be directly in the sub_dir_full_path
@@ -53,7 +102,7 @@ class VoiceQualityAnalyzer(BaseAnalyzer):
                                 organized_nb_vq_results = {}
                                 for file_stats in nb_vq_results:
                                     device_type = file_stats["device_type"]
-                                    organized_nb_vq_results[device_type] = {
+                                    new_data = {
                                         "ul_mos_stats": file_stats["ul_mos_stats"],
                                         "dl_mos_stats": file_stats["dl_mos_stats"],
                                         "UL MOS ATTN": file_stats.get("UL MOS ATTN", "N/A"),
@@ -61,7 +110,38 @@ class VoiceQualityAnalyzer(BaseAnalyzer):
                                         "INPUT LEVEL": file_stats.get("INPUT LEVEL", "N/A"),
                                         "OUTPUT LEVEL": file_stats.get("OUTPUT LEVEL", "N/A")
                                     }
+                                    if device_type not in organized_nb_vq_results:
+                                        organized_nb_vq_results[device_type] = new_data
+                                    else:
+                                        # (Same merge logic as above - refactored to be dryer if possible, but keeping it simple for now)
+                                        existing = organized_nb_vq_results[device_type]
+                                        merged = {}
+                                        for stat_type in ["ul_mos_stats", "dl_mos_stats"]:
+                                            e_s = existing[stat_type]; n_s = file_stats[stat_type]
+                                            total_count = e_s["count"] + n_s["count"]
+                                            if total_count > 0:
+                                                merged[stat_type] = {
+                                                    "count": total_count,
+                                                    "mean": round((e_s["mean"] * e_s["count"] + n_s["mean"] * n_s["count"]) / total_count, 4),
+                                                    "std_dev": round((e_s["std_dev"] * e_s["count"] + n_s["std_dev"] * n_s["count"]) / total_count, 4),
+                                                    "max": max(e_s["max"], n_s["max"]),
+                                                    "min": min(e_s["min"], n_s["min"]) if e_s["min"] > 0 and n_s["min"] > 0 else (e_s["min"] or n_s["min"]),
+                                                    "% MOS < 2.0": round((e_s["% MOS < 2.0"] * e_s["count"] + n_s["% MOS < 2.0"] * n_s["count"]) / total_count, 4),
+                                                    "% MOS < 3.0": round((e_s["% MOS < 3.0"] * e_s["count"] + n_s["% MOS < 3.0"] * n_s["count"]) / total_count, 4)
+                                                }
+                                            else: merged[stat_type] = e_s
+                                        for extra in ["UL MOS ATTN", "DL MOS ATTN", "INPUT LEVEL", "OUTPUT LEVEL"]:
+                                            e_v = existing[extra]; n_v = file_stats.get(extra, "N/A")
+                                            weight_stat = "dl_mos_stats" if "DL" in extra else "ul_mos_stats"
+                                            e_c = existing[weight_stat]["count"]; n_c = file_stats[weight_stat]["count"]
+                                            if e_v != "N/A" and n_v != "N/A":
+                                                total_c = e_c + n_c
+                                                merged[extra] = round((e_v * e_c + n_v * n_c) / total_c, 4) if total_c > 0 else e_v
+                                            elif e_v != "N/A": merged[extra] = e_v
+                                            else: merged[extra] = n_v
+                                        organized_nb_vq_results[device_type] = merged
                                 results[sub_dir_name].update(organized_nb_vq_results)
+
                             break # No need to check other subfolders if we processed files at this level
 
                 elif "Audio Delay" in sub_dir_name:

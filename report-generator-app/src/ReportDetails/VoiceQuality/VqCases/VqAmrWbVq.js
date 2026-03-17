@@ -159,6 +159,7 @@ const VqAmrWbVq = ({ city: propCity }) => {
   return (
     <PageBreak>
       <DynamicHeader level={2}>5G Auto VoNR Enabled AMR WB VQ - {city}</DynamicHeader>
+      {/* VqAttenuationTable */}
       <h4>Results</h4>
       <table className="general-table-style performance-table">
         <thead>

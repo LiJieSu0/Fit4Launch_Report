@@ -171,7 +171,7 @@ function App() {
       )}
 
       <LegalPage />
-      <AboutPage />
+      {/* <AboutPage /> */}
       <ReportFooter reportType={reportType[currentReport]} />
     </div>
   );

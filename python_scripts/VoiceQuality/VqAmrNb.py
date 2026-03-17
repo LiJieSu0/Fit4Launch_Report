@@ -51,13 +51,34 @@ def analyze_csv(file_path):
 
     ul_stats = calculate_statistics(ul_mos_scores)
     dl_stats = calculate_statistics(dl_mos_scores)
+
+    # New Statistics: Attenuation and Level
+    new_stats_headers = {
+        'UL MOS ATTN': "[Call Test] [Voice Quality] [UL MOS] Attenuation",
+        'DL MOS ATTN': "[Call Test] [Voice Quality] [Per Rx Clip] Attenuation",
+        'INPUT LEVEL': "[Call Test] [Voice Quality] [Loudness] [Volume] [Reference signal's Level] Reference signal's Level #1",
+        'OUTPUT LEVEL': "[Call Test] [Voice Quality] [Loudness] [Volume] [Received signal's Level] Received signal's Level #1"
+    }
+    
+    extra_metrics = {}
+    for key, header in new_stats_headers.items():
+        if header in df.columns:
+            vals = pd.to_numeric(df[header], errors='coerce').dropna()
+            if not vals.empty:
+                extra_metrics[key] = round(float(vals.mean()), 4)
+            else:
+                extra_metrics[key] = "N/A"
+        else:
+            extra_metrics[key] = "N/A"
+
     device_type = extract_device_type(file_path)
 
     return {
         "file_path": file_path,
         "device_type": device_type,
         "ul_mos_stats": ul_stats,
-        "dl_mos_stats": dl_stats
+        "dl_mos_stats": dl_stats,
+        **extra_metrics
     }
 
 def process_directory(directory_path, subdir_filter=None):

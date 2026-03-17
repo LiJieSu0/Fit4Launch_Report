@@ -91,13 +91,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 466.87102327035956,
-                                "Standard Deviation": 135.0400965091247,
-                                "Minimum": 226.93130000000005,
-                                "Maximum": 686.7558333333333,
+                                "Mean": 471.81442486376056,
+                                "Standard Deviation": 143.59906639924677,
+                                "Minimum": 218.492,
+                                "Maximum": 727.322238095238,
                                 "Q1": 361.0463068965517,
-                                "Median": 478.41713793103446,
-                                "Q3": 567.4201363916256,
+                                "Median": 473.6762278325123,
+                                "Q3": 571.2302222222222,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -109,13 +109,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 507.85474844231993,
-                                "Standard Deviation": 80.5221895550905,
+                                "Mean": 513.8298552371965,
+                                "Standard Deviation": 82.92682629019598,
                                 "Minimum": 330.71290000000005,
-                                "Maximum": 657.2432083333333,
-                                "Q1": 453.21329556650244,
-                                "Median": 517.5112297619048,
-                                "Q3": 559.9686896551724,
+                                "Maximum": 668.7695652173912,
+                                "Q1": 463.88007142857145,
+                                "Median": 527.339959770115,
+                                "Q3": 561.4456955128205,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -129,12 +129,12 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 238.91732461412147,
-                                "Standard Deviation": 102.36818125778619,
-                                "Minimum": 23.10203333333333,
-                                "Maximum": 426.7327586206896,
-                                "Q1": 177.42568103448278,
-                                "Median": 218.0213183908046,
+                                "Mean": 236.98788453901244,
+                                "Standard Deviation": 103.10931694168097,
+                                "Minimum": 9.356250000000001,
+                                "Maximum": 437.7087142857143,
+                                "Q1": 178.48712433687004,
+                                "Median": 208.4785,
                                 "Q3": 298.6162701149425,
                                 "Outliers": [],
                                 "Number of Intervals": 40
@@ -147,13 +147,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 293.76562491399716,
-                                "Standard Deviation": 283.7046871119988,
-                                "Minimum": 1.9296000000000002,
-                                "Maximum": 683.8642916666668,
-                                "Q1": 19.544431034482756,
-                                "Median": 202.334809770115,
-                                "Q3": 588.3673719667944,
+                                "Mean": 296.9254674620174,
+                                "Standard Deviation": 291.05918095538624,
+                                "Minimum": 1.2005,
+                                "Maximum": 701.8959565217391,
+                                "Q1": 13.470549615384616,
+                                "Median": 205.66007435897436,
+                                "Q3": 600.1676851851852,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -167,15 +167,15 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 392.0829976576838,
-                                "Standard Deviation": 34.94852503279999,
-                                "Minimum": 328.3813448275862,
-                                "Maximum": 440.1412413793103,
-                                "Q1": 359.25820689655177,
-                                "Median": 396.11689655172415,
-                                "Q3": 415.2770333333334,
+                                "Mean": 406.5356082398801,
+                                "Standard Deviation": 44.0146887681233,
+                                "Minimum": 332.5990714285714,
+                                "Maximum": 477.9025833333333,
+                                "Q1": 371.04849107142854,
+                                "Median": 398.8241551724139,
+                                "Q3": 444.24052490421457,
                                 "Outliers": [
-                                    248.88841379310344
+                                    244.66067857142858
                                 ],
                                 "Number of Intervals": 18
                             }
@@ -187,13 +187,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 55.42619214458026,
-                                "Standard Deviation": 15.335862543505986,
-                                "Minimum": 28.042172413793104,
-                                "Maximum": 88.66949999999999,
-                                "Q1": 47.642875159642394,
-                                "Median": 54.93417610837439,
-                                "Q3": 67.20274137931034,
+                                "Mean": 45.45030630084581,
+                                "Standard Deviation": 10.164726805585161,
+                                "Minimum": 24.483499999999992,
+                                "Maximum": 61.515884615384614,
+                                "Q1": 40.58085218253968,
+                                "Median": 46.66308355437666,
+                                "Q3": 52.305252403846154,
                                 "Outliers": [],
                                 "Number of Intervals": 18
                             }
@@ -209,23 +209,14 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 45.479240583411595,
-                                "Standard Deviation": 1.9542581751225618,
-                                "Minimum": 41.27923333333334,
-                                "Maximum": 49.80733333333333,
-                                "Q1": 44.408037500000006,
-                                "Median": 45.32006264367817,
-                                "Q3": 46.77975775862068,
-                                "Outliers": [
-                                    37.50863636363636,
-                                    40.41465000000001,
-                                    40.42095454545455,
-                                    52.60517647058823,
-                                    54.46411764705883,
-                                    51.011,
-                                    31.885375,
-                                    50.95137037037037
-                                ],
+                                "Mean": 38.58087588985515,
+                                "Standard Deviation": 7.598860594441377,
+                                "Minimum": 20.088368421052632,
+                                "Maximum": 47.081061999999996,
+                                "Q1": 30.98864166666667,
+                                "Median": 41.8443445,
+                                "Q3": 45.460843000000004,
+                                "Outliers": [],
                                 "Number of Intervals": 40
                             }
                         },
@@ -236,13 +227,13 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 61.79406040969248,
-                                "Standard Deviation": 11.486713567000573,
-                                "Minimum": 44.358266666666665,
-                                "Maximum": 81.789,
-                                "Q1": 52.16404067460317,
-                                "Median": 62.06593103448275,
-                                "Q3": 72.48454137931034,
+                                "Mean": 60.16798613439282,
+                                "Standard Deviation": 13.056969514628388,
+                                "Minimum": 40.85507407407407,
+                                "Maximum": 81.823881,
+                                "Q1": 48.26685027472528,
+                                "Median": 62.215509,
+                                "Q3": 71.489206,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -256,13 +247,13 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 47.63273086239884,
-                                "Standard Deviation": 14.388235270624685,
-                                "Minimum": 21.189249999999998,
-                                "Maximum": 69.745,
-                                "Q1": 35.34361781609196,
-                                "Median": 54.492125757575764,
-                                "Q3": 60.17542241379309,
+                                "Mean": 41.66915670255533,
+                                "Standard Deviation": 11.800929637489737,
+                                "Minimum": 17.047815999999997,
+                                "Maximum": 57.264230769230764,
+                                "Q1": 33.204069749999995,
+                                "Median": 46.578495357142856,
+                                "Q3": 52.05332592838195,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -274,18 +265,19 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 82.09456459359606,
-                                "Standard Deviation": 1.9519719966122504,
-                                "Minimum": 78.04833333333335,
-                                "Maximum": 84.79209999999999,
-                                "Q1": 80.1238879310345,
-                                "Median": 82.54016666666666,
-                                "Q3": 83.55430833333335,
+                                "Mean": 79.30731500883186,
+                                "Standard Deviation": 2.2658408215303,
+                                "Minimum": 74.02996,
+                                "Maximum": 83.848333,
+                                "Q1": 77.74258358620689,
+                                "Median": 79.05223555172414,
+                                "Q3": 80.36206929310345,
                                 "Outliers": [
-                                    91.39973333333334,
-                                    72.5336551724138,
-                                    65.74686666666666,
-                                    54.01955172413793
+                                    73.77872727272728,
+                                    91.400875,
+                                    72.35174400000001,
+                                    66.229413,
+                                    53.139126
                                 ],
                                 "Number of Intervals": 40
                             }
@@ -299,16 +291,15 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 36.125511982442845,
-                                "Standard Deviation": 5.116949597790648,
-                                "Minimum": 23.73956,
-                                "Maximum": 40.68310344827586,
-                                "Q1": 32.499639423076914,
-                                "Median": 38.15821149425288,
-                                "Q3": 38.843156403940895,
+                                "Mean": 33.992956263157886,
+                                "Standard Deviation": 7.8294846892813155,
+                                "Minimum": 15.972775,
+                                "Maximum": 40.431204,
+                                "Q1": 28.398726999999997,
+                                "Median": 37.69630699999999,
+                                "Q3": 38.972075,
                                 "Outliers": [
-                                    21.784636363636363,
-                                    20.692099999999996
+                                    3.670016
                                 ],
                                 "Number of Intervals": 20
                             }
@@ -320,13 +311,13 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 34.661802461229705,
-                                "Standard Deviation": 2.805385620501096,
-                                "Minimum": 30.155103448275863,
-                                "Maximum": 38.37749999999999,
-                                "Q1": 31.954267241379313,
-                                "Median": 35.86083571428571,
-                                "Q3": 37.00302586206897,
+                                "Mean": 34.2157138,
+                                "Standard Deviation": 2.690562121171427,
+                                "Minimum": 30.197982,
+                                "Maximum": 38.377882,
+                                "Q1": 31.876710250000002,
+                                "Median": 34.1243755,
+                                "Q3": 36.725457500000005,
                                 "Outliers": [],
                                 "Number of Intervals": 20
                             }
@@ -344,17 +335,17 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 239.22778829356557,
-                                "Standard Deviation": 46.903432148282796,
-                                "Minimum": 109.13010000000001,
-                                "Maximum": 310.0109411764706,
-                                "Q1": 205.29917372881357,
-                                "Median": 230.88199802259888,
-                                "Q3": 276.0928190789474,
+                                "Mean": 251.58492884987203,
+                                "Standard Deviation": 49.592159334525434,
+                                "Minimum": 106.77796428571428,
+                                "Maximum": 329.76608510638295,
+                                "Q1": 211.92822881355934,
+                                "Median": 250.44073909563826,
+                                "Q3": 285.3367363636364,
                                 "Outliers": [
-                                    94.70043333333335,
+                                    66.79327450980392,
                                     58.83313333333333,
-                                    85.07118333333332
+                                    53.09784905660378
                                 ],
                                 "Number of Intervals": 40
                             }
@@ -366,13 +357,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 267.442956049738,
-                                "Standard Deviation": 45.92389975272599,
+                                "Mean": 282.1181169696732,
+                                "Standard Deviation": 50.78490691642949,
                                 "Minimum": 175.18884745762708,
-                                "Maximum": 355.9989111111111,
-                                "Q1": 242.11773663062536,
-                                "Median": 271.7431884236453,
-                                "Q3": 305.09967326546,
+                                "Maximum": 359.11259090909084,
+                                "Q1": 255.79143748141541,
+                                "Median": 298.24258296296296,
+                                "Q3": 319.6669435296846,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -386,13 +377,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 188.65005799970777,
-                                "Standard Deviation": 47.31433345124822,
+                                "Mean": 195.78384384943058,
+                                "Standard Deviation": 49.66251801553809,
                                 "Minimum": 87.5780677966102,
                                 "Maximum": 273.7217931034483,
-                                "Q1": 161.61766122881355,
-                                "Median": 186.73978813559324,
-                                "Q3": 220.0557625,
+                                "Q1": 165.17523712121212,
+                                "Median": 198.74566067104809,
+                                "Q3": 240.38878189655173,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -404,13 +395,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 206.0241027530024,
-                                "Standard Deviation": 58.35551678225707,
+                                "Mean": 213.73170253819194,
+                                "Standard Deviation": 64.96778678478765,
                                 "Minimum": 101.66721666666668,
-                                "Maximum": 343.9328913043478,
-                                "Q1": 169.26027083333332,
-                                "Median": 186.1895629943503,
-                                "Q3": 244.4883375,
+                                "Maximum": 347.6091777777778,
+                                "Q1": 174.60627198275864,
+                                "Median": 189.48882254901963,
+                                "Q3": 245.43882055084745,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -424,9 +415,9 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 68.95740065684373,
-                                "Standard Deviation": 33.46621181468071,
-                                "Minimum": 14.674322033898305,
+                                "Mean": 68.38377311752753,
+                                "Standard Deviation": 35.171045089473864,
+                                "Minimum": 14.289793103448273,
                                 "Maximum": 134.33006779661017,
                                 "Q1": 44.92943333333333,
                                 "Median": 75.35451694915254,
@@ -442,13 +433,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 220.9150803883369,
-                                "Standard Deviation": 32.123620527505025,
+                                "Mean": 232.95717254897176,
+                                "Standard Deviation": 35.701926927987685,
                                 "Minimum": 168.72128813559323,
-                                "Maximum": 272.8420172413793,
-                                "Q1": 186.30853333333334,
-                                "Median": 231.69691666666668,
-                                "Q3": 246.14800000000002,
+                                "Maximum": 283.61296363636365,
+                                "Q1": 202.21789655172412,
+                                "Median": 249.23993999999996,
+                                "Q3": 260.9260862068965,
                                 "Outliers": [],
                                 "Number of Intervals": 21
                             }
@@ -464,18 +455,14 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 55.317527027027026,
-                                "Standard Deviation": 20.94796111544775,
-                                "Minimum": 11.908,
-                                "Maximum": 99.078,
-                                "Q1": 41.942875,
-                                "Median": 61.415499999999994,
-                                "Q3": 67.109,
-                                "Outliers": [
-                                    648.0055000000001,
-                                    137.254,
-                                    147.636
-                                ],
+                                "Mean": 65.704219,
+                                "Standard Deviation": 19.81092218742445,
+                                "Minimum": 34.96233333333333,
+                                "Maximum": 99.833611,
+                                "Q1": 54.655875,
+                                "Median": 61.635999999999996,
+                                "Q3": 87.35545675,
+                                "Outliers": [],
                                 "Number of Intervals": 40
                             }
                         },
@@ -486,21 +473,18 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 65.25751515151515,
-                                "Standard Deviation": 21.999148314297322,
-                                "Minimum": 26.008,
-                                "Maximum": 99.408,
-                                "Q1": 58.07875,
-                                "Median": 70.0095,
-                                "Q3": 89.8665,
+                                "Mean": 81.24459608333333,
+                                "Standard Deviation": 16.55542204371442,
+                                "Minimum": 43.851,
+                                "Maximum": 100.0,
+                                "Q1": 68.167,
+                                "Median": 92.20132000000001,
+                                "Q3": 99.77137,
                                 "Outliers": [
                                     390.65450000000004,
                                     516.458,
                                     665.2075,
-                                    391.17900000000003,
-                                    8.503,
-                                    142.445,
-                                    141.743
+                                    391.17900000000003
                                 ],
                                 "Number of Intervals": 40
                             }
@@ -514,16 +498,22 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 56.80760526315789,
-                                "Standard Deviation": 14.610769003730672,
-                                "Minimum": 24.889400000000002,
-                                "Maximum": 92.819,
-                                "Q1": 45.99504166666667,
-                                "Median": 62.585499999999996,
-                                "Q3": 65.082125,
+                                "Mean": 59.708432593750004,
+                                "Standard Deviation": 12.939741850878015,
+                                "Minimum": 28.564627,
+                                "Maximum": 85.71428599999999,
+                                "Q1": 49.484381250000006,
+                                "Median": 62.80025,
+                                "Q3": 65.9475,
                                 "Outliers": [
                                     292.0885,
-                                    12.231
+                                    21.417098000000003,
+                                    16.209645000000002,
+                                    19.357961,
+                                    92.664093,
+                                    92.378753,
+                                    21.420921,
+                                    91.603053
                                 ],
                                 "Number of Intervals": 40
                             }
@@ -535,17 +525,19 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 98.24282432432432,
-                                "Standard Deviation": 44.4403598651884,
-                                "Minimum": 12.027,
-                                "Maximum": 218.276,
-                                "Q1": 73.636,
-                                "Median": 89.322,
-                                "Q3": 132.26749999999998,
+                                "Mean": 90.63254582857142,
+                                "Standard Deviation": 13.426052028684524,
+                                "Minimum": 63.752,
+                                "Maximum": 109.190173,
+                                "Q1": 77.5682885,
+                                "Median": 92.130532,
+                                "Q3": 102.32375825000001,
                                 "Outliers": [
+                                    148.37,
+                                    12.027,
+                                    140.36,
                                     226.26,
-                                    222.598,
-                                    230.696
+                                    34.256352
                                 ],
                                 "Number of Intervals": 40
                             }
@@ -559,13 +551,13 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 27.13008856544771,
-                                "Standard Deviation": 20.34562824771085,
-                                "Minimum": 6.04405,
-                                "Maximum": 62.848,
-                                "Q1": 7.072526315789473,
-                                "Median": 26.203183333333335,
-                                "Q3": 43.155,
+                                "Mean": 29.31192480253268,
+                                "Standard Deviation": 24.0332550647391,
+                                "Minimum": 5.709666666666667,
+                                "Maximum": 70.546737,
+                                "Q1": 5.896110294117647,
+                                "Median": 27.7435115,
+                                "Q3": 47.980807999999996,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -577,13 +569,13 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 50.16560416666667,
-                                "Standard Deviation": 12.318556985313236,
+                                "Mean": 53.53739766666668,
+                                "Standard Deviation": 12.519702542724422,
                                 "Minimum": 39.1115,
-                                "Maximum": 89.04,
-                                "Q1": 41.06075,
-                                "Median": 43.21125,
-                                "Q3": 60.3705,
+                                "Maximum": 75.0,
+                                "Q1": 41.25366666666666,
+                                "Median": 53.639227500000004,
+                                "Q3": 63.191205999999994,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -598,25 +590,20 @@
                         "Network Type": "5G",
                         "Analysis Type": "mhs_drive_performance",
                         "DL Throughput": {
-                            "Mean": 10.001312500000001,
-                            "Standard Deviation": 0.0017847426810018124,
-                            "Minimum": 9.99968888888889,
-                            "Maximum": 10.00457777777778,
-                            "Q1": 9.999797222222224,
-                            "Median": 10.000394444444446,
-                            "Q3": 10.003319444444445,
-                            "Outliers": [
-                                10.008622222222222,
-                                10.010722222222222,
-                                9.993066666666666,
-                                9.993733333333333
-                            ],
+                            "Mean": 9.999594691405756,
+                            "Standard Deviation": 0.001678851780490029,
+                            "Minimum": 9.997181818181819,
+                            "Maximum": 10.001941860465118,
+                            "Q1": 9.998091740576497,
+                            "Median": 9.999946353065539,
+                            "Q3": 10.00112688253012,
+                            "Outliers": [],
                             "Number of Intervals": 12
                         },
                         "UL Throughput": {
-                            "Mean": 6.649904374213905,
-                            "Standard Deviation": 0.9131374660984144,
-                            "Minimum": 4.944826815642458,
+                            "Mean": 6.623092534505344,
+                            "Standard Deviation": 0.9629879251920567,
+                            "Minimum": 4.876857923497267,
                             "Maximum": 7.747684210526316,
                             "Q1": 6.122972401301651,
                             "Median": 7.011540930084408,
@@ -685,20 +672,23 @@
                         "Network Type": "5G",
                         "Analysis Type": "mhs_drive_performance",
                         "DL Throughput": {
-                            "Mean": 10.004799074074075,
-                            "Standard Deviation": 0.005075878694301106,
-                            "Minimum": 9.997955555555556,
-                            "Maximum": 10.012533333333332,
-                            "Q1": 10.000458333333334,
-                            "Median": 10.004872222222223,
-                            "Q3": 10.008780555555555,
-                            "Outliers": [],
+                            "Mean": 10.000134803264942,
+                            "Standard Deviation": 0.0015028088886331848,
+                            "Minimum": 9.997720930232559,
+                            "Maximum": 10.002179487179488,
+                            "Q1": 9.999401327505263,
+                            "Median": 10.000785524920468,
+                            "Q3": 10.00198310708899,
+                            "Outliers": [
+                                10.007378048780486,
+                                10.00686075949367
+                            ],
                             "Number of Intervals": 12
                         },
                         "UL Throughput": {
-                            "Mean": 5.995108147236931,
-                            "Standard Deviation": 0.9211508844857075,
-                            "Minimum": 4.67957671957672,
+                            "Mean": 5.925064709193493,
+                            "Standard Deviation": 1.0512865566703142,
+                            "Minimum": 3.909098901098901,
                             "Maximum": 7.388691780821918,
                             "Q1": 5.274591176470588,
                             "Median": 5.883501812017769,
@@ -1642,72 +1632,72 @@
                 "Good": {
                     "REF": {
                         "100M": {
-                            "overall_average_throughput": 263.202
+                            "overall_average_throughput": 426.76666666666665
                         },
                         "60M": {
-                            "overall_average_throughput": 238.354
+                            "overall_average_throughput": 274.325
                         },
                         "30M": {
-                            "overall_average_throughput": 75.78566666666667
+                            "overall_average_throughput": 64.625
                         }
                     },
                     "DUT": {
                         "100M": {
-                            "overall_average_throughput": 262.726
+                            "overall_average_throughput": 297.96666666666664
                         },
                         "60M": {
-                            "overall_average_throughput": 140.6186
+                            "overall_average_throughput": 150.375
                         },
                         "30M": {
-                            "overall_average_throughput": 78.27300000000001
+                            "overall_average_throughput": 116.33333333333333
                         }
                     }
                 },
                 "Moderate": {
                     "REF": {
                         "100M": {
-                            "overall_average_throughput": 149.105912676733
+                            "overall_average_throughput": 179.36521906912532
                         },
                         "60M": {
-                            "overall_average_throughput": 176.1300491883117
+                            "overall_average_throughput": 210.45609848484847
                         },
                         "30M": {
-                            "overall_average_throughput": 196.85621014492753
+                            "overall_average_throughput": 171.39420289855073
                         }
                     },
                     "DUT": {
                         "100M": {
-                            "overall_average_throughput": 104.78977219980874
+                            "overall_average_throughput": 112.68476433822588
                         },
                         "60M": {
-                            "overall_average_throughput": 117.79193697916666
+                            "overall_average_throughput": 111.36046649531025
                         },
                         "30M": {
-                            "overall_average_throughput": 119.37199855072464
+                            "overall_average_throughput": 147.04442028985505
                         }
                     }
                 },
                 "Poor": {
                     "REF": {
                         "100M": {
-                            "overall_average_throughput": 251.54180277777778
+                            "overall_average_throughput": 101.68555194805195
                         },
                         "60M": {
-                            "overall_average_throughput": 141.11671079545454
+                            "overall_average_throughput": 56.93107917723302
                         },
                         "30M": {
-                            "overall_average_throughput": 124.50955311355311
+                            "overall_average_throughput": 52.62809523809524
                         }
                     },
                     "DUT": {
                         "100M": {
-                            "overall_average_throughput": 72.53284699869847
+                            "overall_average_throughput": 41.9863385988386
                         },
                         "60M": {
-                            "overall_average_throughput": 99.62210783279221
+                            "overall_average_throughput": 73.48865997638724
                         },
                         "30M": {
-                            "overall_average_throughput": 89.59927121212121
+                            "overall_average_throughput": 35.735098039215686
                         }
                     }
                 }
@@ -1724,13 +1714,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 235.26984788219443,
-                                "Standard Deviation": 121.95637055665672,
+                                "Mean": 236.26395709153226,
+                                "Standard Deviation": 122.77574103167188,
                                 "Minimum": 57.01648275862068,
-                                "Maximum": 489.59906896551723,
+                                "Maximum": 501.7571785714286,
                                 "Q1": 96.97222068965519,
-                                "Median": 259.61746666666664,
-                                "Q3": 331.5473385057472,
+                                "Median": 260.88677777777775,
+                                "Q3": 330.7037848020435,
                                 "Outliers": [],
                                 "Number of Intervals": 39
                             }
@@ -1742,13 +1732,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 235.0927276231527,
-                                "Standard Deviation": 176.10983069070045,
+                                "Mean": 237.98827365191292,
+                                "Standard Deviation": 180.96339181088953,
                                 "Minimum": 33.24855172413793,
-                                "Maximum": 511.7208,
-                                "Q1": 71.73488333333334,
-                                "Median": 156.60559404761906,
-                                "Q3": 400.8712496921182,
+                                "Maximum": 527.6115185185186,
+                                "Q1": 70.15652586206896,
+                                "Median": 153.65847967980295,
+                                "Q3": 402.21808201058195,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -1762,13 +1752,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 43.98770092087162,
-                                "Standard Deviation": 29.64472578828034,
-                                "Minimum": 10.984821428571431,
+                                "Mean": 42.84188174642055,
+                                "Standard Deviation": 29.762508970482195,
+                                "Minimum": 9.555333333333332,
                                 "Maximum": 105.6156896551724,
-                                "Q1": 19.438758620689658,
-                                "Median": 30.823899999999995,
-                                "Q3": 66.52083333333331,
+                                "Q1": 18.33613793103448,
+                                "Median": 30.483758620689656,
+                                "Q3": 63.8837037037037,
                                 "Outliers": [],
                                 "Number of Intervals": 37
                             }
@@ -1780,17 +1770,18 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 31.032461385266185,
-                                "Standard Deviation": 7.262955536889088,
-                                "Minimum": 13.034300000000002,
-                                "Maximum": 45.986107142857136,
-                                "Q1": 27.059541666666668,
-                                "Median": 32.676270114942525,
-                                "Q3": 37.22013333333334,
+                                "Mean": 28.82283088322987,
+                                "Standard Deviation": 6.353674493723281,
+                                "Minimum": 16.246296296296297,
+                                "Maximum": 44.2691724137931,
+                                "Q1": 24.922125,
+                                "Median": 30.319215399610137,
+                                "Q3": 33.30674074074074,
                                 "Outliers": [
-                                    159.5104827586207,
+                                    11.833785714285716,
+                                    161.96564285714288,
                                     213.2052857142857,
-                                    144.33124137931034
+                                    139.5998214285714
                                 ],
                                 "Number of Intervals": 40
                             }
@@ -1806,13 +1797,13 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 44.53187647068369,
-                                "Standard Deviation": 15.822197989396473,
-                                "Minimum": 24.222099999999998,
-                                "Maximum": 65.24603846153846,
-                                "Q1": 29.594055357142864,
-                                "Median": 42.47164559386973,
-                                "Q3": 59.89093103448275,
+                                "Mean": 40.11171375020777,
+                                "Standard Deviation": 12.353091477105114,
+                                "Minimum": 24.184898,
+                                "Maximum": 59.29948,
+                                "Q1": 28.117058,
+                                "Median": 38.78238537037037,
+                                "Q3": 51.26040376984126,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -1824,17 +1815,17 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 122.80196877332051,
-                                "Standard Deviation": 7.859518797637717,
-                                "Minimum": 107.89599999999999,
-                                "Maximum": 137.7474,
-                                "Q1": 116.427375,
-                                "Median": 121.87891206896552,
-                                "Q3": 127.38030384615385,
+                                "Mean": 118.33143176716507,
+                                "Standard Deviation": 5.722633802112796,
+                                "Minimum": 107.83420299999999,
+                                "Maximum": 132.1923448275862,
+                                "Q1": 114.00227857142858,
+                                "Median": 116.6890325,
+                                "Q3": 121.80506027586208,
                                 "Outliers": [
-                                    97.58619999999999,
-                                    97.51870000000001,
-                                    86.77168965517241
+                                    97.587473,
+                                    97.514318,
+                                    87.206571
                                 ],
                                 "Number of Intervals": 40
                             }
@@ -1848,13 +1839,13 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 30.00881456905815,
-                                "Standard Deviation": 7.318921964515106,
-                                "Minimum": 14.479666666666665,
-                                "Maximum": 40.48642857142857,
-                                "Q1": 23.9774,
-                                "Median": 31.566068965517236,
-                                "Q3": 35.60870833333333,
+                                "Mean": 22.89099512,
+                                "Standard Deviation": 11.353189698320909,
+                                "Minimum": 3.670016,
+                                "Maximum": 39.216741999999996,
+                                "Q1": 12.058624,
+                                "Median": 25.340587,
+                                "Q3": 32.540809,
                                 "Outliers": [],
                                 "Number of Intervals": 25
                             }
@@ -1866,13 +1857,13 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 35.935917060558864,
-                                "Standard Deviation": 16.8375185916057,
-                                "Minimum": 18.68495454545455,
-                                "Maximum": 65.58972413793104,
-                                "Q1": 21.972223214285712,
-                                "Median": 27.463543981481482,
-                                "Q3": 53.901878448275866,
+                                "Mean": 30.708234625,
+                                "Standard Deviation": 18.642287908012232,
+                                "Minimum": 6.896711,
+                                "Maximum": 65.57095299999999,
+                                "Q1": 19.016996749999997,
+                                "Median": 23.2304685,
+                                "Q3": 47.58815575,
                                 "Outliers": [],
                                 "Number of Intervals": 24
                             }
@@ -1890,13 +1881,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 130.9325955156649,
-                                "Standard Deviation": 64.81366182944731,
+                                "Mean": 133.92463392609147,
+                                "Standard Deviation": 70.13357491933724,
                                 "Minimum": 51.0386724137931,
-                                "Maximum": 263.35863333333333,
-                                "Q1": 67.93876775277614,
+                                "Maximum": 266.66110344827587,
+                                "Q1": 67.41091532729399,
                                 "Median": 128.965906779661,
-                                "Q3": 184.20533050847456,
+                                "Q3": 203.05298113207547,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -1908,14 +1899,16 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 111.38445655403248,
-                                "Standard Deviation": 51.01552923427039,
+                                "Mean": 109.41798734075186,
+                                "Standard Deviation": 51.44186187310178,
                                 "Minimum": 54.386706896551715,
-                                "Maximum": 223.08424137931033,
-                                "Q1": 74.81683333333335,
-                                "Median": 91.90998305084746,
+                                "Maximum": 217.3707636363636,
+                                "Q1": 72.86728302162479,
+                                "Median": 92.81151467917675,
                                 "Q3": 134.23459583333334,
-                                "Outliers": [],
+                                "Outliers": [
+                                    233.1573454545454
+                                ],
                                 "Number of Intervals": 40
                             }
                         }
@@ -1928,13 +1921,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 33.7698716662402,
-                                "Standard Deviation": 19.36995109992658,
+                                "Mean": 32.75201272271738,
+                                "Standard Deviation": 18.897246111577815,
                                 "Minimum": 0.055875,
-                                "Maximum": 70.14033898305084,
-                                "Q1": 22.997050847457626,
-                                "Median": 36.195221507890125,
-                                "Q3": 47.54735593220339,
+                                "Maximum": 68.72813793103448,
+                                "Q1": 23.142326149425287,
+                                "Median": 34.79121669278997,
+                                "Q3": 46.754279441846876,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -1946,13 +1939,13 @@
                             "Analysis Direction": "DL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 26.549217968194945,
-                                "Standard Deviation": 14.09553162033774,
+                                "Mean": 26.00909076561996,
+                                "Standard Deviation": 14.21370197000468,
                                 "Minimum": 0.009999999999999998,
                                 "Maximum": 50.99220338983051,
-                                "Q1": 19.558830482456138,
-                                "Median": 29.78051299435028,
-                                "Q3": 34.41207144944477,
+                                "Q1": 18.57705405844156,
+                                "Median": 29.399567755595886,
+                                "Q3": 34.730356699939506,
                                 "Outliers": [],
                                 "Number of Intervals": 40
                             }
@@ -1968,18 +1961,19 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 49.34780405405405,
-                                "Standard Deviation": 13.702720150792965,
-                                "Minimum": 31.71125,
-                                "Maximum": 90.178,
-                                "Q1": 39.439,
-                                "Median": 45.903,
-                                "Q3": 62.54025,
+                                "Mean": 48.64208018918919,
+                                "Standard Deviation": 12.06884312967494,
+                                "Minimum": 24.989588,
+                                "Maximum": 74.692,
+                                "Q1": 39.467,
+                                "Median": 48.031062000000006,
+                                "Q3": 59.940059999999995,
                                 "Outliers": [
-                                    747.755,
-                                    605.1244999999999
+                                    109.090909,
+                                    109.090909,
+                                    119.760479
                                 ],
-                                "Number of Intervals": 39
+                                "Number of Intervals": 40
                             }
                         },
                         "DUT": {
@@ -1989,15 +1983,16 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 75.47863725490198,
-                                "Standard Deviation": 50.63015153656238,
+                                "Mean": 68.99812896969696,
+                                "Standard Deviation": 34.314556500219766,
                                 "Minimum": 14.96,
-                                "Maximum": 222.598,
-                                "Q1": 41.644083333333334,
-                                "Median": 60.0,
-                                "Q3": 117.719,
+                                "Maximum": 137.254,
+                                "Q1": 52.897792,
+                                "Median": 59.820538,
+                                "Q3": 109.19053450000001,
                                 "Outliers": [
-                                    709.4575
+                                    199.856,
+                                    222.598
                                 ],
                                 "Number of Intervals": 35
                             }
@@ -2011,17 +2006,14 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 41.42805665634675,
-                                "Standard Deviation": 23.77036695685399,
-                                "Minimum": 7.107352941176471,
-                                "Maximum": 99.078,
-                                "Q1": 24.543574999999997,
-                                "Median": 31.47195,
-                                "Q3": 55.78075,
-                                "Outliers": [
-                                    111.299,
-                                    190.105
-                                ],
+                                "Mean": 49.91545711136364,
+                                "Standard Deviation": 32.946050711609736,
+                                "Minimum": 6.2924999999999995,
+                                "Maximum": 100.0,
+                                "Q1": 21.461958333333335,
+                                "Median": 30.772666666666666,
+                                "Q3": 85.5462565,
+                                "Outliers": [],
                                 "Number of Intervals": 40
                             }
                         },
@@ -2032,17 +2024,14 @@
                             "Analysis Direction": "UL",
                             "Protocol Type": "HTTP",
                             "Throughput": {
-                                "Mean": 47.936995614035084,
-                                "Standard Deviation": 8.490151200163156,
-                                "Minimum": 35.461999999999996,
-                                "Maximum": 72.115,
-                                "Q1": 42.40958333333333,
-                                "Median": 46.91275,
-                                "Q3": 55.367375,
-                                "Outliers": [
-                                    79.9855,
-                                    100.917
-                                ],
+                                "Mean": 60.40711270833333,
+                                "Standard Deviation": 18.24133220244086,
+                                "Minimum": 35.263003,
+                                "Maximum": 99.833611,
+                                "Q1": 43.075125,
+                                "Median": 56.384,
+                                "Q3": 75.07040025,
+                                "Outliers": [],
                                 "Number of Intervals": 40
                             }
                         }
@@ -2055,27 +2044,26 @@
                     "Network Type": "5G",
                     "Analysis Type": "mhs_drive_performance",
                     "DL Throughput": {
-                        "Mean": 9.985268502415458,
-                        "Standard Deviation": 0.04252950551896513,
-                        "Minimum": 9.870173913043478,
-                        "Maximum": 10.007533333333333,
-                        "Q1": 9.938876811594202,
-                        "Median": 9.999655555555556,
-                        "Q3": 10.00321388888889,
+                        "Mean": 10.000916268081513,
+                        "Standard Deviation": 0.0041859390031151545,
+                        "Minimum": 9.994011904761905,
+                        "Maximum": 10.007538461538463,
+                        "Q1": 9.997753424657535,
+                        "Median": 9.999749110076671,
+                        "Q3": 10.00415695488722,
                         "Outliers": [
-                            9.721822222222222,
-                            9.658366666666668
+                            9.978328358208955
                         ],
                         "Number of Intervals": 12
                     },
                     "UL Throughput": {
-                        "Mean": 0.06675427761844645,
-                        "Standard Deviation": 0.014702402859892893,
-                        "Minimum": 0.04814084507042254,
-                        "Maximum": 0.09548076923076923,
-                        "Q1": 0.05853225871125546,
-                        "Median": 0.06732934954803839,
-                        "Q3": 0.07579331631469019,
+                        "Mean": 0.06279758317270524,
+                        "Standard Deviation": 0.013822367767570346,
+                        "Minimum": 0.040628048780487806,
+                        "Maximum": 0.08403623188405798,
+                        "Q1": 0.05316587171052631,
+                        "Median": 0.06258644342194955,
+                        "Q3": 0.0749402792812297,
                         "Outliers": [
                             0.21267080745341616
                         ],
@@ -2166,26 +2154,26 @@
                     "Network Type": "5G",
                     "Analysis Type": "mhs_drive_performance",
                     "DL Throughput": {
-                        "Mean": 9.974295959595961,
-                        "Standard Deviation": 0.055225680703845884,
-                        "Minimum": 9.849255555555557,
-                        "Maximum": 10.009933333333333,
-                        "Q1": 9.931119444444445,
-                        "Median": 10.000494444444445,
-                        "Q3": 10.005175000000001,
+                        "Mean": 10.00001190616572,
+                        "Standard Deviation": 0.003992190498341281,
+                        "Minimum": 9.99375,
+                        "Maximum": 10.007028571428572,
+                        "Q1": 9.998804698795182,
+                        "Median": 9.999472934472935,
+                        "Q3": 10.002496153846156,
                         "Outliers": [
-                            8.767589285714285
+                            10.008298507462687
                         ],
                         "Number of Intervals": 12
                     },
                     "UL Throughput": {
-                        "Mean": 0.08874104652046133,
-                        "Standard Deviation": 0.030035001451697532,
-                        "Minimum": 0.05429861111111111,
-                        "Maximum": 0.1645821917808219,
-                        "Q1": 0.07918181818181819,
-                        "Median": 0.08711167041619797,
-                        "Q3": 0.11986196585565323,
+                        "Mean": 0.07713970065911473,
+                        "Standard Deviation": 0.014139074584451593,
+                        "Minimum": 0.05353146853146853,
+                        "Maximum": 0.10495522388059701,
+                        "Q1": 0.07204151111606397,
+                        "Median": 0.07720153560250391,
+                        "Q3": 0.09231968832309043,
                         "Outliers": [
                             1.0460617283950617,
                             1.0319617834394903

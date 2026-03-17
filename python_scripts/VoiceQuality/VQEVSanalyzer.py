@@ -56,6 +56,24 @@ def parse_mos_metrics(file_path):
             '% MOS < 3.0': (mos_values < 3.0).sum() / len(mos_values) * 100,
             '% MOS < 3.4': (mos_values < 3.4).sum() / len(mos_values) * 100
         }
+
+        # New Statistics: Attenuation and Level
+        new_stats_headers = {
+            'UL MOS ATTN': "[Call Test] [Voice Quality] [UL MOS] Attenuation",
+            'DL MOS ATTN': "[Call Test] [Voice Quality] [Per Rx Clip] Attenuation",
+            'INPUT LEVEL': "[Call Test] [Voice Quality] [Loudness] [Volume] [Reference signal's Level] Reference signal's Level #1",
+            'OUTPUT LEVEL': "[Call Test] [Voice Quality] [Loudness] [Volume] [Received signal's Level] Received signal's Level #1"
+        }
+        
+        for key, header in new_stats_headers.items():
+            if header in df.columns:
+                vals = pd.to_numeric(df[header], errors='coerce').dropna()
+                if not vals.empty:
+                    metrics[key] = round(float(vals.mean()), 4)
+                else:
+                    metrics[key] = "N/A"
+            else:
+                metrics[key] = "N/A"
         
         # Handle cases where std might be NaN if there's only one value
         if pd.isna(metrics['MOS Stdev']):

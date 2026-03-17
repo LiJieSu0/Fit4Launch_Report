@@ -27,15 +27,42 @@ class VoiceQualityAnalyzer(BaseAnalyzer):
                 self.logger.info(f"Processing Voice Quality subfolder: {sub_dir_name}")
                 
                 if "5G Auto VoNR Enabled AMR NB VQ" in sub_dir_name:
-                    nb_vq_results = analyze_vq_amr_nb(sub_dir_full_path)
-                    if nb_vq_results:
-                        organized_nb_vq_results = {}
-                        for file_stats in nb_vq_results:
-                            organized_nb_vq_results[file_stats["device_type"]] = {
-                                "ul_mos_stats": file_stats["ul_mos_stats"],
-                                "dl_mos_stats": file_stats["dl_mos_stats"]
-                            }
-                        results[sub_dir_name] = organized_nb_vq_results
+                    results[sub_dir_name] = {}
+                    subfolders = ['Base', 'Mobile']
+                    for subfolder in subfolders:
+                        subfolder_path = os.path.join(sub_dir_full_path, subfolder)
+                        if os.path.isdir(subfolder_path):
+                            nb_vq_results = analyze_vq_amr_nb(subfolder_path)
+                            if nb_vq_results:
+                                organized_nb_vq_results = {}
+                                for file_stats in nb_vq_results:
+                                    device_type = file_stats["device_type"]
+                                    organized_nb_vq_results[device_type] = {
+                                        "ul_mos_stats": file_stats["ul_mos_stats"],
+                                        "dl_mos_stats": file_stats["dl_mos_stats"],
+                                        "UL MOS ATTN": file_stats.get("UL MOS ATTN", "N/A"),
+                                        "DL MOS ATTN": file_stats.get("DL MOS ATTN", "N/A"),
+                                        "INPUT LEVEL": file_stats.get("INPUT LEVEL", "N/A"),
+                                        "OUTPUT LEVEL": file_stats.get("OUTPUT LEVEL", "N/A")
+                                    }
+                                results[sub_dir_name][subfolder] = organized_nb_vq_results
+                        else:
+                            # Handle case where files might be directly in the sub_dir_full_path
+                            nb_vq_results = analyze_vq_amr_nb(sub_dir_full_path)
+                            if nb_vq_results:
+                                organized_nb_vq_results = {}
+                                for file_stats in nb_vq_results:
+                                    device_type = file_stats["device_type"]
+                                    organized_nb_vq_results[device_type] = {
+                                        "ul_mos_stats": file_stats["ul_mos_stats"],
+                                        "dl_mos_stats": file_stats["dl_mos_stats"],
+                                        "UL MOS ATTN": file_stats.get("UL MOS ATTN", "N/A"),
+                                        "DL MOS ATTN": file_stats.get("DL MOS ATTN", "N/A"),
+                                        "INPUT LEVEL": file_stats.get("INPUT LEVEL", "N/A"),
+                                        "OUTPUT LEVEL": file_stats.get("OUTPUT LEVEL", "N/A")
+                                    }
+                                results[sub_dir_name].update(organized_nb_vq_results)
+                            break # No need to check other subfolders if we processed files at this level
 
                 elif "Audio Delay" in sub_dir_name:
                     ad_results = analyze_audio_delay_directory(sub_dir_full_path, subdir_filter="Audio Delay")

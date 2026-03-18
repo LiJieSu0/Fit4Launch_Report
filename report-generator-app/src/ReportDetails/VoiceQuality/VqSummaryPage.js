@@ -128,37 +128,43 @@ const VqSummaryPage = () => {
   ];
 
   return (
-    <PageBreak id="summary-page">
-      <DynamicHeader level={1}>Voice Quality Test Overview</DynamicHeader>
-      <table className="general-table-style">
-        <thead>
-          <tr>
-            <th rowSpan="2">Test Cases</th>
-            <th colSpan={markets.length}>Market</th>
-          </tr>
-          <tr>
-            {markets.map(market => (
-              <th key={market}>{market}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {VqSummaryData.map((data, index) => (
-            <tr key={index}>
-              <td>{data.testCase}</td>
-              {markets.map(market => {
-                const cellColor = calculateSummaryColor(data.testCase, market);
-                return (
-                  <td key={market} className={cellColor}>
-                    <a href={getDynamicLink(data.testCase, market)}>Results</a>
-                  </td>
-                );
-              })}
+    <>
+      <PageBreak id="summary-page">
+        <DynamicHeader level={1}>Voice Quality Test Overview</DynamicHeader>
+        <table className="general-table-style">
+          <thead>
+            <tr>
+              <th rowSpan="2">Test Cases</th>
+              <th colSpan={markets.length}>Market</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </PageBreak>
+            <tr>
+              {markets.map(market => (
+                <th key={market}>{market}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {VqSummaryData.map((data, index) => (
+              <tr key={index}>
+                <td>{data.testCase}</td>
+                {markets.map(market => {
+                  const cellColor = calculateSummaryColor(data.testCase, market);
+                  return (
+                    <td key={market} className={cellColor}>
+                      <a href={getDynamicLink(data.testCase, market)}>Results</a>
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </PageBreak>
+      <PageBreak>
+        <h2>Audio input/output levels and average attenuation</h2>
+        {/* TODO: Add audio input/output levels and average attenuation table for each cases exclude audio delay */}
+      </PageBreak>
+    </>
   );
 };
 

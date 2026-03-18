@@ -5,11 +5,21 @@ import { HeaderContext } from '../../Contexts/HeaderContext';
 import { ReportContext } from '../../Contexts/ReportContext';
 import PageBreak from '../../CommonPage/PageBreak';
 import { getKpiCellClass, getWorstKpiClass } from '../../Utils/KpiRules';
+import VqAttenuationTable from './VqCases/VqAttenuationTable';
 
 const VqSummaryPage = () => {
   const { numberedHeaders } = useContext(HeaderContext);
   const { projectData, loadCityData } = useContext(ReportContext);
   const markets = ['Seattle', 'New York'];
+
+  const VqSummaryData = [
+    { testCase: '5G Auto VoNR Disabled Audio Delay' },
+    { testCase: '5G Auto VoNR Enabled Audio Delay' },
+    { testCase: '5G Auto VoNR Enabled AMR NB VQ' },
+    { testCase: '5G Auto VoNR Enabled AMR WB VQ' },
+    { testCase: '5G Auto VoNR Disabled EVS WB VQ' },
+    { testCase: '5G Auto VoNR Enabled EVS WB VQ' },
+  ];
 
   useEffect(() => {
     markets.forEach(market => loadCityData(market));
@@ -117,15 +127,130 @@ const VqSummaryPage = () => {
     return getWorstKpiClass(classes);
   };
 
-  const VqSummaryData = [
-    { testCase: '5G Auto VoNR Disabled Audio Delay' },
-    { testCase: '5G Auto VoNR Enabled Audio Delay' },
-    { testCase: '5G Auto VoNR Enabled AMR NB VQ' },
-    { testCase: '5G Auto VoNR Enabled AMR WB VQ' },
-    { testCase: '5G Auto VoNR Disabled EVS WB VQ' },
-    { testCase: '5G Auto VoNR Enabled EVS WB VQ' },
+  const getVqValue = (market, testCase, category, device, stat) => {
+    const reportData = projectData[market];
+    if (!reportData || !reportData.voiceQuality || !reportData.voiceQuality["Voice Quality"]) return 'N/A';
 
-  ];
+    const vqData = reportData.voiceQuality["Voice Quality"];
+    const caseData = vqData[testCase];
+    if (!caseData) return 'N/A';
+
+    let path;
+    if (testCase.includes('AMR NB')) {
+      if (caseData[category] && caseData[category][device]) {
+        path = [category, device, stat];
+      } else {
+        path = [device, stat];
+      }
+    } else if (testCase.includes('AMR WB')) {
+      path = [category, `vonr enable amr wb ${device} ${category.toLowerCase()}`, stat];
+    } else if (testCase.includes('EVS WB')) {
+      const isEnabled = testCase.includes('Enabled');
+      const prefix = isEnabled ? 'vonr enable evs wb' : 'vonr disable evs wb';
+      path = [category, `${prefix} ${device} ${category.toLowerCase()}`, stat];
+    } else {
+      return 'N/A';
+    }
+
+    const val = getFormattedValue(caseData, path);
+    return val !== null && val !== undefined ? (typeof val === 'number' ? val.toFixed(2) : val) : 'N/A';
+  };
+
+  const allAttenuationTables = [];
+  VqSummaryData.filter(data => !data.testCase.includes('Audio Delay')).forEach((data, caseIdx) => {
+    if (data.testCase.includes('AMR NB')) {
+      const caseData = markets.map(market => ({
+        market,
+        mobile: {
+          'REF': getVqValue(market, data.testCase, "Mobile", "REF", "INPUT LEVEL") !== 'N/A' ? getVqValue(market, data.testCase, "Mobile", "REF", "INPUT LEVEL") : getVqValue(market, data.testCase, "Mobile", "REF1", "INPUT LEVEL"),
+          'DUT 1': getVqValue(market, data.testCase, "Mobile", "DUT1", "INPUT LEVEL"),
+          'DUT 2': getVqValue(market, data.testCase, "Mobile", "DUT2", "INPUT LEVEL")
+        },
+        base: {
+          'REF': getVqValue(market, data.testCase, "Base", "REF", "OUTPUT LEVEL") !== 'N/A' ? getVqValue(market, data.testCase, "Base", "REF", "OUTPUT LEVEL") : getVqValue(market, data.testCase, "Base", "REF1", "OUTPUT LEVEL"),
+          'DUT 1': getVqValue(market, data.testCase, "Base", "DUT1", "OUTPUT LEVEL"),
+          'DUT 2': getVqValue(market, data.testCase, "Base", "DUT2", "OUTPUT LEVEL")
+        },
+        downlink: {
+          'REF': getVqValue(market, data.testCase, "Base", "REF", "DL MOS ATTN") !== 'N/A' ? getVqValue(market, data.testCase, "Base", "REF", "DL MOS ATTN") : getVqValue(market, data.testCase, "Base", "REF1", "DL MOS ATTN"),
+          'DUT 1': getVqValue(market, data.testCase, "Base", "DUT1", "DL MOS ATTN"),
+          'DUT 2': getVqValue(market, data.testCase, "Base", "DUT2", "DL MOS ATTN")
+        },
+        uplink: {
+          'REF': getVqValue(market, data.testCase, "Base", "REF", "UL MOS ATTN") !== 'N/A' ? getVqValue(market, data.testCase, "Base", "REF", "UL MOS ATTN") : getVqValue(market, data.testCase, "Base", "REF1", "UL MOS ATTN"),
+          'DUT 1': getVqValue(market, data.testCase, "Base", "DUT1", "UL MOS ATTN"),
+          'DUT 2': getVqValue(market, data.testCase, "Base", "DUT2", "UL MOS ATTN")
+        }
+      }));
+      allAttenuationTables.push(
+        <VqAttenuationTable
+          key={data.testCase}
+          title={data.testCase}
+          data={caseData}
+          entities={['REF', 'DUT 1', 'DUT 2']}
+        />
+      );
+    } else {
+      const entities = data.testCase.includes('AMR WB') ? ['REF', 'DUT 1', 'DUT 2'] : ['DUT 1', 'REF 1', 'DUT 2', 'REF 2'];
+      const deviceMap = data.testCase.includes('AMR WB')
+        ? { 'REF': 'REF1', 'DUT 1': 'DUT1', 'DUT 2': 'DUT2' }
+        : { 'DUT 1': 'DUT1', 'REF 1': 'REF1', 'DUT 2': 'DUT2', 'REF 2': 'REF2' };
+
+      // Mobile Table
+      allAttenuationTables.push(
+        <VqAttenuationTable
+          key={`${data.testCase}-Mobile`}
+          title={`${data.testCase} - Mobile`}
+          showUplinkAttenuation={false}
+          data={markets.map(market => {
+            const rowData = { market, mobile: {}, base: {}, downlink: {}, uplink: {} };
+            entities.forEach(entity => {
+              const device = deviceMap[entity];
+              rowData.mobile[entity] = getVqValue(market, data.testCase, "Mobile", device, "INPUT LEVEL");
+              rowData.base[entity] = getVqValue(market, data.testCase, "Mobile", device, "OUTPUT LEVEL");
+              rowData.downlink[entity] = getVqValue(market, data.testCase, "Mobile", device, "DL MOS ATTN");
+              rowData.uplink[entity] = getVqValue(market, data.testCase, "Mobile", device, "UL MOS ATTN");
+            });
+            return rowData;
+          })}
+          entities={entities}
+        />
+      );
+
+      // Base Table
+      allAttenuationTables.push(
+        <VqAttenuationTable
+          key={`${data.testCase}-Base`}
+          title={`${data.testCase} - Base`}
+          showUplinkAttenuation={false}
+          data={markets.map(market => {
+            const rowData = { market, mobile: {}, base: {}, downlink: {}, uplink: {} };
+            entities.forEach(entity => {
+              const device = deviceMap[entity];
+              rowData.mobile[entity] = getVqValue(market, data.testCase, "Base", device, "INPUT LEVEL");
+              rowData.base[entity] = getVqValue(market, data.testCase, "Base", device, "OUTPUT LEVEL");
+              rowData.downlink[entity] = getVqValue(market, data.testCase, "Base", device, "DL MOS ATTN");
+              rowData.uplink[entity] = getVqValue(market, data.testCase, "Base", device, "UL MOS ATTN");
+            });
+            return rowData;
+          })}
+          entities={entities}
+        />
+      );
+    }
+  });
+
+  const chunkedTables = [];
+  const firstChunkSize = 3; // Custom split to move the 4th table to the second page as requested
+  if (allAttenuationTables.length > 0) {
+    chunkedTables.push(allAttenuationTables.slice(0, firstChunkSize));
+    for (let i = firstChunkSize; i < allAttenuationTables.length; i += 4) {
+      const nextChunk = allAttenuationTables.slice(i, i + 4);
+      if (nextChunk.length > 0) {
+        chunkedTables.push(nextChunk);
+      }
+    }
+  }
 
   return (
     <>
@@ -160,10 +285,12 @@ const VqSummaryPage = () => {
           </tbody>
         </table>
       </PageBreak>
-      <PageBreak>
-        <h2>Audio input/output levels and average attenuation</h2>
-        {/* TODO: Add audio input/output levels and average attenuation table for each cases exclude audio delay */}
-      </PageBreak>
+      {chunkedTables.map((chunk, index) => (
+        <PageBreak key={`chunk-${index}`}>
+          {index === 0 && <h2>Audio input/output levels and average attenuation</h2>}
+          {chunk}
+        </PageBreak>
+      ))}
     </>
   );
 };

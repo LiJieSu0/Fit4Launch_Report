@@ -160,7 +160,7 @@ const VqAmrWbVq = ({ city: propCity }) => {
   return (
     <PageBreak>
       <DynamicHeader level={2}>5G Auto VoNR Enabled AMR WB VQ - {city}</DynamicHeader>
-      <VqAttenuationTable 
+      {/* <VqAttenuationTable
         title="Audio input/output levels and average attenuation - Mobile"
         data={[
           {
@@ -187,8 +187,8 @@ const VqAmrWbVq = ({ city: propCity }) => {
           }
         ]}
         entities={['REF', 'DUT 1', 'DUT 2']}
-      />
-      <VqAttenuationTable 
+      /> */}
+      {/* <VqAttenuationTable 
         title="Audio input/output levels and average attenuation - Base"
         data={[
           {
@@ -215,7 +215,7 @@ const VqAmrWbVq = ({ city: propCity }) => {
           }
         ]}
         entities={['REF', 'DUT 1', 'DUT 2']}
-      />
+      /> */}
       <h4>Results</h4>
       <table className="general-table-style performance-table">
         <thead>

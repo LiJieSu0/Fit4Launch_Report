@@ -20,7 +20,7 @@ import '../../../StyleScript/Restricted_Report_Style.css';
  * @param {Array} props.entities - Optional list of entity names in Row 2 (e.g., ['REF', 'DUT1', 'DUT2']).
  *                                If not provided, it will be inferred from the first data row's 'mobile' object.
  */
-const VqAttenuationTable = ({ data, entities: propEntities, title }) => {
+const VqAttenuationTable = ({ data, entities: propEntities, title, showUplinkAttenuation = true }) => {
   if (!data || data.length === 0) {
     return <div>No attenuation data available.</div>;
   }
@@ -35,14 +35,15 @@ const VqAttenuationTable = ({ data, entities: propEntities, title }) => {
       <table className="general-table-style performance-table">
         <thead>
           <tr>
+            <th rowSpan="2">Market</th>
             <th colSpan={entityCount}>Input Level</th>
             <th colSpan={entityCount}>Output Level</th>
             <th colSpan={entityCount}>Downlink Attenuation</th>
-            <th colSpan={entityCount}>Uplink Attenuation</th>
+            {showUplinkAttenuation && <th colSpan={entityCount}>Uplink Attenuation</th>}
           </tr>
           <tr>
-            {/* Row 2: Entities repeated for each of the 4 main categories */}
-            {Array(4).fill(null).map((_, groupIdx) => (
+            {/* Row 2: Entities repeated for each of the categories */}
+            {Array(showUplinkAttenuation ? 4 : 3).fill(null).map((_, groupIdx) => (
               <React.Fragment key={`group-${groupIdx}`}>
                 {entities.map(entity => (
                   <th key={`group-${groupIdx}-${entity}`}>{entity}</th>
@@ -54,6 +55,8 @@ const VqAttenuationTable = ({ data, entities: propEntities, title }) => {
         <tbody>
           {data.map((row, rowIdx) => (
             <tr key={`row-${rowIdx}`}>
+              <td>{row.market || 'Unknown'}</td>
+
               {/* Mobile Input/Output */}
               {entities.map(entity => (
                 <td key={`mobile-${rowIdx}-${entity}`}>{row.mobile?.[entity] ?? 'N/A'}</td>
@@ -70,7 +73,7 @@ const VqAttenuationTable = ({ data, entities: propEntities, title }) => {
               ))}
 
               {/* Uplink Attenuation */}
-              {entities.map(entity => (
+              {showUplinkAttenuation && entities.map(entity => (
                 <td key={`uplink-${rowIdx}-${entity}`}>{row.uplink?.[entity] ?? 'N/A'}</td>
               ))}
             </tr>

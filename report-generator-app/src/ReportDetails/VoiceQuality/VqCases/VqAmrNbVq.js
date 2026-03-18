@@ -205,7 +205,7 @@ const VqAmrNbVq = ({ city: propCity }) => {
   return (
     <PageBreak>
       <DynamicHeader level={2}>5G Auto VoNR Enabled AMR NB VQ - {city}</DynamicHeader>
-      <VqAttenuationTable data={[
+      {/* <VqAttenuationTable data={[
         {
           market: city,
           testType: amrNbKey,
@@ -230,7 +230,7 @@ const VqAmrNbVq = ({ city: propCity }) => {
             DUT2: getAmrNbValue("DUT2", "Base", "UL MOS ATTN") 
           }
         }
-      ]} />
+      ]} /> */}
       <h4>Results</h4>
       <table className="general-table-style performance-table">
         <thead>

@@ -187,7 +187,7 @@ const VqEvsWbVqEnabled = ({ city: propCity }) => {
     <>
       <PageBreak>
         <DynamicHeader level={2} id='2.4'>5G Auto VoNR Enabled EVS WB VQ - {city}</DynamicHeader>
-        <VqAttenuationTable 
+        {/* <VqAttenuationTable 
           title="Audio input/output levels and average attenuation - Mobile"
           data={[
             {
@@ -250,7 +250,7 @@ const VqEvsWbVqEnabled = ({ city: propCity }) => {
             }
           ]}
           entities={['DUT 1', 'REF 1', 'DUT 2', 'REF 2']}
-        />
+        /> */}
         <h4>Results</h4>
         <div className="two-column-layout">
           <table className="general-table-style half-width-table vq-summary-table">

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ReportFooter.module.css';
 
-const ReportFooter = ({ reportType, version = '1.0', issuer = 'Claude Li' }) => {
+const ReportFooter = ({ reportType, version = '1.0', issuer = 'Claude Li, Siva Kavuri' }) => {
   const today = new Date();
   const issueDate = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`;
   return (

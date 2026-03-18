@@ -201,22 +201,22 @@ const SecondaryKpiSummaryTable = () => {
         const cityData = projectData[market];
         if (!cityData) return { status: "N/A", color: "default", link: "#" };
 
-        // New requirement: If all primary KPIs pass, secondary KPI table cell should be blank
-        if (!isPrimaryFailed(cityData, band.key)) {
-            return { status: "", color: "default", link: "#" };
-        }
-
         const dutAvg = calculateSecondaryAvg(cityData, band.key, "DUT", kpi.name);
         const refAvg = calculateSecondaryAvg(cityData, band.key, "REF", kpi.name);
 
         if (dutAvg === null || refAvg === null) return { status: "N/A", color: "default", link: "#" };
 
         const link = getDynamicLink(market, band.key);
-        const anyFailed = hasAnyDetailedFailure(cityData, band.key, kpi);
+        const primaryFailed = isPrimaryFailed(cityData, band.key);
+        const anySecondaryFailed = hasAnyDetailedFailure(cityData, band.key, kpi);
 
-        // Show Red (Fail) if any detailed segment failed. 
-        // Show Green (Pass) otherwise.
-        let color = anyFailed ? 'var(--performance-fail)' : 'var(--performance-pass)';
+        // Requirement:
+        // 1. If Primary fails, always show color (Red if secondary fails, Green if secondary passes).
+        // 2. If Primary passes, show "Results" and link, but no color (default).
+        let color = "default";
+        if (primaryFailed) {
+            color = anySecondaryFailed ? 'var(--performance-fail)' : 'var(--performance-pass)';
+        }
 
         return { status: "Results", color, link };
     };

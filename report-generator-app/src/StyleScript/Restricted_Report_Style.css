@@ -421,9 +421,24 @@ VQ
   /* Remove bold for device names */
 }
 
-.performance-table td:last-child {
-  text-align: left;
-  /* Align P-Value to left, consistent with device-info-table */
+.vq-attenuation-table-container {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.vq-attenuation-table-container h4 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.vq-attenuation-table-container .performance-table {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.vq-attenuation-table-container .performance-table th,
+.vq-attenuation-table-container .performance-table td {
+  font-size: 11px !important;
 }
 
 .call-categories-chart-container {

@@ -240,18 +240,6 @@ const VqSummaryPage = () => {
     }
   });
 
-  const chunkedTables = [];
-  const firstChunkSize = 3; // Custom split to move the 4th table to the second page as requested
-  if (allAttenuationTables.length > 0) {
-    chunkedTables.push(allAttenuationTables.slice(0, firstChunkSize));
-    for (let i = firstChunkSize; i < allAttenuationTables.length; i += 4) {
-      const nextChunk = allAttenuationTables.slice(i, i + 4);
-      if (nextChunk.length > 0) {
-        chunkedTables.push(nextChunk);
-      }
-    }
-  }
-
   return (
     <>
       <PageBreak id="summary-page">
@@ -285,12 +273,10 @@ const VqSummaryPage = () => {
           </tbody>
         </table>
       </PageBreak>
-      {chunkedTables.map((chunk, index) => (
-        <PageBreak key={`chunk-${index}`}>
-          {index === 0 && <h2>Audio input/output levels and average attenuation</h2>}
-          {chunk}
-        </PageBreak>
-      ))}
+      <PageBreak>
+        <h2>Audio input/output levels and average attenuation</h2>
+        {allAttenuationTables}
+      </PageBreak>
     </>
   );
 };

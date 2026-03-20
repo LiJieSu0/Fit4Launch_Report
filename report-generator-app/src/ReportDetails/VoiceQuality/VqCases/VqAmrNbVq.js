@@ -171,8 +171,25 @@ const VqAmrNbVq = ({ city: propCity }) => {
         dut2Class: getKpiCellClass('AmrMosThreePointZero', getAmrNbValue("DUT2", "Base", "ul.% MOS < 3.0"), getAmrNbValue("REF", "Base", "ul.% MOS < 3.0") !== 'N/A' ? getAmrNbValue("REF", "Base", "ul.% MOS < 3.0") : getAmrNbValue("REF1", "Base", "ul.% MOS < 3.0"))
       },
       highlight: true
-    }
+    },
+    {
+      metric: "Call Drop",
+      downlink: {
+        ref: (getAmrNbValue("REF", "Mobile", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrNbValue("REF", "Mobile", "call_drop_count", false, 0)) : 0)
+           + (getAmrNbValue("REF1", "Mobile", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrNbValue("REF1", "Mobile", "call_drop_count", false, 0)) : 0),
+        dut1: (getAmrNbValue("DUT1", "Mobile", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrNbValue("DUT1", "Mobile", "call_drop_count", false, 0)) : 0),
+        dut2: (getAmrNbValue("DUT2", "Mobile", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrNbValue("DUT2", "Mobile", "call_drop_count", false, 0)) : 0),
+      },
+      uplink: {
+        ref: (getAmrNbValue("REF", "Base", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrNbValue("REF", "Base", "call_drop_count", false, 0)) : 0)
+           + (getAmrNbValue("REF1", "Base", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrNbValue("REF1", "Base", "call_drop_count", false, 0)) : 0),
+        dut1: (getAmrNbValue("DUT1", "Base", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrNbValue("DUT1", "Base", "call_drop_count", false, 0)) : 0),
+        dut2: (getAmrNbValue("DUT2", "Base", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrNbValue("DUT2", "Base", "call_drop_count", false, 0)) : 0),
+      },
+      highlight: false
+    },
   ];
+
 
   const getWorstClassForMetric = (metricName) => {
     const row = vqTableData1.find(r => r.metric === metricName);

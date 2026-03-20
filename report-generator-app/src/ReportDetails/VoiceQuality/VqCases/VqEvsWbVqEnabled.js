@@ -132,7 +132,23 @@ const VqEvsWbVqEnabled = ({ city: propCity }) => {
         dut2Class: getKpiCellClass('EvsToAmrMosThreePointZero', getEvsWbValue("Base", "DUT2", "% MOS < 3.0"), getEvsWbValue("Base", "REF2", "% MOS < 3.0"))
       },
       highlight: true
-    }
+    },
+    {
+      metric: "Call Drop",
+      mobile: {
+        dut1: (getEvsWbValue("Mobile", "DUT1", "call_drop_count", false, 0) !== 'N/A' ? Number(getEvsWbValue("Mobile", "DUT1", "call_drop_count", false, 0)) : 0),
+        dut2: (getEvsWbValue("Mobile", "DUT2", "call_drop_count", false, 0) !== 'N/A' ? Number(getEvsWbValue("Mobile", "DUT2", "call_drop_count", false, 0)) : 0),
+        ref1: (getEvsWbValue("Mobile", "REF1", "call_drop_count", false, 0) !== 'N/A' ? Number(getEvsWbValue("Mobile", "REF1", "call_drop_count", false, 0)) : 0),
+        ref2: (getEvsWbValue("Mobile", "REF2", "call_drop_count", false, 0) !== 'N/A' ? Number(getEvsWbValue("Mobile", "REF2", "call_drop_count", false, 0)) : 0),
+      },
+      base: {
+        dut1: (getEvsWbValue("Base", "DUT1", "call_drop_count", false, 0) !== 'N/A' ? Number(getEvsWbValue("Base", "DUT1", "call_drop_count", false, 0)) : 0),
+        dut2: (getEvsWbValue("Base", "DUT2", "call_drop_count", false, 0) !== 'N/A' ? Number(getEvsWbValue("Base", "DUT2", "call_drop_count", false, 0)) : 0),
+        ref1: (getEvsWbValue("Base", "REF1", "call_drop_count", false, 0) !== 'N/A' ? Number(getEvsWbValue("Base", "REF1", "call_drop_count", false, 0)) : 0),
+        ref2: (getEvsWbValue("Base", "REF2", "call_drop_count", false, 0) !== 'N/A' ? Number(getEvsWbValue("Base", "REF2", "call_drop_count", false, 0)) : 0),
+      },
+      highlight: false
+    },
   ];
 
   const getEVSClass = (metricName, type, dutType) => { // type: 'mobile' or 'base', dutType: 'dut1' or 'dut2'

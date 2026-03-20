@@ -71,6 +71,13 @@ def analyze_csv(file_path):
         else:
             extra_metrics[key] = "N/A"
 
+    # Call Drop and Initiation Failure counts
+    call_result_header = '[Call Test] Call Result'
+    call_drop_count = 0
+    if call_result_header in df.columns:
+        call_results = df[call_result_header].dropna().astype(str)
+        call_drop_count = int((call_results == 'Drop').sum())
+
     device_type = extract_device_type(file_path)
 
     return {
@@ -78,6 +85,7 @@ def analyze_csv(file_path):
         "device_type": device_type,
         "ul_mos_stats": ul_stats,
         "dl_mos_stats": dl_stats,
+        "call_drop_count": call_drop_count,
         **extra_metrics
     }
 

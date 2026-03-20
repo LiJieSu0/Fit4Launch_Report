@@ -124,8 +124,23 @@ const VqAmrWbVq = ({ city: propCity }) => {
         dut2Class: getKpiCellClass('AmrMosThreePointZero', getAmrWbValue("Mobile", "DUT2", "% MOS < 3.0"), getAmrWbValue("Mobile", "REF1", "% MOS < 3.0"))
       },
       highlight: true
-    }
+    },
+    {
+      metric: "Call Drop",
+      base: {
+        ref: (getAmrWbValue("Base", "REF1", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrWbValue("Base", "REF1", "call_drop_count", false, 0)) : 0),
+        dut1: (getAmrWbValue("Base", "DUT1", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrWbValue("Base", "DUT1", "call_drop_count", false, 0)) : 0),
+        dut2: (getAmrWbValue("Base", "DUT2", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrWbValue("Base", "DUT2", "call_drop_count", false, 0)) : 0),
+      },
+      mobile: {
+        ref: (getAmrWbValue("Mobile", "REF1", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrWbValue("Mobile", "REF1", "call_drop_count", false, 0)) : 0),
+        dut1: (getAmrWbValue("Mobile", "DUT1", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrWbValue("Mobile", "DUT1", "call_drop_count", false, 0)) : 0),
+        dut2: (getAmrWbValue("Mobile", "DUT2", "call_drop_count", false, 0) !== 'N/A' ? Number(getAmrWbValue("Mobile", "DUT2", "call_drop_count", false, 0)) : 0),
+      },
+      highlight: false
+    },
   ];
+
 
 
   const getWorstClassForMetric = (metricName) => {

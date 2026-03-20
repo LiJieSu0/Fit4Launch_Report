@@ -74,6 +74,14 @@ def parse_mos_metrics(file_path):
                     metrics[key] = "N/A"
             else:
                 metrics[key] = "N/A"
+
+        # Call Drop and Initiation Failure counts
+        call_result_header = '[Call Test] Call Result'
+        if call_result_header in df.columns:
+            call_results = df[call_result_header].dropna().astype(str)
+            metrics['call_drop_count'] = int((call_results == 'Drop').sum())
+        else:
+            metrics['call_drop_count'] = 0
         
         # Handle cases where std might be NaN if there's only one value
         if pd.isna(metrics['MOS Stdev']):
@@ -153,6 +161,9 @@ def analyze_vqe_vs_quality(paths):
                                 merged[extra] = e_v
                             else:
                                 merged[extra] = n_v
+
+                        # Merge call drop counts (simple sum)
+                        merged['call_drop_count'] = existing.get('call_drop_count', 0) + metrics.get('call_drop_count', 0)
                         
                         all_results[scenario_name][subfolder][react_key] = merged
 

@@ -43,7 +43,8 @@ class VoiceQualityAnalyzer(BaseAnalyzer):
                                         "UL MOS ATTN": file_stats.get("UL MOS ATTN", "N/A"),
                                         "DL MOS ATTN": file_stats.get("DL MOS ATTN", "N/A"),
                                         "INPUT LEVEL": file_stats.get("INPUT LEVEL", "N/A"),
-                                        "OUTPUT LEVEL": file_stats.get("OUTPUT LEVEL", "N/A")
+                                        "OUTPUT LEVEL": file_stats.get("OUTPUT LEVEL", "N/A"),
+                                        "call_drop_count": file_stats.get("call_drop_count", 0),
                                     }
                                     
                                     if device_type not in organized_nb_vq_results:
@@ -92,6 +93,9 @@ class VoiceQualityAnalyzer(BaseAnalyzer):
                                                 merged[extra] = e_v
                                             else:
                                                 merged[extra] = n_v
+
+                                        # Merge call drop counts (simple sum)
+                                        merged["call_drop_count"] = existing.get("call_drop_count", 0) + file_stats.get("call_drop_count", 0)
                                                 
                                         organized_nb_vq_results[device_type] = merged
                                 results[sub_dir_name][subfolder] = organized_nb_vq_results
@@ -108,7 +112,8 @@ class VoiceQualityAnalyzer(BaseAnalyzer):
                                         "UL MOS ATTN": file_stats.get("UL MOS ATTN", "N/A"),
                                         "DL MOS ATTN": file_stats.get("DL MOS ATTN", "N/A"),
                                         "INPUT LEVEL": file_stats.get("INPUT LEVEL", "N/A"),
-                                        "OUTPUT LEVEL": file_stats.get("OUTPUT LEVEL", "N/A")
+                                        "OUTPUT LEVEL": file_stats.get("OUTPUT LEVEL", "N/A"),
+                                        "call_drop_count": file_stats.get("call_drop_count", 0),
                                     }
                                     if device_type not in organized_nb_vq_results:
                                         organized_nb_vq_results[device_type] = new_data
@@ -139,6 +144,7 @@ class VoiceQualityAnalyzer(BaseAnalyzer):
                                                 merged[extra] = round((e_v * e_c + n_v * n_c) / total_c, 4) if total_c > 0 else e_v
                                             elif e_v != "N/A": merged[extra] = e_v
                                             else: merged[extra] = n_v
+                                        merged["call_drop_count"] = existing.get("call_drop_count", 0) + file_stats.get("call_drop_count", 0)
                                         organized_nb_vq_results[device_type] = merged
                                 results[sub_dir_name].update(organized_nb_vq_results)
 

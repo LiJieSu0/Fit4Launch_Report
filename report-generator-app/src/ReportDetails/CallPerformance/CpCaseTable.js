@@ -19,8 +19,8 @@ const CpCaseTable = ({ title, data, city }) => {
     const dutFailedInitiationsPercentage = dutTotalAttempts > 0 ? (dutFailedInitiations / dutTotalAttempts * 100).toFixed(2) : (0).toFixed(2);
     const refFailedInitiationsPercentage = refTotalAttempts > 0 ? (refFailedInitiations / refTotalAttempts * 100).toFixed(2) : (0).toFixed(2);
 
-    const dutFailedRetentionPercentage = dutSuccessfulInitiations > 0 ? ((dut.total_retention_failures || 0) / dutSuccessfulInitiations * 100).toFixed(2) : (0).toFixed(2);
-    const refFailedRetentionPercentage = refSuccessfulInitiations > 0 ? ((ref.total_retention_failures || 0) / refSuccessfulInitiations * 100).toFixed(2) : (0).toFixed(2);
+    const dutFailedRetentionPercentage = (dutSuccessfulInitiations - dutFailedInitiations) > 0 ? ((dut.total_retention_failures || 0) / (dutSuccessfulInitiations - dutFailedInitiations) * 100).toFixed(2) : (0).toFixed(2);
+    const refFailedRetentionPercentage = (refSuccessfulInitiations - refFailedInitiations) > 0 ? ((ref.total_retention_failures || 0) / (refSuccessfulInitiations - refFailedInitiations) * 100).toFixed(2) : (0).toFixed(2);
 
     return (
         <div className="">

@@ -25,14 +25,16 @@ const CpCaseTable = ({ title, data, city }) => {
     return (
         <div className="">
             <DynamicHeader level={2}>{title} - {city}</DynamicHeader>
-            <table className="performance-table general-table-style">
+            <table className="performance-table general-table-style cp-case-table">
                 <thead>
                     <tr>
                         <th>Device</th>
                         <th>Connection Attempts</th>
                         <th>Mean Setup Time (s)</th>
                         <th>Successful Initiations</th>
+                        <th>Failed Initiation Counts</th>
                         <th>Failed Initiations (%)</th>
+                        <th>Failed Retention Counts</th>
                         <th>Failed Retention (%)</th>
                     </tr>
                 </thead>
@@ -44,7 +46,9 @@ const CpCaseTable = ({ title, data, city }) => {
                             {(dut.mean_setup_time || 0).toFixed(2)}
                         </td>
                         <td>{dutSuccessfulInitiations}</td>
+                        <td>{dutFailedInitiations}</td>
                         <td>{dutFailedInitiationsPercentage}%</td>
+                        <td>{dut.total_retention_failures || 0}</td>
                         <td>{dutFailedRetentionPercentage}%</td>
                     </tr>
                     <tr>
@@ -52,7 +56,9 @@ const CpCaseTable = ({ title, data, city }) => {
                         <td>{refTotalAttempts}</td>
                         <td>{(ref.mean_setup_time || 0).toFixed(2)}</td>
                         <td>{refSuccessfulInitiations}</td>
+                        <td>{refFailedInitiations}</td>
                         <td>{refFailedInitiationsPercentage}%</td>
+                        <td>{ref.total_retention_failures || 0}</td>
                         <td>{refFailedRetentionPercentage}%</td>
                     </tr>
                 </tbody>

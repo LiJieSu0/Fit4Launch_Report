@@ -251,6 +251,27 @@ When grouping CSV files for analysis, the pipeline determines device type using 
    - `CH01` → `REF`
    - `CH02` → `DUT`
 
+### CSV Filename Conventions
+
+Standard filename format for test data files:
+
+| Component | Pattern | Example |
+|:---|:---|:---|
+| **Timestamp** | `_YYYYMMDD_HHMMSS_` | `_20260125_130627_` |
+| **Channel** | `CH01`/`CH02` | `CH01` = REF, `CH02` = DUT |
+| **Operator** | `TMO`, `ATT`, `VZW` | `TMO` |
+| **Network** | `5GNR`, `LTE`, `5G` | `5GNR` |
+| **Device** | `DUT`, `REF`, `PC2`, `PC3` | `DUT` |
+| **Band** | `N25`, `N41`, `B66` | `N41` |
+| **Run** | `R1`, `R2`, `R3` | `R1` |
+
+**Common filename patterns:**
+```
+_20260125_CH01_TMO_5GNR_Coverage_DUT-N25_R1.csv
+TMO_5G_AUTO_DP_DUT_TC001.csv
+SEA_DUT_MO_TC-151.csv
+```
+
 ### Multiple CSV Files Processing Logic
 
 The pipeline implements a **group-and-aggregate** strategy for handling multiple CSV files:

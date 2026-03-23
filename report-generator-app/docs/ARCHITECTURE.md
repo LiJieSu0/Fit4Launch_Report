@@ -630,27 +630,29 @@ const reportType = {
 {currentReport === "NEW" && <NewReportKpiPage />}
 ```
 
-### Updating KPI Thresholds
+### KPI Rules (KpiRules.js)
 
-Edit `src/Utils/KpiRules.js`:
+The `KpiRules.js` file defines comparison logic between DUT and REF devices to determine Pass/Fail status. The logic compares DUT value against REF value using percentage thresholds.
 
-```javascript
-export const KpiRules = {
-  throughput: {
-    excellent: 100,  // Mbps
-    pass: 50,
-    marginal: 25,
-    fail: 0
-  },
-  mos: {
-    excellent: 4.0,
-    pass: 3.5,
-    marginal: 2.5,
-    fail: 0
-  }
-  // ...
-};
-```
+**Color Status Levels:**
+| Status | CSS Variable | Meaning |
+|:---|:---|:---|
+| Excellent | `--performance-excellent` | DUT significantly better than REF |
+| Pass | `--performance-pass` | DUT meets acceptable threshold |
+| Marginal/Fail | `--performance-marginal-fail` | DUT slightly worse than REF |
+| Fail | `--performance-fail` | DUT significantly worse than REF |
+
+**Key Comparison Logic:**
+
+| KPI Type | Logic |
+|:---|:---|
+| **Throughput** | Excellent: >110% of REF<br>Pass: 90-110% of REF<br>Fail: <80% of REF |
+| **MOS (Voice)** | Excellent: DUT > REF<br>Pass: DUT >= REF - 0.1<br>Fail: DUT < REF - 0.25 |
+| **Jitter/Latency** | Excellent: <90% of REF<br>Pass: 90-110% of REF or <10ms<br>Fail: >120% of REF |
+| **Call Retention** | Pass: >=99%<br>Fail: <5% |
+| **WFC Call Drops** | Pass: 0 drops<br>Marginal: 1 drop<br>Fail: >=2 drops |
+
+To modify threshold logic, edit `src/Utils/KpiRules.js` and adjust the percentage multipliers (e.g., `1.1 * ref` → `1.2 * ref`).
 
 ---
 
